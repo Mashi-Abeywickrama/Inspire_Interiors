@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Jost');
+
+.nav {
+    background-color: #023047;
+    padding-left: 1em !important;
+    padding-right: 2em !important;
+}
+
+/* .darktoggle{
+    color: white;
+    background-color: aliceblue;
+} */
+
+.jost-text{
+    font-family: 'jost';
+}
+
+.nav-div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    
+}
+.ms-auto{
+    float: right;
+}
+
+.navbar-toggler-icon {
+  filter: invert()
+}
+
+.navbar-toggler {
+    float: right;
+    border: 1px solid #FFF;
+    height: 3em;
+
+}
+.responsive-navbar-nav{
+    float:right;
+}
+
+.nav-link {
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #a79c07;
+}
+
+.navbar {
+  transition: all 0.3s ease;
+}
+
+

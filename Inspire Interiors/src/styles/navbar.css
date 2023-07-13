@@ -1,0 +1,16 @@
+.nav {
+    background-color: #023047;
+    padding-left: 1em !important;
+    padding-right: 2em !important;
+}
+
+.search-form{
+    width: 25rem;
+    background-color: #F5F3FF;
+}
+
+@media screen and (max-width: 600px){
+    .main-div{
+        flex-direction: column;
+    }
+}

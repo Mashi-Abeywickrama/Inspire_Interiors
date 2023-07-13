@@ -1,0 +1,49 @@
+.sidebar-container{
+    background-color: #203047;
+    color: #ffffff;
+    width: 210px;
+    height: 100vh;
+}
+
+.toggle{
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+}
+.nav-option{
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 0px 30px;
+    gap: 20px;
+    width: 210px;
+}
+
+.nav-option:hover, .nav-option:hover i{
+    background-color: #ffffff;
+    color: #203047;
+    cursor: pointer;
+}
+
+.nav-option i {
+    color: #ffffff;
+}
+
+@media screen and (max-width: 700px) {
+    .navCollapse{
+        width: 80px;
+    }
+
+    .navCollapse .nav-option span{
+        display: none;
+    }
+
+    .navCollapse .nav-option i {
+        padding: 30px;
+    }
+}
+
+@media screen and (min-width: 600px){
+    .toggle{
+        display: none;
+    }
+}
