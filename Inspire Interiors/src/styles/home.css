@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Jost');
+@import url('https://fonts.googleapis.com/css?family=DM Serif Display');
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two');
+
+.banner-home{
+    max-height: 55em;
+    height: 55em;
+    background-color:  #023047;
+    border-radius: 0 0 0 10em;
+}
+
+.banner-height{
+    height: 55em;
+    width: 90%;
+}
+.inner-height{
+    height: 50em;
+}
+
+.header-title{
+    font-size: 6rem;
+    font-family: 'DM Serif Display';
+}
+
+.text-width{
+    max-width: 45%;
+}
+
+.img-width{
+    max-width: 45%;
+}
+
+.gold-colour{
+    color: #FFBA42;
+}
+
+.header-sub{
+    font-size: 1.4rem;
+    font-family: 'Jost';
+    font-weight:300;
+}
+
+.primary-btn{
+    background-color: #FFBA42;
+    width: 10rem;
+    font-family: 'Jost';
+    font-weight: bold;
+    padding: 0.6rem;
+    box-shadow: 0px 10px 20px rgba(111, 88, 201, 0.25);
+}
+
+.secondary-btn{
+    background-color: #035C94;
+    width: 10rem;
+    font-family: 'Jost';
+    font-weight: bold;
+    padding: 0.6rem;
+    box-shadow: 0px 10px 20px rgba(111, 88, 201, 0.25);
+    color: white;
+}
+
+.lower-banner{
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.lower-banner-title{
+    color: #023047;
+    font-size: 1.5rem;
+    font-family: 'DM Serif Display';
+    font-weight: 700;
+}
+
+.lower-banner-sub-title{
+    color: #4D5053;
+    font-size: 1.4rem;
+    font-family: 'Jost';
+    font-weight:400;
+}
+
+.lower-banner-link{
+    color: #4D5053;
+    font-size: 1rem;
+    font-family: 'Jost';
+    font-weight:400;
+}
+
+.about-home-title{
+    color:#023047;
+    font-size: 3.5rem;
+    font-family: 'DM Serif Display';
+    font-weight: 700;
+    line-height: 4rem;
+}
+
+.about-home-sub-title{
+    color: #4D5053;
+    font-size: 1.4rem;
+    font-family: 'Jost';
+    font-weight:400;
+}
+
+.telephone-icon{
+    
+    background-color: #fcbe4245;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    height: 3.2rem;
+    width: 3.2rem;
+    
+}
+
+.phone-no{
+    color: #4D5053;
+    font-size: 1.4rem;
+    font-family: 'Jost';
+    font-weight:700;
+    line-height: 1rem;
+
+}
+
+.phone-no-cap{
+    color: #4D5053;
+    font-size: 1.4rem;
+    font-family: 'Jost';
+    font-weight:400;
+    line-height: 1rem;
+    
+}
+
+.testimonial{
+     background-color: #023047;
+     padding: 2rem;
+     margin-top: 10rem;
+     margin-bottom: 10rem;
+}
+
+.testimonial-title{
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    font-family: 'Lobster Two'
+
+}
+
+.big-box{
+    border:2px solid #FFBA42;
+    margin: 0%;
+    padding: 0%;
+    
+}
+
+.innerbox{
+    border-radius: 0.8rem;
+    background-color: white;
+    padding: 2rem;
+    margin: 0%;
+}
+
+.testimonial-img{
+    width: 30%;
+    height: auto;
+}
+.testi-title{
+    font-size: 1.3rem;
+    color: #035C94;
+    font-family: 'DM Serif Display';
+    font-weight: 700;
+    margin: 0%;
+    
+}
+
+.testi-sub{
+    font-size: 1rem;
+    color: #4D5053;
+    font-family: 'Jost';
+    margin: 0%;
+    
+}
+
+.testi-cont{
+    font-size: 1.1rem;
+    color: #4D5053;
+    font-family: 'Jost';
+    margin: 0%;
+}
+
+.slick-slide {
+   margin: 0px 20px;
+}
+
+.slick-slide img {
+   width: 100%;
+}
+
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-list:focus {
+  outline: none;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+}
+.slick-track:before,
+.slick-track:after {
+  display: table;
+  content: '';
+}
+.slick-track:after {
+  clear: both;
+}
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+[dir='rtl'] .slick-slide {
+  float: right;
+}
+.slick-slide img {
+  display: block;
+}
+.slick-slide.slick-loading img {
+  display: none;
+}
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+.slick-initialized .slick-slide {
+  display: block;
+}
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+.client-slider {
+  padding-top: 120px;
+  padding-bottom: 40px;
+}
+
+
+
+
+
+
+@media only screen and  (max-width:1192px) {
+
+
+.header-title{
+    font-size: 4rem;
+    font-family: 'DM Serif Display';
+}
+
+}
+
+@media only screen and (max-width: 768px) {
+    .text-width{
+    max-width: 100%;
+}
+.common-flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.header-title{
+    font-size: 4rem;
+    font-family: 'DM Serif Display';
+}
+.img-width{
+    min-width: 80%;
+    max-width:80%;
+}
+
+.lower-banner{
+    flex-direction: column;
+}
+
+.about-home-img{
+    margin: auto;
+    margin-bottom: 2rem;
+}
+
+.test-3-row{
+    flex-direction: column;
+}
+}
+
