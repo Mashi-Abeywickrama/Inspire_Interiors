@@ -1,17 +1,18 @@
 
 import React from 'react';
 import { useState } from 'react'
-import Home from './pages/visitor/home';
 import './App.css'
-import Header from './components/header';
+import MyOrder from './pages/Customer/orders/my_orders';
 
 
 
  const App = () => {
 
   return (
-
-      <Home />
+    <>
+     <MyOrder />
+    </>
+     
     
 
   )
