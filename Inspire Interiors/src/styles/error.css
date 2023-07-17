@@ -1,0 +1,10 @@
+.back-btn{
+    color: white;
+    background-color: #023047;
+}
+
+@media screen and (max-width: 600px){
+    .error-flex{
+        flex-direction: column;
+    }
+}

@@ -1,21 +1,27 @@
 
 import React from 'react';
 import { useState } from 'react'
-import './App.css'
-import MyOrder from './pages/Customer/orders/my_orders';
+
+import Home from './pages/visitor/home';
+import Services from './pages/visitor/services';
+import Contact from './pages/visitor/contact';
+import Error from './pages/visitor/error';
+import './App.css';
+import Header from './components/header';
+
 
 
 
  const App = () => {
 
   return (
-    <>
-     <MyOrder />
-    </>
-     
+
+
+    <Services />
+
     
 
   )
 }
 
-export default App
+export default App;

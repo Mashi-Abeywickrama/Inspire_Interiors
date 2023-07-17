@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Jost');
+
+.footer{
+    background-color: #023047; 
+}
+
+.divider{
+    border: 1px solid white !important;
+    margin-bottom: 0.8rem !important;
+}
+
+.footer-para{
+    height: auto;
+    padding-bottom: 0.8rem; 
+
+}
+
+
+@media screen and (max-width: 600px){
+    .footer-flex{
+        flex-direction: column;
+    }
+    
+}
