@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin');
+
+.sidenav---sidenav---_2tBP .sidenav---expanded---1KdUL{
+      min-width:330px !important;
+}
+
+.sidenav---sidenav---_2tBP {
+    background: #023047 !important;
+}
+/* .sidenav---sidenav-navitem---uwIJ- .sidenav---selected---1EK3y .sidenav---highlighted---oUx9u{
+    color: #239b1a !important;
+} */
+
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T
+{
+  background-image: url('./../../assets/img/customer/background.PNG') !important;
+  background-repeat: no-repeat !important;
+  background-size: cover;
+  background-position:right;
+  
+}
+
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f {
+    color: #023047 !important;
+    font-family: 'Cabin' !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+}
+
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo > *, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f > *, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo > *, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f > * {
+    color: #023047 !important;
+}
+
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T {
+    position: relative;
+    display: flex;
+    justify-content:center;
+    align-items: center !important;
+    line-height: 50px;
+    height: 92px !important;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    gap: 10px !important;
+}
+
+.sidenav---navicon---3gCRo{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center;
+}
