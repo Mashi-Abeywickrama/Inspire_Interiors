@@ -2,7 +2,10 @@
 import React from 'react';
 import { useState } from 'react'
 import Home from './pages/visitor/home';
-import './App.css'
+import Services from './pages/visitor/services';
+import Contact from './pages/visitor/contact';
+import Error from './pages/visitor/error';
+import './App.css';
 import Header from './components/header';
 
 
@@ -11,10 +14,10 @@ import Header from './components/header';
 
   return (
 
-      <Home />
+    <Services />
     
 
   )
 }
 
-export default App
+export default App;
