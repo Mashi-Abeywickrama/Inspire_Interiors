@@ -6,6 +6,7 @@ import Contact from '../pages/visitor/contact';
 import Services from '../pages/visitor/services';
 import Error from '../pages/visitor/error';
 import MyOrder from '../pages/Customer/orders/my_orders';
+import Login from '../pages/visitor/login';
 
 function VisitorRoute() {
   return (
@@ -15,6 +16,7 @@ function VisitorRoute() {
             <Route path='/contact' element={<Contact />}></Route>
             <Route path='/services' element={<Services />}></Route>
             <Route path="/404" element={<Error />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/dev" element={<MyOrder />} />
           	<Route path="*" element={<Navigate to="/404" />} />
 
