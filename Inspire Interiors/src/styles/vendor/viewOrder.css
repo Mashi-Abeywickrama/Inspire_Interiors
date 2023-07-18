@@ -1,8 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin');
+
 .background{
     background-color: #F5F3FF;
     height: 100%;
 }
 
 .divider{
+    margin-top: 1rem;
+    color: #EDEEF2;
     border: 1px solid #A2A3B1 !important;
+}
+
+.Cabin-text{
+    font-family: 'Cabin' !important;
+}
+
+.shadow{
+    box-shadow: 0px 20px 60px 0px rgba(86, 89, 146, 0.10);
 }
