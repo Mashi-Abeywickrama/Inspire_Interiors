@@ -6,6 +6,9 @@
 
 .sidenav---sidenav---_2tBP {
     background: #023047 !important;
+    position: inherit !important;
+    border-radius: 0 15px 0 0;
+
 }
 /* .sidenav---sidenav-navitem---uwIJ- .sidenav---selected---1EK3y .sidenav---highlighted---oUx9u{
     color: #239b1a !important;
