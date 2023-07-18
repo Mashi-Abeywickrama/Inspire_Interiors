@@ -1,25 +1,29 @@
 
 import React from 'react';
 import { useState } from 'react'
-// import Home from './pages/visitor/home';
-import Dashboard from './pages/Admin/dashboard'
-import Report from './pages/Admin/report'
 
-import './App.css'
-import Header2 from './components/header2';
+import Home from './pages/visitor/home';
+import Services from './pages/visitor/services';
+import Contact from './pages/visitor/contact';
+import Error from './pages/visitor/error';
+import './App.css';
+import Header from './components/header';
+import MyOrder from './pages/Customer/orders/my_orders';
+import VisitorRoute from './routes/visitorRoute';
+
 
 
 
  const App = () => {
 
   return (
-{/* <Header2/> */}
-      // <Home />
-      // <Dashboard />
-  <Report/>
     
 
+    <VisitorRoute />
+
+    
+  
   )
 }
 
-export default App
+export default App;

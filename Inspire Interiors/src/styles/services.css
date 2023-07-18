@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Jost');
+@import url('https://fonts.googleapis.com/css?family=dm-serif-display');
+
+.service-pic{
+    background-image: url(../assets/img/visitor/background.jpg) !important;
+    object-fit: fill;
+    height:20rem;
+}
+
+.jost-text{
+    font-family: 'jost';
+}
+
+.lower-banner{
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.contact-btn{
+    width: 10rem;
+}
+
+.box{
+    cursor: pointer;
+}
+
+.box:hover{
+    background-color: #fcbe4255;
+    border-radius: 5%;
+    padding: 1rem;
+}
+
+.lower-banner-title{
+    color: #023047;
+    font-size: 1.5rem;
+    font-family: 'DM Serif Display';
+    font-weight: 800;
+}
+
+.lower-banner-sub-title{
+    color: #4D5053;
+    font-size: 1.4rem;
+    font-family: 'Jost';
+    font-weight:400;
+}
+
+.lower-banner-link{
+    color: #4D5053;
+    font-size: 1rem;
+    font-family: 'Jost';
+    font-weight:400;
+}
+
+.first-div{
+    align-items: center;
+}
+
+.main-box{
+    background-color: #EBEBEB;
+}
+
+.dialog-div{
+    align-items: center;
+    height: 8rem;
+    width: 20rem;
+    margin-top: 12rem;
+}
+
+.num{
+    margin-top: 6rem;
+    font-size: 5rem;
+}
+
+.para{
+    
+    font-family: 'jost';
+    width: 100%;
+}
+
+.para-1{
+    width: 60%;
+}
+
+.dialog-box{
+    align-items: center;
+    background-color: #023047;
+    margin-top: 5rem;
+    margin-bottom: 6rem;
+}
+
+
+@media screen and (max-width: 600px){
+    .service-flex{
+        flex-direction: column;
+    }
+}

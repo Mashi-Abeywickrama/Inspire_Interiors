@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Jost');
+@import url('https://fonts.googleapis.com/css?family=dm-serif-display');
+
+.contact-pic {
+    background-image: url(../assets/img/visitor/table.png) !important;
+    object-fit: scale-down;
+    height: 20rem;
+  }
+  
+  .dialog-div {
+    align-items: center;
+    height: 8rem;
+    width: 20rem;
+    margin-top: 12rem;
+  }
+  
+  .dialog-1 {
+    font-weight: 400;
+  }
+  
+  .jost-text{
+    font-family: 'jost';
+  }
+
+  .container-div {
+    margin-top: 2rem;
+    background-color: rgba(245, 182, 64, 0.25);
+  }
+  
+  .input-form {
+    border-top: 0;
+    border-bottom: 1px solid black;
+    border-left: 0;
+    border-right: 0;
+  }
+  
+  .name-form {
+    margin-top: 2rem;
+  }
+  
+  .email-form {
+    margin-top: 2rem;
+  }
+  
+  .subject-form {
+    margin-top: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .phone-form {
+    margin-top: 2rem;
+  }
+  
+  .send-btn {
+    color: white;
+    background-color: #023047;
+  }
+   .map-custom{
+    margin-top: 40px;
+    border-radius: 20px;
+    height: 250px;
+  }
+
+  .text-primary{
+    color: #035C94 !important;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .main-div {
+      flex-direction: column;
+    }
+  }
+  @media screen and (min-width: 600px) {
+    .map-custom {
+      width: 45%;
+  
+    }
+  }
+
+ 
+  
