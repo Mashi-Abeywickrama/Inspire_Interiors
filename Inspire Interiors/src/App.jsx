@@ -8,6 +8,8 @@ import Contact from './pages/visitor/contact';
 import Error from './pages/visitor/error';
 import './App.css';
 import Header from './components/header';
+import MyOrder from './pages/Customer/orders/my_orders';
+import VisitorRoute from './routes/visitorRoute';
 
 
 
@@ -15,12 +17,12 @@ import Header from './components/header';
  const App = () => {
 
   return (
-
-
-    <Services />
-
     
 
+    <VisitorRoute />
+
+    
+  
   )
 }
 

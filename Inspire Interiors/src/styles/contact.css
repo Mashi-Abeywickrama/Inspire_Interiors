@@ -55,10 +55,27 @@
     color: white;
     background-color: #023047;
   }
+   .map-custom{
+    margin-top: 40px;
+    border-radius: 20px;
+    height: 250px;
+  }
+
+  .text-primary{
+    color: #035C94 !important;
+  }
   
   @media screen and (max-width: 600px) {
     .main-div {
       flex-direction: column;
     }
   }
+  @media screen and (min-width: 600px) {
+    .map-custom {
+      width: 45%;
+  
+    }
+  }
+
+ 
   
