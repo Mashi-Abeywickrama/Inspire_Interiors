@@ -20,7 +20,7 @@ import VisitorRoute from './routes/visitorRoute';
     
 
 
-    <VisitorRoute />
+    <ViewOrder />
 
 
     
