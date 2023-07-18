@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Home from './pages/visitor/home';
 import Services from './pages/visitor/services';
 import Contact from './pages/visitor/contact';
-import Error from './pages/visitor/error';
+import ViewOrder from './pages/vendor/viewOrder';
 import './App.css';
 import Header from './components/header';
 
@@ -17,7 +17,7 @@ import Header from './components/header';
   return (
 
 
-    <Services />
+    <ViewOrder />
 
     
 
