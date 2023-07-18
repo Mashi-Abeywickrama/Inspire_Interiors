@@ -35,7 +35,7 @@ const Header = () => {
             <Nav.Link className="text-white m-2 jost-text" href="/contact">
               Contact Us
             </Nav.Link>
-            <Nav.Link className=" m-2 text-center jost-text login-btn" href="#link">
+            <Nav.Link className=" m-2 text-center jost-text login-btn" href="/login">
               Login
             </Nav.Link>
           </Nav>

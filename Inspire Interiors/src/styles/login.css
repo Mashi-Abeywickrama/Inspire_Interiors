@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Jost');
+
+.banner-login{
+    max-height: 45em;
+    height: 44em;
+    /* background-color: black; */
+    border-radius: 0 0 10em 0;
+    padding: 0%;
+}
+.login-carousel, .carousel-img{
+    border-radius: 0 0 10em 0;
+    height: 44em;
+}
+.carousel-img img {
+    height: 100%;
+    border-radius: 0 0 10em 0;
+    object-fit: cover;
+  }
+  
+.content-login{
+    height: 44em;
+}
+.w-98 {
+    width: 98%;
+}
