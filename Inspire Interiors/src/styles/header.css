@@ -55,4 +55,12 @@
   transition: all 0.3s ease;
 }
 
+.login-btn{
+  background-color: #FFF !important;
+  color: #023047 !important;
+  border-radius: 10px;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
 

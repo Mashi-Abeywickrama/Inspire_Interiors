@@ -17,26 +17,26 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link className="text-white m-2 jost-text" href="#home">
+            <Nav.Link className="text-white m-2 jost-text" href="/">
               Home
             </Nav.Link>
-            <Nav.Link className="text-white m-2 jost-text" href="#link">
+            <Nav.Link className="text-white m-2 jost-text" href="/about">
               About Us
             </Nav.Link>
-            <Nav.Link className="text-white m-2 jost-text" href="#link">
+            <Nav.Link className="text-white m-2 jost-text" href="/services">
               Services
             </Nav.Link>
-            <Nav.Link className="text-white m-2 jost-text" href="#link">
+            <Nav.Link className="text-white m-2 jost-text" href="/projects">
               Our Projects
             </Nav.Link>
-            <Nav.Link className="text-white m-2 jost-text" href="#link">
+            <Nav.Link className="text-white m-2 jost-text" href="/team">
               Our Team
             </Nav.Link>
-            <Nav.Link className="text-white m-2 jost-text" href="#link">
+            <Nav.Link className="text-white m-2 jost-text" href="/contact">
               Contact Us
             </Nav.Link>
-            <Nav.Link className="text-white m-2 jost-text" href="#link">
-              <Icon.Search color="white" size={16} className="align-center" />
+            <Nav.Link className=" m-2 text-center jost-text login-btn" href="/login">
+              Login
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

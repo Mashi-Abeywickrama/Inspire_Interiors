@@ -8,6 +8,8 @@ import Contact from './pages/visitor/contact';
 import ViewOrder from './pages/vendor/viewOrder';
 import './App.css';
 import Header from './components/header';
+import MyOrder from './pages/Customer/orders/my_orders';
+import VisitorRoute from './routes/visitorRoute';
 
 
 
@@ -15,12 +17,14 @@ import Header from './components/header';
  const App = () => {
 
   return (
-
-
-    <ViewOrder />
-
     
 
+
+    <VisitorRoute />
+
+
+    
+  
   )
 }
 

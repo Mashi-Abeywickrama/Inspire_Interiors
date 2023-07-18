@@ -1,5 +1,6 @@
 import React  from 'react';
 import Header from "../../components/header";
+import Footer from '../../components/footer';
 
 
 import * as Icon from 'react-bootstrap-icons';
@@ -16,6 +17,7 @@ import Nattasha from './../../assets/img/testimonials/nattasha.png';
   
 const Home = () => {
  return (
+    <>
     <div>
         <Header/>
         <div className='container-fluid banner-home'>
@@ -166,6 +168,8 @@ available, majority.</p>
 
         </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 
