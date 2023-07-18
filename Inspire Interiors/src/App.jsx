@@ -10,6 +10,7 @@ import './App.css';
 import Header from './components/header';
 import MyOrder from './pages/Customer/orders/my_orders';
 import VisitorRoute from './routes/visitorRoute';
+import VenderRoute from './routes/vendorRoute';
 
 
 
@@ -17,13 +18,10 @@ import VisitorRoute from './routes/visitorRoute';
  const App = () => {
 
   return (
-    
-
-
-    <ViewOrder />
-
-
-    
+    <>
+    <VenderRoute/>
+    <VisitorRoute/>
+    </>
   
   )
 }

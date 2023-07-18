@@ -3,12 +3,20 @@ import React from "react";
 import "./../../styles/vendor/viewOrder.css";
 import * as Icon from "react-bootstrap-icons";
 import Chair from './../../assets/img/vendor/chair.png';
+import SidebarDashboard from "../../components/customer/sidebar";
+import Navigationbar from "../../components/navigationbar";
 
 const ViewOrder = () => {
  return(
     <>
-        <div className="background">
-            <div className="container-fluid bg-white rounded-3">
+    <div className="d-flex flex-column  gap-3">
+     <Navigationbar/>
+    <div className="d-flex gap-4 ">
+       
+        <SidebarDashboard/>
+    
+        <div className="background w-auto">
+            <div className="container-fluid col-12 bg-white rounded-3">
                 <div className="d-flex flex-row gap-4">
                     <p className="text-dark fs-3 fw-bold Cabin-text">Orders</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25}className="mt-2" />
@@ -24,7 +32,7 @@ const ViewOrder = () => {
                 <div className="divider"/>
 
                 <div className="d-flex flex-lg-row flex-md-row flex-sm-column flex-column justify-content-between gap-4">
-                    <div className="d-flex flex-column">
+                    <div className="d-flex col-lg-6 col-12 col-6 flex-column">
                         <div className="col-lg-12 border rounded-3 my-2 shadow">
                             <p className="fs-4 fw-bold px-3 py-2 Cabin-text" style={{color:"#023047"}}>Product Details</p>
                             <div className="d-flex flex-row flex-lg-row flex-md-column flex-sm-column flex-column justify-content-start">
@@ -132,6 +140,8 @@ const ViewOrder = () => {
                 <button className="my-3" style={{color:"#FF5C60", borderRadius:"8px", border:"1px solid #FF5C60"}}>Cancel Order</button>
     
             </div>
+        </div>
+        </div>
         </div>
     </>
 

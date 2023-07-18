@@ -18,7 +18,7 @@ function VisitorRoute() {
             <Route path="/404" element={<Error />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dev" element={<MyOrder />} />
-          	<Route path="*" element={<Navigate to="/404" />} />
+          	{/* <Route path="*" element={<Navigate to="/404" />} /> */}
 
             {/* <Route path='/Blog' element={<Blog />}></Route> */}
             {/* <Route path='/About' element={<About />}></Route> */}
