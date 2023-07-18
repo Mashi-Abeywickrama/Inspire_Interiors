@@ -1,6 +1,9 @@
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import { Router,Route } from 'react-router-dom';
 
+import * as Icon from 'react-bootstrap-icons';
+import { RiBuilding2Fill,RiStore2Fill,RiBrushFill,RiShoppingBagFill,RiDashboardFill,RiSettings5Fill } from "react-icons/ri";
+
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './../../styles/customer/sidebar.css'
 
@@ -18,16 +21,16 @@ const SidebarDashboard = () => {
     <SideNav.Nav defaultSelected="dashboard">
         <NavItem eventKey="dashboard">
             <NavIcon>
-                <i className="bi bi-columns-gap" style={{ fontSize: '1.75em' }} />
+                <i><RiDashboardFill /></i>
             </NavIcon>
             <NavText>
                 Home
             </NavText>
         </NavItem>
 
-        <NavItem eventKey="designa">
+        <NavItem eventKey="designs">
             <NavIcon>
-                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+               <i><RiBuilding2Fill /></i>
             </NavIcon>
             <NavText>
                 Designs
@@ -36,16 +39,16 @@ const SidebarDashboard = () => {
 
         <NavItem eventKey="marketplace">
             <NavIcon>
-                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                 <i><RiStore2Fill /></i>
             </NavIcon>
-            <NavText>
+            <NavText >
                 Marketplace
             </NavText>
         </NavItem>
 
         <NavItem eventKey="Customization">
             <NavIcon>
-                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                 <i><RiBrushFill /></i>
             </NavIcon>
             <NavText>
                 Customization
@@ -54,7 +57,7 @@ const SidebarDashboard = () => {
 
         <NavItem eventKey="orders">
             <NavIcon>
-                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                <i><RiShoppingBagFill /></i>
             </NavIcon>
             <NavText>
                 My Orders
@@ -63,7 +66,7 @@ const SidebarDashboard = () => {
 
         <NavItem eventKey="Settings">
             <NavIcon>
-                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                 <i><RiSettings5Fill /></i>
             </NavIcon>
             <NavText>
                 Settings

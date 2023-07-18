@@ -94,12 +94,15 @@ const Contact = () => {
               </div>
             </div>
           </form>
+          
         </div>
+         <iframe className="map-custom col-md-6 col-lg-6 col-sm-11 col-xs-11" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29899.813812995286!2d79.82896047335797!3d6.896915573845097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25963120b1509%3A0x2db2c18a68712863!2sUniversity%20of%20Colombo%20School%20of%20Computing%20(UCSC)!5e0!3m2!1sen!2slk!4v1689599664706!5m2!1sen!2slk"></iframe>
+
+       
+        
       </div>
 
-      {/* <div className="ratio ratio-16x9">
-        <iframe src="https://www.google.lk/maps/place/Colombo/@6.9310893,79.8151343,27058m/data=!3m1!1e3!4m6!3m5!1s0x3ae253d10f7a7003:0x320b2e4d32d3838d!8m2!3d6.9270786!4d79.861243!16zL20vMGZuN3I?hl=en&entry=ttu" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div> */}
+     
       <Footer/>
     </>
   );
