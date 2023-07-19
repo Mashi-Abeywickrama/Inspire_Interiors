@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin');
+
+.sidenav---sidenav---_2tBP .sidenav---expanded---1KdUL{
+      min-width:240px !important;
+}
+
+.sidenav---sidenav---_2tBP {
+    background: #023047 !important;
+    position: inherit !important;
+    border-radius: 0 15px 0 0;
+
+}
+/* .sidenav---sidenav-navitem---uwIJ- .sidenav---selected---1EK3y .sidenav---highlighted---oUx9u{
+    color: #239b1a !important;
+} */
+
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T
+{
+  background-image: url('./../../assets/img/customer/background.PNG') !important;
+  background-repeat: no-repeat !important;
+  background-size: cover;
+  background-position:right;
+  
+}
+
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f {
+    color: #023047 !important;
+    font-family: 'Cabin' !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+}
+
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo > *, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f > *, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo > *, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f > * {
+    color: #023047 !important;
+}
+
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T {
+    
+    position: relative;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center !important;
+    line-height: 50px;
+    height: 65px !important;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    gap: 1% !important;
+    vertical-align: middle;
+}
+
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T {
+    
+    position: relative;
+    display: flex;
+    justify-content:center;
+    align-items: center !important;
+    line-height: 50px;
+    height: 65px !important;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    gap: 1% !important;
+    vertical-align: middle;
+}
+
+.sidenav---navicon---3gCRo{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center;
+
+}
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: unset !important;
+    width: 64px;
+    height: 50px;
+    margin-left: 0px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+    filter: alpha(opacity=70);
+    line-height: unset ;
+    text-align: center;
+}
+
+.sidenav---sidenav-navitem---uwIJ-:hover{
+  background-image: url('./../../assets/img/customer/background.PNG') !important;
+  background-repeat: no-repeat !important;
+  background-size: cover;
+  background-position:right;
+  ;
+  
+}
+.sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f {
+    visibility: visible;
+    width: 120px;
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+    -webkit-transition: opacity 0.2s linear;
+    -moz-transition: opacity 0.2s linear;
+    -o-transition: opacity 0.2s linear;
+    -ms-transition: opacity 0.2s linear;
+    transition:visibility 0s 0.2s, opacity 0.2s linear;
+}
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f {
+    width: 0 ;
+    visibility: hidden;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -webkit-transition: visibility 0s 0.2s, opacity 0.2s linear;
+    -moz-transition: visibility 0s 0.2s, opacity 0.2s linear;
+    -o-transition: visibility 0s 0.2s, opacity 0.2s linear;
+    -ms-transition: visibility 0s 0.2s, opacity 0.2s linear;
+    transition: visibility 0s 0.2s, opacity 0.2s linear;
+}
+
+.sidenav---sidenav---_2tBP {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1006;
+    min-width: 64px;
+    background: #db3d44;
+    -webkit-transition: min-width 0.2s;
+    -moz-transition: min-width 0.2s;
+    -o-transition: min-width 0.2s;
+    -ms-transition: min-width 0.2s;
+    transition: min-width 0.5s;
+}
+
+.sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL {
+    min-width: 240px;
+    -webkit-transition: min-width 0.2s;
+    -moz-transition: min-width 0.2s;
+    -o-transition: min-width 0.2s;
+    -ms-transition: min-width 0.2s;
+    transition: visibility 0.5s;
+}
