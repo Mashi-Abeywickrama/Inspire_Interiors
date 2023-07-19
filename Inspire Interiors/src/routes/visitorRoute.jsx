@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Home from '../pages/visitor/home';
 import Contact from '../pages/visitor/contact';
 import Services from '../pages/visitor/services';
+import Project from '../pages/visitor/project';
 import Error from '../pages/visitor/error';
 import MyOrder from '../pages/Customer/orders/my_orders';
 
@@ -14,6 +15,7 @@ function VisitorRoute() {
             <Route path='/' element={<Home />}></Route>
             <Route path='/contact' element={<Contact />}></Route>
             <Route path='/services' element={<Services />}></Route>
+            <Route path='/project' element={<Project />}></Route>
             <Route path="/404" element={<Error />} />
             <Route path="/dev" element={<MyOrder />} />
           	<Route path="*" element={<Navigate to="/404" />} />

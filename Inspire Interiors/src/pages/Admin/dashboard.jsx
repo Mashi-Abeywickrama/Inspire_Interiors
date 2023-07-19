@@ -2,13 +2,14 @@ import React from 'react'
 import Header2 from "../../components/header2.jsx"
 import * as Icon from 'react-bootstrap-icons';
 import './../../styles/user.css';
+import SidebarDashboard from '../../components/customer/sidebar.jsx';
 
 
 
-export default function dashboard() {
+export default function AdminDashboard() {
   return (
     <div>
-       <Header2/>
+       <SidebarDashboard/>
        <div className='auto'>
         <div className="User">User </div> 
         <div className='icon'> <Icon.ChevronRight size={24} /> </div>
