@@ -25,7 +25,7 @@ const SidebarDashboard = () => {
                 <i><RiDashboardFill /></i>
             </NavIcon>
             <NavText>
-                Home
+                Dashboard
             </NavText>
         </NavItem>
 
