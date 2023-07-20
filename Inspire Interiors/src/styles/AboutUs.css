@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Jost");
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap");
+
+.banner-home {
+  max-height: 50em;
+  height: 50em;
+  background-color: #023047;
+  border-radius: 0 0 0 10em;
+}
+.aboutUS-content-head {
+  font-family: "Lobster Two", cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.5rem;
+  align-items: center;
+  letter-spacing: 0.02em;
+  color: #035c94;
+}
+.aboutUS-content {
+font-family: 'Jost';
+font-style: normal;
+font-weight: 400;
+font-size: 1.375rem;
+line-height: 150%;
+align-items: center;
+letter-spacing: 0.01em;
+color: #4D5053;
+}
+.btn-txt {
+font-family: 'Jost';
+font-style: normal;
+font-weight: 600;
+line-height: 125%;
+align-items: center;
+text-align: center;
+letter-spacing: 0.02em;
+color: #023047;
+}
+.bg-ash {
+    background-color: #EBEBEB;
+}
+.team-mem {
+  width: 15%;
+  border-radius: 30px;
+}
+.img-con{
+  height: 300px !important;
+}
