@@ -67,6 +67,7 @@ const Header = () => {
               <NavLink to="/services">Services </NavLink>
             </Nav.Link>
 
+
             <Nav.Link
               className="text-white m-2 jost-text"
               href="/projects"
@@ -75,6 +76,7 @@ const Header = () => {
                 setActive(3);
               }}
             >
+
               Our Projects
             </Nav.Link>
             <Nav.Link

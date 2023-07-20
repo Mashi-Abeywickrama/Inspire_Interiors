@@ -23,7 +23,7 @@ const Navigationbar = () => {
                           
                           <div className='mx-4 my-2'><Icon.BellFill size={20} color='white'/></div>
                           <img className='img-fluid bg-white rounded-2' src={navbarImg} />
-                          <Nav.Link className='text-white mx-4 my-2 d-none d-sm-block d-md-block d-lg-block'>Harish AR</Nav.Link>
+                          <Nav.Link className='text-white mx-4 my-2 d-none d-sm-block d-md-block d-lg-block'>Philosopher Shin</Nav.Link>
                         </Nav.Link>
                     </Nav>
             

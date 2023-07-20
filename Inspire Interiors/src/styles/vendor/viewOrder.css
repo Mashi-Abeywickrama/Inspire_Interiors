@@ -1,10 +1,11 @@
 .background{
-    background-color: #F1F1F1;
+    background-color: #F1F1F1 !important ;
     height: 100%;
 }
 
 .divider{
     border: 1px solid #A2A3B1 !important;
+    width: 90%;
 }
 
 .sidenav---sidenav---_2tBP .sidenav---collapsed---LQDEv{

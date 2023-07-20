@@ -1,0 +1,30 @@
+.Rectangle{
+position: absolute;
+left: 0%;
+right: 83.75%;
+top: 15%;
+bottom: 1%;
+background: #023047;
+border-radius: 0 40px 40px 0;
+}
+
+.sidebar{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 68px;
+    background-color: #023047;
+    color: aliceblue;
+    width: 140px;
+}
+.sidebar button{
+    color: aqua;
+}
+ 
+.Rectangle button:hover {
+
+    background-color:aliceblue;
+    color: #023047;
+    border-radius: 20px 0px 0px 20px;
+    border: none;
+  }
+ 
