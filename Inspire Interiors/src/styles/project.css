@@ -1,23 +1,12 @@
-
+@import url('https://fonts.googleapis.com/css?family=Jost');
+@import url('https://fonts.googleapis.com/css?family=dm-serif-display');
 .project-pic{
     background-image: url(../assets/img/project/project.jpg) !important;
-    object-fit:scale-down;
-    height:12rem;
+    object-fit:fill;
+    height:20rem;
 }
 
-.dialog-div {
-  align-items: center;
-  height: 8rem;
-  width: 20rem;
-  margin-top: 12rem;
-}
-.dialog-1 {
-    font-weight: 400;
-  }
-  
-  .jost-text{
-    font-family: 'jost';
-  }
+
 
 .categories{
   display: flex;
@@ -25,9 +14,7 @@ width: 880px;
 height: 75px;
 border: 1px solid #FFBA42;
 border-radius: 18px;
-display: flex;
-justify-content: center;
-margin-top: 200px;
+margin-top: 70px;
 
 }
 .categories button {
@@ -59,6 +46,9 @@ margin-top: 200px;
 border-radius: 18px;
 }
 
+.next{
+  color: #FFBA42;
+}
 
 
 

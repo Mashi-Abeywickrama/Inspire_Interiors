@@ -6,11 +6,13 @@ import './App.css';
 import MyOrder from './pages/Customer/orders/my_orders';
 import VisitorRoute from './routes/visitorRoute';
 
+
  const App = () => {
 
   return (
     
     <VisitorRoute />
+    
 
   )
 }
