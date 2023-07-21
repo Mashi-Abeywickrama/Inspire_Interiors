@@ -3,22 +3,21 @@ import Header from "./../../components/header";
 import Footer from "./../../components/footer";
 
 import * as Icon from "react-bootstrap-icons";
-import Showing from './../../assets/img/services/showing.png';
-import Couple from './../../assets/img/services/couple.png';
-import Kitchen from './../../assets/img/services/kitchen.png';
-import Accessories from './../../assets/img/services/accessories.png';
-import Icon1 from './../../assets/img/services/Icon-1.png';
-import Icon2 from './../../assets/img/services/Icon-2.png';
-import Icon3 from './../../assets/img/services/Icon-3.png';
-import Icon4 from './../../assets/img/services/Icon-4.png';
-
+import Showing from "./../../assets/img/services/showing.png";
+import Couple from "./../../assets/img/services/couple.png";
+import Kitchen from "./../../assets/img/services/kitchen.png";
+import Accessories from "./../../assets/img/services/accessories.png";
+import Icon1 from "./../../assets/img/services/Icon-1.png";
+import Icon2 from "./../../assets/img/services/Icon-2.png";
+import Icon3 from "./../../assets/img/services/Icon-3.png";
+import Icon4 from "./../../assets/img/services/Icon-4.png";
 
 import "./../../styles/services.css";
 
 const Services = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="d-flex service-pic justify-content-center">
         <div className="d-flex col-lg-3 flex-column bg-white dialog-div rounded-top-4">
           <p
@@ -137,7 +136,7 @@ const Services = () => {
         <div className="d-flex flex-column main-box col-lg-8 rounded-5">
           <div className="d-flex flex-column first-div">
             <p
-              style={{ fontSize: "2rem"}}
+              style={{ fontSize: "2rem" }}
               className="text-primary text-center m-2 dialog-2 heading"
             >
               How We Work
@@ -285,7 +284,7 @@ const Services = () => {
         </button>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

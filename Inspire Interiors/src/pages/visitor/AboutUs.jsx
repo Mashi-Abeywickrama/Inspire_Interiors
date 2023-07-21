@@ -19,7 +19,7 @@ const AboutUs = () => {
   }
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <img src={Banner} className="img-fluid "></img>
       <div className="container-fluid bg-white">
         <div className="row my-5 py-5">
@@ -106,7 +106,7 @@ const AboutUs = () => {
           <div className="row ">&nbsp;</div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
