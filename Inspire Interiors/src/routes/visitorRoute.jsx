@@ -7,6 +7,7 @@ import Services from '../pages/visitor/services';
 import Project from '../pages/visitor/project';
 import Error from '../pages/visitor/error';
 import MyOrder from '../pages/Customer/orders/my_orders';
+import Login from '../pages/visitor/login';
 
 function VisitorRoute() {
   return (
@@ -17,8 +18,9 @@ function VisitorRoute() {
             <Route path='/services' element={<Services />}></Route>
             <Route path='/project' element={<Project />}></Route>
             <Route path="/404" element={<Error />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/dev" element={<MyOrder />} />
-          	<Route path="*" element={<Navigate to="/404" />} />
+          	{/* <Route path="*" element={<Navigate to="/404" />} /> */}
 
             {/* <Route path='/Blog' element={<Blog />}></Route> */}
             {/* <Route path='/About' element={<About />}></Route> */}
