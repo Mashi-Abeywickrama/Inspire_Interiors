@@ -1,3 +1,4 @@
+
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
@@ -21,6 +22,7 @@ function VisitorRoute() {
         <Route path="/dev" element={<MyOrder />} />
         <Route path="/about" element={<AboutUs />}></Route>
         {/* <Route path="*" element={<Navigate to="/404" />} /> */}
+
 
         {/* <Route path='/Blog' element={<Blog />}></Route> */}
         {/* <Route path='/About' element={<About />}></Route> */}

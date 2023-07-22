@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useState } from "react";
 
@@ -10,6 +11,7 @@ import Header from "./components/header";
 import MyOrder from "./pages/Customer/orders/my_orders";
 import VisitorRoute from "./routes/visitorRoute";
 import VenderRoute from "./routes/vendorRoute";
+
 import {
   Route,
   RouterProvider,
@@ -33,14 +35,19 @@ const router = createBrowserRouter(
   )
 );
 
+
 const App = () => {
+
   return (
+
     // <>
     //   <VenderRoute />
     //   <VisitorRoute />
     // </>
     <RouterProvider router={router} />
+
   );
 };
+
 
 export default App;

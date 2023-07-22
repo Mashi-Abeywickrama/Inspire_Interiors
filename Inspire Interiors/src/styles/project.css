@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Jost');
+@import url('https://fonts.googleapis.com/css?family=dm-serif-display');
+.project-pic{
+    background-image: url(../assets/img/project/project.jpg) !important;
+    object-fit:fill;
+    height:20rem;
+}
+
+
+
+.categories{
+  display: flex;
+width: 880px;
+height: 75px;
+border: 1px solid #FFBA42;
+border-radius: 18px;
+margin-top: 70px;
+
+}
+.categories button {
+  flex: 1;
+  border: none;
+  background-color: white;
+  color: #292F36;
+  font-family: 'Jost';
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22.5px;
+  text-align: center;
+  letter-spacing: 2%;
+  position: relative;
+  border-radius: 0;
+}
+.categories button:first-child {
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+}
+
+.categories button:last-child {
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+.categories button:hover {
+  background: #FFBA42;
+  color: #FFFFFF;
+border-radius: 18px;
+}
+
+.next{
+  color: #FFBA42;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* button {
+   flex: 1; 
+   height: 40px; 
+  border-color:  #FFBA42; 
+  border: none;
+  background-color: transparent;
+   color: #292F36; 
+  font-family: 'Jost';
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 125%;
+  text-align: center;
+   letter-spacing: 0.02em; 
+  position: relative;
+  padding: 0 10px;
+}
+
+.categories button:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 80%;
+  background-color: yellow;
+}
+
+.categories button:hover {
+  background-color: yellow;
+  border-radius: 50%;
+}
+ */

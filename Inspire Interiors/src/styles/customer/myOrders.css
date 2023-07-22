@@ -1,0 +1,82 @@
+#root {
+    background-color: #f1f1f1 !important;  
+}
+
+.background-total{
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width:inherit;
+    background-color: #ffffff !important;
+    min-height: 84vh;
+    font-family: 'Cabin' !important;    
+
+}
+
+.heading{
+    
+    font-family: 'Cabin' !important;    
+    font-weight: 700;
+}
+
+.tab{
+    border-bottom: 0.1rem solid #035C94 !important;
+}
+
+.background-total .nav-link{
+    color: rgba(0, 0, 0, 0.752) !important;
+}
+
+.nav-link.active{
+    color: #023047 !important;
+    border: none !important;
+    border-bottom: 0.25rem solid #023047 !important;
+    border-radius: 0 !important;
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+.filter-btn{
+    background-color: #ffffff;
+    color: #023047;
+    border-color: #023047;
+}
+
+.filter-btn:hover, .filter-btn:active{
+    background-color: #023047 !important;
+    color: #ffffff !important;
+    border-color: #023047 !important;
+}
+
+.search-input{
+    border: 0px solid #023047;
+    background-color: #F2FAFF;
+    color: #035C94;
+}
+.search-field{
+    border: none;
+    color: #035C94;
+    background-color: #F2FAFF !important;
+}
+.search-field:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    
+}
+.search-input:visited{
+        border: 1px solid #023047 !important;
+}
+
+
+
+
+@media only screen and (max-width: 630px) {
+.max-width {
+    max-width:min-content !important;
+        max-width: 300px;
+}
+.background-total{
+    max-width: 300px;
+}
+
+}
