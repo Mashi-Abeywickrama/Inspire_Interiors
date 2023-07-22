@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Jost');
 
+a{
+    text-decoration: none;
+    color: #FFF !important;
+}
 .nav {
     background-color: #023047;
     padding-left: 1em !important;
