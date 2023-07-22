@@ -9,7 +9,7 @@ import "./../../styles/contact.css";
 const Contact = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="d-flex contact-pic justify-content-center">
         <div className="d-flex col-lg-3 flex-column bg-white dialog-div rounded-top-4">
           <p
@@ -103,7 +103,7 @@ const Contact = () => {
       </div>
 
      
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 };
