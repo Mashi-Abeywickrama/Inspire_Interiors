@@ -11,14 +11,16 @@ import Header from "./components/header";
 import MyOrder from "./pages/Customer/orders/my_orders";
 import VisitorRoute from "./routes/visitorRoute";
 import VenderRoute from "./routes/vendorRoute";
+import CustomerRoute from "./routes/customerRoute";
 
 const App = () => {
 
   return (
 
     <>
-      <VenderRoute />
-      <VisitorRoute />
+    <VenderRoute/>
+    <VisitorRoute/>
+    <CustomerRoute/>
     </>
   );
 };
