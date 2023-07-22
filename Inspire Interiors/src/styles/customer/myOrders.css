@@ -1,14 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@600&display=swap');
-
 #root {
     background-color: #f1f1f1 !important;  
 }
 
-.background{
+.background-total{
     margin-right: 2rem;
     margin-bottom: 2rem;
     width:inherit;
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     min-height: 84vh;
     font-family: 'Cabin' !important;    
 
@@ -24,7 +22,7 @@
     border-bottom: 0.1rem solid #035C94 !important;
 }
 
-.background .nav-link{
+.background-total .nav-link{
     color: rgba(0, 0, 0, 0.752) !important;
 }
 
@@ -67,4 +65,18 @@
 }
 .search-input:visited{
         border: 1px solid #023047 !important;
+}
+
+
+
+
+@media only screen and (max-width: 630px) {
+.max-width {
+    max-width:min-content !important;
+        max-width: 300px;
+}
+.background-total{
+    max-width: 300px;
+}
+
 }
