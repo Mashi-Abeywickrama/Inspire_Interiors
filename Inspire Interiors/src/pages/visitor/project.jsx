@@ -61,7 +61,7 @@ const Project = () => {
     <Card style={{  width: '30rem' }} className='p-0'>
       <Card.Img variant="top" src={Img1} className='w-3 h-3' />
       <Card.Body>
-        <div className='d-flex gap-5 flex-row '>
+        <div className='d-flex gap-5 flex-row justify-content-between'>
          <div >
            <Card.Title>Minimal Bedroom</Card.Title>
            <Card.Text> Decor / Architecture </Card.Text>
@@ -76,7 +76,7 @@ const Project = () => {
     <Card style={{  width: '30rem' }} className='p-0'>
       <Card.Img variant="top" src={Img1} className='w-3 h-3' />
       <Card.Body>
-        <div className='d-flex gap-5 flex-row '>
+        <div className='d-flex gap-5 flex-row justify-content-between'>
          <div >
            <Card.Title>Minimal Bedroom</Card.Title>
            <Card.Text> Decor / Architecture </Card.Text>
@@ -92,7 +92,7 @@ const Project = () => {
     <Card style={{  width: '30rem' }} className='p-0'>
       <Card.Img variant="top" src={Img5} className='w-3 h-3' />
       <Card.Body>
-        <div className='d-flex gap-5 flex-row '>
+        <div className='d-flex gap-5 flex-row justify-content-between'>
          <div >
            <Card.Title>Minimal Bedroom</Card.Title>
            <Card.Text> Decor / Architecture </Card.Text>
@@ -107,7 +107,7 @@ const Project = () => {
     <Card style={{  width: '30rem' }} className='p-0'>
       <Card.Img variant="top" src={Img2} className='w-auto h-auto' />
       <Card.Body>
-        <div className='d-flex gap-5 flex-row '>
+        <div className='d-flex gap-5 flex-row justify-content-between'>
          <div >
            <Card.Title>Minimal Bedroom</Card.Title>
            <Card.Text> Decor / Architecture </Card.Text>
@@ -128,7 +128,7 @@ const Project = () => {
 <Card style={{  width: '30rem' }} className='p-0'>
   <Card.Img variant="top" src={Img3} className='w-3 h-3' />
   <Card.Body>
-    <div className='d-flex gap-5 flex-row '>
+    <div className='d-flex gap-5 flex-row justify-content-between'>
      <div >
        <Card.Title>Minimal Bedroom</Card.Title>
        <Card.Text> Decor / Architecture </Card.Text>
@@ -143,7 +143,7 @@ const Project = () => {
 <Card style={{  width: '30rem' }} className='p-0'>
   <Card.Img variant="top" src={Img4} className='w-auto h-auto' />
   <Card.Body>
-    <div className='d-flex gap-5 flex-row '>
+    <div className='d-flex gap-5 flex-row justify-content-between'>
      <div >
        <Card.Title>Minimal Bedroom</Card.Title>
        <Card.Text> Decor / Architecture </Card.Text>
@@ -158,7 +158,7 @@ const Project = () => {
 <Card style={{  width: '30rem' }} className='p-0'>
   <Card.Img variant="top" src={Img6} className='w-auto h-auto' />
   <Card.Body>
-    <div className='d-flex gap-5 flex-row '>
+    <div className='d-flex gap-5 flex-row justify-content-between'>
      <div >
        <Card.Title>Minimal Bedroom</Card.Title>
        <Card.Text> Decor / Architecture </Card.Text>
@@ -173,7 +173,7 @@ const Project = () => {
 <Card style={{  width: '30rem' }} className='p-0'>
       <Card.Img variant="top" src={Img1} className='w-3 h-3' />
       <Card.Body>
-        <div className='d-flex gap-5 flex-row '>
+        <div className='d-flex gap-5 flex-row justify-content-between'>
          <div >
            <Card.Title>Minimal Bedroom</Card.Title>
            <Card.Text> Decor / Architecture </Card.Text>
