@@ -1,3 +1,4 @@
+
 #root {
     background-color: #f1f1f1 !important;  
 }
@@ -26,7 +27,7 @@
     color: rgba(0, 0, 0, 0.752) !important;
 }
 
-.nav-link.active{
+.background-total .nav-link.active{
     color: #023047 !important;
     border: none !important;
     border-bottom: 0.25rem solid #023047 !important;

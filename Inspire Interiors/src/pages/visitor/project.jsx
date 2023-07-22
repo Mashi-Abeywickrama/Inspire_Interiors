@@ -25,7 +25,7 @@ import './../../styles/project.css';
 const Project = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
 
       <div className="d-flex project-pic justify-content-center">
         <div className="d-flex col-lg-3 flex-column bg-white dialog-div rounded-top-4">
@@ -195,8 +195,8 @@ const Project = () => {
       <i class="bi bi-arrow-right-circle-fill "></i>
       </div>
 
-    <Footer />
-
+    {/* <Footer /> */}
+ 
     </>
   )
   };
