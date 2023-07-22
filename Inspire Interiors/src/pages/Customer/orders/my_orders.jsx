@@ -10,8 +10,6 @@ import { MDBDataTableV5, MDBTable } from 'mdbreact';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SidebarDashboard from '../../../components/customer/sidebar';
-import Navigationbar from '../../../components/navigationbar';
 import './../../../styles/customer/myOrders.css';
 import './../../../styles/customer/table.css';
 
@@ -532,11 +530,11 @@ const MyOrder = () => {
   };
 
   return (
-    <>
-    <div className="d-flex  flex-column gap-3 full">
+    <>  
+    {/* <div className="d-flex  flex-column gap-3 full">
       <Navigationbar />
       <div className="d-flex gap-4 w-100 max-width justify-content-start  ">
-          <SidebarDashboard />
+          <SidebarDashboard /> */}
 
         <div className="background-total p-3 rounded-3">
           <div className='row'>
@@ -580,8 +578,8 @@ const MyOrder = () => {
         </div>
 
 
-      </div>
-    </div>
+      {/* </div> */}
+   {/* </div> */}
   </>
     
   );

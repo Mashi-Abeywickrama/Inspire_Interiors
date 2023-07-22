@@ -54,3 +54,6 @@
     margin-left: 4rem;
     color: #023047
 }
+.slide{
+    height: unset !important;
+}

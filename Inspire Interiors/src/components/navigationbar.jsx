@@ -14,7 +14,7 @@ const Navigationbar = () => {
     return (
         <>
         <Navbar className='nav' expand="lg">
-            <React.Fragment className="nav-div">
+            <React.Fragment>
                 <Navbar.Brand  href="/"> <img src={Logo} alt="inspire interiors"/></Navbar.Brand>
              
                
