@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap'); 
 
-.background{
-    background-color: #F1F1F1;
-    height: 100%;
-}
-.promotion-container{
+.product-container{
     width: inherit !important;
+    margin-right: 2.5rem;
 }

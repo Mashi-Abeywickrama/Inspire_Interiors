@@ -3,39 +3,40 @@ import React from "react";
 import "./../../styles/vendor/viewOrder.css";
 import * as Icon from "react-bootstrap-icons";
 import Chair from './../../assets/img/vendor/chair.png';
-import SidebarDashboard from "../../components/customer/sidebar";
 import VendorSidebar from "./sidebar";
 import Navigationbar from "../../components/navigationbar";
 
 const ViewOrder = () => {
  return(
     <>
-        <div className="d-flex flex-column background gap-3">
+        <div className="d-flex flex-column col-12 gap-3" style={{backgroundColor:"#F1F1F1" , height:"100%"}}>
             <Navigationbar/>
             <div className="w-auto">
-                <div className="d-flex gap-4">
+                <div className="d-flex gap-3 w-100">
                     <VendorSidebar/>
-                    <div className="container container-fluid col-12 bg-white rounded-3">
-                        <div className="d-flex flex-row gap-4">
+                    <div className="order-container bg-white rounded-3 mb-4">
+                        <div className="col-12 d-flex flex-row gap-4">
                             <p className="text-dark fs-3 fw-bold Cabin-text">Orders</p>
                             <Icon.ChevronRight color="#A2A3B1" size={25}className="mt-2" />
                             <p className="fs-3 fw-bold Cabin-text" style={{color:"#A2A3B1"}}>Delayed</p>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                             <p className="fs-3 fw-bold Cabin-text" style={{color:"#A2A3B1"}}>25786</p>
                         </div>
-                            
-                        <div className="d-flex flex-row flex-md-row justify-content-between">
-                            <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text">Order Details - #76565722</p>
-                            <div className="badge fw-semibold rounded-3 Cabin-text mx-3" style={{height:"1.5rem", background:"#F6E3AC", color:"#6B4605"}}><Icon.CircleFill size={7} className="mx-1"/>Delayed</div>
-                        </div>
-                        <div className="divider"/>
+                        <div className="col-12 d-flex flex-column"> 
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text">Order Details - #76565722</p>
+                                <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{height:"1.5rem", background:"#F6E3AC", color:"#6B4605"}}><Icon.CircleFill size={7} className="mx-1"/>Delayed</div>
+                            </div> 
+                            <div className=" divider"/>
+                        </div>    
+                       
 
                         <div className="d-flex flex-column flex-lg-row">
                             <div className="d-flex col-lg-6 col-12 col-6 flex-column">
-                                <div className="container-fluid col-lg-11 border rounded-3 my-2 shadow">
+                                <div className="col-lg-12 border rounded-3 my-2 shadow">
                                     <p className="fs-5 fw-bold px-3 py-2 Cabin-text" style={{color:"#023047"}}>Product Details</p>
-                                    <div className="d-flex flex-column flex-lg-row flex-md-row justify-content-start">
-                                        <img className=" img-fluid" src={Chair}/>
+                                    <div className="d-flex flex-column flex-lg-row justify-content-start">
+                                        <img className="img-fluid" src={Chair} alt="Chair"/>
                                         <div className="d-flex flex-column px-3">
                                             <p className="fs-5 fw-semibold Cabin-text">Customizable Armchair</p>
                                             <div className="d-flex flex-row">
@@ -48,7 +49,7 @@ const ViewOrder = () => {
                                             </div>
                                             <div className="d-flex flex-row">
                                                 <p className="fs-6 fw-semibold Cabin-text" style={{color:"#A2A3B1"}}>Quantity:</p>
-                                                <p className="px-3 fs-6 fw-semibold Cabin-text">2 it is not enough for ur back</p>
+                                                <p className="px-3 fs-6 fw-semibold Cabin-text">2</p>
                                             </div>
                                             <div className="d-flex flex-row">
                                                 <p className="fs-6 fw-semibold Cabin-text" style={{color:"#A2A3B1"}}>Price:</p>
@@ -57,7 +58,7 @@ const ViewOrder = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="container-fluid col-lg-11 border rounded-3 my-4 shadow">
+                                <div className="container-fluid col-lg-12 border rounded-3 my-4 shadow">
                                     <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Status</p>
                                         <div className="d-flex flex-column">
                                             <div className="d-flex flex-row justify-content-between">
