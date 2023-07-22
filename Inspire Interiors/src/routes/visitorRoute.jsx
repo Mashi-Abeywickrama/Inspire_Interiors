@@ -6,7 +6,7 @@ import Home from "../pages/visitor/home";
 import Contact from "../pages/visitor/contact";
 import Services from "../pages/visitor/services";
 import Error from "../pages/visitor/error";
-import MyOrder from "../pages/Customer/orders/my_orders";
+// import MyOrder from "../pages/Customer/orders/my_orders";
 import Login from "../pages/visitor/login";
 import AboutUs from "../pages/visitor/AboutUs";
 
@@ -19,7 +19,7 @@ function VisitorRoute() {
         <Route path="/services" element={<Services />}></Route>
         <Route path="/404" element={<Error />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dev" element={<MyOrder />} />
+        {/* <Route path="/dev" element={<MyOrder />} /> */}
         <Route path="/about" element={<AboutUs />}></Route>
         {/* <Route path="*" element={<Navigate to="/404" />} /> */}
 

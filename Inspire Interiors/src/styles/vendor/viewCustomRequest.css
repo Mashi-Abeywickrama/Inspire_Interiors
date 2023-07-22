@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap'); 
+
+.custom-container{
+    width: inherit !important;
+    margin-right: 2.5rem;
+}
+
+.contact-btn{
+    color: #035C94;
+    background-color: #FFFFFF;
+    border: 1px solid #035C94;
+}
+
+.acpt-btn{
+    color: #FFF;
+    background-color: #035C94;
+    box-shadow: 0px 8px 20px 0px rgba(78, 96, 255, 0.16);
+}
+
+.dlt-btn{
+    color: #FF5C60;
+    background-color: #FFFFFF;
+    border: 1px solid #FF5C60;
+}
