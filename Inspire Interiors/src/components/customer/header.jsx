@@ -3,8 +3,8 @@ import { Nav, Navbar } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/header.css';
-import Logo from './../assets/img/logo.svg';
+// import '../styles/header.css';
+import Logo from './../../assets/img/logo.svg';
 
 const Header = () => {
   return (

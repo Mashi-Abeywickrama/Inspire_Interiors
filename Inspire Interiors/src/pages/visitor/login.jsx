@@ -20,7 +20,7 @@ const Login = () => {
   return (
     <>
       <div>
-        <Header />
+        {/* <Header /> */}
 
         <div className='row'>
 
