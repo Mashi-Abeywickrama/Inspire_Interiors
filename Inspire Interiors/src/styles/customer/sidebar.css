@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin');
 
 .sidenav---sidenav---_2tBP .sidenav---expanded---1KdUL{
-      min-width:240px !important;
+      min-width:inherit !important;
 
 }
 
@@ -9,12 +9,9 @@
     background: #023047 !important;
     position: inherit !important;
     border-radius: 0 15px 0 0;
-    transition: width 0.5s  !important;
 
 }
-/* .sidenav---sidenav-navitem---uwIJ- .sidenav---selected---1EK3y .sidenav---highlighted---oUx9u{
-    color: #239b1a !important;
-} */
+
 
 .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T
 {
@@ -76,6 +73,9 @@
   justify-content: center;
 
 }
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo > *, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f > * {
+    color: #ffffff;
+}
 .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo {
     display: flex;
     align-items: center;
@@ -100,12 +100,11 @@
   background-repeat: no-repeat !important;
   background-size: cover;
   background-position:right;
-  ;
   
 }
 .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f {
     visibility: visible;
-    width: 120px;
+    width: 100px;
     opacity: 1;
     -ms-filter: none;
     filter: none;
@@ -113,9 +112,11 @@
     -moz-transition: opacity 0.2s linear;
     -o-transition: opacity 0.2s linear;
     -ms-transition: opacity 0.2s linear;
-    transition:visibility 0s 0.2s, opacity 0.2s linear;
+    transition:visibility 0s 0.5s linear, opacity 0.5s,width 0.5s linear;
+    
 }
 .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f {
+    color: white;
     width: 0 ;
     visibility: hidden;
     opacity: 0;
@@ -125,7 +126,8 @@
     -moz-transition: visibility 0s 0.2s, opacity 0.2s linear;
     -o-transition: visibility 0s 0.2s, opacity 0.2s linear;
     -ms-transition: visibility 0s 0.2s, opacity 0.2s linear;
-    transition: visibility 0s 0.2s, opacity 0.2s linear;
+    transition: visibility 0s 0.2s, opacity 0.2s,min-width 0.5s linear;
+    /* transition: min-width 0.5s !important; */
 }
 
 .sidenav---sidenav---_2tBP {
@@ -149,5 +151,19 @@
     -moz-transition: min-width 0.2s;
     -o-transition: min-width 0.2s;
     -ms-transition: min-width 0.2s;
-    transition: visibility 0.5s;
+    transition: visibility 0.5s,min-width 0.5s ;
+    /* transition: min-width 0.5s; */
 }
+
+@media only screen and (max-width: 600px) {
+    .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f{
+        display: none;
+    }
+    .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL{
+        min-width: 64px !important;
+    }
+    .sidenav---sidenav-toggle---1KRjR .sidenav---icon-bar---u1f02{
+        display: none;
+    }
+}
+

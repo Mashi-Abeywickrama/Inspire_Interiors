@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <>
       <div>
-        <Header />
+        {/* <Header /> */}
         <div className="container-fluid banner-home">
           <div className="container-fluid me-auto banner-height">
             <div className="d-flex inner-height align-items-center justify-content-evenly common-flex ">
@@ -257,7 +257,7 @@ const Home = () => {
           </Rerousel>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

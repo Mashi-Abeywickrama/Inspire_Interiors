@@ -92,6 +92,7 @@ const Header = () => {
             <Nav.Link
               className="text-white m-2 jost-text"
               eventKey="5"
+              href="/contact"
               onClick={() => {
                 setActive(5);
               }}

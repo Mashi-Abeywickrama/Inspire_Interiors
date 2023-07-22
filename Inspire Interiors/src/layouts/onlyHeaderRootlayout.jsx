@@ -1,15 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
-import Footer from "../components/footer";
 import HeaderT from "../components/HeaderT";
 
-function Rootlayout() {
+function OnlyHeaderRootlayout() {
   return (
     <div className="root-layout">
       <header>
         <nav>
-          {/* <h1>Header...</h1>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="about">AboutUs</NavLink> */}
           <HeaderT />
         </nav>
       </header>
@@ -17,10 +13,8 @@ function Rootlayout() {
       <main>
         <Outlet />
       </main>
-
-      <Footer />
     </div>
   );
 }
 
-export default Rootlayout;
+export default OnlyHeaderRootlayout;

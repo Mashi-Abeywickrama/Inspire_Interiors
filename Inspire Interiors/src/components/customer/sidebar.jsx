@@ -16,9 +16,10 @@ const SidebarDashboard = () => {
     onSelect={(selected) => {
         // Add your code here
     }}
+    
 >
     
-    <SideNav.Toggle  />
+    <SideNav.Toggle   />
     <SideNav.Nav defaultSelected="dashboard">
         <NavItem eventKey="dashboard">
             <NavIcon>
