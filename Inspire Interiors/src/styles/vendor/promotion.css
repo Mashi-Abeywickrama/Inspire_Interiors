@@ -7,3 +7,11 @@
 .promotion-container{
     width: inherit !important;
 }
+
+.card-wid{
+    width: 90%;
+}
+
+.Cabin-text{
+    font-family: "Cabin" !important;
+}
