@@ -7,7 +7,11 @@ function DesignerLayout() {
   return (
     <div className="d-flex flex-column gap-3 full">
       <DesignerNavigationBar />
-      <div className="d-flex gap-4 w-100 max-width justify-content-start  ">
+      <div
+        // className="d-flex gap-4 w-100 max-width justify-content-start"
+        className="d-flex gap-4 w-100 max-width justify-content-start  "
+        // style={{ height: "50em" }}
+      >
         <DesignerSidebar />
 
         <Outlet />

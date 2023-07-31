@@ -30,6 +30,7 @@ import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
 import PromotionRequest from "./pages/vendor/promotionRequest";
 import DesignerLayout from "./layouts/Designer/DesignerLayout";
+import DesignerDashboard from "./pages/Designer/DesignerDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -75,7 +76,7 @@ const router = createBrowserRouter(
         element={<DesignerLayout />}
         errorElement={<Error />}
       >
-        <Route index element={<Home />} />
+        <Route index element={<DesignerDashboard />} />
       </Route>
     </>
   )

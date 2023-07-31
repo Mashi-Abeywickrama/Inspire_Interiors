@@ -24,9 +24,10 @@ const DesignerNavigationBar = () => {
           <Nav className="ms-auto">
             <Nav.Link className="form-group mx-4 main-div d-flex flex-row">
               <div className="mx-4 my-2">
-                <Icon.BellFill size={20} color="white" />
+                
+                <NotificationD count={99} />
               </div>
-              {/* <NotificationD /> */}
+
               <img className="img-fluid bg-white rounded-2" src={navbarImg} />
               <Nav.Link className="text-white mx-4 my-2 d-none d-sm-block d-md-block d-lg-block">
                 Ruju
