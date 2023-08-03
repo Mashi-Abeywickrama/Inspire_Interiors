@@ -5,7 +5,7 @@ import SideNav, {
   NavIcon,
   NavText,
 } from "@trendmicro/react-sidenav";
-import { Router, Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import * as Icon from "react-bootstrap-icons";
 import {
@@ -35,11 +35,12 @@ const DesignerSidebar = () => {
         <NavItem eventKey="dashboard">
           <NavIcon>
             <i>
-              {/* <RiDashboardFill /> */}
               <AiOutlineDotChart />
             </i>
           </NavIcon>
-          <NavText>Dashboard</NavText>
+          <NavText>
+            <NavLink to="">Dashboard</NavLink>
+          </NavText>
         </NavItem>
 
         <NavItem eventKey="designs">
@@ -48,7 +49,9 @@ const DesignerSidebar = () => {
               <RiBuilding2Fill />
             </i>
           </NavIcon>
-          <NavText>My Designs</NavText>
+          <NavText>
+            <NavLink to="mydesigns">My Designs</NavLink>
+          </NavText>
         </NavItem>
 
         <NavItem eventKey="marketplace">
@@ -72,7 +75,7 @@ const DesignerSidebar = () => {
         <NavItem eventKey="orders">
           <NavIcon>
             <i>
-           < AiFillStar/>
+              <AiFillStar />
             </i>
           </NavIcon>
           <NavText>Promotions</NavText>
