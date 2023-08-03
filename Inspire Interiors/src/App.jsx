@@ -29,8 +29,6 @@ import PromotedProduct from "./pages/vendor/promotedProduct";
 import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
 import PromotionRequest from "./pages/vendor/promotionRequest";
-import DesignerLayout from "./layouts/Designer/DesignerLayout";
-import DesignerDashboard from "./pages/Designer/DesignerDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -67,16 +65,9 @@ const router = createBrowserRouter(
         <Route path="overview" element={<OverView />}></Route>
         <Route path="customrequest" element={<ViewCustomRequest />}></Route>
         <Route path="promoteproduct" element={<PromotedProduct />}></Route>
-        <Route path="viewstock" element={<ViewStocks />}></Route>
+        <Route path="viewstock"  element={<ViewStocks />}></Route>
         <Route path="inventoryproduct" element={<InventoryProduct />}></Route>
         <Route path="promotionrequest" element={<PromotionRequest />}></Route>
-      </Route>
-      <Route
-        path="/designer"
-        element={<DesignerLayout />}
-        errorElement={<Error />}
-      >
-        <Route index element={<DesignerDashboard />} />
       </Route>
     </>
   )
