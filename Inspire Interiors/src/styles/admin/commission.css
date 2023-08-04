@@ -1,0 +1,38 @@
+.earned{
+    background-color:#035C94;
+    border-radius: 20px;
+    color: aliceblue;
+    font-weight: 600;
+    
+}
+.pending{
+    background-color:#FFC00C;
+    border-radius: 20px;
+    color: #035C94;
+    font-weight: 600;
+   
+}
+.line-v{
+    /* position: absolute; */
+    /* height: 50%; */
+    /* width: 0px; */
+    border: 1px solid #abbdca;
+  }
+  .product{
+    border: #abbdca 2px solid;
+    border-radius: 20px;
+    color: #035C94;
+  }
+  .com-earned{
+    font-weight: 600;
+  }
+  .line{
+    /* color: #035C94; */
+    border: #abbdca 0.5px solid;
+    /* width: 50px; */
+  }
+  .heading{
+    font-weight: 600;
+  }
+  
+ 

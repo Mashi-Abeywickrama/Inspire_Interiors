@@ -1,59 +1,178 @@
 import React from 'react'
-import Header2 from "../../components/header2.jsx"
 import * as Icon from 'react-bootstrap-icons';
 import { Tabs, Tab } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import DonutChart from './../../components/admin/doughnut';
+import Bars from './../../components/admin/bars';
+import Needlepie from './../../components/admin/needlepie';
+import LineChart from './../../components/admin/linechart';
+
+import Img1 from './../../assets/img/admin/designer.png';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
-// import './../../styles/user.css';
-import SidebarDashboard from '../../components/customer/sidebar.jsx';
-import Navigationbar from "../../components/navigationbar";
+import './../../styles/admin/dashboard.css';
+
 
 
 const AdminDashboard=()=> {
   return (
-    <div>
-      <div className="d-flex flex-column  gap-3">
-      <Navigationbar/>
-      <div className="d-flex gap-4 ">
-       <SidebarDashboard/>
-
+    <Container fluid>
+     <div>
       
-       <div className='d-flex flex-col fs-2'>
-        <div className="">User </div> 
-        <div className='text-secondary'> <Icon.ChevronRight size={24} /> </div>
-        <div className="text-secondary"> All</div>
-       </div> 
+      
+      <div className="d-flex flex-col fs-2">Dashboard</div>
 
-       {/* <div className=' fs-6 border-bottom' style={{marginTop: '50px', height: '1.27px' }}>
-       <div className="d-flex gap-4" style={{ backgroundColor: '#2a6082' }}>
-        <tabs className='d-flex gap-4' >
-          <tab>All</tab>
-        <tab>Vendor</tab>
-        <tab>Customer</tab>
-        <tab>Admin</tab>
-        <tab>Designer</tab>
-        <tab>Customer care</tab>
-        </tabs>
+<div className="custom-container rounded-3">
+  <div className="d-flex flex-row gap-3 ">
+   <div className="d-flex flex-column gap-3 " >
+     <div className='d-flex flex-row gap-3'>
+        <div className='d-flex flex-column bg-white rounded-3 shadow  flex-fill '>
+          <span className='today d-flex fs-5 p-2'>Today</span> 
+          <DonutChart/>
+          <span className='about d-flex fs-4 justify-content-center p-2'>Completed project</span>
         </div>
-       </div> */}
+        <div className='d-flex flex-column bg-white rounded-3 shadow  flex-fill'>
+        <span className='today d-flex fs-5 p-2'>Today</span>
+        <DonutChart/>
+        <span  className='about d-flex fs-4 justify-content-center p-2'>Active projet</span>
+        </div>
+        <div className='d-flex flex-column bg-white rounded-3 shadow  flex-fill'>
+        <span className='today d-flex fs-5 p-2'>Today</span>
+        <DonutChart/>
+        <span  className='about d-flex fs-4 justify-content-center p-2'>Registered Users </span>
+        </div>
+      </div>
+      
+<div className='d-flex flex-row gap-3 '>
+        <div className='bg-white rounded-3 shadow p-2  flex-fill'>
+        <span className='d-flex fs-5 '>this week</span>
+        <span className='today d-flex fs-5 '>Registered users</span>
+        <Bars/>
+        </div>
+        <div className='bg-white rounded-3 shadow p-2 flex-fill'>
+        <span className='d-flex fs-5'>today</span>
+        <span className='today d-flex fs-5 '>Active users</span>
+        <div className='d-flex justify-content-center'><Needlepie/></div>
+        </div>
+      </div>
+    
+          <div className='d-flex flex-row gap-3 '>
+        <div className='bg-white rounded-3 shadow p-2  flex-fill'>
+        <span className='today d-flex fs-5 '>Registered users</span>
+        <LineChart/>
+        </div>
+      </div>
+     </div>
 
-       {/* <div className='bar'>
-       <div className='icon-1'> <Icon.FunnelFill size={20} /> </div>
-        <div className="filter">Filter</div>
-       </div> */}
+    <div className="d-flex flex-column gap-3 ">
+      <div className='bg-white rounded-3 shadow  flex-fill'>
+        <span className='today d-flex fs-5 p-2'>Commission</span>
 
-       {/* <div className="table-header">
-        <div className="head">User Name</div>
-        <div className="head">User Type</div>
-        <div className="head">Email Address</div>
-        <div className="head">Status</div>
-      </div> */}
+        <div className='d-flex flex-column p-2 gap-3'>
+          <div>
+            <span className='topic d-flex fs-5'>Earned </span>
+            <div class="progress">
+              <div class="progress-bar w-25 bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0"  ></div>
+            </div>
+          </div>
+          <div>
+            <span  className='topic d-flex fs-5'>Pending</span>
+            <div class="progress">
+              <div class="progress-bar w-50 bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div>
+            <span  className='topic d-flex fs-5'>Refund </span>
+            <div class="progress">
+              <div class="progress-bar w-75 bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div className='bg-white rounded-3 shadow  flex-fill '>
+        <div className='d-flex flex-column gap-3 p-2 '>
+        <div>
+           <span className='today d-flex fs-5 p-2'>Invoice</span>
+           
+           <div className='designer d-flex flex-column gap-2 p-2 h-100'>
+            <span className='topic d-flex fs-5'>designer</span>
+            <div className='row1'>
+              <div className=' d-flex flex-row p-2 gap-3'>
+                <img className='img' src={Img1} /> 
+                <span>  flotsom</span>
+                <span>  5h ago </span>
+                <span>  60k</span>
+              </div>
+            </div>
+            <div className='row1'>
+              <div className=' d-flex flex-row p-2 gap-3'> 
+              <img className='img' src={Img1} /> 
+              <span>  flotsom</span>
+                <span>  5h ago </span>
+                <span>  60k</span>
+              </div>
+            </div>
+            <div className='row1'>
+              <div className=' d-flex flex-row p-2 gap-3'> 
+              <img className='img' src={Img1} /> 
+              <span>  flotsom</span>
+                <span>  5h ago </span>
+                <span>  60k</span>
+              </div>
+            </div>
+            <button className='button d-flex justify-content-center'>view more</button>
+
+           </div>
+        </div>
+        <div>
+        <div className='vendor d-flex flex-column gap-2 p-2 h-100'>
+            <span className='topic d-flex fs-5'>Vendor</span>
+            <div className='row2'>
+              <div className=' d-flex flex-row p-2 gap-3 justify-content-center'> 
+              <img className='img' src={Img1} /> 
+              <span>  flotsom</span>
+                <span>  5h ago </span>
+                <span>  60k</span>
+              </div>
+            </div>
+            <div className='row2'>
+              <div className=' d-flex flex-row p-2 gap-3'> 
+              <img className='img' src={Img1} /> 
+              <span>  flotsom</span>
+                <span>  5h ago </span>
+                <span>  60k</span>
+              </div>
+            </div>
+            <div className='row2'>
+              <div className=' d-flex flex-row p-2 gap-3'> 
+              <img className='img' src={Img1} /> 
+                <span>  flotsom</span>
+                <span>  flotsom</span>
+                <span>  flotsom</span>
+              </div>
+            </div>
+            <button className='button d-flex justify-content-center'>view more</button>
+
+           </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div> 
+
+</Container>
+
 
       
-    </div>
-    </div>
-    </div>
+   
+
   )
 }
 export default AdminDashboard;
