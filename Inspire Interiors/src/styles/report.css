@@ -1,69 +1,24 @@
-/* .User {
-    width: 48px;
-    height: 32px;
-    font: 700 24px/32px 'Cabin';
-    color: #17183B;
-    }
-    .auto{
-    display: flex;
-    justify-content: center;
-    width: 294px;
-    height: 40px;
-    position:absolute;
-    padding-left:20% ;
-    top: 18%;
-    }
-     .summary{
-       
-        
-
-    }
     .card-1{
-        width: 300px;
-        height: 50px;
-        left: 20%;
-        top: 100px;
-        background-color: #096C86;
-
+        border: none;
+        color: white;
+        background-color:#096C86;
+        height: 20px;
     }
-
     .card-2{
-        margin-top: 10px;
-        width: 300px;
-        height: 50px;
-        left: 20%;
-        top: 100px;
-        background-color: #FFC00C;
-
+        border: none;
+        color: white;
+        background-color:#035C94;
+        height: 20px;
     }
     .card-3{
-        margin-top: 10px;
-        width: 300px;
-        height: 50px;
-        left: 20%;
-        top: 100px;
-        background-color: #035C94;
-
+        border: none;
+        color: #035C94;
+        background-color: #FFC00C;
+        height: 20px;
     }
     .card-4{
-        margin-top: 10px;
-        width: 300px;
-        height: 50px;
-        left: 20%;
-        top: 100px;
-        background-color: #9E9E9E;
-
-    }
-    .performance{
-        /* left: 405%; 
-        width: 600px;
-        top: 20%;
-        height: 200px;
-    }
-    */
-
-    .report{
-        top: 200px;
-        background-color: aqua;
-        left: 20%;
+        border: none;
+        color: #035C94;
+        background-color:#FFC00C;
+        height: 20px;
     }
