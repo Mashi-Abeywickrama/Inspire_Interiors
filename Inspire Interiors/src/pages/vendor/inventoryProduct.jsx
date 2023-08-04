@@ -74,19 +74,19 @@ const stockdata = {
           material: 'Wood',
           color:'Yellow',
           amount: '10',
-          action: <div className='d-flex gap-2 align-items-center'><p className='m-0' style={{color:"#035C94"}}>Manage</p> <Icon.ArrowRight color='#035C94'/></div>,
+          action: <div className='d-flex gap-2 align-items-center fs-6 fw-semibold'><p className='m-0' style={{color:"#035C94"}}>Manage</p> <Icon.ArrowRight color='#035C94'/></div>,
         },
         {
             material: 'Wood',
             color:'Yellow',
             amount: '10',
-            action: <div className='d-flex gap-2 align-items-center'><p className='m-0' style={{color:"#035C94"}}>Manage</p> <Icon.ArrowRight color='#035C94'/></div>,
+            action: <div className='d-flex gap-2 align-items-center fs-6 fw-semibold'><p className='m-0' style={{color:"#035C94"}}>Manage</p> <Icon.ArrowRight color='#035C94'/></div>,
         },
         {
             material: 'Wood',
             color:'Yellow',
             amount: '10',
-            action: <div className='d-flex gap-2 align-items-center'><p className='m-0' style={{color:"#035C94"}}>Manage</p> <Icon.ArrowRight color='#035C94'/></div>,
+            action: <div className='d-flex gap-2 align-items-center fs-6 fw-semibold'><p className='m-0' style={{color:"#035C94"}}>Manage</p> <Icon.ArrowRight color='#035C94'/></div>,
         },
 
     ],
