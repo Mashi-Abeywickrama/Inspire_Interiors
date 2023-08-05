@@ -17,10 +17,10 @@ import Home from "./pages/visitor/home";
 import Contact from "./pages/visitor/contact";
 import Services from "./pages/visitor/services";
 
-import Project from './pages/visitor/project';
-import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
-import CDashboardlayout from './layouts/Customer/customerDashboardlayout';
-import MyOrder from './pages/Customer/orders/my_orders';
+// import Project from './pages/visitor/project';
+// import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
+// import CDashboardlayout from './layouts/Customer/customerDashboardlayout';
+// import MyOrder from './pages/Customer/orders/my_orders';
 import Report from './pages/Admin/report';
 import Dashboard from './pages/Admin/dashboard';
 import User from './pages/Admin/user';
@@ -37,7 +37,6 @@ import MyOrder from "./pages/Customer/orders/my_orders";
 import Designs from "./pages/Customer/Designs/designs";
 import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
 
-
 // Vendor
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
 import ViewOrder from "./pages/vendor/viewOrder";
@@ -50,10 +49,15 @@ import PromotionRequest from "./pages/vendor/promotionRequest";
 import SentPromotion from "./pages/vendor/sentPromotion";
 import ReceivedPromotion from "./pages/vendor/receivedPromtion";
 import PromotionEarnings from "./pages/vendor/promotionEarnings";
-import AcceptedOrders from "./pages/vendor/customizedOrders";
 import CustomizedOrders from "./pages/vendor/customizedOrders";
 import Order from "./pages/vendor/order";
 import VendorDashboard from "./pages/vendor/vendorDashboard";
+
+// Customer Support
+import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
+import Inquiry from "./pages/CustomerSupport/inquiry";
+import Delivery from "./pages/CustomerSupport/delivery";
+import Refund from "./pages/CustomerSupport/refund";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -93,6 +97,14 @@ const router = createBrowserRouter(
         <Route  path="commission" element={<Commission/> } />
         <Route  path="orders" element={<Orders/> } />
         <Route  path="salary" element={<Salary/> } />
+      </Route>
+
+      {/* Customer Support Routes */}
+      <Route path="/customersupport/" element={<CSDashboardlayout />} errorElement={<Error />}>
+        <Route index element={<Inquiry/> } />
+        <Route path="inquiry" element={<Inquiry/> } />
+        <Route path="delivery" element={<Delivery/> } />
+        <Route path="refund" element={<Refund />}></Route>
       </Route>
 
       {/* Vendor Routes */}
