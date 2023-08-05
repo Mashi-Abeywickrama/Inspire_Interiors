@@ -1,9 +1,7 @@
 import React from "react";
 
-import './../../styles/vendor/promotion.css';
+import './../../styles/vendor/sentPromotion.css';
 import * as Icon from "react-bootstrap-icons";
-import VendorSidebar from "./sidebar";
-import Navigationbar from "../../components/navigationbar";
 import Arpico from "../../assets/img/vendor/arpico.png";
 import Sofa from "../../assets/img/vendor/sofa.png"
 
@@ -173,10 +171,10 @@ const largeTableData = {
 }
 
 
-const Promotion = () => (
+const SentPromotion = () => (
     <>
 
-        <div className="promotion-container rounded-3 mb-4 me-5">
+        <div className="sendpromotion-container rounded-3 mb-4 me-5">
             <div className=" col-12 d-flex flex-column">
                 <div className=" col-12 d-flex flex-column flex-lg-row flex-md-row gap-4">
                     <div className="col-lg-8 bg-white rounded-3 my-2 shadow" style={{ height: "10%" }}>
@@ -368,4 +366,4 @@ const Promotion = () => (
     </>
 )
 
-export default Promotion;
+export default SentPromotion;

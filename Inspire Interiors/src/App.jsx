@@ -22,13 +22,19 @@ import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
 import MyOrder from "./pages/Customer/orders/my_orders";
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
 import ViewOrder from "./pages/vendor/viewOrder";
-import Promotion from "./pages/vendor/promotion";
 import OverView from "./pages/vendor/overview";
 import ViewCustomRequest from "./pages/vendor/viewCustomRequest";
 import PromotedProduct from "./pages/vendor/promotedProduct";
 import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
 import PromotionRequest from "./pages/vendor/promotionRequest";
+import SentPromotion from "./pages/vendor/sentPromotion";
+import ReceivedPromotion from "./pages/vendor/receivedPromtion";
+import PromotionEarnings from "./pages/vendor/promotionEarnings";
+import AcceptedOrders from "./pages/vendor/customizedOrders";
+import CustomizedOrders from "./pages/vendor/customizedOrders";
+import Order from "./pages/vendor/order";
+import VendorDashboard from "./pages/vendor/vendorDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -59,15 +65,20 @@ const router = createBrowserRouter(
         element={<VDashboardlayout />}
         errorElement={<Error />}
       >
-        <Route index element={<OverView />} />
+        <Route index element={<VendorDashboard />} />
+        <Route path="vendordashboard" element={<VendorDashboard />}></Route>
         <Route path="vieworder" element={<ViewOrder />}></Route>
-        <Route path="promotion" element={<Promotion />}></Route>
+        <Route path="sentpromotion" element={<SentPromotion />}></Route>
+        <Route path="receivedpromotion" element={<ReceivedPromotion />}></Route>
         <Route path="overview" element={<OverView />}></Route>
+        <Route path="order" element={<Order />}></Route>
+        <Route path="customizeorders" element={<CustomizedOrders />}></Route>
         <Route path="customrequest" element={<ViewCustomRequest />}></Route>
         <Route path="promoteproduct" element={<PromotedProduct />}></Route>
         <Route path="viewstock"  element={<ViewStocks />}></Route>
         <Route path="inventoryproduct" element={<InventoryProduct />}></Route>
         <Route path="promotionrequest" element={<PromotionRequest />}></Route>
+        <Route path="earnings" element={<PromotionEarnings />}></Route>
       </Route>
     </>
   )

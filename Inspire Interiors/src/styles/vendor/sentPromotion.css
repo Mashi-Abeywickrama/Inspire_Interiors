@@ -4,12 +4,12 @@
     background-color: #F1F1F1;
     height: 100%;
 }
-.promotion-container{
+.sendpromotion-container{
     width: inherit !important;
 }
 
 .card-wid{
-    width: 90%;
+    width: auto;
 }
 
 .Cabin-text{
