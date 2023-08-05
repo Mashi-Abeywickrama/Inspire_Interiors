@@ -1,0 +1,41 @@
+.designer{
+    background-color: #035C94;
+    border-radius: 10px;
+}
+.vendor{
+    background-color: #FFC00C;
+    border-radius: 10px;
+}
+.row1 {
+    border: 2px solid; /* Specify border style (solid) */
+    border-radius: 20px;
+    color: aliceblue;
+    /* background-color: bisque; */
+    border-color: #C4C4C4;
+  }
+  .row2 {
+    border: 2px solid; /* Specify border style (solid) */
+    border-radius: 20px;
+    color: rgb(5, 34, 59);
+    /* background-color: bisque; */
+    border-color: #fff;
+  }
+  .today{
+    font-weight: 600;
+    color: #035C94;
+  }
+  .about{
+    font-weight: 600;
+    color: #035C94;
+  }
+  .topic{
+    font-weight: 600;
+  }
+  .img{
+    width: 40px;
+  }
+  .button{
+    background-color:#C4C4C4;
+    color:#035C94;
+    
+  }
