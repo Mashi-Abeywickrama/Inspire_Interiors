@@ -104,7 +104,7 @@ const Login = () => {
                   </Form.Group>
                   
                   <div className="d-flex col justify-content-end form-options">
-                    <a href="/" style={{ color: '#023047' }}>Forgot password?</a>
+                    <a href="/" style={{ color: '#023047 !important' }}>Forgot password?</a>
                   </div>
                 
                 </div>

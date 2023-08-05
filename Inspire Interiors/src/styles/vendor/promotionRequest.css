@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap');
+
+.request-container{
+    width: inherit !important;
+    margin-right: 2.5rem;
+}
+
+.withdraw-btn{
+    color: #FF5C60;
+    background-color: #FFFFFF;
+    border: 1px solid #FF5C60;
+}
+
+.negotiate-btn{
+    color: #83859C;
+    background-color: #FFFFFF;
+    border: 1px solid #83859C;
+}
+
+.accept-btn{
+    color: #FFFFFF;
+    background-color: #035C94;
+    border: 1px solid #035C94;
+}
+
+.Cabin-text{
+    font-family: "Cabin" !important;
+}
+
+.rc-slider-rail {
+    background-color: #FFBA42 !important;
+}
+.rc-slider-track {
+    background-color: #035C94 !important;
+}
+
+.rc-slider-handle:active {
+    border-color: #035C94 !important;
+    box-shadow: 0 0 5px #035c9482 !important;
+
+}
+.rc-slider-handle:hover {
+    border-color: #035C94 !important;
+}
+.rc-slider-handle:focus-visible {
+    border-color: #035C94 !important;
+    box-shadow: 0 0 0 3px #035c9471 !important;
+}
+.rc-slider-handle{
+    border-color: #035C94 !important;
+    
+}
