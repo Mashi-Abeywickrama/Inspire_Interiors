@@ -1,0 +1,19 @@
+.background{
+    background-color: #F1F1F1;
+    min-height: 86.5vh;
+    /* height: 100%; */
+}
+.h-40{
+    height: 40%;
+}
+
+.w-40{
+    width: 40%;
+}
+.slide{
+    height: unset;
+    width: 100%;
+}
+.carousel-control-prev, .carousel-control-next,.carousel-indicators  {
+    display: none;
+}
