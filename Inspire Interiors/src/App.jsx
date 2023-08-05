@@ -32,6 +32,7 @@ import PromotionRequest from "./pages/vendor/promotionRequest";
 import DesignerLayout from "./layouts/Designer/DesignerLayout";
 import DesignerDashboard from "./pages/Designer/DesignerDashboard";
 import DesignerMyDesigns from "./pages/Designer/DesignerMyDesigns";
+import Popup from "./components/designer/Popup/Popup";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -79,6 +80,7 @@ const router = createBrowserRouter(
       >
         <Route index element={<DesignerDashboard />} />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
+        <Route path="test" element={<Popup />} />
       </Route>
     </>
   )
