@@ -18,8 +18,14 @@ import Contact from "./pages/visitor/contact";
 import Services from "./pages/visitor/services";
 import Project from "./pages/visitor/project";
 import OnlyHeaderRootlayout from "./layouts/onlyHeaderRootlayout";
+
+// Customer
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
 import MyOrder from "./pages/Customer/orders/my_orders";
+import Designs from "./pages/Customer/Designs/designs";
+import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
+
+// Vendor
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
 import ViewOrder from "./pages/vendor/viewOrder";
 import OverView from "./pages/vendor/overview";
@@ -53,13 +59,19 @@ const router = createBrowserRouter(
       >
         <Route index element={<Login />} />
       </Route>
+
+      {/* Customer Routes */}
       <Route
         path="/customer/"
         element={<CDashboardlayout />}
         errorElement={<Home />}
       >
         <Route index element={<MyOrder />} />
+        <Route path = "designs" element={<Designs />} />
+        <Route path = "browsedesigns" element={<BrowseDesigns />} />
       </Route>
+
+      {/* Vendor Routes */}
       <Route
         path="/vendor/"
         element={<VDashboardlayout />}
