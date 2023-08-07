@@ -124,7 +124,7 @@ const VendorDashboard = () => {
                         </div>
                         <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
                             <p className='fs-3 fw-semibold' style={{ color: "#035C94" }}>Average Rating</p>
-                            <div className='d-flex flex-column w-75 p-4 avg-div justify-content-center align-content-center rounded-5'>
+                            <div className='d-flex flex-column p-4 avg-div justify-content-center align-items-center rounded-5' style={{width:"85%"}}>
                                 <p className='fs-1 fw-bold m-0' style={{ color: "white" }}>4.9</p>
                                 <ReactStars
                                     count={5}
