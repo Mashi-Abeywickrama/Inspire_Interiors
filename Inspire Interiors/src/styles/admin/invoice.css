@@ -1,0 +1,60 @@
+.number{
+    color:  #035C94;
+}
+.logo{
+    font-weight: 500;
+}
+.name{
+    font-weight: 500;
+}
+.v-line{
+    background-color: #035C94;
+    border: #035C94 2px solid;
+    height: 20px;
+    width: 2px;
+}
+.v1-line{
+    background-color: #035C94;
+    border: #035C94 2px solid;
+    height: 20px;
+    width: 1px;
+}
+.gap{
+    height: 100px;
+}
+.gap1{
+    height: 25px;
+}
+td{
+    text-align: center!important;
+    font-weight: 400;
+    color: #035C94;
+}
+th{
+        text-align: center!important;
+        font-weight: 100;
+        color: #035C94;
+
+}
+.sub{
+    font-weight: 700;
+
+}
+.cancel{
+    color: #035C94;
+    border: #035C94 solid 1px;
+}
+.send{
+    color: #ffffff;
+    background-color: #035C94;
+}
+.logo{
+    width: 150px;
+}
+.h1{
+    font-size:medium;
+    font-weight: 600;
+}
+.h2{
+    font-size: smaller;
+}
