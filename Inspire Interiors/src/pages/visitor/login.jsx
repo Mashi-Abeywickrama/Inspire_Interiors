@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from "../../components/header";
+
+import axios from 'axios';
 
 
 import { Container, Row, Col, Button } from 'react-bootstrap';
@@ -17,6 +20,42 @@ import * as Icon from 'react-bootstrap-icons';
 import './../../styles/home.css';
   
 const Login = () => {
+
+  const apiBaseURL = 'http://localhost:8080'; // Replace this with the base URL of your Spring Boot backend
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseURL,
+    timeout: 5000, // You can adjust the timeout value as needed
+    // You can also set other default config options if required
+    // For example, you might want to set headers for authorization or other request-specific headers
+  });
+
+   const navigate = useNavigate(); // Initialize useNavigate
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axiosInstance.post('/login', { 
+        username: username, 
+        password: password 
+        });
+      if (response.status === 200) {
+        const userType = response.data.userType;
+
+        if (userType === 'admin') {
+          navigate('/admin');
+        } else if (userType === 'customer') {
+          navigate('/customer');
+        }
+      }
+    } catch (error) {
+      console.error('Authentication failed');
+    }
+  };
+
   return (
     <>
       <div>
@@ -68,7 +107,7 @@ const Login = () => {
                   Inspire Interiors
               </h2>
               {/* login form */}
-              <Form className='d-flex row w-92 gap-2'>
+              <Form className='d-flex row w-92 gap-2 ' onSubmit={handleLogin}>
                 <Button
                   className="mb-4 w-100 btnstyle btn-lg"
                 >
@@ -89,12 +128,12 @@ const Login = () => {
                   <hr className="flex-grow-1" />
                 </div>
 
-                <Form.Group controlId="formName">
-                  <Form.Control type="text" placeholder="Name" size='lg' className='mb-3' />
+                <Form.Group controlId="formName" >
+                  <Form.Control type="text" placeholder="Name" size='lg' className='mb-3' value={username}   onChange={(e) => setUsername(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group controlId="formPassword">
-                  <Form.Control type="password" placeholder="Password" size='lg' />
+                  <Form.Control type="password" placeholder="Password" size='lg' value={password}  onChange={(e) => setPassword(e.target.value)}/>
                 </Form.Group>
 
                 <div className='d-flex row justify-content-center' controlId="fprememberMe">
@@ -110,11 +149,12 @@ const Login = () => {
                 </div>
 
                 <Button
+                  onClick={handleLogin}
                   className='d-flex justify-content-center align-self-center mb-4'
                   size='lg'
                   variant="primary"
                   style={{ backgroundColor: '#035C94', color: '#FFFFFF' }}
-                  type="submit">
+                  >
                   Login
                 </Button>
 

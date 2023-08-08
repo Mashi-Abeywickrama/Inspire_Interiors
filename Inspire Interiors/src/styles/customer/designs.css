@@ -17,3 +17,6 @@
 .carousel-control-prev, .carousel-control-next,.carousel-indicators  {
     display: none;
 }
+.breadcrumb a{
+    color: #000 !important;
+}

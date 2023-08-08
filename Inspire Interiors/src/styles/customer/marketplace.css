@@ -1,0 +1,32 @@
+#root {
+    background-color: #f1f1f1 !important;  
+}
+.background-grey{
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width:inherit;
+    min-height: 84vh;
+    font-family: 'Cabin' !important;    
+
+}
+/* .slide{
+    width: 100% ;
+    height:max-content ;
+    object-fit:cover ;
+    border-radius: 20px;
+} */
+
+.height-200{
+    height: 200px ;
+}
+.width-30{
+    width: 30% !important;
+}
+
+@media only screen and (max-width: 630px) {
+.max-width {
+    /* max-width:min-content; */
+        max-width: 550px;
+}
+
+}

@@ -41,10 +41,14 @@ const SidebarDashboard = () => {
 
         <NavItem eventKey="marketplace">
             <NavIcon>
+                <a href="/customer/marketplace">
                  <i><RiStore2Fill /></i>
+                 </a>
             </NavIcon>
             <NavText >
+                <a href="/customer/marketplace">
                 Marketplace
+                </a>
             </NavText>
         </NavItem>
 
@@ -62,7 +66,9 @@ const SidebarDashboard = () => {
                 <i><RiShoppingBagFill /></i>
             </NavIcon>
             <NavText>
+                <a href="/customer/orders">
                 My Orders
+                </a>
             </NavText>
         </NavItem>
 
