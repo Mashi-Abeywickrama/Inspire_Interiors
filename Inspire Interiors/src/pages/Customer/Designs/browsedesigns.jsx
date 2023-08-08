@@ -96,7 +96,7 @@ const BrowseDesigns = () => {
                     <div className='container'>
                         <div className='row d-flex align-items-center'>
                             <div className='col-md-4 col-sm-12 col-12 fs-4'>
-                                <Breadcrumb className="fw-bold">
+                                <Breadcrumb className="fw-bold breadcrumb">
                                     <Breadcrumb.Item style={{ color: '#17183B !important' }}>
                                         Browse Designs
                                     </Breadcrumb.Item>
