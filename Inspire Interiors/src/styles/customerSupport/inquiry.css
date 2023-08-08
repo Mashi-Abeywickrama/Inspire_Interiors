@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap');
+
+.inquiry-container{
+    width: inherit !important;
+    margin-right: 1.5rem;
+}
+
+.shadow{
+    box-shadow: 0px 16px 60px 0px rgba(86, 89, 146, 0.10);
+}
+
+.tab{
+    border-bottom: 0.1rem solid #035C94 !important;
+}
+
+.Cabin-text{
+    font-family: "Cabin" !important;
+}
+
+.add-btn{
+    color: #FFFFFF;
+    background-color: #035C94;
+}

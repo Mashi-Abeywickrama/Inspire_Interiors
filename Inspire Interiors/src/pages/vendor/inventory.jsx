@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/vendor/inventoryProduct.css';
+import '../../styles/vendor/inventory.css';
 
 import Chair from '../../assets/img/vendor/chair.png';
 import * as Icon from 'react-bootstrap-icons';
