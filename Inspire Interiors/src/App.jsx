@@ -33,6 +33,7 @@ import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
 import MyOrder from "./pages/Customer/orders/my_orders";
 import Designs from "./pages/Customer/Designs/designs";
 import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
+import CusSetting from "./pages/Customer/setting";
 
 // Vendor
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
@@ -60,6 +61,7 @@ import ViewDelivery from "./pages/CustomerSupport/viewDelivery";
 import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -90,6 +92,7 @@ const router = createBrowserRouter(
         <Route path = "designs" element={<Designs />} />
         <Route path = "browsedesigns" element={<BrowseDesigns />} />
          <Route path="marketplace" element={<MarketPlace />}></Route>
+         <Route path="setting" element={<CusSetting />}></Route>
       </Route>
 
       {/* Admin Routes */}
