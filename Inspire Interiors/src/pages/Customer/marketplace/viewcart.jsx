@@ -106,7 +106,7 @@ const Cart = () => {
                         </div>
 
                         {/* Summery */}
-                        <div className="d-flex w-40 h-auto ">
+                        <div className="d-flex w-40 h-auto me-3 ">
                             <div className=" border rounded p-1 w-98 h-100 f-color-summary">
                                 <div className="m-2">
                                     <p className="fs-4 fw-bold ">

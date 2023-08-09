@@ -30,7 +30,7 @@
     color: #f1f1f1;
 }
 .h-80{
-    height: 85vh;
+    min-height: 85vh;
 }
 
 @media only screen and (max-width: 630px) {

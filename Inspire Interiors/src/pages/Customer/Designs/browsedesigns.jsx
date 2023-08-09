@@ -1,7 +1,7 @@
 import React from "react";
 import * as Icon from 'react-bootstrap-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Pagination, Breadcrumb } from "react-bootstrap";
+import {  Breadcrumb } from "react-bootstrap";
 import SearchPage from "../../../components/customer/filterNsearch";
 import './../../../styles/customer/designs.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
