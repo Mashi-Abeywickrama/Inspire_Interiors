@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap');
+
+.Cabin-text{
+    font-family: "Cabin" !important;
+}
+
+.product-container{
+    width: inherit !important;
+}
+
+.add-btn{
+    color: #FFFFFF;
+    background-color: #035C94;
+    border-radius: 8px;
+}
+
+.vieworder-carousal-div .carousel-root{
+    height: 100%;
+}
+.carousel-slider{
+    height: 75% !important;
+}
+
+.side-div {
+    width: 50% !important;
+  }
+
+.slider-wrapper {
+    height: 90% !important;
+}
+.vieworder-carousal-div .legend {
+    display: none !important;
+}
+.slider-wrapper .slide .img-fluid{
+    height: 36%;
+    object-fit: scale-down;
+    margin-top: 367px;
+}
+
+@media screen and (max-width: 720px) {
+    .side-div {
+      width: 100% !important;
+    }
+  }
+

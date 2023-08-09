@@ -33,6 +33,7 @@ import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
 import MyOrder from "./pages/Customer/orders/my_orders";
 import Designs from "./pages/Customer/Designs/designs";
 import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
+import ViewProduct from "./pages/Customer/marketplace/viewProduct";
 
 // Vendor
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
@@ -60,6 +61,8 @@ import ViewDelivery from "./pages/CustomerSupport/viewDelivery";
 import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
+import AddStock from "./pages/vendor/addStock";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -89,7 +92,8 @@ const router = createBrowserRouter(
         <Route index element={<MyOrder />} />
         <Route path = "designs" element={<Designs />} />
         <Route path = "browsedesigns" element={<BrowseDesigns />} />
-         <Route path="marketplace" element={<MarketPlace />}></Route>
+        <Route path="marketplace" element={<MarketPlace />}></Route>
+        <Route path="viewproduct" element={<ViewProduct />}></Route>
       </Route>
 
       {/* Admin Routes */}
@@ -131,6 +135,7 @@ const router = createBrowserRouter(
         <Route path="customrequest" element={<ViewCustomRequest />}></Route>
         <Route path="promoteproduct" element={<PromotedProduct />}></Route>
         <Route path="viewstock"  element={<ViewStocks />}></Route>
+        <Route path="addstock" element={<AddStock />}></Route>
         <Route path="inventory" element={<InventoryProduct />}></Route>
         <Route path="promotionrequest" element={<PromotionRequest />}></Route>
         <Route path="earnings" element={<PromotionEarnings />}></Route>
