@@ -7,145 +7,137 @@ import VendorSidebar from "./sidebar";
 import Navigationbar from "../../components/navigationbar";
 
 const ViewOrder = () => {
- return(
-    <>
-        <div className="d-flex flex-column col-12 gap-3" style={{backgroundColor:"#F1F1F1" , height:"100%"}}>
-            <Navigationbar/>
-            <div className="w-auto">
-                <div className="d-flex gap-3 w-100">
-                    <VendorSidebar/>
-                    <div className="order-container bg-white rounded-3 mb-4">
-                        <div className="col-12 d-flex flex-row gap-4">
-                            <p className="text-dark fs-3 fw-bold Cabin-text">Orders</p>
-                            <Icon.ChevronRight color="#A2A3B1" size={25}className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{color:"#A2A3B1"}}>Delayed</p>
-                            <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{color:"#A2A3B1"}}>25786</p>
-                        </div>
-                        <div className="col-12 d-flex flex-column"> 
-                            <div className="d-flex flex-row justify-content-between">
-                                <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text">Order Details - #76565722</p>
-                                <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{height:"1.5rem", background:"#F6E3AC", color:"#6B4605"}}><Icon.CircleFill size={7} className="mx-1"/>Delayed</div>
-                            </div> 
-                            <div className=" divider"/>
-                        </div>    
-                       
+    return (
+        <>
+            <div className="order-container bg-white rounded-3 mb-4 me-3">
+                <div className="col-12 d-flex flex-row gap-4">
+                    <p className="text-dark fs-3 fw-bold Cabin-text">Orders</p>
+                    <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
+                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Delayed</p>
+                    <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
+                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>25786</p>
+                </div>
+                <div className="col-12 d-flex flex-column">
+                    <div className="d-flex flex-row justify-content-between">
+                        <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text">Order Details - #76565722</p>
+                        <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{ height: "1.5rem", background: "#F6E3AC", color: "#6B4605" }}><Icon.CircleFill size={7} className="mx-1" />Delayed</div>
+                    </div>
+                    <div className=" divider" />
+                </div>
 
-                        <div className="d-flex flex-column flex-lg-row">
-                            <div className="d-flex col-lg-6 col-12 col-6 flex-column">
-                                <div className="col-lg-12 border rounded-3 my-2 shadow">
-                                    <p className="fs-5 fw-bold px-3 py-2 Cabin-text" style={{color:"#023047"}}>Product Details</p>
-                                    <div className="d-flex flex-column flex-lg-row justify-content-start">
-                                        <img className="img-fluid" src={Chair} alt="Chair"/>
-                                        <div className="d-flex flex-column px-3">
-                                            <p className="fs-5 fw-semibold Cabin-text">Customizable Armchair</p>
-                                            <div className="d-flex flex-row">
-                                                <p className="fs-6 fw-semibold Cabin-text" style={{color:"#A2A3B1"}}>Type:</p>
-                                                <p className="px-3 fs-6 fw-semibold Cabin-text">Chair</p>
-                                            </div>
-                                            <div className="d-flex flex-row">
-                                                <p className="fs-6 fw-semibold Cabin-text" style={{color:"#A2A3B1"}}>Color:</p>
-                                                <Icon.CircleFill size={30} color="#C1BDB3" className="mx-3" />
-                                            </div>
-                                            <div className="d-flex flex-row">
-                                                <p className="fs-6 fw-semibold Cabin-text" style={{color:"#A2A3B1"}}>Quantity:</p>
-                                                <p className="px-3 fs-6 fw-semibold Cabin-text">2</p>
-                                            </div>
-                                            <div className="d-flex flex-row">
-                                                <p className="fs-6 fw-semibold Cabin-text" style={{color:"#A2A3B1"}}>Price:</p>
-                                                <p className="px-3 fs-6 fw-semibold Cabin-text">Rs 4000 </p>
-                                            </div>
-                                        </div>
+
+                <div className="d-flex flex-column flex-lg-row">
+                    <div className="d-flex col-lg-6 col-12 col-6 flex-column">
+                        <div className="col-lg-12 border rounded-3 my-2 shadow">
+                            <p className="fs-5 fw-bold px-3 py-2 Cabin-text" style={{ color: "#023047" }}>Product Details</p>
+                            <div className="d-flex flex-column flex-lg-row justify-content-start">
+                                <img className="img-fluid" src={Chair} alt="Chair" />
+                                <div className="d-flex flex-column px-3">
+                                    <p className="fs-5 fw-semibold Cabin-text">Customizable Armchair</p>
+                                    <div className="d-flex flex-row">
+                                        <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Type:</p>
+                                        <p className="px-3 fs-6 fw-semibold Cabin-text">Chair</p>
                                     </div>
-                                </div>
-                                <div className="container-fluid col-lg-12 border rounded-3 my-4 shadow">
-                                    <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Status</p>
-                                        <div className="d-flex flex-column">
-                                            <div className="d-flex flex-row justify-content-between">
-                                                <div className="d-flex flex-row">
-                                                    <p className="fs-6 fw-semibold px-5 Cabin-text">Vender Confirmation:</p>
-                                                    <p className="fs-6 fw-normal Cabin-text">Confirmed By Damro</p>
-                                                </div>
-                                                <p className="fs-6 fw-semibold px-4 Cabin-text">01 Feb, 2023</p>
-                                            </div>
-                                            <div className="d-flex flex-row justify-content-between">
-                                                <p className="fs-6 fw-semibold px-5 Cabin-text">Package Preparation:</p>
-                                                <div className="badge fw-semibold rounded-3 mx-5 Cabin-text" style={{height:"1.5rem", background:"#BFE5FD", color:"#000000"}}><Icon.CircleFill size={7} className="mx-1"/>Delayed</div>
-                                            </div>
-                                            <div className="d-flex flex-row justify-content-between">
-                                                <p className="fs-6 fw-semibold px-5 Cabin-text">Shipping:</p>
-                                                <div className="badge fw-semibold rounded-3 mx-5 Cabin-text" style={{height:"1.5rem", background:"#E6E6E6", color:"#979797"}}><Icon.CircleFill size={7} className="mx-1"/>Delayed</div>
-                                            </div>
-                                            <div className="d-flex flex-row justify-content-between">
-                                                <p className="fs-6 fw-semibold px-5 Cabin-text">Delivery:</p>
-                                                <div className="badge fw-semibold rounded-3 mx-5 Cabin-text" style={{height:"1.5rem", background:"#E6E6E6", color:"#979797"}}><Icon.CircleFill size={7} className="mx-1"/>Delayed</div>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
-                            <div className="container-fluid col-lg-5 border rounded-3 my-2 shadow">
-                                <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Summary</p>
-                                <div className="d-flex flex-column">
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Product</p>
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Customizable Armchair</p>
+                                    <div className="d-flex flex-row">
+                                        <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Color:</p>
+                                        <Icon.CircleFill size={30} color="#C1BDB3" className="mx-3" />
                                     </div>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Price</p>
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 4000</p>
+                                    <div className="d-flex flex-row">
+                                        <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Quantity:</p>
+                                        <p className="px-3 fs-6 fw-semibold Cabin-text">2</p>
                                     </div>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Quantity</p>
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">2</p>
-                                    </div>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Shipping</p>
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 1000</p>
-                                    </div>
-                                    <div className="divider"/>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">TOTAL</p>
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 8000</p>
-                                    </div>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Estimated Delivery by</p>
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">01 Feb, 2023</p>
-                                    </div>
-                                    <div className="divider"/>
-                                    <p className="fs-6 fw-bold px-3 my-1 Cabin-text">Delivery Address</p>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">House No and Lane</p>
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Philosophy Home, Legends' Lane</p>
-                                    </div>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Town/City</p>
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Philosophy Town</p>
-                                    </div>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">District</p>
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Philosophy North</p>
-                                    </div>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Postal Code</p>
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">82100</p>
-                                    </div>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Country</p>
-                                        <p className="fs-6 fw-normal px-3 py-2 Cabin-text">SriLanka</p>
+                                    <div className="d-flex flex-row">
+                                        <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Price:</p>
+                                        <p className="px-3 fs-6 fw-semibold Cabin-text">Rs 4000 </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="divider my-1"/>
-                        <button className="my-3" style={{color:"#FF5C60", background:"#FFFFFF" ,borderRadius:"8px", border:"1px solid #FF5C60"}}>Cancel Order</button>
-            
+                        <div className="container-fluid col-lg-12 border rounded-3 my-4 shadow">
+                            <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Status</p>
+                            <div className="d-flex flex-column">
+                                <div className="d-flex flex-row justify-content-between">
+                                    <div className="d-flex flex-row">
+                                        <p className="fs-6 fw-semibold px-5 Cabin-text">Vender Confirmation:</p>
+                                        <p className="fs-6 fw-normal Cabin-text">Confirmed By Damro</p>
+                                    </div>
+                                    <p className="fs-6 fw-semibold px-4 Cabin-text">01 Feb, 2023</p>
+                                </div>
+                                <div className="d-flex flex-row justify-content-between">
+                                    <p className="fs-6 fw-semibold px-5 Cabin-text">Package Preparation:</p>
+                                    <div className="badge fw-semibold rounded-3 mx-5 Cabin-text" style={{ height: "1.5rem", background: "#BFE5FD", color: "#000000" }}><Icon.CircleFill size={7} className="mx-1" />Delayed</div>
+                                </div>
+                                <div className="d-flex flex-row justify-content-between">
+                                    <p className="fs-6 fw-semibold px-5 Cabin-text">Shipping:</p>
+                                    <div className="badge fw-semibold rounded-3 mx-5 Cabin-text" style={{ height: "1.5rem", background: "#E6E6E6", color: "#979797" }}><Icon.CircleFill size={7} className="mx-1" />Delayed</div>
+                                </div>
+                                <div className="d-flex flex-row justify-content-between">
+                                    <p className="fs-6 fw-semibold px-5 Cabin-text">Delivery:</p>
+                                    <div className="badge fw-semibold rounded-3 mx-5 Cabin-text" style={{ height: "1.5rem", background: "#E6E6E6", color: "#979797" }}><Icon.CircleFill size={7} className="mx-1" />Delayed</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="container-fluid col-lg-5 border rounded-3 my-2 shadow">
+                        <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Summary</p>
+                        <div className="d-flex flex-column">
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Product</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Customizable Armchair</p>
+                            </div>
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Price</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 4000</p>
+                            </div>
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Quantity</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">2</p>
+                            </div>
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Shipping</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 1000</p>
+                            </div>
+                            <div className="divider" />
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">TOTAL</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 8000</p>
+                            </div>
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Estimated Delivery by</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">01 Feb, 2023</p>
+                            </div>
+                            <div className="divider" />
+                            <p className="fs-6 fw-bold px-3 my-1 Cabin-text">Delivery Address</p>
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">House No and Lane</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Philosophy Home, Legends' Lane</p>
+                            </div>
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Town/City</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Philosophy Town</p>
+                            </div>
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">District</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Philosophy North</p>
+                            </div>
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Postal Code</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">82100</p>
+                            </div>
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Country</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">SriLanka</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </>
+                <div className="divider my-1" />
+                <button className="my-3 Cabin-text" style={{ color: "#FF5C60", background: "#FFFFFF", borderRadius: "8px", border: "1px solid #FF5C60" }}>Cancel Order</button>
 
- )   
+            </div>
+        </>
+
+    );
 }
 
 export default ViewOrder;
