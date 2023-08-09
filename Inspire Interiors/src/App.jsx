@@ -38,7 +38,9 @@ import ViewDesigner from "./pages/Customer/Designs/ViewDesigner";
 import MarketPlace from "./pages/Customer/Marketplace/marketPlace";
 import Cart from "./pages/Customer/marketplace/viewcart";
 import CusSetting from "./pages/Customer/setting";
-
+import Address from "./pages/Customer/checkout/address";
+import PaymentMethod from "./pages/Customer/checkout/payment";
+import ShippingMethod from "./pages/Customer/checkout/shipping";
 
 // Vendor
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
@@ -99,6 +101,9 @@ const router = createBrowserRouter(
         <Route path = "viewdesigner" element={<ViewDesigner />} />
         <Route path = "marketplace" element={<MarketPlace />} />
         <Route path = "cart" element={<Cart />} />
+        <Route path = "address" element={<Address />} />
+        <Route path = "payment" element={<PaymentMethod />} />
+        <Route path = "shipping" element={<ShippingMethod />} />
 
          <Route path="setting" element={<CusSetting />}></Route>
 

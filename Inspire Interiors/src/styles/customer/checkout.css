@@ -1,0 +1,12 @@
+.w-30{
+    width: 30%;
+}
+.f-color-summary{
+    color: #023047;
+}
+.h-80{
+    min-height: 85vh;
+}
+.h-custom{
+    min-height: 75vh;
+}
