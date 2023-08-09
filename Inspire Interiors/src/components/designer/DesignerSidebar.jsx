@@ -60,7 +60,9 @@ const DesignerSidebar = () => {
               <MdDesignServices />
             </i>
           </NavIcon>
-          <NavText>Design Tool</NavText>
+          <NavText>
+            <a href="http://localhost:8000">Design Tool </a>
+          </NavText>
         </NavItem>
 
         <NavItem eventKey="Customization">
@@ -69,7 +71,14 @@ const DesignerSidebar = () => {
               <FaMoneyBillAlt />
             </i>
           </NavIcon>
-          <NavText>Earnings</NavText>
+          <NavText>
+            <NavLink
+              to="earningsall
+            "
+            >
+              Earnings
+            </NavLink>
+          </NavText>
         </NavItem>
 
         <NavItem eventKey="orders">
@@ -78,7 +87,14 @@ const DesignerSidebar = () => {
               <AiFillStar />
             </i>
           </NavIcon>
-          <NavText>Promotions</NavText>
+          <NavText>
+            <NavLink
+              to="promotions
+            "
+            >
+              Promotions
+            </NavLink>
+          </NavText>
         </NavItem>
 
         <NavItem eventKey="Settings">

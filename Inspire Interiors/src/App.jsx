@@ -33,6 +33,11 @@ import DesignerLayout from "./layouts/Designer/DesignerLayout";
 import DesignerDashboard from "./pages/Designer/DesignerDashboard";
 import DesignerMyDesigns from "./pages/Designer/DesignerMyDesigns";
 import Popup from "./components/designer/Popup/Popup";
+import DesignerEarnings from "./pages/Designer/DesignerEarnings";
+import Test from "./pages/Designer/test";
+import DesignerEarn from "./pages/Designer/DesignerEarn";
+import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
+import DesignerPromotions from "./pages/Designer/DesignerPromotions";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -80,7 +85,11 @@ const router = createBrowserRouter(
       >
         <Route index element={<DesignerDashboard />} />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
-        <Route path="test" element={<Popup />} />
+        <Route path="test" element={<Test />} />
+        <Route path="earningsall" element={<DesignerEarnings />} />
+        <Route path="earnings" element={<DesignerEarn />} />
+        <Route path="bankdetails" element={<DesignerBankDetails />} />
+        <Route path="promotions" element={<DesignerPromotions />} />
       </Route>
     </>
   )
