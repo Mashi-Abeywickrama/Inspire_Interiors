@@ -310,12 +310,12 @@ const Order = () => (
                                 <p className='fs-5 fw-semibold Cabin-text' style={{ color: "#A0AEC0" }}>this month</p>
                             </div>
                             <RadialBarChart
-                                width={600}
+                                width={300}
                                 height={400}
                                 cx={150}
                                 cy={150}
-                                innerRadius={50}
-                                outerRadius={160}
+                                innerRadius={20}
+                                outerRadius={140}
                                 barSize={15}
                                 data={radarData}
                             >

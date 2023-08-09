@@ -41,14 +41,15 @@ export const bardata = [
 const radarData = [
     {
         name: "Sold",
-        uv: 4.8,
+        uv: 100,
         fill: "#035C94"
     },
     {
         name: "In stock",
-        uv: 4.5,
+        uv: 70,
         fill: "#FFC00C"
     },
+    
 ];
 
 const linedata = [
@@ -182,7 +183,7 @@ const VendorDashboard = () => {
                                 </select>
                             </div>
                             <RadialBarChart
-                                width={600}
+                                width={400}
                                 height={300}
                                 cx={150}
                                 cy={150}

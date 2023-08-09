@@ -23,25 +23,25 @@ const ViewInquiry = () => (
             <div className="d-flex flex-column">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" className="form-label Cabin-text">Reference No:</label>
-                    <input type="number" className="form-control w-25 Cabin-text" id="exampleFormControlInput1" placeholder="Enter a valid number" style={{ backgroundColor: "#F2FAFF" }} />
+                    <input type="number" className="form-control w-25 Cabin-text" id="exampleFormControlInput1" placeholder="Kumar" value="Kumar" style={{ backgroundColor: "#F2FAFF" }} disabled />
                 </div>
                 <div className="d-flex flex-column flex-lg-row flex-sm-row flex-md-row justify-content-between">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" className="form-label Cabin-text">Customer Name:</label>
-                        <input type="text" className="form-control Cabin-text" id="exampleFormControlInput1" placeholder="Enter a valid name" style={{ backgroundColor: "#F2FAFF" }} />
+                        <input type="text" className="form-control Cabin-text" id="exampleFormControlInput1" placeholder="Sanga" value="Sanga" style={{ backgroundColor: "#F2FAFF" }} disabled/>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" className="form-label Cabin-text">Requested Date:</label>
-                        <input type="date" className="form-control Cabin-text" id="exampleFormControlInput1" style={{ backgroundColor: "#F2FAFF" }} />
+                        <input className="form-control Cabin-text" id="exampleFormControlInput1" value="2023/07/25" style={{ backgroundColor: "#F2FAFF" }} disabled/>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" className="form-label Cabin-text">Date of Completion/ Cancelation:</label>
-                        <input type="date" className="form-control Cabin-text" id="exampleFormControlInput1" style={{ backgroundColor: "#F2FAFF" }} />
+                        <input className="form-control Cabin-text" id="exampleFormControlInput1" value="2023/08/25" style={{ backgroundColor: "#F2FAFF" }} disabled/>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" className="form-label Cabin-text">Remarks</label>
-                    <input type="text" className="form-control Cabin-text" id="exampleFormControlInput1" placeholder="Enter your remarks here" style={{ backgroundColor: "#F2FAFF" }} />
+                    <input type="text" className="form-control Cabin-text" id="exampleFormControlInput1" placeholder="Enter your remarks here" style={{ backgroundColor: "#F2FAFF" }} disabled/>
                 </div>
 
                 <div class="mb-3">
