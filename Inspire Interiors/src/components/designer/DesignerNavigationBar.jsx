@@ -9,7 +9,7 @@ import "../../styles/navbar.css";
 
 import Logo from "../../assets/img/logo.svg";
 import navbarImg from "../../assets/img/visitor/navbarImg.png";
-import NotificationD from "./NotificationD";
+// import NotificationD from "./NotificationD";
 
 const DesignerNavigationBar = () => {
   return (
@@ -25,7 +25,7 @@ const DesignerNavigationBar = () => {
             <Nav.Link className="form-group mx-4 main-div d-flex flex-row">
               <div className="mx-4 my-2">
                 
-                <NotificationD count={99} />
+                {/* <NotificationD count={99} /> */}
               </div>
 
               <img className="img-fluid bg-white rounded-2" src={navbarImg} />

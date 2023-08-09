@@ -1,4 +1,3 @@
-import { Flex, Box } from "@chakra-ui/react";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import { LinearProgress } from "@mui/material";
