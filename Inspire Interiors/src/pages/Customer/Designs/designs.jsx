@@ -94,24 +94,24 @@ const Designs = () => {
     <>
 
       <div className=' background flex-col'>
-        <div style={{ margin: "0px", padding: "0px" }} className='bg-light flex-col  w-98 rounded-3 mb-4 p0' >
+        <div className='bg-light flex-col  w-98 rounded-3 mb-4 p-0 m-0' >
 
-          <div className='top-bar flex-lg-2 flex-md-2 w-100 justify-content-between'>
+          <div className='top-bar flex-lg-2 flex-md-2 w-100 col-md-4 col-sm-12 col-12 fs-4 justify-content-between'>
             {/* Top designers and see all link */}
             <div className='row w-100 d-flex align-self-center '>
               <div className='d-flex w-25 h-100 justify-content-center align-self-center'>
                 <h4>Top designers </h4>
               </div>
-              <div className='d-flex col w-auto h-100 justify-content-start align-self-center' style={{ color: '#035C94' }}>
+              <div className='d-flex col w-auto h-100 justify-content-start align-self-center see-all'>
                 <h6>See All
                   <Icon.ArrowRight
-                    color="#035C94"
+                    
                     size={15}
                     className="align-center"
                   />
                 </h6>
               </div>
-              <div className='col  d-flex justify-content-end'>
+              <div className='col  col-md-4 col-sm-12 col-12 fs-4 d-flex justify-content-end'>
                 <SearchPage />
 
               </div>
@@ -121,9 +121,9 @@ const Designs = () => {
           </div>
 
           {/* Designers images */}
-          <div style={{ margin: "0px", padding: "0px" }} x className='bg-light image-bar row w-100 flex-row '>
+          <div className='bg-light image-bar  justify-content-center row w-100 flex-row m-0 p-0'>
             {designerCards.map((card, index) => (
-              <div key={index} className='col-5 col-md-4 col-lg-2 mb-3'>
+              <div key={index} className=' justify-content-center col-5 col-md-4 col-lg-2 col-sm-8 mb-3'>
                 <Card className='h-100 w-100 rounded border-0 rounded' style={{ color: '#7C828B' }}>
                   <Card.Img variant='top' src={card.image} className='rounded-3' />
                   <Card.Body className='flex-row justify-content-center'>
@@ -156,7 +156,7 @@ const Designs = () => {
             </div>
           </div>
           {/* Images */}
-          <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row w-100 justify-content-center align-self-center'>
+          <div className='d-flex flex-column fs-4 flex-lg-row flex-md-col flex-sm-col w-100 justify-content-center align-self-center'>
             {cards.map((card, index) => (
               <Col md={3} key={index} className='d-flex'>
                 <Card className='d-flex h-100 w-100 rounded border-0' >

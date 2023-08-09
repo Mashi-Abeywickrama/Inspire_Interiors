@@ -1,10 +1,12 @@
 import React from "react";
 import * as Icon from 'react-bootstrap-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Pagination, Breadcrumb } from "react-bootstrap";
+import {  Breadcrumb } from "react-bootstrap";
 import SearchPage from "../../../components/customer/filterNsearch";
 import './../../../styles/customer/designs.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import PageNumb from "../../../components/customer/pagenum";
 
 const CustomBullet = () => (
     <span style={{ color: "orange", fontSize: "1.5em", marginRight: "0.5em" }}>
@@ -89,28 +91,33 @@ const BrowseDesigns = () => {
 
     return (
         <>
-            <div className="background d-flex flex-column justify-content-between w-100 bg-light rounded Cabin-text">
+            <div className="background d-flex flex-column justify-content-between w-100 bg-light rounded Cabin-text shadow">
                 {/* Topic, search and filter */}
                 {/* Breadcrumb */}
-                <div className='bg-light top-bar py-3'>
-                    <div className='container'>
+                <div className='bg-light top-bar rounded py-3'>
+                    <div className='row container'>
                         <div className='row d-flex align-items-center'>
-                            <div className='col-md-4 col-sm-12 col-12 fs-4'>
-                                <Breadcrumb className="fw-bold breadcrumb">
+                            <div className='col-md-4 col-sm-12 col-12 fs-5'>
+                                <Breadcrumb className="fw-bold">
                                     <Breadcrumb.Item style={{ color: '#17183B !important' }}>
                                         Browse Designs
                                     </Breadcrumb.Item>
-                                    <Breadcrumb.Item active>Top Paid</Breadcrumb.Item>
+                                    <Breadcrumb.Item  className="custom-breadcrumb-divider"active>
+                                        <FontAwesomeIcon icon={faAngleRight} />
+                                        Top Paid
+                                    </Breadcrumb.Item>
                                 </Breadcrumb>
                             </div>
                             <div className='col-md-4 col-sm-6 col-6 text-center'>
                             </div>
                             <div className='col-md-4 col-sm-6 col-6 text-end'>
                                 <SearchPage />
+                                
                             </div>
                         </div>
                     </div>
                 </div>
+               
 
                 {/* Content in the Middle */}
                 <div className="py-1">
@@ -118,7 +125,7 @@ const BrowseDesigns = () => {
                         <div className='row flex-md-row flex-column'>
                             {data.map((item, index) => (
                                 <div key={index} className="col-md-6 col-sm-6 col-12">
-                                    <div className="mb-3 bg-white p-3 rounded">
+                                    <div className="mb-3 bg-white p-3 rounded shadow">
 
                                         <div className="d-flex gap-2 flex-md-row flex-column" style={{ color: "#0A033C" }}>
                                             <div className="w-25 align-self-center">
@@ -199,16 +206,8 @@ const BrowseDesigns = () => {
                 <div className="py-1 ">
                     <div className='container'>
                         <div className='row'>
-                            <div className='d-flex col text-center justify-content-center align-items-center'>
-                                <Pagination>
-                                    <Pagination.Prev />
-                                    <Pagination.Item active>{1}</Pagination.Item>
-                                    <Pagination.Item>{2}</Pagination.Item>
-                                    <Pagination.Ellipsis />
-                                    <Pagination.Item>{9}</Pagination.Item>
-                                    <Pagination.Item >{10}</Pagination.Item>
-                                    <Pagination.Next />
-                                </Pagination>
+                            <div className='d-flex col text-center justify-content-center align-items-center '>
+                            <PageNumb/>
                             </div>
                         </div>
                     </div>
