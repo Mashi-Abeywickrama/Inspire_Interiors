@@ -37,6 +37,8 @@ import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
 import ViewDesigner from "./pages/Customer/Designs/ViewDesigner";
 import MarketPlace from "./pages/Customer/Marketplace/marketPlace";
 import Cart from "./pages/Customer/marketplace/viewcart";
+import CusSetting from "./pages/Customer/setting";
+
 
 // Vendor
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
@@ -63,6 +65,7 @@ import ViewDelivery from "./pages/CustomerSupport/viewDelivery";
 import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -92,9 +95,13 @@ const router = createBrowserRouter(
         <Route index element={<MyOrder />} />
         <Route path = "designs" element={<Designs />} />
         <Route path = "browsedesigns" element={<BrowseDesigns />} />
+
         <Route path = "viewdesigner" element={<ViewDesigner />} />
         <Route path = "marketplace" element={<MarketPlace />} />
         <Route path = "cart" element={<Cart />} />
+
+         <Route path="setting" element={<CusSetting />}></Route>
+
       </Route>
 
       {/* Admin Routes */}
