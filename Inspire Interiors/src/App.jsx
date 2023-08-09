@@ -36,7 +36,6 @@ import Designs from "./pages/Customer/Designs/designs";
 import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
 import ViewProduct from "./pages/Customer/marketplace/viewProduct";
 import ViewDesigner from "./pages/Customer/Designs/ViewDesigner";
-import MarketPlace from "./pages/Customer/Marketplace/marketPlace";
 import Cart from "./pages/Customer/marketplace/viewcart";
 import CusSetting from "./pages/Customer/setting";
 import Address from "./pages/Customer/checkout/address";
@@ -70,6 +69,17 @@ import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
 import AddStock from "./pages/vendor/addStock";
+import MarketPlace from "./pages/Customer/marketplace/marketPlace";
+
+// Designer
+import DesignerLayout from "./layouts/Designer/DesignerLayout";
+import DesignerDashboard from "./pages/Designer/DesignerDashboard";
+import DesignerMyDesigns from "./pages/Designer/DesignerMyDesigns";
+import DesignerEarnings from "./pages/Designer/DesignerEarnings";
+import DesignerEarn from "./pages/Designer/DesignerEarn";
+import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
+import DesignerPromotions from "./pages/Designer/DesignerPromotions";
+
 
 
 
@@ -154,6 +164,16 @@ const router = createBrowserRouter(
         <Route path="inventory" element={<InventoryProduct />}></Route>
         <Route path="promotionrequest" element={<PromotionRequest />}></Route>
         <Route path="earnings" element={<PromotionEarnings />}></Route>
+      </Route>
+
+      <Route path="/designer/" element={<DesignerLayout />} errorElement={<Error />}>
+        <Route index element={<DesignerDashboard/> } />
+        <Route path="mydesigns" element={<DesignerMyDesigns />} />
+       
+        <Route path="earningsall" element={<DesignerEarnings />} />
+        <Route path="earnings" element={<DesignerEarn />} />
+        <Route path="bankdetails" element={<DesignerBankDetails />} />
+        <Route path="promotions" element={<DesignerPromotions />} />
       </Route>
     </>
   )
