@@ -16,7 +16,7 @@ import Login from "./pages/visitor/login";
 import Home from "./pages/visitor/home";
 import Contact from "./pages/visitor/contact";
 import Services from "./pages/visitor/services";
-
+import SignUp from "./pages/visitor/signup";
 
 import Project from './pages/visitor/project';
 import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
@@ -90,6 +90,14 @@ const router = createBrowserRouter(
         errorElement={<Error />}
       >
         <Route index element={<Login />} />
+      </Route>
+
+      <Route
+        path="/signup"
+        element={<OnlyHeaderRootlayout />}
+        errorElement={<Error />}
+      >
+        <Route index element={<SignUp />} />
       </Route>
 
       {/* Customer Routes */}
