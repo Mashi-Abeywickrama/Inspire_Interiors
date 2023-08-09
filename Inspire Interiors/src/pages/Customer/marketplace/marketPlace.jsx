@@ -1,17 +1,7 @@
-import React from 'react';
-import { Button, InputGroup, Nav, Navbar } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-import { HiFilter } from "react-icons/hi";
-import { BiSearch } from "react-icons/bi";
-import { MDBDataTableV5, MDBTable } from 'mdbreact';
-
 import { Carousel } from 'react-bootstrap';     
-import Adv1 from './../../../assets/img/adv/adv1.png';
-import LivinRoom from './../../../assets/img/customer/livinroom.jpeg';
-
-
+import Adv1 from './../../../assets/img/adv/adv1.jpg';
+import LivinRoom from './../../../assets/img/customer/livinroom.jpg';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../../styles/customer/marketplace.css';

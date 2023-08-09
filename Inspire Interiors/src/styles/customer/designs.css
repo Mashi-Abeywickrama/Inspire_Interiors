@@ -20,3 +20,32 @@
 .breadcrumb a{
     color: #000 !important;
 }
+.shadow{
+    box-shadow: 0px 16px 60px 0px rgba(86, 89, 146, 0.10);
+}
+.custom-breadcrumb-divider::before {
+    content: none !important;
+}
+
+.w-98,.top-div {
+    width: 98%;
+}
+.see-all{
+    color: #035C94 !important;; 
+}
+.three-box{
+    background-color: #035C94 !important;
+    height: 3rem;
+}
+.f-color-grey{
+    color: #575757;
+}
+.f-color-f1{
+    color: #F1F1F1;
+}
+.f-color-y{
+    color: #FFC00C;
+}
+.custom-btn {
+    text-decoration: none; 
+}
