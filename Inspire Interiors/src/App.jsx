@@ -21,6 +21,7 @@ import Services from "./pages/visitor/services";
 import Project from './pages/visitor/project';
 import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
 
+// Admin
 import Report from './pages/Admin/report';
 import Dashboard from './pages/Admin/dashboard';
 import User from './pages/Admin/user';
@@ -33,6 +34,9 @@ import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
 import MyOrder from "./pages/Customer/orders/my_orders";
 import Designs from "./pages/Customer/Designs/designs";
 import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
+import ViewDesigner from "./pages/Customer/Designs/ViewDesigner";
+import MarketPlace from "./pages/Customer/Marketplace/marketPlace";
+import Cart from "./pages/Customer/marketplace/viewcart";
 
 // Vendor
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
@@ -49,7 +53,6 @@ import PromotionEarnings from "./pages/vendor/promotionEarnings";
 import CustomizedOrders from "./pages/vendor/customizedOrders";
 import Order from "./pages/vendor/order";
 import VendorDashboard from "./pages/vendor/vendorDashboard";
-import MarketPlace from "./pages/Customer/marketplace/marketPlace";
 
 // Customer Support
 import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
@@ -89,7 +92,9 @@ const router = createBrowserRouter(
         <Route index element={<MyOrder />} />
         <Route path = "designs" element={<Designs />} />
         <Route path = "browsedesigns" element={<BrowseDesigns />} />
-         <Route path="marketplace" element={<MarketPlace />}></Route>
+        <Route path = "viewdesigner" element={<ViewDesigner />} />
+        <Route path = "marketplace" element={<MarketPlace />} />
+        <Route path = "cart" element={<Cart />} />
       </Route>
 
       {/* Admin Routes */}
