@@ -89,7 +89,7 @@ const DesignerSidebar = () => {
           </NavIcon>
           <NavText>
             <NavLink
-              to="promotions
+              to="promotion
             "
             >
               Promotions
@@ -103,7 +103,9 @@ const DesignerSidebar = () => {
               <RiSettings5Fill />
             </i>
           </NavIcon>
-          <NavText>Settings</NavText>
+          <NavText>
+            <NavLink to={"setting"}>Settings</NavLink>
+          </NavText>
         </NavItem>
       </SideNav.Nav>
     </SideNav>
