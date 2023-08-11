@@ -10,8 +10,11 @@ function CreateNewDesignPopupHook() {
 
   return (
     <div>
-      <button style={{ border: "none" }} onClick={() => SetOpen(!open)}>
-        + Create New Design &nbsp;
+      <button
+        style={{ border: "none", background: "none" }}
+        onClick={() => SetOpen(!open)}
+      >
+        <div className="text-primary">+ Add New Design &nbsp;</div>
       </button>
       {open && <Popup SetOpen={SetOpen} />}
     </div>
