@@ -89,7 +89,7 @@ const DesignerSidebar = () => {
           </NavIcon>
           <NavText>
             <NavLink
-              to="promotions
+              to="promotion
             "
             >
               Promotions

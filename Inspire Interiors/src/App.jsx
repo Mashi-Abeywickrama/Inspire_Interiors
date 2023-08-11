@@ -37,7 +37,7 @@ import DesignerEarnings from "./pages/Designer/DesignerEarnings";
 import Test from "./pages/Designer/test";
 import DesignerEarn from "./pages/Designer/DesignerEarn";
 import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
-import DesignerPromotions from "./pages/Designer/DesignerPromotions";
+import DesignerPromotion from "./pages/Designer/DesignerPromotion";
 import DesignerSetting from "./pages/Designer/DesignerSetting";
 
 const router = createBrowserRouter(
@@ -90,7 +90,9 @@ const router = createBrowserRouter(
         <Route path="earningsall" element={<DesignerEarnings />} />
         <Route path="earnings" element={<DesignerEarn />} />
         <Route path="bankdetails" element={<DesignerBankDetails />} />
-        <Route path="promotions" element={<DesignerPromotions />} />
+        <Route path="promotion" element={<DesignerPromotion />}
+      
+         />
         <Route path="setting" element={<DesignerSetting />} />
       </Route>
     </>

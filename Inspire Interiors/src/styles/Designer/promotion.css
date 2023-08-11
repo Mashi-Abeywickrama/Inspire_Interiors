@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap'); 
+
+.background-promotion {
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: inherit;
+    /* background-color: #ffffff !important; */
+    min-height: 84vh;
+    font-family: 'Cabin' !important;
+}
+
+.promotion-container{
+    width: inherit !important;
+}
+
+.background-promotion .nav-link{
+    color: rgba(0, 0, 0, 0.752) !important;
+}
+.background-promotion .nav-link.active{
+    color: #023047 !important;
+    border: none !important;
+    border-bottom: 0.25rem solid #023047 !important;
+    border-radius: 0 !important;
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+.card-wid{
+    width: auto;
+}
+
+.Cabin-text{
+    font-family: "Cabin" !important;
+}
+
+.ignore-btn{
+    color: #54657E;
+    background-color: #FFFFFF;
+    border: 1px solid #54657E;
+}
+
+.accepted-btn{
+    color: #007F00;
+    background-color: #FFFFFF;
+    border: 1px solid #007F00;
+}
+
+@media only screen and (max-width: 630px) {
+    .max-width {
+        /* max-width:min-content; */
+            max-width: 300px;
+    }
+    .background-total{
+        max-width: 300px;
+    }
+    
+    }
