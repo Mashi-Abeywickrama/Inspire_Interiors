@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import {React, useState } from "react";
+
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -63,7 +63,6 @@ import VendorDashboard from "./pages/vendor/vendorDashboard";
 import AddStock from "./pages/vendor/addStock";
 import Complaints from "./pages/vendor/complaints";
 import VendorSetting from "./pages/vendor/setting";
-import AddStock from "./pages/vendor/addStock";
 
 // Customer Support
 import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
@@ -125,19 +124,19 @@ const router = createBrowserRouter(
         element={<CDashboardlayout />}
         errorElement={<Home />}
       >
-        <Route index element={<CustomerDashboard />} />
-        <Route path="dashboard" element={<CustomerDashboard />}></Route>
-        <Route path="myorder" element={<MyOrder />}></Route>
+        <Route index element={<MyOrder />} />
+        <Route path="dashboard" element={<CustomerDashboard />} />
+         <Route path = "orders" element={<MyOrder />} />
         <Route path = "designs" element={<Designs />} />
-        <Route path = "browsedesigns" element={<BrowseDesigns />} />
+        <Route path = "designs/browsedesigns" element={<BrowseDesigns />} />
         <Route path="viewproduct" element={<ViewProduct />}></Route>
-        <Route path = "viewdesigner" element={<ViewDesigner />} />
+        <Route path = "designs/viewdesigner" element={<ViewDesigner />} />
         <Route path = "marketplace" element={<MarketPlace />} />
         <Route path = "cart" element={<Cart />} />
         <Route path = "address" element={<Address />} />
         <Route path = "payment" element={<PaymentMethod />} />
         <Route path = "shipping" element={<ShippingMethod />} />
-         <Route path="setting" element={<CusSetting />}></Route>
+         <Route path="settings" element={<CusSetting />}></Route>
       </Route>
 
       {/* Admin Routes */}
