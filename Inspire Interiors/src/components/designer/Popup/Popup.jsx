@@ -14,7 +14,7 @@ function Popup({ SetOpen }) {
             className="text-primary"
             style={{ left: "30%", position: "absolute" }}
           >
-            Create a New Design
+            Add New Design
           </h4>
           <a class="close" href="#" onClick={closePopup}>
             &times;
@@ -23,7 +23,9 @@ function Popup({ SetOpen }) {
           <br></br>
 
           <form className="row g-3">
+            <br></br>
             <div className="col-12">
+              <br></br>
               <label for="design name" className="text-secondary form-label">
                 Design Name
               </label>

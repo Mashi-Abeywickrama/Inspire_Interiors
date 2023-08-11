@@ -94,6 +94,14 @@ import DesignerPromotions from "./pages/Designer/DesignerPromotions";
 import AlertPopup from "./components/AlertPopup";
 
 
+import Popup from "./components/designer/Popup/Popup";
+import DesignerEarnings from "./pages/Designer/DesignerEarnings";
+import Test from "./pages/Designer/test";
+import DesignerEarn from "./pages/Designer/DesignerEarn";
+import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
+import DesignerPromotion from "./pages/Designer/DesignerPromotion";
+import DesignerSetting from "./pages/Designer/DesignerSetting";
+import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -195,17 +203,24 @@ const router = createBrowserRouter(
         <Route path="complaints" element={<Complaints />}></Route>
         <Route path="setting" element={<VendorSetting />}></Route>
       </Route>
-
-
-      {/* Designer Routes */}
-      <Route path="/designer/" element={<DesignerLayout />} errorElement={<Error />}>
-        <Route index element={<DesignerDashboard/> } />
+      <Route
+        path="/designer"
+        element={<DesignerLayout />}
+        errorElement={<Error />}
+      >
+        <Route index element={<DesignerDashboard />} />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
-       
+        <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />
         <Route path="earnings" element={<DesignerEarn />} />
         <Route path="bankdetails" element={<DesignerBankDetails />} />
-        <Route path="promotions" element={<DesignerPromotions />} />
+        <Route path="promotion" element={<DesignerPromotion />} />
+        <Route
+          path="promotion/earnings"
+          element={<DesignerPromotionEarnings />}
+        />
+
+        <Route path="setting" element={<DesignerSetting />} />
       </Route>
 
 
