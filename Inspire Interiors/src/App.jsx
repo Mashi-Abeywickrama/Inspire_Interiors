@@ -16,7 +16,7 @@ import Login from "./pages/visitor/login";
 import Home from "./pages/visitor/home";
 import Contact from "./pages/visitor/contact";
 import Services from "./pages/visitor/services";
-
+import SignUp from "./pages/visitor/signup";
 
 import Project from './pages/visitor/project';
 import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
@@ -37,12 +37,12 @@ import Designs from "./pages/Customer/Designs/designs";
 import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
 import ViewProduct from "./pages/Customer/marketplace/viewProduct";
 import ViewDesigner from "./pages/Customer/Designs/ViewDesigner";
-import MarketPlace from "./pages/Customer/Marketplace/marketPlace";
 import Cart from "./pages/Customer/marketplace/viewcart";
 import CusSetting from "./pages/Customer/setting";
 import Address from "./pages/Customer/checkout/address";
 import PaymentMethod from "./pages/Customer/checkout/payment";
 import ShippingMethod from "./pages/Customer/checkout/shipping";
+import MarketPlace from "./pages/Customer/marketplace/marketPlace";
 
 
 // Vendor
@@ -63,6 +63,7 @@ import VendorDashboard from "./pages/vendor/vendorDashboard";
 import AddStock from "./pages/vendor/addStock";
 import Complaints from "./pages/vendor/complaints";
 import VendorSetting from "./pages/vendor/setting";
+import AddStock from "./pages/vendor/addStock";
 
 // Customer Support
 import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
@@ -76,11 +77,24 @@ import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdas
 
 
 
+// Designer
+import DesignerLayout from "./layouts/Designer/DesignerLayout";
+import DesignerDashboard from "./pages/Designer/DesignerDashboard";
+import DesignerMyDesigns from "./pages/Designer/DesignerMyDesigns";
+import DesignerEarnings from "./pages/Designer/DesignerEarnings";
+import DesignerEarn from "./pages/Designer/DesignerEarn";
+import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
+import DesignerPromotions from "./pages/Designer/DesignerPromotions";
+import AlertPopup from "./components/AlertPopup";
+
+
+
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+    
 
       <Route path="/" element={<Rootlayout />} errorElement={<Error />}>
         <Route index element={<Home />} />
@@ -94,7 +108,15 @@ const router = createBrowserRouter(
         element={<OnlyHeaderRootlayout />}
         errorElement={<Error />}
       >
-        <Route index element={<Login />} />
+        <Route index element={<><AlertPopup /><Login /></>} />
+      </Route>
+
+      <Route
+        path="/signup"
+        element={<OnlyHeaderRootlayout />}
+        errorElement={<Error />}
+      >
+        <Route index element={<SignUp />} />
       </Route>
 
       {/* Customer Routes */}
@@ -163,6 +185,16 @@ const router = createBrowserRouter(
         <Route path="earnings" element={<PromotionEarnings />}></Route>
         <Route path="complaints" element={<Complaints />}></Route>
         <Route path="setting" element={<VendorSetting />}></Route>
+      </Route>
+
+      <Route path="/designer/" element={<DesignerLayout />} errorElement={<Error />}>
+        <Route index element={<DesignerDashboard/> } />
+        <Route path="mydesigns" element={<DesignerMyDesigns />} />
+       
+        <Route path="earningsall" element={<DesignerEarnings />} />
+        <Route path="earnings" element={<DesignerEarn />} />
+        <Route path="bankdetails" element={<DesignerBankDetails />} />
+        <Route path="promotions" element={<DesignerPromotions />} />
       </Route>
     </>
   )

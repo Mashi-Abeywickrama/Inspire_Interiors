@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap');
+
+.alert-custom-box  {
+    position: fixed !important;
+    right: 10px !important;
+    bottom: 10px !important;
+    width: 200px !important;
+    height: 50px !important;
+    text-align: center !important;
+    align-items: center !important;
+    font-size: 15px !important;
+    font-family: 'Cabin' !important;
+    font-weight: 700 !important;
+    
+}
+.alert-custom-box .css-15ry4cn-MuiPaper-root-MuiAlert-root{
+   width: inherit;
+   margin: 0px !important;
+   border: 2px solid #2e7d32 !important;
+   font-family: 'Cabin' !important;
+    font-weight: 700 !important;
+    color: #2e7d32 !important;
+    border-radius: 10px !important;
+   
+}
+
+.alert-custom-box .css-p2yfpk-MuiPaper-root-MuiAlert-root {
+    color: #d32f2f !important;
+    width: inherit;
+    border: 2px solid #d32f2f !important;
+    font-family: 'Cabin' !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+}

@@ -103,7 +103,7 @@ const COLORS = ['#035C94', '#F8F8F9', '#FFC00C'];
 
 const CustomerSupportDashboard = () => (
     <>
-        <div className='dashboard-container me-3'>
+        <div className='dashboard-container support-dashboard me-3'>
             <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-5'>
                 <div className='d-flex flex-column gap-3'>
                     <div className='d-flex flex-row gap-3'>

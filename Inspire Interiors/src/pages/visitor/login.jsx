@@ -18,6 +18,7 @@ import * as Icon from 'react-bootstrap-icons';
 
 
 import './../../styles/home.css';
+import useAlert from '../../components/useAlert';
   
 const Login = () => {
 
@@ -34,6 +35,8 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+
+  const { setAlert } = useAlert();
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -48,11 +51,15 @@ const Login = () => {
         if (userType === 'admin') {
           navigate('/admin');
         } else if (userType === 'customer') {
-          navigate('/customer');
+          setAlert('Successful Login!', 'success');
+          setTimeout(() => {
+            navigate('/customer');
+        }, 3000);
         }
       }
     } catch (error) {
       console.error('Authentication failed');
+      setAlert('Incorrect Credintials!', 'error');
     }
   };
 
@@ -109,14 +116,14 @@ const Login = () => {
               {/* login form */}
               <Form className='d-flex row w-92 gap-2 ' onSubmit={handleLogin}>
                 <Button
-                  className="mb-4 w-100 btnstyle btn-lg"
+                  className="mb-4 w-100 btnstyle bg-transparent border-0 shadow-xs btn-lg"
                 >
                   <img src={googleIcon} alt="Google" className="me-2 google-icon" />
                   Login with Google
                 </Button>
 
                 <Button
-                  className="mb-4 w-100 btnstyle btn-lg"
+                  className="mb-4 w-100 btnstyle bg-transparent border-0 shadow-xs btn-lg"
                   >
                   <img src={facebookIcon} alt="Facebook" className="me-2 facebook-icon" />
                   Login with Facebook
@@ -129,11 +136,23 @@ const Login = () => {
                 </div>
 
                 <Form.Group controlId="formName" >
-                  <Form.Control type="text" placeholder="Name" size='lg' className='mb-3' value={username}   onChange={(e) => setUsername(e.target.value)} />
+                  <Form.Control
+                  type="text"
+                  placeholder="Name"
+                  size='lg'
+                  className='mb-3 bg-transparent'
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group controlId="formPassword">
-                  <Form.Control type="password" placeholder="Password" size='lg' value={password}  onChange={(e) => setPassword(e.target.value)}/>
+                  <Form.Control
+                  type="password"
+                  className='mb-3 bg-transparent'
+                  placeholder="Password"
+                  size='lg'
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)}/>
                 </Form.Group>
 
                 <div className='d-flex row justify-content-center' controlId="fprememberMe">
@@ -175,6 +194,7 @@ const Login = () => {
 
 
         </div>
+       
 
       </div>
     </>

@@ -10,7 +10,8 @@ import java.util.Date;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Use GenerationType.IDENTITY for identity columns
+    @Column(name = "userid")
     private int userid;
 
     @Column(name = "name")
@@ -81,6 +82,37 @@ public class User {
     public String getType() {
         return type;
     }
+
+    //need setters
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email= email;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password= password;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
 
 
 

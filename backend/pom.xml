@@ -13,7 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>dev</name>
 	<description>A Seamless Design Eco System</description>
-	<properties>
+	<properties>	
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
