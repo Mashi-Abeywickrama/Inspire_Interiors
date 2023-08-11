@@ -61,8 +61,8 @@ const ViewCustomRequest = () => {
                                 <div className="d-flex flex-column">
                                     <p className="fs-3 fw-bold Cabin-text">About Customer Avocado</p>
                                 </div>
-                                <div className="d-flex flex-column flex-lg-row flex-md-row gap-4">
-                                    <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-3 rounded-4 border" src={Customer} />
+                                <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
+                                    <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-2 rounded-4 border" src={Customer} />
                                     <div className="d-flex flex-column">
                                         <p className="fs-4 fw-bold" style={{ color: "#3D3D3D"}}>Victor Avocado</p>
                                         <div className="d-flex flex-row gap-2">
@@ -71,7 +71,7 @@ const ViewCustomRequest = () => {
                                         </div>
                                         <p className="fs-6 fw-bold Cabin-text" style={{ color: "#023047"}}>Huzefa Bagwala</p>
                                         <p className="fs-6 fw-normal Cabin-text" style={{ color: "#023047", fontSize: "16px", fontWeight: "400" }}>1131 Dusty Townline, Jacksonville, TX 40322</p>
-                                        <button className="contact-btn float-end Cabin-text">Contact Customer</button>
+                                        <button className="contact-btn float-end Cabin-text w-75">Contact Customer</button>
                                     </div>
                                 </div>
                             </div>

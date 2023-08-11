@@ -31,6 +31,7 @@ import Salary from './pages/Admin/salary';
 
 // Customer
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
+import CustomerDashboard from "./pages/Customer/customerDashboard";
 import MyOrder from "./pages/Customer/orders/my_orders";
 import Designs from "./pages/Customer/Designs/designs";
 import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
@@ -59,6 +60,9 @@ import PromotionEarnings from "./pages/vendor/promotionEarnings";
 import CustomizedOrders from "./pages/vendor/customizedOrders";
 import Order from "./pages/vendor/order";
 import VendorDashboard from "./pages/vendor/vendorDashboard";
+import AddStock from "./pages/vendor/addStock";
+import Complaints from "./pages/vendor/complaints";
+import VendorSetting from "./pages/vendor/setting";
 
 // Customer Support
 import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
@@ -69,7 +73,8 @@ import ViewDelivery from "./pages/CustomerSupport/viewDelivery";
 import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
-import AddStock from "./pages/vendor/addStock";
+
+
 
 
 
@@ -98,7 +103,9 @@ const router = createBrowserRouter(
         element={<CDashboardlayout />}
         errorElement={<Home />}
       >
-        <Route index element={<MyOrder />} />
+        <Route index element={<CustomerDashboard />} />
+        <Route path="dashboard" element={<CustomerDashboard />}></Route>
+        <Route path="myorder" element={<MyOrder />}></Route>
         <Route path = "designs" element={<Designs />} />
         <Route path = "browsedesigns" element={<BrowseDesigns />} />
         <Route path="viewproduct" element={<ViewProduct />}></Route>
@@ -154,6 +161,8 @@ const router = createBrowserRouter(
         <Route path="inventory" element={<InventoryProduct />}></Route>
         <Route path="promotionrequest" element={<PromotionRequest />}></Route>
         <Route path="earnings" element={<PromotionEarnings />}></Route>
+        <Route path="complaints" element={<Complaints />}></Route>
+        <Route path="setting" element={<VendorSetting />}></Route>
       </Route>
     </>
   )

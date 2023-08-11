@@ -296,7 +296,7 @@ const ViewStocks = () => (
     <>
 
         <div className="stock-container background-total accordion bg-white rounded-3 mb-4 me-3">
-            <div className="col-12 d-flex flex-row justify-content-between">
+            <div className="col-12 d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
               <div className='d-flex flex-row gap-4 p-3 '>
                 <p className="text-dark fs-3 fw-bold Cabin-text ">Inventory</p>
                 <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />

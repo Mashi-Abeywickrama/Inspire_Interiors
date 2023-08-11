@@ -131,7 +131,7 @@ const ViewOrder = () => {
                         </div>
                     </div>
                 </div>
-                <div className="divider my-1" />
+                <div className="divider my-1 mx-2" />
                 <button className="my-3 Cabin-text" style={{ color: "#FF5C60", background: "#FFFFFF", borderRadius: "8px", border: "1px solid #FF5C60" }}>Cancel Order</button>
 
             </div>

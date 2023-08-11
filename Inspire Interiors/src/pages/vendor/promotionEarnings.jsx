@@ -269,7 +269,7 @@ const PromotionEarnings = () => (
     <>
 
         <div className="stock-container background-total accordion bg-white rounded-3 mb-4 me-3">
-            <div className="col-12 d-flex flex-row gap-4 p-3 justify-content-between">
+            <div className="col-12 d-flex flex-column flex-lg-row flex-md-row gap-4 p-3 justify-content-between">
                 <p className="text-dark fs-3 fw-bold Cabin-text ">Earnings From Paid Promotions</p>
                 <div className='d-flex flex-row gap-3 mt-3'>
                     <Icon.Bank size={25} color='#035C94' />

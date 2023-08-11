@@ -45,6 +45,7 @@ const radarData = [
 const smallTableData = {
     columns: [
         {
+          label: 'PRODUCT NAME',
           field: 'product',
           sort: 'asc',
           width: 150
@@ -235,112 +236,125 @@ const style = {
     left: 200,
 };
 
-const Order = () => (
-    <>
-        <div className='orders-container rounded-3 mb-4 me-5'>
-            <div className='col-12 d-flex flex-column flex-lg-row flex-md-row gap-3'>
-                <div className='col-lg-8 bg-white rounded-3 shadow p-4'>
-                    <div className='d-flex flex-row gap-2'>
-                        <p className='fs-3 fw-bold Cabin-text'>Orders</p>
-                        <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                        <p className='fs-3 fw-bold Cabin-text'>All</p>
-                    </div>
-                    <div>
-                        <Tabs
-                            defaultActiveKey="all"
-                            id="uncontrolled-tab-example"
-                            className="mb-3 bg-white tab"
-                        >
-                            <Tab eventKey="all" title="All">
-                                <div className='p-4'>
-
-                                    <MDBDataTableV5 responsive
-                                        striped
-                                        bordered
-                                        small
-                                        data={largeTableData}
-                                        sortable={true}
-                                        exportToCSV={true}
-                                        paging={true}
-                                        searching={true} />
-                                </div>
-                            </Tab>
-                            <Tab eventKey="New" title="New">
-                                New
-                            </Tab>
-                            <Tab eventKey="Ongoing" title="Ongoing">
-                                Ongoing
-                            </Tab>
-                            <Tab eventKey="Completed" title="Completed">
-                                Completed
-                            </Tab>
-                            <Tab eventKey="Delayed" title="Delayed">
-                                Delayed
-                            </Tab>
-                            <Tab eventKey="Canceled" title="Canceled">
-                                Canceled
-                            </Tab>
-                        </Tabs>
-                    </div>
-                </div>
-                <div className='col-lg-4'>
-                    <div className='d-flex flex-column gap-3'>
-                        <div className='col-lg-12 bg-white rounded-3 shadow p-4'>
-                            <div className='d-flex flex-row gap-3'>
-                                <p className='fs-3 fw-bold Cabin-text'>Customized Orders</p>
-                                <p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p>
-                            </div>
-                            <div className=''>
-
-                                <MDBDataTableV5 responsive
-                                    striped
-                                    bordered
-                                    small
-                                    data={smallTableData}
-                                    sortable={false}
-                                    exportToCSV={true}
-                                    paging={false}
-                                    searching={false} />
-
-                            </div>
+const Order = () => {
+    return (
+        <>
+            <div className='orders-container background-total accordion rounded-3 mb-4 me-5'>
+                <div className='col-12 d-flex flex-column flex-lg-row flex-md-row gap-3'>
+                    <div className='col-lg-8 bg-white rounded-3 shadow p-4'>
+                        <div className='d-flex flex-row gap-2'>
+                            <p className='fs-3 fw-bold Cabin-text'>Orders</p>
+                            <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
+                            <p className='fs-3 fw-bold Cabin-text'>All</p>
                         </div>
-                        <div className='col-lg-12 bg-white rounded shadow p-4'>
-                            <div className='d-flex flex-column'>
-                                <p className='fs-3 fw-bold Cabin-text m-0'>Order Summary</p>
-                                <p className='fs-5 fw-semibold Cabin-text' style={{ color: "#A0AEC0" }}>this month</p>
-                            </div>
-                            <RadialBarChart
-                                width={300}
-                                height={400}
-                                cx={150}
-                                cy={150}
-                                innerRadius={20}
-                                outerRadius={140}
-                                barSize={15}
-                                data={radarData}
+                        <div>
+                            <Tabs
+                                defaultActiveKey="all"
+                                id="uncontrolled-tab-example"
+                                className="mb-3 bg-white tab"
                             >
-                                <RadialBar
-                                    minAngle={15}
-                                    background
-                                    clockWise
-                                    dataKey="uv" />
-                                <Legend
-                                    iconSize={10}
-                                    width={120}
-                                    height={140}
-                                    layout="horizonal"
-                                    horizonalAlign="middle"
-                                    wrapperStyle={style} />
-                            </RadialBarChart>
+                                <Tab eventKey="all" title="All">
+                                    <div className='p-4'>
+
+                                        <MDBDataTableV5 responsive
+                                            striped
+                                            bordered
+                                            small
+                                            data={largeTableData}
+                                            sortable={true}
+                                            exportToCSV={true}
+                                            paging={true}
+                                            searching={true} />
+                                    </div>
+                                </Tab>
+                                <Tab eventKey="New" title="New">
+                                    New
+                                </Tab>
+                                <Tab eventKey="Ongoing" title="Ongoing">
+                                    Ongoing
+                                </Tab>
+                                <Tab eventKey="Completed" title="Completed">
+                                    Completed
+                                </Tab>
+                                <Tab eventKey="Delayed" title="Delayed">
+                                    Delayed
+                                </Tab>
+                                <Tab eventKey="Canceled" title="Canceled">
+                                    Canceled
+                                </Tab>
+                            </Tabs>
                         </div>
                     </div>
+                    <div className='col-lg-4'>
+                        <div className='d-flex flex-column gap-3'>
+                            <div className='col-lg-12 bg-white rounded-3 shadow p-4'>
+                                <div className='d-flex flex-row gap-3'>
+                                    <p className='fs-3 fw-bold Cabin-text'>Customized Orders</p>
+                                    <p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p>
+                                </div>
+                                <Tabs
+                                    defaultActiveKey="New"
+                                    id="uncontrolled-tab-example"
+                                    className="mb-3 bg-white tab"
+                                >
+                                    <Tab eventKey="New" title="New">
+                                        <div className=''>
+
+                                            <MDBDataTableV5 responsive
+                                                striped
+                                                bordered
+                                                small
+                                                data={smallTableData}
+                                                sortable={false}
+                                                exportToCSV={true}
+                                                paging={false}
+                                                searching={false} />
+
+                                        </div>
+                                    </Tab>
+                                    <Tab eventKey="Accepted" title="Accepted">
+                                        Accepted
+                                    </Tab>
+                                </Tabs>
+                            </div>
+                            <div className='col-lg-12 bg-white rounded shadow p-4'>
+                                <div className='d-flex flex-column'>
+                                    <p className='fs-3 fw-bold Cabin-text m-0'>Order Summary</p>
+                                    <p className='fs-5 fw-semibold Cabin-text' style={{ color: "#A0AEC0" }}>this month</p>
+                                </div>
+                                <RadialBarChart
+                                    width={300}
+                                    height={400}
+                                    cx={150}
+                                    cy={150}
+                                    innerRadius={20}
+                                    outerRadius={140}
+                                    barSize={15}
+                                    data={radarData}
+                                >
+                                    <RadialBar
+                                        minAngle={15}
+                                        background
+                                        clockWise
+                                        dataKey="uv" />
+                                    <Legend
+                                        iconSize={10}
+                                        width={120}
+                                        height={140}
+                                        layout="horizonal"
+                                        horizonalAlign="middle"
+                                        wrapperStyle={style} />
+                                </RadialBarChart>
+                            </div>
+                        </div>
 
 
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </>
-)
+        </>
+    );
+}
 
 export default Order;

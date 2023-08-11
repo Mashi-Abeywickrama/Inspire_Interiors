@@ -1,11 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap'); 
 
-.background{
-    background-color: #F1F1F1;
-    height: 100%;
+.background-sent{
+    min-height: 84vh;
+    font-family: "Cabin" !important;
 }
-.sendpromotion-container{
+
+.receivepromotion-container{
     width: inherit !important;
+}
+
+.background-sent .nav-link{
+    color: rgba(0, 0, 0, 0.752) !important;
+}
+.background-sent .nav-link.active{
+    color: #023047 !important;
+    border: none !important;
+    border-bottom: 0.25rem solid #023047 !important;
+    border-radius: 0 !important;
+    font-weight: 900;
+    font-size: 1.1rem;
 }
 
 .card-wid{

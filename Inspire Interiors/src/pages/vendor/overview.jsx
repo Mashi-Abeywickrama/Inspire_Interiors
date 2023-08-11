@@ -187,15 +187,15 @@ const OverView = () => {
           <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Overview</p>
         </div>
         <div className='d-flex flex-column gap-2'>
-          <div className='d-flex flex-column flex-lg-row flex-md-row gap-4 justify-content-around'>
+          <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4 justify-content-around'>
             <div className="col-lg-4 bg-white rounded-3 my-2 shadow px-3 py-2">
               <p className='fs-3 fw-bold Cabin-text' style={{ color: "#023047"}}>Best Sellers</p>
               <Doughnut data={doughnutData} />;
             </div>
             <div className="col-lg-4 bg-white rounded-3 my-2 shadow px-3 py-2">
               <p className='fs-3 fw-bold Cabin-text' style={{ color: "#023047"}}>Sell History</p>
-              <ResponsiveContainer width="100%" height="75%">
-                <BarChart width={250} height={50} data={bardata}>
+              <ResponsiveContainer width="90%" height="75%">
+                <BarChart width={100} height={50} data={bardata}>
                   <defs>
                     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="50%" stopColor="#035C94" stopOpacity={1} />
