@@ -3,8 +3,11 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import { NavLink } from 'react-router-dom'; // Use NavLink for active class
 import { useLocation } from "react-router-dom";
 import { RiBuilding2Fill, RiStore2Fill, RiBrushFill, RiShoppingBagFill, RiDashboardFill, RiSettings5Fill } from "react-icons/ri";
+import { TbLogout2 } from "react-icons/tb";
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './../../styles/customer/sidebar.css';
+
+import * as Icon from 'react-bootstrap-icons';
 
 
 
@@ -21,7 +24,7 @@ const SidebarDashboard = () => {
     const splitLocation = pathname.split("/");
 
     const [selected, setSelected] = useState(splitLocation[2]); // State to track selected link
-    console.log(splitLocation[2]);
+    // console.log(splitLocation[2]);
 
   return (
     <SideNav onSelect={(selected) => setSelected(splitLocation[2])}>
@@ -85,8 +88,20 @@ const SidebarDashboard = () => {
             <NavLink to="/customer/settings" activeClassName="active">Settings</NavLink>
           </NavText>
         </NavItem>
+
+        <NavItem eventKey="logout">
+          <NavIcon>
+            <NavLink to="/" activeClassName="active"><i><TbLogout2 /></i></NavLink>
+          </NavIcon>
+          <NavText>
+            <NavLink to="/" activeClassName="active">Logout</NavLink>
+          </NavText>
+        </NavItem>
+
+        
       </SideNav.Nav>
     </SideNav>
+    
   );
 };
 

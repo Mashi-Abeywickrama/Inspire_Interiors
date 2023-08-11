@@ -320,7 +320,7 @@ export default function commissionView() {
           </div>
         </div>
 
-        <div className=" d-flex flex-column gap-2 col-md-3 flex-fill">
+        <div className=" admin-commission-view d-flex flex-column gap-2 col-md-3 flex-fill">
           <div className="d-flex bg-white shadow rounded-4 flex-column p-3 gap-1">
             <img className="mx-auto" src={Img} alt="Arpico Furniture" />
             <div>

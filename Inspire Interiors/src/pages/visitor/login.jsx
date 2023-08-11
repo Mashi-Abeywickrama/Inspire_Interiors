@@ -4,6 +4,8 @@ import Header from "../../components/header";
 
 import axios from 'axios';
 
+import {Link} from 'react-router-dom';
+
 
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
@@ -185,7 +187,7 @@ const Login = () => {
 
               <h6 className='text-center'
                 style={{color:'#023047'}}>
-                  Register
+                 <Link to="/signup"> Register </Link> 
               </h6>
 
             </div>
