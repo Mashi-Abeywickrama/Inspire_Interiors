@@ -4,7 +4,7 @@ import {
 } from "mdb-react-ui-kit";
 import { FaBookmark } from "react-icons/fa";
 
-
+import { Link } from 'react-router-dom';
 
 const cartItems = [
     {
@@ -12,19 +12,25 @@ const cartItems = [
         name: "Ball Chair",
         color: "Orange Cushion with White Shell",
         price: 7200.00,
-        imageUrl: "https://fr.aarniooriginals.com/cdn/shop/products/aarnio_originals_ballchair_orange_03_1200x.png?v=1676555615", 
-    },{
+        imageUrl: "https://fr.aarniooriginals.com/cdn/shop/products/aarnio_originals_ballchair_orange_03_1200x.png?v=1676555615",
+    }, {
+        id: 1,
+        name: "4 Elements Wall Art",
+        color: "Metallic Black",
+        price: 3295.00,
+        imageUrl: "https://hencely.com/cdn/shop/products/4_seasons_metal_wall_decor_wall_hanging_wall_panels.jpg?v=1580109762",
+    }, {
         id: 1,
         name: "Field Lounge Chair",
         color: "Tait Blush",
         price: 3295.00,
-        imageUrl: "https://www.bludot.com.au/media/catalog/product/f/d/fd1_lngchr_bh_frontlow-field-lounge-chair-tait-blush_2.jpg?optimize=medium&fit=bounds&height=1200&width=1500&canvas=1500:1200", 
-    },{
+        imageUrl: "https://www.bludot.com.au/media/catalog/product/f/d/fd1_lngchr_bh_frontlow-field-lounge-chair-tait-blush_2.jpg?optimize=medium&fit=bounds&height=1200&width=1500&canvas=1500:1200",
+    }, {
         id: 1,
         name: "ARCH Chair",
         color: "Pebble Green Boucle Fabric with Black Frame",
         price: 999.00,
-        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTbxvGYSAn0cEqXuep3SzW92wJGK5Fh38Emg&usqp=CAU", 
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTbxvGYSAn0cEqXuep3SzW92wJGK5Fh38Emg&usqp=CAU",
     },
     // Add more items...
 ];
@@ -54,7 +60,7 @@ const Cart = () => {
 
                     <div className="d-flex gap-2">
                         {/* cart */}
-                        <div className="d-flex m-0 p-2">
+                        <div className="d-flex m-0 p-2 h-auto">
                             <MDBContainer className="rounded p-0 ">
                                 <MDBRow className="justify-content-center align-items-center h-100">
                                     {cartItems.map((item, index) => (
@@ -106,8 +112,8 @@ const Cart = () => {
                         </div>
 
                         {/* Summery */}
-                        <div className="d-flex w-40 h-auto me-3 ">
-                            <div className=" border rounded p-1 w-98 h-100 f-color-summary">
+                        <div className="d-flex w-40 me-3 ">
+                            <div className=" border rounded p-1 w-98 h-custom f-color-summary">
                                 <div className="m-2">
                                     <p className="fs-4 fw-bold ">
                                         Order Summary
@@ -173,9 +179,11 @@ const Cart = () => {
                                         <FaBookmark className="ms-2" /> {/* Bookmark icon */}
                                     </div>
                                     {/* checkout btn */}
-                                    <div className="d-flex justify-content-end w-100 mb-2">
-                                        <button className="btn btn-color w-100">Proceed to Checkout</button>
-                                    </div>
+                                    <Link to='/customer/checkout/address'>
+                                        <div className="d-flex justify-content-end w-100 mb-2">
+                                            <button className="btn btn-color w-100">Proceed to Checkout</button>
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

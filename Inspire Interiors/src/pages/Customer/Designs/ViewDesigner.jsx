@@ -4,6 +4,7 @@ import { Pagination, Breadcrumb, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import './../../../styles/customer/designs.css';
+import { Link } from 'react-router-dom';
 import Customer from './../../../assets/img/vendor/customer.png';
 
 const generateStars = (rate) => {
@@ -63,10 +64,14 @@ const ViewDesigner = () => {
                             <div className='col-md-4 col-sm-12 col-12 fs-5'>
                                 <Breadcrumb className="fw-bold">
                                     <Breadcrumb.Item>
-                                        Designers
+                                        Designs
                                     </Breadcrumb.Item>
                                     <Breadcrumb.Item className="custom-breadcrumb-divider" active>
-                                        <FontAwesomeIcon icon={faAngleRight} />
+                                        <FontAwesomeIcon icon={faAngleRight} className='me-2' />
+                                        Designer
+                                    </Breadcrumb.Item>
+                                    <Breadcrumb.Item className="custom-breadcrumb-divider" active>
+                                        <FontAwesomeIcon icon={faAngleRight} className='me-2' />
                                         Victor Avocado
                                     </Breadcrumb.Item>
                                 </Breadcrumb>
@@ -151,7 +156,7 @@ const ViewDesigner = () => {
 
                                 </div>
                                 <div className='see-all justify-content-center align-items-center btn btn-link custom-btn'>
-                                <i className="fas fa-plus mr-1 "></i> Request New Order
+                                    <i className="fas fa-plus mr-1 "></i> Request New Order
                                 </div>
 
                             </div>
@@ -198,17 +203,19 @@ const ViewDesigner = () => {
                     <div className='bg-light justify-content-center image-bar row w-100 flex-row m-0 p-0 '>
                         {designerCards.map((card, index) => (
                             <div key={index} className='d-flex col-5 col-md-4 col-lg-2 col-sm-8 mb-3'>
-                                <Card className='h-100 border-0 rounded' style={{ color: '#7C828B' }}>
-                                    <Card.Img
-                                    variant='top'
-                                    src={card.image}
-                                    className='p-2 rounded-3 '/>
-                                    <Card.Body className='flex-row justify-content-center'>
-                                        <Card.Text className='d-flex m-0 lead fs-6 justify-content-center' >
-                                            {card.name}
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
+                                <Link to='/customer/designs/viewdesigner'>
+                                    <Card className='h-100 border-0 rounded' style={{ color: '#7C828B' }}>
+                                        <Card.Img
+                                            variant='top'
+                                            src={card.image}
+                                            className='p-2 rounded-3 ' />
+                                        <Card.Body className='flex-row justify-content-center'>
+                                            <Card.Text className='d-flex m-0 lead fs-6 justify-content-center' >
+                                                {card.name}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
                             </div>
                         ))}
                     </div>
