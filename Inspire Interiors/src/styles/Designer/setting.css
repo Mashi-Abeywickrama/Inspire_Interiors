@@ -1,0 +1,179 @@
+.background-setting{
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: inherit;
+    background-color: #ffffff !important;
+    min-height: 84vh;
+    font-family: 'Cabin' !important;
+}
+.icon-cover{
+    background-color:#EDEEF2;
+    border-radius: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+    color: #83859C;
+}
+.setting-tab{
+    width: 40%;
+    border-bottom: none !important;
+    border-right:1px solid #EDEEF2;
+}
+.setting-tab button{
+    width: 100%;
+    border: 1px solid #EDEEF2 !important;
+    margin-bottom: 8px !important;
+}
+
+.background-setting .tab-content{
+    width: 60% !important;
+}
+
+.background-setting .tab{
+    border-bottom: none !important;
+}
+
+
+.setting-nav-main{
+    font-family: 'Cabin' !important;
+    color: #2B2B43;
+}
+.setting-nav-sub{
+    font-family: 'Cabin' !important;
+    color: #545563;
+    font-size: 12px;
+}
+
+.background-setting .nav-tabs .nav-link.active{
+    .icon-cover{
+            background-color:#035C94;
+            color: #FFF;
+        }
+    .setting-tab button{
+        width: 100%;
+        border: 2px solid #035C94 !important;
+        
+    }
+
+    background-color: #F3F4FF !important;
+    
+
+}
+
+.background-setting .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    
+    border:2px solid #035C94 !important; 
+}
+
+.account-setting-session .bold-cabin {
+    font-weight: 600 ;
+}
+
+.account-setting-session .sub-heading{
+    font-size: 13px;
+    color: #545563;
+}
+
+.setting-profile-img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.change-profilepic{
+    background-color: white;
+    color: #035C94;
+    border: 1px solid #035C94;
+    height: 40px;
+}
+.remove-profilepic{
+     background-color: white;
+    color: #83859C;
+   
+    height: 45px;
+}
+
+.disabled-setting-view{
+    background-color: white !important;
+}
+
+.form-check-input:checked {
+    background-color: #035C94 !important;
+    border-color: #035C94 !important;
+}
+
+.form-check-input[type=checkbox] {
+    border-radius: 0.25em;
+    border: 2px solid #035C94 !important;
+}
+
+.address-tag{
+    color: #035C94;
+    border: 1px solid #035C94;
+    vertical-align: middle;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.edit-address{
+    background-color: white;
+    color: #023047;
+    height: 45px;
+    border-right: 2px solid #EDEEF2;
+    border-radius: unset !important;
+}
+
+.remove-address{
+    background-color: white;
+    color: #E14B4B;
+    height: 45px;
+}
+
+.address-radio-form label {
+    color: #023047;
+    font-weight: 600;
+}
+
+.address-sub-para{
+    color: #023047;
+    margin-top: 2px;
+    padding-left: 23px;
+    
+}
+.blue-colour-para{
+    color: #035C94;
+}
+
+.grey-colour-para{
+    color: #A2A3B1;
+    font-size: 13px;
+}
+
+.card-container-div{
+    border: 1px solid #EDEEF2;
+    
+}
+.deactivate-btn-password{
+    background-color: white;
+    color: #FF5C60;
+    border: 1px solid #FF5C60   ;
+}
+
+.discard-changes-btn{
+    background-color: white;
+    color: #83859C;
+    border: 1px solid #83859C   ;
+}
+
+.update-psw-btn{
+    background-color: #035C94;
+}
+
+@media only screen and (max-width: 720px) {
+  .setting-tab {
+    width: 100%;
+    }
+    .background-setting .tab-content {
+    width: 100% !important;
+}
+}

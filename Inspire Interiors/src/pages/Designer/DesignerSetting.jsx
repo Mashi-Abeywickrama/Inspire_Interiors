@@ -5,7 +5,7 @@ import * as Icon from "react-bootstrap-icons";
 import Form from "react-bootstrap/Form";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./../../styles/customer/setting.css";
+import "./../../styles/Designer/setting.css";
 
 import Profile from "../../assets/customer/profile.png";
 
