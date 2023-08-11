@@ -18,6 +18,7 @@ import * as Icon from 'react-bootstrap-icons';
 
 
 import './../../styles/home.css';
+import useAlert from '../../components/useAlert';
   
 const Login = () => {
 
@@ -34,6 +35,8 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+
+  const { setAlert } = useAlert();
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -48,11 +51,15 @@ const Login = () => {
         if (userType === 'admin') {
           navigate('/admin');
         } else if (userType === 'customer') {
-          navigate('/customer');
+          setAlert('Successful Login!', 'success');
+          setTimeout(() => {
+            navigate('/customer');
+        }, 3000);
         }
       }
     } catch (error) {
       console.error('Authentication failed');
+      setAlert('Incorrect Credintials!', 'error');
     }
   };
 
@@ -187,6 +194,7 @@ const Login = () => {
 
 
         </div>
+       
 
       </div>
     </>

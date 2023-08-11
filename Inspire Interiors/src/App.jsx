@@ -79,6 +79,7 @@ import DesignerEarnings from "./pages/Designer/DesignerEarnings";
 import DesignerEarn from "./pages/Designer/DesignerEarn";
 import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
 import DesignerPromotions from "./pages/Designer/DesignerPromotions";
+import AlertPopup from "./components/AlertPopup";
 
 
 
@@ -86,6 +87,7 @@ import DesignerPromotions from "./pages/Designer/DesignerPromotions";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+    
 
       <Route path="/" element={<Rootlayout />} errorElement={<Error />}>
         <Route index element={<Home />} />
@@ -99,7 +101,7 @@ const router = createBrowserRouter(
         element={<OnlyHeaderRootlayout />}
         errorElement={<Error />}
       >
-        <Route index element={<Login />} />
+        <Route index element={<><AlertPopup /><Login /></>} />
       </Route>
 
       <Route
