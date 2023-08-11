@@ -372,15 +372,14 @@ const DesignerPromotion = () => (
           >
             <div className="d-flex flex-row gap-3 p-3">
               <p className="fs-3 fw-bold Cabin-text">Partnered Designers</p>
-              <Link to="/vendor/promotion/mynetwork">
-                <p
-                  className="fs-5 fw-semibold mt-2 Cabin-text"
-                  style={{ color: "#035C94" }}
-                >
-                  See all
-                  <Icon.ArrowRight color="#035C94" />
-                </p>
-              </Link>
+
+              <p
+                className="fs-5 fw-semibold mt-2 Cabin-text"
+                style={{ color: "#035C94" }}
+              >
+                See all
+                <Icon.ArrowRight color="#035C94" />
+              </p>
             </div>
             <Carousel className="w-100">
               <Carousel.Item className="carousel-img">
@@ -715,15 +714,14 @@ const DesignerPromotion = () => (
           <div className="col-lg-4 border bg-white rounded-3 my-2 shadow p-3">
             <div className="d-flex flex-row gap-3 p-3">
               <p className="fs-3 fw-bold Cabin-text">My Network</p>
-              <Link to="/vendor/promotion/mynetwork">
-                <p
-                  className="fs-5 fw-semibold mt-2 Cabin-text"
-                  style={{ color: "#035C94" }}
-                >
-                  See all
-                  <Icon.ArrowRight color="#035C94" />
-                </p>
-              </Link>
+
+              <p
+                className="fs-5 fw-semibold mt-2 Cabin-text"
+                style={{ color: "#035C94" }}
+              >
+                See all
+                <Icon.ArrowRight color="#035C94" />
+              </p>
             </div>
             <div className="d-flex flex-column my-2">
               <Tabs
@@ -770,7 +768,7 @@ const DesignerPromotion = () => (
             <p className="fs-3 fw-bold Cabin-text">
               Earnings From Paid Promotions
             </p>
-            <Link to="/vendor/promotion/earnings">
+            <Link to="earnings">
               <p
                 className="fs-5 fw-semibold mt-2 Cabin-text"
                 style={{ color: "#035C94" }}
