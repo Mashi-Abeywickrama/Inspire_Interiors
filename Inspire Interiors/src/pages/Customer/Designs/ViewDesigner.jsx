@@ -27,28 +27,28 @@ const generateStars = (rate) => {
 const designerCards = [
     // Cards data for the similar designers section...
     {
-        name: 'Office',
-        image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+        name: 'Mashi',
+        image: 'https://img.freepik.com/premium-vector/avatar-icon001_750950-50.jpg?w=360',
     },
     {
-        name: 'Office',
-        image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+        name: 'Shinthu',
+        image: 'https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg',
     },
     {
-        name: 'Office',
-        image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+        name: 'Zulfa',
+        image: 'https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg',
     },
     {
-        name: 'Office',
-        image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+        name: 'Hari',
+        image: 'https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg',
     },
     {
-        name: 'Office',
-        image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+        name: 'Ghostie',
+        image: 'https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg',
     },
     {
-        name: 'Office',
-        image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+        name: 'Rujhan',
+        image: 'https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg',
     },
 ];
 
@@ -102,7 +102,7 @@ const ViewDesigner = () => {
                             </div>
 
                             {/* 3 boxes */}
-                            <div className="d-flex align-items-center justify-content-evenly m-1">
+                            <div className="d-flex align-items-center justify-content-evenly py-2 m-1">
                                 <div className="d-flex w-25 three-box rounded align-items-center justify-content-center gap-2">
                                     <div className="w-25 fw-bold fs-4 d-flex align-items-center f-color-y">
                                         50
@@ -164,20 +164,20 @@ const ViewDesigner = () => {
                                 Top Selling Designs <span className="badge fs-6 see-all">See All <Icon.ArrowRight /></span>
                             </div>
                             <div className="d-flex mt-3 flex-wrap">
-                                <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
-                                    <img src="https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg" alt="Design 1" className="img-fluid rounded" />
+                                <div className="col-lg-6 col-md-6 col-sm-12 mb-3 px-2">
+                                    <img src="https://media.architecturaldigest.com/photos/633f30fc2b9fc0b5557ab24d/4:3/w_4479,h_3359,c_limit/CH_ASH_Staging_West%20Village%20Townhouse_NYC2.jpg" alt="Design 1" className="img-fluid h-100 rounded" />
                                 </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
-                                    <img src="https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg" alt="Design 2" className="img-fluid rounded" />
+                                <div className="col-lg-6 col-md-6 col-sm-12 mb-3 px-2">
+                                    <img src="https://www.mydomaine.com/thmb/IfzuHbluKZgWbKmrcFVNpgCgAd0=/2500x0/filters:no_upscale():strip_icc()/20220106_BeccaInteriors_Edits-67-1d9f25e298c04c17b9485f569c7a1082.jpg" alt="Design 2" className="img-fluid h-100 rounded" />
                                 </div>
-                                <div className="col-lg-4 col-md-4 col-sm-12 mb-3">
-                                    <img src="https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg" alt="Design 3" className="img-fluid rounded" />
+                                <div className="col-lg-4 col-md-4 col-sm-12 mb-3 px-2">
+                                    <img src="https://i.pinimg.com/1200x/af/2c/ff/af2cfff04b011f798c290a5ca0d77a08.jpg" alt="Design 3" className="img-fluid rounded h-100" />
                                 </div>
-                                <div className="col-lg-4 col-md-4 col-sm-12 mb-3">
-                                    <img src="https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg" alt="Design 4" className="img-fluid rounded" />
+                                <div className="col-lg-4 col-md-4 col-sm-12 mb-3 px-2">
+                                    <img src="https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg" alt="Design 4" className="img-fluid rounded h-100" />
                                 </div>
-                                <div className="col-lg-4 col-md-4 col-sm-12 mb-3">
-                                    <img src="https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg" alt="Design 5" className="img-fluid rounded" />
+                                <div className="col-lg-4 col-md-4 col-sm-12 mb-3 px-2">
+                                    <img src="https://i0.wp.com/cocolapinedesign.com/wp-content/uploads/MED245C6E221EA54E9885F76AE1B099BE24_max.jpg?resize=1024%2C682&ssl=1" alt="Design 5" className="img-fluid rounded h-100" />
                                 </div>
                             </div>
 
@@ -186,6 +186,7 @@ const ViewDesigner = () => {
                     </div>
                 </div>
 
+                {/* Similar Designers */}
                 <div className='top-div bg-light shadow rounded mb-3'>
                     <div className='row container'>
                         <div className='row d-flex align-items-center justify-content-start'>
@@ -198,7 +199,10 @@ const ViewDesigner = () => {
                         {designerCards.map((card, index) => (
                             <div key={index} className='d-flex col-5 col-md-4 col-lg-2 col-sm-8 mb-3'>
                                 <Card className='h-100 border-0 rounded' style={{ color: '#7C828B' }}>
-                                    <Card.Img variant='top' src={card.image} className='rounded-3' />
+                                    <Card.Img
+                                    variant='top'
+                                    src={card.image}
+                                    className='p-2 rounded-3 '/>
                                     <Card.Body className='flex-row justify-content-center'>
                                         <Card.Text className='d-flex m-0 lead fs-6 justify-content-center' >
                                             {card.name}

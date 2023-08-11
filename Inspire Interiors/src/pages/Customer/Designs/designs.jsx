@@ -11,24 +11,22 @@ const Designs = () => {
 
   const cards = [
     {
-      title: 'Living Room', content: ['https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
-        'https://havenly.com/blog/wp-content/uploads/2022/07/render-final-2232106-38554-8220-106864de852c.jpeg',
-        'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+      title: 'Living Room', content: ['https://www.mydomaine.com/thmb/hz_TTiQ6tmgVm-6wx3avEOzOiNE=/2204x0/filters:no_upscale():strip_icc()/bartlamStephenKenn-f51b9c16328a4b33bac763764f741071.png',
+        'https://havenly.com/blog/wp-content/uploads/2022/07/render-final-2232106-38554-8220-106864de852c.jpeg'
       ]
     },
     {
-      title: 'Bed Room', content: ['https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+      title: 'Bed Room', content: ['https://media.architecturaldigest.com/photos/633f30fc2b9fc0b5557ab24d/4:3/w_4479,h_3359,c_limit/CH_ASH_Staging_West%20Village%20Townhouse_NYC2.jpg',
         'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg'
       ]
     },
     {
-      title: 'Dining Room', content: ['https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
-        'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg'
+      title: 'Dining Room', content: ['https://media.designcafe.com/wp-content/uploads/2022/09/10114739/minimalist-dining-room-design.jpg',
+        'https://www.home-designing.com/wp-content/uploads/2017/12/minimalist-dining-room-lighting.jpg'
       ]
     },
     {
-      title: 'Office', content: ['https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
-        'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg'
+      title: 'Office', content: ['https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg'
       ]
     },
   ];
@@ -36,38 +34,38 @@ const Designs = () => {
   const designerCards = [
     // Cards data for the first section...
     {
-      name: 'Office',
-      image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+      name: 'Mashi',
+      image: 'https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg',
       votings: 10,
       rate: 4.5,
     },
     {
-      name: 'Office',
-      image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+      name: 'Shin',
+      image: 'https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg',
       votings: 70,
       rate: 3.7,
     },
     {
-      name: 'Office',
-      image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+      name: 'Hari',
+      image: 'https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg',
       votings: 10,
       rate: 4.5,
     },
     {
-      name: 'Office',
-      image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+      name: 'Rujhan',
+      image: 'https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg',
       votings: 10,
       rate: 4.5,
     },
     {
-      name: 'Office',
-      image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+      name: 'Zulfa',
+      image: 'https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg',
       votings: 18,
       rate: 5,
     },
     {
-      name: 'Office',
-      image: 'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg',
+      name: 'Ghost',
+      image: 'https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg',
       votings: 10,
       rate: 4.5,
     },
@@ -106,7 +104,7 @@ const Designs = () => {
               <div className='d-flex col w-auto h-100 justify-content-start align-self-center see-all'>
                 <h6>See All
                   <Icon.ArrowRight
-                    
+
                     size={15}
                     className="align-center"
                   />
@@ -124,11 +122,11 @@ const Designs = () => {
           {/* Designers images */}
           <div className='bg-light image-bar  justify-content-center row w-100 flex-row m-0 p-0'>
             {designerCards.map((card, index) => (
-              <div key={index} className=' justify-content-center col-5 col-md-4 col-lg-2 col-sm-8 mb-3'>
+              <div key={index} className='  justify-content-center col-5 col-md-4 col-lg-2 col-sm-8 mb-3'>
                  <Link to='viewdesigner'>
-                <Card className='h-100 w-100 rounded border-0 rounded' style={{ color: '#7C828B' }}>
-                  <Card.Img variant='top' src={card.image} className='rounded-3' />
-                  <Card.Body className='flex-row justify-content-center'>
+                <Card className='h-100 w-100 rounded border-0 rounded ' style={{ color: '#7C828B' }}>
+                  <Card.Img variant='top' src={card.image} className='rounded-3 p-3 h-75' />
+                  <Card.Body className='flex-row justify-content-center py-0'>
                     <Card.Text className='d-flex m-0 lead justify-content-center' >
                       {card.name}
                     </Card.Text>
@@ -174,6 +172,9 @@ const Designs = () => {
                             src={imageUrl}
                             alt={`Slide ${imageIndex + 1}`}
                           />
+                          <Carousel.Caption className='d-flex justify-content-start px-2' style={{ position: "absolute", top: 0, left: 0 }}>
+                            <p className='fs-6'>{card.title}</p>
+                          </Carousel.Caption>
                         </Carousel.Item>
                       ))}
                     </Carousel>
