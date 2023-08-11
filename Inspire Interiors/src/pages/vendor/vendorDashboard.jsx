@@ -92,7 +92,7 @@ const stardata = {
 const VendorDashboard = () => {
     return (
         <>
-            <div className='dashboard-container mb-4 me-5'>
+            <div className='dashboard-container vendor-dashboard mb-4 me-5'>
                 <div className='col-12 d-flex flex-column gap-3 '>
                     <div className='col-12 d-flex flex-column flex-lg-row flex-md-row gap-3'>
                         <div className='col-lg-8 bg-white rounded-3 shadow p-4'>

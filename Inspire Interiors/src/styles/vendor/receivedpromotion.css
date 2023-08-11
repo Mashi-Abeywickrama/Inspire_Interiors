@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap'); 
 
-.background{
-    background-color: #F1F1F1;
-    height: 100%;
+.receive-background{
+    min-height: 84vh;
+    font-family: "Cabin" !important;
 }
+
 .receivepromotion-container{
     width: inherit !important;
 }

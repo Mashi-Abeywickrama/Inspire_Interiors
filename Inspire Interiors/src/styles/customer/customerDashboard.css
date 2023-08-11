@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap');
+
+.dashboard-container{
+    width: inherit !important;
+}
+
+.Cabin-text{
+    font-family: "Cabin";
+}
+
+.Calendar{
+    width: 30em !important;
+    height: 30em !important;
+    min-height: 31.7em !important;
+}
+
+.Calendar__weekDays, .Calendar__monthText, .Calendar__yearText, .Calendar__monthSelectorItemText, .Calendar__yearSelectorText{
+    color: #000000 !important;
+}
+.customer-dashboard .bar1 .progress .progress-bar  {
+    width: 100%;
+    border-radius: 2px;
+    background-color: #035C94 !important;
+    overflow: hidden;
+}
+
+.customer-dashboard .image-div{
+    width: inherit !important;
+}
+
+.customer-dashboard .bar2 .progress .progress-bar {
+    width: 100%;
+    border-radius: 2px;
+    background-color: #34C471 !important;
+    overflow: hidden;
+}
+
+.customer-dashboard .bar3 .progress .progress-bar{
+    width: 100%;
+    border-radius: 2px;
+    background-color: #FFC00C !important;
+    overflow: hidden;
+}
+
+.sdp {
+    --theme-color: #8b5cf6 !important; /* violet color */
+    --selected-date-color: #ff0000 !important; /* light-gray color */
+    --font: 'Kollektif', sans-serif !important;
+
+  }
+
+  .sdp--square-btn {
+    color: #035C94 !important;
+  }
