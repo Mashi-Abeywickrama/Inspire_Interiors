@@ -21,13 +21,20 @@ import SignUp from "./pages/visitor/signup";
 import Project from './pages/visitor/project';
 import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
 
+
 // Admin
+
 import Report from './pages/Admin/report';
+import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
 import Dashboard from './pages/Admin/dashboard';
 import User from './pages/Admin/user';
 import Commission from './pages/Admin/commission';
 import Orders from './pages/Admin/orders';
 import Salary from './pages/Admin/salary';
+import Profile from './pages/Admin/profile';
+import Invoice from './pages/Admin/invoice';
+import Cview from './pages/Admin/commissionView';
+
 
 // Customer
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
@@ -46,6 +53,7 @@ import MarketPlace from "./pages/Customer/marketplace/marketPlace";
 
 
 // Vendor
+
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
 import ViewOrder from "./pages/vendor/viewOrder";
 import Inventory from "./pages/vendor/inventory";
@@ -73,8 +81,6 @@ import ViewDelivery from "./pages/CustomerSupport/viewDelivery";
 import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
-// import AddStock from "./pages/vendor/addStock";
-// import MarketPlace from "./pages/Customer/marketplace/marketPlace";
 import CategoryView from "./pages/Customer/marketplace/categoryView";
 
 // Designer
@@ -86,8 +92,6 @@ import DesignerEarn from "./pages/Designer/DesignerEarn";
 import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
 import DesignerPromotions from "./pages/Designer/DesignerPromotions";
 import AlertPopup from "./components/AlertPopup";
-
-
 
 
 
@@ -149,6 +153,10 @@ const router = createBrowserRouter(
         <Route  path="commission" element={<Commission/> } />
         <Route  path="orders" element={<Orders/> } />
         <Route  path="salary" element={<Salary/> } />
+        <Route path="invoice" element={<Invoice/>}/>
+        <Route path="profile" element={<Profile/>}/>
+        <Route path="commissionView" element={<Cview/>}/>
+
       </Route>
 
       {/* Customer Support Routes */}
@@ -200,16 +208,13 @@ const router = createBrowserRouter(
         <Route path="promotions" element={<DesignerPromotions />} />
       </Route>
 
+
     </>
   )
 );
 
 const App = () => {
   return (
-    // <>
-    //   <VenderRoute />
-    //   <VisitorRoute />
-    // </>
     <RouterProvider router={router} />
   );
 };
