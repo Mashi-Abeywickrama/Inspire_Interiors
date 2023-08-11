@@ -4,6 +4,7 @@ import * as Icon from 'react-bootstrap-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../../styles/customer/designs.css';
 import SearchPage from '../../../components/customer/filterNsearch';
+import { Link } from 'react-router-dom';
 
 
 const Designs = () => {
@@ -124,6 +125,7 @@ const Designs = () => {
           <div className='bg-light image-bar  justify-content-center row w-100 flex-row m-0 p-0'>
             {designerCards.map((card, index) => (
               <div key={index} className=' justify-content-center col-5 col-md-4 col-lg-2 col-sm-8 mb-3'>
+                 <Link to='viewdesigner'>
                 <Card className='h-100 w-100 rounded border-0 rounded' style={{ color: '#7C828B' }}>
                   <Card.Img variant='top' src={card.image} className='rounded-3' />
                   <Card.Body className='flex-row justify-content-center'>
@@ -138,6 +140,7 @@ const Designs = () => {
                     </Card.Text>
                   </Card.Body>
                 </Card>
+                </Link>
               </div>
             ))}
           </div>
@@ -159,6 +162,7 @@ const Designs = () => {
           <div className='d-flex flex-column fs-4 flex-lg-row flex-md-col flex-sm-col w-100 justify-content-center align-self-center'>
             {cards.map((card, index) => (
               <Col md={3} key={index} className='d-flex'>
+               
                 <Card className='d-flex h-100 w-100 rounded border-0' >
                   <Card.Body className='d-flex'>
                     <Carousel >
@@ -175,6 +179,7 @@ const Designs = () => {
                     </Carousel>
                   </Card.Body>
                 </Card>
+                
               </Col>
             ))}
           </div>

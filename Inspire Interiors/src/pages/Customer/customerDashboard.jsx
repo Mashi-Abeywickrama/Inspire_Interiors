@@ -8,8 +8,8 @@ import Profile1 from '../../assets/img/customer/profile1.png';
 import Chair from '../../assets/img/customer/chair1.png';
 import { PieChart, Pie, Sector, Cell, BarChart, Bar, XAxis, YAxis, LineChart, Line, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar } from "react-modern-calendar-datepicker";
+// import "react-modern-calendar-datepicker/lib/DatePicker.css";
+// import { Calendar } from "react-modern-calendar-datepicker";
 
 const COLORS = ['#035C94', '#F8F8F9', '#FFC00C'];
 const data = [
@@ -204,11 +204,7 @@ const CustomerDashboard = () => {
                         </div>
                         <div className='col-lg-3 bg-white rounded-3 p-4 mb-3'>
                             <p className="fs-3 fw-bold Cabin-text">Updates</p>
-                            <Calendar
-                                value={selectedDay}
-                                onChange={setSelectedDay}
-                                calendarClassName="responsive-calendar"
-                                shouldHighlightWeekends />
+                            {/* <Calendar /> */}
                             <p className='fs-6 Cabin-text mt-4 m-0'>08 am</p>
                             <div className='col-lg-11 border justify-content-end rounded-3 p-3 my-2' style={{backgroundColor:"#035C94"}}>
                                 <div className='d-flex flex-column'>

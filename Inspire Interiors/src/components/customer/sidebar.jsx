@@ -1,89 +1,92 @@
+import React, { useState } from 'react';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import { Router,Route } from 'react-router-dom';
-
-import * as Icon from 'react-bootstrap-icons';
-import { RiBuilding2Fill,RiStore2Fill,RiBrushFill,RiShoppingBagFill,RiDashboardFill,RiSettings5Fill } from "react-icons/ri";
-
+import { NavLink } from 'react-router-dom'; // Use NavLink for active class
+import { useLocation } from "react-router-dom";
+import { RiBuilding2Fill, RiStore2Fill, RiBrushFill, RiShoppingBagFill, RiDashboardFill, RiSettings5Fill } from "react-icons/ri";
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-import './../../styles/customer/sidebar.css'
+import './../../styles/customer/sidebar.css';
+
 
 
 const SidebarDashboard = () => {
   
 
+    //assigning location variable
+    const location = useLocation();
+
+    //destructuring pathname from location
+    const { pathname } = location;
+
+    //Javascript split method to get the name of the path in array
+    const splitLocation = pathname.split("/");
+
+    const [selected, setSelected] = useState(splitLocation[2]); // State to track selected link
+    console.log(splitLocation[2]);
+
   return (
-   <SideNav
-    onSelect={(selected) => {
-        // Add your code here
-    }}
-    
->
-    
-    <SideNav.Toggle   />
-    <SideNav.Nav defaultSelected="dashboard">
+    <SideNav onSelect={(selected) => setSelected(splitLocation[2])}>
+      <SideNav.Toggle />
+      <SideNav.Nav defaultSelected={splitLocation[2]}>
         <NavItem eventKey="dashboard">
-            <NavIcon>
-                <i><RiDashboardFill /></i>
-            </NavIcon>
-            <NavText>
-                Dashboard
-            </NavText>
+          <NavIcon>
+             <NavLink to="/customer/dashboard" activeClassName="active"><i><RiDashboardFill /></i></NavLink>
+            
+          </NavIcon>
+          <NavText>
+            <NavLink to="/customer/dashboard" activeClassName="active">Dashboard</NavLink>
+          </NavText>
         </NavItem>
 
         <NavItem eventKey="designs">
-            <NavIcon>
-               <i><RiBuilding2Fill /></i>
-            </NavIcon>
-            <NavText>
-                Designs
-            </NavText>
+          <NavIcon>
+            <NavLink to="/customer/designs" activeClassName="active"><i><RiBuilding2Fill /></i></NavLink>
+            
+          </NavIcon>
+          <NavText>
+            <NavLink to="/customer/designs" activeClassName="active">Designs</NavLink>
+          </NavText>
         </NavItem>
 
         <NavItem eventKey="marketplace">
-            <NavIcon>
-                <a href="/customer/marketplace">
-                 <i><RiStore2Fill /></i>
-                 </a>
-            </NavIcon>
-            <NavText >
-                <a href="/customer/marketplace">
-                Marketplace
-                </a>
-            </NavText>
+          <NavIcon>
+            <NavLink to="/customer/marketplace" activeClassName="active"><i><RiStore2Fill /></i></NavLink>
+            
+          </NavIcon>
+          <NavText>
+            <NavLink to="/customer/marketplace" activeClassName="active">Marketplace</NavLink>
+          </NavText>
         </NavItem>
 
-        <NavItem eventKey="Customization">
-            <NavIcon>
-                 <i><RiBrushFill /></i>
-            </NavIcon>
-            <NavText>
-                Customization
-            </NavText>
+        <NavItem eventKey="customization">
+          <NavIcon>
+             <NavLink to="/customer/customization" activeClassName="active"> <i><RiBrushFill /></i></NavLink>
+           
+          </NavIcon>
+          <NavText>
+            <NavLink to="/customer/customization" activeClassName="active">Customization</NavLink>
+          </NavText>
         </NavItem>
 
         <NavItem eventKey="orders">
-            <NavIcon>
-                <i><RiShoppingBagFill /></i>
-            </NavIcon>
-            <NavText>
-                <a href="/customer/orders">
-                My Orders
-                </a>
-            </NavText>
+          <NavIcon>
+            <NavLink to="/customer/orders" activeClassName="active"><i><RiShoppingBagFill /></i></NavLink>
+            
+          </NavIcon>
+          <NavText>
+            <NavLink to="/customer/orders" activeClassName="active">My Orders</NavLink>
+          </NavText>
         </NavItem>
 
-        <NavItem eventKey="Settings">
-            <NavIcon>
-                 <i><RiSettings5Fill /></i>
-            </NavIcon>
-            <NavText>
-                Settings
-            </NavText>
+        <NavItem eventKey="settings">
+          <NavIcon>
+            <NavLink to="/customer/settings" activeClassName="active"><i><RiSettings5Fill /></i></NavLink>
+          </NavIcon>
+          <NavText>
+            <NavLink to="/customer/settings" activeClassName="active">Settings</NavLink>
+          </NavText>
         </NavItem>
-
-       
-    </SideNav.Nav>
-</SideNav>
+      </SideNav.Nav>
+    </SideNav>
   );
 };
 

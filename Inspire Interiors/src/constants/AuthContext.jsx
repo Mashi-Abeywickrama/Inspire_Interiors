@@ -1,6 +1,6 @@
-import { createContext, useState } from 'react';
+import { createContext, useMemo, useState } from 'react';
 
-const ALERT_TIME = 30000000;
+const ALERT_TIME = 3000;
 const initialState = {
   text: '',
   type: '',
@@ -25,14 +25,13 @@ export const AlertProvider = ({ children }) => {
     }, ALERT_TIME);
   };
 
+const alertValue = useMemo(() => ({
+    text,
+    type,
+    setAlert,
+  }), [text, type]);
   return (
-    <AlertContext.Provider
-      value={{
-        text,
-        type,
-        setAlert,
-      }}
-    >
+     <AlertContext.Provider value={alertValue}>
       {children}
     </AlertContext.Provider>
   );
