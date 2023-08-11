@@ -48,19 +48,19 @@ import MarketPlace from "./pages/Customer/marketplace/marketPlace";
 // Vendor
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
 import ViewOrder from "./pages/vendor/viewOrder";
-import OverView from "./pages/vendor/overview";
+import Inventory from "./pages/vendor/inventory";
 import ViewCustomRequest from "./pages/vendor/viewCustomRequest";
 import PromotedProduct from "./pages/vendor/promotedProduct";
 import ViewStocks from "./pages/vendor/viewStocks";
-import InventoryProduct from "./pages/vendor/inventory";
+import InventoryProduct from "./pages/vendor/inventoryProduct";
 import PromotionRequest from "./pages/vendor/promotionRequest";
-import SentPromotion from "./pages/vendor/sentPromotion";
-import ReceivedPromotion from "./pages/vendor/receivedPromtion";
+import Promotion from "./pages/vendor/promotion";
 import PromotionEarnings from "./pages/vendor/promotionEarnings";
-import CustomizedOrders from "./pages/vendor/customizedOrders";
+import CustomizeOrders from "./pages/vendor/customizedOrders";
 import Order from "./pages/vendor/order";
 import VendorDashboard from "./pages/vendor/vendorDashboard";
 import AddStock from "./pages/vendor/addStock";
+import MyNetwork from "./pages/vendor/myNetwork";
 import Complaints from "./pages/vendor/complaints";
 import VendorSetting from "./pages/vendor/setting";
 
@@ -124,7 +124,7 @@ const router = createBrowserRouter(
         element={<CDashboardlayout />}
         errorElement={<Home />}
       >
-        <Route index element={<MyOrder />} />
+        <Route index element={<CustomerDashboard />} />
         <Route path="dashboard" element={<CustomerDashboard />} />
          <Route path = "orders" element={<MyOrder />} />
         <Route path = "designs" element={<Designs />} />
@@ -169,23 +169,24 @@ const router = createBrowserRouter(
       >
         <Route index element={<VendorDashboard />} />
         <Route path="dashboard" element={<VendorDashboard />}></Route>
-        <Route path="vieworder" element={<ViewOrder />}></Route>
-        <Route path="sentpromotion" element={<SentPromotion />}></Route>
-        <Route path="receivedpromotion" element={<ReceivedPromotion />}></Route>
-        <Route path="overview" element={<OverView />}></Route>
+        <Route path="inventory" element={<Inventory />}></Route>
+        <Route path="inventory/viewstock"  element={<ViewStocks />}></Route>
+        <Route path="inventory/inventoryproduct" element={<InventoryProduct />}></Route> 
+        <Route path="inventory/addstock" element={<AddStock />}></Route>
         <Route path="order" element={<Order />}></Route>
-        <Route path="customizeorders" element={<CustomizedOrders />}></Route>
-        <Route path="customrequest" element={<ViewCustomRequest />}></Route>
-        <Route path="promoteproduct" element={<PromotedProduct />}></Route>
-        <Route path="viewstock"  element={<ViewStocks />}></Route>
-        <Route path="addstock" element={<AddStock />}></Route>
-        <Route path="inventory" element={<InventoryProduct />}></Route>
-        <Route path="promotionrequest" element={<PromotionRequest />}></Route>
-        <Route path="earnings" element={<PromotionEarnings />}></Route>
+        <Route path="order/vieworder" element={<ViewOrder />}></Route>
+        <Route path="order/customizeorders" element={<CustomizeOrders />}></Route>
+        <Route path="order/customrequest" element={<ViewCustomRequest />}></Route>
+        <Route path="promotion" element={<Promotion />}></Route>
+        <Route path="promotion/mynetwork" element={<MyNetwork />}></Route>
+        <Route path="promotion/promoteproduct" element={<PromotedProduct />}></Route>
+        <Route path="promotion/promotionrequest" element={<PromotionRequest />}></Route>
+        <Route path="promotion/earnings" element={<PromotionEarnings />}></Route>
         <Route path="complaints" element={<Complaints />}></Route>
         <Route path="setting" element={<VendorSetting />}></Route>
       </Route>
 
+      {/* Designer Routes */}
       <Route path="/designer/" element={<DesignerLayout />} errorElement={<Error />}>
         <Route index element={<DesignerDashboard/> } />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />

@@ -1,6 +1,6 @@
 import React from "react";
 
-import '../../styles/vendor/receivedPromotion.css';
+import './../../styles/vendor/promotion.css';
 import * as Icon from "react-bootstrap-icons";
 import Arpico from "../../assets/img/vendor/arpico.png";
 import Sofa from "../../assets/img/vendor/sofa.png"
@@ -13,74 +13,16 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
-
+import {Link} from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
-
-const receivedData = {
-    columns: [
-        {
-          label: 'PRODUCT DETAILS',
-          field: 'product',
-          sort: 'asc',
-          width: 150
-        },
-        {
-          field: 'status',
-          sort: 'asc',
-          width: 270
-        },
-    ],
-    rows: [
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
-                </div>,
-            status:<div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        }
-    ]
-}
 
 const sentData = {
     columns: [
         {
-          label: 'PRODUCT DETAILS',
+          label: 'PROMOTION DETAILS',
           field: 'product',
           sort: 'asc',
-          width: 150
+          width: 250
         },
         {
           field: 'status',
@@ -132,7 +74,63 @@ const sentData = {
     ]
 }
 
-
+const receivedData = {
+    columns: [
+        {
+          label: 'PROMOTION DETAILS',
+          field: 'product',
+          sort: 'asc',
+          width: 250
+        },
+        {
+          field: 'status',
+          sort: 'asc',
+          width: 270
+        },
+    ],
+    rows: [
+        {   
+            product: <div className='d-flex flex-row gap-4 align-items-center'>
+                    <img src={Sofa}/>
+                    <div className="d-flex flex-column">
+                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
+                        <p className="fs-6 fw-normal">Bed Room</p>
+                    </div>
+                </div>,
+            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
+        },
+        {   
+            product: <div className='d-flex flex-row gap-4 align-items-center'>
+                    <img src={Sofa}/>
+                    <div className="d-flex flex-column">
+                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
+                        <p className="fs-6 fw-normal">Bed Room</p>
+                    </div>
+                </div>,
+            status:<div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
+        },
+        {   
+            product: <div className='d-flex flex-row gap-4 align-items-center'>
+                    <img src={Sofa}/>
+                    <div className="d-flex flex-column">
+                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
+                        <p className="fs-6 fw-normal">Bed Room</p>
+                    </div>
+                </div>,
+            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
+        },
+        {   
+            product: <div className='d-flex flex-row gap-4 align-items-center'>
+                    <img src={Sofa}/>
+                    <div className="d-flex flex-column">
+                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
+                        <p className="fs-6 fw-normal">Bed Room</p>
+                    </div>
+                </div>,
+            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
+        }
+    ]
+}
 
 const largeTableData = {
     columns: [
@@ -232,16 +230,16 @@ const largeTableData = {
 }
 
 
-const ReceivedPromotion = () => (
+const Promotion = () => (
     <>
 
-        <div className="receivepromotion-container background-sent accordion rounded-3 mb-4 me-5">
-            <div className=" col-12 d-flex flex-column">
-                <div className=" col-12 d-flex flex-column flex-lg-row flex-md-row gap-4">
+        <div className="promotion-container background-promotion accordion rounded-3 mb-4 me-5">
+            <div className="col-12 d-flex flex-column">
+                <div className=" col-12 d-flex flex-column flex-lg-row flex-md-row gap-3">
                     <div className="col-lg-8 bg-white rounded-3 my-2 shadow" style={{ height: "10%" }}>
                         <div className="d-flex flex-row gap-3 p-3">
                             <p className="fs-3 fw-bold Cabin-text">Partnered Designers</p>
-                            <p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p>
+                            <Link to="/vendor/promotion/mynetwork"><p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p></Link>
                         </div>
                         <Carousel className="w-100">
                             <Carousel.Item className='carousel-img'>
@@ -387,16 +385,19 @@ const ReceivedPromotion = () => (
 
                         </Carousel>
                     </div>
-                    <div className="col-lg-4 container-fluid border bg-white rounded-3 my-2 shadow p-3">
-                        <p className="fs-3 fw-bold Cabin-text">My Network</p>
+                    <div className="col-lg-4 border bg-white rounded-3 my-2 shadow p-3">
+                        <div className="d-flex flex-row gap-3 p-3">
+                            <p className="fs-3 fw-bold Cabin-text">My Network</p>
+                            <Link to="/vendor/promotion/mynetwork"><p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p></Link>
+                        </div>
                         <div className="d-flex flex-column my-2">
                             <Tabs
-                                defaultActiveKey="Received"
+                                defaultActiveKey="Sent"
                                 id="uncontrolled-tab-example"
                                 className="mb-3 bg-white tab"
                             >
                                 <Tab eventKey="Sent" title="Sent">
-                                    <div className=''>
+                                    <div className='my-2'>
 
                                         <MDBDataTableV5 responsive
                                             striped
@@ -427,13 +428,15 @@ const ReceivedPromotion = () => (
                                 </Tab>
                             </Tabs>
                         </div>
+
                     </div>
                 </div>
                 <div className="col-lg-12 container-fluid border bg-white rounded-3 my-2 shadow">
                     <div className="d-flex flex-row gap-3 p-3">
-                        <p className="fs-3 fw-bold Cabin-text">Partnered Designers</p>
-                        <p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p>
+                        <p className="fs-3 fw-bold Cabin-text">Earnings From Paid Promotions</p>
+                        <Link to="/vendor/promotion/earnings"><p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p></Link>
                     </div>
+
                     <div className='p-3'>
 
                         <MDBDataTableV5 responsive
@@ -453,4 +456,4 @@ const ReceivedPromotion = () => (
     </>
 )
 
-export default ReceivedPromotion;
+export default Promotion;

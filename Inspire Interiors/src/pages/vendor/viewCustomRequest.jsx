@@ -7,6 +7,7 @@ import VendorSidebar from './sidebar';
 import Hall from '../../assets/img/vendor/visiting room.png';
 import Chair from './../../assets/img/vendor/chair.png';
 import Customer from '../../assets/img/vendor/customer.png';
+import {Link} from 'react-router-dom';
 
 const ViewCustomRequest = () => {
     return (
@@ -51,8 +52,8 @@ const ViewCustomRequest = () => {
                             <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B"}}>If any additional specifications add here.</p>
                         </div>
                         <div className="d-flex flex-row gap-3 justify-content-end">
-                            <button className="dlt-btn Cabin-text">Decline Order</button>
-                            <button className="acpt-btn Cabin-text">Accept Order</button>
+                            <Link to="/vendor/order/customizeorders"><button className="dlt-btn Cabin-text">Decline Order</button></Link>
+                            <Link to="/vendor/order/customizeorders"><button className="acpt-btn Cabin-text">Accept Order</button></Link>
                         </div>
                     </div>
                     <div className="col-lg-4">

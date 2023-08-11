@@ -2,6 +2,7 @@ import React from "react";
 
 import "./../../styles/vendor/addStock.css";
 import * as Icon from "react-bootstrap-icons";
+import {Link} from 'react-router-dom';
 
 const AddStock = () => {
     return (
@@ -55,7 +56,7 @@ const AddStock = () => {
                 </div>
                 <div className="divider mt-5" />
                 <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
-                    <button className="my-2 mx-5 Cabin-text " style={{ color: "#FF5C60", background: "#FFFFFF", borderRadius: "8px", border: "1px solid #FF5C60" }}>Cancel</button>
+                    <Link to="/vendor/inventory/viewstock"><button className="my-2 mx-5 Cabin-text " style={{ color: "#FF5C60", background: "#FFFFFF", borderRadius: "8px", border: "1px solid #FF5C60" }}>Cancel</button></Link>
                     <button className="my-2 mx-5 Cabin-text" style={{ color: "#FFFFFF", background: "#035C94", borderRadius: "8px" }}>Add Stock</button>
                 </div>
             </div>

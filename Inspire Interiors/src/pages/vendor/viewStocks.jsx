@@ -11,6 +11,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
+import {Link} from 'react-router-dom';
 
 const tabledata = {
     columns: [
@@ -77,7 +78,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -91,7 +92,7 @@ const tabledata = {
         sold:'7',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -105,7 +106,7 @@ const tabledata = {
         sold:'12',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -119,7 +120,7 @@ const tabledata = {
         sold:'22',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -133,7 +134,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -147,7 +148,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -161,7 +162,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -175,7 +176,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -189,7 +190,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       }, 
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -203,7 +204,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -217,7 +218,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -231,7 +232,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -245,7 +246,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -259,7 +260,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -273,7 +274,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -287,7 +288,7 @@ const tabledata = {
         sold:'15',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
     ]
   };
@@ -303,7 +304,7 @@ const ViewStocks = () => (
                 <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Stock</p>
               </div>
               <div>
-                <button className='add-btn m-4'><Icon.PlusLg color="white" size={20}/>Add New</button>
+                <Link to="/vendor/inventory/addstock"><button className='add-btn m-4'><Icon.PlusLg color="white" size={20}/>Add New</button></Link>
               </div>
             </div>
             <div>
