@@ -2,16 +2,16 @@
     width: inherit !important;
 }
 
-.vl{
+.support-dashboard .vl{
     border: 1px solid #1B1C31;
     height: 400px;
 }
 
-.slider{
+.support-dashboard .slider{
     height: 15rem;
     margin-bottom: 40px;
 }
-.slide{
+.support-dashboard .slide{
     display: flex;
     justify-content: center;
     align-items: center;

@@ -13,9 +13,10 @@ public class CorsConfiguration {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://127.0.0.1:5174") // Add your React frontend URL here
+                        .allowedOrigins("http://localhost:5173") // Add your React frontend URL here
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*");
+
             }
         };
     }

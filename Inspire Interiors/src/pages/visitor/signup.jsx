@@ -6,11 +6,41 @@ import Carousel from 'react-bootstrap/Carousel';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import * as yup from 'yup';
+
 import './../../styles/login.css';
 import { Form } from 'react-bootstrap';
+import useAlert from '../../components/useAlert';
+
+const validationSchema = yup.object().shape({
+    name: yup.string().required('Name is required'),
+    email: yup.string().email('Invalid email format').required('Email is required'),
+    dob: yup.date().nullable().required('Date of Birth is required'),
+    laneno: yup.string().required('Lane No is required'),
+    city: yup.string().required('City is required'),
+    district: yup.string().required('District is required'),
+    province: yup.string().required('Province is required'),
+    username: yup.string().required('Username is required'),
+    password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
+    userType: yup.string().oneOf(['Customer', 'Designer', 'Vendor'], 'Select a valid user type').required('User Type is required'),
+});
+
 
 
 const SignUp = () => {
+
+    const [errors, setErrors] = useState({});
+    const [touched, setTouched] = useState({});
+
+    const handleBlur = (field) => {
+        setTouched({ ...touched, [field]: true });
+        validateField(field);
+    };
+
+    
+
+    
+
 
     const apiBaseURL = 'http://localhost:8080'; // Replace this with the base URL of your Spring Boot backend
 
@@ -34,26 +64,82 @@ const SignUp = () => {
 
     const [selectedRole, setSelectedRole] = useState("Select Role");
 
+    const { setAlert } = useAlert();
+
     const handleRoleSelect = (role) => {
         setSelectedRole(role);
     };
 
-    const handleLogin = async (e) => {
+    const validateField = async (field) => {
+        try {
+            await validationSchema.validateAt(field, {
+                [field]: stateValues[field],
+            });
+
+            setErrors({ ...errors, [field]: undefined });
+        } catch (validationError) {
+            setErrors({ ...errors, [field]: validationError.message });
+        }
+    };
+
+    const stateValues = {
+        name,
+        email,
+        dob,
+        laneno,
+        city,
+        district,
+        province,
+        username,
+        password,
+        userType: selectedRole,
+    };
+
+    const handleSignup = async (e) => {
+        setAlert('Successful Signup!', 'success');
         e.preventDefault();
 
+        
+
         try {
-            const response = await axiosInstance.post('/login', {
+            // Validate each field individually before making the API call
+           const validationPromises = Object.keys(stateValues).map((field) =>
+                validateField(field)
+            );
+            await Promise.all(validationPromises);
+
+            const isValid = !Object.values(errors).some((error) => error);
+            console.log(errors);
+            
+            if (isValid === false) {
+                
+               console.log(isValid );
+            }
+            else if (isValid) {
+            const response = await axiosInstance.post('/register', {
                 username: username,
-                password: password
+                email: email,
+                dob: dob,
+                name: name,
+                password: password,
+                laneNo: laneno,
+                city: city,
+                district: district,
+                province: province,
+                userType: selectedRole
             });
             if (response.status === 200) {
-                const userType = response.data.userType;
+                setAlert('Successful Signup!', 'success');
+                console.log('Successful Signup!');
+                setTimeout(() => {
+                    // navigate('/login');
+                }, 3000);
 
-                if (userType === 'admin') {
-                    navigate('/admin');
-                } else if (userType === 'customer') {
-                    navigate('/customer');
-                }
+                
+            }
+            else{
+                console.log('Signup failed');
+            }
             }
         } catch (error) {
             console.error('Authentication failed');
@@ -129,27 +215,35 @@ const SignUp = () => {
                             </div>
 
                             {/* login form */}
-                            <Form className='d-flex row w-92 gap-2 f-color-signup' onSubmit={handleLogin}>
+                            <Form className='d-flex row w-92 gap-2 f-color-signup' onSubmit={handleSignup}>
 
-                                <Form.Group controlId="formName" >
-                                    <Form.Control
+                                <Form.Group  >
+                                    <Form.Control touched="true"
                                         type="text"
+                                        required    
                                         placeholder="Name"
                                         size='lg'
                                         className='mb-2 bg-transparent border-0 rounded-0 border-bottom'
                                         value={name}
-                                        onChange={(e) => setName(e.target.value)} />
+                                        onChange={(e) => setName(e.target.value)} 
+                                        onBlur={() => handleBlur('name')}
+                                         />
+                                        {touched.name && errors.name && <div className="text-danger">{errors.name}</div>}
                                 </Form.Group>
                                 {/* DOB and Email */}
                                 <div className="d-flex mb-2 w-100">
                                     <Form.Group controlId="formEmail" className='w-75'>
                                         <Form.Control
                                             type="text"
+                                            required
                                             placeholder="Email"
                                             size='lg'
                                             className=' w-75 bg-transparent border-0 rounded-0 border-bottom'
                                             value={email}
-                                            onChange={(e) => setEmail(e.target.value)} />
+                                            onChange={(e) => setEmail(e.target.value)}
+                                             onBlur={() => handleBlur('email')}
+                                              />
+                                                {touched.email && errors.email && <div className="text-danger">{errors.email}</div>}
                                     </Form.Group>
                                     <Form.Group controlId="formDOB" className='w-25'>
                                         <DatePicker
@@ -159,7 +253,9 @@ const SignUp = () => {
                                             className='w-100 bg-transparent border-0 rounded-0 border-bottom'
                                             dateFormat="MM/dd/yyyy"
                                             size='lg'
+                                            onBlur={() => handleBlur('dob')}
                                         />
+                                        {touched.dob && errors.dob && <div className="text-danger">{errors.dob}</div>}
                                     </Form.Group>
                                 </div>
                                 {/* Home address */}
@@ -171,7 +267,10 @@ const SignUp = () => {
                                             size='lg'
                                             className=' w-92 bg-transparent border-0 rounded-0 border-bottom'
                                             value={laneno}
-                                            onChange={(e) => setLane(e.target.value)} />
+                                            onChange={(e) => setLane(e.target.value)}
+                                            onBlur={() => handleBlur('laneno')}
+                                             />
+                                                {touched.laneno && errors.laneno && <div className="text-danger">{errors.laneno}</div>}
                                     </Form.Group>
                                     <Form.Group controlId="formCity" className='w-50 d-flex justify-content-end'>
                                         <Form.Control
@@ -180,7 +279,10 @@ const SignUp = () => {
                                             size='lg'
                                             className=' w-92 bg-transparent border-0 rounded-0 border-bottom'
                                             value={city}
-                                            onChange={(e) => setCity(e.target.value)} />
+                                            onChange={(e) => setCity(e.target.value)} 
+                                            onBlur={() => handleBlur('city')}
+                                            />
+                                                {touched.city && errors.city && <div className="text-danger">{errors.city}</div>}
                                     </Form.Group>
                                 </div>
 
@@ -192,7 +294,10 @@ const SignUp = () => {
                                             size='lg'
                                             className=' w-92 bg-transparent border-0 rounded-0 border-bottom'
                                             value={district}
-                                            onChange={(e) => setDistrict(e.target.value)} />
+                                            onChange={(e) => setDistrict(e.target.value)}
+                                            onBlur={() => handleBlur('district')}
+                                             />
+                                                {touched.district && errors.district && <div className="text-danger">{errors.district}</div>}
                                     </Form.Group>
                                     <Form.Group controlId="formProvince" className='w-50 d-flex justify-content-end'>
                                         <Form.Control
@@ -201,7 +306,10 @@ const SignUp = () => {
                                             size='lg'
                                             className='w-92 bg-transparent border-0 rounded-0 border-bottom'
                                             value={province}
-                                            onChange={(e) => setProvince(e.target.value)} />
+                                            onChange={(e) => setProvince(e.target.value)}
+                                            onBlur={() => handleBlur('province')}
+                                             />
+                                                {touched.province && errors.province && <div className="text-danger">{errors.province}</div>}
                                     </Form.Group>
                                 </div>
                                 {/* User Name and Password */}
@@ -212,7 +320,10 @@ const SignUp = () => {
                                         size='lg'
                                         className='mb-2 bg-transparent border-0 rounded-0 border-bottom'
                                         value={username}
-                                        onChange={(e) => setUsername(e.target.value)} />
+                                        onChange={(e) => setUsername(e.target.value)}
+                                        onBlur={() => handleBlur('username')}
+                                         />
+                                            {touched.username && errors.username && <div className="text-danger">{errors.username}</div>}
                                 </Form.Group>
 
                                 <Form.Group controlId="formPassword">
@@ -222,11 +333,15 @@ const SignUp = () => {
                                         placeholder="Password"
                                         size='lg'
                                         value={password}
-                                        onChange={(e) => setPassword(e.target.value)} />
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        onBlur={() => handleBlur('password')}
+                                         />
+                                            {touched.password && errors.password && <div className="text-danger">{errors.password}</div>}
+
                                 </Form.Group>
                                 {/* Submit Button */}
                                 <Button
-                                    onClick={handleLogin}
+                                    type="submit"
                                     className='d-flex justify-content-center align-self-center mb-3'
                                     size='lg'
                                     variant="primary"
