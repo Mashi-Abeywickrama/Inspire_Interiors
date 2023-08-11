@@ -1,0 +1,65 @@
+.pend{
+    background-color: #035C94;
+    color: #A2A3B1;
+    text-align: center;
+    font-weight: 600;
+}
+
+.paid{
+    background-color: #FFBA42;
+    color: #044C70;
+    text-align: center;
+    font-weight: 600;
+}
+
+.overdue{
+    background-color: #096C86;
+    color: #DFE3E8;
+    text-align: center;
+    font-weight: 600;
+}
+
+img{
+    height: 150px;
+    width: 150px;
+}
+.text{
+    color: #035C94;
+    font-size: 20px;
+    font-weight: 500;
+}
+.number{
+    color: black;
+    font-size: 20px;
+}
+/* .gap{
+   height: 200px; 
+} */
+.r-1{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: #096C86 solid;
+    background-color: #096C86;
+}
+.r-2{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: #035C94 solid;
+    background-color: #035C94;
+}
+.r-3{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: #FFBA42 solid;
+    background-color: #FFBA42;
+}
+.r-4{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: #A2A3B1 solid;
+    background-color: #A2A3B1;
+}

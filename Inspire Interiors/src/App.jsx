@@ -19,8 +19,6 @@ import Services from "./pages/visitor/services";
 
 import Project from './pages/visitor/project';
 import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
-import CDashboardlayout from './layouts/Customer/customerDashboardlayout';
-import MyOrder from './pages/Customer/orders/my_orders';
 import Report from './pages/Admin/report';
 import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
 import Dashboard from './pages/Admin/dashboard';
@@ -30,9 +28,7 @@ import Orders from './pages/Admin/orders';
 import Salary from './pages/Admin/salary';
 import Profile from './pages/Admin/profile';
 import Invoice from './pages/Admin/invoice';
-
-import Project from "./pages/visitor/project";
-import OnlyHeaderRootlayout from "./layouts/onlyHeaderRootlayout";
+import Cview from './pages/Admin/commissionView';
 
 // Customer
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
@@ -42,21 +38,21 @@ import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
 
 
 // Vendor
-import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
-import ViewOrder from "./pages/vendor/viewOrder";
-import OverView from "./pages/vendor/overview";
-import ViewCustomRequest from "./pages/vendor/viewCustomRequest";
-import PromotedProduct from "./pages/vendor/promotedProduct";
-import ViewStocks from "./pages/vendor/viewStocks";
-import InventoryProduct from "./pages/vendor/inventoryProduct";
-import PromotionRequest from "./pages/vendor/promotionRequest";
-import SentPromotion from "./pages/vendor/sentPromotion";
-import ReceivedPromotion from "./pages/vendor/receivedPromtion";
-import PromotionEarnings from "./pages/vendor/promotionEarnings";
-import AcceptedOrders from "./pages/vendor/customizedOrders";
-import CustomizedOrders from "./pages/vendor/customizedOrders";
-import Order from "./pages/vendor/order";
-import VendorDashboard from "./pages/vendor/vendorDashboard";
+// import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
+// import ViewOrder from "./pages/vendor/viewOrder";
+// import OverView from "./pages/vendor/overview";
+// import ViewCustomRequest from "./pages/vendor/viewCustomRequest";
+// import PromotedProduct from "./pages/vendor/promotedProduct";
+// import ViewStocks from "./pages/vendor/viewStocks";
+// import InventoryProduct from "./pages/vendor/inventoryProduct";
+// import PromotionRequest from "./pages/vendor/promotionRequest";
+// import SentPromotion from "./pages/vendor/sentPromotion";
+// import ReceivedPromotion from "./pages/vendor/receivedPromtion";
+// import PromotionEarnings from "./pages/vendor/promotionEarnings";
+// import AcceptedOrders from "./pages/vendor/customizedOrders";
+// import CustomizedOrders from "./pages/vendor/customizedOrders";    
+// import Order from "./pages/vendor/order";
+// import VendorDashboard from "./pages/vendor/vendorDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -98,6 +94,7 @@ const router = createBrowserRouter(
         <Route  path="salary" element={<Salary/> } />
         <Route path="invoice" element={<Invoice/>}/>
         <Route path="profile" element={<Profile/>}/>
+        <Route path="commissionView" element={<Cview/>}/>
 
       </Route>
 
@@ -121,7 +118,7 @@ const router = createBrowserRouter(
         <Route path="inventoryproduct" element={<InventoryProduct />}></Route>
         <Route path="promotionrequest" element={<PromotionRequest />}></Route>
         <Route path="earnings" element={<PromotionEarnings />}></Route>
-      </Route>
+      </Route> */}
     </>
   )
 );
