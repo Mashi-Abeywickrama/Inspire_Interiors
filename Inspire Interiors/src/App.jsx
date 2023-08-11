@@ -73,8 +73,9 @@ import ViewDelivery from "./pages/CustomerSupport/viewDelivery";
 import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
-
-
+// import AddStock from "./pages/vendor/addStock";
+// import MarketPlace from "./pages/Customer/marketplace/marketPlace";
+import CategoryView from "./pages/Customer/marketplace/categoryView";
 
 // Designer
 import DesignerLayout from "./layouts/Designer/DesignerLayout";
@@ -132,6 +133,7 @@ const router = createBrowserRouter(
         <Route path="viewproduct" element={<ViewProduct />}></Route>
         <Route path = "designs/viewdesigner" element={<ViewDesigner />} />
         <Route path = "marketplace" element={<MarketPlace />} />
+        <Route path = "categoryview" element={<CategoryView />} />
         <Route path = "cart" element={<Cart />} />
         <Route path = "address" element={<Address />} />
         <Route path = "payment" element={<PaymentMethod />} />

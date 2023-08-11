@@ -9,22 +9,22 @@ import { FaBookmark } from "react-icons/fa";
 const cartItems = [
     {
         id: 1,
-        name: "Osmond Arm Chair",
-        color: "Gunnared beige",
-        price: 499.00,
-        imageUrl: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp", // Example image URL
+        name: "Ball Chair",
+        color: "Orange Cushion with White Shell",
+        price: 7200.00,
+        imageUrl: "https://fr.aarniooriginals.com/cdn/shop/products/aarnio_originals_ballchair_orange_03_1200x.png?v=1676555615", 
     },{
         id: 1,
-        name: "Osmond Arm Chair",
-        color: "Gunnared beige",
-        price: 499.00,
-        imageUrl: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp", // Example image URL
+        name: "Field Lounge Chair",
+        color: "Tait Blush",
+        price: 3295.00,
+        imageUrl: "https://www.bludot.com.au/media/catalog/product/f/d/fd1_lngchr_bh_frontlow-field-lounge-chair-tait-blush_2.jpg?optimize=medium&fit=bounds&height=1200&width=1500&canvas=1500:1200", 
     },{
         id: 1,
-        name: "Osmond Arm Chair",
-        color: "Gunnared beige",
-        price: 499.00,
-        imageUrl: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp", // Example image URL
+        name: "ARCH Chair",
+        color: "Pebble Green Boucle Fabric with Black Frame",
+        price: 999.00,
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTbxvGYSAn0cEqXuep3SzW92wJGK5Fh38Emg&usqp=CAU", 
     },
     // Add more items...
 ];
