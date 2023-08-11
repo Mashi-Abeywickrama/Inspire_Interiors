@@ -1,12 +1,13 @@
 import React from "react";
 import * as Icon from 'react-bootstrap-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {  Breadcrumb } from "react-bootstrap";
+import { Breadcrumb } from "react-bootstrap";
 import SearchPage from "../../../components/customer/filterNsearch";
 import './../../../styles/customer/designs.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import PageNumb from "../../../components/customer/pagenum";
+import { Link } from "react-router-dom";
 
 const CustomBullet = () => (
     <span style={{ color: "orange", fontSize: "1.5em", marginRight: "0.5em" }}>
@@ -99,11 +100,15 @@ const BrowseDesigns = () => {
                         <div className='row d-flex align-items-center'>
                             <div className='col-md-4 col-sm-12 col-12 fs-5'>
                                 <Breadcrumb className="fw-bold">
-                                    <Breadcrumb.Item style={{ color: '#17183B !important' }}>
+                                    <Breadcrumb.Item >
+                                        Designs
+                                    </Breadcrumb.Item>
+                                    <Breadcrumb.Item className="custom-breadcrumb-divider" active >
+                                        <FontAwesomeIcon icon={faAngleRight} className="me-2 ms-2" />
                                         Browse Designs
                                     </Breadcrumb.Item>
-                                    <Breadcrumb.Item  className="custom-breadcrumb-divider"active>
-                                        <FontAwesomeIcon icon={faAngleRight} />
+                                    <Breadcrumb.Item className="custom-breadcrumb-divider" active>
+                                        <FontAwesomeIcon icon={faAngleRight} className="me-2" />
                                         Top Paid
                                     </Breadcrumb.Item>
                                 </Breadcrumb>
@@ -112,12 +117,12 @@ const BrowseDesigns = () => {
                             </div>
                             <div className='col-md-4 col-sm-6 col-6 text-end'>
                                 <SearchPage />
-                                
+
                             </div>
                         </div>
                     </div>
                 </div>
-               
+
 
                 {/* Content in the Middle */}
                 <div className="py-1">
@@ -179,7 +184,7 @@ const BrowseDesigns = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div className="row">
                                                     <div className="col-md-6 col-sm-6 col-6">
                                                         <div style={{ color: '#696984' }} className=" px-2">
@@ -207,7 +212,7 @@ const BrowseDesigns = () => {
                     <div className='container'>
                         <div className='row'>
                             <div className='d-flex col text-center justify-content-center align-items-center '>
-                            <PageNumb/>
+                                <PageNumb />
                             </div>
                         </div>
                     </div>

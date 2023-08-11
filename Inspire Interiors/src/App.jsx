@@ -134,14 +134,14 @@ const router = createBrowserRouter(
          <Route path = "orders" element={<MyOrder />} />
         <Route path = "designs" element={<Designs />} />
         <Route path = "designs/browsedesigns" element={<BrowseDesigns />} />
-        <Route path="viewproduct" element={<ViewProduct />}></Route>
+        <Route path="marketplace/viewproduct" element={<ViewProduct />}></Route>
         <Route path = "designs/viewdesigner" element={<ViewDesigner />} />
         <Route path = "marketplace" element={<MarketPlace />} />
-        <Route path = "categoryview" element={<CategoryView />} />
+        <Route path = "marketplace/categoryview" element={<CategoryView />} />
         <Route path = "cart" element={<Cart />} />
-        <Route path = "address" element={<Address />} />
-        <Route path = "payment" element={<PaymentMethod />} />
-        <Route path = "shipping" element={<ShippingMethod />} />
+        <Route path = "checkout/address" element={<Address />} />
+        <Route path = "checkout/payment" element={<PaymentMethod />} />
+        <Route path = "checkout/shipping" element={<ShippingMethod />} />
          <Route path="settings" element={<CusSetting />}></Route>
       </Route>
 

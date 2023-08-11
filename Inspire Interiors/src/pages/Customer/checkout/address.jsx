@@ -7,6 +7,8 @@ import { FaBookmark } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './../../../styles/customer/checkout.css';
 
+import { Link } from 'react-router-dom';
+
 const Address = () => {
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -26,11 +28,11 @@ const Address = () => {
                                         Address
                                     </Breadcrumb.Item>
                                     <Breadcrumb.Item className="custom-breadcrumb-divider" active>
-                                        <FontAwesomeIcon icon={faAngleRight} className="me-2"/>
+                                        <FontAwesomeIcon icon={faAngleRight} className="me-2" />
                                         Shipping
                                     </Breadcrumb.Item>
                                     <Breadcrumb.Item className="custom-breadcrumb-divider" active>
-                                        <FontAwesomeIcon icon={faAngleRight} className="me-2"/>
+                                        <FontAwesomeIcon icon={faAngleRight} className="me-2" />
                                         Payment
                                     </Breadcrumb.Item>
                                 </Breadcrumb>
@@ -105,79 +107,81 @@ const Address = () => {
                             </div>
 
                             {/* Summery */}
-                        <div className="d-flex w-30 h-custom me-3">
-                            <div className=" border rounded p-1 w-98 h-100 f-color-summary">
-                                <div className="m-2">
-                                    <p className="fs-4 fw-bold ">
-                                        Order Summary
-                                    </p>
-                                    <div className="d-flex justify-content-between mb-2">
-                                        <div>
-                                            Price :
+                            <div className="d-flex w-30 h-custom me-3">
+                                <div className=" border rounded p-1 w-98 h-100 f-color-summary">
+                                    <div className="m-2">
+                                        <p className="fs-4 fw-bold ">
+                                            Order Summary
+                                        </p>
+                                        <div className="d-flex justify-content-between mb-2">
+                                            <div>
+                                                Price :
+                                            </div>
+                                            <div>
+                                                $56
+                                            </div>
                                         </div>
-                                        <div>
-                                            $56
+                                        <div className="d-flex justify-content-between mb-2">
+                                            <div>
+                                                Discount :
+                                            </div>
+                                            <div>
+                                                $56
+                                            </div>
+                                        </div><div className="d-flex justify-content-between mb-2">
+                                            <div>
+                                                Shipping :
+                                            </div>
+                                            <div>
+                                                $56
+                                            </div>
+                                        </div><div className="d-flex justify-content-between mb-2">
+                                            <div>
+                                                Coupon Applied :
+                                            </div>
+                                            <div>
+                                                $56
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="d-flex justify-content-between mb-2">
-                                        <div>
-                                            Discount :
+                                        <div className="d-flex justify-content-between mb-2">
+                                            <hr />
                                         </div>
-                                        <div>
-                                            $56
+                                        {/* total */}
+                                        <div className="d-flex justify-content-between mb-2">
+                                            <div>
+                                                TOTAL :
+                                            </div>
+                                            <div>
+                                                $56
+                                            </div>
                                         </div>
-                                    </div><div className="d-flex justify-content-between mb-2">
-                                        <div>
-                                            Shipping :
+                                        <div className="d-flex justify-content-between mb-2">
+                                            <div>
+                                                Estimated Delivery By :
+                                            </div>
+                                            <div>
+                                                $56
+                                            </div>
                                         </div>
-                                        <div>
-                                            $56
-                                        </div>
-                                    </div><div className="d-flex justify-content-between mb-2">
-                                        <div>
-                                            Coupon Applied :
-                                        </div>
-                                        <div>
-                                            $56
-                                        </div>
-                                    </div>
-                                    <div className="d-flex justify-content-between mb-2">
-                                        <hr />
-                                    </div>
-                                    {/* total */}
-                                    <div className="d-flex justify-content-between mb-2">
-                                        <div>
-                                            TOTAL :
-                                        </div>
-                                        <div>
-                                            $56
-                                        </div>
-                                    </div>
-                                    <div className="d-flex justify-content-between mb-2">
-                                        <div>
-                                            Estimated Delivery By :
-                                        </div>
-                                        <div>
-                                            $56
-                                        </div>
-                                    </div>
 
-                                    {/* coupon input */}
-                                    <div className="mb-2 d-flex align-items-center">
-                                        <input
-                                            type="text"
-                                            className="form-control rounded border-transparent"
-                                            placeholder="Coupon Code"
-                                        />
-                                        <FaBookmark className="ms-2" /> {/* Bookmark icon */}
-                                    </div>
-                                    {/* checkout btn */}
-                                    <div className="d-flex justify-content-end w-100 mb-2">
-                                        <button className="btn btn-color w-100">Continue to Shipping</button>
+                                        {/* coupon input */}
+                                        <div className="mb-2 d-flex align-items-center">
+                                            <input
+                                                type="text"
+                                                className="form-control rounded border-transparent"
+                                                placeholder="Coupon Code"
+                                            />
+                                            <FaBookmark className="ms-2" /> {/* Bookmark icon */}
+                                        </div>
+                                        {/* checkout btn */}
+                                        <Link to='/customer/checkout/shipping'>
+                                            <div className="d-flex justify-content-end w-100 mb-2">
+                                                <button className="btn btn-color w-100">Continue to Shipping</button>
+                                            </div>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
