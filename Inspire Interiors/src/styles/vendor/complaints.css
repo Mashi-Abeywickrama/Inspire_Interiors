@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap');
+
+.complaint-container{
+    width: inherit !important;
+}
+
+.reject-btn{
+    color: #54657E;
+    background-color: #FFFFFF;
+    border: 1px solid #54657E;
+}
+
+.accept-btn{
+    color: #007F00;
+    background-color: #FFFFFF;
+    border: 1px solid #007F00;
+}
+
+.Cabin-text{
+    font-family: "Cabin" !important;
+}
+
+.view-btn{
+    color: #0075E2;
+    background-color: #FFFFFF;
+    border: 1px solid #0075E2;
+}
+
+.complaint-tab{
+    height: 8% !important;
+}

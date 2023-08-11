@@ -5,24 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daa14848-e55c-4a01-acbc-012f481443c9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Inspire_Interiors_new.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inspire Interiors/src/assets/img/adv/adv1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inspire Interiors/src/assets/img/customer/livinroom.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inspire Interiors/src/pages/Customer/marketplace/marketPlace.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inspire Interiors/src/routes/loginRoute.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inspire Interiors/src/styles/customer/marketplace.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/src/main/java/inspireinteriors/dev/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/inspireinteriors/dev/model/GeneratedValue.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/src/main/java/inspireinteriors/dev/model/User.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/src/main/java/inspireinteriors/dev/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/inspireinteriors/dev/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/inspireinteriors/V1__first_migration_script.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/components/customer/sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/components/customer/sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/viewOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/viewOrder.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/styles/customer/sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/styles/customer/sidebar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/styles/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/styles/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/pages/Customer/Designs/browsedesigns.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/pages/Customer/Designs/browsedesigns.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/routes/customerRoute.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/routes/customerRoute.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/styles/customer/designs.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/styles/customer/designs.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/styles/customer/myOrders.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/styles/customer/myOrders.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -59,29 +60,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Shinthujen",
-    "last_opened_file_path": "C:/Users/shint/Documents/GitHub/Inspire_Interiors_new",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "spring.configuration.checksum": "e77989ed21758e78331b20e477fc5582",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Shinthujen&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/shint/Documents/GitHub/Inspire_Interiors_new&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;e77989ed21758e78331b20e477fc5582&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="inspireinteriors.dev.model" />
@@ -106,6 +107,7 @@
       <updated>1689746202606</updated>
       <workItem from="1689746203572" duration="1382000" />
       <workItem from="1689784349523" duration="6943000" />
+      <workItem from="1691251635459" duration="22000" />
     </task>
     <servers />
   </component>

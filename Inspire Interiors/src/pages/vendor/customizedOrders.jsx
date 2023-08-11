@@ -11,6 +11,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
+import {Link} from 'react-router-dom';
 
 const newRequestData = {
     columns: [
@@ -59,7 +60,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -72,7 +73,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -85,7 +86,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -98,7 +99,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -111,7 +112,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -124,7 +125,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -137,7 +138,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -150,7 +151,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -163,7 +164,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -176,7 +177,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -189,7 +190,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -202,7 +203,7 @@ const newRequestData = {
             </div>,
             quantity: '30000',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
-            status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+            status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },    
     ]
 }
@@ -260,7 +261,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -274,7 +275,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -288,7 +289,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -302,7 +303,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -316,7 +317,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -330,7 +331,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -344,7 +345,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -358,7 +359,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -372,7 +373,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -386,7 +387,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -400,7 +401,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -414,12 +415,12 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></div>
+            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
     ]
 }
 
-const CustomizedOrders = () => {
+const CustomizeOrders = () => {
     return (
         <>
             <div className="customized-container background-total accordion bg-white rounded-3 mb-4 me-3 p-2">
@@ -467,4 +468,4 @@ const CustomizedOrders = () => {
     );
 }
 
-export default CustomizedOrders;
+export default CustomizeOrders;

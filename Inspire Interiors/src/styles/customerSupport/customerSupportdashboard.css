@@ -1,0 +1,29 @@
+.dashboard-container{
+    width: inherit !important;
+}
+
+.support-dashboard .vl{
+    border: 1px solid #1B1C31;
+    height: 400px;
+}
+
+.support-dashboard .slider{
+    height: 15rem;
+    margin-bottom: 40px;
+}
+.support-dashboard .slide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100%/2);
+    height: 200px;
+    width: 170px;
+    margin-right: 10px;
+    object-fit:scale-down;
+
+    
+    @media(max-width: 1150px) {
+        width: 100%
+    }
+    
+}

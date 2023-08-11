@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from "../../components/header";
+
+import axios from 'axios';
 
 
 import { Container, Row, Col, Button } from 'react-bootstrap';
@@ -15,8 +18,51 @@ import * as Icon from 'react-bootstrap-icons';
 
 
 import './../../styles/home.css';
+import useAlert from '../../components/useAlert';
   
 const Login = () => {
+
+  const apiBaseURL = 'http://localhost:8080'; // Replace this with the base URL of your Spring Boot backend
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseURL,
+    timeout: 5000, // You can adjust the timeout value as needed
+    // You can also set other default config options if required
+    // For example, you might want to set headers for authorization or other request-specific headers
+  });
+
+   const navigate = useNavigate(); // Initialize useNavigate
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+
+  const { setAlert } = useAlert();
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axiosInstance.post('/login', { 
+        username: username, 
+        password: password 
+        });
+      if (response.status === 200) {
+        const userType = response.data.userType;
+
+        if (userType === 'admin') {
+          navigate('/admin');
+        } else if (userType === 'customer') {
+          setAlert('Successful Login!', 'success');
+          setTimeout(() => {
+            navigate('/customer');
+        }, 3000);
+        }
+      }
+    } catch (error) {
+      console.error('Authentication failed');
+      setAlert('Incorrect Credintials!', 'error');
+    }
+  };
+
   return (
     <>
       <div>
@@ -68,16 +114,16 @@ const Login = () => {
                   Inspire Interiors
               </h2>
               {/* login form */}
-              <Form className='d-flex row w-92 gap-2'>
+              <Form className='d-flex row w-92 gap-2 ' onSubmit={handleLogin}>
                 <Button
-                  className="mb-4 w-100 btnstyle btn-lg"
+                  className="mb-4 w-100 btnstyle bg-transparent border-0 shadow-xs btn-lg"
                 >
                   <img src={googleIcon} alt="Google" className="me-2 google-icon" />
                   Login with Google
                 </Button>
 
                 <Button
-                  className="mb-4 w-100 btnstyle btn-lg"
+                  className="mb-4 w-100 btnstyle bg-transparent border-0 shadow-xs btn-lg"
                   >
                   <img src={facebookIcon} alt="Facebook" className="me-2 facebook-icon" />
                   Login with Facebook
@@ -89,12 +135,24 @@ const Login = () => {
                   <hr className="flex-grow-1" />
                 </div>
 
-                <Form.Group controlId="formName">
-                  <Form.Control type="text" placeholder="Name" size='lg' className='mb-3' />
+                <Form.Group controlId="formName" >
+                  <Form.Control
+                  type="text"
+                  placeholder="Name"
+                  size='lg'
+                  className='mb-3 bg-transparent'
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group controlId="formPassword">
-                  <Form.Control type="password" placeholder="Password" size='lg' />
+                  <Form.Control
+                  type="password"
+                  className='mb-3 bg-transparent'
+                  placeholder="Password"
+                  size='lg'
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)}/>
                 </Form.Group>
 
                 <div className='d-flex row justify-content-center' controlId="fprememberMe">
@@ -110,11 +168,12 @@ const Login = () => {
                 </div>
 
                 <Button
+                  onClick={handleLogin}
                   className='d-flex justify-content-center align-self-center mb-4'
                   size='lg'
                   variant="primary"
                   style={{ backgroundColor: '#035C94', color: '#FFFFFF' }}
-                  type="submit">
+                  >
                   Login
                 </Button>
 
@@ -135,6 +194,7 @@ const Login = () => {
 
 
         </div>
+       
 
       </div>
     </>
