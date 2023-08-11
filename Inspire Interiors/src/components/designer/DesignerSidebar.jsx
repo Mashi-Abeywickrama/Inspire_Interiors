@@ -103,7 +103,9 @@ const DesignerSidebar = () => {
               <RiSettings5Fill />
             </i>
           </NavIcon>
-          <NavText>Settings</NavText>
+          <NavText>
+            <NavLink to={"setting"}>Settings</NavLink>
+          </NavText>
         </NavItem>
       </SideNav.Nav>
     </SideNav>

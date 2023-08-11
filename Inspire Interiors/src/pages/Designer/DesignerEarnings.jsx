@@ -575,7 +575,7 @@ function DesignerEarnings() {
       </Breadcrumbs>
       <br></br>
       <div className="d-flex justify-content-end">
-        <NavLink to="../bankdetails">
+        <NavLink to="../setting">
           <div className="text-primary d-flex gap-2">
             <div className="d-flex align-self-center">
               <BsBank />

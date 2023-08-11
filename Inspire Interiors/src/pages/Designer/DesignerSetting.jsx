@@ -7,7 +7,7 @@ import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./../../styles/Designer/setting.css";
 
-import Profile from "../../assets/customer/profile.png";
+import Profile from "../../assets/Designer/profile.jpg";
 
 function DesignerSetting() {
   const [selectedOption, setSelectedOption] = useState("");
