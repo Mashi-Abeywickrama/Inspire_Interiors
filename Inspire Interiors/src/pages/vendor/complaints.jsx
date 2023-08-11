@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/customer/myOrders.css';
 import '../../styles/customer/table.css';
 
+import * as Icon from 'react-bootstrap-icons';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
@@ -47,7 +48,7 @@ const tabledata = {
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
-        type: 'refund',
+        type: 'different design',
         status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
       },
       {
@@ -119,44 +120,50 @@ const tabledata = {
     ]
 }
 
-const Complaints = () => (
+const Complaints = () => {
+  return (
     <>
-        <div className='complaints-container background-total accordion bg-white rounded-3 mb-4 me-3 p-4'>
-            <p className="text-dark fs-3 fw-bold Cabin-text ">Complaints</p>
-            <div className='d-flex flex-column my-2'>
-                <Tabs
-                    defaultActiveKey="All"
-                    id="uncontrolled-tab-example"
-                    className="mb-3 bg-white complaint-tab"
-                >
-                    <Tab eventKey="All" title="All">
-                        <div className=''>
-
-                            <MDBDataTableV5 responsive
-                                striped
-                                bordered
-                                small
-                                data={tabledata}
-                                sortable={true}
-                                exportToCSV={true}
-                                paging={true}
-                                searching={true} />
-                        </div>
-                    </Tab>
-                    <Tab eventKey="New" title="New">
-                        New
-                    </Tab>
-                    <Tab eventKey="On Going" title="On Going">
-                        On Going
-                    </Tab>
-                    <Tab eventKey="Resolved" title="Resolved">
-                        Resolved
-                    </Tab>
-                </Tabs>
-            </div>
-
+      <div className='complaints-container background-total accordion bg-white rounded-3 mb-4 me-3 p-4'>
+        <div className='d-flex flex-row gap-2'>
+          <p className='fs-3 fw-bold Cabin-text'>Complaints</p>
+          <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
+          <p className='fs-3 fw-bold Cabin-text'>All</p>
         </div>
+        <div className='d-flex flex-column my-2'>
+          <Tabs
+            defaultActiveKey="All"
+            id="uncontrolled-tab-example"
+            className="mb-3 bg-white complaint-tab"
+          >
+            <Tab eventKey="All" title="All">
+              <div className=''>
+
+                <MDBDataTableV5 responsive
+                  striped
+                  bordered
+                  small
+                  data={tabledata}
+                  sortable={false}
+                  exportToCSV={true}
+                  paging={true}
+                  searching={true} />
+              </div>
+            </Tab>
+            <Tab eventKey="New" title="New">
+              New
+            </Tab>
+            <Tab eventKey="On Going" title="On Going">
+              On Going
+            </Tab>
+            <Tab eventKey="Resolved" title="Resolved">
+              Resolved
+            </Tab>
+          </Tabs>
+        </div>
+
+      </div>
     </>
-)
+  );
+}
 
 export default Complaints;

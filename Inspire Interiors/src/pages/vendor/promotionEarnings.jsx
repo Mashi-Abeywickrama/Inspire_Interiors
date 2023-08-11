@@ -11,6 +11,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
+import {Link} from 'react-router-dom';
 
 const tableData = {
     columns: [
@@ -273,7 +274,7 @@ const PromotionEarnings = () => (
                 <p className="text-dark fs-3 fw-bold Cabin-text ">Earnings From Paid Promotions</p>
                 <div className='d-flex flex-row gap-3 mt-3'>
                     <Icon.Bank size={25} color='#035C94' />
-                    <p className='fs-5 fw-semibold' style={{color:"#035C94"}}>Bank Details</p>
+                    <Link to="/vendor/setting"><p className='fs-5 fw-semibold' style={{color:"#035C94"}}>Bank Details</p></Link>
                 </div>
                 
             </div>

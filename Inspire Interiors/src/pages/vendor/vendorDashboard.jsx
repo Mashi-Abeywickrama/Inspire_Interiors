@@ -3,6 +3,7 @@ import '../../styles/vendor/vendorDashboard.css';
 import * as Icon from 'react-bootstrap-icons';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from 'react-router-dom';
 
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
 import ReactStars from "react-rating-stars-component";
@@ -96,7 +97,7 @@ const VendorDashboard = () => {
                 <div className='col-12 d-flex flex-column gap-3 '>
                     <div className='col-12 d-flex flex-column flex-lg-row flex-md-row gap-3'>
                         <div className='col-lg-8 bg-white rounded-3 shadow p-4'>
-                            <p className='fs-3 fw-bold Cabin-text'>Revenue Made</p>
+                            <Link to="/vendor/inventory"> <p className='fs-3 fw-bold Cabin-text '  style={{ color: "#035C94" }}>Revenue Made</p></Link>
                             <div className='d-flex flex-row justify-content-evenly'>
                                 <div className='d-flex flex-row gap-3'>
                                     <p className='fs-6 fw-semibold' style={{ color: "#035C94" }}>Total Revenue</p>
@@ -126,7 +127,7 @@ const VendorDashboard = () => {
                         <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
                             <p className='fs-3 fw-semibold' style={{ color: "#035C94" }}>Average Rating</p>
                             <div className='d-flex flex-column p-4 avg-div justify-content-center align-items-center rounded-5' style={{width:"85%"}}>
-                                <p className='fs-1 fw-bold m-0' style={{ color: "white" }}>4.9</p>
+                                <p className='fs-1 fw-bold m-0' style={{ color: "white" }}>4.5</p>
                                 <ReactStars
                                     count={5}
                                     onChange={stardata}
@@ -175,7 +176,7 @@ const VendorDashboard = () => {
                     <div className='col-12 d-flex flex-column flex-lg-row flex-md-row gap-3'>
                         <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
                             <div className='d-flex flex-row justify-content-between'>
-                                <p className='fs-3 fw-semibold' style={{ color: "#035C94" }}>Product Sold</p>
+                                <Link to="/vendor/inventory"><p className='fs-3 fw-semibold' style={{ color: "#035C94" }}>Product Sold</p></Link>
                                 <select class="form-select w-25" aria-label="Default select example">
                                     <option selected>This Month</option>
                                     <option value="3 Months">Last Month</option>
@@ -207,7 +208,7 @@ const VendorDashboard = () => {
                         </div>
                         <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
                             <div className='d-flex flex-row justify-content-between'>
-                                <p className='fs-3 fw-semibold' style={{ color: "#035C94" }}>Order Activity</p>
+                                <Link to="/vendor/order"><p className='fs-3 fw-semibold' style={{ color: "#035C94" }}>Order Activity</p></Link>
                                 <select class="form-select w-25" aria-label="Default select example">
                                     <option selected>This Month</option>
                                     <option value="3 Months">Last Month</option>
@@ -231,7 +232,7 @@ const VendorDashboard = () => {
                             </ResponsiveContainer>
                         </div>
                         <div className='col-lg-4 rounded-3 shadow p-4 order-div'>
-                            <p className='fs-3 fw-semibold' style={{ color: "#FFFFFF" }}>Order Stats</p>
+                            <Link to="/vendor/order"><p className='fs-3 fw-semibold' style={{ color: "#FFFFFF" }}>Order Stats</p></Link>
                             <div className='d-flex flex-column gap-4'>
                                 <div className='d-flex flex-row gap-4'>
                                     <div className='background-box rounded-4 p-3'>

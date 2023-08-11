@@ -1,5 +1,7 @@
+import React, { useState } from 'react';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import { Router,Route } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import { NavLink } from 'react-router-dom'; 
 
 import * as Icon from 'react-bootstrap-icons';
 import { RiThumbUpFill,RiStore2Fill,RiHeartPulseFill,RiShoppingBagFill,RiDashboardFill,RiSettings5Fill } from "react-icons/ri";
@@ -10,68 +12,82 @@ import './../../styles/vendor/sidebar.css'
 
 const SidebarDashboard = () => {
   
+    //assigning location variable
+    const location = useLocation();
+
+    //destructuring pathname from location
+    const { pathname } = location;
+
+    //Javascript split method to get the name of the path in array
+    const splitLocation = pathname.split("/");
+
+    const [selected, setSelected] = useState(splitLocation[2]); // State to track selected link
+    console.log(splitLocation[2]);
 
   return (
-   <SideNav
-    onSelect={(selected) => {
-        // Add your code here
-    }}
-    
->
+   <SideNav  onSelect={(selected) => setSelected(splitLocation[2])}>
     
     <SideNav.Toggle   />
-    <SideNav.Nav defaultSelected="dashboard">
+    <SideNav.Nav defaultSelected={splitLocation[2]}>
         <NavItem eventKey="dashboard">
             <NavIcon>
-                <i><RiDashboardFill /></i>
+            <NavLink to="/vendor/dashboard" activeClassName="active"><i><RiDashboardFill /></i></NavLink>
+                
             </NavIcon>
             <NavText>
-                Dashboard
+                <NavLink to="/vendor/dashboard" activeClassName="active">Dashboard</NavLink>
+                
             </NavText>
         </NavItem>
 
         <NavItem eventKey="inventory">
             <NavIcon>
-               <i><RiStore2Fill /></i>
+            <NavLink to="/vendor/inventory" activeClassName="active"> <i><RiStore2Fill /></i></NavLink>
+              
             </NavIcon>
             <NavText>
-                Inventory
+            <NavLink to="/vendor/inventory" activeClassName="active">Inventory</NavLink>
+                
             </NavText>
         </NavItem>
 
-        <NavItem eventKey="orders">
+        <NavItem eventKey="order">
             <NavIcon>
-                 <i><RiShoppingBagFill /></i>
+            <NavLink to="/vendor/order" activeClassName="active"><i><RiShoppingBagFill /></i></NavLink>
+                 
             </NavIcon>
             <NavText >
-                Orders
+            <NavLink to="/vendor/order" activeClassName="active">Orders</NavLink>
+                
             </NavText>
         </NavItem>
 
-        <NavItem eventKey="promotions">
+        <NavItem eventKey="promotion">
             <NavIcon>
-                 <i><RiThumbUpFill /></i>
+            <NavLink to="/vendor/promotion" activeClassName="active"><i><RiThumbUpFill /></i></NavLink>
+                 
             </NavIcon>
             <NavText>
-                Promotions
+            <NavLink to="/vendor/promotion" activeClassName="active">Promotions</NavLink>
+                
             </NavText>
         </NavItem>
 
         <NavItem eventKey="complaints">
             <NavIcon>
-                <i><RiHeartPulseFill /></i>
+            <NavLink to="/vendor/complaints" activeClassName="active"><i><RiHeartPulseFill /></i></NavLink>
             </NavIcon>
             <NavText>
-                Complaints
+            <NavLink to="/vendor/complaints" activeClassName="active">Complaints</NavLink>
             </NavText>
         </NavItem>
 
-        <NavItem eventKey="Settings">
+        <NavItem eventKey="setting">
             <NavIcon>
-                 <i><RiSettings5Fill /></i>
+            <NavLink to="/vendor/setting" activeClassName="active"><i><RiSettings5Fill /></i></NavLink>
             </NavIcon>
             <NavText>
-                Settings
+            <NavLink to="/vendor/setting" activeClassName="active">Settings</NavLink>
             </NavText>
         </NavItem>
 
