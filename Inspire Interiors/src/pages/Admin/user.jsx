@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import './../../styles/customer/myOrders.css';
 import './../../styles/admin/table.css';
 import './../../styles/admin/user.css'
+import { Link } from 'react-router-dom';
 
 
 const User = () => {
@@ -54,7 +55,7 @@ const User = () => {
         email: '8',
         status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <Link to="/admin/user/profile"><div className='d-flex gap-2 align-items-center text-dark'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div></Link>
       },
       {
         name: 'Chair',
