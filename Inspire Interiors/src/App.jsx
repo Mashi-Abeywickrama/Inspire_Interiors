@@ -94,7 +94,7 @@ import Test from "./pages/Designer/test";
 import DesignerPromotion from "./pages/Designer/DesignerPromotion";
 import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
-import Designtool from "./pages/Designer/Designtool";
+import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -240,7 +240,7 @@ const router = createBrowserRouter(
           path="promotion/earnings"
           element={<DesignerPromotionEarnings />}
         />
-        <Route path="d" elements={<Designtool />} />
+        <Route path="designtool" element={<DesignerDesigntool />} />
 
         <Route path="setting" element={<DesignerSetting />} />
       </Route>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Popup from "./Popup";
 
-function CreateNewDesignPopupHook() {
+function AddNewDesignPopupHook() {
   const [open, SetOpen] = useState(false);
 
   //   const showPopup = () => {
@@ -21,4 +21,4 @@ function CreateNewDesignPopupHook() {
   );
 }
 
-export default CreateNewDesignPopupHook;
+export default AddNewDesignPopupHook;
