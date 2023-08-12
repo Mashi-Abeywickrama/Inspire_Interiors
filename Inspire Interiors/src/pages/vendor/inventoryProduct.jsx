@@ -4,6 +4,7 @@ import '../../styles/vendor/inventoryProduct.css';
 import Chair from '../../assets/img/vendor/chair.png';
 import * as Icon from 'react-bootstrap-icons';
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
+import { Link } from 'react-router-dom';
 
 const tabledata = {
     columns: [
@@ -99,9 +100,9 @@ const InventoryProduct = () => (
                 <div className='d-flex flex-column gap-4'>
                     <div className='col-lg-12 bg-white rounded-3 shadow'>
                         <div className="d-flex flex-row gap-4 p-4">
-                            <p className="text-dark fs-3 fw-bold Cabin-text ">Inventory</p>
+                            <Link to="/vendor/inventory"><p className="text-dark fs-3 fw-bold Cabin-text ">Inventory</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Chair</p>
+                            <Link to="/vendor/inventory/viewstock"><p className="fs-3 fw-bold Cabin-text text-dark">Stock</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                             <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Meryl Lounge Chair</p>
                         </div>

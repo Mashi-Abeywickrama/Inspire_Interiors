@@ -12,7 +12,7 @@ const ViewOrder = () => {
         <>
             <div className="order-container w-100 rounded-3 mb-4 me-5 p-3">
                 <div className="d-flex flex-row gap-4">
-                    <p className="text-dark fs-3 fw-bold Cabin-text">Orders</p>
+                    <Link to="/vendor/order"><p className="text-dark fs-3 fw-bold Cabin-text">Orders</p></Link>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                     <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Delayed</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />

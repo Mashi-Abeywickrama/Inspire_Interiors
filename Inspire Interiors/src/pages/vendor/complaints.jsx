@@ -128,7 +128,7 @@ const Complaints = () => {
         <div className='d-flex flex-row gap-2'>
           <p className='fs-3 fw-bold Cabin-text'>Complaints</p>
           <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-          <p className='fs-3 fw-bold Cabin-text'>All</p>
+          <p className='fs-3 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>All</p>
         </div>
         <div className='d-flex flex-column my-2'>
           <Tabs

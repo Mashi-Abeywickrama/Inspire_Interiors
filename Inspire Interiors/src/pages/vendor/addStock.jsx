@@ -9,9 +9,9 @@ const AddStock = () => {
         <>
             <div className="stock-container p-4 bg-white rounded-3 mb-4 me-3">
                 <div className="d-flex flex-row gap-4">
-                    <p className="fs-3 fw-bold Cabin-text">Inventory</p>
+                    <Link to="/vendor/inventory"><p className="fs-3 fw-bold Cabin-text text-dark">Inventory</p></Link>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text">Stock</p>
+                    <Link to="/vendor/inventory/viewstock"><p className="fs-3 fw-bold Cabin-text text-dark">Stock</p></Link>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                     <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Add Stock</p>
                 </div>

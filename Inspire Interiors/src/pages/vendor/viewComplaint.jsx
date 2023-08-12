@@ -10,7 +10,7 @@ const ViewComplaint = () => {
         <>
             <div className="complaints-container w-100 rounded-3 mb-4 me-5 p-3">
                 <div className="d-flex flex-row gap-4">
-                    <p className="text-dark fs-3 fw-bold Cabin-text">Complaints</p>
+                    <Link to="/vendor/complaints"><p className="text-dark fs-3 fw-bold Cabin-text text-dark">Complaints</p></Link>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                     <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>View</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
@@ -49,7 +49,7 @@ const ViewComplaint = () => {
                                     <p className="fs-3 fw-bold Cabin-text">About Customer Avocado</p>
                                 </div>
                                 <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-evenly">
-                                    <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-3 w-25 rounded-4 border" src={Customer} />
+                                    <img style={{ backgroundColor: "#FEE4CB", objectFit:"cover" }} className="img-fluid p-3 w-25 rounded-4 border" src={Customer} />
                                     <div className="d-flex flex-column">
                                         <p className="fs-4 fw-bold" style={{ color: "#3D3D3D" }}>Victor Avocado</p>
                                         <div className="d-flex flex-row gap-2">
