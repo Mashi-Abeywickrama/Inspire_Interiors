@@ -21,13 +21,20 @@ import MyTeam from "./pages/visitor/team";
 import Project from './pages/visitor/project';
 import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
 
+
 // Admin
+
 import Report from './pages/Admin/report';
+import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
 import Dashboard from './pages/Admin/dashboard';
 import User from './pages/Admin/user';
 import Commission from './pages/Admin/commission';
 import Orders from './pages/Admin/orders';
 import Salary from './pages/Admin/salary';
+import Profile from './pages/Admin/profile';
+import Invoice from './pages/Admin/invoice';
+import Cview from './pages/Admin/commissionView';
+
 
 // Customer
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
@@ -46,6 +53,7 @@ import MarketPlace from "./pages/Customer/marketplace/marketPlace";
 
 
 // Vendor
+
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
 import ViewOrder from "./pages/vendor/viewOrder";
 import Inventory from "./pages/vendor/inventory";
@@ -87,8 +95,14 @@ import DesignerPromotions from "./pages/Designer/DesignerPromotions";
 import AlertPopup from "./components/AlertPopup";
 
 
-
-
+import Popup from "./components/designer/Popup/Popup";
+import DesignerEarnings from "./pages/Designer/DesignerEarnings";
+import Test from "./pages/Designer/test";
+import DesignerEarn from "./pages/Designer/DesignerEarn";
+import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
+import DesignerPromotion from "./pages/Designer/DesignerPromotion";
+import DesignerSetting from "./pages/Designer/DesignerSetting";
+import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -130,14 +144,14 @@ const router = createBrowserRouter(
          <Route path = "orders" element={<MyOrder />} />
         <Route path = "designs" element={<Designs />} />
         <Route path = "designs/browsedesigns" element={<BrowseDesigns />} />
-        <Route path="viewproduct" element={<ViewProduct />}></Route>
+        <Route path="marketplace/viewproduct" element={<ViewProduct />}></Route>
         <Route path = "designs/viewdesigner" element={<ViewDesigner />} />
         <Route path = "marketplace" element={<MarketPlace />} />
-        <Route path = "categoryview" element={<CategoryView />} />
+        <Route path = "marketplace/categoryview" element={<CategoryView />} />
         <Route path = "cart" element={<Cart />} />
-        <Route path = "address" element={<Address />} />
-        <Route path = "payment" element={<PaymentMethod />} />
-        <Route path = "shipping" element={<ShippingMethod />} />
+        <Route path = "checkout/address" element={<Address />} />
+        <Route path = "checkout/payment" element={<PaymentMethod />} />
+        <Route path = "checkout/shipping" element={<ShippingMethod />} />
          <Route path="settings" element={<CusSetting />}></Route>
       </Route>
 
@@ -149,6 +163,10 @@ const router = createBrowserRouter(
         <Route  path="commission" element={<Commission/> } />
         <Route  path="orders" element={<Orders/> } />
         <Route  path="salary" element={<Salary/> } />
+        <Route path="invoice" element={<Invoice/>}/>
+        <Route path="profile" element={<Profile/>}/>
+        <Route path="commissionView" element={<Cview/>}/>
+
       </Route>
 
       {/* Customer Support Routes */}
@@ -189,26 +207,30 @@ const router = createBrowserRouter(
         <Route path="setting" element={<VendorSetting />}></Route>
       </Route>
 
+
       {/* Designer Routes */}
       <Route path="/designer/" element={<DesignerLayout />} errorElement={<Error />}>
         <Route index element={<DesignerDashboard/> } />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
-       
+        <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />
         <Route path="earnings" element={<DesignerEarn />} />
         <Route path="bankdetails" element={<DesignerBankDetails />} />
-        <Route path="promotions" element={<DesignerPromotions />} />
+        <Route path="promotion" element={<DesignerPromotion />} />
+        <Route
+          path="promotion/earnings"
+          element={<DesignerPromotionEarnings />}
+        />
+
+        <Route path="setting" element={<DesignerSetting />} />
       </Route>
+
     </>
   )
 );
 
 const App = () => {
   return (
-    // <>
-    //   <VenderRoute />
-    //   <VisitorRoute />
-    // </>
     <RouterProvider router={router} />
   );
 };

@@ -574,6 +574,16 @@ function DesignerEarnings() {
         {breadcrumbs}
       </Breadcrumbs>
       <br></br>
+      <div className="d-flex justify-content-end">
+        <NavLink to="../setting">
+          <div className="text-primary d-flex gap-2">
+            <div className="d-flex align-self-center">
+              <BsBank />
+            </div>
+            Bank Details
+          </div>
+        </NavLink>
+      </div>
       <div>
         <Tabs
           defaultActiveKey="all"
@@ -606,17 +616,6 @@ function DesignerEarnings() {
             Canceled
           </Tab>
         </Tabs>
-        <NavLink to="../bankdetails">
-          <div
-            className="text-primary d-flex gap-2"
-            style={{ position: "absolute", left: "88%", top: "20%" }}
-          >
-            <div className="d-flex align-self-center">
-              <BsBank />
-            </div>
-            Bank Details
-          </div>
-        </NavLink>
       </div>
     </div>
   );

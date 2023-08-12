@@ -1,6 +1,5 @@
 # Inspire_Interiors
 Third year group project
-I have uploaded Vite Boiler Plate for our project 
-
-First time run - npm install
-To run the project - npm run dev ....
+Design tool intigirated to the project to run the tool 
+you have to run the desing tool by running in in python web server 
+by "python3 -m http.server"
