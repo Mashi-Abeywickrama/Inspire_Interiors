@@ -14,7 +14,7 @@ export default function commissionView() {
     columns: [
       {
         label: "PRODUCT/DESIGN",
-        field: "name",
+        field: "office",
         sort: "asc",
         width: 150,
       },
@@ -26,7 +26,7 @@ export default function commissionView() {
       },
       {
         label: "QUANTITY",
-        field: "office",
+        field: "QTY",
         sort: "asc",
         width: 200,
       },
@@ -50,7 +50,7 @@ export default function commissionView() {
       },
       {
         label: "STATUS",
-        field: "salary",
+        field: "status",
         sort: "asc",
         width: 100,
       },
@@ -63,13 +63,13 @@ export default function commissionView() {
     ],
     rows: [
       {
-        name: "Chair",
+        office: "Chair",
         position: "Peter Pan",
-        office: "8",
+        QTY: "8",
         salary: "6100",
         number: "11221",
         name: "Ronaldo",
-        salary: (
+        status: (
           <div className="completed d-flex gap-2 align-items-center">
             <i class="bi bi-circle-fill tag-icon"></i>
             <p className="m-0">Completed</p>
@@ -82,13 +82,13 @@ export default function commissionView() {
         ),
       },
       {
-        name: "Chair",
+        office: "Chair",
         position: "Peter Pan",
-        office: "8",
+        QTY: "8",
         salary: "6100",
         number: "11221",
         name: "Ronaldo",
-        salary: (
+        status: (
           <div className="pending d-flex gap-2 align-items-center">
             <i class="bi bi-circle-fill tag-icon"></i>
             <p className="m-0">Pending</p>
@@ -101,13 +101,13 @@ export default function commissionView() {
         ),
       },
       {
-        name: "Chair",
+        office: "Chair",
         position: "Peter Pan",
-        office: "8",
+        QTY: "8",
         salary: "6100",
         number: "11221",
         name: "Ronaldo",
-        salary: (
+        status: (
           <div className="completed d-flex gap-2 align-items-center">
             <i class="bi bi-circle-fill tag-icon"></i>
             <p className="m-0">Completed</p>
@@ -120,13 +120,13 @@ export default function commissionView() {
         ),
       },
       {
-        name: "Chair",
+        office: "Chair",
         position: "Peter Pan",
-        office: "8",
+        QTY: "8",
         salary: "6100",
         number: "11221",
         name: "Ronaldo",
-        salary: (
+        status: (
           <div className="pending d-flex gap-2 align-items-center">
             <i class="bi bi-circle-fill tag-icon"></i>
             <p className="m-0">Pending</p>
@@ -139,13 +139,13 @@ export default function commissionView() {
         ),
       },
       {
-        name: "Chair",
+        office: "Chair",
         position: "Peter Pan",
-        office: "8",
+        QTY: "8",
         salary: "6100",
         number: "11221",
         name: "Ronaldo",
-        salary: (
+        status: (
           <div className="completed d-flex gap-2 align-items-center">
             <i class="bi bi-circle-fill tag-icon"></i>
             <p className="m-0">Completed</p>
@@ -158,13 +158,13 @@ export default function commissionView() {
         ),
       },
       {
-        name: "Chair",
+        office: "Chair",
         position: "Peter Pan",
-        office: "8",
+        Qty: "8",
         salary: "6100",
         number: "11221",
         name: "Ronaldo",
-        salary: (
+        status: (
           <div className="completed d-flex gap-2 align-items-center">
             <i class="bi bi-circle-fill tag-icon"></i>
             <p className="m-0">Completed</p>
@@ -177,13 +177,13 @@ export default function commissionView() {
         ),
       },
       {
-        name: "Chair",
+        office: "Chair",
         position: "Peter Pan",
-        office: "8",
+        QTY: "8",
         salary: "6100",
         number: "11221",
         name: "Ronaldo",
-        salary: (
+        status: (
           <div className="completed d-flex gap-2 align-items-center">
             <i class="bi bi-circle-fill tag-icon"></i>
             <p className="m-0">Completed</p>
@@ -196,13 +196,13 @@ export default function commissionView() {
         ),
       },
       {
-        name: "Chair",
+        office: "Chair",
         position: "Peter Pan",
-        office: "8",
+        QTY: "8",
         salary: "6100",
         number: "11221",
         name: "Ronaldo",
-        salary: (
+        status: (
           <div className="completed d-flex gap-2 align-items-center">
             <i class="bi bi-circle-fill tag-icon"></i>
             <p className="m-0">Completed</p>
@@ -215,13 +215,13 @@ export default function commissionView() {
         ),
       },
       {
-        name: "Chair",
+        office: "Chair",
         position: "Peter Pan",
-        office: "8",
+        QTY: "8",
         salary: "6100",
         number: "11221",
         name: "Ronaldo",
-        salary: (
+        status: (
           <div className="completed d-flex gap-2 align-items-center">
             <i class="bi bi-circle-fill tag-icon"></i>
             <p className="m-0">Completed</p>
@@ -234,13 +234,13 @@ export default function commissionView() {
         ),
       },
       {
-        name: "Chair",
+        office: "Chair",
         position: "Peter Pan",
-        office: "8",
+        QTY: "8",
         salary: "6100",
         number: "11221",
         name: "Ronaldo",
-        salary: (
+        status: (
           <div className="completed d-flex gap-2 align-items-center">
             <i class="bi bi-circle-fill tag-icon"></i>
             <p className="m-0">Completed</p>
@@ -355,7 +355,7 @@ export default function commissionView() {
 
           <div className="d-flex flex-column bg-white shadow rounded-4 justify-content-center gap-2 flex-fill">
             <span className="text p-2 fs-2">Order Summary</span>
-            <Pie />
+           <div className="d-flex mx-auto"> <Pie /></div>
             <div className=" d-flex flex-row justify-content-center gap-4 ">
                 <div className="d-flex flex-column align-items-center"><div className="r-1 d-flex "></div><span>Completed</span><span>20</span></div>
                 <div className="d-flex flex-column align-items-center"><div className="r-2 d-flex"></div><span>Pending</span><span>20</span></div>

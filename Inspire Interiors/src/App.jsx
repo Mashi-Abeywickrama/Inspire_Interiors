@@ -85,7 +85,7 @@ const router = createBrowserRouter(
       </Route>
 
       {/* Admin Routes */}
-      <Route path="/Admin/" element={<CDashboardlayout />} errorElement={<Error />}>
+      <Route path="/Admin/" element={<ADashboardlayout />} errorElement={<Error />}>
         <Route index element={<Dashboard/> } />
         <Route path="report" element={<Report/> } />
         <Route  path="user" element={<User/> } />
@@ -118,7 +118,7 @@ const router = createBrowserRouter(
         <Route path="inventoryproduct" element={<InventoryProduct />}></Route>
         <Route path="promotionrequest" element={<PromotionRequest />}></Route>
         <Route path="earnings" element={<PromotionEarnings />}></Route>
-      </Route> */}
+      </Route> 
     </>
   )
 );
