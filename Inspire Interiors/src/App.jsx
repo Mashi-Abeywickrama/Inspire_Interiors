@@ -156,7 +156,7 @@ const router = createBrowserRouter(
       </Route>
 
       {/* Admin Routes */}
-      <Route path="/Admin/" element={<CDashboardlayout />} errorElement={<Error />}>
+      <Route path="/Admin/" element={<ADashboardlayout />} errorElement={<Error />}>
         <Route index element={<Dashboard/> } />
         <Route path="report" element={<Report/> } />
         <Route  path="user" element={<User/> } />
