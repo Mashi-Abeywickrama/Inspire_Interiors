@@ -220,7 +220,7 @@ const CustomerDashboard = () => {
                         </div>
                         <div className='col-lg-3 bg-white rounded-3 p-4 mb-3'>
                             <p className="fs-3 fw-bold Cabin-text">Updates</p>
-                            <div className=''><Calendar  onChange={setDate} value={date} formatMonthYear={(locale, date) => {
+                            <div className='dashboard-calender'><Calendar  onChange={setDate} value={date} formatMonthYear={(locale, date) => {
                                     // Get the month's abbreviated name and full year
                                     const options = { month: 'short', year: 'numeric' };
                                     return new Intl.DateTimeFormat(locale, options).format(date);}

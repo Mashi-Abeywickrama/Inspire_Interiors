@@ -1,5 +1,7 @@
+import React, { useState } from 'react';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import { Router,Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'; // Use NavLink for active class
+import { useLocation } from "react-router-dom";
 
 import * as Icon from 'react-bootstrap-icons';
 import { RiCurrencyFill,RiDashboardFill,RiSettings5Fill, RiTakeawayFill, RiDraftFill, RiFileList2Fill } from "react-icons/ri";
@@ -10,68 +12,87 @@ import './../../styles/vendor/sidebar.css'
 
 const SidebarDashboard = () => {
   
+   //assigning location variable
+    const location = useLocation();
+
+    //destructuring pathname from location
+    const { pathname } = location;
+
+    //Javascript split method to get the name of the path in array
+    const splitLocation = pathname.split("/");
+
+    const [selected, setSelected] = useState(splitLocation[2]); // State to track selected link
+    // console.log(splitLocation[2]);
 
   return (
-   <SideNav
-    onSelect={(selected) => {
-        // Add your code here
-    }}
-    
->
+   <SideNav onSelect={(selected) => setSelected(splitLocation[2])}>
+   
     
     <SideNav.Toggle   />
-    <SideNav.Nav defaultSelected="dashboard">
+    <SideNav.Nav defaultSelected={splitLocation[2]}>
         <NavItem eventKey="dashboard">
             <NavIcon>
-                <i><RiDashboardFill /></i>
+                 <NavLink to="/customersupport/dashboard" activeClassName="active"><i><RiDashboardFill /></i></NavLink>
+                
             </NavIcon>
             <NavText>
-                Dashboard
+                <NavLink to="/customersupport/dashboard" activeClassName="active">Dashboard</NavLink>
+                
             </NavText>
         </NavItem>
 
         <NavItem eventKey="chat">
             <NavIcon>
-               <i><RiDraftFill /></i>
+                <NavLink to="https://app.papercups.io/inboxes/b5ab1911-b400-4046-bdde-9d570d258db2/conversations/f5a4cdf5-6faf-4b2a-b565-169db2e03e3d" activeClassName="active"><i><RiDraftFill /></i></NavLink>
+               
             </NavIcon>
             <NavText>
-                Chat
+                 <NavLink to="https://app.papercups.io/inboxes/b5ab1911-b400-4046-bdde-9d570d258db2/conversations/f5a4cdf5-6faf-4b2a-b565-169db2e03e3d" activeClassName="active">Chat</NavLink>
+                
             </NavText>
         </NavItem>
 
-        <NavItem eventKey="Inquiries">
+        <NavItem eventKey="inquiry">
             <NavIcon>
-                 <i><RiFileList2Fill /></i>
+                 <NavLink to="/customersupport/inquiry" activeClassName="active"><i><RiFileList2Fill /></i></NavLink>
+                 
             </NavIcon>
             <NavText >
-                Inquiries
+                <NavLink to="/customersupport/inquiry" activeClassName="active">Inquiries</NavLink>
+                
             </NavText>
         </NavItem>
 
-        <NavItem eventKey="Refund">
+        <NavItem eventKey="refund">
             <NavIcon>
-                <i><RiCurrencyFill /></i>
+                <NavLink to="/customersupport/refund" activeClassName="active"><i><RiCurrencyFill /></i></NavLink>
+                
             </NavIcon>
             <NavText>
-                Refund 
+                <NavLink to="/customersupport/refund" activeClassName="active">Refund </NavLink>
+                
             </NavText>
         </NavItem>
 
-        <NavItem eventKey="Delivery">
+        <NavItem eventKey="delivery">
             <NavIcon>
-                 <i><RiTakeawayFill /></i>
+                <NavLink to="/customersupport/delivery" activeClassName="active"><i><RiTakeawayFill /></i></NavLink>
+                 
             </NavIcon>
             <NavText>
-                Delivery
+                 <NavLink to="/customersupport/delivery" activeClassName="active">Delivery</NavLink>
+                
             </NavText>
         </NavItem>
 
-        <NavItem eventKey="Settings">
+        <NavItem eventKey="settings">
             <NavIcon>
-                 <i><RiSettings5Fill /></i>
+                <NavLink to="/customersupport/settings" activeClassName="active"><i><RiSettings5Fill /></i></NavLink>
+                 
             </NavIcon>
             <NavText>
-                Settings
+                <NavLink to="/customersupport/settings" activeClassName="active">Settings</NavLink>
+                
             </NavText>
         </NavItem>
 
