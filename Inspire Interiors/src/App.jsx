@@ -91,15 +91,8 @@ import DesignerMyDesigns from "./pages/Designer/DesignerMyDesigns";
 import DesignerEarnings from "./pages/Designer/DesignerEarnings";
 import DesignerEarn from "./pages/Designer/DesignerEarn";
 import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
-import DesignerPromotions from "./pages/Designer/DesignerPromotions";
-import AlertPopup from "./components/AlertPopup";
-
-
-import Popup from "./components/designer/Popup/Popup";
-import DesignerEarnings from "./pages/Designer/DesignerEarnings";
+import AlertPopup from "./components/AlertPopup"; 
 import Test from "./pages/Designer/test";
-import DesignerEarn from "./pages/Designer/DesignerEarn";
-import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
 import DesignerPromotion from "./pages/Designer/DesignerPromotion";
 import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
