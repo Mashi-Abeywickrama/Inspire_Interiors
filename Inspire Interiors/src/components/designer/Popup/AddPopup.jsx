@@ -1,11 +1,9 @@
-import React from "react";
 import "./popup.css";
 
-function Popup({ SetOpen }) {
+function AddPopup({ SetOpen }) {
   const closePopup = () => {
     SetOpen(false);
   };
-
   return (
     <div>
       <div id="popup1" class="overlay">
@@ -14,7 +12,7 @@ function Popup({ SetOpen }) {
             className="text-primary"
             style={{ left: "30%", position: "absolute" }}
           >
-            Add New Design
+            Create New Design
           </h4>
           <a class="close" href="#" onClick={closePopup}>
             &times;
@@ -60,7 +58,9 @@ function Popup({ SetOpen }) {
                 className="btn text-light"
                 style={{ background: "#035C94" }}
               >
-                Create New
+                <a href="http://localhost:8000" className="text-light">
+                  Create Now
+                </a>
               </button>
             </div>
           </form>
@@ -70,4 +70,4 @@ function Popup({ SetOpen }) {
   );
 }
 
-export default Popup;
+export default AddPopup;
