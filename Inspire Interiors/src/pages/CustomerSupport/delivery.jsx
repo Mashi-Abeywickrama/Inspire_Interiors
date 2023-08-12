@@ -9,6 +9,8 @@ import * as Icon from 'react-bootstrap-icons';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
+import { Link } from 'react-router-dom';
+
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 
 const tabledata = {
@@ -51,7 +53,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -59,7 +61,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -67,7 +69,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },    
     {
         customer: 'Justin Septimus',
@@ -75,7 +77,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -83,7 +85,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -91,7 +93,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -99,7 +101,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -107,7 +109,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -115,7 +117,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -123,7 +125,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -131,7 +133,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -139,7 +141,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -147,7 +149,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
     {
         customer: 'Justin Septimus',
@@ -155,7 +157,7 @@ const tabledata = {
         vendor: '30000',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+        action:<Link to="view"> <div className='d-flex gap-2 align-items-center'><p className='m-0 text-black'>View More</p> <Icon.ArrowRight color='#000'/></div></Link>
     },
 
 ]

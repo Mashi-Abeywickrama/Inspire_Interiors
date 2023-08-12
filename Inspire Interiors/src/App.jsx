@@ -169,9 +169,9 @@ const router = createBrowserRouter(
         <Route path="inquiry" element={<Inquiry/> } />
         <Route path="delivery" element={<Delivery/> } />
         <Route path="refund" element={<Refund />}></Route>
-        <Route path="viewdelivery" element={<ViewDelivery />}></Route>
-        <Route path="viewinquiry" element={<ViewInquiry />}></Route>
-        <Route path="viewrefund" element={<ViewRefund />}></Route>
+        <Route path="delivery/view" element={<ViewDelivery />}></Route>
+        <Route path="inquiry/view" element={<ViewInquiry />}></Route>
+        <Route path="refund/view" element={<ViewRefund />}></Route>
       </Route>
 
       {/* Vendor Routes */}
