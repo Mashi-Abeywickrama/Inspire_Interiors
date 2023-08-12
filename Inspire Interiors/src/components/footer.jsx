@@ -53,14 +53,14 @@ const Footer = () => {
             <div className="d-flex flex-column mt-4">
               <p className="text-warning lower-banner-title">Contact</p>
               <p className="text-white jost-text">55 East Birchwood Ave. Brooklyn, New York 11201</p>
-              <p className="text-white jost-text">contact@interno.com</p>
+              <p className="text-white jost-text">contact@inspirein.com</p>
               <p className="text-white jost-text">(123) 456 - 7890</p>
             </div>
           </div>
         </div>
         <hr className="divider" />
         <div className="text-white text-center footer-para jost-text">
-          Copyright © Group 46
+          Copyright © Inspire Interiors G46
         </div>
       </div>
     </React.Fragment>

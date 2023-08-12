@@ -33,7 +33,7 @@ export default function Profile() {
                 </div>
                 <div className='d-flex flex-column'>
                   <label className="fs-5">Reset Password</label>
-                  <button className="btn btn-primary">Reset Password</button>
+                  <button className="btn-profile btn-primary">Reset Password</button>
                 </div>
               </div>   
             </div>

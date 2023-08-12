@@ -40,6 +40,7 @@ import Cview from './pages/Admin/commissionView';
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
 import CustomerDashboard from "./pages/Customer/customerDashboard";
 import MyOrder from "./pages/Customer/orders/my_orders";
+import OrderView from "./pages/Customer/orders/vieworder";
 import Designs from "./pages/Customer/Designs/designs";
 import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
 import ViewProduct from "./pages/Customer/marketplace/viewProduct";
@@ -145,6 +146,7 @@ const router = createBrowserRouter(
         <Route path = "checkout/address" element={<Address />} />
         <Route path = "checkout/payment" element={<PaymentMethod />} />
         <Route path = "checkout/shipping" element={<ShippingMethod />} />
+        <Route path = "orders/vieworder" element={<OrderView />} />
          <Route path="settings" element={<CusSetting />}></Route>
       </Route>
 
