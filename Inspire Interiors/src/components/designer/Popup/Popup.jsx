@@ -52,6 +52,7 @@ function Popup({ SetOpen }) {
               <button
                 className="btn btn-light text-secondary border border-secondary"
                 onClick={closePopup}
+                style={{ backgroundColor: "white" }}
               >
                 Discard
               </button>
