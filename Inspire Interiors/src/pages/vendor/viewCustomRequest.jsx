@@ -17,7 +17,7 @@ const ViewCustomRequest = () => {
                 <div className="col-12 d-flex flex-column flex-md-row flex-lg-row gap-4">
                     <div className="col-lg-8 bg-white rounded-3 shadow py-3 px-4">
                         <div className="d-flex flex-row gap-4">
-                            <p className="text-dark fs-3 fw-bold Cabin-text">Custom Product</p>
+                            <Link to="/vendor/order/customizeorders"><p className="text-dark fs-3 fw-bold Cabin-text">Custom Product</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                             <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Requests</p>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
@@ -63,7 +63,7 @@ const ViewCustomRequest = () => {
                                     <p className="fs-3 fw-bold Cabin-text">About Customer Avocado</p>
                                 </div>
                                 <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
-                                    <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-2 rounded-4 border" src={Customer} />
+                                    <img style={{ backgroundColor: "#FEE4CB", objectFit:"fill" }} className="img-fluid p-2 rounded-4 border" src={Customer} />
                                     <div className="d-flex flex-column">
                                         <p className="fs-4 fw-bold" style={{ color: "#3D3D3D"}}>Victor Avocado</p>
                                         <div className="d-flex flex-row gap-2">

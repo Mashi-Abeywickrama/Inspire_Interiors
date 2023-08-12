@@ -129,9 +129,9 @@ const PromotionRequest = () => (
                 <div className="d-flex flex-column gap-4">
                     <div className='col-lg-12 bg-white rounded-3 shadow p-4'>
                         <div className="d-flex flex-row gap-4">
-                            <p className="text-dark fs-3 fw-bold Cabin-text ">Promotion</p>
+                            <Link to="/vendor/promotion"><p className="text-dark fs-3 fw-bold Cabin-text ">Promotion</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>My Network</p>
+                            <Link to="/vendor/promotion/mynetwork"><p className="fs-3 fw-bold Cabin-text text-dark">My Network</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                             <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Sent</p>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
@@ -182,7 +182,7 @@ const PromotionRequest = () => (
                     <div className='col-lg-12 bg-white rounded-3 shadow p-4 mb-3'>
                         <p className="fs-3 fw-bold Cabin-text">About Victor Avocado</p>
                         <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
-                            <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-3 rounded-4 border" src={Customer} />
+                            <img style={{ backgroundColor: "#FEE4CB", objectFit:"cover" }} className="img-fluid p-3 rounded-4 border" src={Customer} />
                             <div className="d-flex flex-column">
                                 <p className="fs-4 fw-bold Cabin-text">Victor Avocado</p>
                                 <div className="d-flex flex-row gap-3">

@@ -3,6 +3,7 @@ import { Router,Route } from 'react-router-dom';
 
 import * as Icon from 'react-bootstrap-icons';
 import { RiCurrencyFill,RiDashboardFill,RiSettings5Fill, RiTakeawayFill, RiDraftFill, RiFileList2Fill } from "react-icons/ri";
+import { TbLogout2 } from "react-icons/tb";
 
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './../../styles/vendor/sidebar.css'
@@ -75,7 +76,15 @@ const SidebarDashboard = () => {
             </NavText>
         </NavItem>
 
-       
+        <NavItem eventKey="logout">
+          <NavIcon>
+            <NavLink to="/" activeClassName="active"><i><TbLogout2 /></i></NavLink>
+          </NavIcon>
+          <NavText>
+            <NavLink to="/" activeClassName="active">Logout</NavLink>
+          </NavText>
+        </NavItem>
+
     </SideNav.Nav>
 </SideNav>
   );
