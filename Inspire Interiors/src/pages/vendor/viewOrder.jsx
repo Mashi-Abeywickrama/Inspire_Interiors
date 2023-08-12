@@ -5,6 +5,7 @@ import * as Icon from "react-bootstrap-icons";
 import Chair from './../../assets/img/vendor/chair.png';
 import VendorSidebar from "./sidebar";
 import Navigationbar from "../../components/navigationbar";
+import {Link} from 'react-router-dom';
 
 const ViewOrder = () => {
     return (
@@ -131,8 +132,8 @@ const ViewOrder = () => {
                         </div>
                     </div>
                 </div>
-                <div className="divider my-1" />
-                <button className="my-3 Cabin-text" style={{ color: "#FF5C60", background: "#FFFFFF", borderRadius: "8px", border: "1px solid #FF5C60" }}>Cancel Order</button>
+                <div className="divider my-1 mx-2" />
+                <Link to="/vendor/order/customizeorders"><button className="my-3 Cabin-text" style={{ color: "#FF5C60", background: "#FFFFFF", borderRadius: "8px", border: "1px solid #FF5C60" }}>Cancel Order</button></Link>
 
             </div>
         </>

@@ -7,6 +7,7 @@ import VendorSidebar from './sidebar';
 import Hall from '../../assets/img/vendor/visiting room.png';
 import Chair from './../../assets/img/vendor/chair.png';
 import Customer from '../../assets/img/vendor/customer.png';
+import {Link} from 'react-router-dom';
 
 const ViewCustomRequest = () => {
     return (
@@ -51,8 +52,8 @@ const ViewCustomRequest = () => {
                             <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B"}}>If any additional specifications add here.</p>
                         </div>
                         <div className="d-flex flex-row gap-3 justify-content-end">
-                            <button className="dlt-btn Cabin-text">Decline Order</button>
-                            <button className="acpt-btn Cabin-text">Accept Order</button>
+                            <Link to="/vendor/order/customizeorders"><button className="dlt-btn Cabin-text">Decline Order</button></Link>
+                            <Link to="/vendor/order/customizeorders"><button className="acpt-btn Cabin-text">Accept Order</button></Link>
                         </div>
                     </div>
                     <div className="col-lg-4">
@@ -61,8 +62,8 @@ const ViewCustomRequest = () => {
                                 <div className="d-flex flex-column">
                                     <p className="fs-3 fw-bold Cabin-text">About Customer Avocado</p>
                                 </div>
-                                <div className="d-flex flex-column flex-lg-row flex-md-row gap-4">
-                                    <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-3 rounded-4 border" src={Customer} />
+                                <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
+                                    <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-2 rounded-4 border" src={Customer} />
                                     <div className="d-flex flex-column">
                                         <p className="fs-4 fw-bold" style={{ color: "#3D3D3D"}}>Victor Avocado</p>
                                         <div className="d-flex flex-row gap-2">
@@ -71,7 +72,7 @@ const ViewCustomRequest = () => {
                                         </div>
                                         <p className="fs-6 fw-bold Cabin-text" style={{ color: "#023047"}}>Huzefa Bagwala</p>
                                         <p className="fs-6 fw-normal Cabin-text" style={{ color: "#023047", fontSize: "16px", fontWeight: "400" }}>1131 Dusty Townline, Jacksonville, TX 40322</p>
-                                        <button className="contact-btn float-end Cabin-text">Contact Customer</button>
+                                        <button className="contact-btn float-end Cabin-text w-75">Contact Customer</button>
                                     </div>
                                 </div>
                             </div>
