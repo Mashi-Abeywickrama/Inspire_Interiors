@@ -14,8 +14,14 @@
     min-height: 31.7em !important;
 }
 
-.Calendar__weekDays, .Calendar__monthText, .Calendar__yearText, .Calendar__monthSelectorItemText, .Calendar__yearSelectorText{
+.react-calendar__navigation__label, .react-calendar__navigation__arrow{
     color: #000000 !important;
+}
+
+.react-calendar__tile{
+    color: #000000 !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0px 20px 60px 0px rgba(86, 89, 146, 0.10);;
 }
 .customer-dashboard .bar1 .progress .progress-bar  {
     width: 100%;

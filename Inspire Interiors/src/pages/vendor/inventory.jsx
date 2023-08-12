@@ -256,7 +256,7 @@ const Inventory = () => (
         <div className="col-lg-12 bg-white rounded-3 my-2 shadow p-4">
           <div className="d-flex flex-row gap-4 mt-4">
             <p className="fs-3 fw-bold Cabin-text">Stock</p>
-            <Link to="/vendor/inventory/viewstock"><p className="mt-2 fs-6 fw-semibold Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p></Link>
+            <Link to="viewstock"><p className="mt-2 fs-6 fw-semibold Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p></Link>
           </div>
 
           <MDBDataTableV5 responsive

@@ -10,8 +10,8 @@ import {Link} from 'react-router-dom';
 const ViewOrder = () => {
     return (
         <>
-            <div className="order-container bg-white rounded-3 mb-4 me-3">
-                <div className="col-12 d-flex flex-row gap-4">
+            <div className="order-container w-100 rounded-3 mb-4 me-5 p-3">
+                <div className="d-flex flex-row gap-4">
                     <p className="text-dark fs-3 fw-bold Cabin-text">Orders</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                     <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Delayed</p>
@@ -20,17 +20,15 @@ const ViewOrder = () => {
                 </div>
                 <div className="col-12 d-flex flex-column">
                     <div className="d-flex flex-row justify-content-between">
-                        <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text">Order Details - #76565722</p>
+                        <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text">Order Details - #25786</p>
                         <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{ height: "1.5rem", background: "#F6E3AC", color: "#6B4605" }}><Icon.CircleFill size={7} className="mx-1" />Delayed</div>
                     </div>
-                    <div className=" divider" />
+
                 </div>
-
-
-                <div className="d-flex flex-column flex-lg-row">
-                    <div className="d-flex col-lg-6 col-12 col-6 flex-column">
-                        <div className="col-lg-12 border rounded-3 my-2 shadow">
-                            <p className="fs-5 fw-bold px-3 py-2 Cabin-text" style={{ color: "#023047" }}>Product Details</p>
+                <div className="col-12 d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-3">
+                    <div className="d-flex flex-column col-lg-8 gap-3">
+                        <div className="col-lg-12 bg-white rounded-3 p-4 shadow">
+                        <p className="fs-5 fw-bold px-3 py-2 Cabin-text" style={{ color: "#023047" }}>Product Details</p>
                             <div className="d-flex flex-column flex-lg-row justify-content-start">
                                 <img className="img-fluid" src={Chair} alt="Chair" />
                                 <div className="d-flex flex-column px-3">
@@ -54,8 +52,8 @@ const ViewOrder = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="container-fluid col-lg-12 border rounded-3 my-4 shadow">
-                            <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Status</p>
+                        <div className="col-lg-12 bg-white rounded-3 p-4 shadow">
+                        <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Status</p>
                             <div className="d-flex flex-column">
                                 <div className="d-flex flex-row justify-content-between">
                                     <div className="d-flex flex-row">
@@ -79,8 +77,8 @@ const ViewOrder = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="container-fluid col-lg-5 border rounded-3 my-2 shadow">
-                        <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Summary</p>
+                    <div className="col-lg-4 bg-white rounded-3 p-4 shadow">
+                        <p className="fs-3 fw-bold px-3 py-2 Cabin-text">Order Summary</p>
                         <div className="d-flex flex-column">
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Product</p>
@@ -103,14 +101,11 @@ const ViewOrder = () => {
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">TOTAL</p>
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 8000</p>
                             </div>
-                            <div className="d-flex flex-row justify-content-between">
-                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Estimated Delivery by</p>
-                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">01 Feb, 2023</p>
-                            </div>
+
                             <div className="divider" />
                             <p className="fs-6 fw-bold px-3 my-1 Cabin-text">Delivery Address</p>
                             <div className="d-flex flex-row justify-content-between">
-                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">House No and Lane</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Lane No</p>
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Philosophy Home, Legends' Lane</p>
                             </div>
                             <div className="d-flex flex-row justify-content-between">
@@ -132,9 +127,6 @@ const ViewOrder = () => {
                         </div>
                     </div>
                 </div>
-                <div className="divider my-1 mx-2" />
-                <Link to="/vendor/order/customizeorders"><button className="my-3 Cabin-text" style={{ color: "#FF5C60", background: "#FFFFFF", borderRadius: "8px", border: "1px solid #FF5C60" }}>Cancel Order</button></Link>
-
             </div>
         </>
 

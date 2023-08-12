@@ -382,7 +382,6 @@ const Promotion = () => (
                                     </div>
                                 </div>
                             </Carousel.Item>
-
                         </Carousel>
                     </div>
                     <div className="col-lg-4 border bg-white rounded-3 my-2 shadow p-3">
@@ -433,8 +432,8 @@ const Promotion = () => (
                 </div>
                 <div className="col-lg-12 container-fluid border bg-white rounded-3 my-2 shadow">
                     <div className="d-flex flex-row gap-3 p-3">
-                        <p className="fs-3 fw-bold Cabin-text">Earnings From Paid Promotions</p>
-                        <Link to="/vendor/promotion/earnings"><p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p></Link>
+                        <p className="fs-3 fw-bold Cabin-text">Sales From Paid Promotions</p>
+                        <Link to="/vendor/promotion/expenses"><p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p></Link>
                     </div>
 
                     <div className='p-3'>

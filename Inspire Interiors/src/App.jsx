@@ -17,7 +17,7 @@ import Home from "./pages/visitor/home";
 import Contact from "./pages/visitor/contact";
 import Services from "./pages/visitor/services";
 import SignUp from "./pages/visitor/signup";
-
+import MyTeam from "./pages/visitor/team";
 import Project from './pages/visitor/project';
 import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
 
@@ -63,7 +63,7 @@ import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
 import PromotionRequest from "./pages/vendor/promotionRequest";
 import Promotion from "./pages/vendor/promotion";
-import PromotionEarnings from "./pages/vendor/promotionEarnings";
+import PromotionExpenses from "./pages/vendor/promotionExpenses";
 import CustomizeOrders from "./pages/vendor/customizedOrders";
 import Order from "./pages/vendor/order";
 import VendorDashboard from "./pages/vendor/vendorDashboard";
@@ -71,6 +71,7 @@ import AddStock from "./pages/vendor/addStock";
 import MyNetwork from "./pages/vendor/myNetwork";
 import Complaints from "./pages/vendor/complaints";
 import VendorSetting from "./pages/vendor/setting";
+import ViewComplaint from "./pages/vendor/viewComplaint";
 
 // Customer Support
 import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
@@ -94,6 +95,14 @@ import DesignerPromotions from "./pages/Designer/DesignerPromotions";
 import AlertPopup from "./components/AlertPopup";
 
 
+import Popup from "./components/designer/Popup/Popup";
+import DesignerEarnings from "./pages/Designer/DesignerEarnings";
+import Test from "./pages/Designer/test";
+import DesignerEarn from "./pages/Designer/DesignerEarn";
+import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
+import DesignerPromotion from "./pages/Designer/DesignerPromotion";
+import DesignerSetting from "./pages/Designer/DesignerSetting";
+import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -106,6 +115,7 @@ const router = createBrowserRouter(
         <Route path="services" element={<Services />} />
         <Route path="contact" element={<Contact />} />
         <Route path="projects" element={<Project />} />
+        <Route path="team" element={<MyTeam />} />
       </Route>
       <Route
         path="/login"
@@ -134,14 +144,14 @@ const router = createBrowserRouter(
          <Route path = "orders" element={<MyOrder />} />
         <Route path = "designs" element={<Designs />} />
         <Route path = "designs/browsedesigns" element={<BrowseDesigns />} />
-        <Route path="viewproduct" element={<ViewProduct />}></Route>
+        <Route path="marketplace/viewproduct" element={<ViewProduct />}></Route>
         <Route path = "designs/viewdesigner" element={<ViewDesigner />} />
         <Route path = "marketplace" element={<MarketPlace />} />
-        <Route path = "categoryview" element={<CategoryView />} />
+        <Route path = "marketplace/categoryview" element={<CategoryView />} />
         <Route path = "cart" element={<Cart />} />
-        <Route path = "address" element={<Address />} />
-        <Route path = "payment" element={<PaymentMethod />} />
-        <Route path = "shipping" element={<ShippingMethod />} />
+        <Route path = "checkout/address" element={<Address />} />
+        <Route path = "checkout/payment" element={<PaymentMethod />} />
+        <Route path = "checkout/shipping" element={<ShippingMethod />} />
          <Route path="settings" element={<CusSetting />}></Route>
       </Route>
 
@@ -184,14 +194,37 @@ const router = createBrowserRouter(
         <Route path="inventory/inventoryproduct" element={<InventoryProduct />}></Route> 
         <Route path="inventory/addstock" element={<AddStock />}></Route>
         <Route path="order" element={<Order />}></Route>
-        <Route path="customizeorders" element={<CustomizedOrders />}></Route>
-        <Route path="customrequest" element={<ViewCustomRequest />}></Route>
-        <Route path="promoteproduct" element={<PromotedProduct />}></Route>
-        <Route path="viewstock"  element={<ViewStocks />}></Route>
-        <Route path="inventoryproduct" element={<InventoryProduct />}></Route>
-        <Route path="promotionrequest" element={<PromotionRequest />}></Route>
-        <Route path="earnings" element={<PromotionEarnings />}></Route>
-      </Route> 
+        <Route path="order/vieworder" element={<ViewOrder />}></Route>
+        <Route path="order/customizeorders" element={<CustomizeOrders />}></Route>
+        <Route path="order/customrequest" element={<ViewCustomRequest />}></Route>
+        <Route path="promotion" element={<Promotion />}></Route>
+        <Route path="promotion/mynetwork" element={<MyNetwork />}></Route>
+        <Route path="promotion/promoteproduct" element={<PromotedProduct />}></Route>
+        <Route path="promotion/promotionrequest" element={<PromotionRequest />}></Route>
+        <Route path="promotion/expenses" element={<PromotionExpenses />}></Route>
+        <Route path="complaints" element={<Complaints />}></Route>
+        <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>
+        <Route path="setting" element={<VendorSetting />}></Route>
+      </Route>
+
+
+      {/* Designer Routes */}
+      <Route path="/designer/" element={<DesignerLayout />} errorElement={<Error />}>
+        <Route index element={<DesignerDashboard/> } />
+        <Route path="mydesigns" element={<DesignerMyDesigns />} />
+        <Route path="test" element={<Test />} />
+        <Route path="earningsall" element={<DesignerEarnings />} />
+        <Route path="earnings" element={<DesignerEarn />} />
+        <Route path="bankdetails" element={<DesignerBankDetails />} />
+        <Route path="promotion" element={<DesignerPromotion />} />
+        <Route
+          path="promotion/earnings"
+          element={<DesignerPromotionEarnings />}
+        />
+
+        <Route path="setting" element={<DesignerSetting />} />
+      </Route>
+
     </>
   )
 );

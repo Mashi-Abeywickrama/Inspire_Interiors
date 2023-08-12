@@ -18,12 +18,13 @@
 
 
 .popup {
+  display: flex;
   top:10%;
-  margin: 70px auto;
+  margin:  auto;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 65%;
+  width: 50%;
   height:40%;
   position: relative;
   transition: all 5s ease-in-out;

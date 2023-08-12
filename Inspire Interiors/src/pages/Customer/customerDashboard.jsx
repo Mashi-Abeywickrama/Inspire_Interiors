@@ -3,6 +3,8 @@ import '../../styles/customer/customerDashboard.css';
 import * as Icon from 'react-bootstrap-icons';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Calendar from 'react-calendar'
+import { Link } from 'react-router-dom';
 
 import Profile1 from '../../assets/img/customer/profile1.png';
 import Chair from '../../assets/img/customer/chair1.png';
@@ -20,39 +22,41 @@ const data = [
 
 const linedata = [
     {
-      name: 'JAN',
-      Ongoing: 60,
-      Earned: 90,
+        name: 'JAN',
+        Ongoing: 60,
+        Earned: 90,
     },
     {
-      name: 'FEB',
-      Ongoing: 15,
-      Earned: 40,
+        name: 'FEB',
+        Ongoing: 15,
+        Earned: 40,
     },
     {
-      name: 'MAR',
-      Ongoing: 100,
-      Earned: 80,
+        name: 'MAR',
+        Ongoing: 100,
+        Earned: 80,
     },
     {
-      name: 'APR',
-      Ongoing: 30,
-      Earned: 50,
+        name: 'APR',
+        Ongoing: 30,
+        Earned: 50,
     },
     {
-      name: 'MAY',
-      Ongoing: 110,
-      Earned: 80,
+        name: 'MAY',
+        Ongoing: 110,
+        Earned: 80,
     },
     {
-      name: 'JUN',
-      Ongoing: 50,
-      Earned: 40,
+        name: 'JUN',
+        Ongoing: 50,
+        Earned: 40,
     }
 ];
 
+
 const CustomerDashboard = () => {
-    const [selectedDay, setSelectedDay] = useState(null);
+  
+    const [date, setDate] = useState(new Date());
     return (
         <>
             <div className='dashboard-container customer-dashboard me-5'>
@@ -61,32 +65,44 @@ const CustomerDashboard = () => {
                         <div className='col-lg-9 bg-white rounded-3 p-4'>
                             <div className="d-flex flex-row gap-4">
                                 <p className="fs-3 fw-bold Cabin-text">Best Rated Designers</p>
-                                <p className="fs-5 fw-semibold Cabin-text mt-2" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mt-2" /></p>
+                                <p className="fs-5 fw-semibold Cabin-text mt-2" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="" /></p>
                             </div>
                             <p className='fs-6 Cabin-text'>Apr 2023</p>
                             <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4 image-div'>
                                 <div className='d-flex flex-column gap-3'>
-                                    <img style={{ backgroundColor: "#FEE4CB" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    <Link to='/customer/designs/viewdesigner'>
+                                        <img style={{ backgroundColor: "#FEE4CB" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    </Link>
                                     <p className='fs-6 Cabin-text text-center'>Annette B.</p>
                                 </div>
                                 <div className='d-flex flex-column gap-3'>
-                                    <img style={{ backgroundColor: "#E9E7FD" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    <Link to='/customer/designs/viewdesigner'>
+                                        <img style={{ backgroundColor: "#E9E7FD" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    </Link>
                                     <p className='fs-6 Cabin-text text-center'>Cody F.</p>
                                 </div>
                                 <div className='d-flex flex-column gap-3'>
-                                    <img style={{ backgroundColor: "#FFD3E2" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    <Link to='/customer/designs/viewdesigner'>
+                                        <img style={{ backgroundColor: "#FFD3E2" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    </Link>
                                     <p className='fs-6 Cabin-text text-center'>Guy H.</p>
                                 </div>
                                 <div className='d-flex flex-column gap-3'>
-                                    <img style={{ backgroundColor: "#C8F7DC" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    <Link to='/customer/designs/viewdesigner'>
+                                        <img style={{ backgroundColor: "#C8F7DC" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    </Link>
                                     <p className='fs-6 Cabin-text text-center'>Kathryn M.</p>
                                 </div>
                                 <div className='d-flex flex-column gap-3'>
-                                    <img style={{ backgroundColor: "#D5DEFF" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    <Link to='/customer/designs/viewdesigner'>
+                                        <img style={{ backgroundColor: "#D5DEFF" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    </Link>
                                     <p className='fs-6 Cabin-text text-center'>Albert F.</p>
                                 </div>
                                 <div className='d-flex flex-column gap-3'>
-                                    <img style={{ backgroundColor: "#DBF6FD" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    <Link to='/customer/designs/viewdesigner'>
+                                        <img style={{ backgroundColor: "#DBF6FD" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
+                                    </Link>
                                     <p className='fs-6 Cabin-text text-center'>Darrell S.</p>
                                 </div>
                             </div>
@@ -125,7 +141,7 @@ const CustomerDashboard = () => {
                                 <div className='col-lg-9 bg-white rounded-3 p-4'>
                                     <p className="fs-3 fw-bold Cabin-text">Wish List</p>
                                     <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row'>
-                                        <div className='d-flex flex-row mt-3 justify-content-between' style={{ height: "110px", width:"100%" }}>
+                                        <div className='d-flex flex-row mt-3 justify-content-between' style={{ height: "110px", width: "100%" }}>
                                             <div className='d-flex'>
                                                 <img src={Chair} className='img-fluid' style={{ width: "80%", height: "80%" }} />
                                                 <div className='d-flex flex-column'>
@@ -141,7 +157,7 @@ const CustomerDashboard = () => {
                                         </div>
                                     </div>
                                     <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row'>
-                                        <div className='d-flex flex-row mt-3 justify-content-between' style={{ height: "110px",  width:"100%" }}>
+                                        <div className='d-flex flex-row mt-3 justify-content-between' style={{ height: "110px", width: "100%" }}>
                                             <div className='d-flex'>
                                                 <img src={Chair} className='img-fluid' style={{ width: "80%", height: "80%" }} />
                                                 <div className='d-flex flex-column'>
@@ -204,19 +220,24 @@ const CustomerDashboard = () => {
                         </div>
                         <div className='col-lg-3 bg-white rounded-3 p-4 mb-3'>
                             <p className="fs-3 fw-bold Cabin-text">Updates</p>
-                            {/* <Calendar /> */}
+                            <div className=''><Calendar  onChange={setDate} value={date} formatMonthYear={(locale, date) => {
+                                    // Get the month's abbreviated name and full year
+                                    const options = { month: 'short', year: 'numeric' };
+                                    return new Intl.DateTimeFormat(locale, options).format(date);}
+                                }/>
+                            </div>
                             <p className='fs-6 Cabin-text mt-4 m-0'>08 am</p>
-                            <div className='col-lg-11 border justify-content-end rounded-3 p-3 my-2' style={{backgroundColor:"#035C94"}}>
+                            <div className='col-lg-11 border justify-content-end rounded-3 p-3 my-2' style={{ backgroundColor: "#035C94" }}>
                                 <div className='d-flex flex-column'>
-                                <p className='fs-5 fw-semibold Cabin-text text-white'>Digital Marketing</p>
-                                <p className='fs-6 Cabin-text text-white m-0'>Online marketing, is the promotion of brands to connect.</p>
+                                    <p className='fs-5 fw-semibold Cabin-text text-white'>Digital Marketing</p>
+                                    <p className='fs-6 Cabin-text text-white m-0'>Online marketing, is the promotion of brands to connect.</p>
                                 </div>
                             </div>
                             <p className='fs-6 Cabin-text mt-4 m-0'>10 am</p>
-                            <div className='col-lg-11 border justify-content-end rounded-3 p-3 my-2' style={{backgroundColor:"#096C86"}}>
+                            <div className='col-lg-11 border justify-content-end rounded-3 p-3 my-2' style={{ backgroundColor: "#096C86" }}>
                                 <div className='d-flex flex-column'>
-                                <p className='fs-5 fw-semibold Cabin-text text-white'>UI Development</p>
-                                <p className='fs-6 Cabin-text text-white m-0'>A tech professional who carries out the process of conceiving, designing</p>
+                                    <p className='fs-5 fw-semibold Cabin-text text-white'>UI Development</p>
+                                    <p className='fs-6 Cabin-text text-white m-0'>A tech professional who carries out the process of conceiving, designing</p>
                                 </div>
                             </div>
                         </div>

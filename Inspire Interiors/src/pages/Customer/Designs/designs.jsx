@@ -160,7 +160,7 @@ const Designs = () => {
           <div className='d-flex flex-column fs-4 flex-lg-row flex-md-col flex-sm-col w-100 justify-content-center align-self-center'>
             {cards.map((card, index) => (
               <Col md={3} key={index} className='d-flex'>
-               
+               <Link to='browsedesigns'>
                 <Card className='d-flex h-100 w-100 rounded border-0' >
                   <Card.Body className='d-flex'>
                     <Carousel >
@@ -180,7 +180,7 @@ const Designs = () => {
                     </Carousel>
                   </Card.Body>
                 </Card>
-                
+                </Link>
               </Col>
             ))}
           </div>
