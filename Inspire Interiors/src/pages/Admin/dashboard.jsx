@@ -64,7 +64,7 @@ const AdminDashboard = () => {
 
               <div className="d-flex flex-row gap-3 ">
                 <div className="bg-white rounded-3 shadow p-2  flex-fill">
-                  <span className="today d-flex fs-5 ">Registered users</span>
+                  <span className="today d-flex fs-5 ">Earning</span>
                   <div className="d-flex justify-content-center"><LineChart /></div>
                 </div>
               </div>

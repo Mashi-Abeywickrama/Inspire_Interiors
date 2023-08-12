@@ -34,7 +34,8 @@ import Salary from './pages/Admin/salary';
 import Profile from './pages/Admin/profile';
 import Invoice from './pages/Admin/invoice';
 import Cview from './pages/Admin/commissionView';
-import ADSetting from './pages/Admin/settings'
+import ADSetting from './pages/Admin/settings';
+import AdminDashboard from "./pages/Admin/dashboard";
 
 
 // Customer
@@ -91,20 +92,19 @@ import DesignerDashboard from "./pages/Designer/DesignerDashboard";
 import DesignerMyDesigns from "./pages/Designer/DesignerMyDesigns";
 import DesignerEarnings from "./pages/Designer/DesignerEarnings";
 import DesignerEarn from "./pages/Designer/DesignerEarn";
-import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
+// import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
 import DesignerPromotions from "./pages/Designer/DesignerPromotions";
 import AlertPopup from "./components/AlertPopup";
 
 
 import Popup from "./components/designer/Popup/Popup";
-import DesignerEarnings from "./pages/Designer/DesignerEarnings";
+// import DesignerEarnings from "./pages/Designer/DesignerEarnings";
 import Test from "./pages/Designer/test";
-import DesignerEarn from "./pages/Designer/DesignerEarn";
+// import DesignerEarn from "./pages/Designer/DesignerEarn";
 import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
 import DesignerPromotion from "./pages/Designer/DesignerPromotion";
 import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
-import AdminDashboard from "./pages/Admin/dashboard";
 import { Settings } from "@mui/icons-material";
 
 const router = createBrowserRouter(

@@ -53,49 +53,49 @@ const Salary = () => {
         type: '203',
         email: '20K',
         status: '200K',
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
       {
         name: 'Chair',
         type: '203',
         email: '20K',
         status: '200K',
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
       {
         name: 'Chair',
         type: '203',
         email: '20K',
         status: '200K',
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
       {
         name: 'Chair',
         type: '203',
         email: '20K',
         status: '200K',
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
       {
         name: 'Chair',
         type: '203',
         email: '20K',
         status: '200K',
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
       {
         name: 'Chair',
         type: '203',
         email: '20K',
         status: '200K',
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
       {
         name: 'Chair',
         type: '203',
         email: '20K',
         status: '200K',
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
     ]
   };
@@ -109,10 +109,10 @@ const Salary = () => {
 
         <div className="background-total p-3 rounded-3">
           <div className='d-flex flex-row'>
-          <div className="">User</div> 
-          <div className='text-secondary'> <Icon.ChevronRight size={24} /> </div>
+          <div className="">Salary</div> 
+          {/* <div className='text-secondary'> <Icon.ChevronRight size={24} /> </div>
           <div className="text-secondary"> All</div>
-          
+           */}
           </div>
 
           <div class="d-flex flex-row-reverse">

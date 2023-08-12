@@ -109,7 +109,7 @@ export default function commisssion() {
           </div>
           <div className='pending d-flex flex-row gap-2 h-100 '>
             <div className='d-flex flex-column justify-content-center p-2'>
-              <span className='d-flex fs-3'>Commission Earned  </span>
+              <span className='d-flex fs-3'>Pending Commission  </span>
             </div>
             <span className='fs-4 p-3'>230.3M </span>
           </div>

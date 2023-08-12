@@ -50,60 +50,60 @@ const User = () => {
     ],
     rows: [
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'Christ',
+        type: 'vendor',
+        email: '822ase@gmail.com',
         status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
         ,
-        action: <Link to="/admin/user/profile"><div className='d-flex gap-2 align-items-center text-dark'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div></Link>
+        action: <Link to="/admin/user/profile"><div className='d-flex gap-2 align-items-center text-dark'><p className='m-0'>view more</p> <Icon.ArrowRight/></div></Link>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'Coral',
+        type: 'designer',
+        email: 'theeero@mail.com',
         status: <div className='not-verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Not verified</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send Invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'shin',
+        type: 'Customer',
+        email: 'ws123z@gmail.com',
         status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'priya',
+        type: 'admin',
+        email: 'selo@gmail.com',
         status: <div className='not-verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Not Verified</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send Invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'shin',
+        type: 'Customer',
+        email: 'ws123z@gmail.com',
         status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'priya',
+        type: 'admin',
+        email: 'selo@gmail.com',
         status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'priya',
+        type: 'admin',
+        email: 'selo@gmail.com',
         status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
+        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
       }
     ]
   };
