@@ -176,7 +176,7 @@ const Address = () => {
                                         {/* checkout btn */}
                                         <Link to='/customer/checkout/shipping'>
                                             <div className="d-flex justify-content-end w-100 mb-2">
-                                                <button className="btn btn-color w-100">Continue to Shipping</button>
+                                                <button className="btn-checkout w-100">Continue to Shipping</button>
                                             </div>
                                         </Link>
                                     </div>

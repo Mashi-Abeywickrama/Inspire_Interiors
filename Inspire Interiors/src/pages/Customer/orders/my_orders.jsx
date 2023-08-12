@@ -7,7 +7,7 @@ import { HiFilter } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 
-
+import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../../styles/customer/myOrders.css';
@@ -548,7 +548,7 @@ const MyOrder = () => {
               className="mb-3 bg-white tab"
             >
               <Tab eventKey="all" title="All">
-                <div className=''>
+                <Link to="vieworder"><div className=''>
              
                   <MDBDataTableV5 responsive
                   striped
@@ -560,6 +560,7 @@ const MyOrder = () => {
                   
                 />
                 </div>
+                </Link>
               </Tab>
               <Tab eventKey="Completed" title="Completed">
                 Completed
