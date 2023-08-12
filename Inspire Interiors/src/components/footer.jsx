@@ -60,8 +60,7 @@ const Footer = () => {
         </div>
         <hr className="divider" />
         <div className="text-white text-center footer-para jost-text">
-          Copyright © Interno | Designed by Victorflow Templates - Powered by
-          Webflow
+          Copyright © Group 46
         </div>
       </div>
     </React.Fragment>

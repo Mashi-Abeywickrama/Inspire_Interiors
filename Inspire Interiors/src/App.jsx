@@ -17,7 +17,7 @@ import Home from "./pages/visitor/home";
 import Contact from "./pages/visitor/contact";
 import Services from "./pages/visitor/services";
 import SignUp from "./pages/visitor/signup";
-
+import MyTeam from "./pages/visitor/team";
 import Project from './pages/visitor/project';
 import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
 
@@ -63,7 +63,7 @@ import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
 import PromotionRequest from "./pages/vendor/promotionRequest";
 import Promotion from "./pages/vendor/promotion";
-import PromotionEarnings from "./pages/vendor/promotionEarnings";
+import PromotionExpenses from "./pages/vendor/promotionExpenses";
 import CustomizeOrders from "./pages/vendor/customizedOrders";
 import Order from "./pages/vendor/order";
 import VendorDashboard from "./pages/vendor/vendorDashboard";
@@ -71,6 +71,7 @@ import AddStock from "./pages/vendor/addStock";
 import MyNetwork from "./pages/vendor/myNetwork";
 import Complaints from "./pages/vendor/complaints";
 import VendorSetting from "./pages/vendor/setting";
+import ViewComplaint from "./pages/vendor/viewComplaint";
 
 // Customer Support
 import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
@@ -114,6 +115,7 @@ const router = createBrowserRouter(
         <Route path="services" element={<Services />} />
         <Route path="contact" element={<Contact />} />
         <Route path="projects" element={<Project />} />
+        <Route path="team" element={<MyTeam />} />
       </Route>
       <Route
         path="/login"
@@ -199,16 +201,16 @@ const router = createBrowserRouter(
         <Route path="promotion/mynetwork" element={<MyNetwork />}></Route>
         <Route path="promotion/promoteproduct" element={<PromotedProduct />}></Route>
         <Route path="promotion/promotionrequest" element={<PromotionRequest />}></Route>
-        <Route path="promotion/earnings" element={<PromotionEarnings />}></Route>
+        <Route path="promotion/expenses" element={<PromotionExpenses />}></Route>
         <Route path="complaints" element={<Complaints />}></Route>
+        <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>
         <Route path="setting" element={<VendorSetting />}></Route>
       </Route>
-      <Route
-        path="/designer"
-        element={<DesignerLayout />}
-        errorElement={<Error />}
-      >
-        <Route index element={<DesignerDashboard />} />
+
+
+      {/* Designer Routes */}
+      <Route path="/designer/" element={<DesignerLayout />} errorElement={<Error />}>
+        <Route index element={<DesignerDashboard/> } />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />
@@ -222,7 +224,6 @@ const router = createBrowserRouter(
 
         <Route path="setting" element={<DesignerSetting />} />
       </Route>
-
 
     </>
   )
