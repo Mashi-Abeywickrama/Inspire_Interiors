@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700;900&display=swap'); 
+
+.complaints-container{
+    width: inherit !important;
+    padding-left: 3rem;
+}
+
+.shadow{
+    box-shadow: 0px 20px 60px 0px rgba(86, 89, 146, 0.10);
+}
+
+.divider{
+    border: 1px solid #A2A3B1 !important;
+    justify-content: center;
+}
+
+.sidenav---sidenav---_2tBP .sidenav---collapsed---LQDEv{
+    width: 10px !important;
+}
+
+.Cabin-text{
+    font-family: "Cabin" !important;
+}
+
+.background-complaint {
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: inherit;
+    /* background-color: #ffffff !important; */
+    min-height: 84vh;
+    font-family: 'Cabin' !important;
+}
+
+.background-complaint .nav-link{
+    color: rgba(0, 0, 0, 0.752) !important;
+}
+
+.background-complaint .nav-link.active{
+    color: #023047 !important;
+    border: none !important;
+    border-bottom: 0.25rem solid #023047 !important;
+    border-radius: 0 !important;
+    font-weight: 900;
+    font-size: 1.1rem;
+}

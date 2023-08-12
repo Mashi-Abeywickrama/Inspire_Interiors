@@ -3,6 +3,7 @@ import '../../styles/customer/customerDashboard.css';
 import * as Icon from 'react-bootstrap-icons';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Calendar from 'react-calendar'
 
 import Profile1 from '../../assets/img/customer/profile1.png';
 import Chair from '../../assets/img/customer/chair1.png';
@@ -51,8 +52,10 @@ const linedata = [
     }
 ];
 
+
 const CustomerDashboard = () => {
-    const [selectedDay, setSelectedDay] = useState(null);
+  
+    const [date, setDate] = useState(new Date());
     return (
         <>
             <div className='dashboard-container customer-dashboard me-5'>
@@ -61,7 +64,7 @@ const CustomerDashboard = () => {
                         <div className='col-lg-9 bg-white rounded-3 p-4'>
                             <div className="d-flex flex-row gap-4">
                                 <p className="fs-3 fw-bold Cabin-text">Best Rated Designers</p>
-                                <p className="fs-5 fw-semibold Cabin-text mt-2" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mt-2" /></p>
+                                <p className="fs-5 fw-semibold Cabin-text mt-2" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="" /></p>
                             </div>
                             <p className='fs-6 Cabin-text'>Apr 2023</p>
                             <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4 image-div'>
@@ -204,7 +207,12 @@ const CustomerDashboard = () => {
                         </div>
                         <div className='col-lg-3 bg-white rounded-3 p-4 mb-3'>
                             <p className="fs-3 fw-bold Cabin-text">Updates</p>
-                            {/* <Calendar /> */}
+                            <div className=''><Calendar  onChange={setDate} value={date} formatMonthYear={(locale, date) => {
+                                    // Get the month's abbreviated name and full year
+                                    const options = { month: 'short', year: 'numeric' };
+                                    return new Intl.DateTimeFormat(locale, options).format(date);}
+                                }/>
+                            </div>
                             <p className='fs-6 Cabin-text mt-4 m-0'>08 am</p>
                             <div className='col-lg-11 border justify-content-end rounded-3 p-3 my-2' style={{backgroundColor:"#035C94"}}>
                                 <div className='d-flex flex-column'>
