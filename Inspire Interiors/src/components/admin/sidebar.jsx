@@ -2,7 +2,7 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import { Router,Route } from 'react-router-dom';
 
 import * as Icon from 'react-bootstrap-icons';
-import { RiBuilding2Fill,RiStore2Fill,RiBrushFill,RiShoppingBagFill,RiDashboardFill,RiSettings5Fill } from "react-icons/ri";
+import { RiBuilding2Fill,RiStore2Fill,RiBrushFill,RiShoppingBagFill,RiDashboardFill,RiSettings5Fill, RiHandCoinFill, RiFileChartFill, RiCashFill } from "react-icons/ri";
 
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './../../styles/customer/sidebar.css'
@@ -35,7 +35,7 @@ const SidebarDashboard = () => {
                <i><RiBuilding2Fill /></i>
             </NavIcon>
             <NavText>
-                Designs
+                Users
             </NavText>
         </NavItem>
 
@@ -44,16 +44,16 @@ const SidebarDashboard = () => {
                  <i><RiStore2Fill /></i>
             </NavIcon>
             <NavText >
-                Marketplace
+                Orders
             </NavText>
         </NavItem>
 
         <NavItem eventKey="Customization">
             <NavIcon>
-                 <i><RiBrushFill /></i>
+                 <i><RiCashFill /></i>
             </NavIcon>
             <NavText>
-                Customization
+                Salary
             </NavText>
         </NavItem>
 
@@ -62,7 +62,25 @@ const SidebarDashboard = () => {
                 <i><RiShoppingBagFill /></i>
             </NavIcon>
             <NavText>
-                My Orders
+                Orders
+            </NavText>
+        </NavItem>
+
+        <NavItem eventKey="Settings">
+            <NavIcon>
+            <i ><RiHandCoinFill/></i>
+            </NavIcon>
+            <NavText>
+                Commission
+            </NavText>
+        </NavItem>
+
+        <NavItem eventKey="Settings">
+            <NavIcon>
+                 <i><RiFileChartFill/></i>
+            </NavIcon>
+            <NavText>
+                Report
             </NavText>
         </NavItem>
 
