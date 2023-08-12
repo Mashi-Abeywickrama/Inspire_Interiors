@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -63,7 +63,7 @@ export default function commisssion() {
               number: '6k',
               age: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
               ,
-              action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
+              action: <Link to="/admin/commision/commissionView"><div className='d-flex gap-2 align-items-center text-dark'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
              },
              {
               name: 'Tiger Nixon',

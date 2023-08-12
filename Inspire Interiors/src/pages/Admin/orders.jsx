@@ -4,6 +4,7 @@ import * as Icon from 'react-bootstrap-icons';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
+import { Link } from 'react-router-dom';
 
 
 
@@ -78,11 +79,11 @@ const Order = () => {
             <p className="m-0">Completed</p>
           </div>
         ),
-        action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">Send invoice</p> <Icon.ArrowRight />
-          </div>
-        ),
+        action: 
+          <Link to="/admin/orders/invoice"><div className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">Send invoice</p> <Icon.ArrowRight />
+          </div></Link>
+        ,
       },
       {
         office: "Chair",

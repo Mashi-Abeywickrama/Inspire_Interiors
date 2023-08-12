@@ -34,6 +34,7 @@ import Salary from './pages/Admin/salary';
 import Profile from './pages/Admin/profile';
 import Invoice from './pages/Admin/invoice';
 import Cview from './pages/Admin/commissionView';
+import ADSetting from './pages/Admin/settings'
 
 
 // Customer
@@ -97,6 +98,8 @@ import Test from "./pages/Designer/test";
 import DesignerPromotion from "./pages/Designer/DesignerPromotion";
 import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
+import AdminDashboard from "./pages/Admin/dashboard";
+import { Settings } from "@mui/icons-material";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -152,15 +155,17 @@ const router = createBrowserRouter(
 
       {/* Admin Routes */}
       <Route path="/Admin/" element={<ADashboardlayout />} errorElement={<Error />}>
-        <Route index element={<Dashboard/> } />
+        <Route index element={<AdminDashboard/> } />
+        <Route path="dashboard" element={<AdminDashboard/> }></Route>
         <Route path="report" element={<Report/> } />
         <Route  path="user" element={<User/> } />
         <Route  path="commission" element={<Commission/> } />
         <Route  path="orders" element={<Orders/> } />
         <Route  path="salary" element={<Salary/> } />
-        <Route path="invoice" element={<Invoice/>}/>
-        <Route path="profile" element={<Profile/>}/>
-        <Route path="commissionView" element={<Cview/>}/>
+        <Route path="orders/invoice" element={<Invoice/>}/>
+        <Route path="user/profile" element={<Profile/>}/>
+        <Route path="commision/commissionView" element={<Cview/>}/>
+        <Route path="settings" element={<ADSetting/>}/>
 
       </Route>
 
