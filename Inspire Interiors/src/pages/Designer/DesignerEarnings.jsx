@@ -549,7 +549,7 @@ function DesignerEarnings() {
     <Link
       underline="hover"
       key="1"
-      href="/"
+      href="/designer/earnings"
       variant="h5"
       fontWeight="bold"
       color="black !important"

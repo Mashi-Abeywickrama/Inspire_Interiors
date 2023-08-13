@@ -1,7 +1,8 @@
-import {Rating} from "@mui/material";
+import { Rating } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { LinearProgress } from "@mui/material";
 import { AiFillStar } from "react-icons/ai";
+import Needlepie from "./../../components/admin/needlepie";
 import {
   BarChart,
   Bar,
@@ -105,17 +106,16 @@ const data2 = [
 ];
 function DesignerDashboard() {
   return (
-    <div className="overview-container rounded-3 mb-4">
-      <div className="d-flex flex-row gap-2 m-3 flex-wrap">
+    <div className="overview-container container rounded-3 mb-4 me-5 ">
+      <div className="d-flex col-12 flex-column gap-3 flex-lg-row">
         {/* first */}
-        <div className="p-3 bg-light rounded shadow">
+        <div className="p-3 bg-light rounded shadow col-lg-6">
           <p className="primary fs-5 text-primary">
             <b>Project Engagement</b>
           </p>
-
           <BarChart
-            width={500}
-            height={300}
+            width={600}
+            height={400}
             data={data}
             margin={{
               top: 5,
@@ -125,15 +125,14 @@ function DesignerDashboard() {
             }}
           >
             {" "}
-            <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
-            <Tooltip />
+            {/* <Tooltip /> */}
             <Legend
               width={200}
               wrapperStyle={{
                 bottom: -5,
-                right: 120,
+                right: 150,
                 backgroundColor: "#ffff",
                 border: "1px solid #d5d5d5",
                 borderRadius: 3,
@@ -146,7 +145,7 @@ function DesignerDashboard() {
           </BarChart>
         </div>
         {/* Second */}
-        <div className="p-4 bg-light rounded-3 shadow px-5">
+        <div className="p-4 bg-light rounded-3 shadow px-5 col-lg-3">
           <p className="primary fs-5 text-primary">
             <b>Summery View</b>
           </p>
@@ -174,7 +173,7 @@ function DesignerDashboard() {
           <br></br>
         </div>
         {/* Third */}
-        <div className="p-4 bg-light rounded-3 shadow px-5">
+        <div className="p-4 bg-light rounded-3 shadow px-5 col-lg-3">
           <p className="primary fs-5 text-primary">
             <b>Average Rating</b>
           </p>
@@ -196,7 +195,6 @@ function DesignerDashboard() {
             />
           </div>
           <br></br>
-
           <div className="">
             <div
               style={{ color: "#000" }}
@@ -209,7 +207,6 @@ function DesignerDashboard() {
               variant="determinate"
               style={{ height: "8px", borderRadius: "5px" }}
             />
-
             <div
               style={{ color: "#000" }}
               className="d-flex flex-row align-items-center"
@@ -257,8 +254,9 @@ function DesignerDashboard() {
           </div>
         </div>
       </div>
-      <div className="d-flex flex-row gap-2 m-3 flex-wrap">
-        <div className="p-2 bg-light rounded-3 shadow">
+
+      <div className="d-flex flex-column flex-lg-row gap-3 m-3 col-12">
+        <div className="p-2 bg-light rounded-3 shadow col-lg-8">
           <p className="primary fs-6 text-primary">
             <b>Total Revenue</b>
           </p>
@@ -276,24 +274,35 @@ function DesignerDashboard() {
               bottom: 5,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
+            {/* <CartesianGrid strokeDasharray="3 3" /> */}
             <XAxis dataKey="name" />
             <YAxis />
-            <Tooltip />
+            {/* <Tooltip /> */}
             <Legend />
             <Line
               type="monotone"
               dataKey="pv"
-              stroke="#8884d8"
+              stroke="#035C94"
               activeDot={{ r: 8 }}
+              strokeWidth={2}
+              dot={false}
             />
-            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+            <Line
+              type="monotone"
+              dataKey="uv"
+              stroke="#FFC00C"
+              strokeWidth={2}
+              dot={false}
+            />
           </LineChart>
         </div>
-        <div className="p-2 bg-light rounded-3 shadow">
-          <p className="primary fs-6 text-primary">
+        <div className="p-3 bg-light rounded-3 shadow">
+          <p className="primary fs-6 text-primary col-lg-4">
             <b>Trend Analysis</b>
           </p>
+          <div className="d-flex">
+            <Needlepie />
+          </div>
         </div>
       </div>
       {/* <Flex className="w-100" gap="2" h="calc(40vh)" wrap="wrap">

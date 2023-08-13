@@ -1,5 +1,4 @@
-import {React, useState } from "react";
-
+import { React, useState } from "react";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -53,7 +52,6 @@ import PaymentMethod from "./pages/Customer/checkout/payment";
 import ShippingMethod from "./pages/Customer/checkout/shipping";
 import MarketPlace from "./pages/Customer/marketplace/marketPlace";
 
-
 // Vendor
 
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
@@ -94,20 +92,20 @@ import DesignerMyDesigns from "./pages/Designer/DesignerMyDesigns";
 import DesignerEarnings from "./pages/Designer/DesignerEarnings";
 import DesignerEarn from "./pages/Designer/DesignerEarn";
 import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
-import AlertPopup from "./components/AlertPopup"; 
+import DesignerPromotions from "./pages/Designer/DesignerPromotions";
+import AlertPopup from "./components/AlertPopup";
+
 import Test from "./pages/Designer/test";
+
 import DesignerPromotion from "./pages/Designer/DesignerPromotion";
 import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
-import AdminDashboard from "./pages/Admin/dashboard";
-import { Settings } from "@mui/icons-material";
+import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-    
-
       <Route path="/" element={<Rootlayout />} errorElement={<Error />}>
         <Route index element={<Home />} />
         <Route path="about" element={<AboutUs />} />
@@ -121,9 +119,16 @@ const router = createBrowserRouter(
         element={<OnlyHeaderRootlayout />}
         errorElement={<Error />}
       >
-        <Route index element={<><AlertPopup /><Login /></>} />
+        <Route
+          index
+          element={
+            <>
+              <AlertPopup />
+              <Login />
+            </>
+          }
+        />
       </Route>
-
       <Route
         path="/signup"
         element={<OnlyHeaderRootlayout />}
@@ -131,7 +136,6 @@ const router = createBrowserRouter(
       >
         <Route index element={<SignUp />} />
       </Route>
-
       {/* Customer Routes */}
       <Route
         path="/customer/"
@@ -140,22 +144,22 @@ const router = createBrowserRouter(
       >
         <Route index element={<CustomerDashboard />} />
         <Route path="dashboard" element={<CustomerDashboard />} />
-         <Route path = "orders" element={<MyOrder />} />
-        <Route path = "designs" element={<Designs />} />
-        <Route path = "designs/browsedesigns" element={<BrowseDesigns />} />
+        <Route path="orders" element={<MyOrder />} />
+        <Route path="designs" element={<Designs />} />
+        <Route path="designs/browsedesigns" element={<BrowseDesigns />} />
         <Route path="marketplace/viewproduct" element={<ViewProduct />}></Route>
-        <Route path = "designs/viewdesigner" element={<ViewDesigner />} />
-        <Route path = "marketplace" element={<MarketPlace />} />
-        <Route path = "marketplace/categoryview" element={<CategoryView />} />
-        <Route path = "cart" element={<Cart />} />
-        <Route path = "checkout/address" element={<Address />} />
-        <Route path = "checkout/payment" element={<PaymentMethod />} />
-        <Route path = "checkout/shipping" element={<ShippingMethod />} />
-        <Route path = "orders/vieworder" element={<OrderView />} />
-         <Route path="settings" element={<CusSetting />}></Route>
-      </Route>
+        <Route path="designs/viewdesigner" element={<ViewDesigner />} />
+        <Route path="marketplace" element={<MarketPlace />} />
+        <Route path="marketplace/categoryview" element={<CategoryView />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="checkout/address" element={<Address />} />
+        <Route path="checkout/payment" element={<PaymentMethod />} />
+        <Route path="checkout/shipping" element={<ShippingMethod />} />
+        <Route path="settings" element={<CusSetting />}></Route>
 
+      </Route>
       {/* Admin Routes */}
+
       <Route path="/Admin/" element={<ADashboardlayout />} errorElement={<Error />}>
         <Route index element={<AdminDashboard/> } />
         <Route path="dashboard" element={<AdminDashboard/> }></Route>
@@ -168,22 +172,23 @@ const router = createBrowserRouter(
         <Route path="user/profile" element={<Profile/>}/>
         <Route path="commision/commissionView" element={<Cview/>}/>
         <Route path="settings" element={<ADSetting/>}/>
-
       </Route>
-
       {/* Customer Support Routes */}
-      <Route path="/customersupport/" element={<CSDashboardlayout />} errorElement={<Error />}>
-        <Route index element={<CustomerSupportDashboard/> } />
+      <Route
+        path="/customersupport/"
+        element={<CSDashboardlayout />}
+        errorElement={<Error />}
+      >
+        <Route index element={<CustomerSupportDashboard />} />
         <Route path="dashboard" element={<CustomerSupportDashboard />}></Route>
-        <Route path="inquiry" element={<Inquiry/> } />
-        <Route path="delivery" element={<Delivery/> } />
+        <Route path="inquiry" element={<Inquiry />} />
+        <Route path="delivery" element={<Delivery />} />
         <Route path="refund" element={<Refund />}></Route>
         <Route path="delivery/view" element={<ViewDelivery />}></Route>
         <Route path="inquiry/view" element={<ViewInquiry />}></Route>
         <Route path="refund/view" element={<ViewRefund />}></Route>
         <Route path="settings" element={<SupportSettings />}></Route>
       </Route>
-
       {/* Vendor Routes */}
       <Route
         path="/vendor/"
@@ -193,27 +198,49 @@ const router = createBrowserRouter(
         <Route index element={<VendorDashboard />} />
         <Route path="dashboard" element={<VendorDashboard />}></Route>
         <Route path="inventory" element={<Inventory />}></Route>
-        <Route path="inventory/viewstock"  element={<ViewStocks />}></Route>
-        <Route path="inventory/inventoryproduct" element={<InventoryProduct />}></Route> 
+        <Route path="inventory/viewstock" element={<ViewStocks />}></Route>
+        <Route
+          path="inventory/inventoryproduct"
+          element={<InventoryProduct />}
+        ></Route>
         <Route path="inventory/addstock" element={<AddStock />}></Route>
         <Route path="order" element={<Order />}></Route>
         <Route path="order/vieworder" element={<ViewOrder />}></Route>
-        <Route path="order/customizeorders" element={<CustomizeOrders />}></Route>
-        <Route path="order/customrequest" element={<ViewCustomRequest />}></Route>
+        <Route
+          path="order/customizeorders"
+          element={<CustomizeOrders />}
+        ></Route>
+        <Route
+          path="order/customrequest"
+          element={<ViewCustomRequest />}
+        ></Route>
         <Route path="promotion" element={<Promotion />}></Route>
         <Route path="promotion/mynetwork" element={<MyNetwork />}></Route>
-        <Route path="promotion/promoteproduct" element={<PromotedProduct />}></Route>
-        <Route path="promotion/promotionrequest" element={<PromotionRequest />}></Route>
-        <Route path="promotion/expenses" element={<PromotionExpenses />}></Route>
+        <Route
+          path="promotion/promoteproduct"
+          element={<PromotedProduct />}
+        ></Route>
+        <Route
+          path="promotion/promotionrequest"
+          element={<PromotionRequest />}
+        ></Route>
+        <Route
+          path="promotion/earnings"
+          element={<PromotionEarnings />}
+        ></Route>
         <Route path="complaints" element={<Complaints />}></Route>
         <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>
         <Route path="setting" element={<VendorSetting />}></Route>
       </Route>
 
 
-      {/* Designer Routes */}
-      <Route path="/designer/" element={<DesignerLayout />} errorElement={<Error />}>
-        <Route index element={<DesignerDashboard/> } />
+      {/* Designer Routes*/}
+      <Route
+        path="/designer"
+        element={<DesignerLayout />}
+        errorElement={<Error />}
+      >
+        <Route index element={<DesignerDashboard />} />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />
@@ -224,6 +251,7 @@ const router = createBrowserRouter(
           path="promotion/earnings"
           element={<DesignerPromotionEarnings />}
         />
+        <Route path="designtool" element={<DesignerDesigntool />} />
 
         <Route path="setting" element={<DesignerSetting />} />
       </Route>
@@ -233,9 +261,7 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

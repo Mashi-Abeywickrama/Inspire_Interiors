@@ -61,7 +61,7 @@ const DesignerSidebar = () => {
             </i>
           </NavIcon>
           <NavText>
-            <a href="http://localhost:8000">Design Tool </a>
+            <NavLink to="designtool">Design Tool</NavLink>
           </NavText>
         </NavItem>
 
@@ -73,7 +73,7 @@ const DesignerSidebar = () => {
           </NavIcon>
           <NavText>
             <NavLink
-              to="earningsall
+              to="earnings
             "
             >
               Earnings
