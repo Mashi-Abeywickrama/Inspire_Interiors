@@ -41,7 +41,7 @@ const newRequestData = {
             width: 200 
         },
         {
-            label: '',
+            label: 'ACTIONS',
             field: 'status',
             sort: 'asc',
             width: 100
@@ -424,9 +424,9 @@ const CustomizeOrders = () => (
     <>
         <div className="customized-container background-total accordion bg-white rounded-3 mb-4 me-3 p-4">
             <div className='d-flex flex-row gap-2'>
-                <Link to="/vendor/order"><p className='fs-3 fw-bold text-dark Cabin-text'>Orders</p></Link>
-                <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                <p className='fs-3 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>Customized</p>
+                <Link to="/vendor/order"><p className='fs-5 fw-bold text-dark Cabin-text'>Orders</p></Link>
+                <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                <p className='fs-5 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>Customized</p>
             </div>
             <div>
                 <Tabs
@@ -442,7 +442,7 @@ const CustomizeOrders = () => (
                                 bordered
                                 small
                                 data={newRequestData}
-                                sortable={true}
+                                sortable={false}
                                 exportToCSV={true}
                                 paging={true}
                                 searching={true} />
@@ -456,7 +456,7 @@ const CustomizeOrders = () => (
                                 bordered
                                 small
                                 data={acceptedOrderData}
-                                sortable={true}
+                                sortable={false}
                                 exportToCSV={true}
                                 paging={true}
                                 searching={true} />

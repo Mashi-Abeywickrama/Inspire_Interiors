@@ -100,11 +100,11 @@ const InventoryProduct = () => (
                 <div className='d-flex flex-column gap-4'>
                     <div className='col-lg-12 bg-white rounded-3 shadow'>
                         <div className="d-flex flex-row gap-4 p-4">
-                            <Link to="/vendor/inventory"><p className="text-dark fs-3 fw-bold Cabin-text ">Inventory</p></Link>
-                            <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <Link to="/vendor/inventory/viewstock"><p className="fs-3 fw-bold Cabin-text text-dark">Stock</p></Link>
-                            <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Meryl Lounge Chair</p>
+                            <Link to="/vendor/inventory"><p className="text-dark fs-5 fw-bold Cabin-text ">Inventory</p></Link>
+                            <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                            <Link to="/vendor/inventory/viewstock"><p className="fs-5 fw-bold Cabin-text text-dark">Stock</p></Link>
+                            <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                            <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Meryl Lounge Chair</p>
                         </div>
                         <div className="d-flex flex-column px-4">
                             <div className='d-flex flex-row gap-3'>
@@ -147,7 +147,7 @@ const InventoryProduct = () => (
                     </div>
                     <div className='col-lg-12 bg-white rounded-3 p-4 shadow mb-3'>
                         <div className='d-flex flex-row gap-3'>
-                            <p className='text-dark fs-3 fw-bold Cabin-text'>Stock</p>
+                            <p className='text-dark fs-5 fw-bold Cabin-text'>Stock</p>
                             <Icon.PencilFill className='mt-3' color="#035C94" />
                         </div>
                         <MDBDataTableV5 responsive
@@ -166,47 +166,47 @@ const InventoryProduct = () => (
                     <div className='d-flex flex-column gap-4'>
                         <div className='col-lg-12 bg-white rounded-3 p-4 shadow'>
                             <div className='d-flex flex-row gap-3'>
-                                <p className='text-dark fs-3 fw-bold Cabin-text'>Materials</p>
+                                <p className='text-dark fs-5 fw-bold Cabin-text'>Materials</p>
                                 <Icon.PencilFill color="#035C94" className='mt-3' />
                             </div>
                             <div className='d-flex flex-column flex-lg-row flex-md-row justify-content-evenly'>
                                 <div className='d-flex flex-column gap-3'>
                                     <Icon.SquareFill size={80} color='#7BA275' />
-                                    <p className='fs-5 fw-bold Cabin-text'>Primary 1</p>
+                                    <p className='fs-6 fw-bold Cabin-text'>Primary 1</p>
                                 </div>
                                 <div className='d-flex flex-column gap-3'>
                                     <Icon.SquareFill size={80} color='#D7D7D7' />
-                                    <p className='fs-5 fw-bold Cabin-text'>Primary 2</p>
+                                    <p className='fs-6 fw-bold Cabin-text'>Primary 2</p>
                                 </div>
                                 <div className='d-flex flex-column gap-3'>
                                     <Icon.SquareFill size={80} color='#171717' />
-                                    <p className='fs-5 fw-bold Cabin-text'>Primary 3</p>
+                                    <p className='fs-6 fw-bold Cabin-text'>Primary 3</p>
                                 </div>
                             </div>
                         </div>
                         <div className='col-lg-12 bg-white rounded-3 p-4 shadow'>
                             <div className='d-flex flex-row gap-3'>
-                                <p className='text-dark fs-3 fw-bold Cabin-text'>Colors</p>
+                                <p className='text-dark fs-5 fw-bold Cabin-text'>Colors</p>
                                 <Icon.PencilFill color="#035C94" className='mt-3' />
                             </div>
                             <div className='d-flex flex-column flex-lg-row flex-md-row justify-content-evenly'>
                                 <div className='d-flex flex-column gap-3'>
                                     <Icon.SquareFill size={80} color='#7BA275' />
-                                    <p className='fs-5 fw-bold Cabin-text'>Primary 1</p>
+                                    <p className='fs-6 fw-bold Cabin-text'>Primary 1</p>
                                 </div>
                                 <div className='d-flex flex-column gap-3'>
                                     <Icon.SquareFill size={80} color='#D7D7D7' />
-                                    <p className='fs-5 fw-bold Cabin-text'>Primary 2</p>
+                                    <p className='fs-6 fw-bold Cabin-text'>Primary 2</p>
                                 </div>
                                 <div className='d-flex flex-column gap-3'>
                                     <Icon.SquareFill size={80} color='#171717' />
-                                    <p className='fs-5 fw-bold Cabin-text'>Primary 3</p>
+                                    <p className='fs-6 fw-bold Cabin-text'>Primary 3</p>
                                 </div>
                             </div>
                         </div>
                         <div className='col-lg-12 bg-white rounded-3 p-4 shadow'>
                             <div className='d-flex flex-row gap-3'>
-                                <p className='text-dark fs-3 fw-bold Cabin-text'>Images & 3D Model</p>
+                                <p className='text-dark fs-5 fw-bold Cabin-text'>Images & 3D Model</p>
                                 <Icon.PencilFill color="#035C94" className='mt-3' />
                             </div>
                             <div className='align-content-center'>

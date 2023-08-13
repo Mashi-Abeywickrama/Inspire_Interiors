@@ -229,230 +229,236 @@ const largeTableData = {
     ]
 }
 
+const Promotion = () => {
+    return (
+        <>
 
-const Promotion = () => (
-    <>
+            <div className="promotion-container background-promotion accordion rounded-3 mb-4 me-5">
+                <div className="col-12 d-flex flex-column">
+                    <div className="d-flex flex-row gap-2 px-2">
+                        <p className="text-dark fs-5 fw-bold Cabin-text">Promotion</p>
+                        <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                        <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Overview</p>
+                    </div>
+                    <div className=" col-12 d-flex flex-column flex-lg-row flex-md-row gap-3">
+                        <div className="col-lg-8 bg-white rounded-3 my-2 shadow" style={{ height: "10%" }}>
+                            <div className="d-flex flex-row gap-3 p-3">
+                                <p className="fs-5 fw-bold Cabin-text">Partnered Designers</p>
+                                <Link to="/vendor/promotion/mynetwork"><p className="fs-6 fw-semibold mt-1 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1" /></p></Link>
+                            </div>
+                            <Carousel className="w-100">
+                                <Carousel.Item className='carousel-img'>
+                                    <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4">
+                                        <div class="col">
+                                            <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                                <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                                <div class="card-body m-0 p-0 mt-3">
+                                                    <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                        <div className="d-flex flex-column">
+                                                            <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
+                                                        </div>
+                                                        <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                                <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                                <div class="card-body m-0 p-0 mt-3">
+                                                    <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                        <div className="d-flex flex-column">
+                                                            <p className="card-text m-0 fw-bold fs-6 Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
+                                                        </div>
+                                                        <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                                <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                                <div class="card-body m-0 p-0 mt-3">
+                                                    <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                        <div className="d-flex flex-column">
+                                                            <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
+                                                        </div>
+                                                        <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Carousel.Item>
+                                <Carousel.Item className='carousel-img'>
+                                    <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4">
+                                        <div class="col">
+                                            <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                                <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                                <div class="card-body m-0 p-0 mt-3">
+                                                    <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                        <div className="d-flex flex-column">
+                                                            <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
+                                                        </div>
+                                                        <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                                <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                                <div class="card-body m-0 p-0 mt-3">
+                                                    <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                        <div className="d-flex flex-column">
+                                                            <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
+                                                        </div>
+                                                        <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                                <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                                <div class="card-body m-0 p-0 mt-3">
+                                                    <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                        <div className="d-flex flex-column">
+                                                            <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
 
-        <div className="promotion-container background-promotion accordion rounded-3 mb-4 me-5">
-            <div className="col-12 d-flex flex-column">
-                <div className=" col-12 d-flex flex-column flex-lg-row flex-md-row gap-3">
-                    <div className="col-lg-8 bg-white rounded-3 my-2 shadow" style={{ height: "10%" }}>
+                                                        </div>
+                                                        <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Carousel.Item>
+                                <Carousel.Item className='carousel-img'>
+                                    <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4">
+                                        <div class="col">
+                                            <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                                <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                                <div class="card-body m-0 p-0 mt-3">
+                                                    <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                        <div className="d-flex flex-column">
+                                                            <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
+                                                        </div>
+                                                        <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                                <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                                <div class="card-body m-0 p-0 mt-3">
+                                                    <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                        <div className="d-flex flex-column">
+                                                            <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
+                                                        </div>
+                                                        <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                                <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                                <div class="card-body m-0 p-0 mt-3">
+                                                    <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                        <div className="d-flex flex-column">
+                                                            <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
+
+                                                        </div>
+                                                        <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Carousel.Item>
+                            </Carousel>
+                        </div>
+                        <div className="col-lg-4 border bg-white rounded-3 my-2 shadow p-3">
+                            <div className="d-flex flex-row gap-3 p-3">
+                                <p className="fs-5 fw-bold Cabin-text">My Network</p>
+                                <Link to="/vendor/promotion/mynetwork"><p className="fs-6 fw-semibold mt-1 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1" /></p></Link>
+                            </div>
+                            <div className="d-flex flex-column my-2">
+                                <Tabs
+                                    defaultActiveKey="Sent"
+                                    id="uncontrolled-tab-example"
+                                    className="mb-3 bg-white tab"
+                                >
+                                    <Tab eventKey="Sent" title="Sent">
+                                        <div className='my-2'>
+
+                                            <MDBDataTableV5 responsive
+                                                striped
+                                                bordered
+                                                small
+                                                data={sentData}
+                                                sortable={false}
+                                                exportToCSV={true}
+                                                paging={false}
+                                                searching={false} />
+
+                                        </div>
+                                    </Tab>
+                                    <Tab eventKey="Received" title="Received">
+                                        <div className=''>
+
+                                            <MDBDataTableV5 responsive
+                                                striped
+                                                bordered
+                                                small
+                                                data={receivedData}
+                                                sortable={false}
+                                                exportToCSV={true}
+                                                paging={false}
+                                                searching={false} />
+
+                                        </div>
+                                    </Tab>
+                                </Tabs>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className="col-lg-12 container-fluid border bg-white rounded-3 my-2 shadow">
                         <div className="d-flex flex-row gap-3 p-3">
-                            <p className="fs-3 fw-bold Cabin-text">Partnered Designers</p>
-                            <Link to="/vendor/promotion/mynetwork"><p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p></Link>
-                        </div>
-                        <Carousel className="w-100">
-                            <Carousel.Item className='carousel-img'>
-                                <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4">
-                                    <div class="col">
-                                        <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                            <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
-                                            <div class="card-body m-0 p-0 mt-3">
-                                                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                                    <div className="d-flex flex-column">
-                                                        <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
-                                                        <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                                    </div>
-                                                    <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                            <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
-                                            <div class="card-body m-0 p-0 mt-3">
-                                                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                                    <div className="d-flex flex-column">
-                                                        <p className="card-text m-0 fw-bold fs-6 Cabin-text" style={{ color: "#969696" }}>SOFA</p>
-                                                        <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                                    </div>
-                                                    <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                            <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
-                                            <div class="card-body m-0 p-0 mt-3">
-                                                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                                    <div className="d-flex flex-column">
-                                                        <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
-                                                        <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                                    </div>
-                                                    <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Carousel.Item>
-                            <Carousel.Item className='carousel-img'>
-                                <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4">
-                                    <div class="col">
-                                        <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                            <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
-                                            <div class="card-body m-0 p-0 mt-3">
-                                                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                                    <div className="d-flex flex-column">
-                                                        <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
-                                                        <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                                    </div>
-                                                    <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                            <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
-                                            <div class="card-body m-0 p-0 mt-3">
-                                                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                                    <div className="d-flex flex-column">
-                                                        <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
-                                                        <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                                    </div>
-                                                    <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                            <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
-                                            <div class="card-body m-0 p-0 mt-3">
-                                                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                                    <div className="d-flex flex-column">
-                                                        <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
-                                                        <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-
-                                                    </div>
-                                                    <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Carousel.Item>
-                            <Carousel.Item className='carousel-img'>
-                                <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4">
-                                    <div class="col">
-                                        <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                            <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
-                                            <div class="card-body m-0 p-0 mt-3">
-                                                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                                    <div className="d-flex flex-column">
-                                                        <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
-                                                        <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                                    </div>
-                                                    <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                            <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
-                                            <div class="card-body m-0 p-0 mt-3">
-                                                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                                    <div className="d-flex flex-column">
-                                                        <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
-                                                        <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                                    </div>
-                                                    <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                            <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
-                                            <div class="card-body m-0 p-0 mt-3">
-                                                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                                    <div className="d-flex flex-column">
-                                                        <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
-                                                        <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-
-                                                    </div>
-                                                    <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Carousel.Item>
-                        </Carousel>
-                    </div>
-                    <div className="col-lg-4 border bg-white rounded-3 my-2 shadow p-3">
-                        <div className="d-flex flex-row gap-3 p-3">
-                            <p className="fs-3 fw-bold Cabin-text">My Network</p>
-                            <Link to="/vendor/promotion/mynetwork"><p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p></Link>
-                        </div>
-                        <div className="d-flex flex-column my-2">
-                            <Tabs
-                                defaultActiveKey="Sent"
-                                id="uncontrolled-tab-example"
-                                className="mb-3 bg-white tab"
-                            >
-                                <Tab eventKey="Sent" title="Sent">
-                                    <div className='my-2'>
-
-                                        <MDBDataTableV5 responsive
-                                            striped
-                                            bordered
-                                            small
-                                            data={sentData}
-                                            sortable={false}
-                                            exportToCSV={true}
-                                            paging={false}
-                                            searching={false} />
-
-                                    </div>
-                                </Tab>
-                                <Tab eventKey="Received" title="Received">
-                                    <div className=''>
-
-                                        <MDBDataTableV5 responsive
-                                            striped
-                                            bordered
-                                            small
-                                            data={receivedData}
-                                            sortable={false}
-                                            exportToCSV={true}
-                                            paging={false}
-                                            searching={false} />
-
-                                    </div>
-                                </Tab>
-                            </Tabs>
+                            <p className="fs-5 fw-bold Cabin-text">Sales From Paid Promotions</p>
+                            <Link to="/vendor/promotion/expenses"><p className="fs-6 fw-semibold mt-1 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1" /></p></Link>
                         </div>
 
-                    </div>
-                </div>
-                <div className="col-lg-12 container-fluid border bg-white rounded-3 my-2 shadow">
-                    <div className="d-flex flex-row gap-3 p-3">
-                        <p className="fs-3 fw-bold Cabin-text">Sales From Paid Promotions</p>
-                        <Link to="/vendor/promotion/expenses"><p className="fs-5 fw-semibold mt-2 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" /></p></Link>
-                    </div>
+                        <div className='p-3'>
 
-                    <div className='p-3'>
-
-                        <MDBDataTableV5 responsive
-                            striped
-                            bordered
-                            small
-                            data={largeTableData}
-                            sortable={false}
-                            exportToCSV={true}
-                            paging={false}
-                            searching={false} />
+                            <MDBDataTableV5 responsive
+                                striped
+                                bordered
+                                small
+                                data={largeTableData}
+                                sortable={false}
+                                exportToCSV={true}
+                                paging={false}
+                                searching={false} />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </>
-)
+        </>
+    );
+}
 
 export default Promotion;

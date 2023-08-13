@@ -56,12 +56,12 @@ const radarData = [
 const linedata = [
     {
       name: 'JAN',
-      Ongoing: 60,
+      Ongoing: 70,
       Earned: 90,
     },
     {
       name: 'FEB',
-      Ongoing: 15,
+      Ongoing: 20,
       Earned: 40,
     },
     {
@@ -76,19 +76,32 @@ const linedata = [
     },
     {
       name: 'MAY',
-      Ongoing: 110,
+      Ongoing: 100,
       Earned: 80,
     },
     {
       name: 'JUN',
-      Ongoing: 50,
+      Ongoing: 20,
       Earned: 40,
     }
 ];
 
-const stardata = {
-    data:"3"
-}
+const generateStars = (rate) => {
+    const fullStars = Math.floor(rate);
+    const halfStar = rate - fullStars >= 0.5;
+
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= fullStars) {
+        stars.push(<Icon.StarFill key={i} color='#FFC00C' size={25} />);
+      } else if (i === fullStars + 1 && halfStar) {
+        stars.push(<Icon.StarHalf key={i} color='#FFC00C' size={25} />);
+      } else {
+        stars.push(<Icon.Star key={i} color='#FFC00C' size={25} />);
+      }
+    }
+    return stars;
+};
 
 const VendorDashboard = () => {
     return (
@@ -97,11 +110,11 @@ const VendorDashboard = () => {
                 <div className='col-12 d-flex flex-column gap-3 '>
                     <div className='col-12 d-flex flex-column flex-lg-row flex-md-row gap-3'>
                         <div className='col-lg-8 bg-white rounded-3 shadow p-4'>
-                            <Link to="/vendor/inventory"> <p className='fs-3 fw-bold Cabin-text '  style={{ color: "#035C94" }}>Revenue Made</p></Link>
+                            <Link to="/vendor/inventory"> <p className='fs-5 fw-bold Cabin-text '  style={{ color: "#035C94" }}>Revenue Made</p></Link>
                             <div className='d-flex flex-row justify-content-evenly'>
                                 <div className='d-flex flex-row gap-3'>
                                     <p className='fs-6 fw-semibold' style={{ color: "#035C94" }}>Total Revenue</p>
-                                    <p className='fs-5 fw-semibold' style={{ color: "#023247" }}>LKR 100K</p>
+                                    <p className='fs-6 fw-semibold' style={{ color: "#023247" }}>LKR 100K</p>
                                 </div>
                                 <select class="form-select w-25" aria-label="Default select example">
                                     <option selected>6 Months</option>
@@ -118,25 +131,18 @@ const VendorDashboard = () => {
                                     <YAxis />
                                     <Tooltip />
                                     <Legend />
-                                    <Line type="monotone" dataKey="Ongoing" stroke="#FFC00C" />
-                                    <Line type="monotone" dataKey="Earned" stroke="#035C94" />
+                                    <Line type="monotone" dataKey="Ongoing" stroke="#FFC00C" strokeWidth={2} />
+                                    <Line type="monotone" dataKey="Earned" stroke="#035C94" strokeWidth={2} />
                                 </LineChart>
                             </ResponsiveContainer>
 
                         </div>
                         <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
-                            <p className='fs-3 fw-semibold' style={{ color: "#035C94" }}>Average Rating</p>
-                            <div className='d-flex flex-column p-4 avg-div justify-content-center align-items-center rounded-5' style={{width:"85%"}}>
-                                <p className='fs-1 fw-bold m-0' style={{ color: "white" }}>4.5</p>
-                                <ReactStars
-                                    count={5}
-                                    onChange={stardata}
-                                    size={40}
-                                    isHalf={true}
-                                    emptyIcon={<i className="far fa-star"></i>}
-                                    halfIcon={<i className="fa fa-star-half-alt"></i>}
-                                    fullIcon={<i className="fa fa-star"></i>}
-                                    activeColor="#ffd700" />
+                            <p className='fs-5 fw-semibold' style={{ color: "#035C94" }}>Average Rating</p>
+                            <div className='d-flex flex-column gap-3 p-4 avg-div justify-content-center align-items-center rounded-5' style={{width:"90%"}}>
+                                <p className=' fw-bold m-0' style={{ color: "white", fontSize:"4rem" }}>4.5</p>
+                                <div className="d-flex flex-row gap-1 mb-2">{generateStars(4.5)}</div>
+                                    
                                 <p className='fs-6 fw-semibold m-0' style={{ color: "white" }}>1,580 Ratings</p>
                             </div>
                             <div className='d-flex flex-column mt-5'>
@@ -176,7 +182,7 @@ const VendorDashboard = () => {
                     <div className='col-12 d-flex flex-column flex-lg-row flex-md-row gap-3'>
                         <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
                             <div className='d-flex flex-row justify-content-between'>
-                                <Link to="/vendor/inventory"><p className='fs-3 fw-semibold' style={{ color: "#035C94" }}>Product Sold</p></Link>
+                                <Link to="/vendor/inventory"><p className='fs-5 fw-semibold' style={{ color: "#035C94" }}>Product Sold</p></Link>
                                 <select class="form-select w-25" aria-label="Default select example">
                                     <option selected>This Month</option>
                                     <option value="3 Months">Last Month</option>
@@ -208,7 +214,7 @@ const VendorDashboard = () => {
                         </div>
                         <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
                             <div className='d-flex flex-row justify-content-between'>
-                                <Link to="/vendor/order"><p className='fs-3 fw-semibold' style={{ color: "#035C94" }}>Order Activity</p></Link>
+                                <Link to="/vendor/order"><p className='fs-5 fw-semibold' style={{ color: "#035C94" }}>Order Activity</p></Link>
                                 <select class="form-select w-25" aria-label="Default select example">
                                     <option selected>This Month</option>
                                     <option value="3 Months">Last Month</option>
@@ -232,7 +238,7 @@ const VendorDashboard = () => {
                             </ResponsiveContainer>
                         </div>
                         <div className='col-lg-4 rounded-3 shadow p-4 order-div'>
-                            <Link to="/vendor/order"><p className='fs-3 fw-semibold' style={{ color: "#FFFFFF" }}>Order Stats</p></Link>
+                            <Link to="/vendor/order"><p className='fs-5 fw-semibold' style={{ color: "#FFFFFF" }}>Order Stats</p></Link>
                             <div className='d-flex flex-column gap-4'>
                                 <div className='d-flex flex-row gap-4'>
                                     <div className='background-box rounded-4 p-3'>
