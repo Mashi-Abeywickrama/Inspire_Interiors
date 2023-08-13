@@ -9,11 +9,11 @@ const AddStock = () => {
         <>
             <div className="stock-container p-4 bg-white rounded-3 mb-4 me-3">
                 <div className="d-flex flex-row gap-4">
-                    <Link to="/vendor/inventory"><p className="fs-3 fw-bold Cabin-text text-dark">Inventory</p></Link>
-                    <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <Link to="/vendor/inventory/viewstock"><p className="fs-3 fw-bold Cabin-text text-dark">Stock</p></Link>
-                    <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Add Stock</p>
+                    <Link to="/vendor/inventory"><p className="fs-5 fw-bold Cabin-text text-dark">Inventory</p></Link>
+                    <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                    <Link to="/vendor/inventory/viewstock"><p className="fs-5 fw-bold Cabin-text text-dark">Stock</p></Link>
+                    <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Add Stock</p>
                 </div>
                 <div className=" d-flex flex-column">
                     <div className="d-flex flex-row justify-content-between">
@@ -40,7 +40,7 @@ const AddStock = () => {
                             <input className="form-control Cabin-text" type="number" id="exampleFormControlInput1" placeholder="Enter price here" value="" style={{ backgroundColor: "#F2FAFF" }} />
                         </div>
                     </div>
-                    <p className="fs-6 fw-semibold Cabin-text">Variation</p>
+                    <p className="fs-6 fw-semibold Cabin-text mt-3">Variation</p>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" className="form-label fs-6 Cabin-text">Color</label>
                         <input type="text" className="form-control Cabin-text" id="exampleFormControlInput1" placeholder="Enter product color here" style={{ backgroundColor: "#F2FAFF" }} />

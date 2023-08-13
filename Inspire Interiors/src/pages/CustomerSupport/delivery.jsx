@@ -173,9 +173,9 @@ const Delivery = () => (
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                     <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>All</p>
                 </div>
-                <div>
+                {/* <div>
                     <button className='add-btn m-4'><Icon.PlusLg color="white" size={20} />Add New</button>
-                </div>
+                </div> */}
             </div>
             <div>
                 <Tabs

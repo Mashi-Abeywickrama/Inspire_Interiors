@@ -271,7 +271,11 @@ const PromotionExpenses = () => (
 
         <div className="stock-container background-total accordion bg-white rounded-3 mb-4 me-3">
             <div className="col-12 d-flex flex-column flex-lg-row flex-md-row gap-4 p-3 justify-content-between">
-                <p className="text-dark fs-3 fw-bold Cabin-text ">Sales From Paid Promotions</p>
+            <div className="d-flex flex-row gap-2 px-2">
+                        <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text">Promotion</p></Link>
+                        <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                        <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Sales From Paid Promotions</p>
+                    </div>
                 <div className='d-flex flex-row gap-3 mt-3'>
                     <Icon.Bank size={25} color='#035C94' />
                     <Link to="/vendor/setting"><p className='fs-5 fw-semibold' style={{color:"#035C94"}}>Bank Details</p></Link>
@@ -292,7 +296,7 @@ const PromotionExpenses = () => (
                   bordered
                   small
                   data={tableData}
-                  sortable={true}
+                  sortable={false}
                   exportToCSV={true}
                   paging={true}
                   searching={true}
