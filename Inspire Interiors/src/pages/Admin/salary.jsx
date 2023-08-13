@@ -107,17 +107,18 @@ const Salary = () => {
       <div className="d-flex gap-4 w-100 max-width justify-content-start  ">
           <SidebarDashboard /> */}
 
-        <div className="background-total p-3 rounded-3">
-          <div className='d-flex flex-row'>
-          <div className="">User</div> 
-          <div className='text-secondary'> <Icon.ChevronRight size={24} /> </div>
-          <div className="text-secondary"> All</div>
+        <div className="background-total p-3 rounded-3 ">
+          <div className='d-flex flex-row align-items-center justify-content-between'>
+            <div className='d-flex gap-2 align-items-center'>
+          <div className="fs-5">User</div> 
+          <div className='text-secondary '> <Icon.ChevronRight size={18} /> </div>
+          <div className="text-secondary fs-5"> Salary</div>
+          </div>
+           <button class='py-1 px-2 fs-6' style={{backgroundColor:"#023047"}}>+ Add New</button>
           
           </div>
 
-          <div class="d-flex flex-row-reverse">
-            <button class='p-3 fs-5'>+ Add New</button>
-          </div>
+          
 
           <div>
             <Tabs

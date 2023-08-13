@@ -9,23 +9,21 @@ export default function Invoice() {
       <h3 className="">Invoice</h3>
       <div className="card">
         <div className="card-body">
-          <div className="row d-flex align-items-baseline">
+          <div className="row d-flex w-100 align-items-baseline justify-content-between">
             <div className="col-md-5 mb-3 justify-content-center">
               <img src={Logo} alt="Logo" className='logo' />
-              <div className="d-flex h2">
+              <div className="d-flex h2 align-items-center gap-2">
                 <span className="d-flex">Phone No:</span>
                 <span className="number d-flex">0112345678</span>
               </div>
             </div>
-            <div className='col-md-4'></div>
-            <div className="col-md-3 float-md-end h1">
-              <div className="d-flex flex-column">
-                <div className="d-flex gap-2">
+            <div className="d-flex flex-column col-4">
+                <div className="d-flex gap-2 align-items-center">
                   <span className="number">Invoice</span>
                   <div className="v-line"></div>
                   <span className="number">ArpicoFurniture</span>
                 </div>
-                <div className="d-flex gap-2 h2">
+                <div className="d-flex gap-2 h2 align-items-center">
                   <span className="d-flex">RefNo:</span>
                   <span className="number d-flex">0112345678</span>
                   <div className="v1-line"></div>
@@ -33,7 +31,8 @@ export default function Invoice() {
                   <span className="number d-flex">18.06.2023</span>
                 </div>
               </div>
-            </div>
+            <div className='col-md-4'></div>
+            
             <hr />
           </div>
 
