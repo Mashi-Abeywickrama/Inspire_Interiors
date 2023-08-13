@@ -39,7 +39,7 @@ const User = () => {
         label: 'STATUS',
         field: 'status',
         sort: 'asc',
-        width: 100
+        width: 50
       },
       {
         label: '  ',
@@ -50,57 +50,57 @@ const User = () => {
     ],
     rows: [
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'Peter pan',
+        type: 'Vendor',
+        email: 'peter@email.com',
         status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
         ,
         action: <Link to="/admin/user/profile"><div className='d-flex gap-2 align-items-center text-dark'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div></Link>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'Peter pan',
+        type: 'Vendor',
+        email: 'peter@email.com',
         status: <div className='not-verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Not verified</p></div>
         ,
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send Invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'Peter pan',
+        type: 'Vendor',
+        email: 'peter@email.com',
         status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
         ,
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'Peter pan',
+        type: 'Vendor',
+        email: 'peter@email.com',
         status: <div className='not-verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Not Verified</p></div>
         ,
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send Invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'Peter pan',
+        type: 'Vendor',
+        email: 'peter@email.com',
         status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
         ,
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'Peter pan',
+        type: 'Vendor',
+        email: 'peter@email.com',
         status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
         ,
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
-        type: 'Peter Pan',
-        email: '8',
+        name: 'Peter pan',
+        type: 'Vendor',
+        email: 'peter@email.com',
         status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
         ,
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
@@ -116,16 +116,15 @@ const User = () => {
           <SidebarDashboard /> */}
 
         <div className="background-total p-3 rounded-3">
-          <div className='d-flex flex-row'>
-          <div className="">User</div> 
-          <div className='text-secondary'> <Icon.ChevronRight size={24} /> </div>
-          <div className="text-secondary"> All</div>
-          
+          <div className='d-flex flex-row justify-content-between'>
+            <div className='d-flex flex-row align-items-center gap-2'>
+            <div className="fs-5">User</div> 
+            <div className='text-secondary '> <Icon.ChevronRight size={20} /> </div>
+            <div className="text-secondary fs-5"> All</div>
+            </div>
+           <button class='px-2 py-1 fs-6 ' style={{backgroundColor:"#023047"}}>+ Add New</button>
           </div>
 
-          <div class="d-flex flex-row-reverse">
-            <button class='p-3 fs-5'>+ Add New</button>
-          </div>
 
           <div>
             <Tabs

@@ -85,6 +85,7 @@ import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
 import CategoryView from "./pages/Customer/marketplace/categoryView";
+import SupportSettings from "./pages/CustomerSupport/settings";
 
 // Designer
 import DesignerLayout from "./layouts/Designer/DesignerLayout";
@@ -100,6 +101,7 @@ import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
 import AdminDashboard from "./pages/Admin/dashboard";
 import { Settings } from "@mui/icons-material";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -179,6 +181,7 @@ const router = createBrowserRouter(
         <Route path="delivery/view" element={<ViewDelivery />}></Route>
         <Route path="inquiry/view" element={<ViewInquiry />}></Route>
         <Route path="refund/view" element={<ViewRefund />}></Route>
+        <Route path="settings" element={<SupportSettings />}></Route>
       </Route>
 
       {/* Vendor Routes */}

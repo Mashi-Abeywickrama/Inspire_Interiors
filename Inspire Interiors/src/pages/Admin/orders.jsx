@@ -68,7 +68,7 @@ const Order = () => {
     rows: [
       {
         office: "Chair",
-        position: "Peter Pan",
+        position: "Vendor",
         QTY: "8",
         salary: "6100",
         number: "11221",
@@ -87,7 +87,7 @@ const Order = () => {
       },
       {
         office: "Chair",
-        position: "Peter Pan",
+        position: "Vendor",
         QTY: "8",
         salary: "6100",
         number: "11221",
@@ -106,7 +106,7 @@ const Order = () => {
       },
       {
         office: "Chair",
-        position: "Peter Pan",
+        position: "Vendor",
         QTY: "8",
         salary: "6100",
         number: "11221",
@@ -125,7 +125,7 @@ const Order = () => {
       },
       {
         office: "Chair",
-        position: "Peter Pan",
+        position: "Vendor",
         QTY: "8",
         salary: "6100",
         number: "11221",
@@ -144,7 +144,7 @@ const Order = () => {
       },
       {
         office: "Chair",
-        position: "Peter Pan",
+        position: "Vendor",
         QTY: "8",
         salary: "6100",
         number: "11221",
@@ -163,7 +163,7 @@ const Order = () => {
       },
       {
         office: "Chair",
-        position: "Peter Pan",
+        position: "Vendor",
         Qty: "8",
         salary: "6100",
         number: "11221",
@@ -182,7 +182,7 @@ const Order = () => {
       },
       {
         office: "Chair",
-        position: "Peter Pan",
+        position: "Vendor",
         QTY: "8",
         salary: "6100",
         number: "11221",
@@ -201,7 +201,7 @@ const Order = () => {
       },
       {
         office: "Chair",
-        position: "Peter Pan",
+        position: "Vendor",
         QTY: "8",
         salary: "6100",
         number: "11221",
@@ -220,7 +220,7 @@ const Order = () => {
       },
       {
         office: "Chair",
-        position: "Peter Pan",
+        position: "Vendor",
         QTY: "8",
         salary: "6100",
         number: "11221",
@@ -239,7 +239,7 @@ const Order = () => {
       },
       {
         office: "Chair",
-        position: "Peter Pan",
+        position: "Vendor",
         QTY: "8",
         salary: "6100",
         number: "11221",
