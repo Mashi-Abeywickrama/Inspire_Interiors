@@ -10,6 +10,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
+import {Link} from 'react-router-dom';
 
 const tabledata = {
     columns: [
@@ -43,79 +44,79 @@ const tabledata = {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'different design',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
       {
         customer: 'Justin Septimus',
         reference: '32423432434',
         type: 'refund',
-        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><button className='view-btn'>View</button></div>
+        status: <div className='d-flex flex-row gap-3'><button className='reject-btn'>Reject</button><button className='accept-btn'>Accept</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
       },
     ]
 }
@@ -127,7 +128,7 @@ const Complaints = () => {
         <div className='d-flex flex-row gap-2'>
           <p className='fs-3 fw-bold Cabin-text'>Complaints</p>
           <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-          <p className='fs-3 fw-bold Cabin-text'>All</p>
+          <p className='fs-3 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>All</p>
         </div>
         <div className='d-flex flex-column my-2'>
           <Tabs

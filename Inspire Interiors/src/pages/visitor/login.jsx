@@ -51,12 +51,30 @@ const Login = () => {
         const userType = response.data.userType;
 
         if (userType === 'admin') {
-          navigate('/admin');
+          setAlert('Successful Login!', 'success');
+          setTimeout(() => {
+            navigate('/admin/dashboard');
+        }, 2000);
         } else if (userType === 'customer') {
           setAlert('Successful Login!', 'success');
           setTimeout(() => {
-            navigate('/customer');
-        }, 3000);
+            navigate('/customer/dashboard');
+        }, 2000);
+        }  else if (userType === 'vendor') {
+          setAlert('Successful Login!', 'success');
+          setTimeout(() => {
+            navigate('/vendor/dashboard');
+        }, 2000);
+        }  else if (userType === 'designer') {
+          setAlert('Successful Login!', 'success');
+          setTimeout(() => {
+            navigate('/designer/dashboard');
+        }, 2000);
+        }  else if (userType === 'support') {
+          setAlert('Successful Login!', 'success');
+          setTimeout(() => {
+            navigate('/customersupport/dashboard');
+        }, 2000);
         }
       }
     } catch (error) {

@@ -17,7 +17,7 @@ const ViewCustomRequest = () => {
                 <div className="col-12 d-flex flex-column flex-md-row flex-lg-row gap-4">
                     <div className="col-lg-8 bg-white rounded-3 shadow py-3 px-4">
                         <div className="d-flex flex-row gap-4">
-                            <p className="text-dark fs-3 fw-bold Cabin-text">Custom Product</p>
+                            <Link to="/vendor/order/customizeorders"><p className="text-dark fs-3 fw-bold Cabin-text">Custom Product</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                             <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Requests</p>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
@@ -25,11 +25,11 @@ const ViewCustomRequest = () => {
                         </div>
                         <div className="d-flex flex-column">
                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563"}}>Product Description</p>
-                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B"}}>I need a design for my bedroom where no one is going to sleep. Main purpose of this bedroom is we need it comfortably lay there and we have to do figma then SRS then coding which we even dont know how we are going to do. Make sure we have AC as the brains are already gonna blow up. Never EXPECT MONEY from us. We are poor.</p>
+                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B"}}>I trust you're doing well. I am reaching out because I am in need of your expertise for an upcoming interior design project. Having seen the remarkable work you've showcased on your website and social media, I am truly impressed by your creative vision and attention to detail.</p>
                         </div>
                         <div className="d-flex flex-column">
                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563"}}>Product Specifications</p>
-                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B"}}>I need a design for my bedroom where no one is going to sleep. Main purpose of this bedroom is we need it comfortably lay there and we have to do figma then SRS then coding which we even dont know how we are going to do. Make sure we have AC as the brains are already gonna blow up. Never EXPECT MONEY from us. We are poor.</p>
+                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B"}}>I am currently in the process of interior e.g., renovating my living room, designing a new office space, etc, and I am seeking professional guidance to bring my vision to life. I value mention any specific design elements or styles you admire from their portfolio and believe that your approach aligns perfectly with my aesthetic preferences.</p>
                         </div>
                         <div className="d-flex flex-column">
                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563"}}>Reference Images</p>
@@ -63,7 +63,7 @@ const ViewCustomRequest = () => {
                                     <p className="fs-3 fw-bold Cabin-text">About Customer Avocado</p>
                                 </div>
                                 <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
-                                    <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-2 rounded-4 border" src={Customer} />
+                                    <img style={{ backgroundColor: "#FEE4CB", objectFit:"fill" }} className="img-fluid p-2 rounded-4 border" src={Customer} />
                                     <div className="d-flex flex-column">
                                         <p className="fs-4 fw-bold" style={{ color: "#3D3D3D"}}>Victor Avocado</p>
                                         <div className="d-flex flex-row gap-2">

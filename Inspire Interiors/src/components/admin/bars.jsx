@@ -7,7 +7,8 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from "recharts";
 
 const data = [
@@ -64,8 +65,9 @@ const data = [
 
 export default function App() {
   return (
+    
     <BarChart
-      width={700}
+      width={500}
       height={300}
       data={data}
       margin={{
@@ -84,5 +86,6 @@ export default function App() {
       <Bar dataKey="Customer" fill="#FFC00C" />
       <Bar dataKey="Vendor" fill="#035C94" />
     </BarChart>
+
   );
 }

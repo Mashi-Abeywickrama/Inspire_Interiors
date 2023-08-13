@@ -1,6 +1,7 @@
 .designer{
     background-color: #035C94;
     border-radius: 10px;
+    color: #fff;
 }
 .vendor{
     background-color: #FFC00C;
@@ -33,9 +34,19 @@
   }
   .img{
     width: 40px;
+    height:40px;
   }
   .button{
+    /* width: 200px; */
     background-color:#C4C4C4;
     color:#035C94;
     
+  }
+
+  .admin-dashboard-div{
+    width:inherit !important;
+  }
+
+  .w-26{
+    width: 21% !important;
   }

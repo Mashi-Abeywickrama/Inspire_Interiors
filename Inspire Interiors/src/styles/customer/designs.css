@@ -10,13 +10,13 @@
 .w-40{
     width: 40%;
 }
-.slide{
+.design-customer-page .slide{
     height: unset;
     width: 100%;
 }
-.carousel-control-prev, .carousel-control-next,.carousel-indicators  {
+.design-customer-page .carousel-control-prev, .design-customer-page .carousel-control-next,.design-customer-page .carousel-indicators  {
     display: none;
-}
+} 
 .breadcrumb a{
     color: #000 !important;
 }

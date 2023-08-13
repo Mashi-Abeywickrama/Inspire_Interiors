@@ -92,7 +92,7 @@ const Designs = () => {
   return (
     <>
 
-      <div className=' background flex-col'>
+      <div className=' background design-customer-page flex-col'>
         <div className='bg-light flex-col  w-98 rounded-3 mb-4 p-0 m-0' >
 
           <div className='top-bar flex-lg-2 flex-md-2 w-100 col-md-4 col-sm-12 col-12 fs-4 justify-content-between'>

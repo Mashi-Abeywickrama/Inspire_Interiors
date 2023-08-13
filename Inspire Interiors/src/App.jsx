@@ -16,27 +16,31 @@ import Home from "./pages/visitor/home";
 import Contact from "./pages/visitor/contact";
 import Services from "./pages/visitor/services";
 import SignUp from "./pages/visitor/signup";
+import MyTeam from "./pages/visitor/team";
+import Project from './pages/visitor/project';
+import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
 
-import Project from "./pages/visitor/project";
-import OnlyHeaderRootlayout from "./layouts/onlyHeaderRootlayout";
 
 // Admin
 
-import Report from "./pages/Admin/report";
-import ADashboardlayout from "./layouts/Admin/admindasahboardLayout";
-import Dashboard from "./pages/Admin/dashboard";
-import User from "./pages/Admin/user";
-import Commission from "./pages/Admin/commission";
-import Orders from "./pages/Admin/orders";
-import Salary from "./pages/Admin/salary";
-import Profile from "./pages/Admin/profile";
-import Invoice from "./pages/Admin/invoice";
-import Cview from "./pages/Admin/commissionView";
+import Report from './pages/Admin/report';
+import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
+import Dashboard from './pages/Admin/dashboard';
+import User from './pages/Admin/user';
+import Commission from './pages/Admin/commission';
+import Orders from './pages/Admin/orders';
+import Salary from './pages/Admin/salary';
+import Profile from './pages/Admin/profile';
+import Invoice from './pages/Admin/invoice';
+import Cview from './pages/Admin/commissionView';
+import ADSetting from './pages/Admin/settings'
+
 
 // Customer
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
 import CustomerDashboard from "./pages/Customer/customerDashboard";
 import MyOrder from "./pages/Customer/orders/my_orders";
+import OrderView from "./pages/Customer/orders/vieworder";
 import Designs from "./pages/Customer/Designs/designs";
 import BrowseDesigns from "./pages/Customer/Designs/browsedesigns";
 import ViewProduct from "./pages/Customer/marketplace/viewProduct";
@@ -59,7 +63,7 @@ import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
 import PromotionRequest from "./pages/vendor/promotionRequest";
 import Promotion from "./pages/vendor/promotion";
-import PromotionEarnings from "./pages/vendor/promotionEarnings";
+import PromotionExpenses from "./pages/vendor/promotionExpenses";
 import CustomizeOrders from "./pages/vendor/customizedOrders";
 import Order from "./pages/vendor/order";
 import VendorDashboard from "./pages/vendor/vendorDashboard";
@@ -67,6 +71,7 @@ import AddStock from "./pages/vendor/addStock";
 import MyNetwork from "./pages/vendor/myNetwork";
 import Complaints from "./pages/vendor/complaints";
 import VendorSetting from "./pages/vendor/setting";
+import ViewComplaint from "./pages/vendor/viewComplaint";
 
 // Customer Support
 import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
@@ -78,6 +83,7 @@ import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
 import CategoryView from "./pages/Customer/marketplace/categoryView";
+import SupportSettings from "./pages/CustomerSupport/settings";
 
 // Designer
 import DesignerLayout from "./layouts/Designer/DesignerLayout";
@@ -96,6 +102,7 @@ import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
 import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -105,6 +112,7 @@ const router = createBrowserRouter(
         <Route path="services" element={<Services />} />
         <Route path="contact" element={<Contact />} />
         <Route path="projects" element={<Project />} />
+        <Route path="team" element={<MyTeam />} />
       </Route>
       <Route
         path="/login"
@@ -148,22 +156,22 @@ const router = createBrowserRouter(
         <Route path="checkout/payment" element={<PaymentMethod />} />
         <Route path="checkout/shipping" element={<ShippingMethod />} />
         <Route path="settings" element={<CusSetting />}></Route>
+
       </Route>
       {/* Admin Routes */}
-      <Route
-        path="/Admin/"
-        element={<CDashboardlayout />}
-        errorElement={<Error />}
-      >
-        <Route index element={<Dashboard />} />
-        <Route path="report" element={<Report />} />
-        <Route path="user" element={<User />} />
-        <Route path="commission" element={<Commission />} />
-        <Route path="orders" element={<Orders />} />
-        <Route path="salary" element={<Salary />} />
-        <Route path="invoice" element={<Invoice />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="commissionView" element={<Cview />} />
+
+      <Route path="/Admin/" element={<ADashboardlayout />} errorElement={<Error />}>
+        <Route index element={<AdminDashboard/> } />
+        <Route path="dashboard" element={<AdminDashboard/> }></Route>
+        <Route path="report" element={<Report/> } />
+        <Route  path="user" element={<User/> } />
+        <Route  path="commission" element={<Commission/> } />
+        <Route  path="orders" element={<Orders/> } />
+        <Route  path="salary" element={<Salary/> } />
+        <Route path="orders/invoice" element={<Invoice/>}/>
+        <Route path="user/profile" element={<Profile/>}/>
+        <Route path="commision/commissionView" element={<Cview/>}/>
+        <Route path="settings" element={<ADSetting/>}/>
       </Route>
       {/* Customer Support Routes */}
       <Route
@@ -176,9 +184,10 @@ const router = createBrowserRouter(
         <Route path="inquiry" element={<Inquiry />} />
         <Route path="delivery" element={<Delivery />} />
         <Route path="refund" element={<Refund />}></Route>
-        <Route path="viewdelivery" element={<ViewDelivery />}></Route>
-        <Route path="viewinquiry" element={<ViewInquiry />}></Route>
-        <Route path="viewrefund" element={<ViewRefund />}></Route>
+        <Route path="delivery/view" element={<ViewDelivery />}></Route>
+        <Route path="inquiry/view" element={<ViewInquiry />}></Route>
+        <Route path="refund/view" element={<ViewRefund />}></Route>
+        <Route path="settings" element={<SupportSettings />}></Route>
       </Route>
       {/* Vendor Routes */}
       <Route
@@ -220,8 +229,10 @@ const router = createBrowserRouter(
           element={<PromotionEarnings />}
         ></Route>
         <Route path="complaints" element={<Complaints />}></Route>
+        <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>
         <Route path="setting" element={<VendorSetting />}></Route>
       </Route>
+
 
       {/* Designer Routes*/}
       <Route
@@ -244,6 +255,7 @@ const router = createBrowserRouter(
 
         <Route path="setting" element={<DesignerSetting />} />
       </Route>
+
     </>
   )
 );

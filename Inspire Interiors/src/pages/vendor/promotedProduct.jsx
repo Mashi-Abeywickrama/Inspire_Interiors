@@ -8,6 +8,7 @@ import TableSet from "../../assets/img/vendor/tableset.png";
 import WhiteSofa from "../../assets/img/vendor/whitesofa.png";
 
 import * as Icon from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 
 const PromotedProduct = () => {
     return (
@@ -16,11 +17,11 @@ const PromotedProduct = () => {
                 <div className='col-lg-12 bg-white rounded-3 shadow py-3 px-4'>
                     <div className="d-flex flex-column flex-lg-row flex-md-row gap-4 justify-content-between">
                         <div className='d-flex flex-row gap-4 '>
-                            <p className="text-dark fs-3 fw-bold Cabin-text">Promotion</p>
+                            <Link to="/vendor/promotion/mynetwork"><p className="text-dark fs-3 fw-bold Cabin-text text-dark">Promotion</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>My network</p>
+                            <Link to="/vendor/promotion/mynetwork"><p className="fs-3 fw-bold Cabin-text text-dark">My network</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Victor Avocado</p>
+                            <Link to="/vendor/promotion/promotionrequest"><p className="fs-3 fw-bold Cabin-text text-dark">Victor Avocado</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                             <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Projects</p>
                         </div>

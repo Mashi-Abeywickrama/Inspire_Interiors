@@ -185,7 +185,7 @@ const ShippingMethod = () => {
                                         {/* checkout btn */}
                                         <Link to='/customer/checkout/payment'>
                                             <div className="d-flex justify-content-end w-100 mb-2">
-                                                <button className="btn btn-color w-100">Place Your Order and Pay</button>
+                                                <button className="btn-checkout w-100">Continue to Payment</button>
                                             </div>
                                         </Link>
                                     </div>

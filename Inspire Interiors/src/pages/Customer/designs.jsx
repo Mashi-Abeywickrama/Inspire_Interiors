@@ -148,7 +148,7 @@ const Designs = () => {
         </div>
 
         {/*Explore by category */}
-        <div className='bg-light flex-col w-98 h-50 rounded-3' >
+        <div className='bg-light flex-col w-98 h-50 rounded-3 design-customer-page'  >
           <div className='top-bar flex w-100 h-20'>
             <div className='d-flex row align-self-center mt-2'>
               <div className='d-flex row h-100 justify-content-center align-self-center'>

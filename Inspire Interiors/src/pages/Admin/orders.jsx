@@ -4,6 +4,7 @@ import * as Icon from 'react-bootstrap-icons';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
+import { Link } from 'react-router-dom';
 
 
 
@@ -16,123 +17,246 @@ const Order = () => {
   const data = {
     columns: [
       {
-        label: 'PRODUCT/DESIGN',
-        field: 'name',
-        sort: 'asc',
-        width: 150
+        label: "PRODUCT/DESIGN",
+        field: "office",
+        sort: "asc",
+        width: 150,
       },
       {
-        label: 'VENDOR/DESIGNER',
-        field: 'position',
-        sort: 'asc',
-        width: 270
+        label: "VENDOR/DESIGNER",
+        field: "position",
+        sort: "asc",
+        width: 270,
       },
       {
-        label: 'QUANTITY',
-        field: 'office',
-        sort: 'asc',
-        width: 200
+        label: "QUANTITY",
+        field: "QTY",
+        sort: "asc",
+        width: 200,
       },
       {
-        label: 'COMMISSION',
-        field: 'salary',
-        sort: 'asc',
-        width: 100
+        label: "COMMISSION",
+        field: "salary",
+        sort: "asc",
+        width: 100,
       },
       {
-        label: 'REFERENCE NO',
-        field: 'number',
-        sort: 'asc',
-        width: 150
+        label: "REFERENCE NO",
+        field: "number",
+        sort: "asc",
+        width: 150,
       },
       {
-        label: 'CUSTOMER',
-        field: 'name',
-        sort: 'asc',
-        width: 100
+        label: "CUSTOMER",
+        field: "name",
+        sort: "asc",
+        width: 100,
       },
       {
-        label: 'STATUS',
-        field: 'salary',
-        sort: 'asc',
-        width: 100
-      }
-      ,
+        label: "STATUS",
+        field: "status",
+        sort: "asc",
+        width: 100,
+      },
       {
-        label: '  ',
-        field: 'action',
-        sort: 'NONE',
-        width: 100
-      }
+        label: "  ",
+        field: "action",
+        sort: "NONE",
+        width: 100,
+      },
     ],
     rows: [
       {
-        name: 'Chair',
-        position: 'Peter Pan',
-        office: '8',
-        salary: '6100',
-        number: '11221',
-        name: 'Ronaldo',
-        salary: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        office: "Chair",
+        position: "Vendor",
+        QTY: "8",
+        salary: "6100",
+        number: "11221",
+        name: "Ronaldo",
+        status: (
+          <div className="completed d-flex gap-2 align-items-center">
+            <i class="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">Completed</p>
+          </div>
+        ),
+        action: 
+          <Link to="/admin/orders/invoice"><div className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">Send invoice</p> <Icon.ArrowRight />
+          </div></Link>
         ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
-        position: 'Peter Pan',
-        office: '8',
-        salary: '6100',
-        number: '11221',
-        name: 'Ronaldo',
-        salary: <div className='pending d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Pending</p></div>
-        ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send Invoice</p> <Icon.ArrowRight/></div>
+        office: "Chair",
+        position: "Vendor",
+        QTY: "8",
+        salary: "6100",
+        number: "11221",
+        name: "Ronaldo",
+        status: (
+          <div className="pending d-flex gap-2 align-items-center">
+            <i class="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">Pending</p>
+          </div>
+        ),
+        action: (
+          <div className="d-flex gap-2 align-items-center">
+            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
+          </div>
+        ),
       },
       {
-        name: 'Chair',
-        position: 'Peter Pan',
-        office: '8',
-        salary: '6100',
-        number: '11221',
-        name: 'Ronaldo',
-        salary: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
-        ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send Invoice</p> <Icon.ArrowRight/></div>
+        office: "Chair",
+        position: "Vendor",
+        QTY: "8",
+        salary: "6100",
+        number: "11221",
+        name: "Ronaldo",
+        status: (
+          <div className="completed d-flex gap-2 align-items-center">
+            <i class="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">Completed</p>
+          </div>
+        ),
+        action: (
+          <div className="d-flex gap-2 align-items-center">
+            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
+          </div>
+        ),
       },
       {
-        name: 'Chair',
-        position: 'Peter Pan',
-        office: '8',
-        salary: '6100',
-        number: '11221',
-        name: 'Ronaldo',
-        salary: <div className='pending d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Pending</p></div>
-        ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send Invoice</p> <Icon.ArrowRight/></div>
+        office: "Chair",
+        position: "Vendor",
+        QTY: "8",
+        salary: "6100",
+        number: "11221",
+        name: "Ronaldo",
+        status: (
+          <div className="pending d-flex gap-2 align-items-center">
+            <i class="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">Pending</p>
+          </div>
+        ),
+        action: (
+          <div className="d-flex gap-2 align-items-center">
+            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
+          </div>
+        ),
       },
       {
-        name: 'Chair',
-        position: 'Peter Pan',
-        office: '8',
-        salary: '6100',
-        number: '11221',
-        name: 'Ronaldo',
-        salary: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
-        ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send Invoice</p> <Icon.ArrowRight/></div>
+        office: "Chair",
+        position: "Vendor",
+        QTY: "8",
+        salary: "6100",
+        number: "11221",
+        name: "Ronaldo",
+        status: (
+          <div className="completed d-flex gap-2 align-items-center">
+            <i class="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">Completed</p>
+          </div>
+        ),
+        action: (
+          <div className="d-flex gap-2 align-items-center">
+            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
+          </div>
+        ),
       },
       {
-        name: 'Chair',
-        position: 'Peter Pan',
-        office: '8',
-        salary: '6100',
-        number: '11221',
-        name: 'Ronaldo',
-        salary: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
-        ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
-      }
-    ]
+        office: "Chair",
+        position: "Vendor",
+        Qty: "8",
+        salary: "6100",
+        number: "11221",
+        name: "Ronaldo",
+        status: (
+          <div className="completed d-flex gap-2 align-items-center">
+            <i class="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">Completed</p>
+          </div>
+        ),
+        action: (
+          <div className="d-flex gap-2 align-items-center">
+            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
+          </div>
+        ),
+      },
+      {
+        office: "Chair",
+        position: "Vendor",
+        QTY: "8",
+        salary: "6100",
+        number: "11221",
+        name: "Ronaldo",
+        status: (
+          <div className="completed d-flex gap-2 align-items-center">
+            <i class="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">Completed</p>
+          </div>
+        ),
+        action: (
+          <div className="d-flex gap-2 align-items-center">
+            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
+          </div>
+        ),
+      },
+      {
+        office: "Chair",
+        position: "Vendor",
+        QTY: "8",
+        salary: "6100",
+        number: "11221",
+        name: "Ronaldo",
+        status: (
+          <div className="completed d-flex gap-2 align-items-center">
+            <i class="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">Completed</p>
+          </div>
+        ),
+        action: (
+          <div className="d-flex gap-2 align-items-center">
+            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
+          </div>
+        ),
+      },
+      {
+        office: "Chair",
+        position: "Vendor",
+        QTY: "8",
+        salary: "6100",
+        number: "11221",
+        name: "Ronaldo",
+        status: (
+          <div className="completed d-flex gap-2 align-items-center">
+            <i class="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">Completed</p>
+          </div>
+        ),
+        action: (
+          <div className="d-flex gap-2 align-items-center">
+            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
+          </div>
+        ),
+      },
+      {
+        office: "Chair",
+        position: "Vendor",
+        QTY: "8",
+        salary: "6100",
+        number: "11221",
+        name: "Ronaldo",
+        status: (
+          <div className="completed d-flex gap-2 align-items-center">
+            <i class="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">Completed</p>
+          </div>
+        ),
+        action: (
+          <div className="d-flex gap-2 align-items-center">
+            <p className="m-0">Send invoice</p> <Icon.ArrowRight />
+          </div>
+        ),
+      },
+    ],
   };
 
   return (

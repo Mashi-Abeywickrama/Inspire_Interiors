@@ -303,7 +303,7 @@ const Order = () => (
                     <div className='d-flex flex-row gap-2'>
                         <p className='fs-3 fw-bold Cabin-text'>Orders</p>
                         <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                        <p className='fs-3 fw-bold Cabin-text'>All</p>
+                        <p className='fs-3 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>All</p>
                     </div>
                     <div>
                         <Tabs

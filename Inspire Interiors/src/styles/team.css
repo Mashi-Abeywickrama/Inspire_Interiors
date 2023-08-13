@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Jost');
+@import url('https://fonts.googleapis.com/css?family=dm-serif-display');
+
+.team-pic{
+    background-image: url(../assets/img/visitor/team.jpg) !important;
+    object-fit: fill;
+    height:20rem;
+}
+
+.jost-text{
+    font-family: 'jost';
+}
+
+.lower-banner{
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.lower-banner-title{
+    color: #023047;
+    font-size: 1.5rem;
+    font-family: 'DM Serif Display';
+    font-weight: 800;
+}
+
+.img-con{
+    height: 300px !important;
+  }

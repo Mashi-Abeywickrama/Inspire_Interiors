@@ -97,7 +97,6 @@ const SidebarDashboard = () => {
             <NavLink to="/" activeClassName="active">Logout</NavLink>
           </NavText>
         </NavItem>
-
         
       </SideNav.Nav>
     </SideNav>
