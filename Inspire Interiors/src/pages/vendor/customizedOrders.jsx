@@ -275,7 +275,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className="d-flex flex-column"><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>delayed</p></div><p className="float-end">2 days ago</p></div>
+            status: <div className='d-flex flex-row gap-4'><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center mx-4' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -317,7 +317,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className="d-flex flex-column"><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>delayed</p></div><p className="float-end">2 days ago</p></div>
+            status: <div className='d-flex flex-row gap-4'><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center mx-4' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -359,7 +359,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className="d-flex flex-column"><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>delayed</p></div><p className="float-end">2 days ago</p></div>
+            status: <div className='d-flex flex-row gap-4'><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center mx-4' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -387,21 +387,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
-        },
-        {
-            customer: 'Justin Septimus',
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-            <img src={Sofa}/>
-            <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
-                </div>
-            </div>,
-            quantity: '30000',
-            color: 'Red',
-            material: 'Cotton',
-            status: <div className="d-flex flex-column"><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>delayed</p></div><p className="float-end">2 days ago</p></div>
+            status: <div className='d-flex flex-row gap-4'><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center mx-4' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
         {
             customer: 'Justin Septimus',
@@ -416,6 +402,20 @@ const acceptedOrderData = {
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
+        },
+        {
+            customer: 'Justin Septimus',
+            product: <div className='d-flex flex-row gap-4 align-items-center'>
+            <img src={Sofa}/>
+            <div className="d-flex flex-column">
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
+                <p className="fs-6 fw-normal">Bed Room</p>
+                </div>
+            </div>,
+            quantity: '30000',
+            color: 'Red',
+            material: 'Cotton',
+            status: <div className='d-flex flex-row gap-4'><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center mx-4' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
         },
     ]
 }

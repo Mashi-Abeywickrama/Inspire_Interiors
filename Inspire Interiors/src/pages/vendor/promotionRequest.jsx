@@ -4,7 +4,7 @@ import '../../styles/vendor/promotionRequest.css';
 import * as Icon from 'react-bootstrap-icons';
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 import Customer from '../../assets/img/vendor/customer.png';
-import Arpico from "../../assets/img/vendor/arpico.png";
+import BlackSofa from "../../assets/img/vendor/blacksofa.png";
 
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -230,129 +230,129 @@ const PromotionRequest = () => (
                                 <p className="fs-6 fw-bold Cabin-text text-center m-0">Satisfied customers</p>
                             </div>
                         </div>
-                        <div className="d-flex flex-column my-3">
+                        <div className="d-flex flex-column my-1">
                             <p className="fs-6 fw-bold Cabin-text mt-3" style={{ color: "#545563" }}>Bio</p>
-                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>For various price ranges you will receive a kind of percentage from our product value. But only we will pay after the return periods end. so dont ask for money. we dont have atleast 10 rupees. Thank you.</p>
+                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>For various price ranges you will receive a kind of percentage from our product value. But only we will pay after the return periods end. so dont ask too many commission. Thank you.</p>
                         </div>
                         <div className="d-flex flex-column my-3">
                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Specialities</p>
                             <div className="badge w-25 Cabin-text" style={{ color: "#000000", backgroundColor: "#CCF8FE" }}>Bed Room</div>
                         </div>
-                        <div className="d-flex flex-row gap-4 mt-5">
+                        <div className="d-flex flex-row gap-4 mt-3">
                             <p className="fs-5 fw-bold Cabin-text">Top Selling Designs</p>
                             <Link to="/vendor/promotion/promoteproduct"><p className="fs-6 fw-semibold Cabin-text mt-1" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1" /></p></Link>
                         </div>
-                        <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 mx-4">
+                        <div class="row row-cols-1 row-cols-md-3 g-4 mx-4">
                             <div class="col w-50">
                                 <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
                                     <div class="card-body m-0 p-0 mt-3">
                                         <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
                                             <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
                                                 <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
                                             </div>
-                                            <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col w-50">
                                 <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
                                     <div class="card-body m-0 p-0 mt-3">
                                         <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
                                             <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fw-bold fs-6 Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
                                                 <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
                                             </div>
-                                            <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col w-50">
                                 <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
                                     <div class="card-body m-0 p-0 mt-3">
                                         <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
                                             <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
                                                 <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
                                             </div>
-                                            <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col w-50">
                                 <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
                                     <div class="card-body m-0 p-0 mt-3">
                                         <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
                                             <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
                                                 <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
                                             </div>
-                                            <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4">
-                            <div class="col w-50">
+                        <div class="col w-50">
                                 <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
                                     <div class="card-body m-0 p-0 mt-3">
                                         <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
                                             <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
                                                 <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
                                             </div>
-                                            <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col w-50">
                                 <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
                                     <div class="card-body m-0 p-0 mt-3">
                                         <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
                                             <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fw-bold fs-6 Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
                                                 <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
                                             </div>
-                                            <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col w-50">
                                 <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
                                     <div class="card-body m-0 p-0 mt-3">
                                         <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
                                             <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
                                                 <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
                                             </div>
-                                            <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col w-50">
                                 <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={Arpico} class="card-img-top" alt="blacksofa" />
+                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
                                     <div class="card-body m-0 p-0 mt-3">
                                         <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
                                             <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>SOFA</p>
+                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
                                                 <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
                                             </div>
-                                            <Icon.Bag className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
+                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
                                         </div>
                                     </div>
                                 </div>
