@@ -25,7 +25,7 @@ import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
 
 import Report from './pages/Admin/report';
 import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
-import Dashboard from './pages/Admin/dashboard';
+import AdminDashboard from './pages/Admin/dashboard';
 import User from './pages/Admin/user';
 import Commission from './pages/Admin/commission';
 import Orders from './pages/Admin/orders';
@@ -225,8 +225,8 @@ const router = createBrowserRouter(
           element={<PromotionRequest />}
         ></Route>
         <Route
-          path="promotion/earnings"
-          element={<PromotionEarnings />}
+          path="promotion/expenses"
+          element={<PromotionExpenses />}
         ></Route>
         <Route path="complaints" element={<Complaints />}></Route>
         <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>

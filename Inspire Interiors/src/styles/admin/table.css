@@ -95,7 +95,48 @@ div.mdb-datatable div.mdb-datatable-filter{
     padding-left: 1rem;
     border-radius: 5px;
 }
-
+.ongoing{
+    width: fit-content;
+    padding: 0.3rem;
+    background-color: #BFE5FD;
+    border-radius: 8px;
+    color:  #000000; 
+}
+.outstock{
+    width: fit-content;
+    padding: 0.3rem;
+    background-color: #EA8F95;
+    border-radius: 8px;
+    color: #000000;
+}
+.delayed{
+    width: fit-content;
+    padding: 0.3rem;
+    background-color: #F6E3AC;
+    border-radius: 8px;
+    color:  #000000;  
+}
+.withdraw{
+    width: fit-content;
+    padding: 0.3rem;
+    background-color: #E6E6E6;
+    border-radius: 8px;
+    color:  #000000;  
+}
+.lowstock{
+    width: fit-content;
+    padding: 0.3rem;
+    background-color: #F6E3AC;
+    border-radius: 8px;
+    color:  #000000; 
+}
+.instock{
+    width: fit-content;
+    padding: 0.3rem;
+    background-color: #CDFFCD;
+    border-radius: 8px;
+    color: #007F00  ;
+}
 .completed{
     width: fit-content;
     padding: 0.3rem;

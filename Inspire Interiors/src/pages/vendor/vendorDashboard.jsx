@@ -126,6 +126,7 @@ const VendorDashboard = () => {
                             <ResponsiveContainer width="80%" height="80%">
                                 <LineChart
                                     data={linedata}
+                                    className='mt-3'
                                 >
                                     <XAxis dataKey="name" />
                                     <YAxis />
