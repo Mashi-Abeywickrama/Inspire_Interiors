@@ -67,6 +67,10 @@ a{
   border-radius: 10px;
   padding-left: 20px !important;
   padding-right: 20px !important;
+
+  &:hover{
+    transform: scale(1.01);
+  }
 }
 
 

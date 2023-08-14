@@ -165,10 +165,11 @@ const Designs = () => {
                   <Card.Body className='d-flex'>
                     <Carousel >
                       {card.content.map((imageUrl, imageIndex) => (
-                        <Carousel.Item key={imageIndex}>
+                            
+                            <Carousel.Item key={imageIndex} className='object-fit h-100'>
                           {/* {card.title} */}
                           <img
-                            className='d-flex w-100 rounded-3 img-fluid h-100'
+                            className='d-flex w-100 rounded-3 img-fluid h-100' 
                             src={imageUrl}
                             alt={`Slide ${imageIndex + 1}`}
                           />
