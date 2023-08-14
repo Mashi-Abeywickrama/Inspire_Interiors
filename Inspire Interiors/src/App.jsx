@@ -92,7 +92,7 @@ import DesignerDashboard from "./pages/Designer/DesignerDashboard";
 import DesignerMyDesigns from "./pages/Designer/DesignerMyDesigns";
 import DesignerEarnings from "./pages/Designer/DesignerEarnings";
 import DesignerEarn from "./pages/Designer/DesignerEarn";
-// import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
+import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
 import DesignerPromotions from "./pages/Designer/DesignerPromotions";
 import AlertPopup from "./components/AlertPopup";
 
@@ -227,7 +227,7 @@ const router = createBrowserRouter(
         ></Route>
         <Route
           path="promotion/earnings"
-          element={<PromotionEarnings />}
+          element={<PromotionExpenses />}
         ></Route>
         <Route path="complaints" element={<Complaints />}></Route>
         <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>
