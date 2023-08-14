@@ -63,7 +63,7 @@ import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
 import PromotionRequest from "./pages/vendor/promotionRequest";
 import Promotion from "./pages/vendor/promotion";
-import PromotionExpenses from "./pages/vendor/promotionExpenses";
+import PromotionEarnings from "./pages/vendor/promotionExpenses";
 import CustomizeOrders from "./pages/vendor/customizedOrders";
 import Order from "./pages/vendor/order";
 import VendorDashboard from "./pages/vendor/vendorDashboard";
@@ -94,7 +94,6 @@ import DesignerEarn from "./pages/Designer/DesignerEarn";
 import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
 import DesignerPromotions from "./pages/Designer/DesignerPromotions";
 import AlertPopup from "./components/AlertPopup";
-
 import Test from "./pages/Designer/test";
 
 import DesignerPromotion from "./pages/Designer/DesignerPromotion";
@@ -145,6 +144,7 @@ const router = createBrowserRouter(
         <Route index element={<CustomerDashboard />} />
         <Route path="dashboard" element={<CustomerDashboard />} />
         <Route path="orders" element={<MyOrder />} />
+        <Route path="orders/vieworder" element={<OrderView />} />
         <Route path="designs" element={<Designs />} />
         <Route path="designs/browsedesigns" element={<BrowseDesigns />} />
         <Route path="marketplace/viewproduct" element={<ViewProduct />}></Route>
@@ -225,8 +225,10 @@ const router = createBrowserRouter(
           element={<PromotionRequest />}
         ></Route>
         <Route
+
           path="promotion/expenses"
           element={<PromotionExpenses />}
+
         ></Route>
         <Route path="complaints" element={<Complaints />}></Route>
         <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>
@@ -241,6 +243,7 @@ const router = createBrowserRouter(
         errorElement={<Error />}
       >
         <Route index element={<DesignerDashboard />} />
+        <Route path="dashboard" element={<DesignerDashboard />} />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />

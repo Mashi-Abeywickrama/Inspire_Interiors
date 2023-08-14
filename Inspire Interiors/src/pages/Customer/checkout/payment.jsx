@@ -24,10 +24,10 @@ const PaymentMethod = () => {
                         <div className='row d-flex align-items-center'>
                             <div className='col-md-4 col-sm-12 col-12 fs-5'>
                                 <Breadcrumb className="fw-bold">
-                                    <Breadcrumb.Item style={{ color: '#17183B !important' }}>
+                                    <Breadcrumb.Item href='/customer/checkout/address' aria-disabled>
                                         Address
                                     </Breadcrumb.Item>
-                                    <Breadcrumb.Item className="custom-breadcrumb-divider" active>
+                                    <Breadcrumb.Item className="custom-breadcrumb-divider" href='/customer/checkout/shipping' aria-disabled>
                                         <FontAwesomeIcon icon={faAngleRight} className="me-2"/>
                                         Shipping
                                     </Breadcrumb.Item>
