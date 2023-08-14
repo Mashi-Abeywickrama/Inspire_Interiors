@@ -182,14 +182,14 @@ const Login = () => {
                   </Form.Group>
                   
                   <div className="d-flex col justify-content-end form-options">
-                    <a href="/" style={{ color: '#023047 !important' }}>Forgot password?</a>
+                    <a href="/" className='f-color-signup'>Forgot password?</a>
                   </div>
                 
                 </div>
 
                 <Button
                   onClick={handleLogin}
-                  className='d-flex justify-content-center align-self-center mb-4'
+                  className='d-flex justify-content-center align-self-center mb-4 btnstyle'
                   size='lg'
                   variant="primary"
                   style={{ backgroundColor: '#035C94', color: '#FFFFFF' }}
@@ -203,9 +203,9 @@ const Login = () => {
                   Don't have an Account?
               </h6>
 
-              <h6 className='text-center'
-                style={{color:'#023047'}}>
-                 <Link to="/signup"> Register </Link> 
+              <h6 className='text-center f-color-signup'
+                >
+                 <Link to="/signup" className='f-color-signup'> Register </Link> 
               </h6>
 
             </div>

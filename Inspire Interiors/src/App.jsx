@@ -25,7 +25,7 @@ import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
 
 import Report from './pages/Admin/report';
 import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
-import Dashboard from './pages/Admin/dashboard';
+import AdminDashboard from './pages/Admin/dashboard';
 import User from './pages/Admin/user';
 import Commission from './pages/Admin/commission';
 import Orders from './pages/Admin/orders';
@@ -63,7 +63,7 @@ import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
 import PromotionRequest from "./pages/vendor/promotionRequest";
 import Promotion from "./pages/vendor/promotion";
-import PromotionExpenses from "./pages/vendor/promotionExpenses";
+import PromotionEarnings from "./pages/vendor/promotionExpenses";
 import CustomizeOrders from "./pages/vendor/customizedOrders";
 import Order from "./pages/vendor/order";
 import VendorDashboard from "./pages/vendor/vendorDashboard";
@@ -145,6 +145,7 @@ const router = createBrowserRouter(
         <Route index element={<CustomerDashboard />} />
         <Route path="dashboard" element={<CustomerDashboard />} />
         <Route path="orders" element={<MyOrder />} />
+        <Route path="orders/vieworder" element={<OrderView />} />
         <Route path="designs" element={<Designs />} />
         <Route path="designs/browsedesigns" element={<BrowseDesigns />} />
         <Route path="marketplace/viewproduct" element={<ViewProduct />}></Route>

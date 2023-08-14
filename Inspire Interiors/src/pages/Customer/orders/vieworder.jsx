@@ -15,7 +15,7 @@ const ViewOrder = () => {
                 <div className='row d-flex align-items-center'>
                     <div className="col-md-4 col-sm-12 col-12 fs-5">
                         <Breadcrumb className="fw-bold">
-                            <Breadcrumb.Item>
+                            <Breadcrumb.Item href='/customer/orders' aria-disabled>
                                 My Orders
                             </Breadcrumb.Item>
                             <Breadcrumb.Item className="custom-breadcrumb-divider" active>
