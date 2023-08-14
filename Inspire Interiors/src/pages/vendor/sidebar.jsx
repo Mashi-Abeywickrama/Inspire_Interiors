@@ -4,7 +4,8 @@ import { useLocation } from "react-router-dom";
 import { NavLink } from 'react-router-dom'; 
 import { TbLogout2 } from "react-icons/tb";
 import * as Icon from 'react-bootstrap-icons';
-import { RiThumbUpFill,RiStore2Fill,RiHeartPulseFill,RiShoppingBagFill,RiDashboardFill,RiSettings5Fill } from "react-icons/ri";
+import { RiThumbUpFill,RiStore2Fill,RiDraftFill,RiShoppingBagFill,RiDashboardFill,RiSettings5Fill, RiWechatFill } from "react-icons/ri";
+import { FaHandshakeSimple, FaHandshake, FaCommentDots } from "react-icons/fa6";
 
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './../../styles/vendor/sidebar.css'
@@ -64,7 +65,7 @@ const SidebarDashboard = () => {
 
         <NavItem eventKey="promotion">
             <NavIcon>
-            <NavLink to="/vendor/promotion" activeClassName="active"><i><RiThumbUpFill /></i></NavLink>
+            <NavLink to="/vendor/promotion" activeClassName="active"><i><FaHandshake /></i></NavLink>
                  
             </NavIcon>
             <NavText>
@@ -75,7 +76,7 @@ const SidebarDashboard = () => {
 
         <NavItem eventKey="complaints">
             <NavIcon>
-            <NavLink to="/vendor/complaints" activeClassName="active"><i><RiHeartPulseFill /></i></NavLink>
+            <NavLink to="/vendor/complaints" activeClassName="active"><i><RiDraftFill /></i></NavLink>
             </NavIcon>
             <NavText>
             <NavLink to="/vendor/complaints" activeClassName="active">Complaints</NavLink>

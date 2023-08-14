@@ -225,8 +225,10 @@ const router = createBrowserRouter(
           element={<PromotionRequest />}
         ></Route>
         <Route
-          path="promotion/earnings"
-          element={<DesignerPromotionEarnings />}
+
+          path="promotion/expenses"
+          element={<PromotionExpenses />}
+
         ></Route>
         <Route path="complaints" element={<Complaints />}></Route>
         <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>

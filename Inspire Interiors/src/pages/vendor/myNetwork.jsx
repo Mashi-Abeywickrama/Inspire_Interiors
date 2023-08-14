@@ -93,7 +93,7 @@ const tabledata = {
         date: '2023/07/20',
         product: '60',
         earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
+        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
         action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
@@ -123,7 +123,7 @@ const tabledata = {
         date: '2023/07/20',
         product: '60',
         earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
+        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
         action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
@@ -153,7 +153,17 @@ const tabledata = {
         date: '2023/07/20',
         product: '60',
         earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
+        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
+        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+      },
+      {
+        name: 'Victor Avacado',
+        total: '100',
+        review: '4.5',
+        date: '2023/07/20',
+        product: '60',
+        earnings: '4000Rs',
+        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
         action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
@@ -183,17 +193,7 @@ const tabledata = {
         date: '2023/07/20',
         product: '60',
         earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
+        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
         action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
     ]

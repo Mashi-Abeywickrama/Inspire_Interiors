@@ -128,7 +128,7 @@ const tabledata = {
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>In Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -142,7 +142,7 @@ const tabledata = {
         discount: '5%',
         price: '4000Rs',
         sold:'7',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='outstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Out of Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -156,7 +156,7 @@ const tabledata = {
         discount: '5%',
         price: '4000Rs',
         sold:'12',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='lowstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Low Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -170,7 +170,7 @@ const tabledata = {
         discount: '5%',
         price: '4000Rs',
         sold:'22',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>In Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       } 

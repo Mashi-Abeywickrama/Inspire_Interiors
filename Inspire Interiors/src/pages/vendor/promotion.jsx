@@ -49,7 +49,7 @@ const sentData = {
                         <p className="fs-6 fw-normal">Bed Room</p>
                     </div>
                 </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div><p className="float-end">2 days ago</p></div>
+            status: <div className="d-flex flex-column"><div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div><p className="float-end">2 days ago</p></div>
         },
         {   
             product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -69,7 +69,7 @@ const sentData = {
                         <p className="fs-6 fw-normal">Bed Room</p>
                     </div>
                 </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
+            status: <div className="d-flex flex-column"><div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div><p className="float-end">23 min ago</p></div>
         }
     ]
 }
@@ -188,7 +188,7 @@ const largeTableData = {
             price: '4000Rs',
             rate: '15%',
             sold:'15',
-            status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Received</p></div>
+            status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>
         },
         {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -200,7 +200,7 @@ const largeTableData = {
             price: '4000Rs',
             rate: '15%',
             sold:'15',
-            status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Received</p></div>
+            status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>
         },
         {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -212,7 +212,7 @@ const largeTableData = {
             price: '4000Rs',
             rate: '15%',
             sold:'15',
-            status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Received</p></div>
+            status: <div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Overdue</p></div>
         },
         {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
@@ -224,7 +224,7 @@ const largeTableData = {
             price: '4000Rs',
             rate: '15%',
             sold:'15',
-            status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Received</p></div>
+            status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>
         },
     ]
 }

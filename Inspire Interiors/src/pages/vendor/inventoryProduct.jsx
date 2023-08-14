@@ -167,7 +167,7 @@ const InventoryProduct = () => (
                         <div className='col-lg-12 bg-white rounded-3 p-4 shadow'>
                             <div className='d-flex flex-row gap-3'>
                                 <p className='text-dark fs-5 fw-bold Cabin-text'>Materials</p>
-                                <Icon.PencilFill color="#035C94" className='mt-3' />
+                                <Icon.PencilFill color="#035C94" className='mt-2' />
                             </div>
                             <div className='d-flex flex-column flex-lg-row flex-md-row justify-content-evenly'>
                                 <div className='d-flex flex-column gap-3'>
@@ -187,7 +187,7 @@ const InventoryProduct = () => (
                         <div className='col-lg-12 bg-white rounded-3 p-4 shadow'>
                             <div className='d-flex flex-row gap-3'>
                                 <p className='text-dark fs-5 fw-bold Cabin-text'>Colors</p>
-                                <Icon.PencilFill color="#035C94" className='mt-3' />
+                                <Icon.PencilFill color="#035C94" className='mt-2' />
                             </div>
                             <div className='d-flex flex-column flex-lg-row flex-md-row justify-content-evenly'>
                                 <div className='d-flex flex-column gap-3'>
@@ -207,7 +207,7 @@ const InventoryProduct = () => (
                         <div className='col-lg-12 bg-white rounded-3 p-4 shadow'>
                             <div className='d-flex flex-row gap-3'>
                                 <p className='text-dark fs-5 fw-bold Cabin-text'>Images & 3D Model</p>
-                                <Icon.PencilFill color="#035C94" className='mt-3' />
+                                <Icon.PencilFill color="#035C94" className='mt-2' />
                             </div>
                             <div className='align-content-center'>
                                 <img className='img-fluid' src={Chair} />

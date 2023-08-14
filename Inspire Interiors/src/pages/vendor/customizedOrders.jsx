@@ -275,7 +275,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
+            status: <div className="d-flex flex-column"><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>delayed</p></div><p className="float-end">2 days ago</p></div>
         },
         {
             customer: 'Justin Septimus',
@@ -317,7 +317,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
+            status: <div className="d-flex flex-column"><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>delayed</p></div><p className="float-end">2 days ago</p></div>
         },
         {
             customer: 'Justin Septimus',
@@ -359,7 +359,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
+            status: <div className="d-flex flex-column"><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>delayed</p></div><p className="float-end">2 days ago</p></div>
         },
         {
             customer: 'Justin Septimus',
@@ -401,7 +401,7 @@ const acceptedOrderData = {
             quantity: '30000',
             color: 'Red',
             material: 'Cotton',
-            status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
+            status: <div className="d-flex flex-column"><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>delayed</p></div><p className="float-end">2 days ago</p></div>
         },
         {
             customer: 'Justin Septimus',
