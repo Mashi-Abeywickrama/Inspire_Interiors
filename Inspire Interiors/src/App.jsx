@@ -94,7 +94,6 @@ import DesignerEarn from "./pages/Designer/DesignerEarn";
 import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
 import DesignerPromotions from "./pages/Designer/DesignerPromotions";
 import AlertPopup from "./components/AlertPopup";
-
 import Test from "./pages/Designer/test";
 
 import DesignerPromotion from "./pages/Designer/DesignerPromotion";
@@ -226,8 +225,10 @@ const router = createBrowserRouter(
           element={<PromotionRequest />}
         ></Route>
         <Route
+
           path="promotion/expenses"
           element={<PromotionExpenses />}
+
         ></Route>
         <Route path="complaints" element={<Complaints />}></Route>
         <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>
@@ -242,6 +243,7 @@ const router = createBrowserRouter(
         errorElement={<Error />}
       >
         <Route index element={<DesignerDashboard />} />
+        <Route path="dashboard" element={<DesignerDashboard />} />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />

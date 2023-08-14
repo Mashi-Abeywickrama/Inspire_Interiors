@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Img1 from "../../assets/Designer/Mydesign.png";
 import { BsFillCartPlusFill } from "react-icons/bs";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import PageNumb from "../../components/customer/pagenum";
+import './../../styles/customer/designs.css';
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -20,167 +24,257 @@ function DesignerMyDesigns() {
       </p>
       <div className="d-flex flex-row flex-wrap gap-3">
         {/* Cart */}
-        <div class="card" style={{ width: "20rem" }}>
+        <div class="card" style={{ width:'23%' }}>
           <img
             src={Img1}
             className="card-img-top img-fluid rounded-2"
             alt="design"
           ></img>
           <div className="card-body">
-            <h5 className="card-title">Sofa</h5>
-            <p className="card-text fw-medium">Landskrona</p>
+            <h5 className="card-title">Grey Theme</h5>
+            <p className="card-text fw-medium">Living Room</p>
             <p className="text  d-flex gap-2 justify-content-around">
-              <p className="text-decoration-line-throug text-secondary ">
+              <p className="text-decoration-line-throug text-secondary " >
                 $549
               </p>
 
               <p className="text-decoration-none text-danger">$400</p>
-              <a
-                href="#"
-                class="btn btn-primary"
-                style={{ background: "#035C94" }}
-              >
-                <BsFillCartPlusFill size={22} />
-              </a>
+              <FontAwesomeIcon
+                icon={faEdit}
+                className="align-items-center justify-content-center"
+                size="" // Adjust the size as needed
+                style={{
+                  color: 'white',
+                  backgroundColor: '#035C94',
+                  padding: '8px',
+                  borderRadius: '5px',
+                }}
+              />
             </p>
           </div>
         </div>
-
-        <div class="card" style={{ width: "20rem" }}>
+        <div class="card" style={{ width:'23%' }}>
           <img
             src={Img1}
             className="card-img-top img-fluid rounded-2"
             alt="design"
           ></img>
           <div className="card-body">
-            <h5 className="card-title">Sofa</h5>
-            <p className="card-text fw-medium">Landskrona</p>
+            <h5 className="card-title">Grey Theme</h5>
+            <p className="card-text fw-medium">Living Room</p>
             <p className="text  d-flex gap-2 justify-content-around">
-              <p className="text-decoration-line-throug text-secondary ">
+              <p className="text-decoration-line-throug text-secondary " >
                 $549
               </p>
 
               <p className="text-decoration-none text-danger">$400</p>
-              <a
-                href="#"
-                class="btn btn-primary"
-                style={{ background: "#035C94" }}
-              >
-                <BsFillCartPlusFill size={22} />
-              </a>
+              <FontAwesomeIcon
+                icon={faEdit}
+                className="align-items-center justify-content-center"
+                size="" // Adjust the size as needed
+                style={{
+                  color: 'white',
+                  backgroundColor: '#035C94',
+                  padding: '8px',
+                  borderRadius: '5px',
+                }}
+              />
             </p>
           </div>
         </div>
-
-        <div class="card" style={{ width: "20rem" }}>
+        <div class="card" style={{ width:'23%' }}>
           <img
             src={Img1}
             className="card-img-top img-fluid rounded-2"
             alt="design"
           ></img>
           <div className="card-body">
-            <h5 className="card-title">Sofa</h5>
-            <p className="card-text fw-medium">Landskrona</p>
+            <h5 className="card-title">Grey Theme</h5>
+            <p className="card-text fw-medium">Living Room</p>
             <p className="text  d-flex gap-2 justify-content-around">
-              <p className="text-decoration-line-throug text-secondary ">
+              <p className="text-decoration-line-throug text-secondary " >
                 $549
               </p>
 
               <p className="text-decoration-none text-danger">$400</p>
-              <a
-                href="#"
-                class="btn btn-primary"
-                style={{ background: "#035C94" }}
-              >
-                <BsFillCartPlusFill size={22} />
-              </a>
+              <FontAwesomeIcon
+                icon={faEdit}
+                className="align-items-center justify-content-center"
+                size="" // Adjust the size as needed
+                style={{
+                  color: 'white',
+                  backgroundColor: '#035C94',
+                  padding: '8px',
+                  borderRadius: '5px',
+                }}
+              />
             </p>
           </div>
         </div>
 
-        <div class="card" style={{ width: "20rem" }}>
+        <div class="card" style={{ width:'23%' }}>
           <img
             src={Img1}
             className="card-img-top img-fluid rounded-2"
             alt="design"
           ></img>
           <div className="card-body">
-            <h5 className="card-title">Sofa</h5>
-            <p className="card-text fw-medium">Landskrona</p>
+            <h5 className="card-title">Grey Theme</h5>
+            <p className="card-text fw-medium">Living Room</p>
             <p className="text  d-flex gap-2 justify-content-around">
-              <p className="text-decoration-line-throug text-secondary ">
+              <p className="text-decoration-line-throug text-secondary " >
                 $549
               </p>
 
               <p className="text-decoration-none text-danger">$400</p>
-              <a
-                href="#"
-                class="btn btn-primary"
-                style={{ background: "#035C94" }}
-              >
-                <BsFillCartPlusFill size={22} />
-              </a>
+              <FontAwesomeIcon
+                icon={faEdit}
+                className="align-items-center justify-content-center"
+                size="" // Adjust the size as needed
+                style={{
+                  color: 'white',
+                  backgroundColor: '#035C94',
+                  padding: '8px',
+                  borderRadius: '5px',
+                }}
+              />
             </p>
           </div>
         </div>
 
-        <Card sx={{ maxWidth: 345, minWidth: 300, height: 400 }}>
-          <CardMedia sx={{ height: 200 }} image={Img1} title="Sofa" />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Sofa
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              <p className="text  d-flex gap-2 fs-5">
-                <p className="text-decoration-line-through text-secondary ">
-                  $549
-                </p>
-
-                <p className="text-decoration-none text-danger">$400</p>
+        <div class="card" style={{ width:'23%' }}>
+          <img
+            src={Img1}
+            className="card-img-top img-fluid rounded-2"
+            alt="design"
+          ></img>
+          <div className="card-body">
+            <h5 className="card-title">Grey Theme</h5>
+            <p className="card-text fw-medium">Living Room</p>
+            <p className="text  d-flex gap-2 justify-content-around">
+              <p className="text-decoration-line-throug text-secondary " >
+                $549
               </p>
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="large">
-              <BsFillCartPlusFill size={22} />
-            </Button>
-          </CardActions>
-        </Card>
 
-        <Card sx={{ maxWidth: 345, minWidth: 300, height: 400 }}>
-          <CardMedia sx={{ height: 200 }} image={Img1} title="Sofa" />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Sofa
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              <p className="text  d-flex gap-2 fs-5">
-                <p className="text-decoration-line-through text-secondary ">
-                  $549
-                </p>
+              <p className="text-decoration-none text-danger">$400</p>
+              <FontAwesomeIcon
+                icon={faEdit}
+                className="align-items-center justify-content-center"
+                size="" // Adjust the size as needed
+                style={{
+                  color: 'white',
+                  backgroundColor: '#035C94',
+                  padding: '8px',
+                  borderRadius: '5px',
+                }}
+              />
+            </p>
+          </div>
+        </div>
 
-                <p className="text-decoration-none text-danger">$400</p>
+        <div class="card" style={{ width:'23%' }}>
+          <img
+            src={Img1}
+            className="card-img-top img-fluid rounded-2"
+            alt="design"
+          ></img>
+          <div className="card-body">
+            <h5 className="card-title">Grey Theme</h5>
+            <p className="card-text fw-medium">Living Room</p>
+            <p className="text  d-flex gap-2 justify-content-around">
+              <p className="text-decoration-line-throug text-secondary " >
+                $549
               </p>
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="large">
-              <BsFillCartPlusFill size={22} />
-            </Button>
-          </CardActions>
-        </Card>
+
+              <p className="text-decoration-none text-danger">$400</p>
+              <FontAwesomeIcon
+                icon={faEdit}
+                className="align-items-center justify-content-center"
+                size="" // Adjust the size as needed
+                style={{
+                  color: 'white',
+                  backgroundColor: '#035C94',
+                  padding: '8px',
+                  borderRadius: '5px',
+                }}
+              />
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style={{ width:'23%' }}>
+          <img
+            src={Img1}
+            className="card-img-top img-fluid rounded-2"
+            alt="design"
+          ></img>
+          <div className="card-body">
+            <h5 className="card-title">Grey Theme</h5>
+            <p className="card-text fw-medium">Living Room</p>
+            <p className="text  d-flex gap-2 justify-content-around">
+              <p className="text-decoration-line-throug text-secondary " >
+                $549
+              </p>
+
+              <p className="text-decoration-none text-danger">$400</p>
+              <FontAwesomeIcon
+                icon={faEdit}
+                className="align-items-center justify-content-center"
+                size="" // Adjust the size as needed
+                style={{
+                  color: 'white',
+                  backgroundColor: '#035C94',
+                  padding: '8px',
+                  borderRadius: '5px',
+                }}
+              />
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style={{ width:'23%' }}>
+          <img
+            src={Img1}
+            className="card-img-top img-fluid rounded-2"
+            alt="design"
+          ></img>
+          <div className="card-body">
+            <h5 className="card-title">Grey Theme</h5>
+            <p className="card-text fw-medium">Living Room</p>
+            <p className="text  d-flex gap-2 justify-content-around">
+              <p className="text-decoration-line-throug text-secondary " >
+                $549
+              </p>
+
+              <p className="text-decoration-none text-danger">$400</p>
+              <FontAwesomeIcon
+                icon={faEdit}
+                className="align-items-center justify-content-center"
+                size="" // Adjust the size as needed
+                style={{
+                  color: 'white',
+                  backgroundColor: '#035C94',
+                  padding: '8px',
+                  borderRadius: '5px',
+                }}
+              />
+            </p>
+          </div>
+        </div>
       </div>
 
-      <br></br>
+      
 
-      <Pagination
-        count={10}
-        variant="outlined"
-        shape="rounded"
-        style={{ position: "absolute", left: "40%" }}
-      />
-      <br></br>
-      <br></br>
+      <div className="mt-3">
+                    <div className='container'>
+                        <div className='row'>
+                            <div className='d-flex col text-center justify-content-center align-items-center '>
+                                <PageNumb />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      
     </div>
   );
 }

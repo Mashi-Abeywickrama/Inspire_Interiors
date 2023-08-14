@@ -85,6 +85,8 @@ div {
 }
 
 .btn-file input[type=file] {
+  background-color:#000000;
+  color: #fff;
   position: absolute;
   top: 0;
   right: 0;
@@ -98,6 +100,8 @@ div {
 
 .btn-hint 
 {
+  background-color:#000000;
+  color: #fff;
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -140,4 +144,26 @@ div {
 .dg select
 {
 	color: #000000;
+}
+.btn-default {
+    color: #fff !important;
+    background-color: #023047 !important;
+    border-color: #ccc !important;
+}
+
+.dg li.title {
+    padding-left: 16px;
+    background: #023047 url(data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlI+hKgFxoCgAOw==) 6px 10px no-repeat !important;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.dg li:not(.folder) {
+    background: #0a5e88 !important;
+    border-bottom: 1px solid #2c2c2c;
+}
+
+.dg .c input[type=text] {
+    background: #ffffff !important;
+    outline: none;
 }

@@ -41,7 +41,7 @@ const receivedData = {
             <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
               David Avacado
             </p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="fs-6 fw-normal">Living Room</p>
           </div>
         </div>
       ),
@@ -67,7 +67,7 @@ const receivedData = {
             <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
               David Avacado
             </p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="fs-6 fw-normal">Living Room</p>
           </div>
         </div>
       ),
@@ -93,7 +93,7 @@ const receivedData = {
             <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
               David Avacado
             </p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="fs-6 fw-normal">Living Room</p>
           </div>
         </div>
       ),
@@ -119,7 +119,7 @@ const receivedData = {
             <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
               David Avacado
             </p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="fs-6 fw-normal">Living Room</p>
           </div>
         </div>
       ),
@@ -160,8 +160,8 @@ const sentData = {
         <div className="d-flex flex-row gap-4 align-items-center">
           <img src={Sofa} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Sofa</p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">David Avocardo</p>
+            <p className="fs-6 fw-normal">Living Room</p>
           </div>
         </div>
       ),
@@ -180,8 +180,8 @@ const sentData = {
         <div className="d-flex flex-row gap-4 align-items-center">
           <img src={Sofa} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Sofa</p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Sherine De Mel</p>
+            <p className="fs-6 fw-normal">Living Room</p>
           </div>
         </div>
       ),
@@ -189,7 +189,7 @@ const sentData = {
         <div className="d-flex flex-column">
           <div className="completed d-flex gap-2 align-items-center">
             <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Withdraw</p>
+            <p className="m-0">Withdrawn</p>
           </div>
           <p className="float-end">2 days ago</p>
         </div>
@@ -200,8 +200,8 @@ const sentData = {
         <div className="d-flex flex-row gap-4 align-items-center">
           <img src={Sofa} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Sofa</p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Mevern Jade</p>
+            <p className="fs-6 fw-normal">Living Room</p>
           </div>
         </div>
       ),
@@ -220,8 +220,8 @@ const sentData = {
         <div className="d-flex flex-row gap-4 align-items-center">
           <img src={Sofa} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Sofa</p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Triney Da Zar</p>
+            <p className="fs-6 fw-normal">Living Room</p>
           </div>
         </div>
       ),
@@ -276,7 +276,7 @@ function DesignerDesigntool() {
                       className="card-text m-0 fs-6 fw-semibold Cabin-text"
                       style={{ color: "#969696" }}
                     >
-                      SOFA
+                      HI THE GREY
                     </p>
                     <p class="card-title fw-bold fs-6 m-0 Cabin-text">
                       Landskrona
@@ -314,10 +314,10 @@ function DesignerDesigntool() {
                       className="card-text m-0 fs-6 fw-semibold Cabin-text"
                       style={{ color: "#969696" }}
                     >
-                      CHAIR
+                      YELLOW WORLD
                     </p>
                     <p class="card-title fw-bold fs-6 m-0 Cabin-text">
-                      Strandmon
+                      Living Room
                     </p>
                     <p className="card-text m-0 fw-bolder fs-6 Cabin-text">
                       $499
@@ -352,9 +352,9 @@ function DesignerDesigntool() {
                       className="card-text m-0 fs-6 fw-semibold Cabin-text"
                       style={{ color: "#969696" }}
                     >
-                      TABLE
+                      LUXURY HOME
                     </p>
-                    <p class="card-title fw-bold fs-6 m-0 Cabin-text">Odger</p>
+                    <p class="card-title fw-bold fs-6 m-0 Cabin-text">Living Room</p>
                     <p className="card-text m-0 fw-bolder fs-6 Cabin-text">
                       $499
                     </p>
@@ -388,9 +388,9 @@ function DesignerDesigntool() {
                       className="card-text m-0 fs-6 fw-semibold Cabin-text"
                       style={{ color: "#969696" }}
                     >
-                      TABLE
+                      LUXURY HOME
                     </p>
-                    <p class="card-title fw-bold fs-6 m-0 Cabin-text">Odger</p>
+                    <p class="card-title fw-bold fs-6 m-0 Cabin-text">Living Room</p>
                     <p className="card-text m-0 fw-bolder fs-6 Cabin-text">
                       $499
                     </p>
@@ -447,10 +447,10 @@ function DesignerDesigntool() {
                             className="card-text m-0 fs-6 fw-semibold Cabin-text"
                             style={{ color: "#969696" }}
                           >
-                            SOFA
+                            HI THE GREY
                           </p>
                           <p class="card-title fw-bold fs-6 m-0 Cabin-text">
-                            Landskrona
+                            Living room
                           </p>
                           <p className="card-text m-0 fs-6 fw-bolder Cabin-text">
                             $499
@@ -485,10 +485,10 @@ function DesignerDesigntool() {
                             className="card-text m-0 fs-6 fw-semibold Cabin-text"
                             style={{ color: "#969696" }}
                           >
-                            CHAIR
+                            YELLOW WORLD
                           </p>
                           <p class="card-title fw-bold fs-6 m-0 Cabin-text">
-                            Strandmon
+                            Living Room
                           </p>
                           <p className="card-text m-0 fw-bolder fs-6 Cabin-text">
                             $499
@@ -525,10 +525,10 @@ function DesignerDesigntool() {
                             className="card-text m-0 fs-6 fw-semibold Cabin-text"
                             style={{ color: "#969696" }}
                           >
-                            CHAIR
+                            YELLOW WORLD
                           </p>
                           <p class="card-title fw-bold fs-6 m-0 Cabin-text">
-                            Strandmon
+                            Living Room
                           </p>
                           <p className="card-text m-0 fw-bolder fs-6 Cabin-text">
                             $499
@@ -563,10 +563,10 @@ function DesignerDesigntool() {
                             className="card-text m-0 fs-6 fw-semibold Cabin-text"
                             style={{ color: "#969696" }}
                           >
-                            CHAIR
+                            YELLOW WORLD
                           </p>
                           <p class="card-title fw-bold fs-6 m-0 Cabin-text">
-                            Strandmon
+                            Living Room
                           </p>
                           <p className="card-text m-0 fw-bolder fs-6 Cabin-text">
                             $499
