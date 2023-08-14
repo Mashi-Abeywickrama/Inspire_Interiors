@@ -227,9 +227,9 @@ export default function commisssion() {
                 </div>
               </div>
 
-              <div className="product d-flex p-2 shadow flex-column h-100 flex-fill">
+              <div className="product d-flex p-2 shadow flex-column h-100 ">
                 <div className="com-earned d-flex fs-4">Design</div>
-                <div className="d-flex flex-row gap-5">
+                <div className="d-flex flex-row gap-5 justify-content-center">
                   <span>Price range</span>
                   <span>Rate</span>
                 </div>
@@ -258,7 +258,7 @@ export default function commisssion() {
                   </div>
                   <span>18%</span>
                 </div>
-                <div className="d-flex flex-row gap-3 ">
+                <div className="d-flex flex-row gap-3 justify-content-center ">
                   <span className="d-flex ">10,000 20,000</span>
                   <div class="progress">
                     <div
