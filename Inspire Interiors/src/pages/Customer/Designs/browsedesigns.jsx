@@ -99,8 +99,8 @@ const BrowseDesigns = () => {
                     <div className='row container'>
                         <div className='row d-flex align-items-center'>
                             <div className='col-md-4 col-sm-12 col-12 fs-5'>
-                                <Breadcrumb className="fw-bold">
-                                    <Breadcrumb.Item >
+                                <Breadcrumb  className="fw-bold">
+                                    <Breadcrumb.Item  href='/customer/designs'>
                                         Designs
                                     </Breadcrumb.Item>
                                     <Breadcrumb.Item className="custom-breadcrumb-divider" active >

@@ -206,10 +206,10 @@ const SignUp = () => {
                                     >
                                         {selectedRole}
                                     </Dropdown.Toggle>
-                                    <Dropdown.Menu className="fw-400 bg-transparent f-color-signup">
-                                        <Dropdown.Item className="fw-400 f-color-signup" onClick={() => handleRoleSelect("Customer")}>Customer</Dropdown.Item>
-                                        <Dropdown.Item className="fw-400 f-color-signup" onClick={() => handleRoleSelect("Designer")}>Designer</Dropdown.Item>
-                                        <Dropdown.Item className="fw-400 f-color-signup" onClick={() => handleRoleSelect("Vendor")}>Vendor</Dropdown.Item>
+                                    <Dropdown.Menu className="fw-400 bg-white f-color-signup">
+                                        <Dropdown.Item className="f-color-signup" onClick={() => handleRoleSelect("Customer")}>Customer</Dropdown.Item>
+                                        <Dropdown.Item className="f-color-signup" onClick={() => handleRoleSelect("Designer")}>Designer</Dropdown.Item>
+                                        <Dropdown.Item className="f-color-signup" onClick={() => handleRoleSelect("Vendor")}>Vendor</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div>

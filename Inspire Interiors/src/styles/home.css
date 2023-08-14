@@ -48,6 +48,13 @@
     font-weight: bold;
     padding: 0.6rem;
     box-shadow: 0px 10px 20px rgba(111, 88, 201, 0.25);
+
+    &:hover{
+        transition:  0.3s ease-in-out;
+        background-color: #fff;
+        color: #023047;
+        transform: scale(1.01);
+    }
 }
 
 .secondary-btn{
@@ -58,6 +65,13 @@
     padding: 0.6rem;
     box-shadow: 0px 10px 20px rgba(111, 88, 201, 0.25);
     color: white;
+
+    &:hover{
+        transition:  0.3s ease-in-out;
+        background-color: #023047;
+        color: #fff;
+        transform: scale(1.01);
+    }
 }
 
 .lower-banner{
