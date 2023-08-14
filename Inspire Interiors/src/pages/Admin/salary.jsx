@@ -49,49 +49,49 @@ const Salary = () => {
     ],
     rows: [
       {
-        name: 'Chair',
+        name: 'Abraham',
         type: '203',
         email: '20K',
         status: '200K',
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
+        name: 'Abraham',
         type: '203',
         email: '20K',
         status: '200K',
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
+        name: 'Abraham',
         type: '203',
         email: '20K',
         status: '200K',
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
+        name: 'Abraham',
         type: '203',
         email: '20K',
         status: '200K',
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
+        name: 'Abraham',
         type: '203',
         email: '20K',
         status: '200K',
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
+        name: 'Abraham',
         type: '203',
         email: '20K',
         status: '200K',
         action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>Send invoice</p> <Icon.ArrowRight/></div>
       },
       {
-        name: 'Chair',
+        name: 'Abraham',
         type: '203',
         email: '20K',
         status: '200K',
@@ -112,7 +112,7 @@ const Salary = () => {
             <div className='d-flex gap-2 align-items-center'>
           <div className="fs-5">User</div> 
           <div className='text-secondary '> <Icon.ChevronRight size={18} /> </div>
-          <div className="text-secondary fs-5"> Salary</div>
+          <div className="text-secondary fs-5">Salary</div>
           </div>
            <button class='py-1 px-2 fs-6' style={{backgroundColor:"#023047"}}>+ Add New</button>
           
