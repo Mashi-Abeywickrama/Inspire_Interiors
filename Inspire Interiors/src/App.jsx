@@ -17,24 +17,22 @@ import Contact from "./pages/visitor/contact";
 import Services from "./pages/visitor/services";
 import SignUp from "./pages/visitor/signup";
 import MyTeam from "./pages/visitor/team";
-import Project from './pages/visitor/project';
-import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
-
+import Project from "./pages/visitor/project";
+import OnlyHeaderRootlayout from "./layouts/onlyHeaderRootlayout";
 
 // Admin
 
-import Report from './pages/Admin/report';
-import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
-import AdminDashboard from './pages/Admin/dashboard';
-import User from './pages/Admin/user';
-import Commission from './pages/Admin/commission';
-import Orders from './pages/Admin/orders';
-import Salary from './pages/Admin/salary';
-import Profile from './pages/Admin/profile';
-import Invoice from './pages/Admin/invoice';
-import Cview from './pages/Admin/commissionView';
-import ADSetting from './pages/Admin/settings'
-
+import Report from "./pages/Admin/report";
+import ADashboardlayout from "./layouts/Admin/admindasahboardLayout";
+import AdminDashboard from "./pages/Admin/dashboard";
+import User from "./pages/Admin/user";
+import Commission from "./pages/Admin/commission";
+import Orders from "./pages/Admin/orders";
+import Salary from "./pages/Admin/salary";
+import Profile from "./pages/Admin/profile";
+import Invoice from "./pages/Admin/invoice";
+import Cview from "./pages/Admin/commissionView";
+import ADSetting from "./pages/Admin/settings";
 
 // Customer
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
@@ -101,7 +99,6 @@ import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
 import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -155,23 +152,26 @@ const router = createBrowserRouter(
         <Route path="checkout/address" element={<Address />} />
         <Route path="checkout/payment" element={<PaymentMethod />} />
         <Route path="checkout/shipping" element={<ShippingMethod />} />
+        <Route path="orders/vieworder" element={<OrderView />} />
         <Route path="settings" element={<CusSetting />}></Route>
-
       </Route>
       {/* Admin Routes */}
-
-      <Route path="/Admin/" element={<ADashboardlayout />} errorElement={<Error />}>
-        <Route index element={<AdminDashboard/> } />
-        <Route path="dashboard" element={<AdminDashboard/> }></Route>
-        <Route path="report" element={<Report/> } />
-        <Route  path="user" element={<User/> } />
-        <Route  path="commission" element={<Commission/> } />
-        <Route  path="orders" element={<Orders/> } />
-        <Route  path="salary" element={<Salary/> } />
-        <Route path="orders/invoice" element={<Invoice/>}/>
-        <Route path="user/profile" element={<Profile/>}/>
-        <Route path="commision/commissionView" element={<Cview/>}/>
-        <Route path="settings" element={<ADSetting/>}/>
+      <Route
+        path="/Admin/"
+        element={<ADashboardlayout />}
+        errorElement={<Error />}
+      >
+        <Route index element={<AdminDashboard />} />
+        <Route path="dashboard" element={<AdminDashboard />}></Route>
+        <Route path="report" element={<Report />} />
+        <Route path="user" element={<User />} />
+        <Route path="commission" element={<Commission />} />
+        <Route path="orders" element={<Orders />} />
+        <Route path="salary" element={<Salary />} />
+        <Route path="orders/invoice" element={<Invoice />} />
+        <Route path="user/profile" element={<Profile />} />
+        <Route path="commision/commissionView" element={<Cview />} />
+        <Route path="settings" element={<ADSetting />} />
       </Route>
       {/* Customer Support Routes */}
       <Route
@@ -225,25 +225,24 @@ const router = createBrowserRouter(
           element={<PromotionRequest />}
         ></Route>
         <Route
-
           path="promotion/expenses"
           element={<PromotionExpenses />}
-
         ></Route>
         <Route path="complaints" element={<Complaints />}></Route>
-        <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>
+        <Route
+          path="complaints/viewcomplaint"
+          element={<ViewComplaint />}
+        ></Route>
         <Route path="setting" element={<VendorSetting />}></Route>
       </Route>
 
-
-      {/* Designer Routes*/}
+      {/* Designer Routes */}
       <Route
-        path="/designer"
+        path="/designer/"
         element={<DesignerLayout />}
         errorElement={<Error />}
       >
         <Route index element={<DesignerDashboard />} />
-        <Route path="dashboard" element={<DesignerDashboard />} />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />
@@ -258,7 +257,6 @@ const router = createBrowserRouter(
 
         <Route path="setting" element={<DesignerSetting />} />
       </Route>
-
     </>
   )
 );
