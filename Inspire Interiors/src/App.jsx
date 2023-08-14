@@ -63,7 +63,7 @@ import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
 import PromotionRequest from "./pages/vendor/promotionRequest";
 import Promotion from "./pages/vendor/promotion";
-import PromotionEarnings from "./pages/vendor/promotionExpenses";
+import PromotionExpenses from "./pages/vendor/promotionExpenses";
 import CustomizeOrders from "./pages/vendor/customizedOrders";
 import Order from "./pages/vendor/order";
 import VendorDashboard from "./pages/vendor/vendorDashboard";
