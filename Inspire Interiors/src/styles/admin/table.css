@@ -104,11 +104,11 @@ div.mdb-datatable div.mdb-datatable-filter{
     color: #007F00  ;
 }
 .pending{
-    width: fit-content;
+    width: 95px;
     padding: 0.3rem;
-    background-color: #F6E3AC;
+        background-color: #F6E3AC;
     border-radius: 8px;
-    color: #6B4605  ;
+    color: #6B4605;
 }
 .tag-icon{
     font-size: 0.5rem;

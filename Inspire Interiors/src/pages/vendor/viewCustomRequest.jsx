@@ -15,13 +15,13 @@ const ViewCustomRequest = () => {
 
             <div className="custom-container rounded-3 mb-4 ">
                 <div className="col-12 d-flex flex-column flex-md-row flex-lg-row gap-4">
-                    <div className="col-lg-8 bg-white rounded-3 shadow py-3 px-4">
+                    <div className="col-lg-8 bg-white rounded-3 shadow p-4">
                         <div className="d-flex flex-row gap-4">
-                            <p className="text-dark fs-3 fw-bold Cabin-text">Custom Product</p>
-                            <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Requests</p>
-                            <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Customer Avocado</p>
+                            <Link to="/vendor/order/customizeorders"><p className="text-dark fs-5 fw-bold Cabin-text">Custom Product</p></Link>
+                            <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                            <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Requests</p>
+                            <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                            <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Customer Avocado</p>
                         </div>
                         <div className="d-flex flex-column">
                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563"}}>Product Description</p>
@@ -58,14 +58,14 @@ const ViewCustomRequest = () => {
                     </div>
                     <div className="col-lg-4">
                         <div className="d-flex flex-column gap-2">
-                            <div className="col-lg-12 bg-white rounded-3 shadow px-3 py-2">
+                            <div className="col-lg-12 bg-white rounded-3 shadow p-4">
                                 <div className="d-flex flex-column">
-                                    <p className="fs-3 fw-bold Cabin-text">About Customer Avocado</p>
+                                    <p className="fs-5 fw-bold Cabin-text">About Customer Avocado</p>
                                 </div>
                                 <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
-                                    <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-2 rounded-4 border" src={Customer} />
+                                    <img style={{ backgroundColor: "#FEE4CB", objectFit:"cover" }} className="img-fluid p-3 rounded-4 border" src={Customer} />
                                     <div className="d-flex flex-column">
-                                        <p className="fs-4 fw-bold" style={{ color: "#3D3D3D"}}>Victor Avocado</p>
+                                        <p className="fs-6 fw-bold" style={{ color: "#3D3D3D"}}>Victor Avocado</p>
                                         <div className="d-flex flex-row gap-2">
                                             <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#023047"}}>Contact:</p>
                                             <p className="fs-6 fw-normal Cabin-text" style={{ color: "#023047"}}>(936) 361-0310</p>
@@ -76,8 +76,8 @@ const ViewCustomRequest = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-12 bg-white rounded-3 shadow px-3 py-2">
-                                <p className="fs-3 fw-bold Cabin-text">3D Modal</p>
+                            <div className="col-lg-12 bg-white rounded-3 shadow p-4">
+                                <p className="fs-5 fw-bold Cabin-text">3D Modal</p>
                                 <img className="img-fluid px-5" src={Chair} />
                             </div>
                         </div>

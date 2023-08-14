@@ -8,6 +8,7 @@ import inspireinteriors.dev.service.CustomerService;
 import inspireinteriors.dev.service.DesignerService;
 import inspireinteriors.dev.service.UserService;
 import inspireinteriors.dev.service.VendorService;
+import jakarta.servlet.http.HttpSession;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,21 +35,28 @@ public class UserController {
 
     @GetMapping("/users")
     @ResponseBody
-    public Iterable<User> fetchUsers() {
-        return userService.getAllUsers();
+//    public Iterable<User> fetchUsers() {
+//        return userService.getAllUsers();
+//    }
+    public String fetchUsers( HttpSession session) {
+        Integer user_id = (Integer) session.getAttribute("userid");
+
+        return user_id.toString();
     }
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) throws JSONException {
+    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest, HttpSession session) throws JSONException {
         User user = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
 
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
-        }
 
+        }
+        session.setAttribute("userid", user.getUserid());
         // Create a response object that includes user type
         JSONObject jsonResponse = new JSONObject();
         jsonResponse.put("message", "Login successful");
         jsonResponse.put("userType", user.getType());
+
 
         return ResponseEntity.ok(jsonResponse.toString());
     }

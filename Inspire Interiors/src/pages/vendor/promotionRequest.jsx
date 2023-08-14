@@ -6,7 +6,6 @@ import { MDBDataTableV5, MDBTable } from 'mdbreact';
 import Customer from '../../assets/img/vendor/customer.png';
 import Arpico from "../../assets/img/vendor/arpico.png";
 
-import ReactStars from "react-rating-stars-component";
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
@@ -118,24 +117,38 @@ const tabledata2 = {
     ],
 };
 
-const stardata = {
-    data:"4.5"
-}
+const generateStars = (rate) => {
+    const fullStars = Math.floor(rate);
+    const halfStar = rate - fullStars >= 0.5;
+
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= fullStars) {
+        stars.push(<Icon.StarFill key={i} color='#FFC00C' />);
+      } else if (i === fullStars + 1 && halfStar) {
+        stars.push(<Icon.StarHalf key={i} color='#FFC00C' />);
+      } else {
+        stars.push(<Icon.Star key={i} color='#FFC00C' />);
+      }
+    }
+    return stars;
+};
+
 
 const PromotionRequest = () => (
     <>
         <div className="request-container">
             <div className="col-12 d-flex flex-column flex-lg-row flex-md-row gap-3">
-                <div className="d-flex flex-column gap-4">
+                <div className="d-flex flex-column gap-4 h-100">
                     <div className='col-lg-12 bg-white rounded-3 shadow p-4'>
                         <div className="d-flex flex-row gap-4">
-                            <p className="text-dark fs-3 fw-bold Cabin-text ">Promotion</p>
-                            <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>My Network</p>
-                            <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Sent</p>
-                            <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                            <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Victor Avocado</p>
+                            <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text ">Promotion</p></Link>
+                            <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                            <Link to="/vendor/promotion/mynetwork"><p className="fs-5 fw-bold Cabin-text text-dark">My Network</p></Link>
+                            <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                            <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Received</p>
+                            <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                            <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Victor Avocado</p>
                         </div>
                         <div className="d-flex flex-column">
                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Offer Overview</p>
@@ -145,7 +158,7 @@ const PromotionRequest = () => (
                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Offer Details</p>
                             <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>For various price ranges you will receive a kind of percentage from our product value. But only we will pay after the return periods end. so dont ask for money. we dont have atleast 10 rupees. Thank you.</p>
                         </div>
-                        <div className=''>
+                        <div className='p-4'>
                             <MDBDataTableV5 responsive
                                 striped
                                 bordered
@@ -159,8 +172,8 @@ const PromotionRequest = () => (
                         <Link to="/vendor/promotion/mynetwork"><button className="withdraw-btn float-end Cabin-text">Withdraw Request</button></Link>
                     </div>
                     <div className='col-lg-12 bg-white rounded-3 shadow gap-2 p-4 mb-3'>
-                        <p className="fs-6 fw-semibold Cabin-text">Negotiate</p>
-                        <p className="fw-normal fs-6 Cabin-text">Select Promotion Rates</p>
+                        <p className="fs-5 fw-bold Cabin-text">Negotiate</p>
+                        <p className="fw-semibold fs-6 Cabin-text">Select Promotion Rates</p>
                         <div className=''>
                             <MDBDataTableV5 responsive
                                 striped
@@ -172,37 +185,30 @@ const PromotionRequest = () => (
                                 paging={false}
                                 searching={false} />
                         </div>
-                        <div className="d-flex flex-row gap-4 float-end">
+                        <div className="d-flex flex-row gap-4 float-end my-3">
                             <Link to="/vendor/promotion/mynetwork"><button className="negotiate-btn float-end Cabin-text" style={{ color: "#545563" }}>Negotiate</button></Link>
                             <Link to="/vendor/promotion/mynetwork"><button className="accept-btn float-end Cabin-text">Accept Order</button></Link>
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4">
-                    <div className='col-lg-12 bg-white rounded-3 shadow p-4 mb-3'>
-                        <p className="fs-3 fw-bold Cabin-text">About Victor Avocado</p>
+                <div className="col-lg-4 mb-3">
+                    <div className='col-lg-12 h-100 bg-white rounded-3 shadow p-4 '>
+                        <p className="fs-5 fw-bold Cabin-text">About Victor Avocado</p>
                         <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
-                            <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-3 rounded-4 border" src={Customer} />
+                            <img style={{ backgroundColor: "#FEE4CB", objectFit: "cover" }} className="img-fluid p-2 rounded-4 border" src={Customer} />
                             <div className="d-flex flex-column">
-                                <p className="fs-4 fw-bold Cabin-text">Victor Avocado</p>
-                                <div className="d-flex flex-row gap-3">
-                                    <p className="fs-6 fw-semibold Cabin-text mt-2">Interior Designer</p>
-                                    <div className="d-flex flex-column">
-                                        <ReactStars
-                                            count={5}
-                                            onChange={stardata}
-                                            size={24}
-                                            isHalf={true}
-                                            emptyIcon={<i className="far fa-star"></i>}
-                                            halfIcon={<i className="fa fa-star-half-alt"></i>}
-                                            fullIcon={<i className="fa fa-star"></i>}
-                                            activeColor="#ffd700" />
+                                <p className="fs-6 fw-bold Cabin-text">Victor Avocado</p>
+                                <div className="d-flex flex-row gap-4">
+                                    <p className="fs-6 fw-semibold Cabin-text">Interior Designer</p>
+                                    <div className="d-flex flex-column mt-1 gap-2">
+                                        <div className="d-flex flex-row gap-1">{generateStars(4.5)}</div>
                                         <div className="d-flex flex-row gap-1 float-end">
-                                            <p className="fs-6 fw-bold Cabin-text">4.6/5.0</p>
+                                            <p className="fs-6 fw-bold Cabin-text">4.5/5.0</p>
                                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>(556)</p>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div className="d-flex flex-row gap-4">
                                     <Icon.Twitter size={25} color="#575757" />
                                     <Icon.Linkedin size={25} color="#575757" />
@@ -232,9 +238,9 @@ const PromotionRequest = () => (
                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Specialities</p>
                             <div className="badge w-25 Cabin-text" style={{ color: "#000000", backgroundColor: "#CCF8FE" }}>Bed Room</div>
                         </div>
-                        <div className="d-flex flex-row gap-4 mt-4">
-                            <p className="fs-3 fw-bold Cabin-text">Top Selling Designs</p>
-                            <Link to="/vendor/promotion/promoteproduct"><p className="fs-5 fw-semibold Cabin-text mt-2" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mt-2" /></p></Link>
+                        <div className="d-flex flex-row gap-4 mt-5">
+                            <p className="fs-5 fw-bold Cabin-text">Top Selling Designs</p>
+                            <Link to="/vendor/promotion/promoteproduct"><p className="fs-6 fw-semibold Cabin-text mt-1" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1" /></p></Link>
                         </div>
                         <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 mx-4">
                             <div class="col w-50">

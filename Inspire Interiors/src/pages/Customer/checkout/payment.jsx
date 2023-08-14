@@ -7,6 +7,8 @@ import { FaBookmark } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './../../../styles/customer/checkout.css';
 
+import { Link } from 'react-router-dom';
+
 const PaymentMethod = () => {
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -164,9 +166,11 @@ const PaymentMethod = () => {
                                         <FaBookmark className="ms-2" /> {/* Bookmark icon */}
                                     </div>
                                     {/* checkout btn */}
+                                        <Link to='/customer/orders/vieworder'>
                                     <div className="d-flex justify-content-end w-100 mb-2">
-                                        <button className="btn btn-color w-100">Place Your Order and Pay</button>
+                                        <button className="btn-checkout w-100">Place Your Order and Pay</button>
                                     </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

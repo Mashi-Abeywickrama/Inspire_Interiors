@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import { useLocation } from "react-router-dom";
 import { NavLink } from 'react-router-dom'; 
-
+import { TbLogout2 } from "react-icons/tb";
 import * as Icon from 'react-bootstrap-icons';
 import { RiThumbUpFill,RiStore2Fill,RiHeartPulseFill,RiShoppingBagFill,RiDashboardFill,RiSettings5Fill } from "react-icons/ri";
 
@@ -91,6 +91,14 @@ const SidebarDashboard = () => {
             </NavText>
         </NavItem>
 
+        <NavItem eventKey="logout">
+          <NavIcon>
+            <NavLink to="/" activeClassName="active"><i><TbLogout2 /></i></NavLink>
+          </NavIcon>
+          <NavText>
+            <NavLink to="/" activeClassName="active">Logout</NavLink>
+          </NavText>
+        </NavItem>
        
     </SideNav.Nav>
 </SideNav>

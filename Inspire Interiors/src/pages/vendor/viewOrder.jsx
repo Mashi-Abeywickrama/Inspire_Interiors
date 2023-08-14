@@ -12,11 +12,11 @@ const ViewOrder = () => {
         <>
             <div className="order-container w-100 rounded-3 mb-4 me-5 p-3">
                 <div className="d-flex flex-row gap-4">
-                    <p className="text-dark fs-3 fw-bold Cabin-text">Orders</p>
-                    <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Delayed</p>
-                    <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>25786</p>
+                    <Link to="/vendor/order"><p className="text-dark fs-5 fw-bold Cabin-text">Orders</p></Link>
+                    <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Delayed</p>
+                    <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>25786</p>
                 </div>
                 <div className="col-12 d-flex flex-column">
                     <div className="d-flex flex-row justify-content-between">
@@ -29,9 +29,9 @@ const ViewOrder = () => {
                     <div className="d-flex flex-column col-lg-8 gap-3">
                         <div className="col-lg-12 bg-white rounded-3 p-4 shadow">
                         <p className="fs-5 fw-bold px-3 py-2 Cabin-text" style={{ color: "#023047" }}>Product Details</p>
-                            <div className="d-flex flex-column flex-lg-row justify-content-start">
+                            <div className="d-flex flex-column flex-lg-row justify-content-evenly">
                                 <img className="img-fluid" src={Chair} alt="Chair" />
-                                <div className="d-flex flex-column px-3">
+                                <div className="d-flex flex-column px-4 mt-4">
                                     <p className="fs-5 fw-semibold Cabin-text">Customizable Armchair</p>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Type:</p>
@@ -39,7 +39,7 @@ const ViewOrder = () => {
                                     </div>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Color:</p>
-                                        <Icon.CircleFill size={30} color="#C1BDB3" className="mx-3" />
+                                        <Icon.CircleFill size={20} color="#C1BDB3" className="mx-3" />
                                     </div>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Quantity:</p>
@@ -56,7 +56,7 @@ const ViewOrder = () => {
                         <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Status</p>
                             <div className="d-flex flex-column">
                                 <div className="d-flex flex-row justify-content-between">
-                                    <div className="d-flex flex-row">
+                                    <div className="d-flex flex-row gap-5">
                                         <p className="fs-6 fw-semibold px-5 Cabin-text">Vender Confirmation:</p>
                                         <p className="fs-6 fw-normal Cabin-text">Confirmed By Damro</p>
                                     </div>
@@ -78,7 +78,7 @@ const ViewOrder = () => {
                         </div>
                     </div>
                     <div className="col-lg-4 bg-white rounded-3 p-4 shadow">
-                        <p className="fs-3 fw-bold px-3 py-2 Cabin-text">Order Summary</p>
+                        <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Summary</p>
                         <div className="d-flex flex-column">
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Product</p>

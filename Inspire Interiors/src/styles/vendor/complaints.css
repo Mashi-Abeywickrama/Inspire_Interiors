@@ -4,16 +4,10 @@
     width: inherit !important;
 }
 
-.reject-btn{
+.response-btn{
     color: #54657E;
     background-color: #FFFFFF;
     border: 1px solid #54657E;
-}
-
-.accept-btn{
-    color: #007F00;
-    background-color: #FFFFFF;
-    border: 1px solid #007F00;
 }
 
 .Cabin-text{

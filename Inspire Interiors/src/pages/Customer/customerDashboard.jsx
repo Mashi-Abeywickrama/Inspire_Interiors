@@ -112,21 +112,21 @@ const CustomerDashboard = () => {
                             <div className='d-flex flex-column gap-3'>
                                 <div className='d-flex flex-column gap-1 bar-1'>
                                     <div className='d-flex flex-row justify-content-between'>
-                                        <p className='fs-6 Cabin-text'>Web Designing</p>
+                                        <p className='fs-6 Cabin-text'>Bedroom Interiors</p>
                                         <p className='fs-6 Cabin-text'>60%</p>
                                     </div>
                                     <ProgressBar now={60} />
                                 </div>
                                 <div className='d-flex flex-column gap-1 bar-2'>
                                     <div className='d-flex flex-row justify-content-between'>
-                                        <p className='fs-6 Cabin-text'>UI Development</p>
+                                        <p className='fs-6 Cabin-text'>4 Element Wall Art</p>
                                         <p className='fs-6 Cabin-text'>50%</p>
                                     </div>
                                     <ProgressBar now={50} />
                                 </div>
                                 <div className='d-flex flex-column gap-1 bar-3'>
                                     <div className='d-flex flex-row justify-content-between'>
-                                        <p className='fs-6 Cabin-text'>Data Analysis</p>
+                                        <p className='fs-6 Cabin-text'>Ball Chair - Blue Cushion</p>
                                         <p className='fs-6 Cabin-text'>35%</p>
                                     </div>
                                     <ProgressBar now={35} />
@@ -220,7 +220,7 @@ const CustomerDashboard = () => {
                         </div>
                         <div className='col-lg-3 bg-white rounded-3 p-4 mb-3'>
                             <p className="fs-3 fw-bold Cabin-text">Updates</p>
-                            <div className=''><Calendar  onChange={setDate} value={date} formatMonthYear={(locale, date) => {
+                            <div className='dashboard-calender'><Calendar  onChange={setDate} value={date} formatMonthYear={(locale, date) => {
                                     // Get the month's abbreviated name and full year
                                     const options = { month: 'short', year: 'numeric' };
                                     return new Intl.DateTimeFormat(locale, options).format(date);}
@@ -229,15 +229,15 @@ const CustomerDashboard = () => {
                             <p className='fs-6 Cabin-text mt-4 m-0'>08 am</p>
                             <div className='col-lg-11 border justify-content-end rounded-3 p-3 my-2' style={{ backgroundColor: "#035C94" }}>
                                 <div className='d-flex flex-column'>
-                                    <p className='fs-5 fw-semibold Cabin-text text-white'>Digital Marketing</p>
-                                    <p className='fs-6 Cabin-text text-white m-0'>Online marketing, is the promotion of brands to connect.</p>
+                                    <p className='fs-5 fw-semibold Cabin-text text-white'>Bedroom Interiors</p>
+                                    <p className='fs-6 Cabin-text text-white m-0'>Half way done in your customized bedroom design.</p>
                                 </div>
                             </div>
                             <p className='fs-6 Cabin-text mt-4 m-0'>10 am</p>
                             <div className='col-lg-11 border justify-content-end rounded-3 p-3 my-2' style={{ backgroundColor: "#096C86" }}>
                                 <div className='d-flex flex-column'>
-                                    <p className='fs-5 fw-semibold Cabin-text text-white'>UI Development</p>
-                                    <p className='fs-6 Cabin-text text-white m-0'>A tech professional who carries out the process of conceiving, designing</p>
+                                    <p className='fs-5 fw-semibold Cabin-text text-white'>4 Element Wall Art</p>
+                                    <p className='fs-6 Cabin-text text-white m-0'>Your package is now ready for shipping. </p>
                                 </div>
                             </div>
                         </div>

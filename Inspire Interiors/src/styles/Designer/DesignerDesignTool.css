@@ -1,0 +1,24 @@
+.background-design {
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    width: inherit;
+    /* background-color: #ffffff !important; */
+    min-height: 84vh;
+    font-family: 'Cabin' !important;
+}
+
+.design-container{
+    width: inherit !important;
+}
+
+.background-design .nav-link{
+    color: rgba(0, 0, 0, 0.752) !important;
+}
+.background-design .nav-link.active{
+    color: #023047 !important;
+    border: none !important;
+    border-bottom: 0.25rem solid #023047 !important;
+    border-radius: 0 !important;
+    font-weight: 900;
+    font-size: 1.1rem;
+}

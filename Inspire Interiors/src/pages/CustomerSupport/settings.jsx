@@ -15,7 +15,7 @@ import Profile from './../../assets/img/customer/profile.jpg';
 
 
 
-const Setting = () => {
+const SupportSettings = () => {
     const [selectedOption, setSelectedOption] = useState('');
 
   const handleRadioChange = (event) => {
@@ -107,50 +107,14 @@ const Setting = () => {
                                     
 
                                 </div>
-                                <div>
-                                    <p className='bold-cabin m-0 mb-2'>Email notifications</p>
-                                <div className='d-flex flex-column gap-0'>
-                                    <div className='d-flex gap-4'>
-                                        <div class="mb-2 mt-2 w-50">
-                                            <Form.Check
-                                                type="checkbox"
-                                                id="custom-checkbox"
-                                                label={'New promotions'}
-                                                // checked={isChecked}
-                                                // onChange={onChange}
-                                            />
-                                        </div>
-                                        <div class="mb-2 mt-2 w-50">
-                                            <Form.Check
-                                                type="checkbox"
-                                                id="custom-checkbox"
-                                                label={'Password changes'}
-                                                // checked={isChecked}
-                                                // onChange={onChange}
-                                            />
-                                        </div>
-                                    </div>
-
-                                     <div className='d-flex gap-4'>
-                                        <div class="mb-2 mt-2 w-50">
-                                            <Form.Check
-                                                type="checkbox"
-                                                id="custom-checkbox"
-                                                label={'Order statuses'}
-                                                // checked={isChecked}
-                                                // onChange={onChange}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
+                              
                                 <div>
                                     <hr />
                                     <div className='d-flex gap-1 justify-content-between'>
                                         <button className="deactivate-btn-password Cabin-text">Deactivate Account</button>
                                         <div className='d-flex gap-2'>
-                                            <button className="discard-changes-btn Cabin-text">Discard Changes</button>
-                                            <button className="update-psw-btn Cabin-text">Update Password</button>
+                                           
+                                            <button className="update-psw-btn Cabin-text">Update Profile</button>
                                         </div>
                                     </div>
                                 </div>
@@ -162,7 +126,7 @@ const Setting = () => {
 
                             </div>
                         </Tab>
-                    
+                       
 
                         
                         <Tab eventKey="security" title={<div className='d-flex gap-2 p-1'>
@@ -227,4 +191,4 @@ const Setting = () => {
 }
 
 
-export default Setting;
+export default SupportSettings;

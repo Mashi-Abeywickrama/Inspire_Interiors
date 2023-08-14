@@ -107,7 +107,7 @@ export default function commisssion() {
             </div>
             <span className='fs-4 p-3'>230.3M </span>
           </div>
-          <div className='pending d-flex flex-row gap-2 h-100 '>
+          <div className='pending2 d-flex flex-row gap-2 h-100 '>
             <div className='d-flex flex-column justify-content-center p-2'>
               <span className='d-flex fs-3'>Pending Commission  </span>
             </div>
@@ -117,7 +117,7 @@ export default function commisssion() {
               <div className='line-v d-flex'></div>
 
               <div>
-                <span  className='heading fs-3'>Sales</span>
+                <span  className='heading fs-3 align-items-center'>Sales</span>
                 <LineChart/>
                 
 

@@ -58,3 +58,9 @@
   .sdp--square-btn {
     color: #035C94 !important;
   }
+
+  .dashboard-calender button {
+    
+    padding: 0.4em 0.9em !important;
+    
+}

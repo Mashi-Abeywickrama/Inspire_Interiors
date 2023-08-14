@@ -9,14 +9,14 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Pagination } from "@mui/material";
-import CreateNewDesignPopup from "../../components/designer/Popup/CreateNewDesignPopupHook";
+import AddNewDesignPopup from "../../components/designer/Popup/AddNewDesignPopupHook";
 
 function DesignerMyDesigns() {
   return (
     <div className="overview-container rounded-3 mb-4">
       <p className="text-primary d-flex justify-content-between">
         <p className="fs-2 fw-medium">My Designs</p>
-        <CreateNewDesignPopup />
+        <AddNewDesignPopup />
       </p>
       <div className="d-flex flex-row flex-wrap gap-3">
         {/* Cart */}

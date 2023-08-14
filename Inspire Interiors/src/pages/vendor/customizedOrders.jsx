@@ -41,7 +41,7 @@ const newRequestData = {
             width: 200 
         },
         {
-            label: '',
+            label: 'ACTIONS',
             field: 'status',
             sort: 'asc',
             width: 100
@@ -420,52 +420,55 @@ const acceptedOrderData = {
     ]
 }
 
-const CustomizeOrders = () => {
-    return (
-        <>
-            <div className="customized-container background-total accordion bg-white rounded-3 mb-4 me-3 p-2">
-                <div>
-                    <Tabs
-                        defaultActiveKey="new"
-                        id="uncontrolled-tab-example"
-                        className="mb-3 bg-white tab"
-                    >
-                        <Tab eventKey="new" title="New Requests">
-                            <div className='p-4'>
-
-                                <MDBDataTableV5 responsive
-                                    striped
-                                    bordered
-                                    small
-                                    data={newRequestData}
-                                    sortable={true}
-                                    exportToCSV={true}
-                                    paging={true}
-                                    searching={true} />
-                            </div>
-                        </Tab>
-                        <Tab eventKey="accepted" title="Accepted Orders">
-                            <div className='p-4'>
-
-                                <MDBDataTableV5 responsive
-                                    striped
-                                    bordered
-                                    small
-                                    data={acceptedOrderData}
-                                    sortable={true}
-                                    exportToCSV={true}
-                                    paging={true}
-                                    searching={true} />
-                            </div>
-                        </Tab>
-
-                    </Tabs>
-                </div>
+const CustomizeOrders = () => (
+    <>
+        <div className="customized-container background-total accordion bg-white rounded-3 mb-4 me-3 p-4">
+            <div className='d-flex flex-row gap-2'>
+                <Link to="/vendor/order"><p className='fs-5 fw-bold text-dark Cabin-text'>Orders</p></Link>
+                <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                <p className='fs-5 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>Customized</p>
             </div>
+            <div>
+                <Tabs
+                    defaultActiveKey="new"
+                    id="uncontrolled-tab-example"
+                    className="mb-3 bg-white tab"
+                >
+                    <Tab eventKey="new" title="New Requests">
+                        <div className='p-4'>
+
+                            <MDBDataTableV5 responsive
+                                striped
+                                bordered
+                                small
+                                data={newRequestData}
+                                sortable={false}
+                                exportToCSV={true}
+                                paging={true}
+                                searching={true} />
+                        </div>
+                    </Tab>
+                    <Tab eventKey="accepted" title="Accepted Orders">
+                        <div className='p-4'>
+
+                            <MDBDataTableV5 responsive
+                                striped
+                                bordered
+                                small
+                                data={acceptedOrderData}
+                                sortable={false}
+                                exportToCSV={true}
+                                paging={true}
+                                searching={true} />
+                        </div>
+                    </Tab>
+
+                </Tabs>
+            </div>
+        </div>
 
 
-        </>
-    );
-}
+    </>
+)
 
 export default CustomizeOrders;

@@ -101,70 +101,17 @@ const Salary = () => {
   };
 
   return (
-    <>  
+    <div>  
     {/* <div className="d-flex  flex-column gap-3 full">
       <Navigationbar />
       <div className="d-flex gap-4 w-100 max-width justify-content-start  ">
           <SidebarDashboard /> */}
 
-        <div className="background-total p-3 rounded-3">
-          <div className='d-flex flex-row'>
-          <div className="">Salary</div> 
-          {/* <div className='text-secondary'> <Icon.ChevronRight size={24} /> </div>
-          <div className="text-secondary"> All</div>
-           */}
-          </div>
 
-          <div class="d-flex flex-row-reverse">
-            <button class='p-3 fs-5'>+ Add New</button>
-          </div>
-
-          <div>
-            <Tabs
-              defaultActiveKey="all"
-              id="uncontrolled-tab-example"
-              className="mb-3 bg-white tab"
-            >
-              <Tab eventKey="all" title="All">
-                <div className=''>
-             
-                  <MDBDataTableV5 responsive
-                  striped
-                  bordered
-                  small
-                  data={data}
-                  sortable={true}
-                  exportToCSV={true}
-                  
-                />
-                </div>
-              </Tab>
-              <Tab eventKey="Customer" title="Customer">
-              Customer
-              </Tab>
-              <Tab eventKey="Designer" title="Designer">
-              Designer
-              </Tab>
-              <Tab eventKey="Vendor" title="Vendor">
-              Vendor
-              </Tab>
-              <Tab eventKey="Admin" title="Admin">
-                Admin
-              </Tab>
-              <Tab eventKey="Customer-Support" title="Customer-Support">
-              Customer-Support
-              </Tab>
-            </Tabs>
-          </div>
         </div>
-
-
-      {/* </div> */}
-   {/* </div> */}
-  </>
     
   );
-}
+};
 
 
 export default Salary;

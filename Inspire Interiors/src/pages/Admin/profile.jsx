@@ -13,7 +13,7 @@ export default function Profile() {
           <div className="bg-white rounded-4 shadow p-4 flex-fill col-md-12 col-lg-4">
             <h3 className="fs-3">Basic Information</h3>
             <div className="d-flex">
-              <div className="col-md-2 justify-content-center">
+              <div className="col-md-2 col-lg-3 justify-content-center">
                 <img className="img1" src={Img1} alt="Profile" />
               </div>
               <div className='col-md-4 p-4 justify-content-center'>
@@ -33,7 +33,7 @@ export default function Profile() {
                 </div>
                 <div className='d-flex flex-column'>
                   <label className="fs-5">Reset Password</label>
-                  <button className="btn btn-primary">Reset Password</button>
+                  <button className="btn-profile btn-primary">Reset Password</button>
                 </div>
               </div>   
             </div>
