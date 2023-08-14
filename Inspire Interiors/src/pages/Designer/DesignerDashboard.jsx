@@ -161,7 +161,7 @@ function DesignerDashboard() {
             className="fs-4 text-center p-3 rounded-2 px-5"
             style={{ background: "#096C86", color: "#ffff" }}
           >
-            <b>12</b> Partnerships
+            <b>12</b> Partnership
           </div>
           <br></br>
           <div

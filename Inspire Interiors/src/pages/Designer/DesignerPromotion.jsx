@@ -36,8 +36,8 @@ const sentData = {
         <div className="d-flex flex-row gap-4 align-items-center">
           <img src={Sofa} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Sofa</p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Arpico</p>
+            <p className="fs-6 fw-normal">Arm Chair</p>
           </div>
         </div>
       ),
@@ -56,8 +56,8 @@ const sentData = {
         <div className="d-flex flex-row gap-4 align-items-center">
           <img src={Sofa} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Sofa</p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">De Sofa's</p>
+            <p className="fs-6 fw-normal">Bed chair</p>
           </div>
         </div>
       ),
@@ -76,8 +76,8 @@ const sentData = {
         <div className="d-flex flex-row gap-4 align-items-center">
           <img src={Sofa} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Sofa</p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Sihooil</p>
+            <p className="fs-6 fw-normal">Sofa</p>
           </div>
         </div>
       ),
@@ -96,8 +96,8 @@ const sentData = {
         <div className="d-flex flex-row gap-4 align-items-center">
           <img src={Sofa} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Sofa</p>
-            <p className="fs-6 fw-normal">Bed Room</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Arc Seat</p>
+            <p className="fs-6 fw-normal">Ball Chair</p>
           </div>
         </div>
       ),
@@ -245,7 +245,7 @@ const largeTableData = {
       width: 150,
     },
     {
-      label: "DESIGNER",
+      label: "VENDOR",
       field: "designer",
       sort: "asc",
       width: 270,
@@ -308,7 +308,7 @@ const largeTableData = {
           <p className="align-items-center mt-3 fw-bold">Sofa</p>
         </div>
       ),
-      designer: "Arpico",
+      designer: "Singzaif",
       date: "25.07.2023",
       price: "4000Rs",
       rate: "15%",
@@ -346,7 +346,7 @@ const largeTableData = {
           <p className="align-items-center mt-3 fw-bold">Sofa</p>
         </div>
       ),
-      designer: "Arpico",
+      designer: "De sofa's",
       date: "25.07.2023",
       price: "4000Rs",
       rate: "15%",
@@ -371,7 +371,7 @@ const DesignerPromotion = () => (
             style={{ height: "10%" }}
           >
             <div className="d-flex flex-row gap-3 p-3">
-              <p className="fs-3 fw-bold Cabin-text">Partnered Designers</p>
+              <p className="fs-3 fw-bold Cabin-text">Partnered Vendors</p>
 
               <p
                 className="fs-5 fw-semibold mt-2 Cabin-text"
