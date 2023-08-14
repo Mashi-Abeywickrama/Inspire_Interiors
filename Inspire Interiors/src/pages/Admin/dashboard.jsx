@@ -42,31 +42,6 @@ const AdminDashboard = () => {
                   </span>
                 </div>  
 
-              <div className="d-flex flex-row gap-3 ">
-                <div className="bg-white rounded-3 shadow p-2  flex-fill">
-                  <span className="d-flex fs-5 ">this week</span>
-                  <span className="today d-flex fs-5 ">Registered users</span>
-                 <div className="d-flex justify-content-center"> <Bars /></div>
-                </div>
-                <div className="bg-white rounded-3 shadow p-2 flex-fill">
-                  <span className="d-flex fs-5">today</span>
-                  <span className="today d-flex fs-5 ">Active users</span>
-                  <div className="d-flex justify-content-center">
-                    <div className="d-flex justify-content-center"><Needlepie /></div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="d-flex flex-row gap-3 ">
-                <div className="bg-white rounded-3 shadow p-2  flex-fill">
-                  <span className="today d-flex fs-5 ">Earning</span>
-                  <div className="d-flex justify-content-center"><LineChart /></div>
-                </div>
-              </div>
-            </div>
-
-            <div className="d-flex flex-column col-md-3 gap-3 flex-fill ">
-              <div className="bg-white rounded-3 shadow flex-fill">
                 <div className="bg-white col-lg-4 rounded-3 shadow ">
                 <span className="today d-flex fs-5 p-2">Commission</span>
 
@@ -161,6 +136,14 @@ const AdminDashboard = () => {
                         </div>
                       </div>
                       <div className="row1">
+                        <div className=" d-flex flex-row p-1 gap-3 justify-content-between">
+                          <img className="img" src={Img1} />
+                          <span> flotsom</span>
+                          <span> 5h ago </span>
+                          <span> 60k</span>
+                        </div>
+                      </div>
+                      <div className="row1">
                         <div className="d-flex flex-row p-1 gap-3 justify-content-between">
                           <img className="img" src={Img1} />
                           <span> flotsom</span>
@@ -197,6 +180,14 @@ const AdminDashboard = () => {
                         <div className="d-flex flex-row p-1 gap-1 justify-content-between">
                           <img className="img" src={Img1} />
                           <span> flotsom</span>
+                          <span> 5h ago </span>
+                          <span> 60k</span>
+                        </div>
+                      </div>
+                      <div className="row2 my-2">
+                        <div className="d-flex flex-row p-1 gap-1 justify-content-between">
+                          <img className="img" src={Img1} />
+                          <span> flotsom</span>
                           <span> flotsom</span>
                           <span> flotsom</span>
                         </div>
@@ -210,7 +201,6 @@ const AdminDashboard = () => {
               </div>
                 </div>
               </div>
-      </div>
       </div>
     
   );

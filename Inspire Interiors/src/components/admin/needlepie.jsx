@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
-import { PieChart, Pie, Cell, Label } from 'recharts';
+import { PieChart, Pie, Cell, Label,Legend } from 'recharts';
 
 const RADIAN = Math.PI / 180;
 const data = [
-  { name: 'A', value: 80, color: '#FFC00C' },
-  { name: 'B', value: 45, color: '#C4C4C4' },
-  { name: 'C', value: 25, color: '#035C94' },
+  { name: 'Low', value: 80, color: '#FFC00C' },
+  { name: 'Modarate', value: 45, color: '#C4C4C4' },
+  { name: 'High', value: 25, color: '#035C94' },
 ];
 const cx = 150;
 const cy = 200;
@@ -75,8 +75,10 @@ export default class Example extends PureComponent {
             <Cell key={`cell-${index}`} fill={entry.color} />
           ))}
         </Pie>
+        <Legend />
         {needle(value, data, cx, cy, iR, oR, '#d0d000')}
       </PieChart>
+      
     );
   }
 }
