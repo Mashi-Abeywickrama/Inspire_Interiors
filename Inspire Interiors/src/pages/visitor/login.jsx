@@ -54,22 +54,22 @@ const Login = () => {
           setAlert('Successful Login!', 'success');
           setTimeout(() => {
             navigate('/admin/dashboard');
-        }, 2000);
+        }, 1000);
         } else if (userType === 'customer') {
           setAlert('Successful Login!', 'success');
           setTimeout(() => {
             navigate('/customer/dashboard');
-        }, 2000);
+        }, 1000);
         }  else if (userType === 'vendor') {
           setAlert('Successful Login!', 'success');
           setTimeout(() => {
             navigate('/vendor/dashboard');
-        }, 2000);
+        }, 1000);
         }  else if (userType === 'designer') {
           setAlert('Successful Login!', 'success');
           setTimeout(() => {
             navigate('/designer/dashboard');
-        }, 2000);
+        }, 1000);
         }  else if (userType === 'support') {
           setAlert('Successful Login!', 'success');
           setTimeout(() => {
