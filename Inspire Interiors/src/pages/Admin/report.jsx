@@ -226,15 +226,15 @@ export default function report() {
                 <p className='m-0 fs-3 fw-normal Cabin-text text-white'>Projects</p>
               </div>
             </div>
-            <div className='col-lg-12 rounded-3 my-2 shadow p-4' style={{backgroundColor:"#035C94"}}>
+            <div className='col-lg-12 rounded-3 my-2 shadow p-4' style={{backgroundColor:"#FFC829"}}>
               <div className='d-flex flex-row justify-content-evenly'>
-                <p className='m-0 fs-3 fw-normal Cabin-text' style={{ color: "#FFC00C" }}>100</p>
+                <p className='m-0 fs-3 fw-normal Cabin-text' style={{ color: "#035C94" }}>100</p>
                 <p className='m-0 fs-3 fw-normal Cabin-text text-white'>Transactions</p>
               </div>
             </div>
-            <div className='col-lg-12 rounded-3 my-2 shadow p-4' style={{backgroundColor:"#096C86"}}>
+            <div className='col-lg-12 rounded-3 my-2 shadow p-4' style={{backgroundColor:"#FFC00C"}}>
               <div className='d-flex flex-row justify-content-evenly'>
-                <p className='m-0 fs-3 fw-normal Cabin-text' style={{ color: "#FFC00C" }}>200,000</p>
+                <p className='m-0 fs-3 fw-normal Cabin-text' style={{ color: "#035C94" }}>200,000</p>
                 <p className='m-0 fs-3 fw-normal Cabin-text text-white'>Revenue</p>
               </div>
             </div>
@@ -278,16 +278,16 @@ export default function report() {
               </div>
             </div>
           </div>
-          <div className='col-lg-6 rounded-3 my-2 shadow p-4' style={{backgroundColor:"#035C94"}}>
+          <div className='col-lg-6 rounded-3 my-2 shadow p-4' style={{backgroundColor:"#FFC00C"}}>
             <div className='d-flex flex-row justify-content-between'>
-              <p className='m-0 fs-5 fw-normal Cabin-text' style={{ color: "#FFC00C" }}>Top selling Product</p>
+              <p className='m-0 fs-5 fw-normal Cabin-text' style={{ color: "#035C94" }}>Top selling Product</p>
               <select class="form-select w-25" aria-label="Default select example">
                 <option selected>Of the Year</option>
                 <option value="3 Months">Of the Month</option>
               </select>
             </div>
             <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-evenly ">
-              <img className="img-fluid" src={Img1} style={{objectFit:"cover"}}/>
+              <img className="img-fluid" src={Img2} style={{objectFit:"cover"}}/>
               <div className="d-flex flex-column mt-3">
               <div className="d-flex flex-row gap-2">
                 <p className="fs-6 text-white fw-semibold m-0">Vendor:</p>
@@ -323,23 +323,41 @@ export default function report() {
               </select>
             </div>
             <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between mt-2">
-              <img className="img-fluid" src={Img1} style={{objectFit:"cover"}}/>
-              <img className="img-fluid" src={Img1} style={{objectFit:"cover"}}/>
-              <img className="img-fluid" src={Img1} style={{objectFit:"cover"}}/>
+              <div className="d-flex flex-column">
+                <img className="img-fluid" src={Img3} style={{objectFit:"cover"}}/>
+                <span className="fs-6 text-white fw-semibold m-0">Rank 1</span>
+              </div>
+              <div className="d-flex flex-column">
+                <img className="img-fluid" src={Img3} style={{objectFit:"cover"}}/>
+                <span className="fs-6 text-white fw-semibold m-0">Rank 2</span>
+              </div>
+              <div className="d-flex flex-column">
+                <img className="img-fluid" src={Img3} style={{objectFit:"cover"}}/>
+                <span className="fs-6 text-white fw-semibold m-0">Rank 3</span>
+              </div>
             </div>
           </div>
-          <div className='col-lg-6 rounded-3 my-2 shadow p-4' style={{backgroundColor:"#096C86"}}>
+          <div className='col-lg-6 rounded-3 my-2 shadow p-4' style={{backgroundColor:"#FFC829"}}>
             <div className='d-flex flex-row justify-content-between'>
-              <p className='m-0 fs-5 fw-normal Cabin-text' style={{ color: "#FFC00C" }}>Highest Grossing Vendor</p>
+              <p className='m-0 fs-5 fw-normal Cabin-text' style={{ color: "#035C94" }}>Highest Grossing Vendor</p>
               <select class="form-select w-25" aria-label="Default select example">
                 <option selected>Of the Year</option>
                 <option value="3 Months">Of the Month</option>
               </select>
             </div>
             <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between mt-2">
-              <img className="img-fluid" src={Img1} style={{objectFit:"cover"}}/>
-              <img className="img-fluid" src={Img1} style={{objectFit:"cover"}}/>
-              <img className="img-fluid" src={Img1} style={{objectFit:"cover"}}/>
+              <div className="d-flex flex-column">
+                <img className="img-fluid" src={Img3} style={{objectFit:"cover"}}/>
+                <span className="fs-6  fw-semibold m-0">Rank 1</span>
+              </div>
+              <div className="d-flex flex-column">
+                <img className="img-fluid" src={Img3} style={{objectFit:"cover"}}/>
+                <span className="fs-6  fw-semibold m-0">Rank 2</span>
+              </div>
+              <div className="d-flex flex-column">
+                <img className="img-fluid" src={Img3} style={{objectFit:"cover"}}/>
+                <span className="fs-6  fw-semibold m-0">Rank 3</span>
+              </div>
             </div>
           </div>
         </div>
