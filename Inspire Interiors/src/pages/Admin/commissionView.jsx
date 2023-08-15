@@ -18,12 +18,12 @@ export default function commissionView() {
         sort: "asc",
         width: 150,
       },
-      {
-        label: "VENDOR/DESIGNER",
-        field: "position",
-        sort: "asc",
-        width: 270,
-      },
+      // {
+      //   label: "VENDOR/DESIGNER",
+      //   field: "position",
+      //   sort: "asc",
+      //   width: 270,
+      // },
       {
         label: "QUANTITY",
         field: "QTY",
