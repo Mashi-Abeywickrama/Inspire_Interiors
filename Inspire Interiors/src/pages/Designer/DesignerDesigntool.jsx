@@ -3,7 +3,8 @@ import YellowSofa from "../../assets/img/vendor/yellowsofa.png";
 import TableSet from "../../assets/img/vendor/tableset.png";
 import WhiteSofa from "../../assets/img/vendor/whitesofa.png";
 import * as Icon from "react-bootstrap-icons";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faHeart } from '@fortawesome/free-solid-svg-icons';
 import Sofa from "../../assets/img/vendor/sofa.png";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -21,7 +22,7 @@ import { NavLink } from "react-router-dom";
 const receivedData = {
   columns: [
     {
-      label: "PROMOTION DETAILS",
+      label: "CUSTOMIZED REQUEST DETAILS",
       field: "product",
       sort: "asc",
       width: 250,
@@ -143,7 +144,7 @@ const receivedData = {
 const sentData = {
   columns: [
     {
-      label: "PROMOTION DETAILS",
+      label: "CUSTOMIZED REQUEST DETAILS",
       field: "product",
       sort: "asc",
       width: 250,
@@ -247,7 +248,7 @@ function DesignerDesigntool() {
           <CreateNewDesignPopup />
         </div>
         <div className="d-flex flex-row gap-3">
-          <p className="fs-3 fw-bold Cabin-text">Saved Designs</p>
+          <p className="fs-3 fw-bold Cabin-text">Drafted Designs</p>
           <p
             className="fs-5 fw-semibold mt-2 Cabin-text"
             style={{ color: "#035C94" }}
@@ -279,20 +280,19 @@ function DesignerDesigntool() {
                       HI THE GREY
                     </p>
                     <p class="card-title fw-bold fs-6 m-0 Cabin-text">
-                      Landskrona
+                      Living Room
                     </p>
-                    <p className="card-text m-0 fs-6 fw-bolder Cabin-text">
-                      $499
-                    </p>
+
                   </div>
-                  <Icon.Bag
-                    className="align-items-center"
-                    size={35}
+                  <FontAwesomeIcon
+                    icon={faEdit}
+                    className="align-items-center justify-content-center"
+                    size="" // Adjust the size as needed
                     style={{
-                      color: "white",
-                      backgroundColor: "#035C94",
-                      padding: "8px",
-                      borderRadius: "5px",
+                      color: 'white',
+                      backgroundColor: '#035C94',
+                      padding: '8px',
+                      borderRadius: '5px',
                     }}
                   />
                 </div>
@@ -319,18 +319,17 @@ function DesignerDesigntool() {
                     <p class="card-title fw-bold fs-6 m-0 Cabin-text">
                       Living Room
                     </p>
-                    <p className="card-text m-0 fw-bolder fs-6 Cabin-text">
-                      $499
-                    </p>
+
                   </div>
-                  <Icon.Bag
-                    className="align-items-center"
-                    size={35}
+                  <FontAwesomeIcon
+                    icon={faEdit}
+                    className="align-items-center justify-content-center"
+                    size="" // Adjust the size as needed
                     style={{
-                      color: "white",
-                      backgroundColor: "#035C94",
-                      padding: "8px",
-                      borderRadius: "5px",
+                      color: 'white',
+                      backgroundColor: '#035C94',
+                      padding: '8px',
+                      borderRadius: '5px',
                     }}
                   />
                 </div>
@@ -355,18 +354,17 @@ function DesignerDesigntool() {
                       LUXURY HOME
                     </p>
                     <p class="card-title fw-bold fs-6 m-0 Cabin-text">Living Room</p>
-                    <p className="card-text m-0 fw-bolder fs-6 Cabin-text">
-                      $499
-                    </p>
+
                   </div>
-                  <Icon.Bag
-                    className="align-items-center"
-                    size={35}
+                  <FontAwesomeIcon
+                    icon={faEdit}
+                    className="align-items-center justify-content-center"
+                    size="" // Adjust the size as needed
                     style={{
-                      color: "white",
-                      backgroundColor: "#035C94",
-                      padding: "8px",
-                      borderRadius: "5px",
+                      color: 'white',
+                      backgroundColor: '#035C94',
+                      padding: '8px',
+                      borderRadius: '5px',
                     }}
                   />
                 </div>
@@ -391,18 +389,17 @@ function DesignerDesigntool() {
                       LUXURY HOME
                     </p>
                     <p class="card-title fw-bold fs-6 m-0 Cabin-text">Living Room</p>
-                    <p className="card-text m-0 fw-bolder fs-6 Cabin-text">
-                      $499
-                    </p>
+
                   </div>
-                  <Icon.Bag
-                    className="align-items-center"
-                    size={35}
+                  <FontAwesomeIcon
+                    icon={faEdit}
+                    className="align-items-center justify-content-center"
+                    size="" // Adjust the size as needed
                     style={{
-                      color: "white",
-                      backgroundColor: "#035C94",
-                      padding: "8px",
-                      borderRadius: "5px",
+                      color: 'white',
+                      backgroundColor: '#035C94',
+                      padding: '8px',
+                      borderRadius: '5px',
                     }}
                   />
                 </div>
@@ -450,22 +447,23 @@ function DesignerDesigntool() {
                             HI THE GREY
                           </p>
                           <p class="card-title fw-bold fs-6 m-0 Cabin-text">
-                            Living room
+                            Living Room
                           </p>
                           <p className="card-text m-0 fs-6 fw-bolder Cabin-text">
                             $499
                           </p>
                         </div>
-                        <Icon.Bag
+                        <FontAwesomeIcon
+                          icon={faHeart}
                           className="align-items-center"
-                          size={35}
                           style={{
-                            color: "white",
-                            backgroundColor: "#035C94",
-                            padding: "8px",
-                            borderRadius: "5px",
+                            color: 'white',
+                            backgroundColor: '#035C94',
+                            padding: '8px 12px 8px',
+                            borderRadius: '5px',
                           }}
                         />
+
                       </div>
                     </div>
                   </div>
@@ -494,16 +492,18 @@ function DesignerDesigntool() {
                             $499
                           </p>
                         </div>
-                        <Icon.Bag
+                        <FontAwesomeIcon
+                          icon={faHeart}
                           className="align-items-center"
-                          size={35}
+                          
                           style={{
-                            color: "white",
-                            backgroundColor: "#035C94",
-                            padding: "8px",
-                            borderRadius: "5px",
+                            color: 'red',
+                            backgroundColor: '#035C94',
+                            padding: '8px 12px 8px',
+                            borderRadius: '5px',
                           }}
                         />
+
                       </div>
                     </div>
                   </div>
@@ -534,16 +534,17 @@ function DesignerDesigntool() {
                             $499
                           </p>
                         </div>
-                        <Icon.Bag
+                        <FontAwesomeIcon
+                          icon={faHeart}
                           className="align-items-center"
-                          size={35}
                           style={{
-                            color: "white",
-                            backgroundColor: "#035C94",
-                            padding: "8px",
-                            borderRadius: "5px",
+                            color: 'white',
+                            backgroundColor: '#035C94',
+                            padding: '8px 12px 8px',
+                            borderRadius: '5px',
                           }}
                         />
+
                       </div>
                     </div>
                   </div>
@@ -572,16 +573,17 @@ function DesignerDesigntool() {
                             $499
                           </p>
                         </div>
-                        <Icon.Bag
+                        <FontAwesomeIcon
+                          icon={faHeart}
                           className="align-items-center"
-                          size={35}
                           style={{
-                            color: "white",
-                            backgroundColor: "#035C94",
-                            padding: "8px",
-                            borderRadius: "5px",
+                            color: 'white',
+                            backgroundColor: '#035C94',
+                            padding: '8px 12px 8px',
+                            borderRadius: '5px',
                           }}
                         />
+
                       </div>
                     </div>
                   </div>

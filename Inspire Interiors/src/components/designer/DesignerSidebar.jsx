@@ -45,9 +45,11 @@ const DesignerSidebar = () => {
 
         <NavItem eventKey="designs">
           <NavIcon>
+          <NavLink to="mydesigns">
             <i>
               <RiBuilding2Fill />
             </i>
+            </NavLink>
           </NavIcon>
           <NavText>
             <NavLink to="mydesigns">My Designs</NavLink>
@@ -56,9 +58,11 @@ const DesignerSidebar = () => {
 
         <NavItem eventKey="marketplace">
           <NavIcon>
+          <NavLink to="designtool">
             <i>
               <MdDesignServices />
             </i>
+            </NavLink>
           </NavIcon>
           <NavText>
             <NavLink to="designtool">Design Tool</NavLink>
@@ -67,9 +71,14 @@ const DesignerSidebar = () => {
 
         <NavItem eventKey="Customization">
           <NavIcon>
-            <i>
+          <NavLink
+              to="earnings
+            "
+            >
+              <i>
               <FaMoneyBillAlt />
             </i>
+            </NavLink>
           </NavIcon>
           <NavText>
             <NavLink
@@ -83,9 +92,14 @@ const DesignerSidebar = () => {
 
         <NavItem eventKey="orders">
           <NavIcon>
+          <NavLink
+              to="promotion
+            "
+            >
             <i>
               <AiFillStar />
             </i>
+            </NavLink>
           </NavIcon>
           <NavText>
             <NavLink
@@ -99,9 +113,11 @@ const DesignerSidebar = () => {
 
         <NavItem eventKey="Settings">
           <NavIcon>
+          <NavLink to={"setting"}>
             <i>
               <RiSettings5Fill />
             </i>
+            </NavLink>
           </NavIcon>
           <NavText>
             <NavLink to={"setting"}>Settings</NavLink>

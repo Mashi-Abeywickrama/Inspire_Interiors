@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import * as yup from 'yup';
+import {Link} from 'react-router-dom';
 
 import './../../styles/login.css';
 import { Form } from 'react-bootstrap';
@@ -357,7 +358,7 @@ const SignUp = () => {
                             </h6>
 
                             <h6 className='text-center f-color-signup'>
-                                Login
+                            <Link to="/login" className='f-color-signup'>Login </Link>
                             </h6>
 
                         </div>
