@@ -98,7 +98,7 @@ const Designs = () => {
           <div className='top-bar flex-lg-2 flex-md-2 w-100 col-md-4 col-sm-12 col-12 fs-4 justify-content-between'>
             {/* Top designers and see all link */}
             <div className='row w-100 d-flex align-self-center '>
-              <div className='d-flex w-25 h-100 justify-content-center align-self-center'>
+              <div className='d-flex w-25 h-100 justify-content-start ms-2 align-self-center'>
                 <h4>Top designers </h4>
               </div>
               <div className='d-flex col w-auto h-100 justify-content-start align-self-center see-all'>
@@ -147,8 +147,8 @@ const Designs = () => {
         {/*Explore by category */}
         <div className='bg-light flex-col w-98 h-50 rounded-3' >
           <div className='top-bar flex w-100 h-20'>
-            <div className='d-flex row align-self-center mt-2'>
-              <div className='d-flex row h-100 justify-content-center align-self-center'>
+            <div className='d-flex row align-self-center mt-2 ms-2'>
+              <div className='d-flex row h-100 justify-content-center mt-1 align-self-center'>
                 <h4>Explore by Rooms</h4>
               </div>
               <div className='d-flex row h-100 justify-content-start align-self-center mt-1' style={{ color: '#035C94' }}>
@@ -165,10 +165,11 @@ const Designs = () => {
                   <Card.Body className='d-flex'>
                     <Carousel >
                       {card.content.map((imageUrl, imageIndex) => (
-                        <Carousel.Item key={imageIndex}>
+                            
+                            <Carousel.Item key={imageIndex} className='object-fit h-100'>
                           {/* {card.title} */}
                           <img
-                            className='d-flex w-100 rounded-3 img-fluid h-100'
+                            className='d-flex w-100 rounded-3 img-fluid h-100' 
                             src={imageUrl}
                             alt={`Slide ${imageIndex + 1}`}
                           />

@@ -49,6 +49,9 @@
     background-color: #FFFFFF ;
     color: #2F2F2F ;
     box-shadow: 0px 20px 60px 0px rgba(86, 89, 146, 0.10);
+    &:hover{
+        transform: scale(1.01);
+      }
 }
 .heading-txt{
     margin-left: 4rem;
@@ -58,5 +61,5 @@
     height: unset !important;
 }
 .f-color-signup{
-    color: #023047;
+    color: #023047 !important;
 }

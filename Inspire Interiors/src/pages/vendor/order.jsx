@@ -61,43 +61,31 @@ const acceptedData = {
         {   
             product: <div className='d-flex flex-row gap-4 align-items-center'>
                     <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
+                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
                 </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
+            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
         },
         {   
             product: <div className='d-flex flex-row gap-4 align-items-center'>
                     <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
+                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
                 </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div><p className="float-end">2 days ago</p></div>
+            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
         },
         {   
             product: <div className='d-flex flex-row gap-4 align-items-center'>
                     <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
+                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
                 </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
+            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
         },
         {   
             product: <div className='d-flex flex-row gap-4 align-items-center'>
                     <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
+                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
                 </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
-        }
+            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
+        },
     ]
 }
 
@@ -121,7 +109,7 @@ const newData = {
                     <img src={Sofa}/>
                     <div className="d-flex flex-column">
                         <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
+                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
                     </div>
                 </div>,
             status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
@@ -131,7 +119,7 @@ const newData = {
                     <img src={Sofa}/>
                     <div className="d-flex flex-column">
                         <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
+                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
                     </div>
                 </div>,
             status:<div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
@@ -141,7 +129,7 @@ const newData = {
                     <img src={Sofa}/>
                     <div className="d-flex flex-column">
                         <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
+                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
                     </div>
                 </div>,
             status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
@@ -151,7 +139,7 @@ const newData = {
                     <img src={Sofa}/>
                     <div className="d-flex flex-column">
                         <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
+                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
                     </div>
                 </div>,
             status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
@@ -212,7 +200,31 @@ const largeTableData = {
         number: '14688',
         quantity: '30000',
         date: '27.06.2023',
+        status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>,
+        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+    },
+    {
+        name: 'Justin Septimus',
+        number: '14688',
+        quantity: '30000',
+        date: '27.06.2023',
+        status: <div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div>,
+        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+    },
+    {
+        name: 'Justin Septimus',
+        number: '14688',
+        quantity: '30000',
+        date: '27.06.2023',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
+        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+    },
+    {
+        name: 'Justin Septimus',
+        number: '14688',
+        quantity: '30000',
+        date: '27.06.2023',
+        status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>,
         action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
     },
     {
@@ -236,7 +248,23 @@ const largeTableData = {
         number: '14688',
         quantity: '30000',
         date: '27.06.2023',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
+        status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>,
+        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+    },
+    {
+        name: 'Justin Septimus',
+        number: '14688',
+        quantity: '30000',
+        date: '27.06.2023',
+        status: <div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div>,
+        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+    },
+    {
+        name: 'Justin Septimus',
+        number: '14688',
+        quantity: '30000',
+        date: '27.06.2023',
+        status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>,
         action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
     },
     {
@@ -247,12 +275,13 @@ const largeTableData = {
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
         action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
     },
+    
     {
         name: 'Justin Septimus',
         number: '14688',
         quantity: '30000',
         date: '27.06.2023',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
+        status: <div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div>,
         action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
     },
     {
@@ -260,31 +289,7 @@ const largeTableData = {
         number: '14688',
         quantity: '30000',
         date: '27.06.2023',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '30000',
-        date: '27.06.2023',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '30000',
-        date: '27.06.2023',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '30000',
-        date: '27.06.2023',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
+        status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>,
         action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
     },
     ]

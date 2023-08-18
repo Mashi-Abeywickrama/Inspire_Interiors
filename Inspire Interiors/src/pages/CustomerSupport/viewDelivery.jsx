@@ -11,11 +11,11 @@ const ViewDelivery = () => {
         <>
             <div className="delivery-container p-4 bg-white rounded-3 mb-4 me-3">
                 <div className="col-12 d-flex flex-row gap-4">
-                    <p className="text-dark fs-3 fw-bold Cabin-text">Delivery</p>
+                    <p className="text-dark fs-5 fw-bold Cabin-text">Delivery</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>View</p>
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>View</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>2564</p>
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>2564</p>
                 </div>
                 <div className="col-12 d-flex flex-column">
                     <div className="d-flex flex-row justify-content-between">

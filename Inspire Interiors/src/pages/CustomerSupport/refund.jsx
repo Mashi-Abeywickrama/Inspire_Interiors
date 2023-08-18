@@ -169,9 +169,9 @@ const Refund = () => (
         <div className="refund-container background-total accordion bg-white rounded-3 mb-4 me-3">
             <div className="col-12 d-flex flex-row justify-content-between">
                 <div className='d-flex flex-row gap-4 p-3 '>
-                    <p className="text-dark fs-3 fw-bold Cabin-text ">Refund Requests</p>
+                    <p className="text-dark fs-5 fw-bold Cabin-text ">Refund Requests</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>All</p>
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>All</p>
                 </div>
                 <div>
                     <button className='add-btn m-4'><Icon.PlusLg color="white" size={20} />Add New</button>
