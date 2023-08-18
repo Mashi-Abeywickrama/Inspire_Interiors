@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import SideNav, {
   Toggle,
   Nav,
@@ -5,7 +6,7 @@ import SideNav, {
   NavIcon,
   NavText,
 } from "@trendmicro/react-sidenav";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { TbLogout2 } from "react-icons/tb";
 import * as Icon from "react-bootstrap-icons";
 import {
@@ -24,52 +25,72 @@ import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import "./../../styles/customer/sidebar.css";
 
 const DesignerSidebar = () => {
+  //assigning location variable
+  const location = useLocation();
+
+  //destructuring pathname from location
+  const { pathname } = location;
+
+  //Javascript split method to get the name of the path in array
+  const splitLocation = pathname.split("/");
+
+  const [selected, setSelected] = useState(splitLocation[2]); // State to track selected link
+  //console.log(splitLocation[2]);
+
   return (
-    <SideNav
-      onSelect={(selected) => {
-        // Add your code here
-      }}
-    >
+    <SideNav onSelect={(selected) => setSelected(splitLocation[2])}>
       <SideNav.Toggle />
-      <SideNav.Nav defaultSelected="dashboard">
+      <SideNav.Nav
+        defaultSelected={
+          splitLocation[2] !== "" ? splitLocation[2] : "dashboard"
+        }
+      >
         <NavItem eventKey="dashboard">
           <NavIcon>
-            <i>
-              <AiOutlineDotChart />
-            </i>
+            <NavLink to="">
+              <i>
+                <AiOutlineDotChart />
+              </i>
+            </NavLink>
           </NavIcon>
           <NavText>
             <NavLink to="">Dashboard</NavLink>
           </NavText>
         </NavItem>
 
-        <NavItem eventKey="designs">
+        <NavItem eventKey="mydesigns">
           <NavIcon>
-            <i>
-              <RiBuilding2Fill />
-            </i>
+            <NavLink to="mydesigns">
+              <i>
+                <RiBuilding2Fill />
+              </i>
+            </NavLink>
           </NavIcon>
           <NavText>
             <NavLink to="mydesigns">My Designs</NavLink>
           </NavText>
         </NavItem>
 
-        <NavItem eventKey="marketplace">
+        <NavItem eventKey="designtool">
           <NavIcon>
-            <i>
-              <MdDesignServices />
-            </i>
+            <NavLink to="designtool">
+              <i>
+                <MdDesignServices />
+              </i>
+            </NavLink>
           </NavIcon>
           <NavText>
             <NavLink to="designtool">Design Tool</NavLink>
           </NavText>
         </NavItem>
 
-        <NavItem eventKey="Customization">
+        <NavItem eventKey="earnings">
           <NavIcon>
-            <i>
-              <FaMoneyBillAlt />
-            </i>
+            <NavLink to="earnings">
+              <i>
+                <FaMoneyBillAlt />
+              </i>
+            </NavLink>
           </NavIcon>
           <NavText>
             <NavLink
@@ -81,11 +102,13 @@ const DesignerSidebar = () => {
           </NavText>
         </NavItem>
 
-        <NavItem eventKey="orders">
+        <NavItem eventKey="promotion">
           <NavIcon>
-            <i>
-              <AiFillStar />
-            </i>
+            <NavLink to="promotion">
+              <i>
+                <AiFillStar />
+              </i>
+            </NavLink>
           </NavIcon>
           <NavText>
             <NavLink
@@ -97,26 +120,33 @@ const DesignerSidebar = () => {
           </NavText>
         </NavItem>
 
-        <NavItem eventKey="Settings">
+        <NavItem eventKey="setting">
           <NavIcon>
-            <i>
-              <RiSettings5Fill />
-            </i>
+            <NavLink to="setting">
+              <i>
+                <RiSettings5Fill />
+              </i>
+            </NavLink>
           </NavIcon>
           <NavText>
-            <NavLink to={"setting"}>Settings</NavLink>
+            <NavLink to="setting">Settings</NavLink>
           </NavText>
         </NavItem>
 
         <NavItem eventKey="logout">
           <NavIcon>
-            <NavLink to="/" activeClassName="active"><i><TbLogout2 /></i></NavLink>
+            <NavLink to="/" activeClassName="active">
+              <i>
+                <TbLogout2 />
+              </i>
+            </NavLink>
           </NavIcon>
           <NavText>
-            <NavLink to="/" activeClassName="active">Logout</NavLink>
+            <NavLink to="/" activeClassName="active">
+              Logout
+            </NavLink>
           </NavText>
         </NavItem>
-
       </SideNav.Nav>
     </SideNav>
   );
