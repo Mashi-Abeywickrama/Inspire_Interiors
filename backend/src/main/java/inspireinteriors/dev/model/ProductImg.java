@@ -1,10 +1,7 @@
 package inspireinteriors.dev.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 
 @Entity
@@ -70,10 +67,22 @@ public class ProductImg {
             return productImg;
         }
 
-        public void setProductImg(String productImg) {
-            this.productImg = productImg;
-        }
+//        public void setProductImg(String productImg) {
+//            this.productImg = productImg;
+//        }
 
         // Override hashCode and equals methods
     }
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+//    public Product getProduct_id() {
+//        return product_id;
+//    }
+//
+//    public void setProduct_id(Product product_id) {
+//        this.product_id = product_id;
+//    }
 }
