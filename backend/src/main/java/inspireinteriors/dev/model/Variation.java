@@ -1,16 +1,14 @@
 package inspireinteriors.dev.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Table(name = "variations")
 @Entity
 public class Variation {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Use GenerationType.IDENTITY for identity columns
     @Column(name = "variation_id")
     private int variation_id;
 
@@ -20,17 +18,45 @@ public class Variation {
     @Column(name = "material")
     private String material;
 
-    @Column(name = "product_id")
-    private int product_id;
+    @Column(name = "quantity")
+    private int quantity;
+
+//    @Column(name = "product_id")
+//    private int product_id;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+    public Variation(Product product) {
+        this.product = product;
+    }
 
     public Variation() {
     }
 
+    public Variation( String color, String material, int quantity, Product product) {
+        this.color = color;
+        this.material = material;
+        this.quantity = quantity;
+        this.product = product;
+    }
+
+
+
     public Variation(int variation_id, String color, String material, int product_id) {
+
         this.variation_id = variation_id;
         this.color = color;
         this.material = material;
-        this.product_id = product_id;
+        this.quantity = quantity;
+
+    }
+
+    public Variation(String color, String material, int quantity, Integer productId) {
+        this.color = color;
+        this.material = material;
+        this.quantity = quantity;
+        this.product = new Product(productId);
     }
 
     public int getVariation_id() {
@@ -53,17 +79,18 @@ public class Variation {
         return material;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity=quantity;
+    }
+
     public void setMaterial(String material) {
         this.material = material;
     }
 
-    public int getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
-    }
 
 
 
