@@ -41,7 +41,7 @@ const needle = (value, data, cx, cy, iR, oR, color) => {
 export default class Example extends PureComponent {
   render() {
     return (
-      <PieChart width={400} height={300}>
+      <PieChart width={310} height={300}>
         <Pie
           dataKey="value"
           startAngle={180}

@@ -74,7 +74,7 @@ const tabledata = {
         product: '60',
         earnings: '4000Rs',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         name: 'Victor Avacado',
@@ -84,7 +84,17 @@ const tabledata = {
         product: '60',
         earnings: '4000Rs',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+      },
+      {
+        name: 'Victor Avacado',
+        total: '100',
+        review: '4.5',
+        date: '2023/07/20',
+        product: '60',
+        earnings: '4000Rs',
+        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         name: 'Victor Avacado',
@@ -94,7 +104,7 @@ const tabledata = {
         product: '60',
         earnings: '4000Rs',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         name: 'Victor Avacado',
@@ -104,7 +114,17 @@ const tabledata = {
         product: '60',
         earnings: '4000Rs',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+      },
+      {
+        name: 'Victor Avacado',
+        total: '100',
+        review: '4.5',
+        date: '2023/07/20',
+        product: '60',
+        earnings: '4000Rs',
+        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         name: 'Victor Avacado',
@@ -114,7 +134,7 @@ const tabledata = {
         product: '60',
         earnings: '4000Rs',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         name: 'Victor Avacado',
@@ -124,7 +144,27 @@ const tabledata = {
         product: '60',
         earnings: '4000Rs',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+      },
+      {
+        name: 'Victor Avacado',
+        total: '100',
+        review: '4.5',
+        date: '2023/07/20',
+        product: '60',
+        earnings: '4000Rs',
+        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+      },
+      {
+        name: 'Victor Avacado',
+        total: '100',
+        review: '4.5',
+        date: '2023/07/20',
+        product: '60',
+        earnings: '4000Rs',
+        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         name: 'Victor Avacado',
@@ -134,7 +174,7 @@ const tabledata = {
         product: '60',
         earnings: '4000Rs',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         name: 'Victor Avacado',
@@ -144,7 +184,7 @@ const tabledata = {
         product: '60',
         earnings: '4000Rs',
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
       {
         name: 'Victor Avacado',
@@ -153,48 +193,8 @@ const tabledata = {
         date: '2023/07/20',
         product: '60',
         earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/promotionrequest"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
+        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
     ]
 };
@@ -204,9 +204,9 @@ const MyNetwork = () => (
 
         <div className="network-container background-total accordion bg-white rounded-3 mb-4 me-3">
             <div className='d-flex flex-row gap-4 p-3 '>
-                <Link to="/vendor/promotion"><p className="text-dark fs-3 fw-bold Cabin-text text-dark">Promotion</p></Link>
-                <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>My Network</p>
+                <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text text-dark">Promotion</p></Link>
+                <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>My Network</p>
             </div>
             <div>
                 <div className='p-4 Cabin-text'>

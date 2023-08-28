@@ -9,23 +9,21 @@ export default function Invoice() {
       <h3 className="">Invoice</h3>
       <div className="card">
         <div className="card-body">
-          <div className="row d-flex align-items-baseline">
+          <div className="row d-flex w-100 align-items-baseline justify-content-between">
             <div className="col-md-5 mb-3 justify-content-center">
               <img src={Logo} alt="Logo" className='logo' />
-              <div className="d-flex h2">
+              <div className="d-flex h2 align-items-center gap-2">
                 <span className="d-flex">Phone No:</span>
                 <span className="number d-flex">0112345678</span>
               </div>
             </div>
-            <div className='col-md-4'></div>
-            <div className="col-md-3 float-md-end h1">
-              <div className="d-flex flex-column">
-                <div className="d-flex gap-2">
+            <div className="d-flex flex-column col-4">
+                <div className="d-flex gap-2 align-items-center">
                   <span className="number">Invoice</span>
                   <div className="v-line"></div>
                   <span className="number">ArpicoFurniture</span>
                 </div>
-                <div className="d-flex gap-2 h2">
+                <div className="d-flex gap-2 h2 align-items-center">
                   <span className="d-flex">RefNo:</span>
                   <span className="number d-flex">0112345678</span>
                   <div className="v1-line"></div>
@@ -33,7 +31,8 @@ export default function Invoice() {
                   <span className="number d-flex">18.06.2023</span>
                 </div>
               </div>
-            </div>
+            <div className='col-md-4'></div>
+            
             <hr />
           </div>
 
@@ -46,39 +45,44 @@ export default function Invoice() {
                     <tr>
                       <th scope="col">Product</th>
                       <th scope="col"></th>
-                      <th scope="col">Qty</th>
-                      <th scope="col">Rate</th>
+                      <th scope="col">Quntity</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Commission </th>
                       <th scope="col">Amount</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Pro Package</td>
+                      <td>Chair</td>
                       <td></td>
                       <td>4</td>
-                      <td>800%</td>
+                      <td>3000Rs</td>
                       <td>200Rs</td>
+                      <td>2800Rs</td>
                     </tr>
                     <tr>
-                      <td>Web hosting</td>
+                      <td>Table</td>
                       <td></td>
                       <td>1</td>
-                      <td>10%</td>
-                      <td>10Rs</td>
+                      <td>2000Rs</td>
+                      <td>200Rs</td>
+                      <td>1800Rs</td>
                     </tr>
                     <tr>
-                      <td>Consulting</td>
+                      <td>Cupboard</td>
                       <td></td>
                       <td>1</td>
-                      <td>300%</td>
-                      <td>300Rs</td>
+                      <td>1000Rs</td>
+                      <td>200Rs</td>
+                      <td>800Rs</td>
                     </tr>
                     <tr>
                       <td className='sub'>SubTotal</td>
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td className='sub'>1110Rs</td>
+                      <td></td> 
+                      <td className='sub'>5400Rs</td>
                     </tr>
                   </tbody>
                 </table>

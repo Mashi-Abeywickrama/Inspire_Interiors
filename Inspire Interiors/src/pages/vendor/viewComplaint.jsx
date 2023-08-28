@@ -10,23 +10,23 @@ const ViewComplaint = () => {
         <>
             <div className="complaints-container w-100 rounded-3 mb-4 me-5 p-3">
                 <div className="d-flex flex-row gap-4">
-                    <Link to="/vendor/complaints"><p className="text-dark fs-3 fw-bold Cabin-text text-dark">Complaints</p></Link>
-                    <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>View</p>
-                    <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>25786</p>
+                    <Link to="/vendor/complaints"><p className="text-dark fs-5 fw-bold Cabin-text text-dark">Complaints</p></Link>
+                    <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>View</p>
+                    <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>25786</p>
                 </div>
                 <div className="col-12 d-flex flex-column">
                     <div className="d-flex flex-row justify-content-between">
-                        <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text">Complaint Details - #25786</p>
-                        <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{ height: "1.5rem", background: "#F6E3AC", color: "#6B4605" }}><Icon.CircleFill size={7} className="mx-1" />On Going</div>
+                        <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text mt-2">Complaint Details - #25786</p>
+                        <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{ height: "1.5rem", background: "#F6E3AC", color: "#6B4605" }}><Icon.CircleFill size={7} className="mx-1" />Ongoing</div>
                     </div>
 
                 </div>
                 <div className="col-12 d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-3">
                     <div className="d-flex flex-column col-lg-8 gap-3">
                         <div className="col-lg-12 bg-white rounded-3 p-4 shadow">
-                            <p className="fs-3 fw-semibold Cabin-text">Complaint Details</p>
+                            <p className="fs-5 fw-semibold Cabin-text">Complaint Details</p>
                             <div className="d-flex flex-column">
                                 <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Complaint Type</p>
                                 <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>Refund</p>
@@ -46,12 +46,12 @@ const ViewComplaint = () => {
                         <div className="col-lg-12 bg-white rounded-3 p-4 shadow">
                             <div className="d-flex flex-column">
                                 <div className="d-flex flex-column">
-                                    <p className="fs-3 fw-bold Cabin-text">About Customer Avocado</p>
+                                    <p className="fs-5 fw-bold Cabin-text">About Customer Avocado</p>
                                 </div>
                                 <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-evenly">
                                     <img style={{ backgroundColor: "#FEE4CB", objectFit:"cover" }} className="img-fluid p-3 w-25 rounded-4 border" src={Customer} />
                                     <div className="d-flex flex-column">
-                                        <p className="fs-4 fw-bold" style={{ color: "#3D3D3D" }}>Victor Avocado</p>
+                                        <p className="fs-6 fw-bold" style={{ color: "#3D3D3D" }}>Victor Avocado</p>
                                         <div className="d-flex flex-row gap-2">
                                             <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#023047" }}>Contact:</p>
                                             <p className="fs-6 fw-normal Cabin-text" style={{ color: "#023047" }}>(936) 361-0310</p>
@@ -64,8 +64,8 @@ const ViewComplaint = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-4 bg-white rounded-3 p-4 shadow">
-                        <p className="fs-3 fw-bold px-3 py-2 Cabin-text">Order Summary</p>
+                    <div className="col-lg-4 bg-white rounded-3 p-3 shadow">
+                        <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Summary</p>
                         <div className="d-flex flex-column">
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Product</p>
@@ -86,7 +86,7 @@ const ViewComplaint = () => {
                             <div className="divider" />
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">TOTAL</p>
-                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 8000</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 9000</p>
                             </div>
 
                             <div className="divider" />

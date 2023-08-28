@@ -31,7 +31,7 @@ export default function commisssion() {
             width: 150
           },
           {
-            label: 'RATE',
+            label: 'PRICE',
             field: 'ammount',
             sort: 'asc',
             width: 270
@@ -42,12 +42,7 @@ export default function commisssion() {
             sort: 'asc',
             width: 200
           },
-          {
-            label: 'STATUS',
-            field: 'age',
-            sort: 'asc',
-            width: 100
-          },
+         
           {
             label: '  ',
             field: 'action',
@@ -58,27 +53,27 @@ export default function commisssion() {
         rows: [
             {
               name: 'Tiger Nixon',
-              type: 'System Architect',
-              ammount: '12%',
-              number: '6k',
+              type: 'Design',
+              ammount: '4000 Rs',
+              number: '300 Rs',
               age: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
               ,
               action: <Link to="/admin/commision/commissionView"><div className='d-flex gap-2 align-items-center text-dark'><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
              },
              {
               name: 'Tiger Nixon',
-              type: 'System Architect',
-              ammount: '12%',
-              number: '6k',
+              type: 'Design',
+              ammount: '4000 Rs',
+              number: '300 Rs',
               age: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
               ,
               action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
              },
              {
               name: 'Tiger Nixon',
-              type: 'System Architect',
-              ammount: '12%',
-              number: '6k',
+              type: 'Design',
+              ammount: '4000 Rs',
+              number: '300 Rs',
               age: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
               ,
               action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>View More</p> <Icon.ArrowRight/></div>
@@ -107,7 +102,7 @@ export default function commisssion() {
             </div>
             <span className='fs-4 p-3'>230.3M </span>
           </div>
-          <div className='pending d-flex flex-row gap-2 h-100 '>
+          <div className='pending2 d-flex flex-row gap-2 h-100 '>
             <div className='d-flex flex-column justify-content-center p-2'>
               <span className='d-flex fs-3'>Commission Earned  </span>
             </div>
@@ -117,7 +112,7 @@ export default function commisssion() {
               <div className='line-v d-flex'></div>
 
               <div>
-                <span  className='heading fs-3'>Sales</span>
+                <span  className='heading fs-3 align-items-center'>Sales</span>
                 <LineChart/>
                 
 

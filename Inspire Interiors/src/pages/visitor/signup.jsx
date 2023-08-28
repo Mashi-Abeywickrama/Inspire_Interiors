@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import * as yup from 'yup';
+import {Link} from 'react-router-dom';
 
 import './../../styles/login.css';
 import { Form } from 'react-bootstrap';
@@ -206,10 +207,10 @@ const SignUp = () => {
                                     >
                                         {selectedRole}
                                     </Dropdown.Toggle>
-                                    <Dropdown.Menu className="fw-400 bg-transparent f-color-signup">
-                                        <Dropdown.Item className="fw-400 f-color-signup" onClick={() => handleRoleSelect("Customer")}>Customer</Dropdown.Item>
-                                        <Dropdown.Item className="fw-400 f-color-signup" onClick={() => handleRoleSelect("Designer")}>Designer</Dropdown.Item>
-                                        <Dropdown.Item className="fw-400 f-color-signup" onClick={() => handleRoleSelect("Vendor")}>Vendor</Dropdown.Item>
+                                    <Dropdown.Menu className="fw-400 bg-white f-color-signup">
+                                        <Dropdown.Item className="f-color-signup" onClick={() => handleRoleSelect("Customer")}>Customer</Dropdown.Item>
+                                        <Dropdown.Item className="f-color-signup" onClick={() => handleRoleSelect("Designer")}>Designer</Dropdown.Item>
+                                        <Dropdown.Item className="f-color-signup" onClick={() => handleRoleSelect("Vendor")}>Vendor</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div>
@@ -357,7 +358,7 @@ const SignUp = () => {
                             </h6>
 
                             <h6 className='text-center f-color-signup'>
-                                Login
+                            <Link to="/login" className='f-color-signup'>Login </Link>
                             </h6>
 
                         </div>

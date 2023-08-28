@@ -19,89 +19,89 @@ import {
 const data = [
   {
     name: "Jan",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    Designs: 4000,
+    Earnings: 2400,
+    Partnership: 2400,
   },
   {
     name: "Feb",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    Designs: 3000,
+    Earnings: 1398,
+    Partnership: 2210,
   },
   {
     name: "Mar",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
+    Designs: 2000,
+    Earnings: 9800,
+    Partnership: 2290,
   },
   {
     name: "April",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    Designs: 2780,
+    Earnings: 3908,
+    Partnership: 2000,
   },
   {
     name: "May",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
+    Designs: 1890,
+    Earnings: 4800,
+    Partnership: 2181,
   },
   {
     name: "Jun",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
+    Designs: 2390,
+    Earnings: 3800,
+    Partnership: 2500,
   },
   {
     name: "July",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    Designs: 3490,
+    Earnings: 4300,
+    Partnership: 2100,
   },
 ];
 const data2 = [
   {
     name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    Designs: 4000,
+    Earnings: 2400,
+    Partnership: 2400,
   },
   {
     name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    Designs: 3000,
+    Earnings: 1398,
+    Partnership: 2210,
   },
   {
     name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
+    Designs: 2000,
+    Earnings: 9800,
+    Partnership: 2290,
   },
   {
     name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    Designs: 2780,
+    Earnings: 3908,
+    Partnership: 2000,
   },
   {
     name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
+    Designs: 1890,
+    Earnings: 4800,
+    Partnership: 2181,
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
+    Designs: 2390,
+    Earnings: 3800,
+    Partnership: 2500,
   },
   {
     name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    Designs: 3490,
+    Earnings: 4300,
+    Partnership: 2100,
   },
 ];
 function DesignerDashboard() {
@@ -129,7 +129,7 @@ function DesignerDashboard() {
             <YAxis />
             {/* <Tooltip /> */}
             <Legend
-              width={200}
+              width={300}
               wrapperStyle={{
                 bottom: -5,
                 right: 150,
@@ -139,9 +139,9 @@ function DesignerDashboard() {
                 lineHeight: "40px",
               }}
             />
-            <Bar dataKey="pv" fill="#F5B640" />
-            <Bar dataKey="uv" fill="#035C94" />
-            <Bar dataKey="amt" fill="#98A3B2" />
+            <Bar dataKey="Earnings" fill="#F5B640" />
+            <Bar dataKey="Designs" fill="#035C94" />
+            <Bar dataKey="Partnership" fill="#096c86" />
           </BarChart>
         </div>
         {/* Second */}
@@ -161,7 +161,7 @@ function DesignerDashboard() {
             className="fs-4 text-center p-3 rounded-2 px-5"
             style={{ background: "#096C86", color: "#ffff" }}
           >
-            <b>12</b> Partnerships
+            <b>12</b> Partnership
           </div>
           <br></br>
           <div
@@ -281,7 +281,7 @@ function DesignerDashboard() {
             <Legend />
             <Line
               type="monotone"
-              dataKey="pv"
+              dataKey="Earnings"
               stroke="#035C94"
               activeDot={{ r: 8 }}
               strokeWidth={2}
@@ -289,7 +289,7 @@ function DesignerDashboard() {
             />
             <Line
               type="monotone"
-              dataKey="uv"
+              dataKey="Designs"
               stroke="#FFC00C"
               strokeWidth={2}
               dot={false}

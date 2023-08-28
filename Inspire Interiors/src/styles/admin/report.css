@@ -1,78 +1,79 @@
-   /* summary */
-   .card-1{
-        border: none;
-        border-radius: 10px;
-        padding: 1.2rem;
-        background-color:#0E7B98;
-        text-align: center;
-        /* height: 100px; */
-        
-       
-    }
-    .card-2{
-        border: none;
-        border-radius: 10px;
-        padding: 1.2rem;
-        color: white;
-        background-color:#096C86;
-        text-align: center;
-       
-    }
-    .card-3{
-        border: none;
-        border-radius: 10px;
-        padding: 1.2rem;
-        color: white;
-        background-color:#FFC829;
-        text-align: center;
-       
-    }
-    .card-4{
-        border: none;
-        border-radius: 10px;
-        padding: 1.2rem;
-        color: white;
-        background-color:#FFC00C;
-        text-align: center;
-       
-    }
- .card:hover{
-    transform: translateY(-5);
- }
+.background-report{
+   width: inherit !important;
+   margin-right: 2rem;
+}
 
- .card-title{
-    color: #023047;
-    font-weight: 500;
- }
+.revenue-box{
+   margin-right: 2rem;
+}
+   
+/* summary */
+.card-1{
+      border: none;
+      border-radius: 10px;
+      padding: 1.2rem;
+      background-color:#0E7B98;
+      text-align: center;
+      /* height: 100px; */
+}
+.card-2{
+   border: none;
+   border-radius: 10px;
+   padding: 1.2rem;
+   color: white;
+   background-color:#096C86;
+   text-align: center;
+}
+.card-3{
+   border: none;
+   border-radius: 10px;
+   padding: 1.2rem;
+   color: white;
+   background-color:#FFC829;
+   text-align: center;
+}
+.card-4{
+   border: none;
+   border-radius: 10px;
+   padding: 1.2rem;
+   color: white;
+   background-color:#FFC00C;
+   text-align: center;
+}
+.card:hover{
+   transform: translateY(-5);
+}
 
- .ammount{
-    color:#FFC00C ;
-    font-weight: 600;
- }
- .ammount-1{
-    color:#0a0a0a ;
-    font-weight: 600;
- }
- .text{
-    color: aliceblue;
-    font-weight: 600;
- }
- .text-1{
-    color: #096C86;
-    font-weight: 600;
- }
- /* perfomance */
- .card-project{
-    background-color: #FFC00C;
-    border-radius: 20px;
- }
- .card-text{
-    font-weight:600;
+.card-title{
+   color: #023047;
+   font-weight: 500;
+}
 
- }
- .img1{
-    
- }
+.ammount{
+   color:#FFC00C ;
+   font-weight: 600;
+}
+.ammount-1{
+   color:#0a0a0a ;
+   font-weight: 600;
+}
+.text{
+   color: aliceblue;
+   font-weight: 600;
+}
+.text-1{
+   color: #096C86;
+   font-weight: 600;
+}
+/* perfomance */
+.card-project{
+   background-color: #FFC00C;
+   border-radius: 20px;
+}
+.card-text{
+   font-weight:600;
+
+}
 .rank{
     font-weight: 600;
 }

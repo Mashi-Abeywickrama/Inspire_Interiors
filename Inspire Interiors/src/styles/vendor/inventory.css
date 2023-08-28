@@ -9,6 +9,14 @@
     background-color: #F0BDC1 !important;
 }
 
+.background-inventory canvas{
+    box-sizing: border-box;
+    display: block;
+    height: 380px !important;
+    width: 380px !important;
+    justify-content: center !important;
+}
+
 .overview-container{
     width: inherit !important;
     /* margin-right: 2.5rem; */

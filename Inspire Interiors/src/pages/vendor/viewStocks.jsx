@@ -71,12 +71,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Instock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -85,12 +85,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'7',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='outstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Out of Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -99,12 +99,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'12',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='lowstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Low Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -113,12 +113,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'22',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>In Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -127,12 +127,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='lowstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Low Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -141,12 +141,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>In Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -155,12 +155,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='outstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Out of Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -169,12 +169,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>In Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -183,12 +183,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='lowstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Low Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       }, 
@@ -197,12 +197,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>In Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -211,12 +211,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='lowstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Low Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -225,12 +225,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='outstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Out of Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center ' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -239,12 +239,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='lowstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Low Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -253,12 +253,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='outstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Out of Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -267,12 +267,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>In Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -281,12 +281,12 @@ const tabledata = {
             <img src={Sofa}/>
             <p className='align-items-center mt-3'>Sofa</p>
         </div>,
-        amount: 'Arpico',
+        amount: '20',
         entry: '4000Rs',
         discount: '5%',
         price: '4000Rs',
         sold:'15',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>
+        status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>In Stock</p></div>
         ,
         action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       },
@@ -299,9 +299,9 @@ const ViewStocks = () => (
         <div className="stock-container background-total accordion bg-white rounded-3 mb-4 me-3">
             <div className="col-12 d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
               <div className='d-flex flex-row gap-4 p-3 '>
-                <Link to="/vendor/inventory"><p className="text-dark fs-3 fw-bold Cabin-text ">Inventory</p></Link>
-                <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Stock</p>
+                <Link to="/vendor/inventory"><p className="text-dark fs-5 fw-bold Cabin-text ">Inventory</p></Link>
+                <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Stock</p>
               </div>
               <div>
                 <Link to="/vendor/inventory/addstock"><button className='add-btn m-4'><Icon.PlusLg color="white" size={20}/>Add New</button></Link>
