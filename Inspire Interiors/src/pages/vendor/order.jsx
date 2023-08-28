@@ -61,43 +61,31 @@ const acceptedData = {
         {   
             product: <div className='d-flex flex-row gap-4 align-items-center'>
                     <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
+                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
                 </div>,
             status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
         },
         {   
             product: <div className='d-flex flex-row gap-4 align-items-center'>
                     <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>delayed</p></div><p className="float-end">2 days ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
+                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
                 </div>,
             status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
         },
         {   
             product: <div className='d-flex flex-row gap-4 align-items-center'>
                     <img src={Sofa}/>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
-                    </div>
+                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
                 </div>,
-            status: <div className="d-flex flex-column"><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>delayed</p></div><p className="float-end">2 days ago</p></div>
-        }
+            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
+        },
+        {   
+            product: <div className='d-flex flex-row gap-4 align-items-center'>
+                    <img src={Sofa}/>
+                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
+                </div>,
+            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
+        },
     ]
 }
 
@@ -121,7 +109,7 @@ const newData = {
                     <img src={Sofa}/>
                     <div className="d-flex flex-column">
                         <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
+                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
                     </div>
                 </div>,
             status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
@@ -131,7 +119,7 @@ const newData = {
                     <img src={Sofa}/>
                     <div className="d-flex flex-column">
                         <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
+                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
                     </div>
                 </div>,
             status:<div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
@@ -141,7 +129,7 @@ const newData = {
                     <img src={Sofa}/>
                     <div className="d-flex flex-column">
                         <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
+                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
                     </div>
                 </div>,
             status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
@@ -151,7 +139,7 @@ const newData = {
                     <img src={Sofa}/>
                     <div className="d-flex flex-column">
                         <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Bed Room</p>
+                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
                     </div>
                 </div>,
             status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>

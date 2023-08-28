@@ -17,22 +17,24 @@ import Contact from "./pages/visitor/contact";
 import Services from "./pages/visitor/services";
 import SignUp from "./pages/visitor/signup";
 import MyTeam from "./pages/visitor/team";
-import Project from "./pages/visitor/project";
-import OnlyHeaderRootlayout from "./layouts/onlyHeaderRootlayout";
+import Project from './pages/visitor/project';
+import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
+
 
 // Admin
 
-import Report from "./pages/Admin/report";
-import ADashboardlayout from "./layouts/Admin/admindasahboardLayout";
-import AdminDashboard from "./pages/Admin/dashboard";
-import User from "./pages/Admin/user";
-import Commission from "./pages/Admin/commission";
-import Orders from "./pages/Admin/orders";
-import Salary from "./pages/Admin/salary";
-import Profile from "./pages/Admin/profile";
-import Invoice from "./pages/Admin/invoice";
-import Cview from "./pages/Admin/commissionView";
-import ADSetting from "./pages/Admin/settings";
+import Report from './pages/Admin/report';
+import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
+import Dashboard from './pages/Admin/dashboard';
+import User from './pages/Admin/user';
+import Commission from './pages/Admin/commission';
+import Orders from './pages/Admin/orders';
+import Salary from './pages/Admin/salary';
+import Profile from './pages/Admin/profile';
+import Invoice from './pages/Admin/invoice';
+import Cview from './pages/Admin/commissionView';
+import ADSetting from './pages/Admin/settings'
+
 
 // Customer
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
@@ -61,7 +63,7 @@ import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
 import PromotionRequest from "./pages/vendor/promotionRequest";
 import Promotion from "./pages/vendor/promotion";
-import PromotionEarnings from "./pages/vendor/promotionExpenses";
+import PromotionExpenses from "./pages/vendor/promotionExpenses";
 import CustomizeOrders from "./pages/vendor/customizedOrders";
 import Order from "./pages/vendor/order";
 import VendorDashboard from "./pages/vendor/vendorDashboard";
@@ -81,7 +83,6 @@ import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
 import CategoryView from "./pages/Customer/marketplace/categoryView";
-import SupportSettings from "./pages/CustomerSupport/settings";
 
 // Designer
 import DesignerLayout from "./layouts/Designer/DesignerLayout";
@@ -92,6 +93,7 @@ import DesignerEarn from "./pages/Designer/DesignerEarn";
 import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
 import DesignerPromotions from "./pages/Designer/DesignerPromotions";
 import AlertPopup from "./components/AlertPopup";
+
 import Test from "./pages/Designer/test";
 
 import DesignerPromotion from "./pages/Designer/DesignerPromotion";
@@ -141,37 +143,33 @@ const router = createBrowserRouter(
         <Route index element={<CustomerDashboard />} />
         <Route path="dashboard" element={<CustomerDashboard />} />
         <Route path="orders" element={<MyOrder />} />
-        <Route path="orders/vieworder" element={<OrderView />} />
         <Route path="designs" element={<Designs />} />
         <Route path="designs/browsedesigns" element={<BrowseDesigns />} />
         <Route path="marketplace/viewproduct" element={<ViewProduct />}></Route>
-        <Route path="designs/viewdesigner" element={<ViewDesigner />} />
-        <Route path="marketplace" element={<MarketPlace />} />
-        <Route path="marketplace/categoryview" element={<CategoryView />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="checkout/address" element={<Address />} />
-        <Route path="checkout/payment" element={<PaymentMethod />} />
-        <Route path="checkout/shipping" element={<ShippingMethod />} />
-        <Route path="orders/vieworder" element={<OrderView />} />
-        <Route path="settings" element={<CusSetting />}></Route>
+        <Route path = "designs/viewdesigner" element={<ViewDesigner />} />
+        <Route path = "marketplace" element={<MarketPlace />} />
+        <Route path = "marketplace/categoryview" element={<CategoryView />} />
+        <Route path = "cart" element={<Cart />} />
+        <Route path = "checkout/address" element={<Address />} />
+        <Route path = "checkout/payment" element={<PaymentMethod />} />
+        <Route path = "checkout/shipping" element={<ShippingMethod />} />
+        <Route path = "orders/vieworder" element={<OrderView />} />
+         <Route path="settings" element={<CusSetting />}></Route>
       </Route>
       {/* Admin Routes */}
-      <Route
-        path="/Admin/"
-        element={<ADashboardlayout />}
-        errorElement={<Error />}
-      >
-        <Route index element={<AdminDashboard />} />
-        <Route path="dashboard" element={<AdminDashboard />}></Route>
-        <Route path="report" element={<Report />} />
-        <Route path="user" element={<User />} />
-        <Route path="commission" element={<Commission />} />
-        <Route path="orders" element={<Orders />} />
-        <Route path="salary" element={<Salary />} />
-        <Route path="orders/invoice" element={<Invoice />} />
-        <Route path="user/profile" element={<Profile />} />
-        <Route path="commision/commissionView" element={<Cview />} />
-        <Route path="settings" element={<ADSetting />} />
+      <Route path="/Admin/" element={<ADashboardlayout />} errorElement={<Error />}>
+        <Route index element={<AdminDashboard/> } />
+        <Route path="dashboard" element={<AdminDashboard/> }></Route>
+        <Route path="report" element={<Report/> } />
+        <Route  path="user" element={<User/> } />
+        <Route  path="commission" element={<Commission/> } />
+        <Route  path="orders" element={<Orders/> } />
+        <Route  path="salary" element={<Salary/> } />
+        <Route path="orders/invoice" element={<Invoice/>}/>
+        <Route path="user/profile" element={<Profile/>}/>
+        <Route path="commision/commissionView" element={<Cview/>}/>
+        <Route path="settings" element={<ADSetting/>}/>
+
       </Route>
       {/* Customer Support Routes */}
       <Route
@@ -187,7 +185,6 @@ const router = createBrowserRouter(
         <Route path="delivery/view" element={<ViewDelivery />}></Route>
         <Route path="inquiry/view" element={<ViewInquiry />}></Route>
         <Route path="refund/view" element={<ViewRefund />}></Route>
-        <Route path="settings" element={<SupportSettings />}></Route>
       </Route>
       {/* Vendor Routes */}
       <Route
@@ -225,24 +222,18 @@ const router = createBrowserRouter(
           element={<PromotionRequest />}
         ></Route>
         <Route
-          path="promotion/expenses"
+          path="promotion/earnings"
           element={<PromotionEarnings />}
         ></Route>
         <Route path="complaints" element={<Complaints />}></Route>
-        <Route
-          path="complaints/viewcomplaint"
-          element={<ViewComplaint />}
-        ></Route>
+        <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>
         <Route path="setting" element={<VendorSetting />}></Route>
       </Route>
 
+
       {/* Designer Routes */}
-      <Route
-        path="/designer/"
-        element={<DesignerLayout />}
-        errorElement={<Error />}
-      >
-        <Route index element={<DesignerDashboard />} />
+      <Route path="/designer/" element={<DesignerLayout />} errorElement={<Error />}>
+        <Route index element={<DesignerDashboard/> } />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />

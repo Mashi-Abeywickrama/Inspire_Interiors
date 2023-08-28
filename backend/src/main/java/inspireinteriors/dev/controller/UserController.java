@@ -17,7 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@CrossOrigin(origins = "http://localhost:5174")
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 public class UserController {
 
@@ -35,9 +35,9 @@ public class UserController {
 
     @GetMapping("/users")
     @ResponseBody
-//    public Iterable<User> fetchUsers() {
-//        return userService.getAllUsers();
-//    }
+    public Iterable<User> fetchUsers() {
+        return userService.getAllUsers();
+    }
     public String fetchUsers( HttpSession session) {
         Integer user_id = (Integer) session.getAttribute("userid");
 
@@ -48,7 +48,7 @@ public class UserController {
         User user = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
 
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Invalid credentials");
 
         }
         session.setAttribute("userid", user.getUserid());

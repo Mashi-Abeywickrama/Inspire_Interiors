@@ -45,39 +45,44 @@ export default function Invoice() {
                     <tr>
                       <th scope="col">Product</th>
                       <th scope="col"></th>
-                      <th scope="col">Qty</th>
-                      <th scope="col">Rate</th>
+                      <th scope="col">Quntity</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Commission </th>
                       <th scope="col">Amount</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Pro Package</td>
+                      <td>Chair</td>
                       <td></td>
                       <td>4</td>
-                      <td>800%</td>
+                      <td>3000Rs</td>
                       <td>200Rs</td>
+                      <td>2800Rs</td>
                     </tr>
                     <tr>
-                      <td>Web hosting</td>
+                      <td>Table</td>
                       <td></td>
                       <td>1</td>
-                      <td>10%</td>
-                      <td>10Rs</td>
+                      <td>2000Rs</td>
+                      <td>200Rs</td>
+                      <td>1800Rs</td>
                     </tr>
                     <tr>
-                      <td>Consulting</td>
+                      <td>Cupboard</td>
                       <td></td>
                       <td>1</td>
-                      <td>300%</td>
-                      <td>300Rs</td>
+                      <td>1000Rs</td>
+                      <td>200Rs</td>
+                      <td>800Rs</td>
                     </tr>
                     <tr>
                       <td className='sub'>SubTotal</td>
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td className='sub'>1110Rs</td>
+                      <td></td> 
+                      <td className='sub'>5400Rs</td>
                     </tr>
                   </tbody>
                 </table>
