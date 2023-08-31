@@ -3,11 +3,16 @@ import { React, useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import {
+  Navigate,
   Route,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
+  useLocation,
 } from "react-router-dom";
+
+import { useSession } from "./constants/SessionContext";
+
 import AboutUs from "./pages/visitor/AboutUs";
 import Rootlayout from "./layouts/Rootlayout";
 import Error from "./pages/visitor/error";
@@ -100,8 +105,11 @@ import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
 import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
+
+
+
+const routes = (
+
     <>
       <Route path="/" element={<Rootlayout />} errorElement={<Error />}>
         <Route index element={<Home />} />
@@ -261,11 +269,34 @@ const router = createBrowserRouter(
         <Route path="setting" element={<DesignerSetting />} />
       </Route>
     </>
-  )
 );
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  const currentURL = window.location.href;
+  const sessionItems = useSession();
+  const splitURL = currentURL.split("/");
+  if (splitURL[3] === "customer" || splitURL[3] === "vendor" || splitURL[3] === "customersupport" || splitURL[3] === "designer" || splitURL[3] === "Admin") {
+    
+    console.log(sessionItems.sessionData);
+    if (sessionItems.sessionData === null || sessionItems.sessionData.userType === undefined ) {
+      window.location.href = "/login";
+    }else{
+      if (sessionItems.sessionData.userType !== splitURL[3]) {
+        window.location.href = "/login";        
+      }
+    
+    else{
+      const router = createBrowserRouter(createRoutesFromElements(routes));
+    return <RouterProvider router={router} />;
+    }
+    }
+  } else{
+    const router = createBrowserRouter(createRoutesFromElements(routes));
+    return <RouterProvider router={router} />;
+
+  }
+
+  
 };
 
 export default App;
