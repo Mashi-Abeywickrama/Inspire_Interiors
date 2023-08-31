@@ -1,11 +1,12 @@
-import React from 'react';
+// import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, InputGroup, Nav, Navbar } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 
-
+import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import './../../styles/customer/myOrders.css';
@@ -14,18 +15,51 @@ import './../../styles/admin/user.css'
 import { Link } from 'react-router-dom';
 
 
+
+
 const User = () => {
+
+  
+  const apiBaseURL = 'http://localhost:8080'; // Replace this with the base URL of your Spring Boot backend
+
+  const [userData, setUserData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseURL,
+    timeout: 5000,
+  });
+
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get(apiBaseURL + '/getuser');
+      const userData = response.data;
+      setUserData(userData); // Update the state with fetched user data
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+  
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  
+
   const data = {
     columns: [
       {
-        label: 'USERNAME',
-        field: 'name',
+        label: 'USERID',
+        field: 'userid',
         sort: 'asc',
         width: 150
       },
       {
-        label: 'TYPE',
-        field: 'type',
+        label: 'DOB',
+        field: 'dob',
         sort: 'asc',
         width: 270
       },
@@ -36,8 +70,14 @@ const User = () => {
         width: 200
       },
       {
-        label: 'STATUS',
-        field: 'status',
+        label: 'USERNAME',
+        field: 'username',
+        sort: 'asc',
+        width: 50
+      },
+      {
+        label: 'TYPE',
+        field: 'type',
         sort: 'asc',
         width: 50
       },
@@ -48,65 +88,19 @@ const User = () => {
         width: 100
       }
     ],
-    rows: [
-      {
-        name: 'Peter pan',
-        type: 'Vendor',
-        email: 'peter@email.com',
-        status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
-        ,
-        action: <Link to="/admin/user/profile"><div className='d-flex gap-2 align-items-center text-dark'><p className='m-0'>view more</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Peter pan',
-        type: 'Vendor',
-        email: 'peter@email.com',
-        status: <div className='not-verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Not verified</p></div>
-        ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
-      },
-      {
-        name: 'shin',
-        type: 'Customer',
-        email: 'ws123z@gmail.com',
-        status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
-        ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
-      },
-      {
-        name: 'priya',
-        type: 'admin',
-        email: 'selo@gmail.com',
-        status: <div className='not-verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Not Verified</p></div>
-        ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
-      },
-      {
-        name: 'shin',
-        type: 'Customer',
-        email: 'ws123z@gmail.com',
-        status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
-        ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
-      },
-      {
-        name: 'priya',
-        type: 'admin',
-        email: 'selo@gmail.com',
-        status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
-        ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
-      },
-      {
-        name: 'priya',
-        type: 'admin',
-        email: 'selo@gmail.com',
-        status: <div className='verified d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Verified</p></div>
-        ,
-        action: <div className='d-flex gap-2 align-items-center'><p className='m-0'>view more</p> <Icon.ArrowRight/></div>
-      }
-    ]
+
+    rows: userData.map((user) => ({
+      userid: user.userid,
+      dob: user.dob,
+      email: user.email,
+      username: user.username,
+      type: user.type,
+      
+      // other fields...
+    })),
   };
+   
+  
 
   return (
     <>  
@@ -125,17 +119,7 @@ const User = () => {
            <button class='px-2 py-1 fs-6 ' style={{backgroundColor:"#023047"}}>+ Add New</button>
           </div>
 
-
-          <div>
-            <Tabs
-              defaultActiveKey="all"
-              id="uncontrolled-tab-example"
-              className="mb-3 bg-white tab"
-            >
-              <Tab eventKey="all" title="All">
-                <div className=''>
-             
-                  <MDBDataTableV5 responsive
+          <MDBDataTableV5 responsive
                   striped
                   bordered
                   small
@@ -144,25 +128,6 @@ const User = () => {
                   exportToCSV={true}
                   
                 />
-                </div>
-              </Tab>
-              <Tab eventKey="Customer" title="Customer">
-              Customer
-              </Tab>
-              <Tab eventKey="Designer" title="Designer">
-              Designer
-              </Tab>
-              <Tab eventKey="Vendor" title="Vendor">
-              Vendor
-              </Tab>
-              <Tab eventKey="Admin" title="Admin">
-                Admin
-              </Tab>
-              <Tab eventKey="Customer-Support" title="Customer-Support">
-              Customer-Support
-              </Tab>
-            </Tabs>
-          </div>
         </div>
 
 
@@ -171,7 +136,7 @@ const User = () => {
   </>
     
   );
-}
 
 
+};
 export default User;
