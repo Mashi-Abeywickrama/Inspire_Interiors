@@ -5,10 +5,16 @@ const SessionContext = createContext();
 
 // Create a provider component
 export function SessionProvider({ children }) {
-  const [sessionData, setSessionData] = useState(null);
+  const storedSessionData = JSON.parse(localStorage.getItem('sessionData'));
+  const [sessionData, setSessionData] = useState(storedSessionData);
+
+  const updateSessionData = (newSessionData) => {
+    localStorage.setItem('sessionData', JSON.stringify(newSessionData));
+    setSessionData(newSessionData);
+  };
 
   return (
-    <SessionContext.Provider value={{ sessionData, setSessionData }}>
+    <SessionContext.Provider value={{ sessionData, setSessionData: updateSessionData }}>
       {children}
     </SessionContext.Provider>
   );
