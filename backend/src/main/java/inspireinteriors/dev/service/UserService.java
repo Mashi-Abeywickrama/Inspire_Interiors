@@ -40,7 +40,24 @@
 
             return null;
         }
+        public boolean updatePassword(int userId, String currentPassword, String newPassword) {
+            User user = userRepository.findById((long) userId).orElse(null);
 
+
+            if (user == null) {
+                return false;
+            }
+
+            if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
+                return false;
+            }
+
+            String hashedNewPassword = passwordEncoder.encode(newPassword);
+            user.setPassword(hashedNewPassword);
+            userRepository.save(user);
+
+            return true;
+        }
         public User getUserById(int userId) {
             return userRepository.findProfileByUserid(userId);
         }
