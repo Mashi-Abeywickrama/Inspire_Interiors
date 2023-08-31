@@ -52,6 +52,7 @@ const Login = () => {
       if (response.status === 200) {
         setSessionData({
           loggedIn: true,
+          username: response.data.username,
           userType: response.data.userType,
           userid: response.data.userId, // Make sure to pass the actual userId
         });
@@ -65,7 +66,7 @@ const Login = () => {
         } else if (userType === 'customer') {
           setAlert('Successful Login!', 'success');
           setTimeout(() => {
-            navigate('/customer/dashboard');
+            location.href = '/customer/dashboard';
         }, 1000);
         }  else if (userType === 'vendor') {
           // console.log(response.data);
