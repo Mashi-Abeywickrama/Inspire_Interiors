@@ -52,12 +52,14 @@ public class UserController {
 
         }
         session.setAttribute("userid", user.getUserid());
+        session.setAttribute("userType", user.getType());
+        session.setAttribute("loggedIn", true);
         // Create a response object that includes user type
         JSONObject jsonResponse = new JSONObject();
         jsonResponse.put("message", "Login successful");
         jsonResponse.put("userType", user.getType());
-
-
+        jsonResponse.put("userId", user.getUserid());
+        
         return ResponseEntity.ok(jsonResponse.toString());
     }
 
