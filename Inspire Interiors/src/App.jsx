@@ -86,6 +86,7 @@ import CategoryView from "./pages/Customer/marketplace/categoryView";
 import DesignerLayout from "./layouts/Designer/DesignerLayout";
 import DesignerDashboard from "./pages/Designer/DesignerDashboard";
 import DesignerMyDesigns from "./pages/Designer/DesignerMyDesigns";
+import { DesignLoader } from "./Loaders/Designer/MyDesignsLoader";
 import DesignerEarnings from "./pages/Designer/DesignerEarnings";
 import DesignerEarn from "./pages/Designer/DesignerEarn";
 import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
@@ -241,7 +242,11 @@ const router = createBrowserRouter(
         errorElement={<Error />}
       >
         <Route index element={<DesignerDashboard />} />
-        <Route path="mydesigns" element={<DesignerMyDesigns />} />
+        <Route
+          path="mydesigns"
+          element={<DesignerMyDesigns />}
+          loader={DesignLoader}
+        />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />
         <Route path="earnings" element={<DesignerEarn />} />
