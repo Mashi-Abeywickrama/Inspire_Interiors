@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@CrossOrigin(origins = "http://localhost:5174")
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 public class UserController {
 
@@ -37,9 +37,9 @@ public class UserController {
 
     @GetMapping("/users")
     @ResponseBody
-//    public Iterable<User> fetchUsers() {
-//        return userService.getAllUsers();
-//    }
+    public Iterable<User> fetchUsers() {
+        return userService.getAllUsers();
+    }
     public String fetchUsers( HttpSession session) {
         Integer user_id = (Integer) session.getAttribute("userid");
 
@@ -50,16 +50,20 @@ public class UserController {
         User user = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
 
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Invalid credentials");
 
         }
         session.setAttribute("userid", user.getUserid());
+        session.setAttribute("username", user.getName());
+        session.setAttribute("userType", user.getType());
+        session.setAttribute("loggedIn", true);
         // Create a response object that includes user type
         JSONObject jsonResponse = new JSONObject();
         jsonResponse.put("message", "Login successful");
+        jsonResponse.put("username", user.getName());
         jsonResponse.put("userType", user.getType());
-
-
+        jsonResponse.put("userId", user.getUserid());
+        
         return ResponseEntity.ok(jsonResponse.toString());
     }
 
@@ -113,6 +117,59 @@ public class UserController {
 
     @GetMapping("/getuser")
     public List<User> getUser() {return this.userService.getUsers();}
+    @GetMapping("/profile")
+    public ResponseEntity<String> getProfile(HttpSession session) throws JSONException {
+//        Integer userId = (Integer) session.getAttribute("userid");
+        Integer userId = 1;
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("User not logged in");
+        }
+
+        User user = userService.getUserById(userId);
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("User not found");
+        }
+
+        // Create a response object that includes user data
+        JSONObject jsonResponse = new JSONObject();
+        jsonResponse.put("name", user.getName());
+        jsonResponse.put("email", user.getEmail());
+        jsonResponse.put("dob", user.getDob());
+        jsonResponse.put("username", user.getUsername());
+        jsonResponse.put("password", user.getPassword());
+        jsonResponse.put("userType", user.getType());
+        jsonResponse.put("profile_pic", user.getProfile_pic());
+        jsonResponse.put("contact_no", user.getContact_no());
+        jsonResponse.put("status", user.getStatus());
+
+
+        return ResponseEntity.ok(jsonResponse.toString());
+    }
+
+    @PutMapping ("/update-password")
+    public ResponseEntity<String> updatePassword(
+            @RequestBody UpdatePasswordRequest updatePasswordRequest,
+            HttpSession session) throws JSONException {
+        JSONObject jsonResponse = new JSONObject();
+
+        Integer userId = updatePasswordRequest.userId;
+
+
+        boolean passwordUpdated = userService.updatePassword(
+                userId,
+                updatePasswordRequest.getCurrentPassword(),
+                updatePasswordRequest.getNewPassword()
+        );
+
+        if (passwordUpdated) {
+            jsonResponse.put("message", "Password updated successfully");
+            return ResponseEntity.ok(jsonResponse.toString());
+        } else {
+            jsonResponse.put("message", "Password update failed");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(jsonResponse.toString());
+        }
+    }
 
 
     // Nested static class for the login request
@@ -224,5 +281,65 @@ public class UserController {
         public void setProvince(String province) {
             this.province = province;
         }
+    }
+
+    // Nested static class for the user data response
+    private static class UserDataResponse {
+        private String firstName;
+        private String email;
+        // Add other fields you want to include in the response
+
+        public UserDataResponse(String firstName, String email) {
+            this.firstName = firstName;
+            this.email = email;
+            // Initialize other fields here
+        }
+
+        // Include getters for other fields
+    }
+
+    private static class UpdatePasswordRequest {
+
+        private Integer userId;
+        private String currentPassword;
+        private String newPassword;
+
+        //constructor
+
+        public UpdatePasswordRequest(Integer userId,String currentPassword, String newPassword) {
+            this.userId = userId;
+            this.currentPassword = currentPassword;
+            this.newPassword = newPassword;
+        }
+
+        //getters and setters
+
+        public Integer getUserId() {
+            return userId;
+        }
+
+        public void setUserId(Integer userId) {
+            this.userId = userId;
+        }
+
+        public String getCurrentPassword() {
+            return currentPassword;
+        }
+
+        public void setCurrentPassword(String currentPassword) {
+            this.currentPassword = currentPassword;
+        }
+
+        public String getNewPassword() {
+            return newPassword;
+        }
+
+        public void setNewPassword(String newPassword) {
+            this.newPassword = newPassword;
+        }
+
+
+
+
     }
 }

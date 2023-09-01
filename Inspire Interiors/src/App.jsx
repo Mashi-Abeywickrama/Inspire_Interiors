@@ -3,11 +3,16 @@ import { React, useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import {
+  Navigate,
   Route,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
+  useLocation,
 } from "react-router-dom";
+
+import { useSession } from "./constants/SessionContext";
+
 import AboutUs from "./pages/visitor/AboutUs";
 import Rootlayout from "./layouts/Rootlayout";
 import Error from "./pages/visitor/error";
@@ -17,9 +22,8 @@ import Contact from "./pages/visitor/contact";
 import Services from "./pages/visitor/services";
 import SignUp from "./pages/visitor/signup";
 import MyTeam from "./pages/visitor/team";
-import Project from './pages/visitor/project';
-import OnlyHeaderRootlayout from './layouts/onlyHeaderRootlayout';
-
+import Project from "./pages/visitor/project";
+import OnlyHeaderRootlayout from "./layouts/onlyHeaderRootlayout";
 
 // Admin
 
@@ -84,12 +88,12 @@ import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
 import CategoryView from "./pages/Customer/marketplace/categoryView";
-import SupportSettings from "./pages/CustomerSupport/settings";
 
 // Designer
 import DesignerLayout from "./layouts/Designer/DesignerLayout";
 import DesignerDashboard from "./pages/Designer/DesignerDashboard";
 import DesignerMyDesigns from "./pages/Designer/DesignerMyDesigns";
+import { DesignLoader } from "./Loaders/Designer/MyDesignsLoader";
 import DesignerEarnings from "./pages/Designer/DesignerEarnings";
 import DesignerEarn from "./pages/Designer/DesignerEarn";
 import DesignerBankDetails from "./pages/Designer/DesignerBankDetails";
@@ -104,8 +108,10 @@ import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarning
 import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
+
+
+const routes = (
+
     <>
       <Route path="/" element={<Rootlayout />} errorElement={<Error />}>
         <Route index element={<Home />} />
@@ -156,23 +162,26 @@ const router = createBrowserRouter(
         <Route path="checkout/address" element={<Address />} />
         <Route path="checkout/payment" element={<PaymentMethod />} />
         <Route path="checkout/shipping" element={<ShippingMethod />} />
+        <Route path="orders/vieworder" element={<OrderView />} />
         <Route path="settings" element={<CusSetting />}></Route>
-
       </Route>
       {/* Admin Routes */}
-
-      <Route path="/Admin/" element={<ADashboardlayout />} errorElement={<Error />}>
-        <Route index element={<AdminDashboard/> } />
-        <Route path="dashboard" element={<AdminDashboard/> }></Route>
-        <Route path="report" element={<Report/> } />
-        <Route  path="user" element={<User/> } />
-        <Route  path="commission" element={<Commission/> } />
-        <Route  path="orders" element={<Orders/> } />
-        <Route  path="salary" element={<Salary/> } />
-        <Route path="orders/invoice" element={<Invoice/>}/>
-        <Route path="user/profile" element={<Profile/>}/>
-        <Route path="commision/commissionView" element={<Cview/>}/>
-        <Route path="settings" element={<ADSetting/>}/>
+      <Route
+        path="/Admin/"
+        element={<ADashboardlayout />}
+        errorElement={<Error />}
+      >
+        <Route index element={<AdminDashboard />} />
+        <Route path="dashboard" element={<AdminDashboard />}></Route>
+        <Route path="report" element={<Report />} />
+        <Route path="user" element={<User />} />
+        <Route path="commission" element={<Commission />} />
+        <Route path="orders" element={<Orders />} />
+        <Route path="salary" element={<Salary />} />
+        <Route path="orders/invoice" element={<Invoice />} />
+        <Route path="user/profile" element={<Profile />} />
+        <Route path="commision/commissionView" element={<Cview />} />
+        <Route path="settings" element={<ADSetting />} />
       </Route>
       {/* Customer Support Routes */}
       <Route
@@ -188,7 +197,6 @@ const router = createBrowserRouter(
         <Route path="delivery/view" element={<ViewDelivery />}></Route>
         <Route path="inquiry/view" element={<ViewInquiry />}></Route>
         <Route path="refund/view" element={<ViewRefund />}></Route>
-        <Route path="settings" element={<SupportSettings />}></Route>
       </Route>
       {/* Vendor Routes */}
       <Route
@@ -230,14 +238,16 @@ const router = createBrowserRouter(
           element={<PromotionExpenses />}
         ></Route>
         <Route path="complaints" element={<Complaints />}></Route>
-        <Route path="complaints/viewcomplaint" element={<ViewComplaint/>}></Route>
+        <Route
+          path="complaints/viewcomplaint"
+          element={<ViewComplaint />}
+        ></Route>
         <Route path="setting" element={<VendorSetting />}></Route>
       </Route>
 
-
-      {/* Designer Routes*/}
+      {/* Designer Routes */}
       <Route
-        path="/designer"
+        path="/designer/"
         element={<DesignerLayout />}
         errorElement={<Error />}
       >
@@ -256,13 +266,35 @@ const router = createBrowserRouter(
 
         <Route path="setting" element={<DesignerSetting />} />
       </Route>
-
     </>
-  )
 );
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  const currentURL = window.location.href;
+  const sessionItems = useSession();
+  const splitURL = currentURL.split("/");
+  if (splitURL[3] === "customer" || splitURL[3] === "vendor" || splitURL[3] === "customersupport" || splitURL[3] === "designer" || splitURL[3] === "Admin") {
+    
+    console.log(sessionItems.sessionData);
+    if (sessionItems.sessionData === null || sessionItems.sessionData.userType === undefined ) {
+      window.location.href = "/login";
+    }else{
+      if (sessionItems.sessionData.userType !== splitURL[3]) {
+        window.location.href = "/login";        
+      }
+    
+    else{
+      const router = createBrowserRouter(createRoutesFromElements(routes));
+    return <RouterProvider router={router} />;
+    }
+    }
+  } else{
+    const router = createBrowserRouter(createRoutesFromElements(routes));
+    return <RouterProvider router={router} />;
+
+  }
+
+  
 };
 
 export default App;

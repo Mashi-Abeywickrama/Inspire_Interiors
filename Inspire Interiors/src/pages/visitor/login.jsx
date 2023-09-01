@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSession } from '../../constants/SessionContext.jsx';
 import Header from "../../components/header";
 
 import axios from 'axios';
@@ -28,7 +29,7 @@ const Login = () => {
 
   const axiosInstance = axios.create({
     baseURL: apiBaseURL,
-    timeout: 5000, // You can adjust the timeout value as needed
+    timeout: 10000, // You can adjust the timeout value as needed
     // You can also set other default config options if required
     // For example, you might want to set headers for authorization or other request-specific headers
   });
@@ -36,6 +37,7 @@ const Login = () => {
    const navigate = useNavigate(); // Initialize useNavigate
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const { setSessionData } = useSession(); // Access the setSessionData function from context
 
 
   const { setAlert } = useAlert();
@@ -48,8 +50,14 @@ const Login = () => {
         password: password 
         });
       if (response.status === 200) {
+        setSessionData({
+          loggedIn: true,
+          username: response.data.username,
+          userType: response.data.userType,
+          userid: response.data.userId, // Make sure to pass the actual userId
+        });
         const userType = response.data.userType;
-
+        console.log(response);
         if (userType === 'admin') {
           setAlert('Successful Login!', 'success');
           setTimeout(() => {
@@ -58,9 +66,10 @@ const Login = () => {
         } else if (userType === 'customer') {
           setAlert('Successful Login!', 'success');
           setTimeout(() => {
-            navigate('/customer/dashboard');
+            location.href = '/customer/dashboard';
         }, 1000);
         }  else if (userType === 'vendor') {
+          // console.log(response.data);
           setAlert('Successful Login!', 'success');
           setTimeout(() => {
             navigate('/vendor/dashboard');

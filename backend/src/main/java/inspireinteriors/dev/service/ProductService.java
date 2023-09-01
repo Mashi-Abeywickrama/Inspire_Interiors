@@ -1,5 +1,6 @@
 package inspireinteriors.dev.service;
 
+import inspireinteriors.dev.model.Product;
 import inspireinteriors.dev.repository.ProductImgRepository;
 import inspireinteriors.dev.repository.ProductRepository;
 import inspireinteriors.dev.repository.VariationRepository;
@@ -19,5 +20,23 @@ public class ProductService {
     @Autowired
     private VariationRepository variationRepository;
 
+    public Iterable<Product> getAllProducts() {
+        return productRepository.findAllWithoutEagerLoading();
+    }
 
+    public Product getProductById(Integer id) {
+        return productRepository.findById(id).orElse(null);
+    }
+
+    //Create product
+    public Product createProduct(Product product) {
+        return productRepository.save(product);
+    }
+
+
+
+
+    public void saveProduct(Product product) {
+        productRepository.save(product);
+    }
 }
