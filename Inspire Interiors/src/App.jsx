@@ -27,17 +27,19 @@ import OnlyHeaderRootlayout from "./layouts/onlyHeaderRootlayout";
 
 // Admin
 
-import Report from "./pages/Admin/report";
-import ADashboardlayout from "./layouts/Admin/admindasahboardLayout";
+import Report from './pages/Admin/report';
+import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
+import Dashboard from './pages/Admin/dashboard';
+import User from './pages/Admin/user';
+import Commission from './pages/Admin/commission';
+import Orders from './pages/Admin/orders';
+import Salary from './pages/Admin/salary';
+import Profile from './pages/Admin/profile';
+import Invoice from './pages/Admin/invoice';
+import Cview from './pages/Admin/commissionView';
+import ADSetting from './pages/Admin/settings';
 import AdminDashboard from "./pages/Admin/dashboard";
-import User from "./pages/Admin/user";
-import Commission from "./pages/Admin/commission";
-import Orders from "./pages/Admin/orders";
-import Salary from "./pages/Admin/salary";
-import Profile from "./pages/Admin/profile";
-import Invoice from "./pages/Admin/invoice";
-import Cview from "./pages/Admin/commissionView";
-import ADSetting from "./pages/Admin/settings";
+
 
 // Customer
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
@@ -250,12 +252,7 @@ const routes = (
         errorElement={<Error />}
       >
         <Route index element={<DesignerDashboard />} />
-        <Route path="dashboard" element={<DesignerDashboard />} />
-        <Route
-          path="mydesigns"
-          element={<DesignerMyDesigns />}
-          loader={DesignLoader}
-        />
+        <Route path="mydesigns" element={<DesignerMyDesigns />} />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />
         <Route path="earnings" element={<DesignerEarn />} />

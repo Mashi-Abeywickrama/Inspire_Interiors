@@ -6,7 +6,8 @@
     import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
     import org.springframework.stereotype.Service;
 
-    import java.util.Date;
+import java.util.Date;
+import java.util.List;
 
 
     @Service
@@ -62,4 +63,8 @@
             return userRepository.findProfileByUserid(userId);
         }
 
+    public List<User> getUsers() { return this.userRepository.findAll();}
+
     }
+
+

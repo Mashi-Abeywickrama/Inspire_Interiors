@@ -16,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -113,6 +115,8 @@ public class UserController {
         return ResponseEntity.ok(jsonResponse.toString());
     }
 
+    @GetMapping("/getuser")
+    public List<User> getUser() {return this.userService.getUsers();}
     @GetMapping("/profile")
     public ResponseEntity<String> getProfile(HttpSession session) throws JSONException {
 //        Integer userId = (Integer) session.getAttribute("userid");
