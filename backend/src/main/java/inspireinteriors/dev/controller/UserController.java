@@ -117,15 +117,16 @@ public class UserController {
 
     @GetMapping("/getuser")
     public List<User> getUser() {return this.userService.getUsers();}
-    @GetMapping("/profile")
-    public ResponseEntity<String> getProfile(HttpSession session) throws JSONException {
+    @PostMapping("/profile")
+    public ResponseEntity<String> getProfile(@RequestBody UserIDRequest userIDRequest,HttpSession session) throws JSONException {
 //        Integer userId = (Integer) session.getAttribute("userid");
-        Integer userId = 1;
+        Integer userId = userIDRequest.getUserId();
         if (userId == null) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("User not logged in");
         }
 
         User user = userService.getUserById(userId);
+
 
         if (user == null) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("User not found");
@@ -145,6 +146,29 @@ public class UserController {
 
 
         return ResponseEntity.ok(jsonResponse.toString());
+    }
+
+    @PutMapping("/update-account")
+    public ResponseEntity<String> updateAccount(@RequestBody UserAccountRequest updatedProfile) {
+        Integer userId = updatedProfile.getUserId();
+        String name = updatedProfile.getName();
+        String email = updatedProfile.getEmail();
+        String username = updatedProfile.getUsername();
+        String contact_no = updatedProfile.getContact_no();
+
+        boolean profileUpdated = userService.updateProfile(
+                userId,
+                name,
+                email,
+                username,
+                contact_no
+        );
+
+        if (profileUpdated) {
+            return ResponseEntity.ok("Profile updated successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Profile update failed");
+        }
     }
 
     @PutMapping ("/update-password")
@@ -193,6 +217,26 @@ public class UserController {
         public void setPassword(String password) {
             this.password = password;
         }
+    }
+
+    private static class UserIDRequest {
+
+        private Integer userId;
+
+        public UserIDRequest() {
+        }
+        public UserIDRequest(Integer userId) {
+            this.userId = userId;
+        }
+
+        public Integer getUserId() {
+            return userId;
+        }
+
+        public void setUserId(Integer userId) {
+            this.userId = userId;
+        }
+
     }
 
     // Nested static class for the registration request
@@ -338,6 +382,81 @@ public class UserController {
             this.newPassword = newPassword;
         }
 
+
+
+
+    }
+
+    private static class UserAccountRequest{
+        private Integer userId;
+        private String name;
+        private String email;
+        private String username;
+        private String contact_no;
+
+        public UserAccountRequest(Integer userId, String name, String email, String username, String contact_no) {
+            this.userId = userId;
+            this.name = name;
+            this.email = email;
+            this.username = username;
+            this.contact_no = contact_no;
+        }
+
+
+        public UserAccountRequest(Integer userId, String name, String email, String username, String password, String userType, String profile_pic, String contact_no, String status) {
+            this.userId = userId;
+            this.name = name;
+            this.email = email;
+            this.username = username;
+            this.contact_no = contact_no;
+        }
+
+        public UserAccountRequest() {
+        }
+
+        //getters and setters
+
+        public Integer getUserId() {
+            return userId;
+        }
+
+        public void setUserId(Integer userId) {
+            this.userId = userId;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+
+
+        public String getContact_no() {
+            return contact_no;
+        }
+
+        public void setContact_no(String contact_no) {
+            this.contact_no = contact_no;
+        }
 
 
 

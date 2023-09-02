@@ -18,7 +18,13 @@ import { Alert, Snackbar } from '@mui/material';
 
 
 
+
 const CusSetting = () => {
+
+    const [isUsernameEditable, setIsUsernameEditable] = useState(false);
+    const [isFullNameEditable, setIsFullNameEditable] = useState(false);
+    const [isEmailEditable, setIsEmailEditable] = useState(false);
+    const [isPhoneNumberEditable, setIsPhoneNumberEditable] = useState(false);
 
     const [alertOpen, setAlertOpen] = useState(false);
     const [alertSeverity, setAlertSeverity] = useState('success');
@@ -56,15 +62,34 @@ const CusSetting = () => {
     });
 
     const [userData, setUserData] = useState({});
+    console.log(userData.contact_no);
+    if (userData.contact_no === undefined || userData.contact_no === '') {
+        userData.contact_no = 'No Numbers Yet';
+        
+    }
     const [error, setError] = useState(null);
 
+    const userId = sessionItems.sessionData.userid;
+    
 
     useEffect(() => {
-        axiosInstance.get('/profile')
-            .then(response => setUserData(response.data))
-            .catch(error => setError(error));
-    }, []);
+  // Define the data you want to send in the request body
+  const requestData = {
+    userId: userId, 
+  };
+    console.log(requestData);
 
+  axiosInstance.post('/profile', requestData)
+    .then(response => {
+      setUserData(response.data);
+      console.log('Response from backend:', response.data);
+    })
+    .catch(error => {
+      setError(error);
+      console.error('Error from backend:', error);
+    });
+}, []);
+    
 
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -109,6 +134,48 @@ const CusSetting = () => {
     }
     
     };
+
+    const [editingField, setEditingField] = useState(null);
+
+  const handleDoubleClick = (field) => {
+    setEditingField(field);
+  };
+
+  const handleFieldChange = (event, field) => {
+    const { value } = event.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+  };
+
+  const handleUpdate = () => {
+    setEditingField(null); // Disable editing mode
+
+    // Prepare the updated data to send to the server
+    const updatedData = {
+      userId: sessionItems.sessionData.userid,
+      // Include only the fields that you want to update
+      username: userData.username,
+      name: userData.name,
+        email: userData.email,
+        contact_no: userData.contact_no,
+    };
+
+    // Send the updated data to the server using Axios or your preferred HTTP library
+    axiosInstance
+      .put('/update-account', updatedData)
+      .then((response) => {
+        if (response.status === 200) {
+          showAlert('Profile updated successfully!', 'success');
+        } else {
+          showAlert('Failed to update profile!', 'error');
+        }
+      })
+      .catch((error) => {
+        showAlert('Failed to update profile!', 'error');
+      });
+  };
     return (
         <>
 
@@ -144,29 +211,98 @@ const CusSetting = () => {
 
                                 </div>
                                 <div className="d-flex flex-column gap-0">
+                                    <p className='m-0 mt-2 text-danger'>*Double tap on input fields to edit the fields</p>
                                     <div className='d-flex gap-4'>
+                                        
                                         <div class="mb-2 mt-3 w-50">
-                                            <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">First name:</label>
-                                            <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" value= {userData.name} style={{ backgroundColor: "#F2FAFF" }} disabled />
+                                            <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Username:</label>
+                                             {editingField === 'username' ? (
+                                            <input
+                                                type="text"
+                                                className="form-control w-100 Cabin-text disabled-setting-view"
+                                                value={userData.username}
+                                                onChange={(e) => handleFieldChange(e, 'username')}
+                                                onBlur={handleUpdate}
+                                            />
+                                            ) : (
+                                            <div   onDoubleClick={() => handleDoubleClick('username')}>
+                                                <input
+                                                type="text"
+                                                className="form-control w-100 Cabin-text disabled-setting-view"
+                                                value={userData.username}
+                                                disabled
+                                            />
+                                            </div>
+                                            )}
                                         </div>
                                         <div class="mb-2 mt-3 w-50">
-                                            <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Last name:</label>
-                                            <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" value="Robertson" style={{ backgroundColor: "#F2FAFF" }} disabled />
+                                            <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Full Name:</label>
+                                            {editingField === 'name' ? (
+                                                <input
+                                                    type="text"
+                                                    className="form-control w-100 Cabin-text"
+                                                    value={userData.name}
+                                                    onChange={(e) => handleFieldChange(e, 'name')}
+                                                    onBlur={handleUpdate}
+                                                />
+                                            ) : (
+                                                <div onDoubleClick={() => handleDoubleClick('name')}>
+                                                    <input
+                                                        type="text"
+                                                        className="form-control w-100 Cabin-text disabled-setting-view"
+                                                        value={userData.name}
+                                                        disabled
+                                                    />
+                                                </div>
+                                            )}
                                         </div>
 
                                     </div>
 
                                     <div className='d-flex gap-4'>
-                                        <div class="mb-2 mt-2 w-50">
-                                            <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Email:</label>
-                                            <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" value={userData.email} style={{ backgroundColor: "#F2FAFF" }} disabled />
-                                        </div>
-                                        <div class="mb-5 mt-2 w-50">
-                                            <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Phone number:</label>
-                                            <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" value="(217) 555-0113" style={{ backgroundColor: "#F2FAFF" }} disabled />
-                                        </div>
-
+                                    <div className="mb-2 mt-2 w-50">
+                                        <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Email:</label>
+                                        {editingField === 'email' ? (
+                                            <input
+                                                type="text"
+                                                className="form-control w-100 Cabin-text"
+                                                value={userData.email}
+                                                onChange={(e) => handleFieldChange(e, 'email')}
+                                                onBlur={handleUpdate}
+                                            />
+                                        ) : (
+                                            <div onDoubleClick={() => handleDoubleClick('email')}>
+                                                <input
+                                                    type="text"
+                                                    className="form-control w-100 Cabin-text disabled-setting-view"
+                                                    value={userData.email}
+                                                    disabled
+                                                />
+                                            </div>
+                                        )}
                                     </div>
+                                    <div className="mb-5 mt-2 w-50">
+                                         <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Phone number:</label>
+                                        {editingField === 'contact_no' ? (
+                                            <input
+                                                type="text"
+                                                className="form-control w-100 Cabin-text"
+                                                value={userData.contact_no}
+                                                onChange={(e) => handleFieldChange(e, 'contact_no')}
+                                                onBlur={handleUpdate}
+                                            />
+                                        ) : (
+                                            <div onDoubleClick={() => handleDoubleClick('contact_no')}>
+                                                <input
+                                                    type="text"
+                                                    className="form-control w-100 Cabin-text disabled-setting-view"
+                                                    value={userData.contact_no}
+                                                    disabled
+                                                />
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
 
 
                                 </div>
