@@ -65,6 +65,11 @@ import java.util.List;
 
     public List<User> getUsers() { return this.userRepository.findAll();}
 
+
+    public User addUser(User adduser) {
+        return this.userRepository.save(adduser);}
+
+
     public boolean updateProfile(Integer userId, String name, String email, String username, String contactNo) {
         User user = userRepository.findById((long) userId).orElse(null);
 
@@ -85,6 +90,8 @@ import java.util.List;
         userRepository.save(user);
 
         return true;
+
+
     }
 }
 

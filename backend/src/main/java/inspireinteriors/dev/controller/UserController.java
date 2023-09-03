@@ -117,8 +117,22 @@ public class UserController {
 
     @GetMapping("/getuser")
     public List<User> getUser() {return this.userService.getUsers();}
+
+
+    @PostMapping("/adduser")
+    public User addValues(@RequestBody User adduser)
+    {
+        return this.userService.addUser(adduser);
+
+    }
+
+    // @GetMapping("/profile")
+    // public ResponseEntity<String> getProfile(HttpSession session) throws JSONException {
+
     @PostMapping("/profile")
     public ResponseEntity<String> getProfile(@RequestBody UserIDRequest userIDRequest,HttpSession session) throws JSONException {
+
+         main
 //        Integer userId = (Integer) session.getAttribute("userid");
         Integer userId = userIDRequest.getUserId();
         if (userId == null) {
