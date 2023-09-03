@@ -65,6 +65,9 @@ import java.util.List;
 
     public List<User> getUsers() { return this.userRepository.findAll();}
 
+    public User addUser(User adduser) {
+        return this.userRepository.save(adduser);}
+
     }
 
 
