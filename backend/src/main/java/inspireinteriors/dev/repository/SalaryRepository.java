@@ -8,7 +8,7 @@ public interface SalaryRepository extends JpaRepository<Salary,Integer> {
 
 //    Salary findByUsernameAndPassword(String username, String password);
 
-    Salary findByUsername(String username);
+    Salary findByUserid(int userid);
 
-    Salary findProfileByUserid(int userid); // get user by id
+//    Salary findProfileByUserid(int userid); // get user by id
 }
