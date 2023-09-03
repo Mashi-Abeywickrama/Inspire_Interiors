@@ -12,6 +12,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import { Link } from 'react-router-dom';
 
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
+import AddNewInquiry from '../../components/customer/popup/addNewInquiry';
 
 const tabledata = {
     columns: [
@@ -196,9 +197,8 @@ const Inquiry = () => (
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                     <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>All</p>
                 </div>
-                <div>
-                    <button className='add-btn m-4'><Icon.PlusLg color="white" size={20} />Add Inquiry</button>
-                </div>
+                
+                <AddNewInquiry/>
             </div>
             <div>
                 <Tabs

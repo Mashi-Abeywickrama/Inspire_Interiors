@@ -273,7 +273,7 @@ const App = () => {
   const currentURL = window.location.href;
   const sessionItems = useSession();
   const splitURL = currentURL.split("/");
-  if (splitURL[3] === "customer" || splitURL[3] === "vendor" || splitURL[3] === "customersupport" || splitURL[3] === "designer" || splitURL[3] === "admin") {
+  if (splitURL[3] === "customer" || splitURL[3] === "vendor" || splitURL[3] === "support" || splitURL[3] === "designer" || splitURL[3] === "admin") {
     
     console.log(sessionItems.sessionData);
     if (sessionItems.sessionData === null || sessionItems.sessionData.userType === undefined ) {

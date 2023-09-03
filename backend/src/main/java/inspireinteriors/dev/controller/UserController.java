@@ -132,8 +132,7 @@ public class UserController {
     @PostMapping("/profile")
     public ResponseEntity<String> getProfile(@RequestBody UserIDRequest userIDRequest,HttpSession session) throws JSONException {
 
-         main
-//        Integer userId = (Integer) session.getAttribute("userid");
+
         Integer userId = userIDRequest.getUserId();
         if (userId == null) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("User not logged in");
