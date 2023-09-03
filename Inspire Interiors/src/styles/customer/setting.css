@@ -120,13 +120,22 @@
     color: #023047;
     height: 45px;
     border-right: 2px solid #EDEEF2;
-    border-radius: unset !important;
+    border-radius: 5px;
+    &:hover{
+        border-color:transparent;
+        background-color: #EDEEF2;
+        border-radius: 10px !important;
+    }
 }
 
 .remove-address{
     background-color: white;
     color: #E14B4B;
     height: 45px;
+    &:hover{
+        border-color:transparent;
+        background-color:#f7d7d7
+    }
 }
 
 .address-radio-form label {
