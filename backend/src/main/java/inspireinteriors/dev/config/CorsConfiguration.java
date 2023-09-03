@@ -15,7 +15,8 @@ public class CorsConfiguration {
                 registry.addMapping("/**")
                         .allowedOrigins("http://127.0.0.1:5173","http://localhost:5173/") // Use the correct origin URL
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .allowedHeaders("*");
+                        .allowCredentials(true) // Allow sending cookies
+                        .allowedHeaders("*"); // Allow all headers
 
             }
         };

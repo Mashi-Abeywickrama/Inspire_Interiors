@@ -177,3 +177,10 @@
     width: 100% !important;
 }
 }
+
+.address-popup-btn{
+    &:hover{
+        transform: scale(1.02);
+        color: #035C94;
+    }
+}
