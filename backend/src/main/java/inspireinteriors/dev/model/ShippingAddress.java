@@ -30,7 +30,7 @@ public class ShippingAddress {
     private String province;
 
     @Column(name = "customer_id")
-    private int customer_id;
+    private int customerid;
 
     public ShippingAddress() {
     }
@@ -42,7 +42,7 @@ public class ShippingAddress {
         this.city = city;
         this.district = district;
         this.province = province;
-        this.customer_id = customer_id;
+        this.customerid = customer_id;
     }
 
     public ShippingAddress(String tag, String lane, String city, String district, String province, int customer_id) {
@@ -51,7 +51,7 @@ public class ShippingAddress {
         this.city = city;
         this.district = district;
         this.province = province;
-        this.customer_id = customer_id;
+        this.customerid = customer_id;
     }
 
     public ShippingAddress(String tag, String address_title, String lane, String city, String district, String province, int customer_id) {
@@ -61,7 +61,7 @@ public class ShippingAddress {
         this.city = city;
         this.district = district;
         this.province = province;
-        this.customer_id = customer_id;
+        this.customerid = customer_id;
     }
 
     public ShippingAddress(int addressid, String tag, String address_title, String lane, String city, String district, String province, int customer_id) {
@@ -72,7 +72,7 @@ public class ShippingAddress {
         this.city = city;
         this.district = district;
         this.province = province;
-        this.customer_id = customer_id;
+        this.customerid = customer_id;
     }
 
     //getters
@@ -101,7 +101,7 @@ public class ShippingAddress {
         return province;
     }
     public int getCustomer_id() {
-        return customer_id;
+        return customerid;
     }
 
     //setters
@@ -134,8 +134,11 @@ public class ShippingAddress {
     }
 
     public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+        this.customerid = customer_id;
     }
 
+    public void setLane(String lane) {
+        this.lane = lane;
+    }
 }
 

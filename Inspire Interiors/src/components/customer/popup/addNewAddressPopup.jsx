@@ -5,11 +5,14 @@ import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 import { Form, Row, Col } from 'react-bootstrap';
 import useAlert from '../../../components/useAlert';
+import { useSession } from '../../../constants/SessionContext';
 
 function AddNewAddressPopup({ onClose }) {
 
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+
+  const sessionItems = useSession();
 
   const handleBlur = (field) => {
     setTouched({ ...touched, [field]: true });
@@ -48,6 +51,7 @@ function AddNewAddressPopup({ onClose }) {
   };
 
   const handleAddress = async (e) => {
+    console.log(sessionItems.sessionData.userid);
     // setAlert('Successfully Added!', 'success');
     e.preventDefault();
 
@@ -62,7 +66,8 @@ function AddNewAddressPopup({ onClose }) {
           lane: lane,
           city: city,
           district: district,
-          province: province
+          province: province,
+          customer_id: sessionItems.sessionData.userid
         });
         if (response.status === 200) {
           setAlert('Successfully Added!', 'success');
