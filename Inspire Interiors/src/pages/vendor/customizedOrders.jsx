@@ -55,10 +55,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
@@ -68,10 +68,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
@@ -81,10 +81,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
@@ -94,10 +94,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
@@ -107,10 +107,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
@@ -120,10 +120,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
@@ -133,10 +133,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
@@ -146,10 +146,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
@@ -159,10 +159,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
@@ -172,10 +172,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
@@ -185,10 +185,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },
@@ -198,10 +198,10 @@ const newRequestData = {
             <img src={Sofa}/>
             <div className="d-flex flex-column">
                 <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'philosopher Mattress, ebony Wood Lavender Cover',
             status: <div className='d-flex flex-row gap-3'><Link to="/vendor/order"><button className='reject-btn'>Reject</button></Link><button className='accept-btn'>Accept</button><Link to="/vendor/order/customrequest"><button className='view-btn'>View</button></Link></div>
         },    
@@ -254,11 +254,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
@@ -268,11 +268,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center mx-4' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
@@ -282,11 +282,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
@@ -296,11 +296,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
@@ -310,11 +310,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center mx-4' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
@@ -324,11 +324,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
@@ -338,11 +338,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
@@ -352,11 +352,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center mx-4' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
@@ -366,11 +366,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
@@ -380,11 +380,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center mx-4' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
@@ -394,11 +394,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>
@@ -408,11 +408,11 @@ const acceptedOrderData = {
             product: <div className='d-flex flex-row gap-4 align-items-center'>
             <img src={Sofa}/>
             <div className="d-flex flex-column">
-                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                <p className="fs-6 fw-normal">Bed Room</p>
+                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>Sofa</p>
+                <p className="fs-6 fw-normal">Living Room</p>
                 </div>
             </div>,
-            quantity: '30000',
+            quantity: '5',
             color: 'Red',
             material: 'Cotton',
             status: <div className='d-flex flex-row gap-4'><div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div><Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center mx-4' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link></div>

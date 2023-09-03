@@ -17,6 +17,8 @@ const ViewCustomRequest = () => {
                 <div className="col-12 d-flex flex-column flex-md-row flex-lg-row gap-4">
                     <div className="col-lg-8 bg-white rounded-3 shadow p-4">
                         <div className="d-flex flex-row gap-4">
+                            <Link to="/vendor/order"><p className="text-dark fs-5 fw-bold Cabin-text">Orders</p></Link>
+                            <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                             <Link to="/vendor/order/customizeorders"><p className="text-dark fs-5 fw-bold Cabin-text">Custom Product</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                             <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Requests</p>
