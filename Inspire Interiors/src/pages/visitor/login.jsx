@@ -34,7 +34,7 @@ const Login = () => {
     // For example, you might want to set headers for authorization or other request-specific headers
   });
 
-   const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); // Initialize useNavigate
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { setSessionData } = useSession(); // Access the setSessionData function from context
