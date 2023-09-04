@@ -41,4 +41,8 @@
             return null;
         }
 
+        public User getUserById(int userId) {
+            return userRepository.findProfileByUserid(userId);
         }
+
+    }

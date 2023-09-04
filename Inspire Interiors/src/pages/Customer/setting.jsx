@@ -1,10 +1,11 @@
-import {React,useState} from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import * as Icon from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 
-
+import AddNewAddressButton from "../../components/customer/popup/AddNewAddressButton";
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,6 +16,27 @@ import Profile from './../../assets/img/customer/profile.jpg';
 
 
 const CusSetting = () => {
+
+    const apiBaseURL = 'http://localhost:8080'; // Replace this with the base URL of your Spring Boot backend
+
+    const axiosInstance = axios.create({
+      baseURL: apiBaseURL,
+      timeout: 5000, // You can adjust the timeout value as needed
+      // You can also set other default config options if required
+      // For example, you might want to set headers for authorization or other request-specific headers
+    });
+
+    const [userData, setUserData] = useState({});
+    const [error, setError] = useState(null);
+
+
+    useEffect(() => {
+        axiosInstance.get('/profile')
+            .then(response => setUserData(response.data))
+            .catch(error => setError(error));
+    }, []);
+
+
     const [selectedOption, setSelectedOption] = useState('');
 
   const handleRadioChange = (event) => {
@@ -56,7 +78,7 @@ const CusSetting = () => {
                                     <div className='d-flex gap-4'>
                                         <div class="mb-2 mt-3 w-50">
                                             <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">First name:</label>
-                                            <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" value="Little" style={{ backgroundColor: "#F2FAFF" }} disabled />
+                                            <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" value= {userData.name} style={{ backgroundColor: "#F2FAFF" }} disabled />
                                         </div>
                                         <div class="mb-2 mt-3 w-50">
                                             <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Last name:</label>
@@ -68,7 +90,7 @@ const CusSetting = () => {
                                     <div className='d-flex gap-4'>
                                         <div class="mb-2 mt-2 w-50">
                                             <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Email:</label>
-                                            <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" value="jane.robertson@example.com" style={{ backgroundColor: "#F2FAFF" }} disabled />
+                                            <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" value={userData.email} style={{ backgroundColor: "#F2FAFF" }} disabled />
                                         </div>
                                         <div class="mb-5 mt-2 w-50">
                                             <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Phone number:</label>
@@ -198,10 +220,8 @@ const CusSetting = () => {
                                 </div>
 
                                 <hr />
-                                <div className='d-flex gap-1'>
-                                    <Icon.Plus color={'#035C94'} size={22}/>
-                                    <p className='blue-colour-para'>Add New Address</p>
-                                </div>
+                                
+                                <AddNewAddressButton />
 
                                 
                                 
@@ -273,14 +293,7 @@ const CusSetting = () => {
 
 
                                 <hr />
-                                <div className='d-flex gap-1'>
-                                    <Icon.Plus color={'#035C94'} size={22}/>
-                                    <p className='blue-colour-para'>Add New Card</p>
-                                </div>
-
-                                
-                                
-
+                                <AddNewAddressButton/>
 
 
                             </div>

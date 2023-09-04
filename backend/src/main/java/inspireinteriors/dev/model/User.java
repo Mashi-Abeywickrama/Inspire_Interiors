@@ -32,8 +32,87 @@ public class User {
     @Column(name="type")
     private String type;
 
+    @Column(name="profile_pic")
+    private String profile_pic;
+
+    @Column(name="contact_no")
+    private String contact_no;
+
+    @Column(name="status")
+    private String status;
+
     public User() {
     }
+
+    public User(int userid, String name, String email, Date dob, String username, String password, String type, String profile_pic, String contact_no, String status) {
+        this.userid = userid;
+        this.name = name;
+        this.email = email;
+        this.dob = dob;
+        this.username = username;
+        this.password = password;
+        this.type = type;
+        this.profile_pic = profile_pic;
+        this.contact_no = contact_no;
+        this.status = status;
+    }
+
+    public User(String name, String email, Date dob, String username, String password, String type, String profile_pic, String contact_no, String status) {
+        this.name = name;
+        this.email = email;
+        this.dob = dob;
+        this.username = username;
+        this.password = password;
+        this.type = type;
+        this.profile_pic = profile_pic;
+        this.contact_no = contact_no;
+        this.status = status;
+    }
+
+    public User(int userid, String name, String email, Date dob, String username, String password, String type, String profile_pic, String contact_no) {
+        this.userid = userid;
+        this.name = name;
+        this.email = email;
+        this.dob = dob;
+        this.username = username;
+        this.password = password;
+        this.type = type;
+        this.profile_pic = profile_pic;
+        this.contact_no = contact_no;
+    }
+
+    public User(String name, String email, Date dob, String username, String password, String type, String profile_pic, String contact_no) {
+        this.name = name;
+        this.email = email;
+        this.dob = dob;
+        this.username = username;
+        this.password = password;
+        this.type = type;
+        this.profile_pic = profile_pic;
+        this.contact_no = contact_no;
+    }
+
+    public User(int userid, String name, String email, Date dob, String username, String password, String type, String profile_pic) {
+        this.userid = userid;
+        this.name = name;
+        this.email = email;
+        this.dob = dob;
+        this.username = username;
+        this.password = password;
+        this.type = type;
+        this.profile_pic = profile_pic;
+    }
+
+    public User(String name, String email, Date dob, String username, String password, String type, String profile_pic) {
+        this.name = name;
+        this.email = email;
+        this.dob = dob;
+        this.username = username;
+        this.password = password;
+        this.type = type;
+        this.profile_pic = profile_pic;
+    }
+
 
     public User(String name, String email, Date dob, String username, String password, String type) {
         this.name = name;
@@ -42,6 +121,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.type = type;
+
     }
 
     public User(int userid, String name, String email, Date dob, String username, String password, String type) {
@@ -83,6 +163,20 @@ public class User {
         return type;
     }
 
+    public String getProfile_pic() {
+        return profile_pic;
+    }
+
+    public String getContact_no() {
+        return contact_no;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+
+
     //need setters
 
     public void setUserid(int userid) {
@@ -113,9 +207,17 @@ public class User {
         this.type = type;
     }
 
+    public void setProfile_pic(String profile_pic) {
+        this.profile_pic = profile_pic;
+    }
 
+    public void setContact_no(String contact_no) {
+        this.contact_no = contact_no;
+    }
 
-
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
 
 

@@ -52,12 +52,14 @@ public class UserController {
 
         }
         session.setAttribute("userid", user.getUserid());
+        session.setAttribute("userType", user.getType());
+        session.setAttribute("loggedIn", true);
         // Create a response object that includes user type
         JSONObject jsonResponse = new JSONObject();
         jsonResponse.put("message", "Login successful");
         jsonResponse.put("userType", user.getType());
-
-
+        jsonResponse.put("userId", user.getUserid());
+        
         return ResponseEntity.ok(jsonResponse.toString());
     }
 
@@ -109,6 +111,35 @@ public class UserController {
         return ResponseEntity.ok(jsonResponse.toString());
     }
 
+    @GetMapping("/profile")
+    public ResponseEntity<String> getProfile(HttpSession session) throws JSONException {
+//        Integer userId = (Integer) session.getAttribute("userid");
+        Integer userId = 1;
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("User not logged in");
+        }
+
+        User user = userService.getUserById(userId);
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("User not found");
+        }
+
+        // Create a response object that includes user data
+        JSONObject jsonResponse = new JSONObject();
+        jsonResponse.put("name", user.getName());
+        jsonResponse.put("email", user.getEmail());
+        jsonResponse.put("dob", user.getDob());
+        jsonResponse.put("username", user.getUsername());
+        jsonResponse.put("password", user.getPassword());
+        jsonResponse.put("userType", user.getType());
+        jsonResponse.put("profile_pic", user.getProfile_pic());
+        jsonResponse.put("contact_no", user.getContact_no());
+        jsonResponse.put("status", user.getStatus());
+
+
+        return ResponseEntity.ok(jsonResponse.toString());
+    }
 
     // Nested static class for the login request
     private static class LoginRequest {
@@ -219,5 +250,20 @@ public class UserController {
         public void setProvince(String province) {
             this.province = province;
         }
+    }
+
+    // Nested static class for the user data response
+    private static class UserDataResponse {
+        private String firstName;
+        private String email;
+        // Add other fields you want to include in the response
+
+        public UserDataResponse(String firstName, String email) {
+            this.firstName = firstName;
+            this.email = email;
+            // Initialize other fields here
+        }
+
+        // Include getters for other fields
     }
 }
