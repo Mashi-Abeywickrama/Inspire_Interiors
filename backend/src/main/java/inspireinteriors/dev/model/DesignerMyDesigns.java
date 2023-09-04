@@ -40,6 +40,12 @@ public class DesignerMyDesigns {
 
     }
 
+    public DesignerMyDesigns(String name, String description, String image) {
+    }
+
+    public DesignerMyDesigns(int designer_id, String name, String description, String image) {
+    }
+
     @Override
     public String toString() {
         return "DesignerMyDesigns{" +
@@ -94,4 +100,6 @@ public class DesignerMyDesigns {
     public void setImage(String image) {
         this.image = image;
     }
+
+
 }
