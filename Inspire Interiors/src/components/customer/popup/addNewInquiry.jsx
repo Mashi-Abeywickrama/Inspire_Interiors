@@ -3,17 +3,41 @@ import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 
 import axios from 'axios';
+import { useSession } from '../../../constants/SessionContext';
 
 
-function AddNewInquiry({ addressData }) {
+function AddNewInquiry() {
+    const initialInquiryData = {
+        username: '',
+        type: '',
+        orderNo: '',
+        orderDate: '',
+        reason: '',
+        additionalRemarks: '',
+    };
+
+    const resetForm = () => {
+        setInquiryData({ ...initialInquiryData });
+        setEvidenceFile(null);
+    };
+
+    const sessionItems = useSession();
 
   const [showEditPopup, setInquiry] = useState(false);
+   const [evidenceFile, setEvidenceFile] = useState();
 
 
   // Function to close the modal
   const closeAddInquiryModel = () => {
     setInquiry(false);
   };
+
+    const apiBaseURL = 'http://localhost:8080'; // Replace this with the base URL of your Spring Boot backend
+
+  const axiosInstance = axios.create({
+      baseURL: apiBaseURL,
+      timeout: 5000,
+    });
 
 
   // State variables to hold updated address data
@@ -27,6 +51,59 @@ function AddNewInquiry({ addressData }) {
       ...prevData,
       [field]: value,
     }));
+  };
+
+  const handleEvidenceUpload = (event) => {
+    const file = event.target.files[0];
+    setEvidenceFile(file);
+  };
+
+  const handleInquirySubmit = async (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+  // Prepare the data object to send to the server
+  const inquiryDataToSend = {
+      inquiry_type: inquiryData.type,
+      username: inquiryData.username,
+      order_no: inquiryData.orderNo,
+      order_date: inquiryData.orderDate,
+      reason: inquiryData.reason,
+      remarks: inquiryData.remarks,
+      additional_remarks: inquiryData.additionalRemarks, // Note the corrected field name
+      customer_support_id: sessionItems.sessionData.userid
+    };
+
+
+    console.log('Data to send:', inquiryDataToSend);
+  // Send the data to your server or perform the necessary actions
+  try {
+    
+      const response = await axiosInstance.post('/inquiry', inquiryDataToSend);
+        resetForm();
+      // Close the modal or perform any other actions
+      closeAddInquiryModel();
+      window.location.reload();
+      console.log("Response from API:", response.data.reference);
+      if (evidenceFile !== null) {
+        console.log("Uploading evidence...");
+        const formData = new FormData();
+        formData.append('reference', response.data.reference);
+        formData.append('evidence', evidenceFile);
+        try {
+            const evidenceResponse = await axiosInstance.put('/upload-evidence', formData);
+            console.log("Response from API:", evidenceResponse.data);
+        } catch (error) {
+            // Handle the error
+            console.log("Response from API:", evidenceResponse.data);
+            console.error('Error:', error);
+        }
+
+        // Reset the evidence file input
+        setEvidenceFile(null);
+      }  
+    } catch (error) {
+      // Handle the error
+      console.error('Error:', error);
+    }
   };
 
   
@@ -44,7 +121,7 @@ function AddNewInquiry({ addressData }) {
             <Modal.Title>Add Inquiry</Modal.Title>
           </Modal.Header>
 
-          <Form className='p-4' >
+          <Form className='p-4'  onSubmit={handleInquirySubmit} >
 
             <Modal.Body className='py-2 px-3'>
               {/* Form for the popup */}
@@ -116,7 +193,7 @@ function AddNewInquiry({ addressData }) {
                           type='text'
                           placeholder='Enter Order No'
                           name='orderNo'
-                          onChange={(e) => handleInputChange(e, 'orderNo')}
+                          onChange={(e) => handleInquiryAdd(e, 'orderNo')}
                           value={inquiryData.orderNo}
                           style={{ backgroundColor: '#F2FAFF' }}
                         />
@@ -130,7 +207,7 @@ function AddNewInquiry({ addressData }) {
                         <Form.Control
                           type='date'
                           name='orderDate'
-                          onChange={(e) => handleInputChange(e, 'orderDate')}
+                          onChange={(e) => handleInquiryAdd(e, 'orderDate')}
                           value={inquiryData.orderDate}
                           style={{ backgroundColor: '#F2FAFF' }}
                         />
@@ -149,7 +226,7 @@ function AddNewInquiry({ addressData }) {
                           rows={3}
                           name='reason'
                           placeholder='Enter Reason'
-                          onChange={(e) => handleInputChange(e, 'reason')}
+                          onChange={(e) => handleInquiryAdd(e, 'reason')}
                           value={inquiryData.reason}
                           style={{ backgroundColor: '#F2FAFF' }}
                         />
@@ -169,7 +246,7 @@ function AddNewInquiry({ addressData }) {
                           name='additionalRemarks'
                           placeholder='Enter Additional Remarks'
                           onChange={(e) =>
-                            handleInputChange(e, 'additionalRemarks')
+                            handleInquiryAdd(e, 'additionalRemarks')
                           }
                           value={inquiryData.additionalRemarks}
                           style={{ backgroundColor: '#F2FAFF' }}
@@ -187,7 +264,7 @@ function AddNewInquiry({ addressData }) {
                         <Form.Control
                           type='file'
                           name='evidence'
-                          onChange={(e) => handleInputChange(e, 'evidence')}
+                          onChange={ handleEvidenceUpload}
                           style={{ backgroundColor: '#F2FAFF' }}
                         />
                       </Form.Group>
@@ -208,7 +285,7 @@ function AddNewInquiry({ addressData }) {
                           type='text'
                           placeholder='Enter Order No'
                           name='orderNo'
-                          onChange={(e) => handleInputChange(e, 'orderNo')}
+                          onChange={(e) => handleInquiryAdd(e, 'orderNo')}
                           value={inquiryData.orderNo}
                           style={{ backgroundColor: '#F2FAFF' }}
                         />
@@ -222,7 +299,7 @@ function AddNewInquiry({ addressData }) {
                         <Form.Control
                           type='date'
                           name='orderDate'
-                          onChange={(e) => handleInputChange(e, 'orderDate')}
+                          onChange={(e) => handleInquiryAdd(e, 'orderDate')}
                           value={inquiryData.orderDate}
                           style={{ backgroundColor: '#F2FAFF' }}
                         />
@@ -238,12 +315,12 @@ function AddNewInquiry({ addressData }) {
                         <Form.Control
                           as='textarea'
                           rows={3}
-                          name='additionalRemarks'
+                          name='remarks'
                           placeholder='Enter Additional Remarks'
                           onChange={(e) =>
-                            handleInputChange(e, 'additionalRemarks')
+                            handleInquiryAdd(e, 'remarks')
                           }
-                          value={inquiryData.additionalRemarks}
+                          value={inquiryData.remarks}
                           style={{ backgroundColor: '#F2FAFF' }}
                         />
                       </Form.Group>
