@@ -1,10 +1,9 @@
-package inspireinteriors.dev.service;
+package inspireinteriors.dev.service.Designer;
 
 
-import inspireinteriors.dev.model.DesignerMyDesigns;
-import inspireinteriors.dev.repository.DesignerMyDesignsRepository;
+import inspireinteriors.dev.model.DesignerModel.MyDesigns;
+import inspireinteriors.dev.repository.Designer.DesignerMyDesignsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public class DesignerMyDesignService {
 
 
 
-    public List<DesignerMyDesigns> getAllDesigns() {
+    public List<MyDesigns> getAllDesigns() {
       return designerMyDesignsRepository.findAll();
 
 
@@ -29,13 +28,13 @@ public class DesignerMyDesignService {
         this.designerMyDesignsRepository = designerMyDesignsRepository;
     }
 
- public DesignerMyDesigns addDesign(DesignerMyDesigns design){
+ public MyDesigns addDesign(MyDesigns design){
         return designerMyDesignsRepository.save(design);
 
  }
 
 
-    public DesignerMyDesigns getDesignById(int design_id) {
+    public MyDesigns getDesignById(int design_id) {
         return designerMyDesignsRepository.findById((long) design_id).orElse(null);
     }
 }
