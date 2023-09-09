@@ -38,16 +38,22 @@ public class Inquiry {
     @Column(name = "reason")
     private String reason;
 
-    @Column(name = "addional_remarks")
-    private String addional_remarks;
+    @Column(name = "additional_remarks")
+    private String additional_remarks;
 
     @Column(name = "evidence")
     private String evidence;
 
+    @Column(name = "completion_date")
+    private String completion_date;
+
+    @Column(name = "customer_support_id")
+    private String customer_support_id;
+
     public Inquiry() {
     }
 
-    public Inquiry(int inquiry_id, String inquiry_reference, String inquiry_date, String inquiry_status, String inquiry_type, String username, String remarks, String order_no, String order_date, String reason, String addional_remarks, String evidence) {
+    public Inquiry(int inquiry_id, String inquiry_reference, String inquiry_date, String inquiry_status, String inquiry_type, String username, String remarks, String order_no, String order_date, String reason, String additional_remarks, String evidence, String completion_date, String customer_support_id) {
         this.inquiry_id = inquiry_id;
         this.inquiry_reference = inquiry_reference;
         this.inquiry_date = inquiry_date;
@@ -58,11 +64,13 @@ public class Inquiry {
         this.order_no = order_no;
         this.order_date = order_date;
         this.reason = reason;
-        this.addional_remarks = addional_remarks;
+        this.additional_remarks = additional_remarks;
         this.evidence = evidence;
+        this.completion_date = completion_date;
+        this.customer_support_id = customer_support_id;
     }
 
-    public Inquiry(String inquiry_reference, String inquiry_date, String inquiry_status, String inquiry_type, String username, String remarks, String order_no, String order_date, String reason, String addional_remarks, String evidence) {
+    public Inquiry(String inquiry_reference, String inquiry_date, String inquiry_status, String inquiry_type, String username, String remarks, String order_no, String order_date, String reason, String additional_remarks, String evidence, String completion_date, String customer_support_id) {
         this.inquiry_reference = inquiry_reference;
         this.inquiry_date = inquiry_date;
         this.inquiry_status = inquiry_status;
@@ -72,7 +80,70 @@ public class Inquiry {
         this.order_no = order_no;
         this.order_date = order_date;
         this.reason = reason;
-        this.addional_remarks = addional_remarks;
+        this.additional_remarks = additional_remarks;
+        this.evidence = evidence;
+        this.completion_date = completion_date;
+        this.customer_support_id = customer_support_id;
+    }
+
+    public Inquiry(int inquiry_id, String inquiry_reference, String inquiry_date, String inquiry_status, String inquiry_type, String username, String remarks, String order_no, String order_date, String reason, String additional_remarks, String evidence, String completion_date) {
+        this.inquiry_id = inquiry_id;
+        this.inquiry_reference = inquiry_reference;
+        this.inquiry_date = inquiry_date;
+        this.inquiry_status = inquiry_status;
+        this.inquiry_type = inquiry_type;
+        this.username = username;
+        this.remarks = remarks;
+        this.order_no = order_no;
+        this.order_date = order_date;
+        this.reason = reason;
+        this.additional_remarks = additional_remarks;
+        this.evidence = evidence;
+        this.completion_date = completion_date;
+    }
+
+    public Inquiry(String inquiry_reference, String inquiry_date, String inquiry_status, String inquiry_type, String username, String remarks, String order_no, String order_date, String reason, String additional_remarks, String evidence, String completion_date) {
+        this.inquiry_reference = inquiry_reference;
+        this.inquiry_date = inquiry_date;
+        this.inquiry_status = inquiry_status;
+        this.inquiry_type = inquiry_type;
+        this.username = username;
+        this.remarks = remarks;
+        this.order_no = order_no;
+        this.order_date = order_date;
+        this.reason = reason;
+        this.additional_remarks = additional_remarks;
+        this.evidence = evidence;
+        this.completion_date = completion_date;
+    }
+
+
+    public Inquiry(int inquiry_id, String inquiry_reference, String inquiry_date, String inquiry_status, String inquiry_type, String username, String remarks, String order_no, String order_date, String reason, String additional_remarks, String evidence) {
+        this.inquiry_id = inquiry_id;
+        this.inquiry_reference = inquiry_reference;
+        this.inquiry_date = inquiry_date;
+        this.inquiry_status = inquiry_status;
+        this.inquiry_type = inquiry_type;
+        this.username = username;
+        this.remarks = remarks;
+        this.order_no = order_no;
+        this.order_date = order_date;
+        this.reason = reason;
+        this.additional_remarks = additional_remarks;
+        this.evidence = evidence;
+    }
+
+    public Inquiry(String inquiry_reference, String inquiry_date, String inquiry_status, String inquiry_type, String username, String remarks, String order_no, String order_date, String reason, String additional_remarks, String evidence) {
+        this.inquiry_reference = inquiry_reference;
+        this.inquiry_date = inquiry_date;
+        this.inquiry_status = inquiry_status;
+        this.inquiry_type = inquiry_type;
+        this.username = username;
+        this.remarks = remarks;
+        this.order_no = order_no;
+        this.order_date = order_date;
+        this.reason = reason;
+        this.additional_remarks = additional_remarks;
         this.evidence = evidence;
     }
 
@@ -148,12 +219,12 @@ public class Inquiry {
         this.reason = reason;
     }
 
-    public String getAddional_remarks() {
-        return addional_remarks;
+    public String getAdditional_remarks() {
+        return additional_remarks;
     }
 
-    public void setAddional_remarks(String addional_remarks) {
-        this.addional_remarks = addional_remarks;
+    public void setAdditional_remarks(String addional_remarks) {
+        this.additional_remarks = addional_remarks;
     }
 
     public String getEvidence() {
@@ -170,6 +241,22 @@ public class Inquiry {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public String getCompletion_date() {
+        return completion_date;
+    }
+
+    public void setCompletion_date(String completion_date) {
+        this.completion_date = completion_date;
+    }
+
+    public String getCustomer_support_id() {
+        return customer_support_id;
+    }
+
+    public void setCustomer_support_id(String customer_support_id) {
+        this.customer_support_id = customer_support_id;
     }
 
 
