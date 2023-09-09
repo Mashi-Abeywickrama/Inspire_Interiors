@@ -1,4 +1,5 @@
-import React from 'react';
+// import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, InputGroup, Nav, Navbar } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 import Tab from 'react-bootstrap/Tab';
@@ -6,49 +7,88 @@ import Tabs from 'react-bootstrap/Tabs';
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 import { Link } from 'react-router-dom';
 
-
+import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import './../../styles/customer/myOrders.css';
 import './../../styles/admin/table.css';
 
 
+
 const Order = () => {
+
+  const apiBaseURL = 'http://localhost:8080';
+
+  const [orderData, setOrderData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseURL,
+    timeout: 5000,
+  });
+
+  const fetchOrderData = async () => {
+    try {
+      const response = await axios.get(apiBaseURL + '/getorder');
+      const orderData = response.data;
+      setOrderData(orderData); // Update the state with fetched user data
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching order data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchOrderData();
+  }, []);
+
   const data = {
     columns: [
       {
-        label: "PRODUCT/DESIGN",
-        field: "office",
+        label: "REF_NO",
+        field: "ref_no",
         sort: "asc",
         width: 150,
       },
       {
-        label: "VENDOR/DESIGNER",
-        field: "position",
+        label: "ORDERED_DATE",
+        field: "date",
         sort: "asc",
-        width: 270,
+        width: 150,
       },
       {
-        label: "QUANTITY",
-        field: "QTY",
-        sort: "asc",
-        width: 200,
-      },
-      {
-        label: "COMMISSION",
-        field: "salary",
-        sort: "asc",
-        width: 100,
-      },
-      {
-        label: "REFERENCE NO",
-        field: "number",
+        label: "PRODUCT/DESIGN",
+        field: "product",
         sort: "asc",
         width: 150,
       },
       {
         label: "CUSTOMER",
-        field: "name",
+        field: "customer",
+        sort: "asc",
+        width: 270,
+      },
+      {
+        label: "VENDOR/DESIGNER",
+        field: "designer",
+        sort: "asc",
+        width: 270,
+      },
+      {
+        label: "QTY",
+        field: "qty",
+        sort: "asc",
+        width: 200,
+      },
+      {
+        label: "PRICE",
+        field: "price",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "COMMISSION",
+        field: "commission",
         sort: "asc",
         width: 100,
       },
@@ -65,198 +105,26 @@ const Order = () => {
         width: 100,
       },
     ],
-    rows: [
-      {
-        office: "Chair",
-        position: "Vendor",
-        QTY: "8",
-        salary: "6100",
-        number: "11221",
-        name: "Ronaldo",
-        status: (
-          <div className="completed d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Completed</p>
-          </div>
-        ),
-        action: 
+
+    rows: orderData.map((order) => ({
+      ref_no: order.ref_no,
+      date: order.date,
+      product:order.product||order.design,
+      customer: order.customer,
+      designer: order.designer||order.vendor,
+      qty:order.qty,
+      price:order.price,
+      commission:order.commission,
+      status:order.status,
+      action: 
           <Link to="/admin/orders/invoice"><div className="d-flex gap-2 align-items-center text-dark">
-            <p className="m-0 ">Send invoice</p> <Icon.ArrowRight />
+            <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
           </div></Link>
-        ,
-      },
-      {
-        office: "Chair",
-        position: "Vendor",
-        QTY: "8",
-        salary: "6100",
-        number: "11221",
-        name: "Ronaldo",
-        status: (
-          <div className="pending d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Pending</p>
-          </div>
-        ),
-        action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
-          </div>
-        ),
-      },
-      {
-        office: "Chair",
-        position: "Vendor",
-        QTY: "8",
-        salary: "6100",
-        number: "11221",
-        name: "Ronaldo",
-        status: (
-          <div className="completed d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Completed</p>
-          </div>
-        ),
-        action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
-          </div>
-        ),
-      },
-      {
-        office: "Chair",
-        position: "Vendor",
-        QTY: "8",
-        salary: "6100",
-        number: "11221",
-        name: "Ronaldo",
-        status: (
-          <div className="pending d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Pending</p>
-          </div>
-        ),
-        action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
-          </div>
-        ),
-      },
-      {
-        office: "Chair",
-        position: "Vendor",
-        QTY: "8",
-        salary: "6100",
-        number: "11221",
-        name: "Ronaldo",
-        status: (
-          <div className="completed d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Completed</p>
-          </div>
-        ),
-        action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
-          </div>
-        ),
-      },
-      {
-        office: "Chair",
-        position: "Vendor",
-        Qty: "8",
-        salary: "6100",
-        number: "11221",
-        name: "Ronaldo",
-        status: (
-          <div className="completed d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Completed</p>
-          </div>
-        ),
-        action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
-          </div>
-        ),
-      },
-      {
-        office: "Chair",
-        position: "Vendor",
-        QTY: "8",
-        salary: "6100",
-        number: "11221",
-        name: "Ronaldo",
-        status: (
-          <div className="completed d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Completed</p>
-          </div>
-        ),
-        action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
-          </div>
-        ),
-      },
-      {
-        office: "Chair",
-        position: "Vendor",
-        QTY: "8",
-        salary: "6100",
-        number: "11221",
-        name: "Ronaldo",
-        status: (
-          <div className="completed d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Completed</p>
-          </div>
-        ),
-        action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
-          </div>
-        ),
-      },
-      {
-        office: "Chair",
-        position: "Vendor",
-        QTY: "8",
-        salary: "6100",
-        number: "11221",
-        name: "Ronaldo",
-        status: (
-          <div className="completed d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Completed</p>
-          </div>
-        ),
-        action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">Send Invoice</p> <Icon.ArrowRight />
-          </div>
-        ),
-      },
-      {
-        office: "Chair",
-        position: "Vendor",
-        QTY: "8",
-        salary: "6100",
-        number: "11221",
-        name: "Ronaldo",
-        status: (
-          <div className="completed d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Completed</p>
-          </div>
-        ),
-        action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">Send invoice</p> <Icon.ArrowRight />
-          </div>
-        ),
-      },
-    ],
+      
+      
+      // other fields...
+    })),
+   
   };
 
   return (
