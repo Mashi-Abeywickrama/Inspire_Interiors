@@ -31,7 +31,7 @@ const Order = () => {
     try {
       const response = await axios.get(apiBaseURL + '/getorder');
       const orderData = response.data;
-      setOrderData(orderData); // Update the state with fetched user data
+      setOrderData(orderData); 
       setLoading(false);
     } catch (error) {
       console.error('Error fetching order data:', error);
@@ -112,7 +112,7 @@ const Order = () => {
       product:order.product||order.design,
       customer: order.customer,
       designer: order.designer||order.vendor,
-      qty:order.qty,
+      qty:order.quantity,
       price:order.price,
       commission:order.commission,
       status:order.status,
