@@ -10,11 +10,14 @@ import org.springframework.stereotype.Service;
 public class VendorService{
 
     @Autowired
-    private VendorRepository vendorRepository;
+    private static VendorRepository vendorRepository;
+
+    public static Vendor getVendor(Object vendorId) {
+        return vendorRepository.findById((long) vendorId).orElse(null);
+    }
 
     public Vendor createVendor(int vendor_id, String lane_no , String city , String district, String province) {
         Vendor vendor = new Vendor(vendor_id,lane_no ,city ,district,province);
         return vendorRepository.save(vendor);
     }
-
 }
