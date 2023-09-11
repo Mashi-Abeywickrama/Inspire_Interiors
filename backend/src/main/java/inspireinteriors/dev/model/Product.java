@@ -28,7 +28,6 @@ public class Product {
 
     @Column(name = "vendor_id")
     private int vendor_id;
-
     public Product() {
     }
 
