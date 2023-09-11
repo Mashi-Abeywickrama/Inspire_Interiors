@@ -1,9 +1,8 @@
-package inspireinteriors.dev.controller;
+package inspireinteriors.dev.controller.Designer;
 
 
-import inspireinteriors.dev.model.DesignerMyDesigns;
-import inspireinteriors.dev.repository.DesignerMyDesignsRepository;
-import inspireinteriors.dev.service.DesignerMyDesignService;
+import inspireinteriors.dev.model.DesignerModel.MyDesigns;
+import inspireinteriors.dev.service.Designer.DesignerMyDesignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,18 +24,18 @@ public class DesignerController {
 //get all designs
     @GetMapping("/mydesigns")
     @ResponseBody
-    public List<DesignerMyDesigns> getAllDesigns(){
+    public List<MyDesigns> getAllDesigns(){
         return designerMyDesignService.getAllDesigns();
     }
     @GetMapping("mydesigns/{id}")
-    public ResponseEntity<DesignerMyDesigns> getDesignById(@PathVariable(value = "id") int design_id){
-        DesignerMyDesigns design = designerMyDesignService.getDesignById(design_id);
+    public ResponseEntity<MyDesigns> getDesignById(@PathVariable(value = "id") int design_id){
+        MyDesigns design = designerMyDesignService.getDesignById(design_id);
         return ResponseEntity.ok().body(design);
     }
 
 
     @PostMapping("/adddesign")
-    public DesignerMyDesigns createDesign(@RequestBody DesignerMyDesigns design){
+    public MyDesigns createDesign(@RequestBody MyDesigns design){
         designerMyDesignService.addDesign(design);
         return (design);
 

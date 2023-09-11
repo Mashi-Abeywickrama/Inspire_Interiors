@@ -6,6 +6,9 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 
+import Adduser from './../../components/admin/adduserpopup.jsx';
+import Profile from './profile.jsx';
+
 import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -52,16 +55,16 @@ const User = () => {
   const data = {
     columns: [
       {
-        label: 'USERID',
-        field: 'userid',
+        label: 'USERNAME',
+        field: 'username',
         sort: 'asc',
         width: 150
       },
       {
-        label: 'DOB',
-        field: 'dob',
+        label: 'TYPE',
+        field: 'type',
         sort: 'asc',
-        width: 270
+        width: 50
       },
       {
         label: 'EMAIL',
@@ -70,17 +73,18 @@ const User = () => {
         width: 200
       },
       {
-        label: 'USERNAME',
-        field: 'username',
+        label: 'DOB',
+        field: 'dob',
         sort: 'asc',
-        width: 50
+        width: 270
       },
       {
-        label: 'TYPE',
-        field: 'type',
+        label: 'CONTACT_NO',
+        field: 'contact_no',
         sort: 'asc',
-        width: 50
+        width: 270
       },
+      
       {
         label: '  ',
         field: 'action',
@@ -90,11 +94,16 @@ const User = () => {
     ],
 
     rows: userData.map((user) => ({
-      userid: user.userid,
-      dob: user.dob,
-      email: user.email,
       username: user.username,
       type: user.type,
+      email: user.email,
+      dob: user.dob,
+      contact_no: user.contact_no,
+      action: 
+          <Link to="/admin/user/profile"><div className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">View More</p> <Icon.ArrowRight />
+          </div></Link>
+      
       
       // other fields...
     })),
@@ -116,7 +125,8 @@ const User = () => {
             <div className='text-secondary '> <Icon.ChevronRight size={20} /> </div>
             <div className="text-secondary fs-5"> All</div>
             </div>
-           <button class='px-2 py-1 fs-6 ' style={{backgroundColor:"#023047"}}>+ Add New</button>
+           {/* <button class='px-2 py-1 fs-6 ' style={{backgroundColor:"#023047"}}>+ Add New</button> */}
+           <Adduser/>
           </div>
 
           <MDBDataTableV5 responsive
