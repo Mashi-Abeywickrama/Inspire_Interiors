@@ -123,11 +123,13 @@ public class UserController {
     public User addValues(@RequestBody User adduser)
     {
         return this.userService.addUser(adduser);
-
     }
 
-    // @GetMapping("/profile")
-    // public ResponseEntity<String> getProfile(HttpSession session) throws JSONException {
+    @PutMapping("/updateuser/{userid}")
+    public User updateUser(@PathVariable ("userid") int userid, @RequestBody User user)
+    {
+        return this.userService.updateUser(userid,user);
+    }
 
     @PostMapping("/profile")
     public ResponseEntity<String> getProfile(@RequestBody UserIDRequest userIDRequest,HttpSession session) throws JSONException {
