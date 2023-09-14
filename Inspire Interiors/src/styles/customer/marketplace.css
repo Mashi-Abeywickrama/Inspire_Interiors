@@ -38,6 +38,11 @@
     min-height: 200px;
 }
 
+.category-view .carousel-control-next,
+.category-view .carousel-control-prev{
+    display: none;    
+}
+
 @media only screen and (max-width: 630px) {
 .max-width {
     /* max-width:min-content; */
