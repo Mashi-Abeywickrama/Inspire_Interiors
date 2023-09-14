@@ -1,11 +1,11 @@
-package inspireinteriors.dev.model;
+package inspireinteriors.dev.model.DesignerModel;
 
 
 import jakarta.persistence.*;
 
-@Table(name = "DesignerMyDesigns")
+@Table(name = "MyDesigns")
 @Entity
-public class DesignerMyDesigns {
+public class MyDesigns {
    @Id
    @GeneratedValue
     @Column(name = "Designs_id")
@@ -28,7 +28,7 @@ public class DesignerMyDesigns {
    //constructors
 
 
-    public DesignerMyDesigns(int design_id, int designer_id, String name, String description, String image) {
+    public MyDesigns(int design_id, int designer_id, String name, String description, String image) {
         this.design_id = design_id;
         this.designer_id = designer_id;
         this.name = name;
@@ -36,14 +36,14 @@ public class DesignerMyDesigns {
         this.image = image;
     }
 
-    public DesignerMyDesigns() {
+    public MyDesigns() {
 
     }
 
-    public DesignerMyDesigns(String name, String description, String image) {
+    public MyDesigns(String name, String description, String image) {
     }
 
-    public DesignerMyDesigns(int designer_id, String name, String description, String image) {
+    public MyDesigns(int designer_id, String name, String description, String image) {
     }
 
     @Override

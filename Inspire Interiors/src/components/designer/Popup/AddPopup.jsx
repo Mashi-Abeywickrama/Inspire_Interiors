@@ -1,8 +1,37 @@
+import React, { useState } from "react";
+import axios from "axios";
+
 import "./popup.css";
 
-function AddPopup({ SetOpen }) {
-  const closePopup = () => {
-    SetOpen(false);
+function AddPopup() {
+  // const closePopup = () => {
+  //   SetOpen(false);
+  // };
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    designer_id: 2,
+    image: "ssss",
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/designer/adddesign",
+        formData
+      );
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
   return (
     <div>
@@ -20,7 +49,7 @@ function AddPopup({ SetOpen }) {
           <br></br>
           <br></br>
 
-          <form className="row g-3">
+          <form className="row g-3" onSubmit={handleSubmit}>
             <br></br>
             <div className="col-12">
               <br></br>
@@ -32,6 +61,9 @@ function AddPopup({ SetOpen }) {
                 placeholder="Enter Design Name"
                 className="form-control"
                 id="designName"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
               ></input>
             </div>
             <div className="col-12">
@@ -44,6 +76,9 @@ function AddPopup({ SetOpen }) {
                 id="descripition"
                 placeholder="Descripition About the design"
                 style={{ height: "80px" }}
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
               ></input>
             </div>
             <div className="d-flex col-12 column-gap-3 justify-content-end">
@@ -57,10 +92,11 @@ function AddPopup({ SetOpen }) {
               <button
                 className="btn text-light"
                 style={{ background: "#035C94" }}
+                type="submit"
               >
-                <a href="http://localhost:8000" className="text-light">
-                  Create Now
-                </a>
+                {/* <a href="http://localhost:8000" className="text-light"> */}
+                Create Now
+                {/* </a> */}
               </button>
             </div>
           </form>
