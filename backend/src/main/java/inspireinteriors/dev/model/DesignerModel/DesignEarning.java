@@ -1,7 +1,7 @@
 package inspireinteriors.dev.model.DesignerModel;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Table(name = "DesignEarning")
