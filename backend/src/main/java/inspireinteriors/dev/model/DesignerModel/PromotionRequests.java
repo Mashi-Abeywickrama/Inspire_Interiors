@@ -36,6 +36,10 @@ public class PromotionRequests {
         Negotiation = negotiation;
     }
 
+    public PromotionRequests() {
+
+    }
+
     //Getters and Setters
 
     public int getPromotionRequestID() {

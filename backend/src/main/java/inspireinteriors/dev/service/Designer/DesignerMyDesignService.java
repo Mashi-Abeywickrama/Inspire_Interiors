@@ -22,7 +22,7 @@ public class DesignerMyDesignService {
 
     @Autowired
     //Promotion requests repository
-    private DesignerPromotionRequestsRepository designerPromotionRequestsRepositoryRepository;
+    private DesignerPromotionRequestsRepository designerPromotionRequestsRepository;
 
     @Autowired
     //Design Earnings repository
@@ -55,26 +55,46 @@ public class DesignerMyDesignService {
         return designerMyDesignsRepository.findById((long) design_id).orElse(null);
     }
 
+    public List<MyDesigns> getDesignByDesignerId(int designer_id) {
+        return designerMyDesignsRepository.findMyDesignsByDesign_id(designer_id);
+    }
+
     //Customer Requests Services
 
-    public CustomerRequests getCustomerRequestsByDesignerId(int designer_id) {
+    public CustomerRequests getCustomerRequestsById(int designer_id) {
         return designerCustomerRequestsRepository.findById((long) designer_id).orElse(null);
+    }
+
+
+    public List<CustomerRequests> getCustomerRequestsByDesignerId(int designer_id) {
+        return designerCustomerRequestsRepository.findCustomerRequestsByDesigner_id(designer_id);
     }
 
     //Promotion Requests Services
 
-    public PromotionRequests getPromotionRequestsByDesignerId(int designer_id) {
-        return designerPromotionRequestsRepositoryRepository.findById((long) designer_id).orElse(null);
+    public PromotionRequests getPromotionRequestsById(int designer_id) {
+        return designerPromotionRequestsRepository.findById((long) designer_id).orElse(null);
+    }
+    public List<PromotionRequests> getPromotionRequestsByDesignerId(int designer_id) {
+        return designerPromotionRequestsRepository.findPromotionRequestsByDesignerID(designer_id);
     }
 
     //Design Earnings Services
 
-    public DesignEarning getDesignEarningsByDesignerId(int designer_id) {
+    public DesignEarning getDesignEarningsById(int designer_id) {
         return designerDesignEarningsRepository.findById((long) designer_id).orElse(null);
     }
 
+    public List<DesignEarning> getDesignEarningsByDesignerId(int designer_id) {
+        return designerDesignEarningsRepository.findDesignEarningByDesignerID(designer_id);
+    }
+
     //Promotion Earning services
-    public PromotionEarnings getPromotionEarningsByDesignerId(int designer_id) {
+    public PromotionEarnings getPromotionEarningsById(int designer_id) {
         return designerPromotionEarningsRepository.findById((long) designer_id).orElse(null);
+    }
+
+    public List<PromotionEarnings> getPromotionEarningsByDesignerId(int designer_id) {
+        return designerPromotionEarningsRepository.findPromotionEarningsByDesignerID(designer_id);
     }
 }

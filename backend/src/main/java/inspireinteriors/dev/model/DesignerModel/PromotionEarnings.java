@@ -36,6 +36,10 @@ public class PromotionEarnings {
         Status = status;
     }
 
+    public PromotionEarnings() {
+
+    }
+
     //Getters and Setters
 
     public int getPromotionEarningsID() {

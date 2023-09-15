@@ -35,6 +35,10 @@ public class DesignEarning {
         Status = status;
     }
 
+    public DesignEarning() {
+
+    }
+
     //Getters and Setters
 
     public int getDesignEarningID() {
