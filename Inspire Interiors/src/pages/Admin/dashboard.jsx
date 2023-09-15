@@ -136,6 +136,14 @@ const AdminDashboard = () => {
                         </div>
                       </div>
                       <div className="row1">
+                        <div className=" d-flex flex-row p-1 gap-3 justify-content-between">
+                          <img className="img" src={Img1} />
+                          <span> flotsom</span>
+                          <span> 5h ago </span>
+                          <span> 60k</span>
+                        </div>
+                      </div>
+                      <div className="row1">
                         <div className="d-flex flex-row p-1 gap-3 justify-content-between">
                           <img className="img" src={Img1} />
                           <span> flotsom</span>
@@ -153,6 +161,14 @@ const AdminDashboard = () => {
                       <span className="topic d-flex fs-5 p-1">Vendor</span>
                       <div >
                       <div className="row2 my-2 ">
+                        <div className="d-flex flex-row p-1 gap-1 justify-content-between">
+                          <img className="img" src={Img1} />
+                          <span> flotsom</span>
+                          <span> 5h ago </span>
+                          <span> 60k</span>
+                        </div>
+                      </div>
+                      <div className="row2 my-2">
                         <div className="d-flex flex-row p-1 gap-1 justify-content-between">
                           <img className="img" src={Img1} />
                           <span> flotsom</span>

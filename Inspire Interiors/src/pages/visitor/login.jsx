@@ -34,7 +34,7 @@ const Login = () => {
     // For example, you might want to set headers for authorization or other request-specific headers
   });
 
-   const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); // Initialize useNavigate
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { setSessionData } = useSession(); // Access the setSessionData function from context
@@ -52,6 +52,7 @@ const Login = () => {
       if (response.status === 200) {
         setSessionData({
           loggedIn: true,
+          username: response.data.username,
           userType: response.data.userType,
           userid: response.data.userId, // Make sure to pass the actual userId
         });
@@ -65,7 +66,7 @@ const Login = () => {
         } else if (userType === 'customer') {
           setAlert('Successful Login!', 'success');
           setTimeout(() => {
-            navigate('/customer/dashboard');
+            location.href = '/customer/dashboard';
         }, 1000);
         }  else if (userType === 'vendor') {
           // console.log(response.data);

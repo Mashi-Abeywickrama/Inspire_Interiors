@@ -9,6 +9,9 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   useLocation,
+  BrowserRouter,
+  Routes,
+  Router
 } from "react-router-dom";
 
 import { useSession } from "./constants/SessionContext";
@@ -27,17 +30,19 @@ import OnlyHeaderRootlayout from "./layouts/onlyHeaderRootlayout";
 
 // Admin
 
-import Report from "./pages/Admin/report";
-import ADashboardlayout from "./layouts/Admin/admindasahboardLayout";
+import Report from './pages/Admin/report';
+import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
+import Dashboard from './pages/Admin/dashboard';
+import User from './pages/Admin/user';
+import Commission from './pages/Admin/commission';
+import Orders from './pages/Admin/orders';
+import Salary from './pages/Admin/salary';
+import Profile from './pages/Admin/profile';
+import Invoice from './pages/Admin/invoice';
+import Cview from './pages/Admin/commissionView';
+import ADSetting from './pages/Admin/settings';
 import AdminDashboard from "./pages/Admin/dashboard";
-import User from "./pages/Admin/user";
-import Commission from "./pages/Admin/commission";
-import Orders from "./pages/Admin/orders";
-import Salary from "./pages/Admin/salary";
-import Profile from "./pages/Admin/profile";
-import Invoice from "./pages/Admin/invoice";
-import Cview from "./pages/Admin/commissionView";
-import ADSetting from "./pages/Admin/settings";
+
 
 // Customer
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
@@ -155,7 +160,8 @@ const routes = (
         <Route path="marketplace/viewproduct" element={<ViewProduct />}></Route>
         <Route path="designs/viewdesigner" element={<ViewDesigner />} />
         <Route path="marketplace" element={<MarketPlace />} />
-        <Route path="marketplace/categoryview" element={<CategoryView />} />
+        {/* <Route path="marketplace/categoryview" element={<CategoryView />} /> */}
+        <Route path="marketplace/categoryview/:roomType" element={<CategoryView />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout/address" element={<Address />} />
         <Route path="checkout/payment" element={<PaymentMethod />} />
@@ -250,11 +256,7 @@ const routes = (
         errorElement={<Error />}
       >
         <Route index element={<DesignerDashboard />} />
-        <Route
-          path="mydesigns"
-          element={<DesignerMyDesigns />}
-          loader={DesignLoader}
-        />
+        <Route path="mydesigns" element={<DesignerMyDesigns />} />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />
         <Route path="earnings" element={<DesignerEarn />} />
@@ -275,7 +277,7 @@ const App = () => {
   const currentURL = window.location.href;
   const sessionItems = useSession();
   const splitURL = currentURL.split("/");
-  if (splitURL[3] === "customer" || splitURL[3] === "vendor" || splitURL[3] === "customersupport" || splitURL[3] === "designer" || splitURL[3] === "Admin") {
+  if (splitURL[3] === "customer" || splitURL[3] === "vendor" || splitURL[3] === "support" || splitURL[3] === "designer" || splitURL[3] === "admin") {
     
     console.log(sessionItems.sessionData);
     if (sessionItems.sessionData === null || sessionItems.sessionData.userType === undefined ) {

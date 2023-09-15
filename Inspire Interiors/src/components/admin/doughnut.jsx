@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 const DonutChart = () => {
   const data = [
@@ -11,24 +11,34 @@ const DonutChart = () => {
 
   const COLORS = ['#035C94', '#C4C4C4', '#FFBB28'];
 
+  const cx = '50%';
+  const cy = '50%';
+  const innerRadius = 50;
+  const outerRadius = 70;
+
+  const label = (
+    <text x={cx} y={cy} dy={8} textAnchor="middle" fill="#035C94">
+      20%
+    </text>
+  );
+
   return (
-    <ResponsiveContainer  height={150}>
+    <ResponsiveContainer height={150}>
       <PieChart>
         <Pie
           data={data}
           dataKey="value"
-          cx="50%"
-          cy="50%"
-          innerRadius={50} // Adjust the inner radius for the donut effect
-          outerRadius={70}
+          cx={cx}
+          cy={cy}
+          innerRadius={innerRadius}
+          outerRadius={outerRadius}
           fill="#8884d8"
-          // paddingAngle={5} // Space between sectors
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
-        {/* <Legend layout="horizontal" align="center" verticalAlign="bottom" /> */}
+        {label}
       </PieChart>
     </ResponsiveContainer>
   );

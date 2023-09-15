@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import SidebarDashboard from "../../components/customer/sidebar";
-import Navigationbar from "../../components/navigationbar";
+import Navigationbar from "../../components/customer/customerNav";
 
 function CDashboardlayout() {
   return (

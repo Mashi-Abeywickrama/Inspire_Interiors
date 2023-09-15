@@ -17,6 +17,9 @@ public class Product {
     @Column(name = "type")
     private String type;
 
+    @Column (name = "room_type")
+    private String roomType;
+
     @Column(name = "product_name")
     private String product_name;
 
@@ -32,20 +35,182 @@ public class Product {
     public Product() {
     }
 
-    public Product(int product_id, String type, String product_name, String entry_price, int vendor_id) {
+    public Product(int product_id, String type, String roomType, String product_name, String entry_price, String productImg, int vendor_id) {
         this.product_id = product_id;
         this.type = type;
+        this.roomType = roomType;
         this.product_name = product_name;
         this.entry_price = entry_price;
+        this.productImg = productImg;
         this.vendor_id = vendor_id;
-
     }
 
-    public Product(String type, String product_name, String entry_price, int vendor_id) {
+    public Product(String type, String roomType, String product_name, String entry_price, String productImg, int vendor_id) {
         this.type = type;
+        this.roomType = roomType;
         this.product_name = product_name;
         this.entry_price = entry_price;
+        this.productImg = productImg;
         this.vendor_id = vendor_id;
+    }
+
+    public Product(String type, String roomType, String product_name, String entry_price, String productImg) {
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.entry_price = entry_price;
+        this.productImg = productImg;
+    }
+
+    public Product(String type, String roomType, String product_name, String entry_price) {
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.entry_price = entry_price;
+    }
+
+    public Product(String type, String roomType, String product_name) {
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+    }
+
+    public Product(String type, String roomType) {
+        this.type = type;
+        this.roomType = roomType;
+    }
+
+    public Product(String type) {
+        this.type = type;
+    }
+
+    public Product(int product_id) {
+        this.product_id = product_id;
+    }
+
+    public Product(int product_id, String type) {
+        this.product_id = product_id;
+        this.type = type;
+    }
+
+    public Product(int product_id, String type, String roomType) {
+        this.product_id = product_id;
+        this.type = type;
+        this.roomType = roomType;
+    }
+
+    public Product(int product_id, String type, String roomType, String product_name) {
+        this.product_id = product_id;
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+    }
+
+    public Product(int product_id, String type, String roomType, String product_name, String entry_price) {
+        this.product_id = product_id;
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.entry_price = entry_price;
+    }
+
+    public Product(int product_id, String type, String roomType, String product_name, String entry_price, String productImg) {
+        this.product_id = product_id;
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.entry_price = entry_price;
+        this.productImg = productImg;
+    }
+
+    public Product(int product_id, String type, String roomType, String product_name, String entry_price, String productImg, int vendor_id, List<Variation> variations) {
+        this.product_id = product_id;
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.entry_price = entry_price;
+        this.productImg = productImg;
+        this.vendor_id = vendor_id;
+        this.variations = variations;
+    }
+
+    public Product(String type, String roomType, String product_name, String entry_price, String productImg, int vendor_id, List<Variation> variations) {
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.entry_price = entry_price;
+        this.productImg = productImg;
+        this.vendor_id = vendor_id;
+        this.variations = variations;
+    }
+
+    public Product(String type, String roomType, String product_name, String entry_price, String productImg, List<Variation> variations) {
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.entry_price = entry_price;
+        this.productImg = productImg;
+        this.variations = variations;
+    }
+
+    public Product(String type, String roomType, String product_name, String entry_price, List<Variation> variations) {
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.entry_price = entry_price;
+        this.variations = variations;
+    }
+
+    public Product(String type, String roomType, String product_name, List<Variation> variations) {
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.variations = variations;
+    }
+
+    public Product(String type, String roomType, List<Variation> variations) {
+        this.type = type;
+        this.roomType = roomType;
+        this.variations = variations;
+    }
+
+    public Product(String type, List<Variation> variations) {
+        this.type = type;
+        this.variations = variations;
+    }
+
+    public Product(int product_id, String type, String roomType, List<Variation> variations) {
+        this.product_id = product_id;
+        this.type = type;
+        this.roomType = roomType;
+        this.variations = variations;
+    }
+
+    public Product(int product_id, String type, String roomType, String product_name, List<Variation> variations) {
+        this.product_id = product_id;
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.variations = variations;
+    }
+
+    public Product(int product_id, String type, String roomType, String product_name, String entry_price, List<Variation> variations) {
+        this.product_id = product_id;
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.entry_price = entry_price;
+        this.variations = variations;
+    }
+
+    public Product(int product_id, String type, String roomType, String product_name, String entry_price, String productImg, List<Variation> variations) {
+        this.product_id = product_id;
+        this.type = type;
+        this.roomType = roomType;
+        this.product_name = product_name;
+        this.entry_price = entry_price;
+        this.productImg = productImg;
+        this.variations = variations;
     }
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -67,6 +232,16 @@ public class Product {
     public String getType() {
         return type;
     }
+
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+
 
     public void setType(String type) {
         this.type = type;
