@@ -118,6 +118,12 @@ public class UserController {
     @GetMapping("/getuser")
     public List<User> getUser() {return this.userService.getUsers();}
 
+    @GetMapping("/getuser/{userid}")
+    public User getUserById(@PathVariable ("userid") int userid)
+    {
+        return this.userService.getUserById(userid);
+    }
+
 
     @PostMapping("/adduser")
     public User addValues(@RequestBody User adduser)
@@ -125,7 +131,7 @@ public class UserController {
         return this.userService.addUser(adduser);
     }
 
-    @PutMapping("/updateuser/{userid}")
+    @PutMapping("/getuser/{userid}")
     public User updateUser(@PathVariable ("userid") int userid, @RequestBody User user)
     {
         return this.userService.updateUser(userid,user);
