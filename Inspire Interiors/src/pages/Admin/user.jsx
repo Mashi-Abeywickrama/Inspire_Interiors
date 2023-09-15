@@ -97,7 +97,7 @@ const User = () => {
       username: user.username,
       type: user.type,
       email: user.email,
-      dob: user.dob,
+      dob: new Date(user.dob).toLocaleDateString(),
       contact_no: user.contact_no,
       action: 
           <Link to={`/admin/user/profile/${user.userid}`} className="d-flex gap-2 align-items-center text-dark">

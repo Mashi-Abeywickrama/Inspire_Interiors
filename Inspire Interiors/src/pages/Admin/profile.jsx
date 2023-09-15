@@ -39,6 +39,8 @@ export default function Profile() {
 
 const getUserbyId= async e =>{
   const userInfo = await axios.get(apiBaseURL);
+   userInfo.data.dob = new Date(userInfo.data.dob).toLocaleDateString();
+   
   setUserData(userInfo.data);       
 }
 const updateData=(data) =>{
