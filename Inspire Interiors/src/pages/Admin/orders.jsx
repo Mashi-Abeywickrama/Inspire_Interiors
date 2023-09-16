@@ -117,7 +117,7 @@ const Order = () => {
       commission:order.commission,
       status:order.status,
       action: 
-          <Link to="/admin/orders/invoice"><div className="d-flex gap-2 align-items-center text-dark">
+          <Link to={`/admin/orders/invoice/${order.orderid}`}><div className="d-flex gap-2 align-items-center text-dark">
             <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
           </div></Link>
       

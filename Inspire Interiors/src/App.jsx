@@ -178,7 +178,7 @@ const routes = (
         <Route path="commission" element={<Commission />} />
         <Route path="orders" element={<Orders />} />
         <Route path="salary" element={<Salary />} />
-        <Route path="orders/invoice" element={<Invoice />} />
+        <Route path="orders/invoice/:orderid" element={<Invoice />} />
         <Route path="user/profile/:userid" element={<Profile />} />
         <Route path="commision/commissionView" element={<Cview />} />
         <Route path="settings" element={<ADSetting />} />
