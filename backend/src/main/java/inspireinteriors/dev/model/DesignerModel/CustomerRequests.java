@@ -24,9 +24,12 @@ public class CustomerRequests {
     private String budget;
     private String note;
 
+    private String width;
+    private String length;
+
     //Constructors
 
-    public CustomerRequests(int request_id, int customer_id, int designer_id, int status, String description, String images, String dimensions, String budget, String note) {
+    public CustomerRequests(int request_id, int customer_id, int designer_id, int status, String description, String images, String dimensions, String budget, String note, String width, String length) {
         this.request_id = request_id;
         this.customer_id = customer_id;
         this.designer_id = designer_id;
@@ -36,6 +39,8 @@ public class CustomerRequests {
         this.dimensions = dimensions;
         this.budget = budget;
         this.note = note;
+        this.width= width;
+        this.length = length;
     }
 
     public CustomerRequests() {
@@ -114,6 +119,19 @@ public class CustomerRequests {
         this.note = note;
     }
 
+    public String getWidth() {
+        return width;
+    }
+    public void setWidth(String width) {
+        this.width = width;
+    }
+    public String getLength() {
+        return length;
+    }
+    public void setLength(String length) {
+        this.length = length;
+    }
+
     //ToString
 
     @Override
@@ -128,6 +146,8 @@ public class CustomerRequests {
                 ", dimensions='" + dimensions + '\'' +
                 ", budget='" + budget + '\'' +
                 ", note='" + note + '\'' +
+                ", width='" + width + '\'' +
+                ", length='" + length + '\'' +
                 '}';
     }
 }

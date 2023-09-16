@@ -59,11 +59,20 @@ public class DesignerController {
     }
 
     //By Designer ID
-    @GetMapping("/customerrequests/d/{id}")
+    @GetMapping("/customerrequests/d/{id}/")
     public ResponseEntity<List<CustomerRequests>> getCusomerRequestsbyDesignerId(@PathVariable(value = "id") int designer_id){
         List<CustomerRequests> customerRequests = designerMyDesignService.getCustomerRequestsByDesignerId(designer_id);
         return ResponseEntity.ok(customerRequests);
     }
+
+    //Update Customer Request by id
+
+    @PutMapping("/customerrequests/u/{id}/setstatus")
+    public ResponseEntity<CustomerRequests> updateStatus(@PathVariable(value = "id") int request_id, @RequestParam(value = "newStatus") String status){
+        CustomerRequests customerRequestsUpdate = designerMyDesignService.updateStatus(request_id, status);
+        return ResponseEntity.ok(customerRequestsUpdate);
+    }
+
 
     //promotion requests endpoints
 

@@ -70,6 +70,12 @@ public class DesignerMyDesignService {
         return designerCustomerRequestsRepository.findCustomerRequestsByDesigner_id(designer_id);
     }
 
+    public CustomerRequests updateStatus(int request_id, String status) {
+        CustomerRequests existingRequest = designerCustomerRequestsRepository.findById((long) request_id).orElse(null);
+        existingRequest.setStatus(Integer.parseInt(status));
+        return designerCustomerRequestsRepository.save(existingRequest);
+    }
+
     //Promotion Requests Services
 
     public PromotionRequests getPromotionRequestsById(int designer_id) {

@@ -12,6 +12,9 @@ import java.util.List;
 
 public interface DesignerCustomerRequestsRepository extends JpaRepository<CustomerRequests, Long> {
 
+
+    //status 0 - Accept or Reject, 1 - Accept, 2 - Reject
+
     @Query(value = "SELECT * FROM customer_requests WHERE designer_id = :dId", nativeQuery = true)
     List<CustomerRequests> findCustomerRequestsByDesigner_id(@Param("dId") int designer_id);
 

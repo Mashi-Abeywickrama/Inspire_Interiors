@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Img1 from "../../assets/Designer/Mydesign.png";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,10 +18,32 @@ import AddNewDesignPopup from "../../components/designer/Popup/AddNewDesignPopup
 
 import { useLoaderData } from "react-router-dom";
 import { DesignLoader } from "../../Loaders/Designer/MyDesignsLoader";
+import { useSession } from "../../constants/SessionContext";
 
 function DesignerMyDesigns() {
-  //Loader initiate
-  const MyDesigns = useLoaderData(DesignLoader);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  //get designer id from session
+  const session = useSession();
+  // console.log(session.sessionData.userid);
+  const id = session.sessionData.userid.toString();
+
+  //Fetch...
+  useEffect(() => {
+    const apiUrl = "http://localhost:8080/designer/mydesigns/d/" + id;
+    // Fetch data from the API
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        setData(response.data); // Set the fetched data to the state
+        setLoading(false); // Update loading state to false
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false); // Update loading state to false in case of an error
+      });
+  }, []);
 
   return (
     <div className="overview-container rounded-3 mb-4">
@@ -267,7 +290,7 @@ function DesignerMyDesigns() {
             </p>
           </div>
         </div>
-        {MyDesigns.map((design) => (
+        {data.map((design) => (
           <div class="card" style={{ width: "23%" }}>
             <img
               src={Img1}
