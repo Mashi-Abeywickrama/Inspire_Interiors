@@ -16,8 +16,9 @@ import { MDBDataTableV5, MDBTable } from "mdbreact";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { useSession } from "../../constants/SessionContext";
 
 const sentData = {
   columns: [
@@ -37,9 +38,11 @@ const sentData = {
     {
       product: (
         <div className="d-flex flex-row gap-4 align-items-center">
-          <img src={Arpico} style={{ width: '40%' }} />
+          <img src={Arpico} style={{ width: "40%" }} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Arpico</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
+              Arpico
+            </p>
             <p className="fs-6 fw-normal">Arm Chair</p>
           </div>
         </div>
@@ -57,9 +60,11 @@ const sentData = {
     {
       product: (
         <div className="d-flex flex-row gap-4 align-items-center">
-          <img src={Arpico} style={{ width: '40%' }} />
+          <img src={Arpico} style={{ width: "40%" }} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">De Sofa's</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
+              De Sofa's
+            </p>
             <p className="fs-6 fw-normal">Bed chair</p>
           </div>
         </div>
@@ -77,9 +82,11 @@ const sentData = {
     {
       product: (
         <div className="d-flex flex-row gap-4 align-items-center">
-          <img src={Arpico} style={{ width: '40%' }} />
+          <img src={Arpico} style={{ width: "40%" }} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Sihooil</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
+              Sihooil
+            </p>
             <p className="fs-6 fw-normal">Sofa</p>
           </div>
         </div>
@@ -97,9 +104,11 @@ const sentData = {
     {
       product: (
         <div className="d-flex flex-row gap-4 align-items-center">
-          <img src={Arpico} style={{ width: '40%' }} />
+          <img src={Arpico} style={{ width: "40%" }} />
           <div className="d-flex flex-column">
-            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">Arc Seat</p>
+            <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
+              Arc Seat
+            </p>
             <p className="fs-6 fw-normal">Ball Chair</p>
           </div>
         </div>
@@ -135,12 +144,11 @@ const receivedData = {
     {
       product: (
         <div className="d-flex flex-row gap-4 align-items-center">
-          <img src={Arpico} style={{ width: '50%' }} />
+          <img src={Arpico} style={{ width: "50%" }} />
           <div className="d-flex flex-column">
             <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
               David Avacado
             </p>
-            
           </div>
         </div>
       ),
@@ -161,12 +169,11 @@ const receivedData = {
     {
       product: (
         <div className="d-flex flex-row gap-4 align-items-center">
-          <img src={Arpico} style={{ width: '50%' }} />
+          <img src={Arpico} style={{ width: "50%" }} />
           <div className="d-flex flex-column">
             <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
               David Avacado
             </p>
-            
           </div>
         </div>
       ),
@@ -187,12 +194,11 @@ const receivedData = {
     {
       product: (
         <div className="d-flex flex-row gap-4 align-items-center">
-          <img src={Arpico} style={{ width: '50%' }} />
+          <img src={Arpico} style={{ width: "50%" }} />
           <div className="d-flex flex-column">
             <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
               David Avacado
             </p>
-            
           </div>
         </div>
       ),
@@ -213,12 +219,11 @@ const receivedData = {
     {
       product: (
         <div className="d-flex flex-row gap-4 align-items-center">
-          <img src={Arpico} style={{ width: '50%' }} />
+          <img src={Arpico} style={{ width: "50%" }} />
           <div className="d-flex flex-column">
             <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
               David Avacado
             </p>
-          
           </div>
         </div>
       ),
@@ -412,13 +417,12 @@ const DesignerPromotion = () => (
                             icon={faEye}
                             className="align-items-center"
                             style={{
-                              color: 'white',
-                              backgroundColor: '#035C94',
-                              padding: '8px',
-                              borderRadius: '5px',
+                              color: "white",
+                              backgroundColor: "#035C94",
+                              padding: "8px",
+                              borderRadius: "5px",
                             }}
                           />
-
                         </div>
                       </div>
                     </div>
@@ -448,13 +452,12 @@ const DesignerPromotion = () => (
                             icon={faEye}
                             className="align-items-center"
                             style={{
-                              color: 'white',
-                              backgroundColor: '#035C94',
-                              padding: '8px',
-                              borderRadius: '5px',
+                              color: "white",
+                              backgroundColor: "#035C94",
+                              padding: "8px",
+                              borderRadius: "5px",
                             }}
                           />
-
                         </div>
                       </div>
                     </div>
@@ -484,13 +487,121 @@ const DesignerPromotion = () => (
                             icon={faEye}
                             className="align-items-center"
                             style={{
-                              color: 'white',
-                              backgroundColor: '#035C94',
-                              padding: '8px',
-                              borderRadius: '5px',
+                              color: "white",
+                              backgroundColor: "#035C94",
+                              padding: "8px",
+                              borderRadius: "5px",
                             }}
                           />
-
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Carousel.Item>
+              <Carousel.Item className="carousel-img">
+                <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4">
+                  <div class="col">
+                    <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                      <img
+                        className="img-fluid"
+                        src={Arpico}
+                        class="card-img-top"
+                        alt="blacksofa"
+                      />
+                      <div class="card-body m-0 p-0 mt-3">
+                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                          <div className="d-flex flex-column">
+                            <p
+                              className="card-text m-0 fs-6 fw-bold Cabin-text"
+                              style={{ color: "#969696" }}
+                            >
+                              SOFA
+                            </p>
+                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">
+                              Landskrona
+                            </p>
+                          </div>
+                          <FontAwesomeIcon
+                            icon={faEye}
+                            className="align-items-center"
+                            style={{
+                              color: "white",
+                              backgroundColor: "#035C94",
+                              padding: "8px",
+                              borderRadius: "5px",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                      <img
+                        className="img-fluid"
+                        src={Arpico}
+                        class="card-img-top"
+                        alt="blacksofa"
+                      />
+                      <div class="card-body m-0 p-0 mt-3">
+                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                          <div className="d-flex flex-column">
+                            <p
+                              className="card-text m-0 fs-6 fw-bold Cabin-text"
+                              style={{ color: "#969696" }}
+                            >
+                              SOFA
+                            </p>
+                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">
+                              Landskrona
+                            </p>
+                          </div>
+                          <FontAwesomeIcon
+                            icon={faEye}
+                            className="align-items-center"
+                            style={{
+                              color: "white",
+                              backgroundColor: "#035C94",
+                              padding: "8px",
+                              borderRadius: "5px",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                      <img
+                        className="img-fluid"
+                        src={Arpico}
+                        class="card-img-top"
+                        alt="blacksofa"
+                      />
+                      <div class="card-body m-0 p-0 mt-3">
+                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                          <div className="d-flex flex-column">
+                            <p
+                              className="card-text m-0 fs-6 fw-bold Cabin-text"
+                              style={{ color: "#969696" }}
+                            >
+                              SOFA
+                            </p>
+                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">
+                              Landskrona
+                            </p>
+                          </div>
+                          <FontAwesomeIcon
+                            icon={faEye}
+                            className="align-items-center"
+                            style={{
+                              color: "white",
+                              backgroundColor: "#035C94",
+                              padding: "8px",
+                              borderRadius: "5px",
+                            }}
+                          />
                         </div>
                       </div>
                     </div>
@@ -524,13 +635,12 @@ const DesignerPromotion = () => (
                             icon={faEye}
                             className="align-items-center"
                             style={{
-                              color: 'white',
-                              backgroundColor: '#035C94',
-                              padding: '8px',
-                              borderRadius: '5px',
+                              color: "white",
+                              backgroundColor: "#035C94",
+                              padding: "8px",
+                              borderRadius: "5px",
                             }}
                           />
-
                         </div>
                       </div>
                     </div>
@@ -560,13 +670,12 @@ const DesignerPromotion = () => (
                             icon={faEye}
                             className="align-items-center"
                             style={{
-                              color: 'white',
-                              backgroundColor: '#035C94',
-                              padding: '8px',
-                              borderRadius: '5px',
+                              color: "white",
+                              backgroundColor: "#035C94",
+                              padding: "8px",
+                              borderRadius: "5px",
                             }}
                           />
-
                         </div>
                       </div>
                     </div>
@@ -595,130 +704,13 @@ const DesignerPromotion = () => (
                           <FontAwesomeIcon
                             icon={faEye}
                             className="align-items-center"
-
                             style={{
-                              color: 'white',
-                              backgroundColor: '#035C94',
-                              padding: '8px',
-                              borderRadius: '5px',
+                              color: "white",
+                              backgroundColor: "#035C94",
+                              padding: "8px",
+                              borderRadius: "5px",
                             }}
                           />
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item className="carousel-img">
-                <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4">
-                  <div class="col">
-                    <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                      <img
-                        className="img-fluid"
-                        src={Arpico}
-                        class="card-img-top"
-                        alt="blacksofa"
-                      />
-                      <div class="card-body m-0 p-0 mt-3">
-                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                          <div className="d-flex flex-column">
-                            <p
-                              className="card-text m-0 fs-6 fw-bold Cabin-text"
-                              style={{ color: "#969696" }}
-                            >
-                              SOFA
-                            </p>
-                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">
-                              Landskrona
-                            </p>
-                          </div>
-                          <FontAwesomeIcon
-                            icon={faEye}
-                            className="align-items-center"
-
-                            style={{
-                              color: 'white',
-                              backgroundColor: '#035C94',
-                              padding: '8px',
-                              borderRadius: '5px',
-                            }}
-                          />
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                      <img
-                        className="img-fluid"
-                        src={Arpico}
-                        class="card-img-top"
-                        alt="blacksofa"
-                      />
-                      <div class="card-body m-0 p-0 mt-3">
-                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                          <div className="d-flex flex-column">
-                            <p
-                              className="card-text m-0 fs-6 fw-bold Cabin-text"
-                              style={{ color: "#969696" }}
-                            >
-                              SOFA
-                            </p>
-                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">
-                              Landskrona
-                            </p>
-                          </div>
-                          <FontAwesomeIcon
-                            icon={faEye}
-                            className="align-items-center"
-
-                            style={{
-                              color: 'white',
-                              backgroundColor: '#035C94',
-                              padding: '8px',
-                              borderRadius: '5px',
-                            }}
-                          />
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                      <img
-                        className="img-fluid"
-                        src={Arpico}
-                        class="card-img-top"
-                        alt="blacksofa"
-                      />
-                      <div class="card-body m-0 p-0 mt-3">
-                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                          <div className="d-flex flex-column">
-                            <p
-                              className="card-text m-0 fs-6 fw-bold Cabin-text"
-                              style={{ color: "#969696" }}
-                            >
-                              SOFA
-                            </p>
-                            <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">
-                              Landskrona
-                            </p>
-                          </div>
-                          <FontAwesomeIcon
-                            icon={faEye}
-                            className="align-items-center"
-
-                            style={{
-                              color: 'white',
-                              backgroundColor: '#035C94',
-                              padding: '8px',
-                              borderRadius: '5px',
-                            }}
-                          />
-
                         </div>
                       </div>
                     </div>

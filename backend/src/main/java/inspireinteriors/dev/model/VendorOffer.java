@@ -2,7 +2,6 @@ package inspireinteriors.dev.model;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
 
 @Table(name = "vendor_offer")
 @Entity
@@ -50,7 +49,7 @@ public class VendorOffer {
 
     }
 
-    public VendorOffer(int offerid, String offeroverview, String offerdescription, int zerotothousand, int thousandtofivethousand, int fivethousandtotenthousand, int tenthousandtofiftythousand, int fiftythousandtohundredthousand, int morethanhundredthousand, int vendorid, int designerid) {
+    public VendorOffer(int offerid, String offeroverview, String offerdescription, int zerotothousand, int thousandtofivethousand, int fivethousandtotenthousand, int tenthousandtofiftythousand, int fiftythousandtohundredthousand, int morethanhundredthousand, String offerstatus, int vendorid, int designerid) {
         this.offerid = offerid;
         this.offeroverview = offeroverview;
         this.offerdescription = offerdescription;
@@ -60,9 +59,9 @@ public class VendorOffer {
         this.tenthousandtofiftythousand = tenthousandtofiftythousand;
         this.fiftythousandtohundredthousand = fiftythousandtohundredthousand;
         this.morethanhundredthousand = morethanhundredthousand;
+        this.offerstatus = offerstatus;
         this.vendorid = vendorid;
         this.designerid = designerid;
-        this.offerstatus = "New";
     }
 
     public static VendorOffer ok(VendorOffer createOffer) {
@@ -141,25 +140,77 @@ public class VendorOffer {
         this.morethanhundredthousand = morethanhundredthousand;
     }
 
-    public int getVendorid() { return vendorid; }
-
-    public void setVendorId(int vendorid) {
-        this.vendorid = vendorid;
-    }
-
-    public int getDesignerId() {
-        return designerid;
-    }
-
-    public void setDesignerId(int designerid) {
-        this.designerid = designerid;
-    }
-
     public String getOfferstatus() {
         return offerstatus;
     }
 
     public void setOfferstatus(String offerstatus) {
         this.offerstatus = offerstatus;
+    }
+
+    public int getVendor() {
+        return vendorid;
+    }
+
+    public int getDesigner() {
+        return designerid;
+    }
+
+    public void setVendorid(int vendorid) {
+        this.vendorid = vendorid;
+    }
+
+    public void setDesignerid(int designerid) {
+        this.designerid = designerid;
+    }
+
+    public int setVendor(int vendorId) {
+        return vendorId;
+    }
+
+    public int setDesigner(int designerId) {
+        return designerId;
+    }
+
+    public void setVendorid(Vendor vendor) {
+        this.vendorid = vendor.getVendor_id();
+    }
+
+    public Object getVendorid() {
+        return vendorid;
+    }
+
+    public void setVendor(Vendor vendor) {
+        this.vendorid = vendor.getVendor_id();
+    }
+
+    public Object getDesignerid() {
+        return designerid;
+    }
+
+    public void setVendor(Object vendor) {
+        this.vendorid = (int) vendor;
+    }
+
+    public void setDesigner(Object designer) {
+        this.designerid = (int) designer;
+    }
+
+    @Override
+    public String toString() {
+        return "VendorOffer{" +
+                "offerid=" + offerid +
+                ", offeroverview='" + offeroverview + '\'' +
+                ", offerdescription='" + offerdescription + '\'' +
+                ", zerotothousand=" + zerotothousand +
+                ", thousandtofivethousand=" + thousandtofivethousand +
+                ", fivethousandtotenthousand=" + fivethousandtotenthousand +
+                ", tenthousandtofiftythousand=" + tenthousandtofiftythousand +
+                ", fiftythousandtohundredthousand=" + fiftythousandtohundredthousand +
+                ", morethanhundredthousand=" + morethanhundredthousand +
+                ", offerstatus='" + offerstatus + '\'' +
+                ", vendorid=" + vendorid +
+                ", designerid=" + designerid +
+                '}';
     }
 }

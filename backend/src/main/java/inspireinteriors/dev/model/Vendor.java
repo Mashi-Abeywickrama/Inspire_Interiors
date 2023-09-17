@@ -22,7 +22,6 @@ public class Vendor {
     @Column(name = "province")
     private String province;
 
-
     public Vendor() {
     }
 
@@ -84,17 +83,6 @@ public class Vendor {
     public void setProvince(String province) {
         this.province = province;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

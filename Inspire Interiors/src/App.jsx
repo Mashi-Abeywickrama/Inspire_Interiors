@@ -9,6 +9,9 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   useLocation,
+  BrowserRouter,
+  Routes,
+  Router
 } from "react-router-dom";
 
 import { useSession } from "./constants/SessionContext";
@@ -106,9 +109,9 @@ import DesignerPromotion from "./pages/Designer/DesignerPromotion";
 import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
 import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
-
-
-
+import { Loader } from "semantic-ui-react";
+import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
+import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
 
 const routes = (
 
@@ -157,7 +160,8 @@ const routes = (
         <Route path="marketplace/viewproduct" element={<ViewProduct />}></Route>
         <Route path="designs/viewdesigner" element={<ViewDesigner />} />
         <Route path="marketplace" element={<MarketPlace />} />
-        <Route path="marketplace/categoryview" element={<CategoryView />} />
+        {/* <Route path="marketplace/categoryview" element={<CategoryView />} /> */}
+        <Route path="marketplace/categoryview/:roomType" element={<CategoryView />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout/address" element={<Address />} />
         <Route path="checkout/payment" element={<PaymentMethod />} />
@@ -264,9 +268,12 @@ const routes = (
         />
         <Route path="designtool" element={<DesignerDesigntool />} />
 
-        <Route path="setting" element={<DesignerSetting />} />
-      </Route>
-    </>
+      <Route path="setting" element={<DesignerSetting />} />
+      <Route path="test" element={<Test />} />
+      <Route path="requests" element={<DesignerCustomerRequest />} />
+      <Route path="crequestview/:id" element={<DesignerCRequestview />} />
+    </Route>
+  </>
 );
 
 const App = () => {

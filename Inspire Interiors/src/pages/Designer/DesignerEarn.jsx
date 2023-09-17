@@ -17,7 +17,14 @@ import { GrFormNextLink } from "react-icons/gr";
 import { NavLink } from "react-router-dom";
 import "../../styles/Designer/table.css";
 import "../../styles/Designer/DesignerEarn.css";
+import { useSession } from "../../constants/SessionContext";
 function DesignerEarn() {
+  //get designer id from session
+  const session = useSession();
+  // console.log(session.sessionData.userid);
+  const designerId = session.sessionData.userid;
+  console.log("Designer id is " + designerId);
+  
   const data = {
     columns: [
       {

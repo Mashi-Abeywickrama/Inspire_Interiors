@@ -7,6 +7,8 @@ import inspireinteriors.dev.repository.VariationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class ProductService {
@@ -38,5 +40,17 @@ public class ProductService {
 
     public void saveProduct(Product product) {
         productRepository.save(product);
+    }
+
+    public Iterable<Product> getAllProductsByType(String type) {
+        return productRepository.findAllByType(type);
+    }
+
+    public Iterable<Product> getAllProductsByRoomType(String roomType) {
+        return productRepository.findAllByRoomType(roomType);
+    }
+
+    public List<String> getDistinctRoomTypes() {
+        return productRepository.findDistinctRoomTypes();
     }
 }
