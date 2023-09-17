@@ -25,4 +25,28 @@ public Order getOrder(@PathVariable ("orderid") int orderid) {
         return this.orderService.getOrder(orderid);
     }
 
+    @GetMapping("/totalcommission")
+    public double getTotalCommission() {
+        List<Order> orders = this.orderService.getOrders();
+
+        double totalCommission = orders.stream()
+                .filter(order -> "completed".equals(order.getStatus())) // Filter completed orders
+                .mapToDouble(Order::getCommission)
+                .sum();
+
+        return totalCommission;
+    }
+
+    @GetMapping("/totalpencommission")
+    public double getTotalpenCommission() {
+        List<Order> orders = this.orderService.getOrders();
+
+        double totalpenCommission = orders.stream()
+                .filter(order -> "pending".equals(order.getStatus())) // Filter completed orders
+                .mapToDouble(Order::getCommission)
+                .sum();
+
+        return totalpenCommission;
+    }
+
 }
