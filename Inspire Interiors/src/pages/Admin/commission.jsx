@@ -22,6 +22,9 @@ const apiBaseURL = 'http://localhost:8080';
 const [orderData, setOrderData] = useState([]);
 const [totalcompleteCom, setTotalcompleteCom] = useState(0); // State variable to hold the total commission
 const [totalpendingCom,setTotalpendingCom]=useState(0);
+const [designerOrderData, setDesignerOrderData] = useState([]);
+const [vendorOrderData, setVendorOrderData] = useState([]); // State variable for designer orders
+
 
   const [loading, setLoading] = useState(true);
 
@@ -40,6 +43,26 @@ const [totalpendingCom,setTotalpendingCom]=useState(0);
       console.error('Error fetching order data:', error);
     }
   };
+
+  const filterdesigner = async () => {
+    try {
+      const response = await axios.get(apiBaseURL + '/filterDesigner');
+      const designerOrders = response.data;
+      setDesignerOrderData(designerOrders); // Update designerOrderData with designer orders
+    } catch (error) {
+      console.error('Error fetching designer orders:', error);
+    }
+  };
+  const filtervendor = async () => {
+    try {
+      const response = await axios.get(apiBaseURL + '/filterVendor');
+      const vendorOrders = response.data;
+      setVendorOrderData(vendorOrders); // Update designerOrderData with designer orders
+    } catch (error) {
+      console.error('Error fetching vendor orders:', error);
+    }
+  };
+  
 
   const fetchTotalcompleteCom = async () => {
     try {
@@ -65,6 +88,8 @@ const [totalpendingCom,setTotalpendingCom]=useState(0);
     fetchOrderData();
     fetchTotalcompleteCom();
     fetchTotalpendingCom();
+    filterdesigner();
+    filtervendor();
   }, []);
   
   const data = {
@@ -119,6 +144,86 @@ const [totalpendingCom,setTotalpendingCom]=useState(0);
         ),
       })),
     }
+    const designerData = {
+      columns: [
+        {
+          label: "USER",
+          field: "name",
+          sort: "asc",
+          width: 150,
+        },
+        {
+          label: "COMMISSION",
+          field: "commission",
+          sort: "asc",
+          width: 200,
+        },
+        {
+          label: "STATUS",
+          field: "status",
+          sort: "asc",
+          width: 100,
+        },
+        {
+          label: "  ",
+          field: "action",
+          sort: "NONE",
+          width: 100,
+        },
+      ],
+      rows: designerOrderData.map((order) => ({
+        name: order.designer || order.vendor,
+        commission: order.commission,
+        status: order.status,
+        action: (
+          <Link to={`/admin/commision/commissionView/${order.orderid}`}>
+            <div className="d-flex gap-2 align-items-center text-dark">
+              <p className="m-0">View More</p> <Icon.ArrowRight />
+            </div>
+          </Link>
+        ),
+      })),
+    };
+    const vendorData = {
+      columns: [
+        {
+          label: "USER",
+          field: "name",
+          sort: "asc",
+          width: 150,
+        },
+        {
+          label: "COMMISSION",
+          field: "commission",
+          sort: "asc",
+          width: 200,
+        },
+        {
+          label: "STATUS",
+          field: "status",
+          sort: "asc",
+          width: 100,
+        },
+        {
+          label: "  ",
+          field: "action",
+          sort: "NONE",
+          width: 100,
+        },
+      ],
+      rows: vendorOrderData.map((order) => ({
+        name: order.designer || order.vendor,
+        commission: order.commission,
+        status: order.status,
+        action: (
+          <Link to={`/admin/commision/commissionView/${order.orderid}`}>
+            <div className="d-flex gap-2 align-items-center text-dark">
+              <p className="m-0">View More</p> <Icon.ArrowRight />
+            </div>
+          </Link>
+        ),
+      })),
+    };
   return (
     <Container fluid>
       <div>
@@ -179,11 +284,31 @@ const [totalpendingCom,setTotalpendingCom]=useState(0);
                       </div>
                     </Tab>
 
-                    <Tab eventKey="Designers" title="Designers">
-                      Designers
+                    <Tab eventKey="Designers" title="Designers" onSelect={filterdesigner}>
+                      <div className="">
+                        <MDBDataTableV5
+                          responsive
+                          striped
+                          bordered
+                          small
+                          data={designerData}
+                          sortable={true}
+                          exportToCSV={true}
+                        />
+                      </div>
                     </Tab>
-                    <Tab eventKey="Vendor" title="Vendor">
-                      Vendors
+                    <Tab eventKey="Vendors" title="Vendors" onSelect={filtervendor}>
+                      <div className="">
+                        <MDBDataTableV5
+                          responsive
+                          striped
+                          bordered
+                          small
+                          data={vendorData}
+                          sortable={true}
+                          exportToCSV={true}
+                        />
+                      </div>
                     </Tab>
                   </Tabs>
                 </div>
@@ -287,4 +412,4 @@ const [totalpendingCom,setTotalpendingCom]=useState(0);
       </div>
     </Container>
   );
-}
+  }

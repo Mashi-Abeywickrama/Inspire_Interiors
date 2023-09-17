@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -48,5 +49,28 @@ public Order getOrder(@PathVariable ("orderid") int orderid) {
 
         return totalpenCommission;
     }
+    @GetMapping("/filterDesigner")
+    public List<Order> getDesigner() {
+        List<Order> orders = this.orderService.getOrders();
+
+        List<Order> designerOrders = orders.stream()
+                .filter(order -> order.getDesigner() != null) // Filter orders where designer is not null
+                .collect(Collectors.toList());
+
+        return designerOrders;
+    }
+
+
+    @GetMapping("/filterVendor")
+    public List<Order> getVendor() {
+        List<Order> orders = this.orderService.getOrders();
+
+        List<Order> vendorOrders = orders.stream()
+                .filter(order -> order.getVendor() != null) // Filter orders where designer is not null
+                .collect(Collectors.toList());
+
+        return vendorOrders;
+    }
+
 
 }
