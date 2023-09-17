@@ -88,16 +88,16 @@ const Salary = () => {
       }
     ],
     rows:salaryData.map((salary) => ({
-     name:salary.username,
+     name:salary.userid,
      total_sale:salary.total_sale,
      commission:salary.commission,
-     earning:salary.earning,
+     earning:salary.earnings,
       status: salary.status,
-      date:salary.date,
-      // action: 
-      //     <Link to="/admin/orders/invoice"><div className="d-flex gap-2 align-items-center text-dark">
-      //       <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
-      //     </div></Link>
+      date:salary.year+'-'+salary.month,
+        action:"send invoice->" ,
+      //      <Link to="/admin/orders/invoice"><div className="d-flex gap-2 align-items-center text-dark">
+      //        <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
+      //      </div></Link>
       
       
       // other fields...

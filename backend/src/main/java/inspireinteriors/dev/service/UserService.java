@@ -93,6 +93,14 @@ import java.util.List;
 
 
     }
-}
 
 
+
+    public User updateUser(long userId, User user ) {
+        User oldrecord=this.userRepository.findById(userId).orElse(null);
+        oldrecord.setName(user.getName());
+        oldrecord.setEmail(user.getEmail());
+    return this.userRepository.save(oldrecord);
+    }
+
+    }
