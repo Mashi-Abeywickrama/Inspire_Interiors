@@ -255,6 +255,7 @@ const routes = (
         errorElement={<Error />}
       >
         <Route index element={<DesignerDashboard />} />
+        <Route path="dashboard" element={<DesignerDashboard />} />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />
