@@ -1,6 +1,7 @@
 package inspireinteriors.dev.controller;
 
 import inspireinteriors.dev.model.Inquiry;
+import inspireinteriors.dev.model.Product;
 import inspireinteriors.dev.service.InquiryService;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Random;
 
 @CrossOrigin(origins = "http://localhost:5173")
@@ -100,4 +102,34 @@ public class InquiryController {
             return null;
         }
     }
+
+    @GetMapping("/inquiry-details/{inquiryId}")
+    public ResponseEntity<Inquiry> fetchInquiryById(@PathVariable int inquiryId) {
+        Inquiry inquiry = inquiryService.getInquiryById(inquiryId);
+        if (inquiry != null) {
+            return ResponseEntity.ok(inquiry);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+    @GetMapping("/refund-inquiry")
+    @ResponseBody
+    public Iterable<Inquiry> fetchRefundInquiry() {
+        return inquiryService.getRefundInquiries();
+    }
+
+    @PutMapping("/mark-as-canceled/{inquiryId}")
+    public ResponseEntity<String> markAsCanceled(@PathVariable int inquiryId, @RequestBody Inquiry inquiry) {
+        Inquiry existingInquiry = inquiryService.getInquiryById(inquiryId);
+        existingInquiry.setInquiry_status("Canceled");
+        existingInquiry.setAdditional_remarks(inquiry.getAdditional_remarks());
+        boolean inquirySaved = inquiryService.saveInquiry(existingInquiry);
+        if (inquirySaved) {
+            return ResponseEntity.ok("Inquiry Updated!");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Inquiry Not Updated!");
+        }
+    }
+
 }

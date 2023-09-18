@@ -84,6 +84,11 @@ const Login = () => {
           setTimeout(() => {
             navigate('/customersupport/dashboard');
         }, 2000);
+        }else if (userType === 'manager') {
+          setAlert('Successful Login!', 'success');
+          setTimeout(() => {
+            navigate('/manager/dashboard');
+        }, 2000);
         }
       }
     } catch (error) {
