@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+import React, { useState, useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as Icon from "react-bootstrap-icons";
 import Tab from "react-bootstrap/Tab";
@@ -12,37 +13,114 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 
 import "./../../styles/admin/commission.css";
+import axios from "axios";
+
 
 export default function commisssion() {
+const apiBaseURL = 'http://localhost:8080';
+
+const [orderData, setOrderData] = useState([]);
+const [totalcompleteCom, setTotalcompleteCom] = useState(0); // State variable to hold the total commission
+const [totalpendingCom,setTotalpendingCom]=useState(0);
+const [designerOrderData, setDesignerOrderData] = useState([]);
+const [vendorOrderData, setVendorOrderData] = useState([]); // State variable for designer orders
+
+
+  const [loading, setLoading] = useState(true);
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseURL,
+    timeout: 5000,
+  });
+
+  const fetchOrderData = async () => {
+    try {
+      const response = await axios.get(apiBaseURL + '/getorder');
+      const orderData = response.data;
+      setOrderData(orderData); 
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching order data:', error);
+    }
+  };
+
+  const filterdesigner = async () => {
+    try {
+      const response = await axios.get(apiBaseURL + '/filterDesigner');
+      const designerOrders = response.data;
+      setDesignerOrderData(designerOrders); // Update designerOrderData with designer orders
+    } catch (error) {
+      console.error('Error fetching designer orders:', error);
+    }
+  };
+  const filtervendor = async () => {
+    try {
+      const response = await axios.get(apiBaseURL + '/filterVendor');
+      const vendorOrders = response.data;
+      setVendorOrderData(vendorOrders); // Update designerOrderData with designer orders
+    } catch (error) {
+      console.error('Error fetching vendor orders:', error);
+    }
+  };
+  
+
+  const fetchTotalcompleteCom = async () => {
+    try {
+      const response = await axios.get(apiBaseURL + '/totalcommission');
+      const totalcompleteCom = response.data;
+      setTotalcompleteCom(totalcompleteCom); // Update the total commission state
+    } catch (error) {
+      console.error('Error fetching total commission:', error);
+    }
+  };
+
+  const fetchTotalpendingCom = async () => {
+    try {
+      const response = await axios.get(apiBaseURL + '/totalpencommission');
+      const totalpendingCom = response.data;
+      setTotalpendingCom(totalpendingCom); // Update the total commission state
+    } catch (error) {
+      console.error('Error fetching total commission:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchOrderData();
+    fetchTotalcompleteCom();
+    fetchTotalpendingCom();
+    filterdesigner();
+    filtervendor();
+  }, []);
+  
   const data = {
     columns: [
       {
-        label: "User",
+        label: "USER",
         field: "name",
         sort: "asc",
         width: 150,
       },
-      {
-        label: "PRODUCT/DESIGN",
-        field: "type",
-        sort: "asc",
-        width: 150,
-      },
-      {
-        label: "RATE",
-        field: "ammount",
-        sort: "asc",
-        width: 270,
-      },
+      // {
+      //   label: "PRODUCT/DESIGN",
+      //   field: "type",
+      //   sort: "asc",
+      //   width: 150,
+      // },
+      // {
+      //   label: "RATE",
+      //   field: "ammount",
+      //   sort: "asc",
+      //   width: 270,
+      // },
       {
         label: "COMMISSION",
-        field: "number",
+        field: "commission",
         sort: "asc",
         width: 200,
       },
       {
         label: "STATUS",
-        field: "age",
+        field: "status",
         sort: "asc",
         width: 100,
       },
@@ -53,62 +131,99 @@ export default function commisssion() {
         width: 100,
       },
     ],
-    rows: [
-      {
-        name: "Tiger Nixon",
-        type: "Sofa",
-        ammount: "12%",
-        number: "6k",
-        age: (
-          <div className="completed d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Completed</p>
-          </div>
-        ),
+    rows: orderData.map((order) => ({
+        name: order.designer||order.vendor,
+       commission: order.commission,
+       status:order.status,
         action: (
-          <Link to="/admin/commision/commissionView">
+          <Link to={`/admin/commision/commissionView/${order.orderid}`}>
             <div className="d-flex gap-2 align-items-center text-dark">
               <p className="m-0">View More</p> <Icon.ArrowRight />
             </div>
           </Link>
         ),
-      },
-      {
-        name: "Tiger Nixon",
-        type: "Table",
-        ammount: "12%",
-        number: "6k",
-        age: (
-          <div className="completed d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Completed</p>
-          </div>
-        ),
+      })),
+    }
+    const designerData = {
+      columns: [
+        {
+          label: "USER",
+          field: "name",
+          sort: "asc",
+          width: 150,
+        },
+        {
+          label: "COMMISSION",
+          field: "commission",
+          sort: "asc",
+          width: 200,
+        },
+        {
+          label: "STATUS",
+          field: "status",
+          sort: "asc",
+          width: 100,
+        },
+        {
+          label: "  ",
+          field: "action",
+          sort: "NONE",
+          width: 100,
+        },
+      ],
+      rows: designerOrderData.map((order) => ({
+        name: order.designer || order.vendor,
+        commission: order.commission,
+        status: order.status,
         action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">View More</p> <Icon.ArrowRight />
-          </div>
+          <Link to={`/admin/commision/commissionView/${order.orderid}`}>
+            <div className="d-flex gap-2 align-items-center text-dark">
+              <p className="m-0">View More</p> <Icon.ArrowRight />
+            </div>
+          </Link>
         ),
-      },
-      {
-        name: "Tiger Nixon",
-        type: "bed",
-        ammount: "12%",
-        number: "6k",
-        age: (
-          <div className="completed d-flex gap-2 align-items-center">
-            <i class="bi bi-circle-fill tag-icon"></i>
-            <p className="m-0">Completed</p>
-          </div>
-        ),
+      })),
+    };
+    const vendorData = {
+      columns: [
+        {
+          label: "USER",
+          field: "name",
+          sort: "asc",
+          width: 150,
+        },
+        {
+          label: "COMMISSION",
+          field: "commission",
+          sort: "asc",
+          width: 200,
+        },
+        {
+          label: "STATUS",
+          field: "status",
+          sort: "asc",
+          width: 100,
+        },
+        {
+          label: "  ",
+          field: "action",
+          sort: "NONE",
+          width: 100,
+        },
+      ],
+      rows: vendorOrderData.map((order) => ({
+        name: order.designer || order.vendor,
+        commission: order.commission,
+        status: order.status,
         action: (
-          <div className="d-flex gap-2 align-items-center">
-            <p className="m-0">View More</p> <Icon.ArrowRight />
-          </div>
+          <Link to={`/admin/commision/commissionView/${order.orderid}`}>
+            <div className="d-flex gap-2 align-items-center text-dark">
+              <p className="m-0">View More</p> <Icon.ArrowRight />
+            </div>
+          </Link>
         ),
-      },
-    ],
-  };
+      })),
+    };
   return (
     <Container fluid>
       <div>
@@ -126,14 +241,14 @@ export default function commisssion() {
                       <span className="d-flex fs-4 ">Commission </span>
                       <span className="d-flex fs-4 "> Earned </span>
                     </div>
-                    <span className="fs-1 p-3">230.3M </span>
+                    <span className="fs-1 p-3">{totalcompleteCom}Rs </span>
                   </div>
                   <div className="pending2 d-flex flex-row align-items-center justify-content-center h-50">
                     <div className="d-flex flex-column p-3 text-center">
                       <span className="fs-4">Commission</span>
                       <span className="fs-4">Pending</span>
                     </div>
-                    <span className="fs-1 p-3">230.3M</span>
+                    <span className="fs-1 p-3">{totalpendingCom}Rs</span>
                   </div>
                 </div>
                 <div className="line-v d-flex"></div>
@@ -169,11 +284,31 @@ export default function commisssion() {
                       </div>
                     </Tab>
 
-                    <Tab eventKey="Designers" title="Designers">
-                      Designers
+                    <Tab eventKey="Designers" title="Designers" onSelect={filterdesigner}>
+                      <div className="">
+                        <MDBDataTableV5
+                          responsive
+                          striped
+                          bordered
+                          small
+                          data={designerData}
+                          sortable={true}
+                          exportToCSV={true}
+                        />
+                      </div>
                     </Tab>
-                    <Tab eventKey="Vendor" title="Vendor">
-                      Vendors
+                    <Tab eventKey="Vendors" title="Vendors" onSelect={filtervendor}>
+                      <div className="">
+                        <MDBDataTableV5
+                          responsive
+                          striped
+                          bordered
+                          small
+                          data={vendorData}
+                          sortable={true}
+                          exportToCSV={true}
+                        />
+                      </div>
                     </Tab>
                   </Tabs>
                 </div>
@@ -277,4 +412,4 @@ export default function commisssion() {
       </div>
     </Container>
   );
-}
+  }

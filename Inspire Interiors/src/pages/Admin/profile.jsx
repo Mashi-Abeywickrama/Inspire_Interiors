@@ -49,6 +49,7 @@ const updateData=(data) =>{
              alert("Updated Successfully");
       },(error)=>{
               alert("Update failed");
+              console.log(userData);
       }
   );
 }; 
@@ -77,9 +78,20 @@ const updateData=(data) =>{
                   <input className="form-control" type="text" defaultValue={username} onChange={(e) =>onInputChange(e)} />
                 </div>
                 <div className="form-group">
-                  <label className="fs-5">Status</label>
-                  <input className="form-control" type="text" defaultValue={status} onChange={(e) =>onInputChange(e)} />
-                </div>
+  <label className="fs-5">Status</label>
+  <div className="input-group">
+    <input
+      className="form-control"
+      type="text"
+      defaultValue={status}
+      onChange={(e) => onInputChange(e)}
+    />
+    <div className="input-group-append">
+    <button className="btn btn-custom  text-danger fw-bold" type="button"  onClick={() => handleDeactivate()}>  Deactivate</button>
+    </div>
+  </div>
+</div>
+
               </div>
               <div className='col-md-4 p-4 justify-content-center'>
                  <div className="form-group">
@@ -95,8 +107,8 @@ const updateData=(data) =>{
           </div>
         
 
-        <div className="d-flex flex-row gap-2 col-md-12 col-lg-4">
-          <div className="bg-white rounded-4 shadow p-4 flex-fill">
+        {/* <div className="d-flex flex-row gap-2 col-md-12 col-lg-4">
+          {/* <div className="bg-white rounded-4 shadow p-4 flex-fill">
             <h3 className="fs-3">Login Activity</h3>
             <div className="form-group">
               <label className="fs-5">First Login</label>
@@ -106,8 +118,8 @@ const updateData=(data) =>{
               <label className="fs-5">Last Login</label>
               <input className="form-control" type="text" placeholder />
             </div>
-          </div>
-        </div> 
+          </div> 
+        </div>  */}
         </div>
 
         <div className='rd-flex flex-column'>
@@ -131,8 +143,8 @@ const updateData=(data) =>{
               </div>
               <div className="col-md-6">
                 <div className="form-group">
-                  <label className="fs-5">Last name</label>
-                  <input className="form-control" type="text"  />
+                  <label className="fs-5">User ID</label>
+                  <input className="form-control" type="text" Value={userid} onChange={(e) =>onInputChange(e)} />
                 </div>
                 <div className="form-group">
                   <label className="fs-5">Contact Number</label>
@@ -149,7 +161,7 @@ const updateData=(data) =>{
 
     </div>
  
-    <div className='d-flex gap-2'>
+    {/* <div className='d-flex gap-2'>
     <div className="d-flex flex-row gap-2 col-md-12 col-lg-6">
           <div className="bg-white rounded-4 shadow p-4 flex-fill">
             <h3 className="fs-3">User Engagement</h3>
@@ -179,7 +191,7 @@ const updateData=(data) =>{
             </div>
           </div>
         </div>
-        {/* <div className="d-flex flex-row gap-2 col-md-12 col-lg-4">
+        <div className="d-flex flex-row gap-2 col-md-12 col-lg-4">
           <div className="bg-white rounded-4 shadow p-4 flex-fill">
             <h3 className="fs-3">Login Activity</h3>
             <div className="form-group">
@@ -191,14 +203,14 @@ const updateData=(data) =>{
               <input className="form-control" type="text" placeholder="Jane" />
             </div>
           </div>
-        </div> */}
-        </div> 
-       <div> <Modal.Footer>
-              <Link variant='secondary' to={'/admin/user'}>
+        </div>
+        </div>  */}
+       <div> <Modal.Footer className='gap-2'>
+              <button><Link variant='secondary' to={'/admin/user'}>
                 Close
-              </Link>
+              </Link></button>
               <Button type='submit' variant='primary'>
-                Add User
+                Save User 
               </Button>
             </Modal.Footer></div>
 

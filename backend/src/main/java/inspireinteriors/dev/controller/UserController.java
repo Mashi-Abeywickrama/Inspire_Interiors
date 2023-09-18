@@ -148,6 +148,12 @@ public class UserController {
         return this.userService.updateUser(userid,user);
     }
 
+    @GetMapping("/filtertype/{type}")
+    public List<User> getUsersByUserType(@PathVariable String type) {
+        List<User> users = userService.getUsersByUserType(type);
+        return users;
+    }
+
     @PostMapping("/profile")
     public ResponseEntity<String> getProfile(@RequestBody UserIDRequest userIDRequest,HttpSession session) throws JSONException {
 

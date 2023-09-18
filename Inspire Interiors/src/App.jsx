@@ -183,7 +183,7 @@ const routes = (
         <Route path="salary" element={<Salary />} />
         <Route path="orders/invoice/:orderid" element={<Invoice />} />
         <Route path="user/profile/:userid" element={<Profile />} />
-        <Route path="commision/commissionView" element={<Cview />} />
+        <Route path="commision/commissionView/:userid" element={<Cview />} />
         <Route path="settings" element={<ADSetting />} />
       </Route>
       {/* Customer Support Routes */}
