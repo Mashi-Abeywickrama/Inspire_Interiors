@@ -27,4 +27,12 @@ public class InquiryService {
         return inquiryRepository.findAll();
 
     }
+
+    public Inquiry getInquiryById(int inquiryId) {
+        return inquiryRepository.findById(inquiryId).orElse(null);
+    }
+
+    public Iterable<Inquiry> getRefundInquiries() {
+        return inquiryRepository.findAllByInquiryType("refund");
+    }
 }
