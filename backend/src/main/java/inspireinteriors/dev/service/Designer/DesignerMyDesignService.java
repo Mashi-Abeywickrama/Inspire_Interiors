@@ -32,6 +32,10 @@ public class DesignerMyDesignService {
     //Promotion Earnings repository
     private DesignerPromotionEarningsRepository designerPromotionEarningsRepository;
 
+    @Autowired
+    //Design tool files repository
+    private DesignerDesigntoolFilesRepository designerDesigntoolFilesRepository;
+
 
 //MyDesign Services
     public List<MyDesigns> getAllDesigns() {
@@ -102,5 +106,13 @@ public class DesignerMyDesignService {
 
     public List<PromotionEarnings> getPromotionEarningsByDesignerId(int designer_id) {
         return designerPromotionEarningsRepository.findPromotionEarningsByDesignerID(designer_id);
+    }
+
+    //Designtool Service
+
+    //Save design tool files
+
+    public DesigntoolFiles saveFiles(DesigntoolFiles designtoolFiles){
+        return designerDesigntoolFilesRepository.save(designtoolFiles);
     }
 }

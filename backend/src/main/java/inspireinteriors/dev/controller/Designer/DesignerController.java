@@ -2,6 +2,7 @@ package inspireinteriors.dev.controller.Designer;
 
 
 import inspireinteriors.dev.model.DesignerModel.*;
+import inspireinteriors.dev.repository.Designer.DesignerDesigntoolFilesRepository;
 import inspireinteriors.dev.service.Designer.DesignerMyDesignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:8000"})
 @RestController
 @RequestMapping("/designer")
 public class DesignerController {
@@ -113,6 +114,19 @@ public class DesignerController {
     public ResponseEntity<List<PromotionEarnings>> getPromotionEarningsByDesignerId(@PathVariable(value = "id") int designer_id) {
         List<PromotionEarnings> promotionEarnings = designerMyDesignService.getPromotionEarningsByDesignerId(designer_id);
         return ResponseEntity.ok(promotionEarnings);
+    }
+
+
+    //Designtool Endpoints
+
+    //Save Designs
+    @PostMapping("/designtool/savedesign")
+   public String saveData(@RequestBody String data) {
+       DesigntoolFiles file = new DesigntoolFiles();
+       file.setData(data);
+      designerMyDesignService.saveFiles(file);
+      return "Successfully Saved";
+
     }
 
 }
