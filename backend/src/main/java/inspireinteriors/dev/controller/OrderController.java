@@ -72,5 +72,11 @@ public Order getOrder(@PathVariable ("orderid") int orderid) {
         return vendorOrders;
     }
 
+    @GetMapping("/filterstatus/{status}")
+    public List<Order> getOrderByStatus(@PathVariable String status) {
+        List<Order> orders = orderService.getOrderByStatus(status);
+        return orders;
+    }
+
 
 }

@@ -160,17 +160,34 @@ const Order = () => {
                 </div>
               </Tab>
               <Tab eventKey="Completed" title="Completed">
-                Completed
+              <div className=''>
+             
+             <MDBDataTableV5 responsive
+             striped
+             bordered
+             small
+             data={data}
+             sortable={true}
+             exportToCSV={true}
+             
+           />
+           </div>
               </Tab>
-              <Tab eventKey="Ongoing" title="Ongoing">
-                Ongoing
+              <Tab eventKey="Pending" title="Pending">
+              <div className=''>
+             
+             <MDBDataTableV5 responsive
+             striped
+             bordered
+             small
+             data={data}
+             sortable={true}
+             exportToCSV={true}
+             
+           />
+           </div>
               </Tab>
-              <Tab eventKey="Delayed" title="Delayed">
-                Delayed
-              </Tab>
-              <Tab eventKey="Canceled" title="Canceled">
-                Canceled
-              </Tab>
+             
             </Tabs>
           </div>
         </div>
