@@ -22,20 +22,20 @@ const Inquiry = () => {
   const [inquiryData, setInquiryData] = useState([]);
   const [loading, setLoading] = useState(true);
    const [selectedTab, setSelectedTab] = useState('All'); // State to hold the selected tab title
-
-  useEffect(() => {
-    axiosInstance
-      .get('/inquiry')
-      .then((response) => {
-        const data = response.data;
-        setInquiryData(data);
+  const fetchInquiry = async () => {
+    try {
+      const response = await axiosInstance.get('/inquiry');
+      const data = response.data;
+      setInquiryData(data);
+      setLoading(false);
+    } catch (error) {
+       console.error('Error from backend:', error);
         setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error from backend:', error);
-        setLoading(false);
-      });
-  }, [axiosInstance]);
+    }
+  };
+ useEffect(() => {
+    fetchInquiry();
+  }, []);
 
   const getStatusComponent = (status) => {
     // Define the mapping of status to CSS classes and text
@@ -93,7 +93,7 @@ const assignedToMeData = inquiryData.filter((item) => item.customer_support_id =
         </div>
         <div>
           <Tabs
-            defaultActiveKey="A ll"
+            defaultActiveKey="All"
             id="uncontrolled-tab-example"
             className="mb-3 bg-white tab"
             onSelect={(selectedKey) => setSelectedTab(selectedKey)}

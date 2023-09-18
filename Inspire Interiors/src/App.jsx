@@ -32,7 +32,6 @@ import OnlyHeaderRootlayout from "./layouts/onlyHeaderRootlayout";
 
 import Report from './pages/Admin/report';
 import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
-import Dashboard from './pages/Admin/dashboard';
 import User from './pages/Admin/user';
 import Commission from './pages/Admin/commission';
 import Orders from './pages/Admin/orders';
@@ -256,6 +255,7 @@ const routes = (
         errorElement={<Error />}
       >
         <Route index element={<DesignerDashboard />} />
+        <Route path="dashboard" element={<DesignerDashboard />} />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />
