@@ -135,6 +135,13 @@ public class UserController {
         return this.userService.getUserById(userid);
     }
 
+    @GetMapping("/getuserbyname/{username}")
+    public User getUserByUsername(@PathVariable ("username") String username)
+    {
+        System.out.println(username);
+        return this.userService.getUserByUserName(username);
+    }
+
 
     @PostMapping("/adduser")
     public User addValues(@RequestBody User adduser)
