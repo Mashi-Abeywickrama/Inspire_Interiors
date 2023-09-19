@@ -89,7 +89,7 @@ const DetailedView = () => {
                 <div className='top-bar rounded'>
                     <div className='row container'>
                         <div className='row d-flex align-items-center'>
-                            <div className='col-md-4 col-sm-12 col-12 fs-5'>
+                            <div className='col-md-4 col-sm-12 col-12 fs-5 w-100'>
                                 <Breadcrumb className="fw-bold">
                                     <Breadcrumb.Item href='/customersupport/inquiry'>
                                         Inquiries
@@ -100,7 +100,7 @@ const DetailedView = () => {
                                     </Breadcrumb.Item>
                                     <Breadcrumb.Item className="custom-breadcrumb-divider" active>
                                         <FontAwesomeIcon icon={faAngleRight} className="me-2" />
-                                        ID
+                                        {inquiryData.inquiry_reference}
                                     </Breadcrumb.Item>
                                 </Breadcrumb>
                             </div>
@@ -178,6 +178,7 @@ const DetailedView = () => {
                     </Row>
 
                     {inquiry_type === 'quotations' && (
+                        <>
                         <Row className='g-4'>
                             <Col md>
                                 <Form.Group className='mb-3'>
@@ -193,6 +194,27 @@ const DetailedView = () => {
                                 </Form.Group>
                             </Col>
                         </Row>
+
+                        {inquiryData.inquiry_status === 'Canceled' && (
+                            <Row className='g-4'>
+                                <Col md>
+                                    <Form.Group className='mb-3'>
+                                        <Form.Label className='sub-heading Cabin-text'>
+                                            Additional Remarks:
+                                        </Form.Label>
+                                        <Form.Control
+                                            as='textarea'
+                                            rows={3}
+                                            name='additionalRemarks'
+                                            value={inquiryData.remarks}
+                                            style={{ backgroundColor: '#F2FAFF' }}
+                                            readOnly
+                                        />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+                        )}
+                        </>
                     )}
 
                     {inquiry_type === 'refund' && (
@@ -333,7 +355,7 @@ const DetailedView = () => {
                     )}
 
                 </div>
-                {inquiry_type === 'quotations' && (
+                {inquiry_type != 'refund' && inquiryData.inquiry_status != 'Canceled' &&  (
                     <>
                         <div className="divider " />
                         <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">

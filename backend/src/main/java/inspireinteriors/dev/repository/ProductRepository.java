@@ -25,6 +25,9 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("SELECT DISTINCT p.roomType FROM Product p")
     List<String> findDistinctRoomTypes();
 
+    @Query("SELECT DISTINCT p.type FROM Product p")
+    List<String> findDistinctTypes();
+
 //    @Query("SELECT p FROM Product p JOIN FETCH p.variations")
 //    List<Product> findAllWithVariations();
 //

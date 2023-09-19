@@ -159,7 +159,7 @@ const routes = (
         <Route path="orders" element={<MyOrder />} />
         <Route path="designs" element={<Designs />} />
         <Route path="designs/browsedesigns" element={<BrowseDesigns />} />
-        <Route path="marketplace/viewproduct" element={<ViewProduct />}></Route>
+        <Route path="marketplace/viewproduct/:id" element={<ViewProduct />}></Route>
         <Route path="designs/viewdesigner" element={<ViewDesigner />} />
         <Route path="marketplace" element={<MarketPlace />} />
         {/* <Route path="marketplace/categoryview" element={<CategoryView />} /> */}

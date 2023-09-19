@@ -118,7 +118,7 @@ const CategoryView = () => {
                         <div className="col d-flex flex-column w-100 flex-lg-row flex-md-row gap-3 flex-wrap gap-4">
                             {productData.slice(startIndex, endIndex).map((data, index) => ( 
                                 <div key={index} className="card h-100 mb-2 rounded-3 border-0 shadow w-20 w-lg-25 w-md-25 ">
-                                    <Link to='/customer/marketplace/viewproduct'>
+                                    <Link to={`/customer/marketplace/viewproduct/${data.product_id}`}>
                                         <img
                                             style={{width: "100%", height: "250px", objectFit: "cover", borderRadius: "10px" }}
                                             className="img-fluid"
