@@ -11,3 +11,4 @@ public interface SalaryRepository extends JpaRepository<Salary, Long> {
 
 
 }
+

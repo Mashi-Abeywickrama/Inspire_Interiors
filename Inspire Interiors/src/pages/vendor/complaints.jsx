@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 
 import '../../styles/vendor/complaints.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -122,6 +122,7 @@ const tabledata = {
 }
 
 const Complaints = () => {
+  const [inquiryData, setInquiryData] = useState([]);
   return (
     <>
       <div className='complaints-container background-total accordion bg-white rounded-3 mb-4 me-3 p-4'>

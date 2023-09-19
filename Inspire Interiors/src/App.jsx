@@ -112,8 +112,8 @@ import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
 import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 import { Loader } from "semantic-ui-react";
-import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
-import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
+// import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
+// import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
 
 const routes = (
 
@@ -240,7 +240,7 @@ const routes = (
           element={<PromotionRequest />}
         ></Route>
         <Route
-          path="promotion/earnings"
+          path="promotion/expenses"
           element={<PromotionExpenses />}
         ></Route>
         <Route path="complaints" element={<Complaints />}></Route>
@@ -273,8 +273,8 @@ const routes = (
 
       <Route path="setting" element={<DesignerSetting />} />
       <Route path="test" element={<Test />} />
-      <Route path="requests" element={<DesignerCustomerRequest />} />
-      <Route path="crequestview/:id" element={<DesignerCRequestview />} />
+      {/* <Route path="requests" element={<DesignerCustomerRequest />} />
+      <Route path="crequestview/:id" element={<DesignerCRequestview />} /> */}
     </Route>
 
 

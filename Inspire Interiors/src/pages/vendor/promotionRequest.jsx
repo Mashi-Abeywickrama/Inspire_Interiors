@@ -109,10 +109,6 @@ const PromotionRequest = () => {
         designer: ''
     });
 
-    const [editofferData, setEditOfferData] = useState({
-        ...offerData,
-    });
-
     const [isEditing, setIsEditing] = useState(false);
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -174,7 +170,7 @@ const PromotionRequest = () => {
     });
 
     const updateOfferData = (field, value) => {
-        setEditOfferData((prevDetails) => ({
+        setOfferData((prevDetails) => ({
             ...prevDetails,
             [field]: value !== undefined ? value : prevDetails[field],
         }));
@@ -198,16 +194,16 @@ const PromotionRequest = () => {
         e.preventDefault();
         try{
             const response = await axiosInstance.put(`/updatepromotion/${offerID}`, {
-                offeroverview: editofferData.offeroverview,
-                offerdescription: editofferData.offerdescription,
-                zerotothousand: editofferData.zerotothousand,
-                thousandtofivethousand: editofferData.thousandtofivethousand,
-                fivethousandtotenthousand: editofferData.fivethousandtotenthousand,
-                tenthousandtofiftythousand: editofferData.tenthousandtofiftythousand,
-                fiftythousandtohundredthousand: editofferData.fiftythousandtohundredthousand,
-                morethanhundredthousand: editofferData.morethanhundredthousand,
-                offerstatus: editofferData.offerstatus,
-                designer: editofferData.designer
+                offeroverview: offerData.offeroverview,
+                offerdescription: offerData.offerdescription,
+                zerotothousand: offerData.zerotothousand,
+                thousandtofivethousand: offerData.thousandtofivethousand,
+                fivethousandtotenthousand: offerData.fivethousandtotenthousand,
+                tenthousandtofiftythousand: offerData.tenthousandtofiftythousand,
+                fiftythousandtohundredthousand: offerData.fiftythousandtohundredthousand,
+                morethanhundredthousand: offerData.morethanhundredthousand,
+                offerstatus: offerData.offerstatus,
+                designer: offerData.designer
             });
             if(response.status === 200){
                 setShow(false);
@@ -226,7 +222,7 @@ const PromotionRequest = () => {
             const response = await axiosInstance.delete(`/deletepromotion/${offerID}`);
             if(response.status === 200){
                 // console.log("Offer delete Succesfully");
-                window.location.href='/vendor/promotion';         
+                window.location.href='/vendor/promotion';      
             }
         } catch (error) {
             console.error('Delete Fail');
@@ -236,7 +232,6 @@ const PromotionRequest = () => {
     
 
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return(
@@ -245,7 +240,7 @@ const PromotionRequest = () => {
             <div className="col-12 d-flex flex-column flex-lg-row flex-md-row gap-3">
                 <div className=" col-lg-7 d-flex flex-column gap-4 h-100">
                     <div className='col-lg-12 bg-white rounded-3 shadow p-4'>
-                        <div className="d-flex flex-row justify-content-between">
+                        <div className="d-flex flex-column flex-lg-row flex-md-row justify-content-between">
                             <div className="d-flex gap-4">
                                 <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text ">Promotion</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
@@ -255,7 +250,7 @@ const PromotionRequest = () => {
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                                 <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Victor Avocado</p>
                             </div>
-                            <button type="button" className='add-btn' onClick={handleShow}><Icon.PlusLg color="white" size={20} />Edit</button>
+                            <button type="button" className='add-btn' onClick={handleShow}><Icon.PencilFill className="mx-2" color="white" size={16} />Edit</button>
 
                             <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                                 <Modal.Header closeButton>
@@ -267,48 +262,48 @@ const PromotionRequest = () => {
                                         <div className="d-flex flex-column mx-4 gap-3">
                                             <div className='mb-1'>
                                                 <label>Offer Overview</label>
-                                                <input type='text' name="offeroverview" autoFocus className='form-control Cabin-text' placeholder={offerData.offeroverview} value={editofferData.offeroverview} onChange={(e) => updateOfferData(e.target.name, e.target.value)}  style={{backgroundColor: "#F2FAFF"}}></input>
+                                                <input type='text' name="offeroverview" autoFocus className='form-control Cabin-text' value={offerData.offeroverview} onChange={(e) => updateOfferData(e.target.name, e.target.value)}  style={{backgroundColor: "#F2FAFF"}}></input>
                                             </div>
                                             <div className='mb-1'>
                                                 <label>Offer Description</label>
-                                                <input type='text' name="offerdescription" className='form-control Cabin-text' placeholder={offerData.offerdescription} value={editofferData.offerdescription} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                <input type='text' name="offerdescription" className='form-control Cabin-text' value={offerData.offerdescription} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
                                             </div>
                                             <div className="d-flex flex-row gap-5">
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (0 - 1000)</label>
-                                                    <input type='number' name="zerotothousand" className='form-control Cabin-text h-50' placeholder={offerData.zerotothousand} value={editofferData.zerotothousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <label>Commission Percentage (Price Range 0 - 1000)</label>
+                                                    <input type='number' name="zerotothousand" className='form-control Cabin-text h-50' value={offerData.zerotothousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (1K - 5K)</label>
-                                                    <input type='number' name="thousandtofivethousand" className='form-control Cabin-text h-50' placeholder={offerData.thousandtofivethousand} value={editofferData.thousandtofivethousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <label>Commission Percentage (Price Range 1K - 5K)</label>
+                                                    <input type='number' name="thousandtofivethousand" className='form-control Cabin-text h-50' value={offerData.thousandtofivethousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (5K - 10K)</label>
-                                                    <input type='number' name="fivethousandtotenthousand" className='form-control Cabin-text h-50' placeholder={offerData.fivethousandtotenthousand} value={editofferData.fivethousandtotenthousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <label>Commission Percentage (Price Range 5K - 10K)</label>
+                                                    <input type='number' name="fivethousandtotenthousand" className='form-control Cabin-text h-50' value={offerData.fivethousandtotenthousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row gap-5">
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (10K - 50K)</label>
-                                                    <input type='number' name="tenthousandtofiftythousand" className='form-control Cabin-text h-50' placeholder={offerData.tenthousandtofiftythousand} value={editofferData.tenthousandtofiftythousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <label>Commission Percentage (Price Range 10K - 50K)</label>
+                                                    <input type='number' name="tenthousandtofiftythousand" className='form-control Cabin-text h-50' value={offerData.tenthousandtofiftythousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (50K - 100K)</label>
-                                                    <input type='number' name="fiftythousandtohundredthousand" className='form-control Cabin-text h-50' placeholder={offerData.fiftythousandtohundredthousand} value={editofferData.fiftythousandtohundredthousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <label>Commission Percentage (Price Range 50K - 100K)</label>
+                                                    <input type='number' name="fiftythousandtohundredthousand" className='form-control Cabin-text h-50' value={offerData.fiftythousandtohundredthousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (more than 100K)</label>
-                                                    <input type='number' name="morethanhundredthousand" className='form-control Cabin-text h-50' placeholder={offerData.morethanhundredthousand} value={editofferData.morethanhundredthousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <label>Commission Percentage (Price Range more than 100K)</label>
+                                                    <input type='number' name="morethanhundredthousand" className='form-control Cabin-text h-50' value={offerData.morethanhundredthousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row gap-5">
                                                 <div className='my-2'>
                                                     <label>Designer</label>
-                                                    <input type='number' name="designer" className='form-control Cabin-text h-50' placeholder={offerData.designer} value={editofferData.designer} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <input type='number' name="designer" className='form-control Cabin-text h-50' value={offerData.designer} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
                                                     <label>Offer Status</label>
-                                                    <input type='text' name="offerstatus" className='form-control Cabin-text h-50' placeholder={offerData.offerstatus} value={editofferData.offerstatus} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <input type='text' name="offerstatus" className='form-control Cabin-text h-50' value={offerData.offerstatus} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                             </div>
                                         </div>
@@ -324,11 +319,11 @@ const PromotionRequest = () => {
                         <div  className="d-flex flex-column mt-2">
                         <div>
                             <p className="fs-6 fw-bold Cabin-text my-2" style={{ color: "#545563" }}>Offer Overview</p>
-                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>{isEditing ? editofferData.offeroverview : offerData.offeroverview}</p>
+                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>{offerData.offeroverview}</p>
                         </div>
                         <div>
                             <p className="fs-6 fw-bold Cabin-text my-2" style={{ color: "#545563" }}>Offer Description</p>
-                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>{isEditing ? editofferData.offerdescription : offerData.offerdescription}</p>
+                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>{offerData.offerdescription}</p>
                         </div>
                         <div>
                             <p className="fs-6 fw-bold Cabin-text my-3" style={{ color: "#545563" }}>Offer Details</p>   
