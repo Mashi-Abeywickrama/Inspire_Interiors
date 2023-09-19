@@ -6,6 +6,7 @@ import inspireinteriors.dev.repository.ProductImgRepository;
 import inspireinteriors.dev.repository.ProductRepository;
 import inspireinteriors.dev.repository.VariationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -69,5 +70,9 @@ public class ProductService {
     //update variations
     public Variation updateVariation(Variation variation) {
         return variationRepository.save(variation);
+    }
+
+    public List<String> getDistinctTypes() {
+        return productRepository.findDistinctTypes();
     }
 }

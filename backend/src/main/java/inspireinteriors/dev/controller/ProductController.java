@@ -282,10 +282,34 @@ public class ProductController {
     }
 
     @GetMapping("/room-type/{roomType}")
-    public ResponseEntity<List<Product>> getAllProductsByType(@PathVariable String roomType) {
+    public ResponseEntity<List<Product>> getAllProductsByRoomType(@PathVariable String roomType) {
         List<Product> products = (List<Product>) productService.getAllProductsByRoomType(roomType);
         return ResponseEntity.ok(products);
     }
 
+    @GetMapping("/type")
+//    get available types
+    public List<String> getAvailableTypes() {
+        return productService.getDistinctTypes();
+    }
+
+    @GetMapping("category-by-type/{type}")
+    public ResponseEntity<List<Product>> getAllProductsByType(@PathVariable String type) {
+        List<Product> products = (List<Product>) productService.getAllProductsByType(type);
+        return ResponseEntity.ok(products);
+    }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable(value = "id") int id) {
+        Product product = productService.getProductById(id);
+        return ResponseEntity.ok(product);
+    }
+
+    @GetMapping("/review/{id}")
+    //get all details from review table according to id
+    public ResponseEntity<List<Variation>> getReviewByProductId(@PathVariable(value = "id") int product_id) {
+        List<Variation> variations = productService.getByProductId(product_id);
+        return ResponseEntity.ok(variations);
+    }
 
 }
