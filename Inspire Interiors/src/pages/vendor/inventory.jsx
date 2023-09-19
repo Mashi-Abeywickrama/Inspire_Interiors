@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 
 import "../../styles/vendor/inventory.css";
 import * as Icon from 'react-bootstrap-icons';
@@ -8,6 +8,7 @@ import VendorSidebar from './sidebar';
 import Money from './../../assets/img/vendor/money.svg';
 import Sofa from './../../assets/img/vendor/sofa.png';
 
+import axios from 'axios';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
@@ -65,214 +66,211 @@ export const bardata = [
     },
 ];
 
-const tabledata = {
-    columns: [
-      {
-        label: 'PRODUCT',
-        field: 'product',
-        sort: 'asc',
-        width: 150
-      },
-      {
-        label: 'AMOUNT',
-        field: 'amount',
-        sort: 'asc',
-        width: 270
-      },
-      {
-        label: 'ENTRY PRICE',
-        field: 'entry',
-        sort: 'asc',
-        width: 200
-      },
-      {
-        label: 'DISCOUNT',
-        field: 'discount',
-        sort: 'asc',
-        width: 100
-      },
-      {
-        label: 'PRICE',
-        field: 'price',
-        sort: 'asc',
-        width: 150
-      },
-      {
-        label: 'SOLD',
-        field: 'sold',
-        sort: 'asc',
-        width: 100
-      },
-      {
-        label: 'STATUS',
-        field: 'status',
-        sort: 'asc',
-        width: 100
-      }
+const Inventory = () => {
+  const [productData, setproductData] = useState([]);
+
+  const [variationData, setvariationData] = useState([]);
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const productID = urlParams.get('id');
+
+  const apiBaseURL = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseURL,
+    timeout: 5000
+  });
+
+  useEffect(() => {
+    axiosInstance
+      .get('/viewproducts')
+      .then((response) => {
+        setproductData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('Error fetching data:', error);
+    });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get('/viewvariations')
+      .then((response) => {
+        setvariationData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('Error fetching data:', error);
+    });
+  }, []);
+
+  const Columns = [
+    {
+      label: 'PRODUCT',
+      field: 'product',
+      sort: 'asc',
+      width: 150
+    },
+    {
+      label: 'QUANTITY',
+      field: 'quantity',
+      sort: 'asc',
+      width: 270
+    },
+    {
+      label: 'ENTRY PRICE',
+      field: 'entry',
+      sort: 'asc',
+      width: 200
+    },
+    {
+      label: 'DISCOUNT(%)',
+      field: 'discount',
+      sort: 'asc',
+      width: 100
+    },
+    {
+      label: 'PRICE',
+      field: 'price',
+      sort: 'asc',
+      width: 150
+    },
+    {
+      label: 'SOLD',
+      field: 'sold',
+      sort: 'asc',
+      width: 100
+    },
+    {
+      label: 'STATUS',
+      field: 'status',
+      sort: 'asc',
+      width: 100
+    }
+    ,
+    {
+      label: '  ',
+      field: 'action',
+      sort: 'NONE',
+      width: 100
+    }
+  ];
+
+  const Rows = productData.map((product) => {
+    return {
+      product: <div className='d-flex flex-row gap-4 align-items-center'>
+        <img src={product.image}/>
+        <p className='align-items-center mt-3'>{product.product_name}</p>
+      </div>,
+      quantity: 5,
+      entry: product.entry_price,
+      discount: product.discount,
+      price: product.entry_price - (product.entry_price * product.discount / 100),
+      sold: product.sold,
+      status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{product.product_status}</p></div>
       ,
-      {
-        label: '  ',
-        field: 'action',
-        sort: 'NONE',
-        width: 100
-      }
-    ],
-    rows: [
-      {
-        product: <div className='d-flex flex-row gap-4 align-items-center'>
-            <img src={Sofa}/>
-            <p className='align-items-center mt-3'>Sofa</p>
-        </div>,
-        amount: '20',
-        entry: '4000Rs',
-        discount: '5%',
-        price: '4000Rs',
-        sold:'15',
-        status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>In Stock</p></div>
-        ,
-        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        product: <div className='d-flex flex-row gap-4 align-items-center'>
-            <img src={Sofa}/>
-            <p className='align-items-center mt-3'>Sofa</p>
-        </div>,
-        amount: '20',
-        entry: '4000Rs',
-        discount: '5%',
-        price: '4000Rs',
-        sold:'7',
-        status: <div className='outstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Out of Stock</p></div>
-        ,
-        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        product: <div className='d-flex flex-row gap-4 align-items-center'>
-            <img src={Sofa}/>
-            <p className='align-items-center mt-3'>Sofa</p>
-        </div>,
-        amount: '20',
-        entry: '4000Rs',
-        discount: '5%',
-        price: '4000Rs',
-        sold:'12',
-        status: <div className='lowstock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Low Stock</p></div>
-        ,
-        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        product: <div className='d-flex flex-row gap-4 align-items-center'>
-            <img src={Sofa}/>
-            <p className='align-items-center mt-3'>Sofa</p>
-        </div>,
-        amount: '20',
-        entry: '4000Rs',
-        discount: '5%',
-        price: '4000Rs',
-        sold:'22',
-        status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>In Stock</p></div>
-        ,
-        action: <Link to="/vendor/inventory/inventoryproduct"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      } 
-    ]
-};
+      action: <Link to={`/vendor/inventory/inventoryproduct?id=${product.product_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+    }
+  });
 
-const Inventory = () => (
-  <>
+  return(
+    <>
+      <div className='overview-container background-inventory rounded-3 mb-4 me-3'>
+        <div className="d-flex flex-row gap-2 px-4">
+          <p className="text-dark fs-5 fw-bold Cabin-text">Inventory</p>
+          <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+          <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Overview</p>
+        </div>
+        <div className='d-flex flex-column gap-2'>
+          <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4 justify-content-around'>
+            <div className="col-lg-4 bg-white rounded-3 my-2 shadow px-3 py-2">
+              <p className='fs-5 fw-bold Cabin-text' style={{ color: "#023047" }}>Best Sellers</p>
+              <Doughnut data={doughnutData} />
+            </div>
+            <div className="col-lg-4 bg-white rounded-3 my-2 shadow px-3 py-2">
+              <p className='fs-5 fw-bold Cabin-text' style={{ color: "#023047" }}>Sell History</p>
+              <ResponsiveContainer width="90%" height="75%">
+                <BarChart width={100} height={70} data={bardata}>
+                  <defs>
+                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="50%" stopColor="#035C94" stopOpacity={1} />
+                      <stop offset="100%" stopColor="#B0DAF5" stopOpacity={1} />
+                    </linearGradient>
+                  </defs>
 
-    <div className='overview-container background-inventory rounded-3 mb-4 me-3'>
-      <div className="d-flex flex-row gap-2 px-4">
-        <p className="text-dark fs-5 fw-bold Cabin-text">Inventory</p>
-        <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-        <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Overview</p>
-      </div>
-      <div className='d-flex flex-column gap-2'>
-        <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4 justify-content-around'>
-          <div className="col-lg-4 bg-white rounded-3 my-2 shadow px-3 py-2">
-            <p className='fs-5 fw-bold Cabin-text' style={{ color: "#023047" }}>Best Sellers</p>
-            <Doughnut data={doughnutData} />;
-          </div>
-          <div className="col-lg-4 bg-white rounded-3 my-2 shadow px-3 py-2">
-            <p className='fs-5 fw-bold Cabin-text' style={{ color: "#023047" }}>Sell History</p>
-            <ResponsiveContainer width="90%" height="75%">
-              <BarChart width={100} height={70} data={bardata}>
-                <defs>
-                  <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="50%" stopColor="#035C94" stopOpacity={1} />
-                    <stop offset="100%" stopColor="#B0DAF5" stopOpacity={1} />
-                  </linearGradient>
-                </defs>
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Bar dataKey="uv" fill="url(#colorUv)" radius={[5, 5, 0, 0]} />
+                </BarChart>
 
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Bar dataKey="uv" fill="url(#colorUv)" radius={[5, 5, 0, 0]} />
-              </BarChart>
-
-            </ResponsiveContainer>
-          </div>
-          <div className="col-lg-3">
-            <div className='d-flex flex-column gap-2 justify-content-between h-100'>
-              <div className='col-lg-12 bg-white rounded-3 my-2 shadow p-4'>
-                <div className='d-flex flex-row gap-5'>
-                  <img className='img-fluid' src={Money} />
-                  <div className='d-flex flex-column align-content-center'>
-                    <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>In Stock Price</p>
-                    <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR 14,751.00</p>
+              </ResponsiveContainer>
+            </div>
+            <div className="col-lg-3">
+              <div className='d-flex flex-column gap-2 justify-content-between h-100'>
+                <div className='col-lg-12 bg-white rounded-3 my-2 shadow p-4'>
+                  <div className='d-flex flex-row gap-5'>
+                    <img className='img-fluid' src={Money} />
+                    <div className='d-flex flex-column align-content-center'>
+                      <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>In Stock Price</p>
+                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR 14,751.00</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className='col-lg-12 bg-white rounded-3 my-2 shadow p-4'>
-                <div className='d-flex flex-row gap-5'>
-                  <img className='img-fluid' src={Money} />
-                  <div className='d-flex flex-column align-content-center'>
-                    <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>profit</p>
-                    <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR 14,751.00</p>
+                <div className='col-lg-12 bg-white rounded-3 my-2 shadow p-4'>
+                  <div className='d-flex flex-row gap-5'>
+                    <img className='img-fluid' src={Money} />
+                    <div className='d-flex flex-column align-content-center'>
+                      <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>profit</p>
+                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR 14,751.00</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className='col-lg-12 bg-white rounded-3 my-2 shadow p-4'>
-                <div className='d-flex flex-row gap-5'>
-                  <img className='img-fluid' src={Money} />
-                  <div className='d-flex flex-column align-content-center'>
-                    <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>Expenses</p>
-                    <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR 14,751.00</p>
+                <div className='col-lg-12 bg-white rounded-3 my-2 shadow p-4'>
+                  <div className='d-flex flex-row gap-5'>
+                    <img className='img-fluid' src={Money} />
+                    <div className='d-flex flex-column align-content-center'>
+                      <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>Expenses</p>
+                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR 14,751.00</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className='col-lg-12 rounded-3 my-2 shadow low-box p-4'>
-                <div className='d-flex flex-row gap-5'>
-                  <img className='img-fluid' src={Money} />
-                  <div className='d-flex flex-column align-content-center'>
-                    <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>Low Stock Items</p>
-                    <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>2</p>
+                <div className='col-lg-12 rounded-3 my-2 shadow low-box p-4'>
+                  <div className='d-flex flex-row gap-5'>
+                    <img className='img-fluid' src={Money} />
+                    <div className='d-flex flex-column align-content-center'>
+                      <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>Low Stock Items</p>
+                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>2</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+
           </div>
+          <div className="col-lg-12 bg-white rounded-3 my-2 shadow p-4">
+            <div className="d-flex flex-row gap-4 mt-4">
+              <p className="fs-5 fw-bold Cabin-text">Stock</p>
+              <Link to="viewstock"><p className="mt-1 fs-6 fw-semibold Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1"/></p></Link>
+            </div>
 
-
-        </div>
-        <div className="col-lg-12 bg-white rounded-3 my-2 shadow p-4">
-          <div className="d-flex flex-row gap-4 mt-4">
-            <p className="fs-5 fw-bold Cabin-text">Stock</p>
-            <Link to="viewstock"><p className="mt-1 fs-6 fw-semibold Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1"/></p></Link>
+            <MDBDataTableV5 responsive
+              striped
+              bordered
+              small
+              columns={Columns}
+              rows={Rows}
+              sortable={false}
+              exportToCSV={true}
+              searching={false}
+              paging={false} />
           </div>
-
-          <MDBDataTableV5 responsive
-            striped
-            bordered
-            small
-            data={tabledata}
-            sortable={false}
-            exportToCSV={true}
-            searching={false}
-            paging={false} />
         </div>
       </div>
-    </div>
 
-  </>
-)
+    </>
+  )
+}
 
 export default Inventory;

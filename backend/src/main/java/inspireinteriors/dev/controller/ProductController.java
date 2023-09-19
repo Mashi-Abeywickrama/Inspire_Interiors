@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import inspireinteriors.dev.model.Product;
+import inspireinteriors.dev.model.Variation;
 import inspireinteriors.dev.service.ProductService;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,12 +30,6 @@ public class ProductController {
     private ObjectMapper objectMapper;
 
 
-//    @GetMapping("/products")
-//    @ResponseBody
-//    public Iterable<Product> getAllProducts() {
-//        return productService.getAllProducts();
-//    }
-
     @PostMapping("/products")
     public ResponseEntity<String> createProduct(
             @RequestParam("productDetails") String productDetailsJson,
@@ -45,12 +40,13 @@ public class ProductController {
         // Handle image upload
         String uploadedFileName = handleImageUpload(imageFile);
 
-
         Product product = new Product();
         product.setProduct_name(productDetails.getProductName());
+        product.setProduct_description(productDetails.getProductDescription());
+        product.setDiscount(productDetails.getProductDiscount());
         product.setType(productDetails.getProductType());
         product.setEntry_price(productDetails.getEntryPrice());
-        product.setProductImg(uploadedFileName); // Save the image file path
+        product.setProductImg(uploadedFileName);// Save the image file path
 
         // Save the product to the database
         productService.saveProduct(product);
@@ -59,22 +55,116 @@ public class ProductController {
 
         JSONObject jsonResponse = new JSONObject();
         jsonResponse.put("name", product.getProduct_name());
+        jsonResponse.put("description", product.getProduct_description());
+        jsonResponse.put("discount", product.getDiscount());
         jsonResponse.put("type", product.getType());
         jsonResponse.put("entryPrice", product.getEntry_price());
         jsonResponse.put("productImg", product.getProductImg());
 
-
         return ResponseEntity.ok(uploadedFileName);
     }
 
+    @PostMapping("/addproducts")
+    public ResponseEntity<Product> createdproduct(@RequestBody Product product){
+        productService.createProduct(product);
+        return ResponseEntity.ok(product);
+    }
+
+    @PostMapping("/addvariation")
+    public Variation createVariation(@RequestBody Variation variation) {
+        return productService.createvariation(variation);
+    }
+
     @GetMapping("/viewproducts")
-    public Iterable<Product> getAllProducts() {
-        return productService.getAllProducts();
+    public List<Product> getAllProducts() {
+        return (List<Product>) productService.getAllProducts();
     }
 
     @GetMapping("/viewproducts/{id}")
     public Product getProductById(@PathVariable Integer id) {
         return productService.getProductById(id);
+    }
+
+    @GetMapping("/viewvariations/{id}")
+    public ResponseEntity<List<Variation>> getVariationByProductId(@PathVariable(value = "id") int product_id) {
+        List<Variation> variations = productService.getByProductId(product_id);
+        return ResponseEntity.ok(variations);
+    }
+
+    @GetMapping("/viewvariations")
+    public Iterable<Variation> getAllVariations() {
+        return productService.getAllVariations();
+    }
+
+    //update product variations with product id
+    @PutMapping("/updatevariations/{id}")
+    public ResponseEntity<Variation> updateVariation(
+            @PathVariable("id") Integer variation_id,
+            @RequestBody Variation updatedVariation
+    ) {
+        Variation variation = productService.updateVariation(updatedVariation);
+
+        if (variation == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        if (updatedVariation.getColor() != null) {
+            variation.setColor(updatedVariation.getColor());
+        }
+
+        if (updatedVariation.getMaterial() != null) {
+            variation.setMaterial(updatedVariation.getMaterial());
+        }
+
+        if (updatedVariation.getQuantity() != 0) {
+            variation.setQuantity(updatedVariation.getQuantity());
+        }
+
+        if (updatedVariation.getVariationImg() != null) {
+            variation.setVariationImg(updatedVariation.getVariationImg());
+        }
+
+        productService.updateVariation(variation);
+        return ResponseEntity.ok(variation);
+    }
+
+    @PutMapping("/updateproducts/{id}")
+    public ResponseEntity<Product> updateProduct(
+            @PathVariable("id") Integer id,
+            @RequestBody Product updatedProduct
+    ) {
+        Product product = productService.getProductById(id);
+
+        if (product == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        if (updatedProduct.getProduct_name() != null) {
+            product.setProduct_name(updatedProduct.getProduct_name());
+        }
+
+        if (updatedProduct.getProduct_description() != null) {
+            product.setProduct_description(updatedProduct.getProduct_description());
+        }
+
+        if (updatedProduct.getDiscount() != 0) {
+            product.setDiscount(updatedProduct.getDiscount());
+        }
+
+        if (updatedProduct.getType() != null) {
+            product.setType(updatedProduct.getType());
+        }
+
+        if (updatedProduct.getEntry_price() != null) {
+            product.setEntry_price(updatedProduct.getEntry_price());
+        }
+
+        if (updatedProduct.getProductImg() != null) {
+            product.setProductImg(updatedProduct.getProductImg());
+        }
+
+        productService.saveProduct(product);
+        return ResponseEntity.ok(product);
     }
 
     private String handleImageUpload(MultipartFile imageFile) {
@@ -106,28 +196,49 @@ public class ProductController {
     public static class ProductDetails {
         @JsonProperty("productName")
         private String productName;
+        @JsonProperty("productDescription")
+        private String productDescription;
+        @JsonProperty("productDiscount")
+        private int productDiscount;
         @JsonProperty("productType")
         private String productType;
         @JsonProperty("entryPrice")
         private String entryPrice;
-
         @JsonProperty("productImg")
         private String productImg;
 
         public ProductDetails() {
         }
 
-        public ProductDetails(String productName, String productType, String entryPrice) {
+        public ProductDetails(String productName, String productDescription, int discount, String productType, String entryPrice) {
             this.productName = productName;
+            this.productDescription = productDescription;
+            this.productDiscount = discount;
             this.productType = productType;
             this.entryPrice = entryPrice;
         }
 
-        public ProductDetails(String productName, String productType, String entryPrice, String productImg) {
+        public ProductDetails(String productName, String productDescription, int discount, String productType, String entryPrice, String productImg) {
             this.productName = productName;
+            this.productDescription = productDescription;
+            this.productDiscount = discount;
             this.productType = productType;
             this.entryPrice = entryPrice;
             this.productImg = productImg;
+        }
+
+        public String getProductDescription() {return productDescription;}
+
+        public void setProductDescription(String productDescription) {
+            this.productDescription = productDescription;
+        }
+
+        public int getProductDiscount() {
+            return productDiscount;
+        }
+
+        public void setProductDiscount(int productDiscount) {
+            this.productDiscount = productDiscount;
         }
 
         public String getProductImg() {
@@ -162,8 +273,8 @@ public class ProductController {
             this.entryPrice = entryPrice;
         }
 
-
     }
+
     //get all room types
     @GetMapping("/room-types")
     public List<String> getAvailableRoomTypes() {

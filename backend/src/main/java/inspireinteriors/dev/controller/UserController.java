@@ -94,7 +94,7 @@ public class UserController {
             String province = registrationRequest.getProvince();
 
             Vendor newVendor = vendorService.createVendor(userId, laneNo, city, district, province);
-            session.setAttribute("vendorid", newVendor.getVendor_id());
+
         }
 
         else if ("designer".equalsIgnoreCase(userType)) {
