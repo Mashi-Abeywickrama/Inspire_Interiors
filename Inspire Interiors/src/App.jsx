@@ -32,7 +32,6 @@ import OnlyHeaderRootlayout from "./layouts/onlyHeaderRootlayout";
 
 import Report from './pages/Admin/report';
 import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
-import Dashboard from './pages/Admin/dashboard';
 import User from './pages/Admin/user';
 import Commission from './pages/Admin/commission';
 import Orders from './pages/Admin/orders';
@@ -60,6 +59,9 @@ import PaymentMethod from "./pages/Customer/checkout/payment";
 import ShippingMethod from "./pages/Customer/checkout/shipping";
 import MarketPlace from "./pages/Customer/marketplace/marketPlace";
 
+//Manager
+import ManagerDashboardLayout from "./layouts/Manager/managerDashboardLayout";
+// import CustomerDashboard from "./pages/Customer/customerDashboard";
 // Vendor
 
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
@@ -184,7 +186,7 @@ const routes = (
         <Route path="salary" element={<Salary />} />
         <Route path="orders/invoice/:orderid" element={<Invoice />} />
         <Route path="user/profile/:userid" element={<Profile />} />
-        <Route path="commision/commissionView" element={<Cview />} />
+        <Route path="commision/commissionView/:userid" element={<Cview />} />
         <Route path="settings" element={<ADSetting />} />
       </Route>
       {/* Customer Support Routes */}
@@ -196,10 +198,10 @@ const routes = (
         <Route index element={<CustomerSupportDashboard />} />
         <Route path="dashboard" element={<CustomerSupportDashboard />}></Route>
         <Route path="inquiry" element={<Inquiry />} />
-        <Route path="delivery" element={<Delivery />} />
+        {/* <Route path="delivery" element={<Delivery />} /> */}
         <Route path="refund" element={<Refund />}></Route>
-        <Route path="delivery/view" element={<ViewDelivery />}></Route>
-        <Route path="inquiry/view" element={<ViewInquiry />}></Route>
+        {/* <Route path="delivery/view" element={<ViewDelivery />}></Route> */}
+        <Route path="inquiry/view/:type/:id" element={<ViewInquiry />}></Route>
         <Route path="refund/view" element={<ViewRefund />}></Route>
       </Route>
       {/* Vendor Routes */}
@@ -256,6 +258,7 @@ const routes = (
         errorElement={<Error />}
       >
         <Route index element={<DesignerDashboard />} />
+        <Route path="dashboard" element={<DesignerDashboard />} />
         <Route path="mydesigns" element={<DesignerMyDesigns />} />
         <Route path="test" element={<Test />} />
         <Route path="earningsall" element={<DesignerEarnings />} />
@@ -273,14 +276,27 @@ const routes = (
       {/* <Route path="requests" element={<DesignerCustomerRequest />} />
       <Route path="crequestview/:id" element={<DesignerCRequestview />} /> */}
     </Route>
-  </>
+
+
+      {/* Manager Routes */}
+      <Route
+        path="/manager/"
+        element={<ManagerDashboardLayout />}
+        errorElement={<Error />}
+      >
+        <Route index element={<DesignerDashboard />} />
+        <Route path="delivery" element={<Delivery />} />
+        <Route path="delivery/view/:id" element={<ViewDelivery />}></Route>
+        <Route path="mydesigns" element={<DesignerMyDesigns />} />
+      </Route>
+    </>
 );
 
 const App = () => {
   const currentURL = window.location.href;
   const sessionItems = useSession();
   const splitURL = currentURL.split("/");
-  if (splitURL[3] === "customer" || splitURL[3] === "vendor" || splitURL[3] === "support" || splitURL[3] === "designer" || splitURL[3] === "admin") {
+  if (splitURL[3] === "customer" || splitURL[3] === "vendor" || splitURL[3] === "support" || splitURL[3] === "designer" || splitURL[3] === "admin" || splitURL[3] === "manager") {
     
     console.log(sessionItems.sessionData);
     if (sessionItems.sessionData === null || sessionItems.sessionData.userType === undefined ) {

@@ -45,6 +45,17 @@ public class UserController {
 
         return user_id.toString();
     }
+
+    @GetMapping("/username-check")
+    public ResponseEntity<Integer> checkUsernameExists(@RequestParam String username) {
+        User user = userService.findByUsername(username);
+
+        if (user != null) {
+            return ResponseEntity.ok(1);
+        } else {
+            return ResponseEntity.ok(0);
+        }
+    }
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest, HttpSession session) throws JSONException {
         User user = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
@@ -135,6 +146,12 @@ public class UserController {
     public User updateUser(@PathVariable ("userid") int userid, @RequestBody User user)
     {
         return this.userService.updateUser(userid,user);
+    }
+
+    @GetMapping("/filtertype/{type}")
+    public List<User> getUsersByUserType(@PathVariable String type) {
+        List<User> users = userService.getUsersByUserType(type);
+        return users;
     }
 
     @PostMapping("/profile")
