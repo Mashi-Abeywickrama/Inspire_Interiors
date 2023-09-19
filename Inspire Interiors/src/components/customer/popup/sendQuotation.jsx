@@ -1,34 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 function SendQuotationButton({ ID }) {
+
+
+const [userData, setUserData] = useState(''); // State to store email
+ const apiBaseURL = 'http://localhost:8080';
+
+        const axiosInstance = axios.create({
+            baseURL: apiBaseURL,
+            timeout: 50000,
+        });
+const fetchemail = async () => {
+    try {
+      const response = await axiosInstance.get(`/getuserbyname/${ID.username}`);
+      const data = response.data;
+      setUserData(data);
+      setEmail(data.email)
+      console.log('Data has been received!', data);
+    } catch (error) {
+       console.error('Error from backend:', error);
+    }
+  };
+ useEffect(() => {
+    fetchemail();
+  }, []);
+
     const [showSendQuotationPopup, setShowSendQuotationPopup] = useState(false);
+
+    const [emailr, setEmail] = useState(''); // State to store email
+    const [filer, setFile] = useState(null); // State to store the selected file 
 
     // Function to close the modal
     const closeSendQuotationModel = () => {
         setShowSendQuotationPopup(false);
     };
 
-    const handleSendQuotation = () => {
+    const handleSendQuotation =async (e)  => {
+        e.preventDefault();
         const apiBaseURL = 'http://localhost:8080';
 
         const axiosInstance = axios.create({
             baseURL: apiBaseURL,
-            timeout: 5000,
+            timeout: 50000,
         });
 
+        const first = {recipient: emailr}
+    
+       
+        const formData = new FormData();
+        formData.append('details', JSON.stringify(first));
+        formData.append('file', filer); // Make sure 'filer' is correctly set from the state, not redeclared as 'file'
+
+        console.log(formData);
+
         axiosInstance
-            // .delete(`/delete_address/${addressID}`) 
+            .post(`/sendMailWithAttachment`, formData,
+            { headers: { 'Content-Type': 'multipart/form-data' } }) 
             .then(response => {
-                console.log('Address deleted successfully:', response.data);
+                axiosInstance
+                    .put(`/mark-as-completed/${ID.inquiry_id}`, {})
+                    .then(response => {
+                        console.log('Inquiry updated successfully:', response.data);
+                     
+                    })
+                    .catch(error => {
+                        console.error('Error updating inquiry:', error);
+                    });
+                console.log('Mail Sent:', response.data);
                 closeSendQuotationModel();
             })
             .catch(error => {
 
-                console.error('Error deleting address:', error);
+                console.error('Error Sending Mail:', error);
             });
     };
+
+    const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    console.log('Selected File:', selectedFile);
+    setFile(selectedFile);
+};
 
     return (
         <div>
@@ -47,7 +100,7 @@ function SendQuotationButton({ ID }) {
                     </Modal.Title>
                 </Modal.Header>
 
-                <Form className='p-4' >
+                <Form className='p-4' onSubmit={handleSendQuotation} >
 
                     <Modal.Body className='py-2 px-3'>
 
@@ -60,8 +113,14 @@ function SendQuotationButton({ ID }) {
                                     <Form.Control
                                         type='text'
                                         name='email'
+                                        value={emailr}
                                         placeholder='Enter the Email'
                                         style={{ backgroundColor: '#F2FAFF' }}
+                                        onChange={(e) => {
+                                        const emailValue = e.target.value;
+                                        console.log('Email Value:', emailValue);
+                                        setEmail(emailValue);
+                                    }}
                                     />
                                 </Form.Group>
                             </Col>
@@ -71,12 +130,14 @@ function SendQuotationButton({ ID }) {
                             <Col md>
                                 <Form.Group className='mb-3'>
                                     <Form.Label className='sub-heading Cabin-text'>
-                                        Evidence (File Upload):
+                                        Quotation (File Upload):
                                     </Form.Label>
                                     <Form.Control
                                         type='file'
                                         name='evidence'
                                         style={{ backgroundColor: '#F2FAFF' }}
+                                        onChange={handleFileChange} // Handle file input change
+                                        
                                     />
                                 </Form.Group>
                             </Col>

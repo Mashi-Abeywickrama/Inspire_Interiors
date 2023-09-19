@@ -339,7 +339,7 @@ const DetailedView = () => {
                         <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
                         <MarkAsCanceledBtn ID={inquiryData}/>
                             <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-1">
-                            <SendQuotationBtn/>
+                            <SendQuotationBtn ID={inquiryData}/>
                             </div>
                         </div>
                     </>

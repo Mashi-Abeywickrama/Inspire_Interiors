@@ -109,4 +109,8 @@ import java.util.List;
             return userRepository.findByUsername(username);
 
         }
+
+        public User getUserByUserName(String username) {
+            return userRepository.findByUsername(username);
+        }
     }
