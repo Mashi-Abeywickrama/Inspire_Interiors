@@ -12,6 +12,7 @@ import Chair3 from './../../../assets/img/customer/chair3.png';
 import Chair4 from './../../../assets/img/customer/chair4.png';
 import Chair5 from './../../../assets/img/customer/chair5.png';
 import Chair6 from './../../../assets/img/customer/chair6.png';
+import QRPopup from '../../../components/customer/popup/ARPopup';
 
 const stardata = {
     data:"4.5"
@@ -72,12 +73,15 @@ const ViewProduct = () => {
     return (
         <>
             <div className="product-container view-product p-4 bg-white rounded-3 mb-4 me-3">
-                <div className="d-flex flex-row gap-4">
+                <div className="d-flex flex-row gap-4 justify-content-between me-5">
+                    <div className='d-flex flex-row gap-4'>
                     <p className="fs-3 fw-bold Cabin-text">Marketplace</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                     <p className="fs-3 fw-bold Cabin-text">{productData.type}</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                     <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{productData.product_name}</p>
+                    </div>
+                    <QRPopup />
                 </div>
                 <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row'>
                     <div className='d-flex flex-column side-div'>
