@@ -116,7 +116,7 @@ public class DesignerMyDesignService {
         return designerDesigntoolFilesRepository.save(designtoolFiles);
     }
 
-    public DesigntoolFiles getFilesById(int design_id) {
-        return designerDesigntoolFilesRepository.findById(design_id).orElse(null);
-    }
+   public DesigntoolFiles Getdetails(int id){
+        return designerDesigntoolFilesRepository.findById((long) id).orElse(null);
+   }
 }

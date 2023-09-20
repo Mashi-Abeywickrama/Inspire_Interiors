@@ -11,7 +11,7 @@ import {
   useLocation,
   BrowserRouter,
   Routes,
-  Router
+  Router,
 } from "react-router-dom";
 
 import { useSession } from "./constants/SessionContext";
@@ -30,18 +30,17 @@ import OnlyHeaderRootlayout from "./layouts/onlyHeaderRootlayout";
 
 // Admin
 
-import Report from './pages/Admin/report';
-import ADashboardlayout from './layouts/Admin/admindasahboardLayout';
-import User from './pages/Admin/user';
-import Commission from './pages/Admin/commission';
-import Orders from './pages/Admin/orders';
-import Salary from './pages/Admin/salary';
-import Profile from './pages/Admin/profile';
-import Invoice from './pages/Admin/invoice';
-import Cview from './pages/Admin/commissionView';
-import ADSetting from './pages/Admin/settings';
+import Report from "./pages/Admin/report";
+import ADashboardlayout from "./layouts/Admin/admindasahboardLayout";
+import User from "./pages/Admin/user";
+import Commission from "./pages/Admin/commission";
+import Orders from "./pages/Admin/orders";
+import Salary from "./pages/Admin/salary";
+import Profile from "./pages/Admin/profile";
+import Invoice from "./pages/Admin/invoice";
+import Cview from "./pages/Admin/commissionView";
+import ADSetting from "./pages/Admin/settings";
 import AdminDashboard from "./pages/Admin/dashboard";
-
 
 // Customer
 import CDashboardlayout from "./layouts/Customer/customerDashboardlayout";
@@ -112,212 +111,211 @@ import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
 import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 import { Loader } from "semantic-ui-react";
-// import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
-// import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
+import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
+import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
 
 const routes = (
+  <>
+    <Route path="/" element={<Rootlayout />} errorElement={<Error />}>
+      <Route index element={<Home />} />
+      <Route path="about" element={<AboutUs />} />
+      <Route path="services" element={<Services />} />
+      <Route path="contact" element={<Contact />} />
+      <Route path="projects" element={<Project />} />
+      <Route path="team" element={<MyTeam />} />
+    </Route>
+    <Route
+      path="/login"
+      element={<OnlyHeaderRootlayout />}
+      errorElement={<Error />}
+    >
+      <Route
+        index
+        element={
+          <>
+            <AlertPopup />
+            <Login />
+          </>
+        }
+      />
+    </Route>
+    <Route
+      path="/signup"
+      element={<OnlyHeaderRootlayout />}
+      errorElement={<Error />}
+    >
+      <Route index element={<SignUp />} />
+    </Route>
+    {/* Customer Routes */}
+    <Route
+      path="/customer/"
+      element={<CDashboardlayout />}
+      errorElement={<Home />}
+    >
+      <Route index element={<CustomerDashboard />} />
+      <Route path="dashboard" element={<CustomerDashboard />} />
+      <Route path="orders" element={<MyOrder />} />
+      <Route path="designs" element={<Designs />} />
+      <Route path="designs/browsedesigns" element={<BrowseDesigns />} />
+      <Route
+        path="marketplace/viewproduct/:id"
+        element={<ViewProduct />}
+      ></Route>
+      <Route path="designs/viewdesigner" element={<ViewDesigner />} />
+      <Route path="marketplace" element={<MarketPlace />} />
+      {/* <Route path="marketplace/categoryview" element={<CategoryView />} /> */}
+      <Route
+        path="marketplace/categoryview/:roomType"
+        element={<CategoryView />}
+      />
+      <Route path="cart" element={<Cart />} />
+      <Route path="checkout/address" element={<Address />} />
+      <Route path="checkout/payment" element={<PaymentMethod />} />
+      <Route path="checkout/shipping" element={<ShippingMethod />} />
+      <Route path="orders/vieworder" element={<OrderView />} />
+      <Route path="settings" element={<CusSetting />}></Route>
+    </Route>
+    {/* Admin Routes */}
+    <Route
+      path="/Admin/"
+      element={<ADashboardlayout />}
+      errorElement={<Error />}
+    >
+      <Route index element={<AdminDashboard />} />
+      <Route path="dashboard" element={<AdminDashboard />}></Route>
+      <Route path="report" element={<Report />} />
+      <Route path="user" element={<User />} />
+      <Route path="commission" element={<Commission />} />
+      <Route path="orders" element={<Orders />} />
+      <Route path="salary" element={<Salary />} />
+      <Route path="orders/invoice/:orderid" element={<Invoice />} />
+      <Route path="user/profile/:userid" element={<Profile />} />
+      <Route path="commision/commissionView/:userid" element={<Cview />} />
+      <Route path="settings" element={<ADSetting />} />
+    </Route>
+    {/* Customer Support Routes */}
+    <Route
+      path="/customersupport/"
+      element={<CSDashboardlayout />}
+      errorElement={<Error />}
+    >
+      <Route index element={<CustomerSupportDashboard />} />
+      <Route path="dashboard" element={<CustomerSupportDashboard />}></Route>
+      <Route path="inquiry" element={<Inquiry />} />
+      {/* <Route path="delivery" element={<Delivery />} /> */}
+      <Route path="refund" element={<Refund />}></Route>
+      {/* <Route path="delivery/view" element={<ViewDelivery />}></Route> */}
+      <Route path="inquiry/view/:type/:id" element={<ViewInquiry />}></Route>
+      <Route path="refund/view" element={<ViewRefund />}></Route>
+    </Route>
+    {/* Vendor Routes */}
+    <Route
+      path="/vendor/"
+      element={<VDashboardlayout />}
+      errorElement={<Error />}
+    >
+      <Route index element={<VendorDashboard />} />
+      <Route path="dashboard" element={<VendorDashboard />}></Route>
+      <Route path="inventory" element={<Inventory />}></Route>
+      <Route path="inventory/viewstock" element={<ViewStocks />}></Route>
+      <Route
+        path="inventory/inventoryproduct"
+        element={<InventoryProduct />}
+      ></Route>
+      <Route path="inventory/addstock" element={<AddStock />}></Route>
+      <Route path="order" element={<Order />}></Route>
+      <Route path="order/vieworder" element={<ViewOrder />}></Route>
+      <Route path="order/customizeorders" element={<CustomizeOrders />}></Route>
+      <Route path="order/customrequest" element={<ViewCustomRequest />}></Route>
+      <Route path="promotion" element={<Promotion />}></Route>
+      <Route path="promotion/mynetwork" element={<MyNetwork />}></Route>
+      <Route
+        path="promotion/promoteproduct"
+        element={<PromotedProduct />}
+      ></Route>
+      <Route
+        path="promotion/promotionrequest"
+        element={<PromotionRequest />}
+      ></Route>
+      <Route path="promotion/expenses" element={<PromotionExpenses />}></Route>
+      <Route path="complaints" element={<Complaints />}></Route>
+      <Route
+        path="complaints/viewcomplaint"
+        element={<ViewComplaint />}
+      ></Route>
+      <Route path="setting" element={<VendorSetting />}></Route>
+    </Route>
 
-    <>
-      <Route path="/" element={<Rootlayout />} errorElement={<Error />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<AboutUs />} />
-        <Route path="services" element={<Services />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="projects" element={<Project />} />
-        <Route path="team" element={<MyTeam />} />
-      </Route>
+    {/* Designer Routes */}
+    <Route
+      path="/designer/"
+      element={<DesignerLayout />}
+      errorElement={<Error />}
+    >
+      <Route index element={<DesignerDashboard />} />
+      <Route path="dashboard" element={<DesignerDashboard />} />
+      <Route path="mydesigns" element={<DesignerMyDesigns />} />
+      <Route path="test" element={<Test />} />
+      <Route path="earningsall" element={<DesignerEarnings />} />
+      <Route path="earnings" element={<DesignerEarn />} />
+      <Route path="bankdetails" element={<DesignerBankDetails />} />
+      <Route path="promotion" element={<DesignerPromotion />} />
       <Route
-        path="/login"
-        element={<OnlyHeaderRootlayout />}
-        errorElement={<Error />}
-      >
-        <Route
-          index
-          element={
-            <>
-              <AlertPopup />
-              <Login />
-            </>
-          }
-        />
-      </Route>
-      <Route
-        path="/signup"
-        element={<OnlyHeaderRootlayout />}
-        errorElement={<Error />}
-      >
-        <Route index element={<SignUp />} />
-      </Route>
-      {/* Customer Routes */}
-      <Route
-        path="/customer/"
-        element={<CDashboardlayout />}
-        errorElement={<Home />}
-      >
-        <Route index element={<CustomerDashboard />} />
-        <Route path="dashboard" element={<CustomerDashboard />} />
-        <Route path="orders" element={<MyOrder />} />
-        <Route path="designs" element={<Designs />} />
-        <Route path="designs/browsedesigns" element={<BrowseDesigns />} />
-        <Route path="marketplace/viewproduct/:id" element={<ViewProduct />}></Route>
-        <Route path="designs/viewdesigner" element={<ViewDesigner />} />
-        <Route path="marketplace" element={<MarketPlace />} />
-        {/* <Route path="marketplace/categoryview" element={<CategoryView />} /> */}
-        <Route path="marketplace/categoryview/:roomType" element={<CategoryView />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="checkout/address" element={<Address />} />
-        <Route path="checkout/payment" element={<PaymentMethod />} />
-        <Route path="checkout/shipping" element={<ShippingMethod />} />
-        <Route path="orders/vieworder" element={<OrderView />} />
-        <Route path="settings" element={<CusSetting />}></Route>
-      </Route>
-      {/* Admin Routes */}
-      <Route
-        path="/Admin/"
-        element={<ADashboardlayout />}
-        errorElement={<Error />}
-      >
-        <Route index element={<AdminDashboard />} />
-        <Route path="dashboard" element={<AdminDashboard />}></Route>
-        <Route path="report" element={<Report />} />
-        <Route path="user" element={<User />} />
-        <Route path="commission" element={<Commission />} />
-        <Route path="orders" element={<Orders />} />
-        <Route path="salary" element={<Salary />} />
-        <Route path="orders/invoice/:orderid" element={<Invoice />} />
-        <Route path="user/profile/:userid" element={<Profile />} />
-        <Route path="commision/commissionView/:userid" element={<Cview />} />
-        <Route path="settings" element={<ADSetting />} />
-      </Route>
-      {/* Customer Support Routes */}
-      <Route
-        path="/customersupport/"
-        element={<CSDashboardlayout />}
-        errorElement={<Error />}
-      >
-        <Route index element={<CustomerSupportDashboard />} />
-        <Route path="dashboard" element={<CustomerSupportDashboard />}></Route>
-        <Route path="inquiry" element={<Inquiry />} />
-        {/* <Route path="delivery" element={<Delivery />} /> */}
-        <Route path="refund" element={<Refund />}></Route>
-        {/* <Route path="delivery/view" element={<ViewDelivery />}></Route> */}
-        <Route path="inquiry/view/:type/:id" element={<ViewInquiry />}></Route>
-        <Route path="refund/view" element={<ViewRefund />}></Route>
-      </Route>
-      {/* Vendor Routes */}
-      <Route
-        path="/vendor/"
-        element={<VDashboardlayout />}
-        errorElement={<Error />}
-      >
-        <Route index element={<VendorDashboard />} />
-        <Route path="dashboard" element={<VendorDashboard />}></Route>
-        <Route path="inventory" element={<Inventory />}></Route>
-        <Route path="inventory/viewstock" element={<ViewStocks />}></Route>
-        <Route
-          path="inventory/inventoryproduct"
-          element={<InventoryProduct />}
-        ></Route>
-        <Route path="inventory/addstock" element={<AddStock />}></Route>
-        <Route path="order" element={<Order />}></Route>
-        <Route path="order/vieworder" element={<ViewOrder />}></Route>
-        <Route
-          path="order/customizeorders"
-          element={<CustomizeOrders />}
-        ></Route>
-        <Route
-          path="order/customrequest"
-          element={<ViewCustomRequest />}
-        ></Route>
-        <Route path="promotion" element={<Promotion />}></Route>
-        <Route path="promotion/mynetwork" element={<MyNetwork />}></Route>
-        <Route
-          path="promotion/promoteproduct"
-          element={<PromotedProduct />}
-        ></Route>
-        <Route
-          path="promotion/promotionrequest"
-          element={<PromotionRequest />}
-        ></Route>
-        <Route
-          path="promotion/expenses"
-          element={<PromotionExpenses />}
-        ></Route>
-        <Route path="complaints" element={<Complaints />}></Route>
-        <Route
-          path="complaints/viewcomplaint"
-          element={<ViewComplaint />}
-        ></Route>
-        <Route path="setting" element={<VendorSetting />}></Route>
-      </Route>
-
-      {/* Designer Routes */}
-      <Route
-        path="/designer/"
-        element={<DesignerLayout />}
-        errorElement={<Error />}
-      >
-        <Route index element={<DesignerDashboard />} />
-        <Route path="dashboard" element={<DesignerDashboard />} />
-        <Route path="mydesigns" element={<DesignerMyDesigns />} />
-        <Route path="test" element={<Test />} />
-        <Route path="earningsall" element={<DesignerEarnings />} />
-        <Route path="earnings" element={<DesignerEarn />} />
-        <Route path="bankdetails" element={<DesignerBankDetails />} />
-        <Route path="promotion" element={<DesignerPromotion />} />
-        <Route
-          path="promotion/earnings"
-          element={<DesignerPromotionEarnings />}
-        />
-        <Route path="designtool" element={<DesignerDesigntool />} />
+        path="promotion/earnings"
+        element={<DesignerPromotionEarnings />}
+      />
+      <Route path="designtool" element={<DesignerDesigntool />} />
 
       <Route path="setting" element={<DesignerSetting />} />
       <Route path="test" element={<Test />} />
-      {/* <Route path="requests" element={<DesignerCustomerRequest />} />
-      <Route path="crequestview/:id" element={<DesignerCRequestview />} /> */}
+      <Route path="requests" element={<DesignerCustomerRequest />} />
+      <Route path="crequestview/:id" element={<DesignerCRequestview />} />
     </Route>
 
-
-      {/* Manager Routes */}
-      <Route
-        path="/manager/"
-        element={<ManagerDashboardLayout />}
-        errorElement={<Error />}
-      >
-        <Route index element={<DesignerDashboard />} />
-        <Route path="delivery" element={<Delivery />} />
-        <Route path="delivery/view/:id" element={<ViewDelivery />}></Route>
-        <Route path="mydesigns" element={<DesignerMyDesigns />} />
-      </Route>
-    </>
+    {/* Manager Routes */}
+    <Route
+      path="/manager/"
+      element={<ManagerDashboardLayout />}
+      errorElement={<Error />}
+    >
+      <Route index element={<DesignerDashboard />} />
+      <Route path="delivery" element={<Delivery />} />
+      <Route path="delivery/view/:id" element={<ViewDelivery />}></Route>
+      <Route path="mydesigns" element={<DesignerMyDesigns />} />
+    </Route>
+  </>
 );
 
 const App = () => {
   const currentURL = window.location.href;
   const sessionItems = useSession();
   const splitURL = currentURL.split("/");
-  if (splitURL[3] === "customer" || splitURL[3] === "vendor" || splitURL[3] === "support" || splitURL[3] === "designer" || splitURL[3] === "admin" || splitURL[3] === "manager") {
-    
+  if (
+    splitURL[3] === "customer" ||
+    splitURL[3] === "vendor" ||
+    splitURL[3] === "support" ||
+    splitURL[3] === "designer" ||
+    splitURL[3] === "admin" ||
+    splitURL[3] === "manager"
+  ) {
     console.log(sessionItems.sessionData);
-    if (sessionItems.sessionData === null || sessionItems.sessionData.userType === undefined ) {
+    if (
+      sessionItems.sessionData === null ||
+      sessionItems.sessionData.userType === undefined
+    ) {
       window.location.href = "/login";
-    }else{
+    } else {
       if (sessionItems.sessionData.userType !== splitURL[3]) {
-        window.location.href = "/login";        
+        window.location.href = "/login";
+      } else {
+        const router = createBrowserRouter(createRoutesFromElements(routes));
+        return <RouterProvider router={router} />;
       }
-    
-    else{
-      const router = createBrowserRouter(createRoutesFromElements(routes));
-    return <RouterProvider router={router} />;
     }
-    }
-  } else{
+  } else {
     const router = createBrowserRouter(createRoutesFromElements(routes));
     return <RouterProvider router={router} />;
-
   }
-
-  
 };
 
 export default App;

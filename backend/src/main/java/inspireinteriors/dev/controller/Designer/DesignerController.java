@@ -130,9 +130,9 @@ public class DesignerController {
     }
 
     @GetMapping("/designtool/getdesign/{id}")
-    public ResponseEntity<List<DesigntoolFiles>> getFilesByID(@PathVariable("id") int design_id){
-        List<DesigntoolFiles> designtoolFiles = (List<DesigntoolFiles>) designerMyDesignService.getFilesById(design_id);
-        return ResponseEntity.ok(designtoolFiles);
+    public ResponseEntity<DesigntoolFiles> getFilesByID(@PathVariable("id") int design_id){
+    DesigntoolFiles designtoolFiles =  designerMyDesignService.Getdetails(design_id);
+      return ResponseEntity.ok(designtoolFiles);
     }
 
 }

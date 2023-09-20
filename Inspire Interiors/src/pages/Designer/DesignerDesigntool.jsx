@@ -193,7 +193,7 @@ function DesignerDesigntool() {
   const acceptedRows = data.map((item) => ({
     product: (
       <div className="d-flex flex-row gap-4 align-items-center">
-        <a href={`crequestview?id=${item.request_id}`}>
+        <a href={`crequestview/${item.request_id}`}>
           <img src={Sofa} alt={`Product ${item.request_id}`} />
         </a>
         <div className="d-flex flex-column">
