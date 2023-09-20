@@ -176,48 +176,45 @@ function DesignerDesigntool() {
     x
   );
 
-  const sentData = {
-    columns: [
-      {
-        label: "CUSTOMIZED REQUEST DETAILS",
-        field: "product",
-        sort: "asc",
-        width: 250,
-      },
-      {
-        field: "status",
-        sort: "asc",
-        width: 270,
-      },
-    ],
-    rows: [
-      data.map((item) => ({
-        product: (
-          <div className="d-flex flex-row gap-4 align-items-center">
-            <a href={`crequestview?id=${item.request_id}`}>
-              <img src={Sofa} alt={`Product ${item.request_id}`} />
-            </a>
-            <div className="d-flex flex-column">
-              <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
-                David Avocado
-              </p>
-              <p className="fs-6 fw-normal">Living Room</p>
-            </div>
-          </div>
-        ),
-        status: (
-          <div className="d-flex flex-column">
-            <div className="completed d-flex gap-2 align-items-center">
-              <i className="bi bi-circle-fill tag-icon"></i>
-              <p className="m-0">Accepted</p>
-            </div>
-            <p className="float-end">23 min ago</p>
-          </div>
-        ),
-      })),
-    ],
-  };
-  console.log(sentData.rows);
+  const columns = [
+    {
+      label: "CUSTOMIZED REQUEST DETAILS",
+      field: "product",
+      sort: "asc",
+      width: 250,
+    },
+    {
+      field: "status",
+      sort: "asc",
+      width: 270,
+    },
+  ];
+
+  const acceptedRows = data.map((item) => ({
+    product: (
+      <div className="d-flex flex-row gap-4 align-items-center">
+        <a href={`crequestview?id=${item.request_id}`}>
+          <img src={Sofa} alt={`Product ${item.request_id}`} />
+        </a>
+        <div className="d-flex flex-column">
+          <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
+            David Avocado
+          </p>
+          <p className="fs-6 fw-normal">Living Room</p>
+        </div>
+      </div>
+    ),
+    status: (
+      <div className="d-flex flex-column">
+        <div className="completed d-flex gap-2 align-items-center">
+          <i className="bi bi-circle-fill tag-icon"></i>
+          <p className="m-0">Accepted</p>
+        </div>
+        <p className="float-end">23 min ago</p>
+      </div>
+    ),
+  }));
+  console.log(data);
 
   return (
     <div className="d-flex design-container background-design flex-column gap-3 me-5">
@@ -593,7 +590,8 @@ function DesignerDesigntool() {
                     striped
                     bordered
                     small
-                    data={sentData}
+                    rows={acceptedRows}
+                    columns={columns}
                     sortable={false}
                     exportToCSV={true}
                     paging={false}

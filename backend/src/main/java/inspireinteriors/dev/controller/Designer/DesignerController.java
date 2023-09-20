@@ -60,7 +60,7 @@ public class DesignerController {
     }
 
     //By Designer ID
-    @GetMapping("/customerrequests/d/{id}/")
+    @GetMapping("/customerrequests/d/{id}")
     public ResponseEntity<List<CustomerRequests>> getCusomerRequestsbyDesignerId(@PathVariable(value = "id") int designer_id){
         List<CustomerRequests> customerRequests = designerMyDesignService.getCustomerRequestsByDesignerId(designer_id);
         return ResponseEntity.ok(customerRequests);
@@ -127,6 +127,12 @@ public class DesignerController {
       designerMyDesignService.saveFiles(file);
       return "Successfully Saved";
 
+    }
+
+    @GetMapping("/designtool/getdesign/{id}")
+    public ResponseEntity<List<DesigntoolFiles>> getFilesByID(@PathVariable("id") int design_id){
+        List<DesigntoolFiles> designtoolFiles = (List<DesigntoolFiles>) designerMyDesignService.getFilesById(design_id);
+        return ResponseEntity.ok(designtoolFiles);
     }
 
 }

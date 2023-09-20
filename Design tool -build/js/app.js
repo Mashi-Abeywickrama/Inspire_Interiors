@@ -96,6 +96,7 @@ var mainControls = function (blueprint3d) {
     var reader = new FileReader();
     reader.onload = function (event) {
       var data = event.target.result;
+      console.log("Data is.....", data);
       blueprint3d.model.loadSerialized(data);
     };
     reader.readAsText(files[0]);
