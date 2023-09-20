@@ -68,7 +68,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody UserRegistrationRequest registrationRequest) throws JSONException {
+    public ResponseEntity<String> register(@RequestBody UserRegistrationRequest registrationRequest, HttpSession session) throws JSONException {
         String name = registrationRequest.getName();
         String email = registrationRequest.getEmail();
         String username = registrationRequest.getUsername();
@@ -94,7 +94,7 @@ public class UserController {
             String province = registrationRequest.getProvince();
 
             Vendor newVendor = vendorService.createVendor(userId, laneNo, city, district, province);
-
+            session.setAttribute("vendorid", newVendor.getVendor_id());
         }
 
         else if ("designer".equalsIgnoreCase(userType)) {
@@ -118,16 +118,24 @@ public class UserController {
     @GetMapping("/getuser")
     public List<User> getUser() {return this.userService.getUsers();}
 
+    @GetMapping("/getuser/{userid}")
+    public User getUserById(@PathVariable ("userid") int userid)
+    {
+        return this.userService.getUserById(userid);
+    }
+
 
     @PostMapping("/adduser")
     public User addValues(@RequestBody User adduser)
     {
         return this.userService.addUser(adduser);
-
     }
 
-    // @GetMapping("/profile")
-    // public ResponseEntity<String> getProfile(HttpSession session) throws JSONException {
+    @PutMapping("/getuser/{userid}")
+    public User updateUser(@PathVariable ("userid") int userid, @RequestBody User user)
+    {
+        return this.userService.updateUser(userid,user);
+    }
 
     @PostMapping("/profile")
     public ResponseEntity<String> getProfile(@RequestBody UserIDRequest userIDRequest,HttpSession session) throws JSONException {

@@ -177,9 +177,31 @@ const largeTableData = {
 }
 
 const Promotion = () => {
-    const [statusData, setStatusData] = useState([]);
-    
+    const urlParams = new URLSearchParams(window.location.search);
     const { setAlert } = useAlert();
+
+    const[statusData, setStatusData] = useState([]);
+
+    const [offerData, setOfferData] = useState({
+        offeroverview: '',
+        offerdescription: '',
+        zerotothousand: '',
+        thousandtofivethousand: '',
+        fivethousandtotenthousand: '',
+        tenthousandtofiftythousand: '',
+        fiftythousandtohundredthousand: '',
+        morethanhundredthousand: '',
+        designer: ''
+    });
+    
+    const inputOfferData = (field, value) => {
+        setOfferData((prevDetails) => ({
+            ...prevDetails,
+            [field]: value,
+        }));
+    };
+
+    const offerID = urlParams.get('id');
 
     const apiBaseURL = "http://localhost:8080";
 
@@ -188,99 +210,65 @@ const Promotion = () => {
         timeout: 5000,
     });
 
-    const [offeroverview, setOverview] = useState('');
-    const [offerdescription, SetDescription] = useState('');
-    const [zerotothousand, setZerotothousand] = useState('');
-    const [thousandtofivethousand, setThousandtofivethousand] = useState('');
-    const [fivethousandtotenthousand, setFivethousandtotenthousand] = useState('');
-    const [tenthousandtofiftythousand, setTenthousandtofiftythousand] = useState('');
-    const [fiftythousandtohundredthousand, setFiftythousandtohundredthousand] = useState('');
-    const [morethanhundredthousand, setMorethanHundred] = useState('')
-
     const handleAddition = async (e) => {
         e.preventDefault();
-
-    try {
-        const response = await axiosInstance.post("/addpromotion", {
-        offeroverview: offeroverview,
-        offerdescription: offerdescription,
-        zerotothousand: zerotothousand,
-        thousandtofivethousand: thousandtofivethousand,
-        fivethousandtotenthousand: fivethousandtotenthousand,
-        tenthousandtofiftythousand: tenthousandtofiftythousand,
-        fiftythousandtohundredthousand: fiftythousandtohundredthousand,
-        morethanhundredthousand: morethanhundredthousand
-    });
-    if(response.status === 200){
-        
-        setShow(false)
-        console.log("Done");
-
-    }
-    } catch (error) {
-        console.error('Addition Fail');
-        setAlert('Something Happenned Wrong', 'error');
-    }
-}
-
-    useEffect(() => {
-        const handleView = async (e) => {
-            e.preventDefault();
-        try {
-            const response = await axios.get("/promotion"); 
-            if (response.status === 200) {
-            setStatusData(response.data);
-            console.log(response.data);
+        try{
+            const response = await axiosInstance.post("/addpromotion", {
+                offeroverview: offerData.offeroverview,
+                offerdescription: offerData.offerdescription,
+                zerotothousand: offerData.zerotothousand,
+                thousandtofivethousand: offerData.thousandtofivethousand,
+                fivethousandtotenthousand: offerData.fivethousandtotenthousand,
+                tenthousandtofiftythousand: offerData.tenthousandtofiftythousand,
+                fiftythousandtohundredthousand: offerData.fiftythousandtohundredthousand,
+                morethanhundredthousand: offerData.morethanhundredthousand,
+                designer: offerData.designer
+            });
+            if(response.status === 200){
+                setShow(false);
+                console.log("Creation Succesfully");
+                window.location.reload();
             }
         } catch (error) {
-            console.error('Failed to fetch status data');
-            setAlert('Something Happenned wrong in view', 'error')
+            console.error('Addition Fail');
+            setAlert('Something Happenned Wrong', 'error');
         }
-        };
-
-        handleView();
-    }, []); 
-
-    const mappedData = {
-
-        columns: [
-            {
-                label: '',
-                field: 'product',
-                sort: 'asc',
-                width: 250
-            },
-            {
-                field: 'status',
-                sort: 'asc',
-                width: 270
-            },
-        ],
-        rows: [
-            {
-                product: <div className='d-flex flex-row gap-4 align-items-center'>
-                            <Link to="/vendor/promotion/Promotionrequest"><img style={{ backgroundColor: "#FEE4CB", objectFit: "cover", width:"80px" }} className="img-fluid p-0 rounded-4 border" src={Customer} /></Link>
-                            <div className="d-flex flex-column">
-                                <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                                <p className="fs-6 fw-normal">Interior Designer</p>
-                            </div>
-                        </div>,
-                status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i>{statusData.map(vendoroffer => (<p className='m-0'>{statusData.offerstatus }</p>))}</div><p className="float-end">23 min ago</p></div>
-            }
-        ]
     };
 
-    if (statusData.length > 0) {
-        mappedData.rows.status = (
-          <div className="d-flex flex-column">
-            <div className='completed d-flex gap-2 align-items-center'>
-              <i class="bi bi-circle-fill tag-icon"></i>
-              <p className='m-0'>{statusData.offerstatus}</p>
-            </div>
-            <p className="float-end">23 min ago</p>
-          </div>
-        );
-      }
+    useEffect(() => {
+        // Fetch data from your backend API
+        axiosInstance
+          .get('/promotion')
+          .then((response) => {
+            setStatusData(response.data);
+            // console.log(response.data);
+          })
+          .catch((error) => {
+            console.log('Error fetching data:', error);
+        });
+    }, []);
+
+    const Columns = [
+        {
+            label: 'OFFER OVERVIEW',
+            field: 'overview',
+            sort: 'asc',
+            width: 250
+        },
+        {
+            label:'STATUS',
+            field: 'status',
+            sort: 'asc',
+            width: 270
+        },
+
+    ]
+
+    const Rows = statusData.map(vendoroffer=>({
+        overview: <Link to={`/vendor/promotion/Promotionrequest?id=${vendoroffer.offerid}`}><p className='align-items-center text-dark text-uppercase fs-6 fw-semibold mt-3 m-0'>{vendoroffer.offeroverview}</p></Link>,
+        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{vendoroffer.offerstatus }</p></div>
+
+    }))
 
     const [show, setShow] = useState(false);
 
@@ -309,39 +297,49 @@ const Promotion = () => {
                                         <div className="d-flex flex-column mx-4 gap-3">
                                             <div className='mb-1'>
                                                 <label>Offer Overview</label>
-                                                <input type='text' autoFocus className='form-control Cabin-text' placeholder='Enter offer overview'  onChange={(e) => setOverview(e.target.value)}  style={{backgroundColor: "#F2FAFF"}}></input>
+                                                <input type='text' name="offeroverview" autoFocus className='form-control Cabin-text' placeholder='Enter offer overview' value={offerData.offeroverview}  onChange={(e) => {inputOfferData(e.target.name, e.target.value)}}  style={{backgroundColor: "#F2FAFF"}}></input>
                                             </div>
                                             <div className='mb-1'>
                                                 <label>Offer Description</label>
-                                                <input type='text' as="textarea" rows={3} className='form-control Cabin-text' placeholder='Enter offer description' onChange={(e) => SetDescription(e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                <input type='text' name="offerdescription" rows={3} className='form-control Cabin-text' placeholder='Enter offer description' value={offerData.offerdescription} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                             </div>
                                             <div className="d-flex flex-row gap-5">
                                                 <div className='my-2'>
                                                     <label>Commission Amount (0 - 1000)</label>
-                                                    <input type='number' className='form-control Cabin-text h-50' placeholder='Enter offer commission' onChange={(e) => setZerotothousand(e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <input type='number' name="zerotothousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.zerotothousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
                                                     <label>Commission Amount (1K - 5K)</label>
-                                                    <input type='number' className='form-control Cabin-text h-50' placeholder='Enter offer commission' onChange={(e) => setThousandtofivethousand(e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <input type='number' name="thousandtofivethousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.thousandtofivethousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
                                                     <label>Commission Amount (5K - 10K)</label>
-                                                    <input type='number' className='form-control Cabin-text h-50' placeholder='Enter offer commission' onChange={(e) => setFivethousandtotenthousand(e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <input type='number' name="fivethousandtotenthousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.fivethousandtotenthousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row gap-5">
                                                 <div className='my-2'>
                                                     <label>Commission Amount (10K - 50K)</label>
-                                                    <input type='number' className='form-control Cabin-text h-50' placeholder='Enter offer commission' onChange={(e) => setTenthousandtofiftythousand(e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <input type='number' name="tenthousandtofiftythousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.tenthousandtofiftythousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
                                                     <label>Commission Amount (50K - 100K)</label>
-                                                    <input type='number' className='form-control Cabin-text h-50' placeholder='Enter offer commission' onChange={(e) => setFiftythousandtohundredthousand(e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <input type='number' name="fiftythousandtohundredthousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.fiftythousandtohundredthousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
                                                     <label>Commission Amount (more than 100K)</label>
-                                                    <input type='number' className='form-control Cabin-text h-50' placeholder='Enter offer commission' onChange={(e) => setMorethanHundred(e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                    <input type='number' name="morethanhundredthousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.morethanhundredthousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
+                                            </div>
+                                            <div className='mb-1 w-25'>
+                                                <label for="designer">Select Designer:</label>
+                                                <select class="form-control" id="designer" name="designer" value={offerData.designer} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}}>
+                                                    <option value="1">Designer 1</option>
+                                                    <option value="2">Designer 2</option>
+                                                    <option value="3">Designer 3</option>
+                                                    <option value="4">Designer 4</option>
+                                                </select>
+                                                {/* <input type='number' className='form-control Cabin-text' placeholder='Enter designer id'  onChange={(e) => setDesignerID(e.target.value)}  style={{backgroundColor: "#F2FAFF"}}></input> */}
                                             </div>
                                         </div>
                                         <div className='d-flex flex-row justify-content-between'>
@@ -674,7 +672,8 @@ const Promotion = () => {
                                                 striped
                                                 bordered
                                                 small
-                                                data={mappedData}
+                                                columns={Columns}
+                                                rows={Rows}
                                                 sortable={false}
                                                 exportToCSV={true}
                                                 paging={false}

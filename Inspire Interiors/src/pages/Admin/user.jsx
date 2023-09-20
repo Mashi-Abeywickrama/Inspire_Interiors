@@ -97,12 +97,12 @@ const User = () => {
       username: user.username,
       type: user.type,
       email: user.email,
-      dob: user.dob,
+      dob: new Date(user.dob).toLocaleDateString(),
       contact_no: user.contact_no,
       action: 
-          <Link to="/admin/user/profile"><div className="d-flex gap-2 align-items-center text-dark">
+          <Link to={`/admin/user/profile/${user.userid}`} className="d-flex gap-2 align-items-center text-dark">
             <p className="m-0 ">View More</p> <Icon.ArrowRight />
-          </div></Link>
+         </Link>
       
       
       // other fields...
