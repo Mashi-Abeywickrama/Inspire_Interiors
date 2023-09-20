@@ -1,9 +1,10 @@
-import React from 'react';
+import React , { useEffect, useState }from 'react';
 import * as Icon from 'react-bootstrap-icons';
 import './../../../styles/customer/viewProduct.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ReactStars from "react-rating-stars-component";
 import { Carousel }  from 'react-responsive-carousel';
+import axios from 'axios';
 
 import Chair1 from './../../../assets/img/customer/chair1.png';
 import Chair2 from './../../../assets/img/customer/chair2.png';
@@ -11,44 +12,110 @@ import Chair3 from './../../../assets/img/customer/chair3.png';
 import Chair4 from './../../../assets/img/customer/chair4.png';
 import Chair5 from './../../../assets/img/customer/chair5.png';
 import Chair6 from './../../../assets/img/customer/chair6.png';
+import QRPopup from '../../../components/customer/popup/ARPopup';
 
 const stardata = {
     data:"4.5"
 }
 
 const ViewProduct = () => {
+
+    const apiBaseURL = 'http://localhost:8080';
+
+    const [productData, setProductData] = useState([]);
+    const [reviewData, setReviewData] = useState([]);
+
+    // Create an Axios instance with the base URL
+    const axiosInstance = axios.create({
+        baseURL: apiBaseURL,
+        timeout: 5000,
+    });
+
+    // Get the current URL
+    const currentURL = window.location.href;
+    const splitURL = currentURL.split("/");
+    const id = decodeURIComponent(splitURL[6]);
+
+
+    // Function to fetch and store the product data
+    async function fetchAndStoreProductData(id) {
+        try {
+            const response = await axiosInstance.get(`/product/${id}`);
+            setProductData(response.data);
+            console.log('Product Data:', productData);
+        } catch (error) {
+            console.error('Error fetching products by Type:', error);
+        }
+    }
+    
+    // Call the function to fetch and store the product data
+    useEffect(() => {
+    fetchAndStoreProductData(id);
+    }, []);
+
+    const [averageRating, setAverageRating] = useState(0.0);
+
+    async function fetchAndStoreReviewData(id) {
+        try {
+          const response = await axiosInstance.get(`/rating/${id}`);
+          setReviewData(response.data);
+          
+          // Set the average rating from the response to the state
+          setAverageRating(response.data.averageRating);
+        } catch (error) {
+          console.error('Error fetching review data:', error);
+        }
+      }
+      useEffect(() => {
+        fetchAndStoreReviewData(id);
+      }, [id]);
+
+    // const rate = averageRating.toFixed(1)
+    const generateStars = (rate) => {
+        const fullStars = Math.floor(rate);
+        const halfStar = rate - fullStars >= 0.5;
+
+        const stars = [];
+        for (let i = 1; i <= 5; i++) {
+            if (i <= fullStars) {
+                stars.push(<Icon.StarFill key={i} color='#f39c12' />);
+            } else if (i === fullStars + 1 && halfStar) {
+                stars.push(<Icon.StarHalf key={i} color='#f39c12' />);
+            } else {
+                stars.push(<Icon.Star key={i} color='#f39c12' />);
+            }
+        }
+
+        return stars;
+    };
+
     return (
         <>
-            <div className="product-container p-4 bg-white rounded-3 mb-4 me-3">
-                <div className="d-flex flex-row gap-4">
+            <div className="product-container view-product p-4 bg-white rounded-3 mb-4 me-3">
+                <div className="d-flex flex-row gap-4 justify-content-between me-5">
+                    <div className='d-flex flex-row gap-4'>
                     <p className="fs-3 fw-bold Cabin-text">Marketplace</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text">Chair</p>
+                    <p className="fs-3 fw-bold Cabin-text">{productData.type}</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Meryl Lounge Chair</p>
+                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{productData.product_name}</p>
+                    </div>
+                    <QRPopup />
                 </div>
                 <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row'>
                     <div className='d-flex flex-column side-div'>
-                        <p className='fs-4 fw-semibold Cabin-text mt-3'>Meryl Lounge Chair</p>
-                        <div className='d-flex flex-row w-50 justify-content-between '>
-                            <p className='fs-6 fw-normal Cabin-text mt-2'>$149.99</p>
+                        <p className='fs-4 fw-semibold Cabin-text mt-3'>{productData.product_name}</p>
+                        <div className='d-flex flex-row w-50 justify-content-between my-2'>
+                            <div className='fs-4 fw-normal Cabin-text'>${productData.entry_price}</div>
                             <div className="d-flex flex-row gap-3">
-                                <ReactStars
-                                    count={5}
-                                    onChange={stardata}
-                                    size={24}
-                                    isHalf={true}
-                                    emptyIcon={<i className="far fa-star"></i>}
-                                    halfIcon={<i className="fa fa-star-half-alt"></i>}
-                                    fullIcon={<i className="fa fa-star"></i>}
-                                    activeColor="#ffd700" />
-                                <div className="d-flex flex-row gap-1 float-end mt-2">
-                                    <p className="fs-6 fw-bold Cabin-text">4.6/5.0</p>
-                                    <p className="fs-6 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>(556)</p>
+                            <div className='d-flex align-items-center'>{generateStars(averageRating.toFixed(1))}</div>
+                                <div className="d-flex flex-row gap-1 float-end align-items-center">
+                                    <div className="fs-6 fw-bold Cabin-text">{averageRating.toFixed(1)}/5.0</div>
+                                    <div className="fs-6 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>({reviewData.totalVotes})</div>
                                 </div>
                             </div>
                         </div>
-                        <p className='fs-6 fw-normal Cabin-text w-50'>The gently curved lines accentuated by sewn details are kind to your body and pleasant to look at. Also, there's a tilt and height-adjusting mechanism that's built to outlast years of ups and downs.</p>
+                        <p className='fs-6 fw-normal Cabin-text w-50 mt-2'>{productData.product_description}</p>
                         <div className='d-flex flex-row gap-4 mt-4'>
                             <Icon.CircleFill size={25} color='#C1BDB3' />
                             <Icon.CircleFill size={25} color='#58737D' />

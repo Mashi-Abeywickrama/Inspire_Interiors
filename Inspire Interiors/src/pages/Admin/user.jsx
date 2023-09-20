@@ -26,6 +26,7 @@ const User = () => {
   const apiBaseURL = 'http://localhost:8080'; // Replace this with the base URL of your Spring Boot backend
 
   const [userData, setUserData] = useState([]);
+  const [userType, setUserType] = useState(null);
   const [loading, setLoading] = useState(true);
 
   
@@ -45,9 +46,26 @@ const User = () => {
       console.error('Error fetching user data:', error);
     }
   };
-  
+
+  const fetchUserType = async (type) => {
+    try {
+      let response;
+      if (type === null) {
+        response = await axios.get(apiBaseURL + '/getuser'); // Fetch all users
+      } else {
+        response = await axios.get(apiBaseURL + `/filtertype/${type}`); // Fetch users of the selected type
+      }
+      const userTypeData = response.data; // Assuming this response contains user data
+      setUserType(userTypeData);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+
   useEffect(() => {
     fetchUserData();
+    fetchUserType(null);
   }, []);
 
   
@@ -93,7 +111,7 @@ const User = () => {
       }
     ],
 
-    rows: userData.map((user) => ({
+    rows:(userType || []).map((user) => ({
       username: user.username,
       type: user.type,
       email: user.email,
@@ -128,16 +146,103 @@ const User = () => {
            {/* <button class='px-2 py-1 fs-6 ' style={{backgroundColor:"#023047"}}>+ Add New</button> */}
            <Adduser/>
           </div>
+          <div>
+                  <Tabs
+                    defaultActiveKey="all"
+                    id="uncontrolled-tab-example"
+                    className="mb-3 bg-white tab"
+                  >
+                    <Tab eventKey="all" title="All"   onClick={() => fetchUserType(null)} >
+                      <div className="">
+                        <MDBDataTableV5
+                          responsive
+                          striped
+                          bordered
+                          small
+                          data={data}
+                          sortable={true}
+                          exportToCSV={true}
+                        />
+                      </div>
+                    </Tab>
 
-          <MDBDataTableV5 responsive
+                    <Tab eventKey="designer" title="Designers"  >
+                    <div className="">
+                        <MDBDataTableV5
+                          responsive
+                          striped
+                          bordered
+                          small
+                          data={data}
+                          sortable={true}
+                          exportToCSV={true}
+                        />
+                      </div>
+                    </Tab>
+                    <Tab eventKey="vendor" title="Vendors">
+                    <div className="">
+                        <MDBDataTableV5
+                          responsive
+                          striped
+                          bordered
+                          small
+                          data={data}
+                          sortable={true}
+                          exportToCSV={true}
+                        />
+                      </div>
+                    </Tab>
+                    <Tab eventKey="customer" title="Customer">
+                    <div className="">
+                        <MDBDataTableV5
+                          responsive
+                          striped
+                          bordered
+                          small
+                          data={data}
+                          sortable={true}
+                          exportToCSV={true}
+                        />
+                      </div>
+                    </Tab>
+                    <Tab eventKey="admin" title="Admin">
+                    <div className="">
+                        <MDBDataTableV5
+                          responsive
+                          striped
+                          bordered
+                          small
+                          data={data}
+                          sortable={true}
+                          exportToCSV={true}
+                        />
+                      </div>
+                    </Tab>
+                    <Tab eventKey="customerSupport" title="CustomerSupport">
+                    <div className="">
+                        <MDBDataTableV5
+                          responsive
+                          striped
+                          bordered
+                          small
+                          data={data}
+                          sortable={true}
+                          exportToCSV={true}
+                        />
+                      </div>
+                    </Tab>
+                  </Tabs>
+                </div>
+
+          {/* <MDBDataTableV5
+                 responsive
                   striped
                   bordered
                   small
                   data={data}
                   sortable={true}
                   exportToCSV={true}
-                  
-                />
+                /> */}
         </div>
 
 

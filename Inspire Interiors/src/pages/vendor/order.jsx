@@ -46,7 +46,7 @@ const radarData = [
 const acceptedData = {
     columns: [
         {
-          label: 'PRODUCT DETAILS',
+          label: 'ORDER DETAILS',
           field: 'product',
           sort: 'asc',
           width: 150
@@ -92,7 +92,7 @@ const acceptedData = {
 const newData = {
     columns: [
         {
-          label: 'PRODUCT NAME',
+          label: 'ORDER DETAILS',
           field: 'product',
           sort: 'asc',
           width: 150

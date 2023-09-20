@@ -1,10 +1,12 @@
 package inspireinteriors.dev.service;
 
 import inspireinteriors.dev.model.Product;
+import inspireinteriors.dev.model.Variation;
 import inspireinteriors.dev.repository.ProductImgRepository;
 import inspireinteriors.dev.repository.ProductRepository;
 import inspireinteriors.dev.repository.VariationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +24,8 @@ public class ProductService {
     @Autowired
     private VariationRepository variationRepository;
 
-    public Iterable<Product> getAllProducts() {
-        return productRepository.findAllWithoutEagerLoading();
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
     }
 
     public Product getProductById(Integer id) {
@@ -32,11 +34,13 @@ public class ProductService {
 
     //Create product
     public Product createProduct(Product product) {
+        product.setProduct_status("Instock");
         return productRepository.save(product);
     }
 
-
-
+    public Variation createvariation(Variation variation) {
+        return variationRepository.save(variation);
+    }
 
     public void saveProduct(Product product) {
         productRepository.save(product);
@@ -52,5 +56,23 @@ public class ProductService {
 
     public List<String> getDistinctRoomTypes() {
         return productRepository.findDistinctRoomTypes();
+    }
+
+    public Iterable<Variation> getAllVariations() {
+        return variationRepository.findAll();
+    }
+
+
+    public List<Variation> getByProductId(int product_id) {
+        return variationRepository.findBYProductId(product_id);
+    }
+
+    //update variations
+    public Variation updateVariation(Variation variation) {
+        return variationRepository.save(variation);
+    }
+
+    public List<String> getDistinctTypes() {
+        return productRepository.findDistinctTypes();
     }
 }

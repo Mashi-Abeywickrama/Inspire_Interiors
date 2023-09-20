@@ -46,8 +46,22 @@ const MarketPlace = () => {
         fetchRoomType();
     }, []);
 
+    // Function to fetch type from the backend
+    const fetchProducrType = () => {
+
+        axiosInstance.get('/type')
+            .then(response => {
+                setProductType(response.data);
+                // console.log(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching room type:', error);
+            });
+    };
+
     // State variables
     const [roomType, setRoomType] = useState([]);
+    const [productType, setProductType] = useState([]);
 
     const imageURL = roomTypeImages[roomType] || DefaultImage;
 

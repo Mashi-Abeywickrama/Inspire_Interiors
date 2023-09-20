@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface InquiryRepository extends JpaRepository<Inquiry, Integer> {
     @Query("SELECT i FROM Inquiry i WHERE i.inquiry_reference = :reference")
     Inquiry findByInquiryReference(@Param("reference") String inquiry_reference);
+    Iterable<Inquiry> findAllByInquiryType(String refund);
 }

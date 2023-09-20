@@ -4,9 +4,24 @@ import * as Icon from 'react-bootstrap-icons';
 
 import axios from 'axios';
 import { useSession } from '../../../constants/SessionContext';
+import { Alert, Snackbar } from '@mui/material';
 
 
 function AddNewInquiry() {
+  const [alertOpen, setAlertOpen] = useState(false);
+    const [alertSeverity, setAlertSeverity] = useState('success');
+    const [alertMessage, setAlertMessage] = useState('');
+
+    const handleAlertClose = () => {
+        setAlertOpen(false);
+    };
+
+    const showAlert = (message, severity) => {
+        setAlertMessage(message);
+        setAlertSeverity(severity);
+        setAlertOpen(true);
+    };
+
     const initialInquiryData = {
         username: '',
         type: '',
@@ -25,6 +40,7 @@ function AddNewInquiry() {
 
   const [showEditPopup, setInquiry] = useState(false);
    const [evidenceFile, setEvidenceFile] = useState();
+   const [saveButtonDisabled, setSaveButtonDisabled] = useState(true);
 
 
   // Function to close the modal
@@ -45,13 +61,43 @@ function AddNewInquiry() {
 
 
   // Effect to update state when the modal is opened
-  const handleInquiryAdd = (event, field) => {
-    const { value } = event.target;
+  const handleInquiryAdd = async (event, field) => {
+  const { value } = event.target;
+
+  // Check for username existence only when changing the username field
+  if (field === 'username') {
+    console.log(value);
+    // Send a request to check username existence
+    try {
+      const response = await axiosInstance.get(`username-check?username=${value}`);
+      const usernameExists = response.data;
+
+      setInquiryData((prevData) => ({
+        ...prevData,
+        [field]: value,
+      }));
+      console.log('Username exists:', response.data);
+      // Enable or disable the button based on whether the username exists
+      if (usernameExists === 1) {
+        showAlert('Username exists', 'success');
+        setSaveButtonDisabled(false); // Enable the button
+        
+      } else {
+        showAlert('Username does not exist', 'error');
+        setSaveButtonDisabled(true); // Disable the button
+      }
+    } catch (error) { 
+      // Handle the error
+      console.error('Error:', error);
+    }
+  } else {
+    // For other fields, just update the state
     setInquiryData((prevData) => ({
       ...prevData,
       [field]: value,
     }));
-  };
+  }
+};
 
   const handleEvidenceUpload = (event) => {
     const file = event.target.files[0];
@@ -337,7 +383,7 @@ function AddNewInquiry() {
               <Button variant="secondary" onClick={closeAddInquiryModel}>
                 Close
               </Button>
-              <Button type="submit" variant="primary" >
+              <Button type="submit" variant="primary" disabled={saveButtonDisabled}>
                 Save Changes
               </Button>
             </Modal.Footer>
@@ -345,7 +391,18 @@ function AddNewInquiry() {
           </Form>
         </Modal>
       </div>
+      <Snackbar
+                                open={alertOpen}
+                                autoHideDuration={3000} // Adjust this duration as needed
+                                onClose={handleAlertClose}
+                                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                            >
+                                <Alert onClose={handleAlertClose} severity={alertSeverity}>
+                                    {alertMessage}
+                                </Alert>
+                            </Snackbar>
     </div>
+    
   );
 }
 

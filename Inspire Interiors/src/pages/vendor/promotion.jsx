@@ -19,6 +19,8 @@ import { MDBDataTableV5, MDBTable } from 'mdbreact';
 import {Link} from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import useAlert from "../../components/useAlert";
+import {useSession} from "../../constants/SessionContext";
+ 
 
 
 const receivedData = {
@@ -180,6 +182,10 @@ const Promotion = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const { setAlert } = useAlert();
 
+
+    const sessionItems = useSession();
+    const userId = sessionItems.sessionData.userid;
+
     const[statusData, setStatusData] = useState([]);
 
     const [offerData, setOfferData] = useState({
@@ -191,8 +197,11 @@ const Promotion = () => {
         tenthousandtofiftythousand: '',
         fiftythousandtohundredthousand: '',
         morethanhundredthousand: '',
-        designer: ''
+        designerid: '',
+        vendorid: userId
     });
+
+    console.log(userId);
     
     const inputOfferData = (field, value) => {
         setOfferData((prevDetails) => ({
@@ -222,7 +231,8 @@ const Promotion = () => {
                 tenthousandtofiftythousand: offerData.tenthousandtofiftythousand,
                 fiftythousandtohundredthousand: offerData.fiftythousandtohundredthousand,
                 morethanhundredthousand: offerData.morethanhundredthousand,
-                designer: offerData.designer
+                designerid: offerData.designerid,
+                vendorid: offerData.vendorid
             });
             if(response.status === 200){
                 setShow(false);
@@ -253,13 +263,13 @@ const Promotion = () => {
             label: 'OFFER OVERVIEW',
             field: 'overview',
             sort: 'asc',
-            width: 250
+            width: 300
         },
         {
             label:'STATUS',
             field: 'status',
             sort: 'asc',
-            width: 270
+            width: 250
         },
 
     ]
@@ -305,35 +315,35 @@ const Promotion = () => {
                                             </div>
                                             <div className="d-flex flex-row gap-5">
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (0 - 1000)</label>
+                                                    <label>Commission Percentage (Price Range 0 - 1000)</label>
                                                     <input type='number' name="zerotothousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.zerotothousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (1K - 5K)</label>
+                                                    <label>Commission Percentage (Price Range 1K - 5K)</label>
                                                     <input type='number' name="thousandtofivethousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.thousandtofivethousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (5K - 10K)</label>
+                                                    <label>Commission Percentage (Price Range 5K - 10K)</label>
                                                     <input type='number' name="fivethousandtotenthousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.fivethousandtotenthousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row gap-5">
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (10K - 50K)</label>
+                                                    <label>Commission Percentage (Price Range 10K - 50K)</label>
                                                     <input type='number' name="tenthousandtofiftythousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.tenthousandtofiftythousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (50K - 100K)</label>
+                                                    <label>Commission Percentage (Price Range 50K - 100K)</label>
                                                     <input type='number' name="fiftythousandtohundredthousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.fiftythousandtohundredthousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                                 <div className='my-2'>
-                                                    <label>Commission Amount (more than 100K)</label>
+                                                    <label>Commission Percentage (Price Range more than 100K)</label>
                                                     <input type='number' name="morethanhundredthousand" className='form-control Cabin-text h-50' placeholder='Enter offer commission' value={offerData.morethanhundredthousand} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                             </div>
                                             <div className='mb-1 w-25'>
-                                                <label for="designer">Select Designer:</label>
-                                                <select class="form-control" id="designer" name="designer" value={offerData.designer} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}}>
+                                                <label for="designerid">Select Designer:</label>
+                                                <select class="form-control" id="designerid" name="designerid" value={offerData.designerid} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}}>
                                                     <option value="1">Designer 1</option>
                                                     <option value="2">Designer 2</option>
                                                     <option value="3">Designer 3</option>
@@ -681,7 +691,7 @@ const Promotion = () => {
 
                                         </div>
                                     </Tab>
-                                    <Tab eventKey="Received" title="Received">
+                                    <Tab eventKey="Accepted" title="Accepted">
                                         <div className=''>
 
                                             <MDBDataTableV5 responsive
