@@ -9,7 +9,7 @@ public class Inquiry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Use GenerationType.IDENTITY for identity columns
     @Column(name = "inquiry_id")
-    private int inquiry_id;
+    private int inquiryId;
 
     @Column(name = "inquiry_reference")
     private String inquiry_reference;
@@ -21,7 +21,7 @@ public class Inquiry {
     private String inquiry_status;
 
     @Column(name = "inquiry_type")
-    private String inquiry_type;
+    private String inquiryType;
 
     @Column(name = "username")
     private String username;
@@ -54,11 +54,11 @@ public class Inquiry {
     }
 
     public Inquiry(int inquiry_id, String inquiry_reference, String inquiry_date, String inquiry_status, String inquiry_type, String username, String remarks, String order_no, String order_date, String reason, String additional_remarks, String evidence, String completion_date, String customer_support_id) {
-        this.inquiry_id = inquiry_id;
+        this.inquiryId = inquiry_id;
         this.inquiry_reference = inquiry_reference;
         this.inquiry_date = inquiry_date;
         this.inquiry_status = inquiry_status;
-        this.inquiry_type = inquiry_type;
+        this.inquiryType = inquiry_type;
         this.username = username;
         this.remarks = remarks;
         this.order_no = order_no;
@@ -74,7 +74,7 @@ public class Inquiry {
         this.inquiry_reference = inquiry_reference;
         this.inquiry_date = inquiry_date;
         this.inquiry_status = inquiry_status;
-        this.inquiry_type = inquiry_type;
+        this.inquiryType = inquiry_type;
         this.username = username;
         this.remarks = remarks;
         this.order_no = order_no;
@@ -87,11 +87,11 @@ public class Inquiry {
     }
 
     public Inquiry(int inquiry_id, String inquiry_reference, String inquiry_date, String inquiry_status, String inquiry_type, String username, String remarks, String order_no, String order_date, String reason, String additional_remarks, String evidence, String completion_date) {
-        this.inquiry_id = inquiry_id;
+        this.inquiryId = inquiry_id;
         this.inquiry_reference = inquiry_reference;
         this.inquiry_date = inquiry_date;
         this.inquiry_status = inquiry_status;
-        this.inquiry_type = inquiry_type;
+        this.inquiryType = inquiry_type;
         this.username = username;
         this.remarks = remarks;
         this.order_no = order_no;
@@ -106,7 +106,7 @@ public class Inquiry {
         this.inquiry_reference = inquiry_reference;
         this.inquiry_date = inquiry_date;
         this.inquiry_status = inquiry_status;
-        this.inquiry_type = inquiry_type;
+        this.inquiryType = inquiry_type;
         this.username = username;
         this.remarks = remarks;
         this.order_no = order_no;
@@ -119,11 +119,11 @@ public class Inquiry {
 
 
     public Inquiry(int inquiry_id, String inquiry_reference, String inquiry_date, String inquiry_status, String inquiry_type, String username, String remarks, String order_no, String order_date, String reason, String additional_remarks, String evidence) {
-        this.inquiry_id = inquiry_id;
+        this.inquiryId = inquiry_id;
         this.inquiry_reference = inquiry_reference;
         this.inquiry_date = inquiry_date;
         this.inquiry_status = inquiry_status;
-        this.inquiry_type = inquiry_type;
+        this.inquiryType = inquiry_type;
         this.username = username;
         this.remarks = remarks;
         this.order_no = order_no;
@@ -137,7 +137,7 @@ public class Inquiry {
         this.inquiry_reference = inquiry_reference;
         this.inquiry_date = inquiry_date;
         this.inquiry_status = inquiry_status;
-        this.inquiry_type = inquiry_type;
+        this.inquiryType = inquiry_type;
         this.username = username;
         this.remarks = remarks;
         this.order_no = order_no;
@@ -148,11 +148,11 @@ public class Inquiry {
     }
 
     public int getInquiry_id() {
-        return inquiry_id;
+        return inquiryId;
     }
 
     public void setInquiry_id(int inquiry_id) {
-        this.inquiry_id = inquiry_id;
+        this.inquiryId = inquiry_id;
     }
 
     public String getInquiry_reference() {
@@ -180,11 +180,11 @@ public class Inquiry {
     }
 
     public String getInquiry_type() {
-        return inquiry_type;
+        return inquiryType;
     }
 
     public void setInquiry_type(String inquiry_type) {
-        this.inquiry_type = inquiry_type;
+        this.inquiryType = inquiry_type;
     }
 
     public String getUsername() {

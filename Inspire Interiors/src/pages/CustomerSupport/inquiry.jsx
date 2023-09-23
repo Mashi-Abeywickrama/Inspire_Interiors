@@ -22,20 +22,20 @@ const Inquiry = () => {
   const [inquiryData, setInquiryData] = useState([]);
   const [loading, setLoading] = useState(true);
    const [selectedTab, setSelectedTab] = useState('All'); // State to hold the selected tab title
-
-  useEffect(() => {
-    axiosInstance
-      .get('/inquiry')
-      .then((response) => {
-        const data = response.data;
-        setInquiryData(data);
+  const fetchInquiry = async () => {
+    try {
+      const response = await axiosInstance.get('/inquiry');
+      const data = response.data;
+      setInquiryData(data);
+      setLoading(false);
+    } catch (error) {
+       console.error('Error from backend:', error);
         setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error from backend:', error);
-        setLoading(false);
-      });
-  }, [axiosInstance]);
+    }
+  };
+ useEffect(() => {
+    fetchInquiry();
+  }, []);
 
   const getStatusComponent = (status) => {
     // Define the mapping of status to CSS classes and text
@@ -73,9 +73,9 @@ const Inquiry = () => {
   // Filter data based on status
   const filteredData = (status) =>
     inquiryData.filter((item) => item.inquiry_status === status);
-const sessionItems = useSession();
-const userId = sessionItems.sessionData.userid;
-const assignedToMeData = inquiryData.filter((item) => item.customer_support_id == userId);
+  const sessionItems = useSession();
+  const userId = sessionItems.sessionData.userid;
+  const assignedToMeData = inquiryData.filter((item) => item.customer_support_id == userId);
 
   return (
     <>
@@ -93,7 +93,7 @@ const assignedToMeData = inquiryData.filter((item) => item.customer_support_id =
         </div>
         <div>
           <Tabs
-            defaultActiveKey="A ll"
+            defaultActiveKey="All"
             id="uncontrolled-tab-example"
             className="mb-3 bg-white tab"
             onSelect={(selectedKey) => setSelectedTab(selectedKey)}
@@ -147,7 +147,7 @@ const assignedToMeData = inquiryData.filter((item) => item.customer_support_id =
                         reference: item.inquiry_reference,
                         status: getStatusComponent(item.inquiry_status),
                         action: (
-                          <Link to={`/view/${item.id}`}>
+                          <Link to={`/customersupport/inquiry/view/${item.inquiry_type}/${item.inquiry_id}`}>
                             <div className="d-flex gap-2 align-items-center">
                               <p className="m-0 text-black">View More</p>{' '}
                               <Icon.ArrowRight color="#000" />
@@ -213,7 +213,7 @@ const assignedToMeData = inquiryData.filter((item) => item.customer_support_id =
                         reference: item.inquiry_reference,
                         status: getStatusComponent(item.inquiry_status),
                         action: (
-                          <Link to={`/view/${item.id}`}>
+                          <Link to={`/customersupport/inquiry/view/${item.inquiry_type}/${item.inquiry_id}`}>
                             <div className="d-flex gap-2 align-items-center">
                               <p className="m-0 text-black">View More</p>{' '}
                               <Icon.ArrowRight color="#000" />
@@ -231,137 +231,137 @@ const assignedToMeData = inquiryData.filter((item) => item.customer_support_id =
               </div>
             </Tab>
             <Tab eventKey="Completed" title="Completed">
-  <div className="p-4">
-    {loading ? (
-      <p>Loading...</p>
-    ) : (
-      <MDBDataTableV5
-        responsive
-        striped
-        bordered
-        small
-        data={{
-          columns: [
-            {
-              label: 'CUSTOMER NAME',
-              field: 'customer',
-              sort: 'asc',
-              width: 150,
-            },
-            {
-              label: 'INQUIRY TYPE',
-              field: 'inquiry',
-              sort: 'asc',
-              width: 270,
-            },
-            {
-              label: 'REFERENCE NO',
-              field: 'reference',
-              sort: 'asc',
-              width: 200,
-            },
-            {
-              label: 'STATUS',
-              field: 'status',
-              sort: 'asc',
-              width: 100,
-            },
-            {
-              label: '  ',
-              field: 'action',
-              sort: 'NONE',
-              width: 100,
-            },
-          ],
-          rows: filteredData('Completed').map((item) => ({
-            customer: item.username,
-            inquiry: item.inquiry_type,
-            reference: item.inquiry_reference,
-            status: getStatusComponent(item.inquiry_status),
-            action: (
-              <Link to={`/view/${item.id}`}>
-                <div className="d-flex gap-2 align-items-center">
-                  <p className="m-0 text-black">View More</p>{' '}
-                  <Icon.ArrowRight color="#000" />
-                </div>
-              </Link>
-            ),
-          })),
-        }}
-        sortable={true}
-        exportToCSV={true}
-        paging={true}
-        searching={true}
-      />
-    )}
-  </div>
-</Tab>
- <Tab eventKey="AssignedToMe" title="Assigned to me">
-            <div className="p-4">
-              {loading ? (
-                <p>Loading...</p>
-              ) : (
-                <MDBDataTableV5
-                  responsive
-                  striped
-                  bordered
-                  small
-                  data={{
-                    columns: [
-                      {
-                        label: 'CUSTOMER NAME',
-                        field: 'customer',
-                        sort: 'asc',
-                        width: 150,
-                      },
-                      {
-                        label: 'INQUIRY TYPE',
-                        field: 'inquiry',
-                        sort: 'asc',
-                        width: 270,
-                      },
-                      {
-                        label: 'REFERENCE NO',
-                        field: 'reference',
-                        sort: 'asc',
-                        width: 200,
-                      },
-                      {
-                        label: 'STATUS',
-                        field: 'status',
-                        sort: 'asc',
-                        width: 100,
-                      },
-                      {
-                        label: '  ',
-                        field: 'action',
-                        sort: 'NONE',
-                        width: 100,
-                      },
-                    ],
-                    rows: assignedToMeData.map((item) => ({
-                      customer: item.username,
-                      inquiry: item.inquiry_type,
-                      reference: item.inquiry_reference,
-                      status: getStatusComponent(item.inquiry_status),
-                      action: (
-                        <Link to={`/view/${item.id}`}>
-                          <div className="d-flex gap-2 align-items-center">
-                            <p className="m-0 text-black">View More</p>{' '}
-                            <Icon.ArrowRight color="#000" />
-                          </div>
-                        </Link>
-                      ),
-                    })),
-                  }}
-                  sortable={true}
-                  exportToCSV={true}
-                  paging={true}
-                  searching={true}
-                />
-              )}
-            </div>
-          </Tab>
+              <div className="p-4">
+                {loading ? (
+                  <p>Loading...</p>
+                ) : (
+                  <MDBDataTableV5
+                    responsive
+                    striped
+                    bordered
+                    small
+                    data={{
+                      columns: [
+                        {
+                          label: 'CUSTOMER NAME',
+                          field: 'customer',
+                          sort: 'asc',
+                          width: 150,
+                        },
+                        {
+                          label: 'INQUIRY TYPE',
+                          field: 'inquiry',
+                          sort: 'asc',
+                          width: 270,
+                        },
+                        {
+                          label: 'REFERENCE NO',
+                          field: 'reference',
+                          sort: 'asc',
+                          width: 200,
+                        },
+                        {
+                          label: 'STATUS',
+                          field: 'status',
+                          sort: 'asc',
+                          width: 100,
+                        },
+                        {
+                          label: '  ',
+                          field: 'action',
+                          sort: 'NONE',
+                          width: 100,
+                        },
+                      ],
+                      rows: filteredData('Completed').map((item) => ({
+                        customer: item.username,
+                        inquiry: item.inquiry_type,
+                        reference: item.inquiry_reference,
+                        status: getStatusComponent(item.inquiry_status),
+                        action: (
+                          <Link to={`/customersupport/inquiry/view/${item.inquiry_type}/${item.inquiry_id}`}>
+                            <div className="d-flex gap-2 align-items-center">
+                              <p className="m-0 text-black">View More</p>{' '}
+                              <Icon.ArrowRight color="#000" />
+                            </div>
+                          </Link>
+                        ),
+                      })),
+                    }}
+                    sortable={true}
+                    exportToCSV={true}
+                    paging={true}
+                    searching={true}
+                  />
+                )}
+              </div>
+            </Tab>
+            <Tab eventKey="AssignedToMe" title="Assigned to me">
+              <div className="p-4">
+                {loading ? (
+                  <p>Loading...</p>
+                ) : (
+                  <MDBDataTableV5
+                    responsive
+                    striped
+                    bordered
+                    small
+                    data={{
+                      columns: [
+                        {
+                          label: 'CUSTOMER NAME',
+                          field: 'customer',
+                          sort: 'asc',
+                          width: 150,
+                        },
+                        {
+                          label: 'INQUIRY TYPE',
+                          field: 'inquiry',
+                          sort: 'asc',
+                          width: 270,
+                        },
+                        {
+                          label: 'REFERENCE NO',
+                          field: 'reference',
+                          sort: 'asc',
+                          width: 200,
+                        },
+                        {
+                          label: 'STATUS',
+                          field: 'status',
+                          sort: 'asc',
+                          width: 100,
+                        },
+                        {
+                          label: '  ',
+                          field: 'action',
+                          sort: 'NONE',
+                          width: 100,
+                        },
+                      ],
+                      rows: assignedToMeData.map((item) => ({
+                        customer: item.username,
+                        inquiry: item.inquiry_type,
+                        reference: item.inquiry_reference,
+                        status: getStatusComponent(item.inquiry_status),
+                        action: (
+                          <Link to={`/customersupport/inquiry/view/${item.inquiry_type}/${item.inquiry_id}`}>
+                            <div className="d-flex gap-2 align-items-center">
+                              <p className="m-0 text-black">View More</p>{' '}
+                              <Icon.ArrowRight color="#000" />
+                            </div>
+                          </Link>
+                        ),
+                      })),
+                    }}
+                    sortable={true}
+                    exportToCSV={true}
+                    paging={true}
+                    searching={true}
+                  />
+                )}
+              </div>
+            </Tab>
           </Tabs>
         </div>
       </div>

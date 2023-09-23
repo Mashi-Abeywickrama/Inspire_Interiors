@@ -45,6 +45,17 @@ public class UserController {
 
         return user_id.toString();
     }
+
+    @GetMapping("/username-check")
+    public ResponseEntity<Integer> checkUsernameExists(@RequestParam String username) {
+        User user = userService.findByUsername(username);
+
+        if (user != null) {
+            return ResponseEntity.ok(1);
+        } else {
+            return ResponseEntity.ok(0);
+        }
+    }
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest, HttpSession session) throws JSONException {
         User user = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
@@ -94,7 +105,7 @@ public class UserController {
             String province = registrationRequest.getProvince();
 
             Vendor newVendor = vendorService.createVendor(userId, laneNo, city, district, province);
-            session.setAttribute("vendorid", newVendor.getVendor_id());
+
         }
 
         else if ("designer".equalsIgnoreCase(userType)) {
@@ -122,6 +133,13 @@ public class UserController {
     public User getUserById(@PathVariable ("userid") int userid)
     {
         return this.userService.getUserById(userid);
+    }
+
+    @GetMapping("/getuserbyname/{username}")
+    public User getUserByUsername(@PathVariable ("username") String username)
+    {
+        System.out.println(username);
+        return this.userService.getUserByUserName(username);
     }
 
 

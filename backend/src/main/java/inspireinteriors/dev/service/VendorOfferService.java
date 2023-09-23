@@ -32,7 +32,7 @@ public class VendorOfferService {
 //    }
 
     public VendorOffer createOffer(VendorOffer vendorOffer){
-        vendorOffer.setOfferstatus("New");
+        vendorOffer.setOfferstatus("Wait for Response");
         return vendorOfferRepository.save(vendorOffer);
     }
 
