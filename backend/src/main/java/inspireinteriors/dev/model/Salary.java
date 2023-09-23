@@ -11,8 +11,8 @@ public class Salary {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Use GenerationType.IDENTITY for identity columns
-    @Column(name = "userid")
-    private int userid;
+    @Column(name = "salary_id")
+    private int salary_id;
 
     @Column(name = "total_sales")
     private int total_sale;
@@ -35,21 +35,14 @@ public class Salary {
     @Column(name="status")
     private String status;
 
+    @Column(name="userid")
+    private int userid;
+
     public Salary() {
     }
 
-    public Salary(int userid, int total_sale, double earnings, double commission, int year, String month, String status) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-        this.year = year;
-        this.month = month;
-        this.status = status;
-    }
-
-    public Salary(int userid, int total_sale, double earnings, double commission, double salary, int year, String month, String status) {
-        this.userid = userid;
+    public Salary(int salary_id, int total_sale, double earnings, double commission, double salary, int year, String month, String status, int userid) {
+        this.salary_id = salary_id;
         this.total_sale = total_sale;
         this.earnings = earnings;
         this.commission = commission;
@@ -57,158 +50,26 @@ public class Salary {
         this.year = year;
         this.month = month;
         this.status = status;
+        this.userid = userid;
     }
 
-    public Salary(int userid, int total_sale, double earnings, double commission, double salary, int year, String month) {
-        this.userid = userid;
+    public Salary(int total_sale, double earnings, double commission, double salary, int year, String month, String status, int userid) {
         this.total_sale = total_sale;
         this.earnings = earnings;
         this.commission = commission;
         this.salary = salary;
-        this.year = year;
-        this.month = month;
-    }
-
-    public Salary(int userid, int total_sale, double earnings, double commission, double salary, String month) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-        this.salary = salary;
-        this.month = month;
-    }
-
-    public Salary(int userid, int total_sale, double earnings, double commission, double salary) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-        this.salary = salary;
-    }
-
-    public Salary(int userid, int total_sale, double earnings, double commission) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-    }
-
-    public Salary(int userid, int total_sale, double earnings) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-    }
-
-    public Salary(int userid, int total_sale) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-    }
-
-    public Salary(int userid) {
-        this.userid = userid;
-    }
-
-
-    public Salary(int userid, String month) {
-        this.userid = userid;
-        this.month = month;
-    }
-
-    public Salary(int userid, int total_sale, double earnings, double commission, int year, String month) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-        this.year = year;
-        this.month = month;
-    }
-
-    public Salary(int userid, int total_sale, double earnings, double commission, int year) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-        this.year = year;
-    }
-
-
-    public Salary(int userid, int total_sale, double earnings, double commission, String month) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-        this.month = month;
-    }
-
-    public Salary(int userid, int total_sale, double earnings, double commission, int year, String month, String status, double salary) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
         this.year = year;
         this.month = month;
         this.status = status;
-        this.salary = salary;
-    }
-
-    public Salary(int userid, int total_sale, double earnings, double commission, int year, String month, double salary) {
         this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-        this.year = year;
-        this.month = month;
-        this.salary = salary;
     }
 
-    public Salary(int userid, int total_sale, double earnings, double commission, int year, String month, String status, double salary, String username) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-        this.year = year;
-        this.month = month;
-        this.status = status;
-        this.salary = salary;
+    public int getSalary_id() {
+        return salary_id;
     }
 
-    public Salary(int userid, int total_sale, double earnings, double commission, int year, String month, double salary, String username) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-        this.year = year;
-        this.month = month;
-        this.salary = salary;
-    }
-
-    public Salary(int userid, int total_sale, double earnings, double commission, int year, String month, String status, double salary, String username, String name) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-        this.year = year;
-        this.month = month;
-        this.status = status;
-        this.salary = salary;
-    }
-
-    public Salary(int userid, int total_sale, double earnings, double commission, int year, String month, double salary, String username, String name) {
-        this.userid = userid;
-        this.total_sale = total_sale;
-        this.earnings = earnings;
-        this.commission = commission;
-        this.year = year;
-        this.month = month;
-        this.salary = salary;
-    }
-
-    public int getUserid() {
-        return userid;
-    }
-
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setSalary_id(int salary_id) {
+        this.salary_id = salary_id;
     }
 
     public int getTotal_sale() {
@@ -231,7 +92,7 @@ public class Salary {
         return commission;
     }
 
-    public void setCommission(long commission) {
+    public void setCommission(double commission) {
         this.commission = commission;
     }
 
@@ -265,5 +126,13 @@ public class Salary {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 }

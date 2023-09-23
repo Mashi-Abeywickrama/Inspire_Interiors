@@ -17,4 +17,7 @@ public class OrderService {
     public Order getOrder(int orderid) {
         return this.orderRepository.findById(orderid).orElse(null);
     }
+
+    public List<Order> getOrderByStatus(String status) { return this.orderRepository.findByStatus(status); }
+
 }

@@ -72,5 +72,11 @@ public Order getOrder(@PathVariable ("orderid") int orderid) {
         return vendorOrders;
     }
 
+    @GetMapping("/filtercompleted")
+    public List<Order> getCompletedOrders() {
+        List<Order> completedOrders = orderService.getOrderByStatus("completed");
+        return completedOrders;
+    }
+
 
 }
