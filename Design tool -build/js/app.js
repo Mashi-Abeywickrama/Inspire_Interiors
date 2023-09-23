@@ -89,16 +89,34 @@ var mainControls = function (blueprint3d) {
   }
 
   function loadDesign() {
-    files = $("#loadFile").get(0).files;
-    if (files.length == 0) {
-      files = $("#loadFile2d").get(0).files;
-    }
-    var reader = new FileReader();
-    reader.onload = function (event) {
-      var data = event.target.result;
-      blueprint3d.model.loadSerialized(data);
-    };
-    reader.readAsText(files[0]);
+    let responsedata;
+    // files = $("#loadFile").get(0).files;
+    // if (files.length == 0) {
+    //   files = $("#loadFile2d").get(0).files;
+    // }
+    // var reader = new FileReader();
+    // reader.onload = function (event) {
+    // var data = event.target.result;
+    var getUrl = "http://localhost:8080/designer/designtool/getdesign/306";
+
+    fetch(getUrl, {
+      method: "GET",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.log("Can't Fetch....");
+        }
+        return response.json();
+      })
+      .then((dat) => {
+        responsedata = dat;
+        console.log("response data is....", responsedata.data);
+        blueprint3d.model.loadSerialized(responsedata.data);
+      });
+
+    console.log("Data is.....", data);
+
+    // reader.readAsText(files[0]);
   }
 
   function saveDesign() {
