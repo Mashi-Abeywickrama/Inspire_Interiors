@@ -12,6 +12,7 @@ import Chair3 from './../../../assets/img/customer/chair3.png';
 import Chair4 from './../../../assets/img/customer/chair4.png';
 import Chair5 from './../../../assets/img/customer/chair5.png';
 import Chair6 from './../../../assets/img/customer/chair6.png';
+import QRPopup from '../../../components/customer/popup/ARPopup';
 
 const stardata = {
     data:"4.5"
@@ -22,6 +23,7 @@ const ViewProduct = () => {
     const apiBaseURL = 'http://localhost:8080';
 
     const [productData, setProductData] = useState([]);
+    const [reviewData, setReviewData] = useState([]);
 
     // Create an Axios instance with the base URL
     const axiosInstance = axios.create({
@@ -50,7 +52,25 @@ const ViewProduct = () => {
     useEffect(() => {
     fetchAndStoreProductData(id);
     }, []);
-    const rate = 4.5
+
+    const [averageRating, setAverageRating] = useState(0.0);
+
+    async function fetchAndStoreReviewData(id) {
+        try {
+          const response = await axiosInstance.get(`/rating/${id}`);
+          setReviewData(response.data);
+          
+          // Set the average rating from the response to the state
+          setAverageRating(response.data.averageRating);
+        } catch (error) {
+          console.error('Error fetching review data:', error);
+        }
+      }
+      useEffect(() => {
+        fetchAndStoreReviewData(id);
+      }, [id]);
+
+    // const rate = averageRating.toFixed(1)
     const generateStars = (rate) => {
         const fullStars = Math.floor(rate);
         const halfStar = rate - fullStars >= 0.5;
@@ -72,12 +92,15 @@ const ViewProduct = () => {
     return (
         <>
             <div className="product-container view-product p-4 bg-white rounded-3 mb-4 me-3">
-                <div className="d-flex flex-row gap-4">
+                <div className="d-flex flex-row gap-4 justify-content-between me-5">
+                    <div className='d-flex flex-row gap-4'>
                     <p className="fs-3 fw-bold Cabin-text">Marketplace</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                     <p className="fs-3 fw-bold Cabin-text">{productData.type}</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                     <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{productData.product_name}</p>
+                    </div>
+                    <QRPopup />
                 </div>
                 <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row'>
                     <div className='d-flex flex-column side-div'>
@@ -85,10 +108,10 @@ const ViewProduct = () => {
                         <div className='d-flex flex-row w-50 justify-content-between my-2'>
                             <div className='fs-4 fw-normal Cabin-text'>${productData.entry_price}</div>
                             <div className="d-flex flex-row gap-3">
-                            <div className='d-flex align-items-center'>{generateStars(rate)}</div>
+                            <div className='d-flex align-items-center'>{generateStars(averageRating.toFixed(1))}</div>
                                 <div className="d-flex flex-row gap-1 float-end align-items-center">
-                                    <div className="fs-6 fw-bold Cabin-text">4.6/5.0</div>
-                                    <div className="fs-6 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>(556)</div>
+                                    <div className="fs-6 fw-bold Cabin-text">{averageRating.toFixed(1)}/5.0</div>
+                                    <div className="fs-6 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>({reviewData.totalVotes})</div>
                                 </div>
                             </div>
                         </div>
@@ -144,6 +167,9 @@ const ViewProduct = () => {
                         </Carousel>
                     </div>
 
+                </div>
+                <div>
+                    
                 </div>
             </div>
 

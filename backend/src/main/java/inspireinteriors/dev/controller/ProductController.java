@@ -3,8 +3,10 @@ package inspireinteriors.dev.controller;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import inspireinteriors.dev.model.ARModels;
 import inspireinteriors.dev.model.Product;
 import inspireinteriors.dev.model.Variation;
+import inspireinteriors.dev.service.ARModelsService;
 import inspireinteriors.dev.service.ProductService;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +29,10 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ARModelsService arModelsService;
+
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -396,6 +402,12 @@ public class ProductController {
     public ResponseEntity<List<Variation>> getReviewByProductId(@PathVariable(value = "id") int product_id) {
         List<Variation> variations = productService.getByProductId(product_id);
         return ResponseEntity.ok(variations);
+    }
+
+    @GetMapping("/armodel/{id}")
+    public ResponseEntity <ARModels> getARModelByProductId(@PathVariable(value = "id") String product_id) {
+       ARModels arModels = arModelsService.getARModelByProductId(product_id);
+        return ResponseEntity.ok(arModels);
     }
 
 }

@@ -12,7 +12,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -130,7 +134,7 @@ public class InquiryController {
         }
     }
 
-    @PutMapping("/mark-as-completed/{inquiryId}")
+        @PutMapping("/mark-as-completed/{inquiryId}")
     public ResponseEntity<String> markAsCompleted(@PathVariable int inquiryId, @RequestBody Inquiry inquiry) {
         Inquiry existingInquiry = inquiryService.getInquiryById(inquiryId);
         existingInquiry.setInquiry_status("Completed");
@@ -141,5 +145,57 @@ public class InquiryController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Inquiry Not Updated!");
         }
     }
+
+    @GetMapping("/inquiry-count-quotation")
+    public List<Map<String, Object>> getCountOfInquiriesByDateForLast7Days() {
+        List<Object[]> data = inquiryService.getCountOfInquiriesByDateForLast7Days();
+
+        // Create a list of maps to store the data as key-value pairs
+        List<Map<String, Object>> responseData = data.stream()
+                .map(row -> {
+                    Map<String, Object> entry = new HashMap<>();
+                    entry.put("dayName", row[0]);
+                    entry.put("Quotations", row[1]);
+                    return entry;
+                })
+                .collect(Collectors.toList());
+
+        return responseData;
+    }
+
+    @GetMapping("/inquiry-count-refund")
+    public List<Map<String, Object>> getCountbyrefund() {
+        List<Object[]> data = inquiryService.getCountOfRefund();
+
+        // Create a list of maps to store the data as key-value pairs
+        List<Map<String, Object>> responseData = data.stream()
+                .map(row -> {
+                    Map<String, Object> entry = new HashMap<>();
+                    entry.put("dayName", row[0]);
+                    entry.put("Refund", row[1]);
+                    return entry;
+                })
+                .collect(Collectors.toList());
+
+        return responseData;
+    }
+    @GetMapping("/inquiry-count-complaint")
+    public List<Map<String, Object>> getCountbycomplaint() {
+        List<Object[]> data = inquiryService.getCountOfComplaint();
+
+        // Create a list of maps to store the data as key-value pairs
+        List<Map<String, Object>> responseData = data.stream()
+                .map(row -> {
+                    Map<String, Object> entry = new HashMap<>();
+                    entry.put("dayName", row[0]);
+                    entry.put("Other Complaints", row[1]);
+                    return entry;
+                })
+                .collect(Collectors.toList());
+
+        return responseData;
+    }
+
+
 
 }

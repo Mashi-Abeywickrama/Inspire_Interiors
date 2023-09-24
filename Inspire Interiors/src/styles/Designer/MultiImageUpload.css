@@ -1,0 +1,20 @@
+/* CSS for image preview items */
+.image-preview{
+  display: flex;
+}
+.image-preview-item {
+  
+    margin: 10px; /* Adjust spacing between items */
+    width: 150px; /* Set the desired width */
+  }
+  
+  .image-preview-item img {
+    max-width: 100%; /* Ensure the image fits within the item */
+    height: auto; /* Maintain the image's aspect ratio */
+  }
+  
+  .image-preview-item button {
+    margin-top: 5px; /* Adjust spacing between the image and the delete button */
+    background-color: #023047;
+  }
+  

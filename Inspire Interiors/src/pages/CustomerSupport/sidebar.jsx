@@ -76,17 +76,6 @@ const SidebarDashboard = () => {
             </NavText>
         </NavItem>
 
-        <NavItem eventKey="delivery">
-            <NavIcon>
-                <NavLink to="/customersupport/delivery" activeClassName="active"><i><RiTakeawayFill /></i></NavLink>
-                 
-            </NavIcon>
-            <NavText>
-                 <NavLink to="/customersupport/delivery" activeClassName="active">Delivery</NavLink>
-                
-            </NavText>
-        </NavItem>
-
         <NavItem eventKey="settings">
             <NavIcon>
                 <NavLink to="/customersupport/settings" activeClassName="active"><i><RiSettings5Fill /></i></NavLink>

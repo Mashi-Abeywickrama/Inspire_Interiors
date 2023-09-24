@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import '../../styles/customerSupport/customerSupportdashboard.css';
 import { Rerousel } from "rerousel";
 
@@ -17,6 +17,7 @@ import * as Icon from 'react-bootstrap-icons';
 import ReactStars from "react-rating-stars-component";
 import { ProgressBar } from 'react-bootstrap';
 import Needlepie from "./../../components/admin/needlepie";
+import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -119,78 +120,120 @@ export const bardata = [
 
 const COLORS = ['#035C94', '#F8F8F9', '#FFC00C'];
 
-const CustomerSupportDashboard = () => (
+
+
+
+const CustomerSupportDashboard = () =>{
+
+    const [quotationData, setQuotationData] = useState([]);
+    const [refundData, setRefundData] = useState([]);
+    const [complaintData, setComplaintData] = useState([]);
+
+    const apiBaseURL = 'http://localhost:8080';
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseURL,
+        timeout: 5000,
+    });
+
+    useEffect(() => {
+    // Make an Axios GET request to your Spring Boot API endpoint
+    axiosInstance.get('/inquiry-count-quotation')
+      .then((response) => {
+        // Handle the successful response here
+        setQuotationData(response.data);
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error('Error fetching data:', error);
+      });
+
+      axiosInstance.get('/inquiry-count-refund')
+      .then((response) => {
+        // Handle the successful response here
+        setRefundData(response.data);
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error('Error fetching data:', error);
+      });
+
+      axiosInstance.get('/inquiry-count-complaint')
+      .then((response) => {
+        // Handle the successful response here
+        setComplaintData(response.data);
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error('Error fetching data:', error);
+      });
+  }, []); // The empty dependency array ensures that this effect runs only once when the component mounts
+
+
+    const barChartData = (quotationData, refundData, complaintData) => {
+        const mergedData = quotationData.map((quotationItem) => {
+
+            const matchingRefund = refundData.find(
+                (refundItem) => refundItem.dayName === quotationItem.dayName
+            );
+
+            const matchingComplaint = complaintData.find(
+                (complaintItem) => complaintItem.dayName === quotationItem.dayName
+            );
+            
+            if (matchingRefund ) {
+                return {
+                    ...quotationItem,
+                    ...matchingRefund,
+                    ...matchingComplaint,
+                };
+                
+            }
+            else {
+                return {
+                    ...quotationItem,
+                    refund_count: 0,
+                };
+            }   
+            
+        });
+        return mergedData;
+    };
+
+    const mergedData = barChartData(quotationData, refundData, complaintData);
+    
+
+return (
     <>
         <div className='dashboard-container support-dashboard me-3'>
             <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4'>
                 <div className='d-flex flex-column gap-3'>
-                    <div className='d-flex flex-row gap-1'>
-                        <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
-                            <div className='d-flex flex-column'>
-                                <p className='fs-5 fw-bold Cabin-text' style={{ color: "#035C94" }}>Chat Queue</p>
-                                <p className='fs-6 fw-normal Cabin-text' style={{ color: "#035C94" }}>Today</p>
-                                <PieChart width={220} height={250}>
-                                    <Pie
-                                        data={data}
-                                        cx={120}
-                                        cy={110}
-                                        innerRadius={60}
-                                        outerRadius={80}
-                                        fill="#8884d8"
-                                        paddingAngle={5}
-                                        dataKey="value"
-                                    >
-                                        {data.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                        ))}
-                                    </Pie>
-                                </PieChart>
+                    <div className='d-flex bg-white shadow rounded-3 flex-row gap-1'>
+                    <div className='d-flex flex-column '>
+                                <p className='fs-5 fw-bold Cabin-text p-3' style={{ color: "#035C94" }}>Inquiries Received</p>
+                                <p className='fs-6 fw-normal Cabin-text px-3 ' style={{ color: "#035C94" }}>This Week</p>
+                                <BarChart
+                                    width = {910}
+                                    height={300}
+                                    data={mergedData}
+                                    margin={{
+                                        top: 5,
+                                        right: 30,
+                                        left: 5,
+                                        bottom: 5,
+                                    }}
+                                    barSize={20}
+                                >
+                                    <XAxis dataKey="dayName" scale="point" padding={{ left: 30, right: 30 }} />
+                                    <YAxis scale="linear" tickCount={3} />
+                                    <Tooltip />
+                                    <Legend  />
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <Bar dataKey="Quotations" fill="orange" radius={[3, 3, 0, 0]} background={{ fill: '#fff' }} />
+                                    <Bar dataKey="Refund" fill="brown" radius={[3, 3, 0, 0]} background={{ fill: '#fff' }} />
+                                    <Bar dataKey="Other Complaints" fill="#025C90" radius={[3, 3, 0, 0]} background={{ fill: '#fff' }} />
+                                </BarChart>
                             </div>
-                        </div>
-                        <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
-                            <div className='d-flex flex-column'>
-                                <p className='fs-5 fw-bold Cabin-text' style={{ color: "#035C94" }}>Missed Chats</p>
-                                <p className='fs-6 fw-normal Cabin-text' style={{ color: "#035C94" }}>Today</p>
-                                <PieChart width={220} height={250}>
-                                    <Pie
-                                        data={data}
-                                        cx={120}
-                                        cy={110}
-                                        innerRadius={60}
-                                        outerRadius={80}
-                                        fill="#8884d8"
-                                        paddingAngle={5}
-                                        dataKey="value"
-                                    >
-                                        {data.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                        ))}
-                                    </Pie>
-                                </PieChart>
-                            </div>
-                        </div>
-                        <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
-                            <div className='d-flex flex-column'>
-                                <p className='fs-5 fw-bold Cabin-text' style={{ color: "#035C94" }}>Av. Wait Time</p>
-                                <p className='fs-6 fw-normal Cabin-text' style={{ color: "#035C94" }}>Today</p>
-                                <PieChart width={220} height={250}>
-                                    <Pie
-                                        data={data}
-                                        cx={120}
-                                        cy={110}
-                                        innerRadius={60}
-                                        outerRadius={80}
-                                        fill="#8884d8"
-                                        paddingAngle={5}
-                                        dataKey="value"
-                                    >
-                                        {data.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                        ))}
-                                    </Pie>
-                                </PieChart>
-                            </div>
-                        </div>
                     </div>
                     <div className='col-lg-12 bg-white rounded-3 shadow p-4'>
                         <div className='d-flex flex-row'>
@@ -358,6 +401,6 @@ const CustomerSupportDashboard = () => (
         </div>
 
     </>
-)
+)};
 
 export default CustomerSupportDashboard;
