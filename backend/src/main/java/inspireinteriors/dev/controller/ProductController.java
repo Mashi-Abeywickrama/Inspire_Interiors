@@ -9,7 +9,6 @@ import inspireinteriors.dev.model.Variation;
 import inspireinteriors.dev.service.ARModelsService;
 import inspireinteriors.dev.service.ProductService;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,42 +36,28 @@ public class ProductController {
     private ObjectMapper objectMapper;
 
 
-    @PostMapping("/products")
+    @PutMapping("/addproductimage")
     public ResponseEntity<String> createProduct(
-            @RequestParam("productDetails") String productDetailsJson,
+            @RequestParam("productDetails") Integer productID,
             @RequestParam("imageFile") MultipartFile imageFile
     ) throws JsonProcessingException, IOException, JSONException {
-        ProductDetails productDetails = objectMapper.readValue(productDetailsJson, ProductDetails.class);
+        System.out.println("Product ID: " + productID);
 
         // Handle image upload
-        String uploadedFileName = handleImageUpload(imageFile);
+        String uploadedFileName = handleImageUpload(imageFile, productID);
 
-        Product product = new Product();
-        product.setProduct_name(productDetails.getProductName());
-        product.setProduct_description(productDetails.getProductDescription());
-        product.setDiscount(productDetails.getProductDiscount());
-        product.setType(productDetails.getProductType());
-        product.setEntry_price(productDetails.getEntryPrice());
-        product.setProductImg(uploadedFileName);// Save the image file path
 
-        // Save the product to the database
-        productService.saveProduct(product);
-        // Process productDetails and imageFileName here
-        // ... your logic to save the product and image details ...
-
-        JSONObject jsonResponse = new JSONObject();
-        jsonResponse.put("name", product.getProduct_name());
-        jsonResponse.put("description", product.getProduct_description());
-        jsonResponse.put("discount", product.getDiscount());
-        jsonResponse.put("type", product.getType());
-        jsonResponse.put("entryPrice", product.getEntry_price());
-        jsonResponse.put("productImg", product.getProductImg());
-
+//
+        Product product = productService.getProductById(productID);
+        product.setProductImg(productID+".jpg");
+        productService.updateProfilePic(product);
+//
         return ResponseEntity.ok(uploadedFileName);
     }
 
     @PostMapping("/addproducts")
     public ResponseEntity<Product> createdproduct(@RequestBody Product product){
+
         productService.createProduct(product);
         return ResponseEntity.ok(product);
     }
@@ -217,13 +202,30 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
-    private String handleImageUpload(MultipartFile imageFile) {
+
+    private String handleImageUpload(MultipartFile imageFile, Integer productID) {
+
+
+
+
         if (imageFile == null || imageFile.isEmpty()) {
             return null; // No image provided
         }
 
-        String fileName = imageFile.getOriginalFilename();
-        String filePath = "C:\\Users\\shint\\Documents\\GitHub\\Inspire_Interiors_new\\Inspire Interiors\\src\\assets\\img\\product\\" + fileName;
+        String fileName = productID + ".jpg";
+
+
+        String currentWorkingDirectory = System.getProperty("user.dir");
+
+        // Construct the relative path to the parent folder
+        String parentFolderRelativePath = ".." + File.separator + "Inspire Interiors";
+
+// Combine with the current working directory to get the absolute path
+        String parentFolderAbsolutePath = currentWorkingDirectory + File.separator + parentFolderRelativePath;
+
+        System.out.println(parentFolderAbsolutePath);
+
+        String filePath =parentFolderAbsolutePath +"/src/assets/img/product"+  File.separator  + fileName;
 
         try {
             // Create the directory structure if it doesn't exist
@@ -231,6 +233,9 @@ public class ProductController {
             if (!directory.exists()) {
                 directory.mkdirs();
             }
+
+
+
 
             File destFile = new File(filePath);
             imageFile.transferTo(destFile);

@@ -89,9 +89,32 @@ const AddStock = () => {
       });
       if(response.status === 200)
       {
-        console.log("Response from API:", response.data);
+        console.log("Response from API:", response.data.product_id);
         console.log("Creation Succesfully");
-        window.location.href='/vendor/inventory/viewstock';
+       
+
+        try {
+          console.log("Submitting form:", productDetails )
+          const formData = new FormData();
+
+          formData.append("productDetails", response.data.product_id);
+          formData.append("imageFile", productDetails.image); // Append the image to the formData
+
+          const response2 = await axiosInstance.put("/addproductimage",
+            formData,
+            { headers: { 'Content-Type': 'multipart/form-data' } }
+          );
+          if(response2.status === 200)
+          {
+            console.log("Response from API:", "Omaiwa mou shindeiru");
+             window.location.href='/vendor/inventory/viewstock';
+
+            
+          } 
+        }
+        catch (error) {
+          console.error("Error submitting form:", error);
+        }
       }
 
     } catch (error) {
