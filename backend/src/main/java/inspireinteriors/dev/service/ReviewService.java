@@ -18,6 +18,7 @@ public class ReviewService {
         return reviewRepository.findByProductId(productId);
     }
 
+
     public double getAverageRating(Long productId) {
         List<Review> reviews = reviewRepository.findByProductId(productId);
 
@@ -45,5 +46,9 @@ public class ReviewService {
     public long getTotalVotes(Long productId) {
         // Count the total number of reviews as total votes for the product
         return reviewRepository.countByProductId(productId);
+    }
+
+    public List<String> getReviewsWithName(Long productId) {
+        return reviewRepository.findByNameByProductId(productId);
     }
 }
