@@ -1,6 +1,5 @@
 package inspireinteriors.dev.controller;
 
-import inspireinteriors.dev.model.Vendor;
 import inspireinteriors.dev.model.VendorOffer;
 import inspireinteriors.dev.service.DesignerService;
 import inspireinteriors.dev.service.VendorOfferService;
@@ -28,16 +27,15 @@ public class VendorOfferController {
 
     @PostMapping("/addpromotion")
     public ResponseEntity<VendorOffer> createOffer(@RequestBody VendorOffer vendorOffer, HttpSession session){
-
-//        Integer vendorId = (Integer) session.getAttribute("vendorid");
-//
-//        Vendor vendor = new Vendor();
-//        vendor.setVendor_id(vendorId);
-//        vendorOffer.setVendor(vendor);
-
         vendorOfferService.createOffer(vendorOffer);
         return new ResponseEntity<>(vendorOffer, HttpStatus.OK);
 
+    }
+
+    @GetMapping("/promotion/v/{vendorid}")
+    public ResponseEntity<List<VendorOffer>> getOfferByVendorId(@PathVariable("vendorid") int vendorid){
+        List<VendorOffer> vendorOffer = vendorOfferService.getOfferByVendorId(vendorid);
+        return ResponseEntity.ok(vendorOffer);
     }
 
     @GetMapping("/promotion")
@@ -95,7 +93,7 @@ public class VendorOfferController {
             vendorOffer.setMorethanhundredthousand(updatedOffer.getMorethanhundredthousand());
         }
 
-        if(updatedOffer.getOfferstatus() != null){
+        if(updatedOffer.getOfferstatus() != 0){
             vendorOffer.setOfferstatus(updatedOffer.getOfferstatus());
         }
 

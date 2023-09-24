@@ -63,28 +63,28 @@ const acceptedData = {
                     <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
                     <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
                 </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
+            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
         },
         {   
             product: <div className='d-flex flex-row gap-4 align-items-center'>
                     <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
                     <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
                 </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
+            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
         },
         {   
             product: <div className='d-flex flex-row gap-4 align-items-center'>
                     <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
                     <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
                 </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
+            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
         },
         {   
             product: <div className='d-flex flex-row gap-4 align-items-center'>
                     <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
                     <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
                 </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div><p className="float-end">23 min ago</p></div>
+            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
         },
     ]
 }

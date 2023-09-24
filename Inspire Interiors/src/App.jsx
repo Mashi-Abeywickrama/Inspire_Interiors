@@ -81,6 +81,8 @@ import MyNetwork from "./pages/vendor/myNetwork";
 import Complaints from "./pages/vendor/complaints";
 import VendorSetting from "./pages/vendor/setting";
 import ViewComplaint from "./pages/vendor/viewComplaint";
+import BrowseDesigner from "./pages/vendor/browseDesigner";
+import ViewDesigners from "./pages/vendor/viewDesigner";
 
 // Customer Support
 import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
@@ -240,11 +242,53 @@ const routes = (
       <Route path="promotion/expenses" element={<PromotionExpenses />}></Route>
       <Route path="complaints" element={<Complaints />}></Route>
       <Route
-        path="complaints/viewcomplaint"
-        element={<ViewComplaint />}
-      ></Route>
-      <Route path="setting" element={<VendorSetting />}></Route>
-    </Route>
+        path="/vendor/"
+        element={<VDashboardlayout />}
+        errorElement={<Error />}
+      >
+        <Route index element={<VendorDashboard />} />
+        <Route path="dashboard" element={<VendorDashboard />}></Route>
+        <Route path="inventory" element={<Inventory />}></Route>
+        <Route path="inventory/viewstock" element={<ViewStocks />}></Route>
+        <Route
+          path="inventory/inventoryproduct"
+          element={<InventoryProduct />}
+        ></Route>
+        <Route path="inventory/addstock" element={<AddStock />}></Route>
+        <Route path="order" element={<Order />}></Route>
+        <Route path="order/vieworder" element={<ViewOrder />}></Route>
+        <Route
+          path="order/customizeorders"
+          element={<CustomizeOrders />}
+        ></Route>
+        <Route
+          path="order/customrequest"
+          element={<ViewCustomRequest />}
+        ></Route>
+        <Route path="promotion" element={<Promotion />}></Route>
+        <Route path="promotion/mynetwork" element={<MyNetwork />}></Route>
+        <Route path="promotion/browsedesigner" element={<BrowseDesigner />}></Route>
+        <Route path="promotion/viewdesigners" element={<ViewDesigners />}></Route>
+        <Route
+          path="promotion/promoteproduct"
+          element={<PromotedProduct />}
+        ></Route>
+        <Route
+          path="promotion/promotionrequest"
+          element={<PromotionRequest />}
+        ></Route>
+        <Route
+          path="promotion/expenses"
+          element={<PromotionExpenses />}
+        ></Route>
+        <Route path="complaints" element={<Complaints />}></Route>
+        <Route
+          path="complaints/viewcomplaint"
+          element={<ViewComplaint />}
+        ></Route>
+        <Route path="setting" element={<VendorSetting />}></Route>
+      </Route>
+
 
     {/* Designer Routes */}
     <Route

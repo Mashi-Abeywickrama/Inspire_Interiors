@@ -32,7 +32,6 @@ public class VendorOfferService {
 //    }
 
     public VendorOffer createOffer(VendorOffer vendorOffer){
-        vendorOffer.setOfferstatus("Wait for Response");
         return vendorOfferRepository.save(vendorOffer);
     }
 
@@ -68,5 +67,9 @@ public class VendorOfferService {
 
     public VendorOffer findById(int offerId) {
         return vendorOfferRepository.findById((long) offerId).orElseThrow(() -> new EntityNotFoundException("Offer not found: " + offerId));
+    }
+
+    public List<VendorOffer> getOfferByVendorId(int vendorid) {
+        return vendorOfferRepository.findPromotionByVendor_id(vendorid);
     }
 }
