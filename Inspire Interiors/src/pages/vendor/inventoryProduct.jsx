@@ -249,11 +249,11 @@ const InventoryProduct = () => {
     },
   ];
 
-  // console.log(variationData);
+ console.log(productData);
 
   return (
     <>
-      <div className="chair-container me-4">
+      <div className="chair-container me-5">
         <div className="col-12 d-flex flex-column flex-lg-row flex-md-row gap-3">
           <div className="d-flex flex-column gap-4 col-lg-7">
             <div className="col-lg-12 bg-white rounded-3 shadow">
@@ -476,7 +476,7 @@ const InventoryProduct = () => {
             </div>
           </div>
           <div className="col-lg-5">
-            <div className="d-flex flex-column gap-4">
+            <div className="d-flex flex-column gap-3">
               <div className="col-lg-12 bg-white rounded-3 p-4 shadow">
                 <div className="d-flex justify-content-between">
                   <p className="text-dark fs-5 fw-bold Cabin-text">
@@ -631,15 +631,24 @@ const InventoryProduct = () => {
                 ))} 
                 </div>
               </div>
-              <div className="col-lg-12 bg-white rounded-3 p-4 shadow mb-5">
+              <div className="col-lg-12 bg-white rounded-3 p-4 shadow mb-2">
                 <div className="d-flex flex-row gap-3">
                   <p className="text-dark fs-5 fw-bold Cabin-text">
-                    Images & 3D Model
+                    Product Image
                   </p>
-                  <Icon.PencilFill color="#035C94" className="mt-2" />
                 </div>
                 <div className="align-content-center">
-                  <img className="img-fluid" src={Chair} />
+                  <img className="img-fluid" src={(`../../../../src/assets/img/product/${productData.product_id}.jpg`)} />
+                </div>
+              </div>
+              <div className="col-lg-12 bg-white rounded-3 p-4 shadow mb-2">
+                <div className="d-flex flex-row gap-3">
+                  <p className="text-dark fs-5 fw-bold Cabin-text">
+                    Product 3D Model
+                  </p>
+                </div>
+                <div className="align-content-center">
+                  <img className="img-fluid" src={(`../../../../src/assets/img/product/${productData.product_id}.jpg`)} />
                 </div>
               </div>
             </div>

@@ -18,11 +18,10 @@ public class OrderController {
 
     @GetMapping("/getorder")
     public List<Order> getOrder() {return this.orderService.getOrders();}
-
-
+    
 
     @GetMapping("/getorder/{orderid}")
-public Order getOrder(@PathVariable ("orderid") int orderid) {
+    public Order getOrder(@PathVariable ("orderid") int orderid) {
         return this.orderService.getOrder(orderid);
     }
 
