@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import '../../styles/customerSupport/customerSupportdashboard.css';
 import { Rerousel } from "rerousel";
 
@@ -17,6 +17,7 @@ import * as Icon from 'react-bootstrap-icons';
 import ReactStars from "react-rating-stars-component";
 import { ProgressBar } from 'react-bootstrap';
 import Needlepie from "./../../components/admin/needlepie";
+import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -119,19 +120,102 @@ export const bardata = [
 
 const COLORS = ['#035C94', '#F8F8F9', '#FFC00C'];
 
-const CustomerSupportDashboard = () => (
+
+
+
+const CustomerSupportDashboard = () =>{
+
+    const [quotationData, setQuotationData] = useState([]);
+    const [refundData, setRefundData] = useState([]);
+    const [complaintData, setComplaintData] = useState([]);
+
+    const apiBaseURL = 'http://localhost:8080';
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseURL,
+        timeout: 5000,
+    });
+
+    useEffect(() => {
+    // Make an Axios GET request to your Spring Boot API endpoint
+    axiosInstance.get('/inquiry-count-quotation')
+      .then((response) => {
+        // Handle the successful response here
+        setQuotationData(response.data);
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error('Error fetching data:', error);
+      });
+
+      axiosInstance.get('/inquiry-count-refund')
+      .then((response) => {
+        // Handle the successful response here
+        setRefundData(response.data);
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error('Error fetching data:', error);
+      });
+
+      axiosInstance.get('/inquiry-count-complaint')
+      .then((response) => {
+        // Handle the successful response here
+        setComplaintData(response.data);
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error('Error fetching data:', error);
+      });
+  }, []); // The empty dependency array ensures that this effect runs only once when the component mounts
+
+
+    const barChartData = (quotationData, refundData, complaintData) => {
+        const mergedData = quotationData.map((quotationItem) => {
+
+            const matchingRefund = refundData.find(
+                (refundItem) => refundItem.dayName === quotationItem.dayName
+            );
+
+            const matchingComplaint = complaintData.find(
+                (complaintItem) => complaintItem.dayName === quotationItem.dayName
+            );
+            
+            if (matchingRefund ) {
+                return {
+                    ...quotationItem,
+                    ...matchingRefund,
+                    ...matchingComplaint,
+                };
+                
+            }
+            else {
+                return {
+                    ...quotationItem,
+                    refund_count: 0,
+                };
+            }   
+            
+        });
+        return mergedData;
+    };
+
+    const mergedData = barChartData(quotationData, refundData, complaintData);
+    
+
+return (
     <>
         <div className='dashboard-container support-dashboard me-3'>
             <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4'>
                 <div className='d-flex flex-column gap-3'>
                     <div className='d-flex bg-white shadow rounded-3 flex-row gap-1'>
                     <div className='d-flex flex-column '>
-                                <p className='fs-5 fw-bold Cabin-text p-3' style={{ color: "#035C94" }}>Chat Volume</p>
+                                <p className='fs-5 fw-bold Cabin-text p-3' style={{ color: "#035C94" }}>Inquiries Received</p>
                                 <p className='fs-6 fw-normal Cabin-text px-3 ' style={{ color: "#035C94" }}>This Week</p>
                                 <BarChart
                                     width = {910}
                                     height={300}
-                                    data={bardata}
+                                    data={mergedData}
                                     margin={{
                                         top: 5,
                                         right: 30,
@@ -140,12 +224,14 @@ const CustomerSupportDashboard = () => (
                                     }}
                                     barSize={20}
                                 >
-                                    <XAxis dataKey="name" scale="point" padding={{ left: 30, right: 30 }} />
-                                    <YAxis />
+                                    <XAxis dataKey="dayName" scale="point" padding={{ left: 30, right: 30 }} />
+                                    <YAxis scale="linear" tickCount={3} />
                                     <Tooltip />
-                                    <Legend />
+                                    <Legend  />
                                     <CartesianGrid strokeDasharray="3 3" />
-                                    <Bar dataKey="chat_count" fill="#035C94" radius={[10, 10, 0, 0]} background={{ fill: '#fff' }} />
+                                    <Bar dataKey="Quotations" fill="orange" radius={[3, 3, 0, 0]} background={{ fill: '#fff' }} />
+                                    <Bar dataKey="Refund" fill="brown" radius={[3, 3, 0, 0]} background={{ fill: '#fff' }} />
+                                    <Bar dataKey="Other Complaints" fill="#025C90" radius={[3, 3, 0, 0]} background={{ fill: '#fff' }} />
                                 </BarChart>
                             </div>
                     </div>
@@ -315,6 +401,6 @@ const CustomerSupportDashboard = () => (
         </div>
 
     </>
-)
+)};
 
 export default CustomerSupportDashboard;
