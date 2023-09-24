@@ -6,7 +6,6 @@ import inspireinteriors.dev.repository.ProductImgRepository;
 import inspireinteriors.dev.repository.ProductRepository;
 import inspireinteriors.dev.repository.VariationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -98,4 +97,7 @@ public class ProductService {
     }
 
 
+    public void updateProfilePic(Product product) {
+        productRepository.save(product);
+    }
 }
