@@ -9,6 +9,7 @@ import inspireinteriors.dev.service.ProductService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -70,11 +71,6 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
-    @PostMapping("/addvariation")
-    public Variation createVariation(@RequestBody Variation variation) {
-        return productService.createvariation(variation);
-    }
-
     @GetMapping("/viewproducts")
     public List<Product> getAllProducts() {
         return (List<Product>) productService.getAllProducts();
@@ -83,6 +79,24 @@ public class ProductController {
     @GetMapping("/viewproducts/{id}")
     public Product getProductById(@PathVariable Integer id) {
         return productService.getProductById(id);
+    }
+
+    //get product by vendor id
+    @GetMapping("/viewproducts/v/{vendorid}")
+    public ResponseEntity<List<Product>> getProductsByVendorId(@PathVariable(value = "vendorid") int vendor_id) {
+        List<Product> products = productService.getProductsByVendorId(vendor_id);
+        return ResponseEntity.ok(products);
+    }
+
+    @PostMapping("/addvariation")
+    public Variation createVariation(@RequestBody Variation variation) {
+        return productService.createvariation(variation);
+    }
+
+    @GetMapping("/viewvariations/v/{id}")
+    public ResponseEntity<List<Variation>> getVariationsByvendorId(@PathVariable(value = "id") int product_id) {
+        List<Variation> variations = productService.getVariationsByProductId(product_id);
+        return ResponseEntity.ok(variations);
     }
 
     @GetMapping("/viewvariations/{id}")
@@ -98,34 +112,64 @@ public class ProductController {
 
     //update product variations with product id
     @PutMapping("/updatevariations/{id}")
-    public ResponseEntity<Variation> updateVariation(
+    public ResponseEntity<String> updateVariation(
             @PathVariable("id") Integer variation_id,
-            @RequestBody Variation updatedVariation
-    ) {
-        Variation variation = productService.updateVariation(updatedVariation);
+            @RequestBody VariationDetails updatedVariation) {
+        String material = updatedVariation.getMaterial();
+        String color = updatedVariation.getColor();
+        int quantity = updatedVariation.getQuantity();
 
-        if (variation == null) {
+        boolean variationUpdated = productService.updateVariation(
+                variation_id,
+                material,
+                color,
+                quantity
+        );
+
+        if(variationUpdated){
+            return ResponseEntity.ok("Variation updated successfully");
+        }else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Variation update failed");
+        }
+    }
+
+    @PutMapping("/updateproduct/v/{id}")
+    public ResponseEntity<Product> updatedProduct(
+            @PathVariable("id") Integer vendor_id,
+            @RequestBody Product updatedProduct
+    ) {
+        Product product = productService.getProductById(vendor_id);
+
+        if (product == null) {
             return ResponseEntity.notFound().build();
         }
 
-        if (updatedVariation.getColor() != null) {
-            variation.setColor(updatedVariation.getColor());
+        if (updatedProduct.getProduct_name() != null) {
+            product.setProduct_name(updatedProduct.getProduct_name());
         }
 
-        if (updatedVariation.getMaterial() != null) {
-            variation.setMaterial(updatedVariation.getMaterial());
+        if (updatedProduct.getProduct_description() != null) {
+            product.setProduct_description(updatedProduct.getProduct_description());
         }
 
-        if (updatedVariation.getQuantity() != 0) {
-            variation.setQuantity(updatedVariation.getQuantity());
+        if (updatedProduct.getDiscount() != 0) {
+            product.setDiscount(updatedProduct.getDiscount());
         }
 
-        if (updatedVariation.getVariationImg() != null) {
-            variation.setVariationImg(updatedVariation.getVariationImg());
+        if (updatedProduct.getType() != null) {
+            product.setType(updatedProduct.getType());
         }
 
-        productService.updateVariation(variation);
-        return ResponseEntity.ok(variation);
+        if (updatedProduct.getEntry_price() != null) {
+            product.setEntry_price(updatedProduct.getEntry_price());
+        }
+
+        if (updatedProduct.getProductImg() != null) {
+            product.setProductImg(updatedProduct.getProductImg());
+        }
+
+        productService.saveProduct(product);
+        return ResponseEntity.ok(product);
     }
 
     @PutMapping("/updateproducts/{id}")
@@ -189,6 +233,48 @@ public class ProductController {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public static class VariationDetails{
+        @JsonProperty("material")
+        private String material;
+        @JsonProperty("color")
+        private String color;
+        @JsonProperty("quantity")
+        private int quantity;
+
+        public VariationDetails() {
+        }
+
+        public VariationDetails(String material, String color, int quantity) {
+            this.material = material;
+            this.color = color;
+            this.quantity = quantity;
+        }
+
+        public String getMaterial() {
+            return material;
+        }
+
+        public void setMaterial(String material) {
+            this.material = material;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
         }
     }
 

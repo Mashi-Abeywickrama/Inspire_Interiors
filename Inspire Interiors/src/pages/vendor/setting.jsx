@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import useAlert from '../../components/useAlert';
 import { useSession } from '../../constants/SessionContext';
 import { Alert, Snackbar } from '@mui/material';
-
+import { Modal } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../styles/customer/setting.css';
@@ -16,11 +16,14 @@ import Profile from './../../assets/img/customer/profile.jpg';
 import axios from 'axios';
 
 
-
 const VendorSetting = () => {
     const [alertOpen, setAlertOpen] = useState(false);
     const [alertSeverity, setAlertSeverity] = useState('success');
     const [alertMessage, setAlertMessage] = useState('');
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const handleAlertClose = () => {
         setAlertOpen(false);
@@ -61,6 +64,7 @@ const VendorSetting = () => {
     const [error, setError] = useState(null);
 
     const userId = sessionItems.sessionData.userid;
+    const username = sessionItems.sessionData.username;
 
     useEffect(() => {
         // Define the data you want to send in the request body
@@ -414,7 +418,7 @@ const VendorSetting = () => {
                                 <div>
                                 <div className='d-flex gap-4 align-items-center justify-content-between '>
                                     <div className='d-flex justify-content-start gap-3 align-items-center'>
-                                        <div class="mb-2 mt-2  address-radio-form">
+                                        <div class="mb-2 mt-2 address-radio-form">
                                             <Form.Check
                                                 type="radio"
                                                 id="option2"
@@ -452,8 +456,46 @@ const VendorSetting = () => {
 
                                 <hr />
                                 <div className='d-flex gap-1'>
-                                    <Icon.Plus color={'#035C94'} size={22}/>
-                                    <p className='blue-colour-para'>Add New Account</p>
+                                    <div className='d-flex' type='button' onClick={handleShow}>
+                                        <Icon.Plus color={'#035C94'} size={22} />
+                                        <p  className='blue-colour-para'>Add New Account</p>
+                                    </div>
+
+                                    <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+                                        <Modal.Header closeButton>
+                                            <Modal.Title>Add New Bank Account</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <form>
+                                                <div className='d-flex flex-column gap-3'>
+                                                    <div className='d-flex gap-5 justify-content-between'>
+                                                        <div class="mb-2 mt-2 w-50">
+                                                            <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Bank Name:</label>
+                                                            <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" placeholder="Enter Bank Name" />
+                                                        </div>
+                                                        <div class="mb-2 mt-2 w-50">
+                                                            <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Branch:</label>
+                                                            <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" placeholder="Enter Branch" />
+                                                        </div>
+                                                    </div>
+                                                    <div className='d-flex gap-5 justify-content-between'>
+                                                        <div class="mb-2 mt-2 w-50">
+                                                            <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Branch Code:</label>
+                                                            <input type="number" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" placeholder="Enter Branch Code" />
+                                                        </div>
+                                                        <div class="mb-2 mt-2 w-50">
+                                                            <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Account No:</label>
+                                                            <input type="number" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" placeholder="Enter Account No" />
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                            </form>
+                                        </Modal.Body>
+                                        <div className='d-flex flex-column flex-lg-row flex-md-row justify-content-between'>
+                                            <button type='button' className="Cabin-text my-3 mx-5" onClick={handleClose} style={{color: "#FF5C60", background: "#FFFFFF", borderRadius: "8px", border: "1px solid #FF5C60"}}>Cancel</button>
+                                            <button type='submit' className="add-btn Cabin-text my-3 mx-5">Add Account</button>
+                                        </div>
+                                    </Modal>
                                 </div>
 
                                 

@@ -14,8 +14,11 @@ import axios from 'axios';
 
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 import {Link} from 'react-router-dom';
+import {useSession} from '../../constants/SessionContext';
 
 const ViewStocks = () => {
+  const sessionItems = useSession();
+  const vendorID = sessionItems.sessionData.userid;
   const [productData, setproductData] = useState([]);
 
   const apiBaseURL = "http://localhost:8080";
@@ -26,9 +29,8 @@ const ViewStocks = () => {
   });
 
   useEffect(() => {
-    // Fetch data from your backend API
     axiosInstance
-      .get('/viewproducts')
+      .get(`/viewproducts/v/${vendorID}`)
       .then((response) => {
         setproductData(response.data);
         console.log(response.data);
@@ -44,12 +46,6 @@ const ViewStocks = () => {
       field: 'product',
       sort: 'asc',
       width: 150
-    },
-    {
-      label: 'QUANTITY',
-      field: 'quantity',
-      sort: 'asc',
-      width: 270
     },
     {
       label: 'ENTRY PRICE',
@@ -76,13 +72,6 @@ const ViewStocks = () => {
       width: 100
     },
     {
-      label: 'STATUS',
-      field: 'status',
-      sort: 'asc',
-      width: 100
-    }
-    ,
-    {
       label: '  ',
       field: 'action',
       sort: 'NONE',
@@ -96,13 +85,11 @@ const ViewStocks = () => {
         <img src={product.image}/>
         <p className='align-items-center mt-3'>{product.product_name}</p>
       </div>,
-      quantity: 5,
       entry: product.entry_price,
       discount: product.discount,
       price: product.entry_price - (product.entry_price * product.discount / 100),
       sold: product.sold,
-      status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{product.product_status}</p></div>
-      ,
+      // status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{product.product_status}</p></div>
       action: <Link to={`/vendor/inventory/inventoryproduct?id=${product.product_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
     }
   });
@@ -139,7 +126,6 @@ const ViewStocks = () => {
                 exportToCSV={true}
                 paging={true}
                 searching={true}
-                
               />
               </div>
             </Tab>

@@ -82,6 +82,8 @@ import MyNetwork from "./pages/vendor/myNetwork";
 import Complaints from "./pages/vendor/complaints";
 import VendorSetting from "./pages/vendor/setting";
 import ViewComplaint from "./pages/vendor/viewComplaint";
+import BrowseDesigner from "./pages/vendor/browseDesigner";
+import ViewDesigners from "./pages/vendor/viewDesigner";
 
 // Customer Support
 import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
@@ -112,8 +114,8 @@ import DesignerSetting from "./pages/Designer/DesignerSetting";
 import DesignerPromotionEarnings from "./pages/Designer/DesignerPromotionEarnings";
 import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 import { Loader } from "semantic-ui-react";
-// import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
-// import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
+import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
+import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
 
 const routes = (
 
@@ -231,6 +233,8 @@ const routes = (
         ></Route>
         <Route path="promotion" element={<Promotion />}></Route>
         <Route path="promotion/mynetwork" element={<MyNetwork />}></Route>
+        <Route path="promotion/browsedesigner" element={<BrowseDesigner />}></Route>
+        <Route path="promotion/viewdesigners" element={<ViewDesigners />}></Route>
         <Route
           path="promotion/promoteproduct"
           element={<PromotedProduct />}
@@ -273,8 +277,8 @@ const routes = (
 
       <Route path="setting" element={<DesignerSetting />} />
       <Route path="test" element={<Test />} />
-      {/* <Route path="requests" element={<DesignerCustomerRequest />} />
-      <Route path="crequestview/:id" element={<DesignerCRequestview />} /> */}
+      <Route path="requests" element={<DesignerCustomerRequest />} />
+      <Route path="crequestview/:id" element={<DesignerCRequestview />} />
     </Route>
 
 

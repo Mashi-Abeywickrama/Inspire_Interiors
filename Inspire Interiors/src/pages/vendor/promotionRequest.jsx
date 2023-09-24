@@ -248,7 +248,7 @@ const PromotionRequest = () => {
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                                 <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text text-dark">Sent</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                                <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Victor Avocado</p>
+                                <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{offerData.offeroverview}</p>
                             </div>
                             <button type="button" className='add-btn' onClick={handleShow}><Icon.PencilFill className="mx-2" color="white" size={16} />Edit</button>
 
@@ -344,8 +344,7 @@ const PromotionRequest = () => {
                         <button className="withdraw-btn float-end Cabin-text" onClick={handleDelete}>Withdraw Request</button>
                     </div>
                     <div className='col-lg-12 bg-white rounded-3 shadow gap-3 p-4 mb-3'>
-                        <p className="fs-5 fw-bold Cabin-text">Negotiate</p>
-                        <p className="fw-semibold fs-6 Cabin-text">Select Promotion Rates</p>
+                        <p className="fs-5 fw-bold Cabin-text">Negotiation from Designers</p>
                         <div className=''>
                             <MDBDataTableV5 responsive
                                 striped
@@ -359,7 +358,7 @@ const PromotionRequest = () => {
                         </div>
                         <div className="d-flex flex-row gap-4 float-end my-3">
                             <Link to="/vendor/promotion/mynetwork"><button className="negotiate-btn float-end Cabin-text" style={{ color: "#545563" }}>Negotiate</button></Link>
-                            <Link to="/vendor/promotion/mynetwork"><button className="accept-btn float-end Cabin-text">Accept Order</button></Link>
+                            <Link to="/vendor/promotion/mynetwork"><button className="accept-btn float-end Cabin-text">Accept Offer</button></Link>
                         </div>
                     </div>
                 </div>

@@ -38,6 +38,15 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    //get product with specific vendor id
+    public List<Product> getProductsByVendorId(int vendor_id) {
+        return productRepository.findProductsByVendor_id(vendor_id);
+    }
+
+    public List<Variation> getVariationsByProductId(int product_id) {
+        return variationRepository.findBYProductId(product_id);
+    }
+
     public Variation createvariation(Variation variation) {
         return variationRepository.save(variation);
     }
@@ -68,11 +77,25 @@ public class ProductService {
     }
 
     //update variations
-    public Variation updateVariation(Variation variation) {
-        return variationRepository.save(variation);
+    public boolean updateVariation(int variation_id, String material, String color, int quantity) {
+        Variation variation = variationRepository.findById((long) variation_id).orElse(null);
+
+        if (variation == null) {
+            return false;
+        }
+
+        variation.setMaterial(material);
+        variation.setColor(color);
+        variation.setQuantity(quantity);
+
+        variationRepository.save(variation);
+
+        return true;
     }
 
     public List<String> getDistinctTypes() {
         return productRepository.findDistinctTypes();
     }
+
+
 }

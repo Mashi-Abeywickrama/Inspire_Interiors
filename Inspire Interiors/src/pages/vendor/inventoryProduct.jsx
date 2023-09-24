@@ -8,7 +8,7 @@ import axios from "axios";
 
 import Wood from "../../assets/img/vendor/material/wood.jpeg";
 import Plywood from "../../assets/img/vendor/material/plywood.jpeg";
-import Maghogany from "../../assets/img/vendor/material/mahogany.jpg";
+import Mahogany from "../../assets/img/vendor/material/mahogany.jpg";
 import Cotton from "../../assets/img/vendor/material/cotton.png";
 import Glass from "../../assets/img/vendor/material/glass.jpg";
 
@@ -16,6 +16,7 @@ import { MDBDataTableV5, MDBTable } from "mdbreact";
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import useAlert from "../../components/useAlert";
+import EditVariation from "../../components/vendor/editvariation";
 
 
 const InventoryProduct = () => {
@@ -30,12 +31,6 @@ const InventoryProduct = () => {
 
   const [variationData, setVariationData] = useState([]);
 
-  const [editvariationData, setEditVariationData] = useState({
-    
-  })
-
-  const variationID = variationData.variation_id;
-
   const materialImage = (material) => {
     if(material === 'wood'){
         return <img className="img-fluid" style={{width:"100px", height:"100px"}} src={Wood}/>;
@@ -43,8 +38,8 @@ const InventoryProduct = () => {
         return <img className="img-fluid" style={{width:"100px", height:"100px"}} src={Plywood} />;
     } else if(material === 'glass'){
         return <img className="img-fluid" style={{width:"100px", height:"100px"}} src={Glass} />;
-    } else if(material === 'maghogany'){
-        return <img className="img-fluid" style={{width:"100px", height:"100px"}} src={Maghogany} />;
+    } else if(material === 'mahogany'){
+        return <img className="img-fluid" style={{width:"100px", height:"100px"}} src={Mahogany} />;
     } else if(material === 'cotton'){
         return <img className="img-fluid" style={{width:"100px", height:"100px"}} src={Cotton} />;
     } else {
@@ -107,32 +102,18 @@ const InventoryProduct = () => {
   }, []);
 
   useEffect(() => {
-    // Fetch data from your backend API
     axiosInstance
-      .get(`/viewvariations/${productID}`)
-      .then((response1) => {
-        setVariationData(response1.data);
-        // console.log(response1.data);
-      })
-      .catch((error) => {
-        console.log("Error fetching data", error);
-      });
+    .get(`/viewvariations/${productID}`)
+    .then((response) => {
+      setVariationData(response.data);
+      // console.log(response.data);
+    })
+    .catch((error) => {
+      console.log("Error fetching data", error);
+    });
   }, []);
 
-  const updateProductData = (field, value) => {
-    setProductData((prevDetails) => ({
-      ...prevDetails,
-      [field]: value !== undefined ? value : prevDetails[field],
-    }));
-  };
-
-  const UpdateVariationData = (field, value) => {
-    setVariationData((prevDetails) => ({
-      ...prevDetails,
-      [field]: value !== undefined ? value : prevDetails[field],
-    }));
-  };
-
+  
   const handleVariationDetailsChange = (field, value) => {
     setVariationDetails((prevDetails) => ({
       ...prevDetails,
@@ -140,7 +121,12 @@ const InventoryProduct = () => {
     }));
   };
 
-  console.log(variationData.variation_id);
+  const updateProductData = (field, value) => {
+    setProductData((prevDetails) => ({
+      ...prevDetails,
+      [field]: value !== undefined ? value : prevDetails[field],
+    }));
+  };
 
   const handleEdit = async (e) => {
     e.preventDefault();
@@ -162,27 +148,6 @@ const InventoryProduct = () => {
     }
   };
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axiosInstance.put(
-        `/updatevariations/${variationID}`,
-        {
-          material: variationData.material,
-          color: variationData.color,
-          quantity: variationData.quantity,
-        }
-      );
-      if (response.status === 200) {
-        setShow2(false);
-        console.log("variation Edit Succesfully");
-        window.location.reload();
-      }
-    } catch (error) {
-      console.error("Edit Fail");
-    }
-  };
-
   const handleImageChange = (e) => {
     const imageFile = e.target.files[0]; // Get the selected image file
     handleVariationDetailsChange("image", imageFile); // Update productDetails state with the selected image
@@ -196,9 +161,7 @@ const InventoryProduct = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [show2, setShow2] = useState(false);
-  const handleClose2 = () => setShow2(false);
-  const handleShow2 = () => setShow2(true);
+  console.log(variationData)
 
   const Columns = [
     {
@@ -242,22 +205,39 @@ const InventoryProduct = () => {
     },
     {
       label: "",
+      field: "lowStockBadge",
+      sort: "asc",
+      width: 30,
+    },
+    {
+      label: "",
       field: "edit",
       sort: "asc",
       width: 100,
     },
   ];
   const testarray = variationData;
+  const id= testarray.map((variation) => variation.variation_id);
+  console.log(id);
+
+  function getStatusBadge(quantity) {
+    if (quantity > 4) {
+      return <span className="badge text-bg-success Cabin-text">In Stock</span>;
+    } else if (quantity === 0) {
+      return <span className="badge text-bg-danger Cabin-text">Out of Stock</span>;
+    } else {
+      return <span className="badge text-bg-warning Cabin-text">Low Stock</span>;
+    }
+  }
+  
   const Rows1 = Array.isArray(variationData)
-    ? variationData.map((variation) => ({
+    ? variationData.map((variation, index) => ({
+      key:{index},
         material: variation.material,
         color: variation.color,
         quantity: variation.quantity,
-        edit: (
-          <button type="button" onClick={handleShow2} className="add-btn h-50">
-            Edit
-          </button>
-        ),
+        lowStockBadge: getStatusBadge(variation.quantity),
+        edit: <EditVariation Data={variation} />,
       }))
     : [];
 
@@ -268,6 +248,8 @@ const InventoryProduct = () => {
       discount: productData.discount,
     },
   ];
+
+  // console.log(variationData);
 
   return (
     <>
@@ -299,7 +281,7 @@ const InventoryProduct = () => {
                     className="fs-5 fw-bold Cabin-text"
                     style={{ color: "#A2A3B1" }}
                   >
-                    Meryl Lounge Chair
+                    {productData.product_name}
                   </p>
                 </div>
                 <button
@@ -475,77 +457,7 @@ const InventoryProduct = () => {
             <div className="col-lg-12 bg-white rounded-3 p-4 shadow mb-3">
               <div className="d-flex flex-row justify-content-between">
                 <p className="text-dark fs-5 fw-bold Cabin-text">Stock</p>
-                <Modal
-                  show={show2}
-                  onHide={handleClose2}
-                  size="lg"
-                  aria-labelledby="contained-modal-title-vcenter"
-                  centered
-                >
-                  <Modal.Header closeButton>
-                    <Modal.Title>Edit Variation Details</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <form onSubmit={handleUpdate}>
-                      <div className="d-flex flex-column mx-4 gap-3">
-                        <div className="mb-1">
-                          <label>Material</label>
-                          <input
-                            type="text"
-                            name="material"
-                            autoFocus
-                            className="form-control Cabin-text"
-                            value={variationData.material}
-                            onChange={(e) =>
-                              UpdateVariationData(e.target.name, e.target.value)
-                            }
-                            style={{ backgroundColor: "#F2FAFF" }}
-                          ></input>
-                        </div>
-                        <div className="mb-1">
-                          <label>Color</label>
-                          <input
-                            type="text"
-                            name="color"
-                            className="form-control Cabin-text"
-                            value={variationData.color}
-                            onChange={(e) =>
-                              UpdateVariationData(e.target.name, e.target.value)
-                            }
-                            style={{ backgroundColor: "#F2FAFF" }}
-                          ></input>
-                        </div>
-                        <div className="mb-1">
-                          <label>Quantity</label>
-                          <input
-                            type="number"
-                            name="quantity"
-                            className="form-control Cabin-text"
-                            value={variationData.quantity}
-                            onChange={(e) =>
-                              UpdateVariationData(e.target.name, e.target.value)
-                            }
-                            style={{ backgroundColor: "#F2FAFF" }}
-                          ></input>
-                        </div>
-                      </div>
-                      <div className="d-flex flex-row justify-content-between">
-                        <button
-                          type="button"
-                          className="withdraw-btn m-4"
-                          onClick={handleClose2}
-                        >
-                          <Icon.PlusLg color="white" size={20} />
-                          Discard Changes
-                        </button>
-                        <button type="submit" className="accept-btn m-4">
-                          <Icon.PlusLg color="white" size={20} />
-                          Save Changes
-                        </button>
-                      </div>
-                    </form>
-                  </Modal.Body>
-                </Modal>
+                
               </div>
               <div className="my-3">
                 <MDBDataTableV5
