@@ -10,6 +10,7 @@ import axios from 'axios';
 
 import SendQuotationBtn from '../../components/customer/popup/sendQuotation';
 import MarkAsCanceledBtn from '../../components/customer/popup/markAsCanceled';
+import RejectRefund from '../../components/customer/popup/rejectRefund';
 
 const DetailedView = () => {
 
@@ -67,6 +68,10 @@ const DetailedView = () => {
             Canceled: {
                 className: 'outstock d-flex gap-2 align-items-center',
                 text: 'Canceled',
+            },
+            Refunded: {
+                className: 'completed d-flex gap-2 align-items-center',
+                text: 'Refunded',
             },
         };
         if (statusMap.hasOwnProperty(status)) {
@@ -267,23 +272,25 @@ const DetailedView = () => {
                                 </Col>
                             </Row>
 
+                            {inquiryData.inquiry_status === 'Canceled' && (
                             <Row className='g-4'>
                                 <Col md>
                                     <Form.Group className='mb-3'>
                                         <Form.Label className='sub-heading Cabin-text'>
-                                            Additional Remarks:
+                                            Reason to Reject:
                                         </Form.Label>
                                         <Form.Control
                                             as='textarea'
                                             rows={3}
                                             name='additionalRemarks'
-                                            value={inquiryData.remarks}
+                                            value={inquiryData.additional_remarks}
                                             style={{ backgroundColor: '#F2FAFF' }}
                                             readOnly
                                         />
                                     </Form.Group>
                                 </Col>
                             </Row>
+                        )}
 
                             <Row className='g-4'>
                                 <Col md>
@@ -360,6 +367,17 @@ const DetailedView = () => {
                         <div className="divider " />
                         <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
                         <MarkAsCanceledBtn ID={inquiryData}/>
+                            <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-1">
+                            <SendQuotationBtn/>
+                            </div>
+                        </div>
+                    </>
+                )}
+                {inquiry_type === 'refund' && inquiryData.inquiry_status != 'Canceled' &&  (
+                    <>
+                        <div className="divider " />
+                        <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
+                        <RejectRefund ID={inquiryData}/>
                             <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-1">
                             <SendQuotationBtn/>
                             </div>

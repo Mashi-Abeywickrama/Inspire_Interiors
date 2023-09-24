@@ -164,6 +164,9 @@ const ViewProduct = () => {
                     </div>
 
                 </div>
+                <div>
+                    
+                </div>
             </div>
 
         </>

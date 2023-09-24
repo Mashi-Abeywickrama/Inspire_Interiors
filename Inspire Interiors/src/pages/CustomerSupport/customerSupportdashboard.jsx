@@ -124,73 +124,30 @@ const CustomerSupportDashboard = () => (
         <div className='dashboard-container support-dashboard me-3'>
             <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4'>
                 <div className='d-flex flex-column gap-3'>
-                    <div className='d-flex flex-row gap-1'>
-                        <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
-                            <div className='d-flex flex-column'>
-                                <p className='fs-5 fw-bold Cabin-text' style={{ color: "#035C94" }}>Chat Queue</p>
-                                <p className='fs-6 fw-normal Cabin-text' style={{ color: "#035C94" }}>Today</p>
-                                <PieChart width={220} height={250}>
-                                    <Pie
-                                        data={data}
-                                        cx={120}
-                                        cy={110}
-                                        innerRadius={60}
-                                        outerRadius={80}
-                                        fill="#8884d8"
-                                        paddingAngle={5}
-                                        dataKey="value"
-                                    >
-                                        {data.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                        ))}
-                                    </Pie>
-                                </PieChart>
+                    <div className='d-flex bg-white shadow rounded-3 flex-row gap-1'>
+                    <div className='d-flex flex-column '>
+                                <p className='fs-5 fw-bold Cabin-text p-3' style={{ color: "#035C94" }}>Chat Volume</p>
+                                <p className='fs-6 fw-normal Cabin-text px-3 ' style={{ color: "#035C94" }}>This Week</p>
+                                <BarChart
+                                    width = {910}
+                                    height={300}
+                                    data={bardata}
+                                    margin={{
+                                        top: 5,
+                                        right: 30,
+                                        left: 5,
+                                        bottom: 5,
+                                    }}
+                                    barSize={20}
+                                >
+                                    <XAxis dataKey="name" scale="point" padding={{ left: 30, right: 30 }} />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <Bar dataKey="chat_count" fill="#035C94" radius={[10, 10, 0, 0]} background={{ fill: '#fff' }} />
+                                </BarChart>
                             </div>
-                        </div>
-                        <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
-                            <div className='d-flex flex-column'>
-                                <p className='fs-5 fw-bold Cabin-text' style={{ color: "#035C94" }}>Missed Chats</p>
-                                <p className='fs-6 fw-normal Cabin-text' style={{ color: "#035C94" }}>Today</p>
-                                <PieChart width={220} height={250}>
-                                    <Pie
-                                        data={data}
-                                        cx={120}
-                                        cy={110}
-                                        innerRadius={60}
-                                        outerRadius={80}
-                                        fill="#8884d8"
-                                        paddingAngle={5}
-                                        dataKey="value"
-                                    >
-                                        {data.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                        ))}
-                                    </Pie>
-                                </PieChart>
-                            </div>
-                        </div>
-                        <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
-                            <div className='d-flex flex-column'>
-                                <p className='fs-5 fw-bold Cabin-text' style={{ color: "#035C94" }}>Av. Wait Time</p>
-                                <p className='fs-6 fw-normal Cabin-text' style={{ color: "#035C94" }}>Today</p>
-                                <PieChart width={220} height={250}>
-                                    <Pie
-                                        data={data}
-                                        cx={120}
-                                        cy={110}
-                                        innerRadius={60}
-                                        outerRadius={80}
-                                        fill="#8884d8"
-                                        paddingAngle={5}
-                                        dataKey="value"
-                                    >
-                                        {data.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                        ))}
-                                    </Pie>
-                                </PieChart>
-                            </div>
-                        </div>
                     </div>
                     <div className='col-lg-12 bg-white rounded-3 shadow p-4'>
                         <div className='d-flex flex-row'>
