@@ -88,7 +88,7 @@ const Inventory = () => {
 
   useEffect(() => {
     axiosInstance
-      .get(`/viewproducts/v/${vendorID}`)
+      .get(`/viewproducts/vendor/${vendorID}`)
       .then((response) => {
         setproductData(response.data);
         console.log(response.data);

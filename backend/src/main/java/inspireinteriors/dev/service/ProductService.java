@@ -46,6 +46,10 @@ public class ProductService {
         return variationRepository.findBYProductId(product_id);
     }
 
+    public Variation getVariationById(int variation_id) {
+        return variationRepository.findById((long) variation_id).orElse(null);
+    }
+
     public Variation createvariation(Variation variation) {
         return variationRepository.save(variation);
     }

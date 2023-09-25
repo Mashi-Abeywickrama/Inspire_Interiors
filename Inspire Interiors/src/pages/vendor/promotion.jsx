@@ -197,7 +197,7 @@ const Promotion = () => {
     useEffect(() => {
         // Fetch data from your backend API
         axiosInstance
-          .get(`/promotion/v/${userId}`)
+          .get(`/promotion/vendor/${userId}`)
           .then((response) => {
             setStatusData(response.data);
             // console.log(response.data);

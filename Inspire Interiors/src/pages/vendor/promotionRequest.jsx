@@ -202,7 +202,6 @@ const PromotionRequest = () => {
                 tenthousandtofiftythousand: offerData.tenthousandtofiftythousand,
                 fiftythousandtohundredthousand: offerData.fiftythousandtohundredthousand,
                 morethanhundredthousand: offerData.morethanhundredthousand,
-                offerstatus: offerData.offerstatus,
                 designer: offerData.designer
             });
             if(response.status === 200){
@@ -300,10 +299,6 @@ const PromotionRequest = () => {
                                                 <div className='my-2'>
                                                     <label>Designer</label>
                                                     <input type='number' name="designer" className='form-control Cabin-text h-50' value={offerData.designer} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
-                                                </div>
-                                                <div className='my-2'>
-                                                    <label>Offer Status</label>
-                                                    <input type='text' name="offerstatus" className='form-control Cabin-text h-50' value={offerData.offerstatus} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
                                                 </div>
                                             </div>
                                         </div>
