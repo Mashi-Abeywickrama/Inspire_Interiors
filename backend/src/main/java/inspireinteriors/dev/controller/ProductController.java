@@ -55,6 +55,26 @@ public class ProductController {
         return ResponseEntity.ok(uploadedFileName);
     }
 
+    @PutMapping("/setVariationPic")
+    public ResponseEntity<String> updateVariationPic(
+            @RequestParam("variationId") Integer variationId,
+            @RequestParam("file") MultipartFile imageFile
+    ) throws JsonProcessingException, IOException, JSONException {
+
+//         Handle image upload
+        String uploadedFileName = handleVariationImageUpload(imageFile, variationId);
+//        System.out.println("Variation ID: " + imageFile.getOriginalFilename());
+
+
+//
+        Variation variation = productService.getVariationById(variationId);
+        variation.setVariationImg(variationId+".jpg");
+        productService.updateVariationImage(variation);
+//
+        return ResponseEntity.ok(variationId+".jpg");
+    }
+
+
     @PostMapping("/addproducts")
     public ResponseEntity<Product> createdproduct(@RequestBody Product product){
 
@@ -246,6 +266,51 @@ public class ProductController {
             return null;
         }
     }
+
+    private String handleVariationImageUpload(MultipartFile imageFile, Integer variationID) {
+
+
+
+
+        if (imageFile == null || imageFile.isEmpty()) {
+            return null; // No image provided
+        }
+
+        String fileName = variationID + ".jpg";
+
+
+        String currentWorkingDirectory = System.getProperty("user.dir");
+
+        // Construct the relative path to the parent folder
+        String parentFolderRelativePath = ".." + File.separator + "Inspire Interiors";
+
+// Combine with the current working directory to get the absolute path
+        String parentFolderAbsolutePath = currentWorkingDirectory + File.separator + parentFolderRelativePath;
+
+        System.out.println(parentFolderAbsolutePath);
+
+        String filePath =parentFolderAbsolutePath +"/src/assets/img/variation"+  File.separator  + fileName;
+
+        try {
+            // Create the directory structure if it doesn't exist
+            File directory = new File(filePath).getParentFile();
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+
+
+
+            File destFile = new File(filePath);
+            imageFile.transferTo(destFile);
+
+            return fileName; // Return the absolute path of the saved image
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public static class VariationDetails{
         @JsonProperty("material")

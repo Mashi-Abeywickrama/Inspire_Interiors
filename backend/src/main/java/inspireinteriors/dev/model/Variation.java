@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class Variation {
 
     @Id
-    @GeneratedValue // Use GenerationType.IDENTITY for identity columns
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Use GenerationType.IDENTITY for identity columns
     @Column(name = "variation_id")
     private int variation_id;
 
