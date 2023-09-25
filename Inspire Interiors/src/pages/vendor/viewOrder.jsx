@@ -1,27 +1,94 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 
 import "./../../styles/vendor/viewOrder.css";
 import * as Icon from "react-bootstrap-icons";
-import Chair from './../../assets/img/vendor/chair.png';
-import VendorSidebar from "./sidebar";
-import Navigationbar from "../../components/navigationbar";
 import {Link} from 'react-router-dom';
+import axios from "axios";
 
 const ViewOrder = () => {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const orderID = urlParams.get("id");
+
+    const [orderData, setOrderData] = useState([]);
+    const [productData, setProductData] = useState([]);
+    const [variationData, setVariationData] = useState([]);
+
+    const apiBaseURL = "http://localhost:8080";
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseURL,
+        timeout: 5000,
+    });
+
+    useEffect(() => {
+        axiosInstance
+        .get(`/getorder/${orderID}`)
+        .then((response) => {
+            console.log(response.data);
+            setOrderData(response.data);
+        })
+        .catch((error) => {
+            console.log("fetching Error", error);
+        });
+    }, []);
+
+    useEffect(() => {
+        axiosInstance
+            .get(`/viewproducts/${orderData.product}`)
+            .then((response2) => {
+                console.log("Response data:", response2.data);
+                setProductData(response2.data);
+            })
+            .catch((error) => {
+                if (error.response) {
+                    // The server responded with a status code other than 2xx.
+                    console.log("Server responded with status code:", error.response.status);
+                    console.log("Error message from server:", error.response.data);
+                } else {
+                    // The request was not made, possibly due to a network error.
+                    console.log("Network error:", error.message);
+                }
+            });
+    }, [orderData.product]);
+    
+
+    useEffect(() => {
+        axiosInstance
+        .get(`/viewvariations/${orderData.variation_id}`)
+        .then((response3) => {
+            console.log(response3.data);
+            setVariationData(response3.data);
+        })
+        .catch((error) => {
+            if (error.response) {
+                console.log("Server responded with status code:", error.response.status);
+                console.log("Error message from server:", error.response.data);
+            } else {
+                console.log("Network error:", error.message);
+            }
+        });
+    }, [orderData.variation_id]);
+
+    console.log(orderData.product);
+    console.log(orderData.variation_id);
+
+    const discountedPrice = productData.entry_price - (productData.entry_price * productData.discount / 100);
+
     return (
         <>
             <div className="order-container w-100 rounded-3 mb-4 me-5 p-3">
                 <div className="d-flex flex-row gap-4">
                     <Link to="/vendor/order"><p className="text-dark fs-5 fw-bold Cabin-text">Orders</p></Link>
                     <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Delayed</p>
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{orderData.status}</p>
                     <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>25786</p>
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{orderData.orderid}</p>
                 </div>
                 <div className="col-12 d-flex flex-column">
                     <div className="d-flex flex-row justify-content-between">
-                        <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text">Order Details - #25786</p>
-                        <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{ height: "1.5rem", background: "#F6E3AC", color: "#6B4605" }}><Icon.CircleFill size={7} className="mx-1" />Delayed</div>
+                        <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text">Order Details - #{orderData.orderid}</p>
+                        <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{ height: "1.5rem", background: "#F6E3AC", color: "#6B4605" }}><Icon.CircleFill size={7} className="mx-1" />{orderData.status}</div>
                     </div>
 
                 </div>
@@ -30,24 +97,24 @@ const ViewOrder = () => {
                         <div className="col-lg-12 bg-white rounded-3 p-4 shadow">
                         <p className="fs-5 fw-bold px-3 py-2 Cabin-text" style={{ color: "#023047" }}>Product Details</p>
                             <div className="d-flex flex-column flex-lg-row justify-content-evenly">
-                                <img className="img-fluid" src={Chair} alt="Chair" />
+                                <img className="img-fluid" src={(`../../../../src/assets/img/product/${productData.product_id}.jpg`)} alt={productData.product_name} />
                                 <div className="d-flex flex-column px-4 mt-4">
-                                    <p className="fs-5 fw-semibold Cabin-text">Customizable Armchair</p>
+                                    <p className="fs-5 fw-semibold Cabin-text text-dark">{productData.product_name}</p>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Type:</p>
-                                        <p className="px-3 fs-6 fw-semibold Cabin-text">Chair</p>
-                                    </div>
-                                    <div className="d-flex flex-row">
-                                        <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Color:</p>
-                                        <Icon.CircleFill size={20} color="#C1BDB3" className="mx-3" />
-                                    </div>
-                                    <div className="d-flex flex-row">
-                                        <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Quantity:</p>
-                                        <p className="px-3 fs-6 fw-semibold Cabin-text">2</p>
+                                        <p className="px-3 fs-6 fw-semibold Cabin-text text-dark">{productData.type}</p>
                                     </div>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Price:</p>
-                                        <p className="px-3 fs-6 fw-semibold Cabin-text">Rs 4000 </p>
+                                        <p className="px-3 fs-6 fw-semibold Cabin-text">{discountedPrice}</p>
+                                    </div>
+                                    <div className="d-flex flex-row">
+                                        <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Color:</p>
+                                        <Icon.CircleFill size={20} color={variationData.color} className="mx-3" />
+                                    </div>
+                                    <div className="d-flex flex-row">
+                                        <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Quantity:</p>
+                                        <p className="px-3 fs-6 fw-semibold Cabin-text">{variationData.quantity}</p>
                                     </div>
                                 </div>
                             </div>
@@ -82,24 +149,24 @@ const ViewOrder = () => {
                         <div className="d-flex flex-column">
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Product</p>
-                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Customizable Armchair</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{productData.product_name}</p>
                             </div>
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Price</p>
-                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 4000</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{discountedPrice}</p>
                             </div>
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Quantity</p>
-                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">2</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{variationData.quantity}</p>
                             </div>
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Shipping</p>
-                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 1000</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{productData.shipping_fee}</p>
                             </div>
                             <div className="divider" />
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">TOTAL</p>
-                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Rs 8000</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{(discountedPrice * variationData.quantity) + productData.shipping_fee }</p>
                             </div>
 
                             <div className="divider" />

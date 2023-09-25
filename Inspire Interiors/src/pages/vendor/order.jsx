@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import '../../styles/vendor/order.css';
 
 import Sofa from "../../assets/img/vendor/sofa.png"
@@ -14,6 +14,8 @@ import Tabs from 'react-bootstrap/Tabs';
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 import { RadialBarChart, RadialBar, Legend } from "recharts";
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import {useSession} from '../../constants/SessionContext';
 
 const radarData = [
         {
@@ -147,288 +149,215 @@ const newData = {
     ]
 }
 
-const largeTableData = {
-    columns: [
-    {
-        label: 'CUSTOMER NAME',
-        field: 'name',
-        sort: 'asc',
-        width: 150
-    },
-    {
-        label: 'REFERENCE NO',
-        field: 'number',
-        sort: 'asc',
-        width: 270
-    },
-    {
-        label: 'QUANTITY',
-        field: 'quantity',
-        sort: 'asc',
-        width: 100
-    },
-    {
-        label: 'DELIVERY DATE',
-        field: 'date',
-        sort: 'asc',
-        width: 150
-    },
-    {
-        label: 'STATUS',
-        field: 'status',
-        sort: 'asc',
-        width: 100
-    },
-    {
-        label: '  ',
-        field: 'action',
-        sort: 'NONE',
-        width: 100
-    }
-    ],
-    rows: [
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Delayed</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    {
-        name: 'Justin Septimus',
-        number: '14688',
-        quantity: '3',
-        date: '27.06.2023',
-        status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>,
-        action: <Link to="/vendor/order/vieworder"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    },
-    ]
-}
-
 const style = {
     top: 90,
     left: 270,
 };
 
-const Order = () => (
-    <>
-        <div className='orders-container background-order accordion rounded-3 mb-4 me-5'>
-            <div className='w-100 d-flex flex-column flex-lg-row gap-4'>
-                <div className='col-lg-8 bg-white rounded-3 shadow p-4'>
-                    <div className='d-flex flex-row gap-2'>
-                        <p className='fs-5 fw-bold Cabin-text'>Orders</p>
-                        <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                        <p className='fs-5 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>All</p>
-                    </div>
-                    <div>
-                        <Tabs
-                            defaultActiveKey="all"
-                            id="uncontrolled-tab-example"
-                            className="mb-3 bg-white tab"
-                        >
-                            <Tab eventKey="all" title="All">
-                                <div className='p-4'>
+const Order = () => {
+    const sessionItems = useSession();
+    const userId = sessionItems.sessionData.userid;
 
-                                    <MDBDataTableV5 responsive
-                                        striped
-                                        bordered
-                                        small
-                                        data={largeTableData}
-                                        sortable={true}
-                                        exportToCSV={true}
-                                        paging={true}
-                                        searching={true} />
-                                </div>
-                            </Tab>
-                            <Tab eventKey="New" title="New">
-                                New
-                            </Tab>
-                            <Tab eventKey="Ongoing" title="Ongoing">
-                                Ongoing
-                            </Tab>
-                            <Tab eventKey="Completed" title="Completed">
-                                Completed
-                            </Tab>
-                            <Tab eventKey="Delayed" title="Delayed">
-                                Delayed
-                            </Tab>
-                            <Tab eventKey="Canceled" title="Canceled">
-                                Canceled
-                            </Tab>
-                        </Tabs>
-                    </div>
-                </div>
-                <div className='col-lg-4'>
-                    <div className='d-flex flex-column gap-3'>
-                        <div className='col-lg-12 bg-white rounded-3 shadow p-4'>
-                            <div className='d-flex flex-row gap-3'>
-                                <p className='fs-5 fw-bold Cabin-text'>Customized Orders</p>
-                                <Link to="/vendor/order/customizeorders"><p className="fs-6 fw-semibold mt-1 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1"/></p></Link>
-                            </div>
+    const [orderdata, setOrderdata] = useState([]);
+
+    const apiURL = "http://localhost:8080";
+
+    const axiosInstance = axios.create({
+        baseURL: apiURL,
+        timeout: 5000,
+    });
+
+    useEffect(() => {
+        axiosInstance
+        .get(`/getorder/vendor/${userId}`)
+        .then((response) => {
+            setOrderdata(response.data);
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log("Error fetching data", error);
+        });
+    }, []);
+
+    const Columns = [
+        {
+            label: 'CUSTOMER NAME',
+            field: 'name',
+            sort: 'asc',
+            width: 150
+        },
+        {
+            label: 'REFERENCE NO',
+            field: 'number',
+            sort: 'asc',
+            width: 270
+        },
+        {
+            label: 'QUANTITY',
+            field: 'quantity',
+            sort: 'asc',
+            width: 100
+        },
+        {
+            label: 'DELIVERY DATE',
+            field: 'date',
+            sort: 'asc',
+            width: 150
+        },
+        {
+            label: 'STATUS',
+            field: 'status',
+            sort: 'asc',
+            width: 100
+        },
+        {
+            label: ' ',
+            field: 'action',
+            sort: 'NONE',
+            width: 100
+        }
+    ];
+
+    const Rows = orderdata.map((item) => {
+        return {
+            name: item.customer,
+            number: item.ref_no,
+            quantity: item.quantity,
+            date: item.date,
+            status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{item.status}</p></div>,
+            action: <Link to={`/vendor/order/vieworder?id=${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+        }
+    });
+
+    return (
+        <>
+            <div className='orders-container background-order accordion rounded-3 mb-4 me-5'>
+                <div className='w-100 d-flex flex-column flex-lg-row gap-4'>
+                    <div className='col-lg-8 bg-white rounded-3 shadow p-4'>
+                        <div className='d-flex flex-row gap-2'>
+                            <p className='fs-5 fw-bold Cabin-text'>Orders</p>
+                            <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                            <p className='fs-5 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>All</p>
+                        </div>
+                        <div>
                             <Tabs
-                                defaultActiveKey="New"
+                                defaultActiveKey="all"
                                 id="uncontrolled-tab-example"
                                 className="mb-3 bg-white tab"
                             >
-                                <Tab eventKey="New" title="New">
-                                    <div className=''>
+                                <Tab eventKey="all" title="All">
+                                    <div className='p-4'>
 
                                         <MDBDataTableV5 responsive
                                             striped
                                             bordered
                                             small
-                                            data={newData}
-                                            sortable={false}
-                                            exportToCSV={true}
-                                            paging={false}
-                                            searching={false} />
-
+                                            columns={Columns}
+                                            rows={Rows}
+                                            paging={true}
+                                            searching={true} />
                                     </div>
                                 </Tab>
-                                <Tab eventKey="Accepted" title="Accepted">
-                                    <div className=''>
-
-                                        <MDBDataTableV5 responsive
-                                            striped
-                                            bordered
-                                            small
-                                            data={acceptedData}
-                                            sortable={false}
-                                            exportToCSV={true}
-                                            paging={false}
-                                            searching={false} />
-
-                                    </div>
+                                <Tab eventKey="New" title="New">
+                                    New
+                                </Tab>
+                                <Tab eventKey="Ongoing" title="Ongoing">
+                                    Ongoing
+                                </Tab>
+                                <Tab eventKey="Completed" title="Completed">
+                                    Completed
+                                </Tab>
+                                <Tab eventKey="Delayed" title="Delayed">
+                                    Delayed
+                                </Tab>
+                                <Tab eventKey="Canceled" title="Canceled">
+                                    Canceled
                                 </Tab>
                             </Tabs>
                         </div>
-                        <div className='col-lg-12 bg-white rounded shadow p-4'>
-                            <div className='d-flex flex-row justify-content-between align-items-center'>
-                                <p className='fs-5 fw-bold Cabin-text m-0'>Order Summary</p>
-                                <p className='fs-5 fw-semibold Cabin-text m-0' style={{ color: "#A0AEC0" }}>this month</p>
-                            </div>
-                            <RadialBarChart
-                                width={280}
-                                height={300}
-                                cx={130}
-                                cy={150}
-                                innerRadius={20}
-                                outerRadius={140}
-                                barSize={15}
-                                data={radarData}
-                            >
-                                <RadialBar
-                                    minAngle={15}
-                                    background
-                                    clockWise
-                                    dataKey="uv" />
-                                <Legend
-                                    iconSize={10}
-                                    width={120}
-                                    height={140}
-                                    layout="horizonal"
-                                    horizonalAlign="middle"
-                                    wrapperStyle={style} />
-                            </RadialBarChart>
-                        </div>
                     </div>
+                    <div className='col-lg-4'>
+                        <div className='d-flex flex-column gap-3'>
+                            <div className='col-lg-12 bg-white rounded-3 shadow p-4'>
+                                <div className='d-flex flex-row gap-3'>
+                                    <p className='fs-5 fw-bold Cabin-text'>Customized Orders</p>
+                                    <Link to="/vendor/order/customizeorders"><p className="fs-6 fw-semibold mt-1 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1"/></p></Link>
+                                </div>
+                                <Tabs
+                                    defaultActiveKey="New"
+                                    id="uncontrolled-tab-example"
+                                    className="mb-3 bg-white tab"
+                                >
+                                    <Tab eventKey="New" title="New">
+                                        <div className=''>
+
+                                            <MDBDataTableV5 responsive
+                                                striped
+                                                bordered
+                                                small
+                                                data={newData}
+                                                sortable={false}
+                                                exportToCSV={true}
+                                                paging={false}
+                                                searching={false} />
+
+                                        </div>
+                                    </Tab>
+                                    <Tab eventKey="Accepted" title="Accepted">
+                                        <div className=''>
+
+                                            <MDBDataTableV5 responsive
+                                                striped
+                                                bordered
+                                                small
+                                                data={acceptedData}
+                                                sortable={false}
+                                                exportToCSV={true}
+                                                paging={false}
+                                                searching={false} />
+
+                                        </div>
+                                    </Tab>
+                                </Tabs>
+                            </div>
+                            <div className='col-lg-12 bg-white rounded shadow p-4'>
+                                <div className='d-flex flex-row justify-content-between align-items-center'>
+                                    <p className='fs-5 fw-bold Cabin-text m-0'>Order Summary</p>
+                                    <p className='fs-5 fw-semibold Cabin-text m-0' style={{ color: "#A0AEC0" }}>this month</p>
+                                </div>
+                                <RadialBarChart
+                                    width={280}
+                                    height={300}
+                                    cx={130}
+                                    cy={150}
+                                    innerRadius={20}
+                                    outerRadius={140}
+                                    barSize={15}
+                                    data={radarData}
+                                >
+                                    <RadialBar
+                                        minAngle={15}
+                                        background
+                                        clockWise
+                                        dataKey="uv" />
+                                    <Legend
+                                        iconSize={10}
+                                        width={120}
+                                        height={140}
+                                        layout="horizonal"
+                                        horizonalAlign="middle"
+                                        wrapperStyle={style} />
+                                </RadialBarChart>
+                            </div>
+                        </div>
 
 
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </>
-)
+        </>
+    )
+}
 
 export default Order;

@@ -73,7 +73,7 @@ public class ProductController {
     }
 
     //get product by vendor id
-    @GetMapping("/viewproducts/v/{vendorid}")
+    @GetMapping("/viewproducts/vendor/{vendorid}")
     public ResponseEntity<List<Product>> getProductsByVendorId(@PathVariable(value = "vendorid") int vendor_id) {
         List<Product> products = productService.getProductsByVendorId(vendor_id);
         return ResponseEntity.ok(products);
@@ -84,13 +84,13 @@ public class ProductController {
         return productService.createvariation(variation);
     }
 
-    @GetMapping("/viewvariations/v/{id}")
+    @GetMapping("/viewvariations/vendor/{id}")
     public ResponseEntity<List<Variation>> getVariationsByvendorId(@PathVariable(value = "id") int product_id) {
         List<Variation> variations = productService.getVariationsByProductId(product_id);
         return ResponseEntity.ok(variations);
     }
 
-    @GetMapping("/viewvariations/{id}")
+    @GetMapping("/viewvariations/product/{id}")
     public ResponseEntity<List<Variation>> getVariationByProductId(@PathVariable(value = "id") int product_id) {
         List<Variation> variations = productService.getByProductId(product_id);
         return ResponseEntity.ok(variations);
@@ -99,6 +99,11 @@ public class ProductController {
     @GetMapping("/viewvariations")
     public Iterable<Variation> getAllVariations() {
         return productService.getAllVariations();
+    }
+
+    @GetMapping("/viewvariations/{id}")
+    public Variation getVariationById(@PathVariable Integer id) {
+        return productService.getVariationById(id);
     }
 
     //update product variations with product id
@@ -124,7 +129,7 @@ public class ProductController {
         }
     }
 
-    @PutMapping("/updateproduct/v/{id}")
+    @PutMapping("/updateproduct/vendor/{id}")
     public ResponseEntity<Product> updatedProduct(
             @PathVariable("id") Integer vendor_id,
             @RequestBody Product updatedProduct

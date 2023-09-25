@@ -32,7 +32,7 @@ public class VendorOfferController {
 
     }
 
-    @GetMapping("/promotion/v/{vendorid}")
+    @GetMapping("/promotion/vendor/{vendorid}")
     public ResponseEntity<List<VendorOffer>> getOfferByVendorId(@PathVariable("vendorid") int vendorid){
         List<VendorOffer> vendorOffer = vendorOfferService.getOfferByVendorId(vendorid);
         return ResponseEntity.ok(vendorOffer);

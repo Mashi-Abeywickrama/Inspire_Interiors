@@ -103,7 +103,7 @@ const InventoryProduct = () => {
 
   useEffect(() => {
     axiosInstance
-    .get(`/viewvariations/${productID}`)
+    .get(`/viewvariations/product/${productID}`)
     .then((response) => {
       setVariationData(response.data);
       // console.log(response.data);
@@ -160,6 +160,10 @@ const InventoryProduct = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [show2, setShow2] = useState(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
 
   console.log(variationData)
 
@@ -642,14 +646,76 @@ const InventoryProduct = () => {
                 </div>
               </div>
               <div className="col-lg-12 bg-white rounded-3 p-4 shadow mb-2">
-                <div className="d-flex flex-row gap-3">
-                  <p className="text-dark fs-5 fw-bold Cabin-text">
-                    Product 3D Model
-                  </p>
-                </div>
-                <div className="align-content-center">
-                  <img className="img-fluid" src={(`../../../../src/assets/img/product/${productData.product_id}.jpg`)} />
-                </div>
+              <div className="d-flex justify-content-between">
+                <p className="text-dark fs-5 fw-bold Cabin-text">
+                  Product 3D Model
+                </p>
+                <button
+                    type="button"
+                    className="add-btn h-50"
+                    onClick={handleShow2}
+                  >
+                    <Icon.PlusLg className="mx-1" color="white" size={16} />
+                    Add
+                  </button>
+                <Modal
+                    show={show2}
+                    onHide={handleClose2}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title>Add New QR Image</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <form >
+                        <div className="d-flex flex-column mx-4 gap-3">
+                          <div className="mb-3">
+                            <label className="form-label fs-6 Cabin-text">
+                              Image:
+                            </label>
+                            <input
+                              type="file"
+                              name="image"
+                              className="form-control Cabin-text"
+                              onChange={handleImageChange}
+                              accept="image/*" // Only allow image files
+                            />
+                          </div>
+                          <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
+                            <button
+                              className="my-2 mx-5 Cabin-text"
+                              onClick={handleClose2}
+                              style={{
+                                color: "#FF5C60",
+                                background: "#FFFFFF",
+                                borderRadius: "8px",
+                                border: "1px solid #FF5C60",
+                              }}
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              type="submit"
+                              className="my-2 mx-5 Cabin-text"
+                              style={{
+                                color: "#FFFFFF",
+                                background: "#035C94",
+                                borderRadius: "8px",
+                              }}
+                            >
+                              Add Image
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </Modal.Body>
+                  </Modal>
+              </div>
+              <div className="align-content-center">
+                <img className="img-fluid" src={(`../../../../src/assets/img/product/${productData.product_id}.jpg`)} />
+              </div>
               </div>
             </div>
           </div>
