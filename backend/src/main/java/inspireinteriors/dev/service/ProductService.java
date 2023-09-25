@@ -100,4 +100,12 @@ public class ProductService {
     public void updateProfilePic(Product product) {
         productRepository.save(product);
     }
+
+    public Variation getVariationById(Integer variationId) {
+        return variationRepository.findById(Long.valueOf(variationId)).orElse(null);
+    }
+
+    public void updateVariationImage(Variation variation) {
+        variationRepository.save(variation);
+    }
 }

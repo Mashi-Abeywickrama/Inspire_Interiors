@@ -68,7 +68,9 @@ const InventoryProduct = () => {
   });
 
   const handleAddition = async (e) => {
+    
     e.preventDefault();
+    console.log(variationDetails);
     try {
       const response = await axiosInstance.post("/addvariation", {
         material: variationDetails.material,
@@ -79,9 +81,33 @@ const InventoryProduct = () => {
       });
       if (response.status === 200) {
         setShow1(false);
-        console.log(response.data);
-        // console.log("variation Added Succesfully");
-        window.location.reload();
+        
+
+        try {
+          const formData = new FormData();
+
+          formData.append("variationId", response.data.variation_id);
+          formData.append("file", variationDetails.variation_img); // Append the image to the formData
+
+          ;
+
+          const response2 = await axiosInstance.put("/setVariationPic",
+            formData,
+            { headers: { 'Content-Type': 'multipart/form-data' } }
+          );
+          if(response2.status === 200)
+          {
+            console.log("Response from API:", "Omaiwa mou shindeiru");
+            // window.location.reload();
+
+            
+          } 
+        }
+        catch (error) {
+          console.error("Error submitting form:", error);
+        }
+        console.log("variation Added Succesfully");
+        
       }
     } catch (error) {
       console.error("Addition Fail");
@@ -150,7 +176,7 @@ const InventoryProduct = () => {
 
   const handleImageChange = (e) => {
     const imageFile = e.target.files[0]; // Get the selected image file
-    handleVariationDetailsChange("image", imageFile); // Update productDetails state with the selected image
+    handleVariationDetailsChange("variation_img", imageFile); // Update productDetails state with the selected image
   };
 
   const [show1, setShow1] = useState(false);
