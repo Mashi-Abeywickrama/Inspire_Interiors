@@ -155,10 +155,15 @@ const style = {
 };
 
 const Order = () => {
+
+    const [orderData, setOrderData] = useState([]);
+    const [selectedTab, setSelectedTab] = useState('All');
+    const [loading, setLoading] = useState(true);
+
+
     const sessionItems = useSession();
     const userId = sessionItems.sessionData.userid;
 
-    const [orderdata, setOrderdata] = useState([]);
 
     const apiURL = "http://localhost:8080";
 
@@ -171,63 +176,57 @@ const Order = () => {
         axiosInstance
         .get(`/getorder/vendor/${userId}`)
         .then((response) => {
-            setOrderdata(response.data);
+
+            setOrderData(response.data);
+            setLoading(false);
+
             console.log(response.data);
         })
         .catch((error) => {
             console.log("Error fetching data", error);
+
+            setLoading(false);
         });
     }, []);
 
-    const Columns = [
-        {
-            label: 'CUSTOMER NAME',
-            field: 'name',
-            sort: 'asc',
-            width: 150
-        },
-        {
-            label: 'REFERENCE NO',
-            field: 'number',
-            sort: 'asc',
-            width: 270
-        },
-        {
-            label: 'QUANTITY',
-            field: 'quantity',
-            sort: 'asc',
-            width: 100
-        },
-        {
-            label: 'DELIVERY DATE',
-            field: 'date',
-            sort: 'asc',
-            width: 150
-        },
-        {
-            label: 'STATUS',
-            field: 'status',
-            sort: 'asc',
-            width: 100
-        },
-        {
-            label: ' ',
-            field: 'action',
-            sort: 'NONE',
-            width: 100
+    const getOrderStatus = (status) => {
+        const statusDetails = {
+          New: {
+            className: 'new d-flex gap-2 align-items-center',
+            text: 'New',
+          }, 
+          Completed: {
+            className: 'completed d-flex gap-2 align-items-center',
+            text: 'Completed',
+          },
+          Ongoing: {
+            className: 'ongoing d-flex gap-2 align-items-center',
+            text: 'Ongoing',
+          },
+          Delayed: {
+            className: 'delayed d-flex gap-2 align-items-center',
+            text: 'Delayed',
+          },
+          Canceled: {
+            className: 'outstock d-flex gap-2 align-items-center',
+            text: 'Canceled',
+          },
+        };
+        if (statusDetails.hasOwnProperty(status)) {
+          const { className, text } = statusDetails[status];
+          return (
+            <div className={className}>
+              <i className="bi bi-circle-fill tag-icon"></i>
+              <p className="m-0">{text}</p>
+            </div>
+          );
         }
-    ];
+        return null;
+    };
 
-    const Rows = orderdata.map((item) => {
-        return {
-            name: item.customer,
-            number: item.ref_no,
-            quantity: item.quantity,
-            date: item.date,
-            status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{item.status}</p></div>,
-            action: <Link to={`/vendor/order/vieworder?id=${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-        }
-    });
+    const filteredData = (status) => 
+        orderData.filter((item) => item.status === status);
+
 
     return (
         <>
@@ -237,41 +236,410 @@ const Order = () => {
                         <div className='d-flex flex-row gap-2'>
                             <p className='fs-5 fw-bold Cabin-text'>Orders</p>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                            <p className='fs-5 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>All</p>
+
+                            <p className='fs-5 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>{selectedTab}</p>
+
                         </div>
                         <div>
                             <Tabs
                                 defaultActiveKey="all"
                                 id="uncontrolled-tab-example"
                                 className="mb-3 bg-white tab"
+                                onSelect={(selectedKey) => setSelectedTab(selectedKey)}
                             >
                                 <Tab eventKey="all" title="All">
                                     <div className='p-4'>
+
+                                    {loading ? (
+                                        <p>Loading...</p>
+                                    ) : (
+                                        <MDBDataTableV5 responsive
+                                            striped
+                                            bordered
+                                            small
+                                            data = {{
+                                                columns: [
+                                                    {
+                                                        label: 'CUSTOMER NAME',
+                                                        field: 'name',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'REFERENCE NO',
+                                                        field: 'number',
+                                                        sort: 'asc',
+                                                        width: 270
+                                                    },
+                                                    {
+                                                        label: 'QUANTITY',
+                                                        field: 'quantity',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: 'DELIVERY DATE',
+                                                        field: 'date',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'STATUS',
+                                                        field: 'status',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: ' ',
+                                                        field: 'action',
+                                                        sort: 'NONE',
+                                                        width: 100
+                                                    }
+                                                ],
+                                                rows: orderData.map((item) => ({
+                                                    name: item.customer,
+                                                    number: item.ref_no,
+                                                    quantity: item.quantity,
+                                                    date: item.date,
+                                                    action: <Link to={`/vendor/order/vieworder?id=${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>,
+                                                    status: getOrderStatus(item.status)
+                                                  })),
+                                                }}
+                                                sortable={true}
+                                                exportToCSV={true}
+                                                paging={true}
+                                                searching={true} 
+                                        />
+                                    )}
+                                    </div>
+                                </Tab>
+                                <Tab eventKey="New" title="New">
+                                <div className='p-4'>
+                                    {loading ? (
+                                        <p>Loading...</p>
+                                    ) : (
 
                                         <MDBDataTableV5 responsive
                                             striped
                                             bordered
                                             small
-                                            columns={Columns}
-                                            rows={Rows}
-                                            paging={true}
-                                            searching={true} />
+
+                                            data = {{
+                                                columns: [
+                                                    {
+                                                        label: 'CUSTOMER NAME',
+                                                        field: 'name',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'REFERENCE NO',
+                                                        field: 'number',
+                                                        sort: 'asc',
+                                                        width: 270
+                                                    },
+                                                    {
+                                                        label: 'QUANTITY',
+                                                        field: 'quantity',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: 'DELIVERY DATE',
+                                                        field: 'date',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'STATUS',
+                                                        field: 'status',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: ' ',
+                                                        field: 'action',
+                                                        sort: 'NONE',
+                                                        width: 100
+                                                    }
+                                                ],
+                                                rows: filteredData('New').map((item) => ({
+                                                    name: item.customer,
+                                                    number: item.ref_no,
+                                                    quantity: item.quantity,
+                                                    date: item.date,
+                                                    action: <Link to={`/vendor/order/vieworder?id=${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>,
+                                                    status: getOrderStatus(item.status)
+                                                  })),
+                                                }}
+                                                sortable={true}
+                                                exportToCSV={true}
+                                                paging={true}
+                                                searching={true} 
+                                        />
+                                    )}
                                     </div>
                                 </Tab>
-                                <Tab eventKey="New" title="New">
-                                    New
-                                </Tab>
                                 <Tab eventKey="Ongoing" title="Ongoing">
-                                    Ongoing
+                                <div className='p-4'>
+                                    {loading ? (
+                                        <p>Loading...</p>
+                                    ) : (
+                                        <MDBDataTableV5 responsive
+                                            striped
+                                            bordered
+                                            small
+                                            data = {{
+                                                columns: [
+                                                    {
+                                                        label: 'CUSTOMER NAME',
+                                                        field: 'name',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'REFERENCE NO',
+                                                        field: 'number',
+                                                        sort: 'asc',
+                                                        width: 270
+                                                    },
+                                                    {
+                                                        label: 'QUANTITY',
+                                                        field: 'quantity',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: 'DELIVERY DATE',
+                                                        field: 'date',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'STATUS',
+                                                        field: 'status',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: ' ',
+                                                        field: 'action',
+                                                        sort: 'NONE',
+                                                        width: 100
+                                                    }
+                                                ],
+                                                rows: filteredData('Ongoing').map((item) => ({
+                                                    name: item.customer,
+                                                    number: item.ref_no,
+                                                    quantity: item.quantity,
+                                                    date: item.date,
+                                                    action: <Link to={`/vendor/order/vieworder?id=${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>,
+                                                    status: getOrderStatus(item.status)
+                                                  })),
+                                                }}
+                                                sortable={true}
+                                                exportToCSV={true}
+                                                paging={true}
+                                                searching={true} 
+                                        />
+                                    )}
+                                    </div>
                                 </Tab>
                                 <Tab eventKey="Completed" title="Completed">
-                                    Completed
+                                <div className='p-4'>
+                                    {loading ? (
+                                        <p>Loading...</p>
+                                    ) : (
+                                        <MDBDataTableV5 responsive
+                                            striped
+                                            bordered
+                                            small
+                                            data = {{
+                                                columns: [
+                                                    {
+                                                        label: 'CUSTOMER NAME',
+                                                        field: 'name',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'REFERENCE NO',
+                                                        field: 'number',
+                                                        sort: 'asc',
+                                                        width: 270
+                                                    },
+                                                    {
+                                                        label: 'QUANTITY',
+                                                        field: 'quantity',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: 'DELIVERY DATE',
+                                                        field: 'date',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'STATUS',
+                                                        field: 'status',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: ' ',
+                                                        field: 'action',
+                                                        sort: 'NONE',
+                                                        width: 100
+                                                    }
+                                                ],
+                                                rows: filteredData('Completed').map((item) => ({
+                                                    name: item.customer,
+                                                    number: item.ref_no,
+                                                    quantity: item.quantity,
+                                                    date: item.date,
+                                                    action: <Link to={`/vendor/order/vieworder?id=${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>,
+                                                    status: getOrderStatus(item.status)
+                                                  })),
+                                                }}
+                                                sortable={true}
+                                                exportToCSV={true}
+                                                paging={true}
+                                                searching={true} 
+                                        />
+                                    )}
+                                    </div>
                                 </Tab>
                                 <Tab eventKey="Delayed" title="Delayed">
-                                    Delayed
+                                <div className='p-4'>
+                                    {loading ? (
+                                        <p>Loading...</p>
+                                    ) : (
+                                        <MDBDataTableV5 responsive
+                                            striped
+                                            bordered
+                                            small
+                                            data = {{
+                                                columns: [
+                                                    {
+                                                        label: 'CUSTOMER NAME',
+                                                        field: 'name',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'REFERENCE NO',
+                                                        field: 'number',
+                                                        sort: 'asc',
+                                                        width: 270
+                                                    },
+                                                    {
+                                                        label: 'QUANTITY',
+                                                        field: 'quantity',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: 'DELIVERY DATE',
+                                                        field: 'date',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'STATUS',
+                                                        field: 'status',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: ' ',
+                                                        field: 'action',
+                                                        sort: 'NONE',
+                                                        width: 100
+                                                    }
+                                                ],
+                                                rows: filteredData('Delayed').map((item) => ({
+                                                    name: item.customer,
+                                                    number: item.ref_no,
+                                                    quantity: item.quantity,
+                                                    date: item.date,
+                                                    action: <Link to={`/vendor/order/vieworder?id=${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>,
+                                                    status: getOrderStatus(item.status)
+                                                  })),
+                                                }}
+                                                sortable={true}
+                                                exportToCSV={true}
+                                                paging={true}
+                                                searching={true} 
+                                        />
+                                    )}
+                                    </div>
                                 </Tab>
                                 <Tab eventKey="Canceled" title="Canceled">
-                                    Canceled
+                                <div className='p-4'>
+                                    {loading ? (
+                                        <p>Loading...</p>
+                                    ) : (
+                                        <MDBDataTableV5 responsive
+                                            striped
+                                            bordered
+                                            small
+                                            data = {{
+                                                columns: [
+                                                    {
+                                                        label: 'CUSTOMER NAME',
+                                                        field: 'name',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'REFERENCE NO',
+                                                        field: 'number',
+                                                        sort: 'asc',
+                                                        width: 270
+                                                    },
+                                                    {
+                                                        label: 'QUANTITY',
+                                                        field: 'quantity',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: 'DELIVERY DATE',
+                                                        field: 'date',
+                                                        sort: 'asc',
+                                                        width: 150
+                                                    },
+                                                    {
+                                                        label: 'STATUS',
+                                                        field: 'status',
+                                                        sort: 'asc',
+                                                        width: 100
+                                                    },
+                                                    {
+                                                        label: ' ',
+                                                        field: 'action',
+                                                        sort: 'NONE',
+                                                        width: 100
+                                                    }
+                                                ],
+                                                rows: filteredData('Canceled').map((item) => ({
+                                                    name: item.customer,
+                                                    number: item.ref_no,
+                                                    quantity: item.quantity,
+                                                    date: item.date,
+                                                    action: <Link to={`/vendor/order/vieworder?id=${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>,
+                                                    status: getOrderStatus(item.status)
+                                                  })),
+                                                }}
+                                                sortable={true}
+                                                exportToCSV={true}
+                                                paging={true}
+                                                searching={true} 
+                                        />
+                                    )}
+                                    </div>
+
                                 </Tab>
                             </Tabs>
                         </div>

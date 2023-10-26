@@ -185,8 +185,6 @@ const Promotion = () => {
     const[statusData, setStatusData] = useState([]);
     console.log(statusData)
 
-    const offerID = urlParams.get('id');
-
     const apiBaseURL = "http://localhost:8080";
 
     const axiosInstance = axios.create({

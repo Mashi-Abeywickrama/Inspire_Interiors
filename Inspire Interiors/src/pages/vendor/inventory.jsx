@@ -62,8 +62,8 @@ export const bardata = [
       uv: 200,
     },
     {
-        name: 'sun',
-        uv: 80,
+      name: 'sun',
+      uv: 80,
     },
 ];
 
@@ -72,9 +72,10 @@ const Inventory = () => {
   const vendorID = sessionItems.sessionData.userid;
 
   const [productData, setproductData] = useState([]);
-
+  const [orderData, setorderData] = useState([]);
   const [variationData, setvariationData] = useState([]);
   const [lowStockCount, setLowStockCount] = useState(0);
+  const [completeData, setCompleteData] = useState([]);
 
   const urlParams = new URLSearchParams(window.location.search);
   const productID = urlParams.get('id');
@@ -98,6 +99,18 @@ const Inventory = () => {
     });
   }, []);
 
+  useEffect(() => {
+    axiosInstance
+    .get(`/getorder/vendor/${vendorID}`)
+    .then((response) => {
+        setorderData(response.data);
+        console.log(response.data);
+    })
+    .catch((error) => {
+        console.log("Error fetching data", error);
+    });
+  }, []);
+
   // Sort productData by product ID in descending order
   const sortedProductData = productData.sort((a, b) => b.product_id - a.product_id);
 
@@ -118,19 +131,58 @@ const Inventory = () => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get('/viewvariations')
-  //     .then((response) => {
-  //       setvariationData(response.data);
+  const filteredData = (status) => 
+        orderData.filter((item) => item.status === status);
 
-  //       const lowStockItems = response.data.filter(variation => variation.quantity < 5);
-  //       setLowStockCount(lowStockItems.length);
-  //     })
-  //     .catch((error) => {
-  //       console.log('Error fetching data:', error);
-  //   });
-  // }, []);
+  const completedData = filteredData("Completed");
+  console.log(completedData);
+
+  const completedProductID = completedData.map((item) => item.product);
+  console.log(completedProductID);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/viewproducts/${completedProductID}`)
+      .then((response) => {
+        setCompleteData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('Error fetching data:', error);
+    });
+  }, [completedProductID]);
+
+  const productTypeCount = {};
+
+  // Initialize the productTypeCount with zeros for each product type
+  completeData.forEach((item) => {
+    productTypeCount[item.type] = 0;
+  });
+
+  // Update the count of each product type based on completed orders
+  completedData.forEach((item) => {
+    productTypeCount[item.type]++;
+  });
+
+  console.log("Product Type Count:", productTypeCount);
+
+  const tableCount = productTypeCount["table"];
+  console.log("Count of table:", tableCount);
+
+  const chairCount = productTypeCount["chair"];
+  console.log("Count of chair:", chairCount);
+
+  const SofaCount = productTypeCount["sofa"];
+  console.log("Count of sofa:", SofaCount);
+
+  const BedCount = productTypeCount["bed"];
+  console.log("Count of bed:", BedCount);
+
+  const CupboardCount = productTypeCount["cupboard"];
+  console.log("Count of cupboard:", CupboardCount);
+
+  const productType = completeData.type;
+  // console.log(productType);
 
   const Columns = [
     {

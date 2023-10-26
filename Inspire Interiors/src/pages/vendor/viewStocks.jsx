@@ -40,59 +40,8 @@ const ViewStocks = () => {
     });
   }, []);
 
-  const Columns = [
-    {
-      label: 'PRODUCT',
-      field: 'product',
-      sort: 'asc',
-      width: 150
-    },
-    {
-      label: 'ENTRY PRICE',
-      field: 'entry',
-      sort: 'asc',
-      width: 200
-    },
-    {
-      label: 'DISCOUNT(%)',
-      field: 'discount',
-      sort: 'asc',
-      width: 100
-    },
-    {
-      label: 'PRICE',
-      field: 'price',
-      sort: 'asc',
-      width: 150
-    },
-    {
-      label: 'SOLD',
-      field: 'sold',
-      sort: 'asc',
-      width: 100
-    },
-    {
-      label: '  ',
-      field: 'action',
-      sort: 'NONE',
-      width: 100
-    }
-  ];
-
-  const Rows = productData.map((product) => {
-    return {
-      product: <div className='d-flex flex-row gap-4 align-items-center'>
-        <img src={product.image}/>
-        <p className='align-items-center mt-3'>{product.product_name}</p>
-      </div>,
-      entry: product.entry_price,
-      discount: product.discount,
-      price: product.entry_price - (product.entry_price * product.discount / 100),
-      sold: product.sold,
-      // status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{product.product_status}</p></div>
-      action: <Link to={`/vendor/inventory/inventoryproduct?id=${product.product_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-    }
-  });
+  const filteredData = (status) => 
+    productData.filter((item) => item.product_status === status);
 
   return(
     <>
@@ -120,8 +69,59 @@ const ViewStocks = () => {
                 striped
                 bordered
                 small
-                columns={Columns}
-                rows={Rows}
+                data = {{
+                  columns: [
+                    {
+                      label: 'PRODUCT',
+                      field: 'product',
+                      sort: 'asc',
+                      width: 150
+                    },
+                    {
+                      label: 'ENTRY PRICE',
+                      field: 'entry',
+                      sort: 'asc',
+                      width: 200
+                    },
+                    {
+                      label: 'DISCOUNT(%)',
+                      field: 'discount',
+                      sort: 'asc',
+                      width: 100
+                    },
+                    {
+                      label: 'PRICE',
+                      field: 'price',
+                      sort: 'asc',
+                      width: 150
+                    },
+                    {
+                      label: 'SOLD',
+                      field: 'sold',
+                      sort: 'asc',
+                      width: 100
+                    },
+                    {
+                      label: '  ',
+                      field: 'action',
+                      sort: 'NONE',
+                      width: 100
+                    }
+                  ],
+                  rows: productData.map((product) => {
+                    return {
+                      product: <div className='d-flex flex-row gap-4 align-items-center'>
+                        <img src={product.image}/>
+                        <p className='align-items-center mt-3'>{product.product_name}</p>
+                      </div>,
+                      entry: product.entry_price,
+                      discount: product.discount,
+                      price: product.entry_price - (product.entry_price * product.discount / 100),
+                      sold: product.sold,
+                      action: <Link to={`/vendor/inventory/inventoryproduct?id=${product.product_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+                    }
+                  })
+                }}
                 sortable={true}
                 exportToCSV={true}
                 paging={true}
@@ -130,13 +130,202 @@ const ViewStocks = () => {
               </div>
             </Tab>
             <Tab eventKey="Instock" title="In Stock">
-              In Stock
+              <div className='p-4'>
+                <MDBDataTableV5 responsive
+                  striped
+                  bordered
+                  small
+                  data = {{
+                    columns: [
+                      {
+                        label: 'PRODUCT',
+                        field: 'product',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'ENTRY PRICE',
+                        field: 'entry',
+                        sort: 'asc',
+                        width: 200
+                      },
+                      {
+                        label: 'DISCOUNT(%)',
+                        field: 'discount',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: 'PRICE',
+                        field: 'price',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'SOLD',
+                        field: 'sold',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: '  ',
+                        field: 'action',
+                        sort: 'NONE',
+                        width: 100
+                      }
+                    ],
+                    rows: filteredData('InStock').map((product) => {
+                      return {
+                        product: <div className='d-flex flex-row gap-4 align-items-center'>
+                          <img src={product.image}/>
+                          <p className='align-items-center mt-3'>{product.product_name}</p>
+                        </div>,
+                        entry: product.entry_price,
+                        discount: product.discount,
+                        price: product.entry_price - (product.entry_price * product.discount / 100),
+                        sold: product.sold,
+                        action: <Link to={`/vendor/inventory/inventoryproduct?id=${product.product_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+                      }
+                    })
+                  }}
+                  sortable={true}
+                  exportToCSV={true}
+                  paging={true}
+                  searching={true}
+                />
+              </div>
             </Tab>
             <Tab eventKey="Lowstock" title="Low Stock">
-              Low Stock
+              <div className='p-4'>
+                <MDBDataTableV5 responsive
+                  striped
+                  bordered
+                  small
+                  data = {{
+                    columns: [
+                      {
+                        label: 'PRODUCT',
+                        field: 'product',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'ENTRY PRICE',
+                        field: 'entry',
+                        sort: 'asc',
+                        width: 200
+                      },
+                      {
+                        label: 'DISCOUNT(%)',
+                        field: 'discount',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: 'PRICE',
+                        field: 'price',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'SOLD',
+                        field: 'sold',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: '  ',
+                        field: 'action',
+                        sort: 'NONE',
+                        width: 100
+                      }
+                    ],
+                    rows: filteredData('LowStock').map((product) => {
+                      return {
+                        product: <div className='d-flex flex-row gap-4 align-items-center'>
+                          <img src={product.image}/>
+                          <p className='align-items-center mt-3'>{product.product_name}</p>
+                        </div>,
+                        entry: product.entry_price,
+                        discount: product.discount,
+                        price: product.entry_price - (product.entry_price * product.discount / 100),
+                        sold: product.sold,
+                        action: <Link to={`/vendor/inventory/inventoryproduct?id=${product.product_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+                      }
+                    })
+                  }}
+                  sortable={true}
+                  exportToCSV={true}
+                  paging={true}
+                  searching={true}
+                />
+              </div>
             </Tab>
             <Tab eventKey="Outstock" title="Out of Stock">
-              Out of Stock
+              <div className='p-4'>
+                <MDBDataTableV5 responsive
+                  striped
+                  bordered
+                  small
+                  data = {{
+                    columns: [
+                      {
+                        label: 'PRODUCT',
+                        field: 'product',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'ENTRY PRICE',
+                        field: 'entry',
+                        sort: 'asc',
+                        width: 200
+                      },
+                      {
+                        label: 'DISCOUNT(%)',
+                        field: 'discount',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: 'PRICE',
+                        field: 'price',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'SOLD',
+                        field: 'sold',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: '  ',
+                        field: 'action',
+                        sort: 'NONE',
+                        width: 100
+                      }
+                    ],
+                    rows: filteredData('OutofStock').map((product) => {
+                      return {
+                        product: <div className='d-flex flex-row gap-4 align-items-center'>
+                          <img src={product.image}/>
+                          <p className='align-items-center mt-3'>{product.product_name}</p>
+                        </div>,
+                        entry: product.entry_price,
+                        discount: product.discount,
+                        price: product.entry_price - (product.entry_price * product.discount / 100),
+                        sold: product.sold,
+                        action: <Link to={`/vendor/inventory/inventoryproduct?id=${product.product_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+                      }
+                    })
+                  }}
+                  sortable={true}
+                  exportToCSV={true}
+                  paging={true}
+                  searching={true}
+                />
+              </div>
             </Tab>
           </Tabs>
         </div>

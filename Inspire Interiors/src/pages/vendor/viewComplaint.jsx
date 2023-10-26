@@ -1,11 +1,36 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 
 import "./../../styles/vendor/viewOrder.css";
 import * as Icon from "react-bootstrap-icons";
 import Customer from '../../assets/img/vendor/customer.png';
 import {Link} from 'react-router-dom';
+import axios from "axios";
+
 
 const ViewComplaint = () => {
+    const [complaintData, setComplaintData] = useState([]);
+
+    const apiBaseUrl = "http://localhost:8080";
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseUrl,
+        timeout: 5000,
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const complaintId = urlParams.get('id');
+
+    useEffect(() => {
+        axiosInstance.get(`/inquiry/${complaintId}`)
+            .then((response) => {
+                console.log(response.data);
+                setComplaintData(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [complaintId]);
+    console.log(complaintData);
     return (
         <>
             <div className="complaints-container w-100 rounded-3 mb-4 me-5 p-3">
@@ -14,12 +39,12 @@ const ViewComplaint = () => {
                     <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                     <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>View</p>
                     <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>25786</p>
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{complaintId}</p>
                 </div>
                 <div className="col-12 d-flex flex-column">
                     <div className="d-flex flex-row justify-content-between">
-                        <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text mt-2">Complaint Details - #25786</p>
-                        <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{ height: "1.5rem", background: "#F6E3AC", color: "#6B4605" }}><Icon.CircleFill size={7} className="mx-1" />Ongoing</div>
+                        <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text mt-2">Complaint Details - #{complaintId}</p>
+                        <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{ height: "1.5rem", background: "#F6E3AC", color: "#6B4605" }}><Icon.CircleFill size={7} className="mx-1" /></div>
                     </div>
 
                 </div>
@@ -29,7 +54,7 @@ const ViewComplaint = () => {
                             <p className="fs-5 fw-semibold Cabin-text">Complaint Details</p>
                             <div className="d-flex flex-column">
                                 <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Complaint Type</p>
-                                <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>Refund</p>
+                                <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>{complaintData.inquiry_type}</p>
                             </div>
                             <div className="d-flex flex-column">
                                 <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Complaint</p>
@@ -40,18 +65,18 @@ const ViewComplaint = () => {
                                     <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Additional Notes</p>
                                     <Icon.PencilFill color="#035C94" />
                                 </div>
-                                <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>If any additional specifications add here.</p>
+                                <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>{complaintData.additional_remarks}</p>
                             </div>
                         </div>
                         <div className="col-lg-12 bg-white rounded-3 p-4 shadow">
                             <div className="d-flex flex-column">
                                 <div className="d-flex flex-column">
-                                    <p className="fs-5 fw-bold Cabin-text">About Customer Avocado</p>
+                                    <p className="fs-5 fw-bold Cabin-text">About Customer {complaintData.username}</p>
                                 </div>
                                 <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-evenly">
                                     <img style={{ backgroundColor: "#FEE4CB", objectFit:"cover" }} className="img-fluid p-3 w-25 rounded-4 border" src={Customer} />
                                     <div className="d-flex flex-column">
-                                        <p className="fs-6 fw-bold" style={{ color: "#3D3D3D" }}>Victor Avocado</p>
+                                        <p className="fs-6 fw-bold" style={{ color: "#3D3D3D" }}>{complaintData.username}</p>
                                         <div className="d-flex flex-row gap-2">
                                             <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#023047" }}>Contact:</p>
                                             <p className="fs-6 fw-normal Cabin-text" style={{ color: "#023047" }}>(936) 361-0310</p>

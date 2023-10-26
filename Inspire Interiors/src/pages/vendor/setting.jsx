@@ -35,11 +35,9 @@ const VendorSetting = () => {
         setAlertOpen(true);
     };
 
-
     const [selectedTab, setSelectedTab] = useState(
         localStorage.getItem('selectedTab') || 'account'
     );
-
     
     useEffect(() => {
         localStorage.setItem('selectedTab', selectedTab);
@@ -97,12 +95,10 @@ const VendorSetting = () => {
         const newPassword = event.target.newPassword.value;
         const confirmNewPassword = event.target.confirmNewPassword.value;
 
-
         if (newPassword !== confirmNewPassword) {
             showAlert('Passwords are not matching!', 'error');
         }
         else {
-
             try {
                 const response = await axiosInstance.put('/update-password', {
                     userId: sessionItems.sessionData.userid,
@@ -110,8 +106,6 @@ const VendorSetting = () => {
                     newPassword,
 
                 });
-
-
                 if (response.status === 200) {
                     console.log(response);
                     showAlert('Password updated successfully!', 'success');
@@ -251,10 +245,8 @@ const VendorSetting = () => {
                                                 </div>
                                             )}
                                         </div>
-
                                     </div>
-
-                                    <div className='d-flex gap-4'>
+                                <div className='d-flex gap-4'>
                                         <div class="mb-3 mt-2 w-50">
                                             <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Email:</label>
                                             {editingField === 'email' ? (
@@ -299,7 +291,6 @@ const VendorSetting = () => {
                                                 </div>
                                             )}
                                         </div>
-
                                     </div>
                                     <p className='fs-6 fw-semibold Cabin-text mt-3'>Address</p>
                                     <div className='d-flex gap-4'>
@@ -311,7 +302,6 @@ const VendorSetting = () => {
                                             <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">City:</label>
                                             <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" value="Colombo" style={{ backgroundColor: "#F2FAFF" }} disabled />
                                         </div>
-
                                     </div>
                                     <div className='d-flex gap-4'>
                                         <div class="mb-5 mt-2 w-50">
@@ -322,12 +312,8 @@ const VendorSetting = () => {
                                             <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">Province:</label>
                                             <input type="text" className="form-control w-100 Cabin-text disabled-setting-view" id="exampleFormControlInput1" value="Western" style={{ backgroundColor: "#F2FAFF" }} disabled />
                                         </div>
-
                                     </div>
-                                    
-
                                 </div>
-
                                 <p className='bold-cabin m-0 mb-2'>Email notifications</p>
                                 <div className='d-flex flex-column gap-0'>
                                     <div className='d-flex gap-4'>
@@ -350,7 +336,6 @@ const VendorSetting = () => {
                                             />
                                         </div>
                                     </div>
-
                                      <div className='d-flex gap-4'>
                                         <div class="mb-2 mt-2 w-50">
                                             <Form.Check
@@ -363,8 +348,6 @@ const VendorSetting = () => {
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </Tab>
                         <Tab eventKey="Address" title={<div className='d-flex gap-2 p-1'>
@@ -375,7 +358,6 @@ const VendorSetting = () => {
                                 <p className='m-0 text-left setting-nav-main'>Bank</p>
                                 <p className='m-0 text-left setting-nav-sub'>Bank Account Details</p>
                             </div>
-
                         </div>}>
                             <div className='account-setting-session d-flex flex-column '>
                                 <p className='bold-cabin m-0 mb-2'>Bank Account Details</p>
@@ -390,20 +372,16 @@ const VendorSetting = () => {
                                                 onChange={handleRadioChange}
                                                 label={'Peoples Bank PLC (7135)'}
                                                 defaultChecked
-                                                
                                             />
                                         </div>
                                         <p className="address-tag m-0 p-1 Cabin-text">PESRONAL</p>
                                     </div>
-                                        
                                         <div d-flex >
                                             <button className="edit-address Cabin-text">Edit</button>
                                             
                                             <button className="remove-address Cabin-text">Remove</button>
                                         </div>
-                                    
-
-                                </div>
+                                    </div>
                                 <div className='d-flex flex-column'>
                                 <div className='d-flex flex-row'>
                                 <p className='m-0 address-sub-para mb-2'>Branch: Wellawatte</p>
@@ -432,13 +410,11 @@ const VendorSetting = () => {
                                         <p className="address-tag m-0 p-1 Cabin-text">JOINT</p>
                                     </div>
                                         
-                                        <div d-flex >
-                                            <button className="edit-address Cabin-text">Edit</button>
-                                            
-                                            <button className="remove-address Cabin-text">Remove</button>
-                                        </div>
-
-
+                                    <div d-flex >
+                                        <button className="edit-address Cabin-text">Edit</button>
+                                        
+                                        <button className="remove-address Cabin-text">Remove</button>
+                                    </div>
                                 </div>
                                 <div className='d-flex flex-column'>
                                 <div className='d-flex flex-row'>
@@ -450,8 +426,6 @@ const VendorSetting = () => {
                                 <p className='m-0 address-sub-para mb-4'>Account No: 8743633474638</p>
                                 </div>
                                 </div>
-                                
-                                
                                 </div>
 
                                 <hr />
@@ -460,7 +434,6 @@ const VendorSetting = () => {
                                         <Icon.Plus color={'#035C94'} size={22} />
                                         <p  className='blue-colour-para'>Add New Account</p>
                                     </div>
-
                                     <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                                         <Modal.Header closeButton>
                                             <Modal.Title>Add New Bank Account</Modal.Title>
@@ -497,16 +470,8 @@ const VendorSetting = () => {
                                         </div>
                                     </Modal>
                                 </div>
-
-                                
-                                
-
-
-
                             </div>
                         </Tab>
-
-                        
                         <Tab eventKey="security" title={<div className='d-flex gap-2 p-1'>
                             <div className='icon-cover d-flex align-items-center '>
                                 <Icon.ShieldLock size={24} />
@@ -515,7 +480,6 @@ const VendorSetting = () => {
                                 <p className='m-0 text-left setting-nav-main'>Security</p>
                                 <p className='m-0 text-left setting-nav-sub'>Password</p>
                             </div>
-
                         </div>}>
                             <form onSubmit={handlePasswordUpdate}>
                             <div className='account-setting-session d-flex flex-column  '>
@@ -532,7 +496,6 @@ const VendorSetting = () => {
                                             />
                                     </div>
                                 </div>
-
                                 <div className='d-flex gap-4'>
                                         <div class="mb-2 mt-3 w-50">
                                             <label for="exampleFormControlInput1" className="sub-heading form-label Cabin-text ">New password:</label>
@@ -555,9 +518,7 @@ const VendorSetting = () => {
                                                 required
                                             />
                                         </div>
-
                                     </div>  
-
                                 <div>
                                     <hr />
                                     <div className='d-flex gap-1 justify-content-between'>
@@ -568,12 +529,6 @@ const VendorSetting = () => {
                                         </div>
                                     </div>
                                 </div>
-
-                                
-                                
-
-
-
                             </div>
                         </form>
 
@@ -588,13 +543,9 @@ const VendorSetting = () => {
                                 </Alert>
                             </Snackbar>
                         </Tab>
-
                     </Tabs>
                 </div>
             </div>
-
-
-
         </>
 
     );

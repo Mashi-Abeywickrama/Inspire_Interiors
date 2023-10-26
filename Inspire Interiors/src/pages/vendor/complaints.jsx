@@ -11,118 +11,24 @@ import Tabs from 'react-bootstrap/Tabs';
 
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import {useSession} from '../../constants/SessionContext';
 
-const tabledata = {
-    columns: [
-    {
-        label: 'CUSTOMER NAME',
-        field: 'customer',
-        sort: 'asc',
-        width: 150
-    },
-    {
-        label: 'REFERENCE NO',
-        field: 'reference',
-        sort: 'asc',
-        width: 270
-    },
-    {
-        label: 'COMPLAINT TYPE',
-        field: 'type',
-        sort: 'asc',
-        width: 200
-    },
-    {
-        label: '  ',
-        field: 'status',
-        sort: 'NONE',
-        width: 100
-    }
-    ],
-    rows: [
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'refund',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'different design',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'damaged',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'refund',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'refund',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'refund',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'refund',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'refund',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'refund',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'refund',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'refund',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'refund',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-      {
-        customer: 'Justin Septimus',
-        reference: '32423432434',
-        type: 'refund',
-        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to="/vendor/complaints/viewcomplaint"><button className='view-btn'>View</button></Link></div>
-      },
-    ]
-}
 
 const Complaints = () => {
   const [inquiryData, setInquiryData] = useState([]);
+
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 5000,
+  });
+
+  const sessionItems = useSession();
+  const userId = sessionItems.sessionData.userid;
+
+
   return (
     <>
       <div className='complaints-container background-total accordion bg-white rounded-3 mb-4 me-3 p-4'>
@@ -144,7 +50,42 @@ const Complaints = () => {
                   striped
                   bordered
                   small
-                  data={tabledata}
+                  data={{
+                    columns: [
+                      {
+                        label: 'CUSTOMER NAME',
+                        field: 'customer',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'REFERENCE NO',
+                        field: 'reference',
+                        sort: 'asc',
+                        width: 270
+                      },
+                      {
+                        label: 'COMPLAINT TYPE',
+                        field: 'type',
+                        sort: 'asc',
+                        width: 200
+                      },
+                      {
+                        label: '  ',
+                        field: 'status',
+                        sort: 'NONE',
+                        width: 100
+                      }
+                    ],
+                    rows: inquiryData.map((inquiry) => {
+                      return {
+                        customer: inquiry.username,
+                        reference: inquiry.inquiry_reference,
+                        type: inquiry.inquiry_type,
+                        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to={`/vendor/complaints/viewcomplaint?id=${inquiry.inquiry_id}`}><button className='view-btn'>View</button></Link></div>
+                      }
+                    })
+                  }}
                   sortable={false}
                   exportToCSV={true}
                   paging={true}

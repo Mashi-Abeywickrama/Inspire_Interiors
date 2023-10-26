@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import "../../styles/vendor/promotedProduct.css";
 
 import Arpico from "../../assets/img/vendor/arpico.png";
@@ -9,8 +9,35 @@ import WhiteSofa from "../../assets/img/vendor/whitesofa.png";
 
 import * as Icon from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const PromotedProduct = () => {
+    const urlparams = new URLSearchParams(window.location.search);
+    const designerID = urlparams.get('d_id');
+
+    const [designer, setDesigner] = useState({});
+
+    const apiBaseURL = "http://localhost:8080";
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseURL,
+        timeout: 5000,
+    });
+
+    useEffect(() => {
+        axiosInstance
+            .get(`/getuser/${designerID}`)
+            .then((response) => {
+                setDesigner(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [designerID]);
+
+    console.log(designerID);
+
     return (
         <>
             <div className='product-container rounded-3 mb-4'>
@@ -21,7 +48,7 @@ const PromotedProduct = () => {
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                             <Link to="/vendor/promotion/mynetwork"><p className="fs-5 fw-bold Cabin-text text-dark">My network</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                            <Link to="/vendor/promotion/promotionrequest"><p className="fs-5 fw-bold Cabin-text text-dark">Victor Avocado</p></Link>
+                            <Link to="/vendor/promotion/promotionrequest"><p className="fs-5 fw-bold Cabin-text text-dark">{designer.name}</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                             <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Projects</p>
                         </div>

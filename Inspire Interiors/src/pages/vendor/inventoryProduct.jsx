@@ -30,18 +30,19 @@ const InventoryProduct = () => {
   });
 
   const [variationData, setVariationData] = useState([]);
+  const [armodel, setArmodel] = useState({});
 
   const materialImage = (material) => {
     if(material === 'wood'){
-        return <img className="img-fluid" style={{width:"100px", height:"100px"}} src={Wood}/>;
+        return <img className="img-fluid radius-material" style={{width:"50px", height:"100px"}} src={Wood}/>;
     } else if(material === 'plywood'){
-        return <img className="img-fluid" style={{width:"100px", height:"100px"}} src={Plywood} />;
+        return <img className="img-fluid radius-material" style={{width:"50px", height:"100px"}} src={Plywood} />;
     } else if(material === 'glass'){
-        return <img className="img-fluid" style={{width:"100px", height:"100px"}} src={Glass} />;
+        return <img className="img-fluid radius-material" style={{width:"50px", height:"100px"}} src={Glass} />;
     } else if(material === 'mahogany'){
-        return <img className="img-fluid" style={{width:"100px", height:"100px"}} src={Mahogany} />;
+        return <img className="img-fluid radius-material" style={{width:"50px", height:"100px"}} src={Mahogany} />;
     } else if(material === 'cotton'){
-        return <img className="img-fluid" style={{width:"100px", height:"100px"}} src={Cotton} />;
+        return <img className="img-fluid radius-material" style={{width:"50px", height:"100px"}} src={Cotton} />;
     } else {
         return null;
     }
@@ -98,7 +99,7 @@ const InventoryProduct = () => {
           if(response2.status === 200)
           {
             console.log("Response from API:", "Omaiwa mou shindeiru");
-            // window.location.reload();
+            window.location.reload();
 
             
           } 
@@ -138,6 +139,18 @@ const InventoryProduct = () => {
       console.log("Error fetching data", error);
     });
   }, []);
+
+  useEffect(() => {
+    axiosInstance
+    .get(`/armodel/${productID}`)
+    .then((response) => {
+      setArmodel(response.data);
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log("Error fetching data", error);
+    });
+  }, [productID]);
 
   
   const handleVariationDetailsChange = (field, value) => {
@@ -628,37 +641,21 @@ const InventoryProduct = () => {
                     </Modal.Body>
                   </Modal>
                 </div>
-                <div className="d-flex flex-row gap-3">
-                  <p className="text-dark fs-6 fw-bold Cabin-text">Materials</p>
-                </div>
 
                 <div className="d-flex flex-column flex-lg-row flex-md-row justify-content-evenly">
-                  {variationData.map((data, index) => (
-                    <div className="d-flex flex-column gap-3">
-                        {materialImage(data.material)}
-                      <p className="fs-6 fw-bold Cabin-text text-center">
-                        {data.material}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <div className="d-flex flex-row gap-3">
-                  <p className="text-dark fs-6 fw-bold Cabin-text mt-3">
-                    Colors
-                  </p>
-                </div>
-                <div className="d-flex flex-column flex-lg-row flex-md-row justify-content-evenly">
-                {variationData.map((data, index) => (
-                  <div className="d-flex flex-column gap-3">
-                    <Icon.SquareFill 
-                        size={100} 
-                        color={data.color} 
-                    />
-                    <p className="fs-6 fw-bold Cabin-text text-center">
-                      {data.color}
-                    </p>
+                  <div className="d-flex flex-wrap gap-3">
+                    {variationData.map((data, index) => (
+                      <div className="d-flex flex-column" style={{ marginRight: '15px' }}>
+                        <div className="d-flex gap-0">
+                          {materialImage(data.material)}
+                          <div className="radius-color" style = {{backgroundColor:data.color, width:"50px",height:"100px"} }></div>
+                        </div>
+                        <p className="fs-6 fw-bold Cabin-text text-center">
+                          {data.material + " "}{data.color}
+                        </p>
+                      </div>
+                    ))}
                   </div>
-                ))} 
                 </div>
               </div>
               <div className="col-lg-12 bg-white rounded-3 p-4 shadow mb-2">
@@ -740,7 +737,9 @@ const InventoryProduct = () => {
                   </Modal>
               </div>
               <div className="align-content-center">
+
                 <img className="img-fluid" src={(`../../../../src/assets/img/product/${productData.product_id}.jpg`)} />
+
               </div>
               </div>
             </div>
