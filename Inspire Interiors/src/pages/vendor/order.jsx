@@ -155,6 +155,7 @@ const style = {
 };
 
 const Order = () => {
+
     const [orderData, setOrderData] = useState([]);
     const [selectedTab, setSelectedTab] = useState('All');
     const [loading, setLoading] = useState(true);
@@ -162,6 +163,7 @@ const Order = () => {
 
     const sessionItems = useSession();
     const userId = sessionItems.sessionData.userid;
+
 
     const apiURL = "http://localhost:8080";
 
@@ -174,12 +176,15 @@ const Order = () => {
         axiosInstance
         .get(`/getorder/vendor/${userId}`)
         .then((response) => {
+
             setOrderData(response.data);
             setLoading(false);
+
             console.log(response.data);
         })
         .catch((error) => {
             console.log("Error fetching data", error);
+
             setLoading(false);
         });
     }, []);
@@ -222,6 +227,7 @@ const Order = () => {
     const filteredData = (status) => 
         orderData.filter((item) => item.status === status);
 
+
     return (
         <>
             <div className='orders-container background-order accordion rounded-3 mb-4 me-5'>
@@ -230,7 +236,9 @@ const Order = () => {
                         <div className='d-flex flex-row gap-2'>
                             <p className='fs-5 fw-bold Cabin-text'>Orders</p>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+
                             <p className='fs-5 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>{selectedTab}</p>
+
                         </div>
                         <div>
                             <Tabs
@@ -241,6 +249,7 @@ const Order = () => {
                             >
                                 <Tab eventKey="all" title="All">
                                     <div className='p-4'>
+
                                     {loading ? (
                                         <p>Loading...</p>
                                     ) : (
@@ -309,10 +318,12 @@ const Order = () => {
                                     {loading ? (
                                         <p>Loading...</p>
                                     ) : (
+
                                         <MDBDataTableV5 responsive
                                             striped
                                             bordered
                                             small
+
                                             data = {{
                                                 columns: [
                                                     {
@@ -628,6 +639,7 @@ const Order = () => {
                                         />
                                     )}
                                     </div>
+
                                 </Tab>
                             </Tabs>
                         </div>

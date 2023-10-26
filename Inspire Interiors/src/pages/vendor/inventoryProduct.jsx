@@ -737,8 +737,9 @@ const InventoryProduct = () => {
                   </Modal>
               </div>
               <div className="align-content-center">
-                {/* <img className="img-fluid" src={(`../../../../src/assets/img/product/${productData.product_id}.jpg`)} /> */}
-                <img className="img-fluid" src={armodel} />
+
+                <img className="img-fluid" src={(`../../../../src/assets/img/product/${productData.product_id}.jpg`)} />
+
               </div>
               </div>
             </div>

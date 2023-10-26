@@ -113,6 +113,7 @@ const ViewOrder = () => {
                                             <span className="fw-semibold px-2 Cabin-text text-dark">Rs.{discountedPrice}</span>
                                             </div>
                                         </div>
+
                                     </div>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Color:</p>
@@ -156,6 +157,7 @@ const ViewOrder = () => {
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Product</p>
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{productData.product_name}</p>
+
                             </div>
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Entry Price</p>
@@ -164,6 +166,7 @@ const ViewOrder = () => {
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Discount (%)</p>
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{productData.discount}</p>
+
                             </div>
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Price</p>
