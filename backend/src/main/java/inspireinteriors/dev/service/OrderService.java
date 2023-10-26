@@ -14,6 +14,9 @@ public class OrderService {
 
     public List<Order> getOrders() { return this.orderRepository.findAll();}
 
+    //orders by vendorid
+    public List<Order> getOrdersByVendorId(String vendor) { return this.orderRepository.findOrdersByVendor_id(vendor);}
+
     public Order getOrder(int orderid) {
         return this.orderRepository.findById(orderid).orElse(null);
     }

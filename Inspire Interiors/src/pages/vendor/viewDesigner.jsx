@@ -266,7 +266,7 @@ const ViewDesigner = () => {
                                             </div>
                                         </div>
                                         <div className='d-flex flex-row justify-content-between'>
-                                            <button type="button" className='withdraw-btn m-4' onClick={handleClose}><Icon.PlusLg color="white" size={20} />Cancel Offer</button>
+                                            <button type="button" className='withdraw-btn m-4' onClick={handleClose}><Icon.PlusLg color="white" size={20} />Cancel</button>
                                             <button type="submit" className='accept-btn m-4'><Icon.PlusLg color="white" size={20} />Send Offer</button>
                                         </div>
                                     </form>

@@ -44,10 +44,19 @@ public class Order{
     @Column(name = "date")
     private String date;
 
+    @Column(name = "variation_id")
+    private String variation_id;
+
+    @Column(name = "shipping_address")
+    private String shipping_address;
+
 // constructor
 
+    public Order() {
 
-    public Order(int orderid, int ref_no, String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status, String date) {
+    }
+
+    public Order(int orderid, int ref_no, String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status, String date, String variation_id, String shipping_address) {
         this.orderid = orderid;
         this.ref_no = ref_no;
         this.product = product;
@@ -60,10 +69,8 @@ public class Order{
         this.commission = commission;
         this.status = status;
         this.date = date;
-    }
-
-    public Order() {
-
+        this.variation_id = variation_id;
+        this.shipping_address = shipping_address;
     }
 
     //getters and setters
@@ -162,5 +169,21 @@ public class Order{
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getVariation_id() {
+        return variation_id;
+    }
+
+    public void setVariation_id(String variation_id) {
+        this.variation_id = variation_id;
+    }
+
+    public String getshipping_address() {
+        return shipping_address;
+    }
+
+    public void setshipping_address(String shipping_address) {
+        this.shipping_address = shipping_address;
     }
 }
