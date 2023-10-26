@@ -89,9 +89,7 @@ const InventoryProduct = () => {
 
           formData.append("variationId", response.data.variation_id);
           formData.append("file", variationDetails.variation_img); // Append the image to the formData
-
-          ;
-
+          
           const response2 = await axiosInstance.put("/setVariationPic",
             formData,
             { headers: { 'Content-Type': 'multipart/form-data' } }
@@ -99,9 +97,7 @@ const InventoryProduct = () => {
           if(response2.status === 200)
           {
             console.log("Response from API:", "Omaiwa mou shindeiru");
-            window.location.reload();
-
-            
+            window.location.reload(); 
           } 
         }
         catch (error) {
@@ -259,6 +255,7 @@ const InventoryProduct = () => {
       width: 100,
     },
   ];
+
   const testarray = variationData;
   const id= testarray.map((variation) => variation.variation_id);
   console.log(id);

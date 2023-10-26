@@ -7,11 +7,11 @@ import { Carousel }  from 'react-responsive-carousel';
 import axios from 'axios';
 
 import Chair1 from './../../../assets/img/customer/chair1.png';
-import Chair2 from './../../../assets/img/customer/chair2.png';
-import Chair3 from './../../../assets/img/customer/chair3.png';
-import Chair4 from './../../../assets/img/customer/chair4.png';
-import Chair5 from './../../../assets/img/customer/chair5.png';
-import Chair6 from './../../../assets/img/customer/chair6.png';
+import Wood from "./../../../assets/img/vendor/material/wood.jpeg";
+import Plywood from "./../../../assets/img/vendor/material/plywood.jpeg";
+import Mahogany from "./../../../assets/img/vendor/material/mahogany.jpg";
+import Cotton from "./../../../assets/img/vendor/material/cotton.png";
+import Glass from "./../../../assets/img/vendor/material/glass.jpg";
 import QRPopup from '../../../components/customer/popup/ARPopup';
 
 const stardata = {
@@ -24,6 +24,10 @@ const ViewProduct = () => {
 
     const [productData, setProductData] = useState([]);
     const [reviewData, setReviewData] = useState([]);
+    const [variationData, setVariationData] = useState([]);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const productID = urlParams.get("id");
 
     // Create an Axios instance with the base URL
     const axiosInstance = axios.create({
@@ -65,10 +69,39 @@ const ViewProduct = () => {
         } catch (error) {
           console.error('Error fetching review data:', error);
         }
-      }
-      useEffect(() => {
-        fetchAndStoreReviewData(id);
-      }, [id]);
+    }
+
+    useEffect(() => {
+    fetchAndStoreReviewData(id);
+    }, [id]);
+
+    const materialImage = (material) => {
+        if(material === 'wood'){
+            return <img className="img-fluid radius-material" style={{width:"20px", height:"40px"}} src={Wood}/>;
+        } else if(material === 'plywood'){
+            return <img className="img-fluid radius-material" style={{width:"20px", height:"40px"}} src={Plywood} />;
+        } else if(material === 'glass'){
+            return <img className="img-fluid radius-material" style={{width:"20px", height:"40px"}} src={Glass} />;
+        } else if(material === 'mahogany'){
+            return <img className="img-fluid radius-material" style={{width:"20px", height:"40px"}} src={Mahogany} />;
+        } else if(material === 'cotton'){
+            return <img className="img-fluid radius-material" style={{width:"20px", height:"40px"}} src={Cotton} />;
+        } else {
+            return null;
+        }
+    }
+
+    useEffect(() => {
+        axiosInstance
+        .get(`/viewvariations/product/${id}`)
+        .then((response) => {
+          setVariationData(response.data);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log("Error fetching data", error);
+        });
+    }, []);
 
     // const rate = averageRating.toFixed(1)
     const generateStars = (rate) => {
@@ -116,17 +149,22 @@ const ViewProduct = () => {
                             </div>
                         </div>
                         <p className='fs-6 fw-normal Cabin-text w-50 mt-2'>{productData.product_description}</p>
-                        <div className='d-flex flex-row gap-4 mt-4'>
-                            <Icon.CircleFill size={25} color='#C1BDB3' />
-                            <Icon.CircleFill size={25} color='#58737D' />
-                            <Icon.CircleFill size={25} color='#545454' />
-                            <Icon.CircleFill size={25} color='#CBA5A5' />
+                        <div className="d-flex flex-wrap gap-1">
+                            {variationData.map((data, index) => (
+                            <div className="d-flex flex-column" style={{ marginRight: '10px' }}>
+                                <div className="d-flex gap-0">
+                                    {materialImage(data.material)}
+                                    <div className="radius-color" style = {{backgroundColor:data.color, width:"20px",height:"40px"} }></div>
+                                </div>
+                                
+                            </div>
+                            ))}
                         </div>
                         <div className='d-flex flex-row w-50 mt-5'>
                             <div class="mb-3">
-                                <input style={{ backgroundColor: "#F1F1F1" }} type="number" class="form-control w-50" id="exampleFormControlInput1" placeholder="1" />
+                                <input style={{ backgroundColor: "#F1F1F1" }} type="number" class="form-control w-50 h-100" id="exampleFormControlInput1" placeholder="1" />
                             </div>
-                            <button className='add-btn w-75'><Icon.BagDashFill className='mx-2' size={20} color="white" />Add to Cart</button>
+                            <button className='add-btn w-75'>Buy Now</button>
                         </div>
                         <div className='d-flex flex-row w-50 justify-content-between mt-4'>
                             <p className='fs-6 fw-normal Cabin-text'>Free 3-5 day shipping</p>
@@ -134,37 +172,12 @@ const ViewProduct = () => {
                             <p className='fs-6 fw-normal Cabin-text'>30-day trial</p>
                         </div>
                         <div className='d-flex flex-row gap-4 mt-4'>
-                            <Icon.Heart size={25} color='#035C94' />
-                            <p className='fs-6 fw-semibold cabin-text' style={{ color: "#035C94" }}>Add to Wishlist</p>
+                            <Icon.BagDashFill className='mx-2' size={20} color="#035C94" />
+                            <p className='fs-6 fw-semibold cabin-text' style={{ color: "#035C94" }} >Add to Cart</p>
                         </div>
                     </div>
-                    <div className='w-50 vieworder-carousal-div'>
-                        <Carousel>
-                            <div>
-                                <img className='img-fluid' src={Chair1} />
-                                <p className="legend">Legend 1</p>
-                            </div>
-                            <div>
-                                <img className='img-fluid' src={Chair2} />
-                                <p className="legend">Legend 2</p>
-                            </div>
-                            <div>
-                                <img className='img-fluid' src={Chair3} />
-                                <p className="legend">Legend 3</p>
-                            </div>
-                            <div>
-                                <img className='img-fluid' src={Chair4} />
-                                <p className="legend">Legend 4</p>
-                            </div>
-                            <div>
-                                <img className='img-fluid' src={Chair5} />
-                                <p className="legend">Legend 5</p>
-                            </div>
-                            <div>
-                                <img className='img-fluid' src={Chair6} />
-                                <p className="legend">Legend 6</p>
-                            </div>
-                        </Carousel>
+                    <div className='w-25'>
+                        <img className="img-fluid" src={(`./../../../../src/assets/img/product/${productData.product_id}.jpg`)} />
                     </div>
 
                 </div>
