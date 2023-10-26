@@ -106,7 +106,13 @@ const ViewOrder = () => {
                                     </div>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Price:</p>
-                                        <p className="px-3 fs-6 fw-semibold Cabin-text">{discountedPrice}</p>
+                                        <div className="fs-6 fw-semibold Cabin-text">
+                                            <div className="d-flex align-items-center">
+                                            <span className="fw-semibold Cabin-text px-2" style={{ textDecoration: 'line-through' }}>Rs.{productData.entry_price}</span>
+                                            <span className="fw-semibold text-danger">{productData.discount}%</span>
+                                            <span className="fw-semibold px-2 Cabin-text text-dark">Rs.{discountedPrice}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Color:</p>
@@ -150,6 +156,14 @@ const ViewOrder = () => {
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Product</p>
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{productData.product_name}</p>
+                            </div>
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Entry Price</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{productData.entry_price}</p>
+                            </div>
+                            <div className="d-flex flex-row justify-content-between">
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Discount (%)</p>
+                                <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{productData.discount}</p>
                             </div>
                             <div className="d-flex flex-row justify-content-between">
                                 <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Price</p>

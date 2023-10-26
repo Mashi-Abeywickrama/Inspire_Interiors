@@ -14,48 +14,6 @@ import axios from 'axios';
 const BrowseDesigner = () => {
   const [designerData, setDesignerData] = useState([]);
 
-  const Columns = [
-    {
-      label: 'DESIGNER NAME',
-      field: 'name',
-      sort: 'asc',
-      width: 150
-    },
-    {
-      label: 'DESIGNER EMAIL',
-      field: 'email',
-      sort: 'asc',
-      width: 150
-    },
-
-    {
-      label: 'TOTAL DESIGNS',
-      field: 'total',
-      sort: 'asc',
-      width: 270
-    },
-    {
-      label: 'SOLD DESIGNS',
-      field: 'sold',
-      sort: 'asc',
-      width: 200
-    },
-    {
-      label: ' ',
-      field: 'action',
-      sort: 'NONE',
-      width: 100
-    }
-  ];
-
-  const Rows = designerData.map(designer=>({ 
-    name: designer.name,
-    email: designer.email,
-    total: 50,
-    sold: 30,
-    action: <Link to={`/vendor/promotion/viewdesigners?id=${designer.userid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-  }));
-
   const apiBaseURL = "http://localhost:8080";
 
   const axiosInstance = axios.create({
@@ -90,8 +48,47 @@ const BrowseDesigner = () => {
                     striped
                     bordered
                     small
-                    columns={Columns}
-                    rows={Rows}
+                    data = {{
+                      columns: [
+                        {
+                          label: 'DESIGNER NAME',
+                          field: 'name',
+                          sort: 'asc',
+                          width: 150
+                        },
+                        {
+                          label: 'DESIGNER EMAIL',
+                          field: 'email',
+                          sort: 'asc',
+                          width: 150
+                        },
+                        {
+                          label: 'TOTAL DESIGNS',
+                          field: 'total',
+                          sort: 'asc',
+                          width: 270
+                        },
+                        {
+                          label: 'SOLD DESIGNS',
+                          field: 'sold',
+                          sort: 'asc',
+                          width: 200
+                        },
+                        {
+                          label: ' ',
+                          field: 'action',
+                          sort: 'NONE',
+                          width: 100
+                        }
+                      ],
+                      rows: designerData.map(designer=>({
+                        name: designer.name,
+                        email: designer.email,
+                        total: 50,
+                        sold: 30,
+                        action: <Link to={`/vendor/promotion/viewdesigners?id=${designer.userid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+                      }))
+                    }}
                     sortable={true}
                     exportToCSV={true}
                     paging={true}

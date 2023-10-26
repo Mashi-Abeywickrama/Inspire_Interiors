@@ -110,6 +110,7 @@ const PromotionRequest = () => {
     });
 
     const [isEditing, setIsEditing] = useState(false);
+    const [designerData, setDesignerData] = useState([]);
 
     const urlParams = new URLSearchParams(window.location.search);
     const offerID = urlParams.get('id');
@@ -160,6 +161,10 @@ const PromotionRequest = () => {
         ],
     };
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const { setAlert } = useAlert();
 
     const apiBaseURL = "http://localhost:8080";
@@ -183,12 +188,24 @@ const PromotionRequest = () => {
           .get(`/promotion/${offerID}`)
           .then((response) => {
             setOfferData(response.data);
-            // console.log(response.data);
+            console.log(response.data);
           })
           .catch((error) => {
             console.log('Error fetching data', error);
         });
     }, []);
+
+    useEffect(() => {
+        axiosInstance
+            .get(`/getuser/${offerData.designer}`)
+            .then((response) => {
+                setDesignerData(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('Error fetching data', error);
+            });
+    }, [offerData.designer]);
 
     const handleEdit = async (e) => {
         e.preventDefault();
@@ -229,10 +246,6 @@ const PromotionRequest = () => {
         }
     };
     
-
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
     return(
     <>
         <div className="request-container">
@@ -359,13 +372,13 @@ const PromotionRequest = () => {
                 </div>
                 <div className="col-lg-5 mb-3">
                     <div className='col-lg-12 h-100 bg-white rounded-3 shadow p-4 '>
-                        <p className="fs-5 fw-bold Cabin-text">About Victor Avocado</p>
+                        <p className="fs-5 fw-bold Cabin-text">About Designer {designerData.name}</p>
                         <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
                             <img style={{ backgroundColor: "#FEE4CB", objectFit: "cover" }} className="img-fluid p-2 rounded-4 border" src={Customer} />
                             <div className="d-flex flex-column">
-                                <p className="fs-6 fw-bold Cabin-text">Victor Avocado</p>
+                                <p className="fs-6 fw-bold Cabin-text">{designerData.name}</p>
                                 <div className="d-flex flex-row gap-4">
-                                    <p className="fs-6 fw-semibold Cabin-text">Interior Designer</p>
+                                    <p className="fs-6 fw-semibold Cabin-text">{designerData.type}</p>
                                     <div className="d-flex flex-column mt-1 gap-2">
                                         <div className="d-flex flex-row gap-1">{generateStars(4.5)}</div>
                                         <div className="d-flex flex-row gap-1 float-end">
@@ -406,7 +419,7 @@ const PromotionRequest = () => {
                         </div>
                         <div className="d-flex flex-row gap-4 my-2">
                             <p className="fs-5 fw-bold Cabin-text">Top Selling Designs</p>
-                            <Link to="/vendor/promotion/promoteproduct"><p className="fs-6 fw-semibold Cabin-text mt-1" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1" /></p></Link>
+                            <Link to={`/vendor/promotion/promoteproduct?d_id=${offerData.designer}`}><p className="fs-6 fw-semibold Cabin-text mt-1" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1" /></p></Link>
                         </div>
                         <div class="row row-cols-1 row-cols-md-3 g-4 mx-4">
                             <div class="col w-50">

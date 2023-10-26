@@ -23,3 +23,10 @@
 .h-60{
     height: 60%;
 }
+.radius-material{
+    border-radius:  10px 0 0 10px  !important;
+}
+
+.radius-color{
+    border-radius:   0 10px 10px 0  !important;
+}

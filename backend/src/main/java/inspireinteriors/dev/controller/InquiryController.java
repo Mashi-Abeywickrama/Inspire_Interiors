@@ -30,6 +30,17 @@ public class InquiryController {
     public Iterable<Inquiry> fetchInquiry() {
         return inquiryService.getAllInquiries();
     }
+
+    //get inquiry by inquiry id
+    @GetMapping("/inquiry/{id}")
+    public ResponseEntity<Inquiry> getInquiryById(@PathVariable(value = "id") int inquiryId) {
+        Inquiry inquiry = inquiryService.getInquiryById(inquiryId);
+        if (inquiry != null) {
+            return ResponseEntity.ok(inquiry);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
     @PostMapping("/inquiry")
     public ResponseEntity<String> saveInquiry(@RequestBody Inquiry inquiry) throws JSONException {
         LocalDate currentDate = LocalDate.now();

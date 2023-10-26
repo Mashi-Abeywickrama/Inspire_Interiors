@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daa14848-e55c-4a01-acbc-012f481443c9" name="Changes" comment="" />
+    <list default="true" id="daa14848-e55c-4a01-acbc-012f481443c9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/browseDesigner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/browseDesigner.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/complaints.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/complaints.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/inventoryProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/inventoryProduct.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/order.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/order.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/setting.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/setting.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/viewComplaint.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/viewComplaint.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/viewOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/viewOrder.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/viewStocks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/pages/vendor/viewStocks.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/styles/customer/table.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/styles/customer/table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inspire Interiors/src/styles/vendor/inventoryProduct.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inspire Interiors/src/styles/vendor/inventoryProduct.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/inspireinteriors/dev/controller/InquiryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/inspireinteriors/dev/controller/InquiryController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +42,12 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="2SmKEIEMGVlSMvvxePSkWtJ04kK" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -50,8 +68,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Shinthujen",
-    "last_opened_file_path": "/Users/ahamedrujhan/Downloads/Inspire_Interiors",
+    "git-widget-placeholder": "Harilakshan",
+    "last_opened_file_path": "C:/Users/user/OneDrive/Desktop/Inspire_Interiors",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,6 +106,7 @@
       <workItem from="1689784349523" duration="6943000" />
       <workItem from="1691251635459" duration="22000" />
       <workItem from="1693324547543" duration="63000" />
+      <workItem from="1697263312528" duration="6000" />
     </task>
     <servers />
   </component>
