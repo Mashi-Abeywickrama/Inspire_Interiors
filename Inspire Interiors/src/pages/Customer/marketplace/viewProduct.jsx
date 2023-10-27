@@ -6,6 +6,8 @@ import ReactStars from "react-rating-stars-component";
 import { Carousel }  from 'react-responsive-carousel';
 import axios from 'axios';
 
+import Stripe from "react-stripe-checkout";
+
 import Chair1 from './../../../assets/img/customer/chair1.png';
 import Wood from "./../../../assets/img/vendor/material/wood.jpeg";
 import Plywood from "./../../../assets/img/vendor/material/plywood.jpeg";
@@ -46,7 +48,7 @@ const ViewProduct = () => {
         try {
             const response = await axiosInstance.get(`/product/${id}`);
             setProductData(response.data);
-            console.log('Product Data:', productData);
+            console.log('Product Data:', response.data);
         } catch (error) {
             console.error('Error fetching products by Type:', error);
         }
@@ -122,6 +124,19 @@ const ViewProduct = () => {
         return stars;
     };
 
+    async function handleToken(token) {
+        console.log(token);
+        await axios.post("http://localhost:8080/api/payment/charge", "", {         
+            headers: {
+            token: token.id,
+            amount: productData.entry_price,
+            },}).then(() => {
+            handleNewOrder(id)
+            }).catch((error) => {
+            console.log(error);
+        });
+    }
+
     return (
         <>
             <div className="product-container view-product p-4 bg-white rounded-3 mb-4 me-3">
@@ -164,12 +179,20 @@ const ViewProduct = () => {
                             <div class="mb-3">
                                 <input style={{ backgroundColor: "#F1F1F1" }} type="number" class="form-control w-50 h-100" id="exampleFormControlInput1" placeholder="1" />
                             </div>
-                            <button className='add-btn w-75'>Buy Now</button>
+                            <div  className='add-btn w-75 custom-stripe-button'>
+                            <Stripe
+                            stripeKey="pk_test_51O5OPWG6Fh5wKFlLlB5wXQ4kHU0VPcJth8C2bO8epZnVRZPpn0TQfXD7fmealo9pKV0QexwxkVdzf4QiAoqaVV3k00SyiUZvS0"
+                            token={handleToken}
+                            disableDefaultStyles={true}
+                            name="Buy Now"
+                            />
+                            </div>
+                            
                         </div>
                         <div className='d-flex flex-row w-50 justify-content-between mt-4'>
-                            <p className='fs-6 fw-normal Cabin-text'>Free 3-5 day shipping</p>
-                            <p className='fs-6 fw-normal Cabin-text'>Tool-free assembly</p>
-                            <p className='fs-6 fw-normal Cabin-text'>30-day trial</p>
+                            <p className='fs-6 fw-normal Cabin-text'>Shipping Fee - {productData.shipping_fee}</p>
+                            <p className='fs-6 fw-normal Cabin-text'>Tools provided</p>
+                            <p className='fs-6 fw-normal Cabin-text'>Delivered within a week</p>
                         </div>
                         <div className='d-flex flex-row gap-4 mt-4'>
                             <Icon.BagDashFill className='mx-2' size={20} color="#035C94" />
