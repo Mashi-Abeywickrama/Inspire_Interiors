@@ -10,6 +10,7 @@ import './../../../styles/customer/marketplace.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useSession } from '../../../constants/SessionContext';
 
 
 
@@ -34,6 +35,10 @@ const CategoryView = () => {
     const apiBaseURL = 'http://localhost:8080';
 
     const [productData, setProductData] = useState([]);
+    const [cartAdd, setCartAdd] = useState([]);
+
+    const sessionItems = useSession();
+    const userId = sessionItems.sessionData.userid;
 
     // Create an Axios instance with the base URL
     const axiosInstance = axios.create({
@@ -82,7 +87,44 @@ const CategoryView = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
+    const handleCartAddition = async (product_id) =>{
+        
+        try{
+        const response = await axiosInstance.get("/getproductdata/"+product_id);
+        if(response.status === 200)
+        {
+            console.log("Response from API:", response.data);
+            
+            setCartAdd(response.data);
+            console.log("cart add", localStorage);
+            try{
+            const response2 = await axiosInstance.post("/addtocart", {
+                productId: cartAdd[0].product_id,
+                userId: userId,
+                quantity: 1,
+                totalPrice: cartAdd[0].entry_price,
 
+            });
+            if(response2.status === 200)
+            {
+                console.log("Response from API:", response2.data);
+                alert("Product added to cart successfully");
+            }
+            else
+            {
+                console.log("Error from API");
+            }
+            }
+            catch(error){
+                console.log("Error from API:", error);
+            }
+        
+        }
+
+        } catch (error) {
+        console.error("Error submitting form:", error);
+        }
+        }
 
     return (
         
@@ -133,9 +175,9 @@ const CategoryView = () => {
                                                 <p className="card-title fs-6 fw-bold m-0 Cabin-text">{data.type}</p>
                                                 <p className="card-text fs-6 fw-bolder m-0 Cabin-text">{data.entry_price}</p>
                                             </div>
-                                            <Link to='/customer/cart'>
+                                            <div onClick={() => handleCartAddition(data.product_id)}>
                                                 <Icon.Bag className="align-items-center text-white" size={35} style={{ backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                            </Link>
+                                            </div>
                                         </div>
                                     </div>
 

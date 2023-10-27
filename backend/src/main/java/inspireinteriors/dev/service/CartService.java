@@ -6,7 +6,6 @@ import inspireinteriors.dev.repository.CartRepository;
 import inspireinteriors.dev.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -26,5 +25,15 @@ public class CartService {
 
     public List<Product> getProductData(int productId) {
         return this.productRepository.getProductById(productId);
+    }
+
+    public boolean saveInCart(Cart cart) {
+        try {
+            this.cartRepository.save(cart);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
