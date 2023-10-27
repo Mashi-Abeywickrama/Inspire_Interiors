@@ -27,6 +27,9 @@ const ViewProduct = () => {
     const [productData, setProductData] = useState([]);
     const [reviewData, setReviewData] = useState([]);
     const [variationData, setVariationData] = useState([]);
+    const [selectedVariation, setSelectedVariation] = useState(null);
+    const [selectedVariationIndex, setSelectedVariationIndex] = useState(null);
+    const [quantity, setQuantity] = useState(1);
 
     const urlParams = new URLSearchParams(window.location.search);
     const productID = urlParams.get("id");
@@ -137,6 +140,34 @@ const ViewProduct = () => {
         });
     }
 
+    const calculateTotalPrice = () => {
+        // Calculate total price based on the quantity and product entry price
+        const totalPrice = productData.entry_price * quantity;
+        return totalPrice;
+    }
+
+    const highlightClass = 'highlightClass';
+    const defaultClass = 'defaultClass';
+
+    const handleVariationClick = (variation,index) => {
+        setSelectedVariation(variation);
+        setSelectedVariationIndex(index);
+    }
+
+    const getProductImage = () => {
+        if (selectedVariation) {
+            // Use the variation image
+            return `./../../../../src/assets/img/variation/${selectedVariation}.jpg`;
+        } else {
+            // Use the default product image
+            return `./../../../../src/assets/img/product/${productData.product_id}.jpg`;
+        }
+    }
+
+    const handleNewOrder = async (id) =>{
+
+    }
+
     return (
         <>
             <div className="product-container view-product p-4 bg-white rounded-3 mb-4 me-3">
@@ -166,7 +197,9 @@ const ViewProduct = () => {
                         <p className='fs-6 fw-normal Cabin-text w-50 mt-2'>{productData.product_description}</p>
                         <div className="d-flex flex-wrap gap-1">
                             {variationData.map((data, index) => (
-                            <div className="d-flex flex-column" style={{ marginRight: '10px' }}>
+                            <div   key={index} 
+                            className={`d-flex flex-column ${selectedVariationIndex === index ? highlightClass : defaultClass}`}
+                            style={{ marginRight: '10px',cursor:'pointer' }} onClick={() => handleVariationClick(data.variation_id,index)}>
                                 <div className="d-flex gap-0">
                                     {materialImage(data.material)}
                                     <div className="radius-color" style = {{backgroundColor:data.color, width:"20px",height:"40px"} }></div>
@@ -177,7 +210,15 @@ const ViewProduct = () => {
                         </div>
                         <div className='d-flex flex-row w-50 mt-5'>
                             <div class="mb-3">
-                                <input style={{ backgroundColor: "#F1F1F1" }} type="number" class="form-control w-50 h-100" id="exampleFormControlInput1" placeholder="1" />
+                                <input
+                                    style={{ backgroundColor: "#F1F1F1" }}
+                                    type="number"
+                                    class="form-control w-50 h-100"
+                                    id="exampleFormControlInput1"
+                                    placeholder="1"
+                                    value={quantity}
+                                    onChange={(e) => setQuantity(parseInt(e.target.value))}
+                                />
                             </div>
                             <div  className='add-btn w-75 custom-stripe-button'>
                             <Stripe
@@ -194,13 +235,21 @@ const ViewProduct = () => {
                             <p className='fs-6 fw-normal Cabin-text'>Tools provided</p>
                             <p className='fs-6 fw-normal Cabin-text'>Delivered within a week</p>
                         </div>
+                        <div className="d-flex flex-row justify-content-between mt-4">
+                            <p className="fs-2 fw-normal Cabin-text">
+                                Total Price:
+                            </p>
+                            <p className="fs-2 fw-normal Cabin-text">
+                                ${calculateTotalPrice() + productData.shipping_fee}+
+                            </p>
+                        </div>
                         <div className='d-flex flex-row gap-4 mt-4'>
                             <Icon.BagDashFill className='mx-2' size={20} color="#035C94" />
                             <p className='fs-6 fw-semibold cabin-text' style={{ color: "#035C94" }} >Add to Cart</p>
                         </div>
                     </div>
                     <div className='w-25'>
-                        <img className="img-fluid" src={(`./../../../../src/assets/img/product/${productData.product_id}.jpg`)} />
+                         <img className="img-fluid" src={getProductImage()} />
                     </div>
 
                 </div>
