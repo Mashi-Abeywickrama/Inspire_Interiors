@@ -174,7 +174,7 @@ const routes = (
       <Route path="checkout/address" element={<Address />} />
       <Route path="checkout/payment" element={<PaymentMethod />} />
       <Route path="checkout/shipping" element={<ShippingMethod />} />
-      <Route path="orders/vieworder" element={<OrderView />} />
+      <Route path="orders/vieworder/:id" element={<OrderView />} />
       <Route path="settings" element={<CusSetting />}></Route>
     </Route>
     {/* Admin Routes */}

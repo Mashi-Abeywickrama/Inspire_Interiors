@@ -7,8 +7,103 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import * as Icon from "react-bootstrap-icons";
 import Chair from './../../../assets/img/vendor/chair.png';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useSession } from '../../../constants/SessionContext';
+import { useState, useEffect } from 'react';
 
 const ViewOrder = () => {
+
+    const [orderData, setOrderData] = useState([]);
+    const [selectedTab, setSelectedTab] = useState('All');
+    const [loading, setLoading] = useState(true);
+
+
+    const sessionItems = useSession();
+    const userId = sessionItems.sessionData.userid;
+
+
+    const apiURL = "http://localhost:8080";
+
+    const axiosInstance = axios.create({
+        baseURL: apiURL,
+        timeout: 5000,
+    });
+
+    // Get the current URL
+    const currentURL = window.location.href;
+    // Split the URL by "/"
+    const splitURL = currentURL.split("/");
+    const orderid = decodeURIComponent(splitURL[6]);
+
+
+    useEffect(() => {
+        axiosInstance
+            .get(`/getorder/${orderid}`)
+            .then((response) => {
+
+                setOrderData(response.data);
+                setLoading(false);
+
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log("Error fetching data", error);
+
+                setLoading(false);
+            });
+    }, []);
+
+    
+    async function fetchAndStoreProductData(productId) {
+        try {
+            const response = await axiosInstance.get(`/getproductdata/${productId}`);
+
+            // Map the product data to the desired format
+            setproductData(response.data);
+
+            // You now have the productData array populated with the data from the backend
+            console.log('Product Data:', productData);
+        } catch (error) {
+            console.error('Error fetching products by userId:', error);
+            // Handle errors
+        }
+    }
+
+    const getOrderStatus = (status) => {
+        const statusDetails = {
+            New: {
+                className: 'new d-flex gap-2 align-items-center',
+                text: 'New',
+            },
+            Completed: {
+                className: 'completed d-flex gap-2 align-items-center',
+                text: 'Completed',
+            },
+            Ongoing: {
+                className: 'ongoing d-flex gap-2 align-items-center',
+                text: 'Ongoing',
+            },
+            Delayed: {
+                className: 'delayed d-flex gap-2 align-items-center',
+                text: 'Delayed',
+            },
+            Canceled: {
+                className: 'outstock d-flex gap-2 align-items-center',
+                text: 'Canceled',
+            },
+        };
+        if (statusDetails.hasOwnProperty(status)) {
+            const { className, text } = statusDetails[status];
+            return (
+                <div className={className}>
+                    <i className="bi bi-circle-fill tag-icon"></i>
+                    <p className="m-0">{text}</p>
+                </div>
+            );
+        }
+        return null;
+    };
+
     return (
         <>
             <div className="order-container-customer ps-3 bg-white rounded mb-4 me-3 justify-content-center">
@@ -28,10 +123,9 @@ const ViewOrder = () => {
                 </div>
                 <div className="col-12 d-flex flex-column">
                     <div className="d-flex flex-row justify-content-between">
-                        <p className="fs-6 fw-bold text-decoration-underline Cabin-text">Order ID - #76565722</p>
+                        <p className="fs-6 fw-bold text-decoration-underline Cabin-text">Order ID - #{orderData.orderid}</p>
                         <div className="badge fw-semibold rounded Cabin-text mx-5" style={{ height: "1.5rem", background: "#BFE5FD", color: "#000000" }}>
-                            <Icon.CircleFill size={7} className="mx-1" />
-                            Ongoing
+                            {getOrderStatus(orderData.status)}
                         </div>
                     </div>
                     <div className=" divider" />
@@ -41,14 +135,14 @@ const ViewOrder = () => {
                 <div className="col-12 d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-3 w-97">
                     <div className="d-flex flex-column col-lg-8 gap-3 f-color-summary">
                         <div className="col-lg-12 bg-white rounded p-4 shadow">
-                        <p className="fs-5 fw-bold" style={{ color: "#023047" }}>Product Details</p>
+                            <p className="fs-5 fw-bold" style={{ color: "#023047" }}>Product Details</p>
                             <div className="d-flex flex-column flex-lg-row justify-content-start">
                                 <img className="img-fluid" src={Chair} alt="Chair" />
                                 <div className="d-flex flex-column px-3">
                                     <p className="fs-5 fw-semibold Cabin-text">Customizable Armchair</p>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Type:</p>
-                                        <p className="px-3 fs-6 fw-semibold Cabin-text">Chair</p>
+                                        <p className="px-3 fs-6 fw-semibold Cabin-text">{orderData.product}</p>
                                     </div>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Color:</p>
@@ -56,17 +150,17 @@ const ViewOrder = () => {
                                     </div>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Quantity:</p>
-                                        <p className="px-3 fs-6 fw-semibold Cabin-text">2</p>
+                                        <p className="px-3 fs-6 fw-semibold Cabin-text">{orderData.quantity}</p>
                                     </div>
                                     <div className="d-flex flex-row">
-                                        <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Price:</p>
+                                        <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Unit Price:</p>
                                         <p className="px-3 fs-6 fw-semibold Cabin-text">Rs 4000 </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-12 bg-white rounded p-4 shadow f-color-summary">
-                        <p className="fs-5 fw-bold">Order Status</p>
+                            <p className="fs-5 fw-bold">Order Status</p>
                             <div className="d-flex flex-column fs-6">
                                 <div className="d-flex flex-row justify-content-between">
                                     <div className="d-flex flex-row">
@@ -98,12 +192,12 @@ const ViewOrder = () => {
                                 <p >Customizable Armchair</p>
                             </div>
                             <div className="d-flex flex-row justify-content-between">
-                                <p >Price</p>
+                                <p >Unit Price</p>
                                 <p >Rs 4000</p>
                             </div>
                             <div className="d-flex flex-row justify-content-between">
                                 <p >Quantity</p>
-                                <p >2</p>
+                                <p >{orderData.quantity}</p>
                             </div>
                             <div className="d-flex flex-row justify-content-between">
                                 <p >Shipping</p>
@@ -112,7 +206,7 @@ const ViewOrder = () => {
                             <hr />
                             <div className="d-flex flex-row justify-content-between">
                                 <p >TOTAL</p>
-                                <p >Rs 8000</p>
+                                <p >{orderData.price}</p>
                             </div>
 
                             <hr />
@@ -143,7 +237,7 @@ const ViewOrder = () => {
                 <hr />
                 <Link to="/customer/orders">
                     <button className="my-2 rounded Cabin-text bg-transparent"
-                    style={{ color: "#FF5C60", border: "1px solid #FF5C60" }}>
+                        style={{ color: "#FF5C60", border: "1px solid #FF5C60" }}>
                         Cancel Order
                     </button>
                 </Link>

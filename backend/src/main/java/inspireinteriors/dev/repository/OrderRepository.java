@@ -16,5 +16,8 @@ import java.util.List;
 
         @Query(value = "SELECT * FROM orders WHERE vendor = :vId", nativeQuery = true)
         List<Order> findOrdersByVendor_id(@Param("vId") String vendor);
+
+    @Query(value = "SELECT * FROM orders WHERE customer = :cId", nativeQuery = true)
+    List<Order> findOrdersByCustomerID(@Param("cId") String customer);
     }
 

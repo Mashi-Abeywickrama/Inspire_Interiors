@@ -1,7 +1,9 @@
 package inspireinteriors.dev.controller;
 
 import inspireinteriors.dev.model.Order;
+import inspireinteriors.dev.model.User;
 import inspireinteriors.dev.service.OrderService;
+import inspireinteriors.dev.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,8 @@ import java.util.stream.Collectors;
 public class OrderController {
    @Autowired
     private OrderService orderService;
+   @Autowired
+   private UserService userService;
 
     @GetMapping("/getorder")
     public List<Order> getOrder() {return this.orderService.getOrders();}
@@ -22,6 +26,16 @@ public class OrderController {
     @GetMapping("/getorder/vendor/{vendorid}")
     public List<Order> getOrdersByVendorId(@PathVariable ("vendorid") String vendor) {return this.orderService.getOrdersByVendorId(vendor);}
 
+    @GetMapping("/getorder/customer/{customerid}")
+    public List<Order> getOrdersByCustomerID(@PathVariable ("customerid") String customer){
+        return this.orderService.getOrdersByCustomerID(customer);
+    }
+
+    @GetMapping("/getvendor/{vendorid}")
+    public User getNameById(@PathVariable ("vendorid") int vendorid)
+    {
+        return this.userService.getUserById(vendorid);
+    }
 
     @GetMapping("/getorder/{orderid}")
     public Order getOrder(@PathVariable ("orderid") int orderid) {
