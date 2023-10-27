@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:8000"})
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:8000",})
 @RestController
 @RequestMapping("/designer")
 public class DesignerController {
@@ -129,10 +129,33 @@ public class DesignerController {
 
     }
 
+    @PutMapping("/designtool/savedesign/{id}")
+    public String updateData(@PathVariable("id") int id, @RequestBody String data) {
+//        DesigntoolFiles designtoolFiles = new DesigntoolFiles();
+
+        designerMyDesignService.updateFiles(id, data);
+        return "Successfully Updated";
+
+    }
+
+    @GetMapping ("/designtool/req/{did}/{id}")
+    public String saveRequest_id(@PathVariable("id") int request_id, @PathVariable("did") int designer_id) {
+        designerMyDesignService.saveRequest_id(request_id, designer_id);
+        return "Successfully Saved";
+
+    }
+
+    @GetMapping("/designtool/getdesigns/req/{id}")
+    public ResponseEntity<DesigntoolFiles> getFilesByRequestID(@PathVariable("id") int request_id){
+        DesigntoolFiles designtoolFiles =  designerMyDesignService.GetByReqid(request_id);
+        return ResponseEntity.ok(designtoolFiles);
+    }
+
     @GetMapping("/designtool/getdesign/{id}")
-    public ResponseEntity<DesigntoolFiles> getFilesByID(@PathVariable("id") int design_id){
-    DesigntoolFiles designtoolFiles =  designerMyDesignService.Getdetails(design_id);
+    public ResponseEntity<DesigntoolFiles> getFilesByID(@PathVariable("id") int id){
+    DesigntoolFiles designtoolFiles =  designerMyDesignService.Getdetails(id);
       return ResponseEntity.ok(designtoolFiles);
     }
+
 
 }

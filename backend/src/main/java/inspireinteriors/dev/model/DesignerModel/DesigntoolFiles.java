@@ -18,13 +18,16 @@ public class DesigntoolFiles {
     @Column(length = 100000)
     private String Data;
 
+    private int request_id;
+
     // Constructors
 
 
-    public DesigntoolFiles(int id, int designer_id, String data) {
+    public DesigntoolFiles(int id, int designer_id, String data, int request_id) {
         this.id = id;
         this.designer_id = designer_id;
         Data = data;
+        this.request_id = request_id;
     }
 
     public DesigntoolFiles() {
@@ -57,6 +60,17 @@ public class DesigntoolFiles {
         Data = data;
     }
 
+    public void setRequest_id(int request_id) {
+        this.request_id = request_id;
+    }
+    public void setRequestDesigner_id(int request_id, int designer_id) {
+        this.request_id = request_id;
+        this.designer_id = designer_id;
+    }
+    public int getRequest_id() {
+        return request_id;
+    }
+
     //ToString
 
 
@@ -66,6 +80,7 @@ public class DesigntoolFiles {
                 "id=" + id +
                 ", designer_id=" + designer_id +
                 ", Data='" + Data + '\'' +
+                ", Request_id='" + request_id + '\'' +
                 '}';
     }
 }

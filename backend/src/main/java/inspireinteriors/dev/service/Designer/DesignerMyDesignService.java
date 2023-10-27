@@ -115,8 +115,23 @@ public class DesignerMyDesignService {
     public DesigntoolFiles saveFiles(DesigntoolFiles designtoolFiles){
         return designerDesigntoolFilesRepository.save(designtoolFiles);
     }
+    public DesigntoolFiles updateFiles(int id, String data){
+        DesigntoolFiles designtoolFiles = designerDesigntoolFilesRepository.findById((long) id).orElse(null);
+        designtoolFiles.setData(data);
+        return designerDesigntoolFilesRepository.save(designtoolFiles);
+
+    }
+
+    public DesigntoolFiles saveRequest_id(int request_id, int designer_id){
+        DesigntoolFiles designtoolFiles = new DesigntoolFiles();
+        designtoolFiles.setRequestDesigner_id(request_id, designer_id);
+        return designerDesigntoolFilesRepository.save(designtoolFiles);
+    }
 
    public DesigntoolFiles Getdetails(int id){
         return designerDesigntoolFilesRepository.findById((long) id).orElse(null);
+   }
+   public DesigntoolFiles GetByReqid(int request_id){
+        return designerDesigntoolFilesRepository.findByRequest_id(request_id);
    }
 }
