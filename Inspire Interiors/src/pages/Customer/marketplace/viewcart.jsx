@@ -167,14 +167,14 @@ const Cart = () => {
                                                     <MDBRow className="justify-content-between align-items-center">
                                                         <MDBCol md="2" lg="2" xl="2">
                                                             <MDBCardImage className="rounded" fluid
-                                                                src={(`../../../../src/assets/img/product/${item.productData.productImg}`)}
-                                                                alt={item.productData.product_name} />
+                                                                src={(`../../../../src/assets/img/product/${item.productData[0].productImg}`)}
+                                                                alt={item.productData[0].product_name} />
                                                         </MDBCol>
                                                         <MDBCol md="5" lg="5" xl="5">
                                                             <div >
-                                                                {/* <p className="lead fw-normal mb-2">{item.name}</p> */}
+                                                                <p className="lead fw-normal mb-2">{item.productData[0].product_name}</p>
                                                                 <p>
-                                                                    {/* <span className="text-muted">Color: </span>{item.color} */}
+                                                                    <span className="text-muted">Type: </span>{item.productData[0].type}
                                                                 </p>
                                                             </div>
                                                             <div className="d-flex align-items-center w-50 mt-2 rounded border border-grey" >
