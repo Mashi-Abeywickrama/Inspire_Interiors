@@ -5,6 +5,11 @@
 }
 
 .low-box{
+    border: 1px solid rgba(255, 159, 64, 0.5) !important;
+    background-color: rgba(255, 206, 86, 0.5) !important;
+}
+
+.out-box{
     border: 1px solid #EA8F95 !important;
     background-color: #F0BDC1 !important;
 }
