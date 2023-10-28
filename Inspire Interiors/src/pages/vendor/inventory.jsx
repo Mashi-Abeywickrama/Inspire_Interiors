@@ -6,6 +6,7 @@ import Navigationbar from '../../components/navigationbar';
 import VendorSidebar from './sidebar';
 
 import Money from './../../assets/img/vendor/money.svg';
+import LowStock from './../../assets/img/vendor/lowstock.png';
 import Sofa from './../../assets/img/vendor/sofa.png';
 
 import axios from 'axios';
@@ -75,7 +76,9 @@ const Inventory = () => {
   const [orderData, setorderData] = useState([]);
   const [variationData, setvariationData] = useState([]);
   const [lowStockCount, setLowStockCount] = useState(0);
+  const [outStockCount, setOutStockCount] = useState(0);
   const [completeData, setCompleteData] = useState([]);
+  const [InstockData, setInstockData] = useState([]);
 
   const urlParams = new URLSearchParams(window.location.search);
   const productID = urlParams.get('id');
@@ -121,15 +124,49 @@ const Inventory = () => {
     axiosInstance
       .get(`/viewvariations`)
       .then((response) => {
+       
+          
+       
         setvariationData(response.data);
 
         const lowStockItems = response.data.filter(variation => variation.quantity < 5);
         setLowStockCount(lowStockItems.length);
+
+        const outStockItems = response.data.filter(variation => variation.quantity === 0);
+        setOutStockCount(outStockItems.length);
+
+        const inStockItems = response.data.filter(variation => variation.quantity >= 5);
+        console.log(inStockItems);
+        setInstockData(inStockItems);
+
+        axiosInstance
+            .get(`/viewproducts/${inStockItems.product_id}`)
+            .then((response) => {
+              setInstockData(response.data);
+              console.log(response.data);
+            })
+            .catch((error) => {
+              console.log('Error fetching data:', error);
+          });
+
       })
       .catch((error) => {
         console.log('Error fetching data:', error);
     });
   }, []);
+
+  console.log(InstockData);
+
+  const id = InstockData.product_id;
+  console.log(id);
+
+  
+
+  function outStockBadge(quantity) {
+    if (quantity === 0) {
+      return <span className="badge text-bg-danger Cabin-text">Out of Stock</span>;
+    }
+  }
 
   const filteredData = (status) => 
         orderData.filter((item) => item.status === status);
@@ -290,21 +327,21 @@ const Inventory = () => {
                     </div>
                   </div>
                 </div>
-                <div className='col-lg-12 bg-white rounded-3 my-2 shadow p-4'>
+                <div className='col-lg-12 low-box rounded-3 my-2 shadow p-4'>
                   <div className='d-flex flex-row gap-5'>
-                    <img className='img-fluid' src={Money} />
-                    <div className='d-flex flex-column align-content-center'>
-                      <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>Expenses</p>
-                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR 14,751.00</p>
-                    </div>
-                  </div>
-                </div>
-                <div className='col-lg-12 rounded-3 my-2 shadow low-box p-4'>
-                  <div className='d-flex flex-row gap-5'>
-                    <img className='img-fluid' src={Money} />
+                    <img className='img-fluid mt-2' style={{height:"35px", width:"35px"}} src={LowStock} />
                     <div className='d-flex flex-column align-content-center'>
                       <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>Low Stock Items</p>
                       <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>{lowStockCount}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-lg-12 rounded-3 my-2 shadow out-box p-4'>
+                  <div className='d-flex flex-row gap-5'>
+                    <img className='img-fluid mt-2' style={{height:"35px", width:"35px"}} src={LowStock} />
+                    <div className='d-flex flex-column align-content-center'>
+                      <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>Out of Stock Items</p>
+                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>{outStockCount}</p>
                     </div>
                   </div>
                 </div>

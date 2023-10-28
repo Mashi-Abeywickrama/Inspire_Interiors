@@ -70,6 +70,41 @@ const ViewOrder = () => {
         });
     }, [orderData.variation_id]);
 
+    const getOrderStatus = (status) => {
+        const statusDetails = {
+          New: {
+            className: 'new d-flex gap-2 align-items-center',
+            text: 'New',
+          }, 
+          Completed: {
+            className: 'completed d-flex gap-2 align-items-center',
+            text: 'Completed',
+          },
+          Ongoing: {
+            className: 'ongoing d-flex gap-2 align-items-center',
+            text: 'Ongoing',
+          },
+          Delayed: {
+            className: 'delayed d-flex gap-2 align-items-center',
+            text: 'Delayed',
+          },
+          Canceled: {
+            className: 'outstock d-flex gap-2 align-items-center',
+            text: 'Canceled',
+          },
+        };
+        if (statusDetails.hasOwnProperty(status)) {
+          const { className, text } = statusDetails[status];
+          return (
+            <div className={className}>
+              <i className="bi bi-circle-fill tag-icon"></i>
+              <p className="m-0">{text}</p>
+            </div>
+          );
+        }
+        return null;
+    };
+
     console.log(orderData.product);
     console.log(orderData.variation_id);
 
@@ -88,7 +123,7 @@ const ViewOrder = () => {
                 <div className="col-12 d-flex flex-column">
                     <div className="d-flex flex-row justify-content-between">
                         <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text">Order Details - #{orderData.orderid}</p>
-                        <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{ height: "1.5rem", background: "#F6E3AC", color: "#6B4605" }}><Icon.CircleFill size={7} className="mx-1" />{orderData.status}</div>
+                        <div className="badge fw-semibold rounded-3 mx-5 Cabin-text"> {getOrderStatus(orderData.status)}</div>
                     </div>
 
                 </div>
@@ -113,7 +148,10 @@ const ViewOrder = () => {
                                             <span className="fw-semibold px-2 Cabin-text text-dark">Rs.{discountedPrice}</span>
                                             </div>
                                         </div>
-
+                                    </div>
+                                    <div className="d-flex flex-row">
+                                        <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Material:</p>
+                                        <p className="px-3 fs-6 fw-semibold Cabin-text text-dark">{variationData.material}</p>
                                     </div>
                                     <div className="d-flex flex-row">
                                         <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Color:</p>
@@ -132,9 +170,8 @@ const ViewOrder = () => {
                                 <div className="d-flex flex-row justify-content-between">
                                     <div className="d-flex flex-row gap-5">
                                         <p className="fs-6 fw-semibold px-5 Cabin-text">Vender Confirmation:</p>
-                                        <p className="fs-6 fw-normal Cabin-text">Confirmed By Damro</p>
                                     </div>
-                                    <p className="fs-6 fw-semibold px-4 Cabin-text">01 Feb, 2023</p>
+                                    <div className="badge fw-semibold rounded-3 mx-5 Cabin-text"> {getOrderStatus(orderData.status)}</div>
                                 </div>
                                 <div className="d-flex flex-row justify-content-between">
                                     <p className="fs-6 fw-semibold px-5 Cabin-text">Package Preparation:</p>
