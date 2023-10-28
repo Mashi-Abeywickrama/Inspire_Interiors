@@ -1,6 +1,11 @@
 package inspireinteriors.dev.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+@AllArgsConstructor
+@RequiredArgsConstructor
 
 @Table(name = "orders")
 @Entity
@@ -52,12 +57,7 @@ public class Order{
 
 // constructor
 
-    public Order() {
-
-    }
-
-    public Order(int orderid, int ref_no, String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status, String date, String variation_id, String shipping_address) {
-        this.orderid = orderid;
+    public Order(int ref_no, String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status, String date, String variation_id, String shipping_address) {
         this.ref_no = ref_no;
         this.product = product;
         Design = design;
@@ -72,6 +72,255 @@ public class Order{
         this.variation_id = variation_id;
         this.shipping_address = shipping_address;
     }
+
+    public Order(int ref_no, String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status, String date, String variation_id) {
+        this.ref_no = ref_no;
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+        this.commission = commission;
+        this.status = status;
+        this.date = date;
+        this.variation_id = variation_id;
+    }
+
+    public Order(int ref_no, String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status, String date) {
+        this.ref_no = ref_no;
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+        this.commission = commission;
+        this.status = status;
+        this.date = date;
+    }
+
+    public Order(int ref_no, String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status) {
+        this.ref_no = ref_no;
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+        this.commission = commission;
+        this.status = status;
+    }
+
+    public Order(int ref_no, String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission) {
+        this.ref_no = ref_no;
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+        this.commission = commission;
+    }
+
+    public Order(int ref_no, String product, String design, int quantity, String customer, String vendor, String designer, double price) {
+        this.ref_no = ref_no;
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+    }
+
+    public Order(int ref_no, String product, String design, int quantity, String customer, String vendor, String designer) {
+        this.ref_no = ref_no;
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+    }
+
+    public Order(int ref_no, String product, String design, int quantity, String customer, String vendor) {
+        this.ref_no = ref_no;
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+    }
+
+    public Order(int ref_no, String product, String design, int quantity, String customer) {
+        this.ref_no = ref_no;
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+    }
+
+    public Order(int ref_no, String product, String design, int quantity) {
+        this.ref_no = ref_no;
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+    }
+
+    public Order(int ref_no, String product, String design) {
+        this.ref_no = ref_no;
+        this.product = product;
+        Design = design;
+    }
+
+    public Order(int ref_no, String product) {
+        this.ref_no = ref_no;
+        this.product = product;
+    }
+
+    public Order(int ref_no) {
+        this.ref_no = ref_no;
+    }
+
+    public Order(String product) {
+        this.product = product;
+    }
+
+    public Order(String product, String design) {
+        this.product = product;
+        Design = design;
+    }
+
+    public Order(String product, String design, int quantity) {
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+    }
+
+    public Order(String product, String design, int quantity, String customer) {
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+    }
+
+    public Order(String product, String design, int quantity, String customer, String vendor) {
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+    }
+
+    public Order( String customer,String product, int quantity, int price,String variation_id ,String status, String vendor,String shipping_address) {
+        this.product = product;
+        this.quantity = quantity;
+        this.price = price;
+        this.variation_id = variation_id;
+        this.status = status;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.shipping_address = shipping_address;
+
+    }
+
+    public Order(String product, String design, int quantity, String customer, String vendor, String designer, double price) {
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+    }
+
+    public Order(String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission) {
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+        this.commission = commission;
+    }
+
+    public Order(String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status) {
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+        this.commission = commission;
+        this.status = status;
+    }
+
+    public Order(String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status, String date) {
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+        this.commission = commission;
+        this.status = status;
+        this.date = date;
+    }
+
+    public Order(String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status, String date, String variation_id) {
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+        this.commission = commission;
+        this.status = status;
+        this.date = date;
+        this.variation_id = variation_id;
+    }
+
+    public Order(String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status, String date, String variation_id, String shipping_address) {
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+        this.commission = commission;
+        this.status = status;
+        this.date = date;
+        this.variation_id = variation_id;
+        this.shipping_address = shipping_address;
+    }
+
+    public Order(int orderid, int ref_no, String product, String design, int quantity, String customer, String vendor, String designer, double price, double commission, String status, String date, String variation_id) {
+        this.orderid = orderid;
+        this.ref_no = ref_no;
+        this.product = product;
+        Design = design;
+        this.quantity = quantity;
+        this.customer = customer;
+        this.vendor = vendor;
+        this.designer = designer;
+        this.price = price;
+        this.commission = commission;
+        this.status = status;
+        this.date = date;
+        this.variation_id = variation_id;
+    }
+
+
 
     //getters and setters
 

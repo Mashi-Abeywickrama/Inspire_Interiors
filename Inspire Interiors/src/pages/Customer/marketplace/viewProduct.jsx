@@ -15,6 +15,7 @@ import Mahogany from "./../../../assets/img/vendor/material/mahogany.jpg";
 import Cotton from "./../../../assets/img/vendor/material/cotton.png";
 import Glass from "./../../../assets/img/vendor/material/glass.jpg";
 import QRPopup from '../../../components/customer/popup/ARPopup';
+import { useSession } from '../../../constants/SessionContext';
 
 const stardata = {
     data:"4.5"
@@ -30,6 +31,17 @@ const ViewProduct = () => {
     const [selectedVariation, setSelectedVariation] = useState(null);
     const [selectedVariationIndex, setSelectedVariationIndex] = useState(null);
     const [quantity, setQuantity] = useState(1);
+    const [selectedVariationColor, setSelectedVariationColor] = useState('');
+    const [selectedVariationMaterial, setSelectedVariationMaterial] = useState('');
+     const [shippingAddresses, setShippingAddresses] = useState([]);
+     const [selectedAddressId, setSelectedAddressId] = useState(''); // State variable to store the selected address ID
+
+
+    const handleAddressSelect = (event) => {
+        const selectedId = event.target.value;
+        setSelectedAddressId(selectedId);
+        console.log('Selected address ID:', selectedId);
+    };
 
     const urlParams = new URLSearchParams(window.location.search);
     const productID = urlParams.get("id");
@@ -108,6 +120,24 @@ const ViewProduct = () => {
         });
     }, []);
 
+    const sessionItems = useSession();
+    const userId = sessionItems.sessionData.userid;
+
+    useEffect(() => {
+        // Make an API request to fetch the shipping addresses from the backend
+        axiosInstance.post('/shippingaddresses',{
+            userId: userId, // TODO: Replace with the actual user ID
+
+        })
+            .then(response => {
+                setShippingAddresses(response.data); // Assuming the response is an array of shipping addresses
+                console.log('Shipping addresses:', response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching shipping addresses:', error);
+            });
+    }, []); // Fetch the addresses when the component mounts
+
     // const rate = averageRating.toFixed(1)
     const generateStars = (rate) => {
         const fullStars = Math.floor(rate);
@@ -150,8 +180,11 @@ const ViewProduct = () => {
     const defaultClass = 'defaultClass';
 
     const handleVariationClick = (variation,index) => {
-        setSelectedVariation(variation);
+        setSelectedVariation(variation.variation_id);
+        setSelectedVariationColor(variation.color);
+        setSelectedVariationMaterial(variation.material);   
         setSelectedVariationIndex(index);
+        
     }
 
     const getProductImage = () => {
@@ -165,6 +198,21 @@ const ViewProduct = () => {
     }
 
     const handleNewOrder = async (id) =>{
+        await axiosInstance.post("/addorder",  {         
+           customer: userId,
+              product: id,
+                quantity: quantity,
+                price: calculateTotalPrice(),
+                shipping_address: selectedAddressId,
+                variation_id: selectedVariation,
+                status: "New",
+                vendor: productData.vendor_id,
+           
+           }).then(() => {
+            console.log("Added")
+            }).catch((error) => {
+            console.log(error);
+        });
 
     }
 
@@ -177,13 +225,21 @@ const ViewProduct = () => {
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
                     <p className="fs-3 fw-bold Cabin-text">{productData.type}</p>
                     <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{productData.product_name}</p>
+                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{productData.product_name}
+                    
+                    </p>
                     </div>
                     <QRPopup />
                 </div>
                 <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row'>
                     <div className='d-flex flex-column side-div'>
-                        <p className='fs-4 fw-semibold Cabin-text mt-3'>{productData.product_name}</p>
+                        <p className='fs-4 fw-semibold Cabin-text mt-3'>{productData.product_name}
+                        {selectedVariationColor && selectedVariationMaterial && (
+                                <span className="selected-variation-info">
+                                      - {selectedVariationColor} {selectedVariationMaterial}
+                                </span>
+                            )}
+                        </p>
                         <div className='d-flex flex-row w-50 justify-content-between my-2'>
                             <div className='fs-4 fw-normal Cabin-text'>${productData.entry_price}</div>
                             <div className="d-flex flex-row gap-3">
@@ -199,7 +255,7 @@ const ViewProduct = () => {
                             {variationData.map((data, index) => (
                             <div   key={index} 
                             className={`d-flex flex-column ${selectedVariationIndex === index ? highlightClass : defaultClass}`}
-                            style={{ marginRight: '10px',cursor:'pointer' }} onClick={() => handleVariationClick(data.variation_id,index)}>
+                            style={{ marginRight: '10px',cursor:'pointer' }} onClick={() => handleVariationClick(data,index)}>
                                 <div className="d-flex gap-0">
                                     {materialImage(data.material)}
                                     <div className="radius-color" style = {{backgroundColor:data.color, width:"20px",height:"40px"} }></div>
@@ -232,7 +288,7 @@ const ViewProduct = () => {
                         </div>
                         <div className='d-flex flex-row w-50 justify-content-between mt-4'>
                             <p className='fs-6 fw-normal Cabin-text'>Shipping Fee - {productData.shipping_fee}</p>
-                            <p className='fs-6 fw-normal Cabin-text'>Tools provided</p>
+                            
                             <p className='fs-6 fw-normal Cabin-text'>Delivered within a week</p>
                         </div>
                         <div className="d-flex flex-row justify-content-between mt-4">
@@ -242,6 +298,22 @@ const ViewProduct = () => {
                             <p className="fs-2 fw-normal Cabin-text">
                                 ${calculateTotalPrice() + productData.shipping_fee}+
                             </p>
+                        </div>
+                        <div className="d-flex flex-column w-50 mt-5">
+                            <label htmlFor="shippingAddress">Select Shipping Address:</label>
+                            <select
+                                id="shippingAddress"
+                                className="form-select"
+                                onChange={handleAddressSelect}
+                                value={selectedAddressId} // Set the selected value based on state
+                            >
+                                
+                                {shippingAddresses.map((address, index) => (
+                                    <option key={index} value={address.id}>
+                                        {address.address_title}, {address.lane}, {address.city}, {address.district}, {address.province}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                         <div className='d-flex flex-row gap-4 mt-4'>
                             <Icon.BagDashFill className='mx-2' size={20} color="#035C94" />

@@ -29,4 +29,7 @@ public class OrderService {
 
     public List<Order> getOrderByStatus(String status) { return this.orderRepository.findByStatus(status); }
 
+    public Order addOrder(Order order) {
+        return this.orderRepository.save(order);
+    }
 }
