@@ -32,4 +32,11 @@ public class OrderService {
     public Order addOrder(Order order) {
         return this.orderRepository.save(order);
     }
+
+    public void updateOrderStatus(Long orderId, String status) {
+        Order order = this.orderRepository.findById(Math.toIntExact(orderId)).orElse(null);
+        assert order != null;
+        order.setStatus(status);
+        this.orderRepository.save(order);
+    }
 }
