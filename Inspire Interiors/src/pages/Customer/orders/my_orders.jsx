@@ -17,6 +17,7 @@ import { useSession } from '../../../constants/SessionContext';
 
 const MyOrder = () => {
   const [orderData, setOrderData] = useState([]);
+  const [userDate, setUserDate] = useState([]);
   const [selectedTab, setSelectedTab] = useState('All');
   const [loading, setLoading] = useState(true);
 
@@ -49,6 +50,53 @@ const MyOrder = () => {
       });
   }, []);
 
+  useEffect(() => {
+    axiosInstance
+      .get(`/users`)
+      .then((response) => {
+
+        setUserDate(response.data);
+        setLoading(false);
+
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data", error);
+
+        setLoading(false);
+      });
+  }, []);
+
+  const mergedOrderUser = (orderData, userDate) => {
+    const mergedOutput = orderData.map(
+      (orderItem) => {
+      const matchingUser = userDate.find(
+        (userItem) =>  userItem.userid == orderItem.vendor
+      );
+
+  
+      if (matchingUser) {
+        // Merge the data from both sources
+        return {
+          
+          ...matchingUser,
+          ...orderItem,
+         
+        };
+      } else {
+        return orderItem;
+      }
+    });
+  
+    return mergedOutput;
+  };
+
+  const mergedUserVendor = mergedOrderUser(orderData, userDate);
+  console.log("mergeData_fair", mergedUserVendor);
+
+
+  
+
   const getOrderStatus = (status) => {
     const statusDetails = {
       New: {
@@ -63,6 +111,27 @@ const MyOrder = () => {
         className: 'ongoing d-flex gap-2 align-items-center',
         text: 'Ongoing',
       },
+
+      Prepared: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Prepared',
+      },
+
+      Shipped: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Shipped',
+      },
+
+      Delivered: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Delivered',
+      },
+
+       Confirmed: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Confirmed',
+      },
+
       Delayed: {
         className: 'delayed d-flex gap-2 align-items-center',
         text: 'Delayed',
@@ -85,7 +154,10 @@ const MyOrder = () => {
   };
 
   const filteredData = (status) =>
-    orderData.filter((item) => item.status === status);
+    mergedUserVendor.filter((item) => item.status === status);
+
+
+    
 
 
   // const data = {
@@ -621,7 +693,7 @@ const MyOrder = () => {
             className="mb-3 bg-white tab"
           >
             <Tab eventKey="all" title="All">
-              <Link to="vieworder"><div className=''>
+              <div className=''>
 
                 <MDBDataTableV5 responsive
                   striped
@@ -648,7 +720,7 @@ const MyOrder = () => {
                         width: 100
                       },
                       {
-                        label: 'DELIVERY DATE',
+                        label: 'INITIALIZED DATE',
                         field: 'date',
                         sort: 'asc',
                         width: 150
@@ -666,11 +738,11 @@ const MyOrder = () => {
                         width: 100
                       }
                     ],
-                    rows: orderData.map((item) => ({
-                      name: item.customer,
+                    rows: mergedUserVendor.map((item) => ({
+                      name: item.name,
                       number: item.ref_no,
                       quantity: item.quantity,
-                      date: item.date,
+                      date: item.date ,
                       action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
                       status: getOrderStatus(item.status)
                     })),
@@ -681,10 +753,10 @@ const MyOrder = () => {
                   searching={true}
                 />
               </div>
-              </Link>
+              
             </Tab>
-            <Tab eventKey="Completed" title="Completed">
-              <Link to="vieworder"><div className=''>
+            <Tab eventKey="New" title="New">
+              <div className=''>
 
                 <MDBDataTableV5 responsive
                   striped
@@ -729,8 +801,8 @@ const MyOrder = () => {
                         width: 100
                       }
                     ],
-                    rows: filteredData("Completed").map((item) => ({
-                      name: item.customer,
+                    rows: filteredData("New").map((item) => ({
+                      name: item.name,
                       number: item.ref_no,
                       quantity: item.quantity,
                       date: item.date,
@@ -744,10 +816,10 @@ const MyOrder = () => {
                   searching={true}
                 />
               </div>
-              </Link>
+              
             </Tab>
             <Tab eventKey="Ongoing" title="Ongoing">
-              <Link to="vieworder"><div className=''>
+             <div className=''>
 
                 <MDBDataTableV5 responsive
                   striped
@@ -807,10 +879,10 @@ const MyOrder = () => {
                   searching={true}
                 />
               </div>
-              </Link>
+              
             </Tab>
             <Tab eventKey="Delayed" title="Delayed">
-              <Link to="vieworder"><div className=''>
+              <div className=''>
 
                 <MDBDataTableV5 responsive
                   striped
@@ -870,10 +942,9 @@ const MyOrder = () => {
                   searching={true}
                 />
               </div>
-              </Link>
             </Tab>
             <Tab eventKey="Canceled" title="Canceled">
-              <Link to="vieworder"><div className=''>
+             <div className=''>
 
                 <MDBDataTableV5 responsive
                   striped
@@ -933,7 +1004,7 @@ const MyOrder = () => {
                   searching={true}
                 />
               </div>
-              </Link>
+             
             </Tab>
           </Tabs>
         </div>
