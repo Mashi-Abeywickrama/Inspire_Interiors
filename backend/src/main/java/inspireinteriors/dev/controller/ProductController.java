@@ -74,6 +74,25 @@ public class ProductController {
         return ResponseEntity.ok(variationId+".jpg");
     }
 
+    @PutMapping("/setARModel")
+    public ResponseEntity<String> updateARModelPic(
+            @RequestParam("modelId") Integer modelId,
+            @RequestParam("file") MultipartFile imageFile
+    ) throws JsonProcessingException, IOException, JSONException {
+
+//         Handle image upload
+        String uploadedFileName = handleARModelUpload(imageFile, modelId);
+//        System.out.println("Variation ID: " + imageFile.getOriginalFilename());
+
+
+//
+        ARModels arModels = arModelsService.getARModelById(modelId);
+        arModels.setModelFile(modelId+".jpg");
+        arModelsService.updateModelImage(arModels);
+//
+        return ResponseEntity.ok(modelId+".jpg");
+    }
+
 
     @PostMapping("/addproducts")
     public ResponseEntity<Product> createdproduct(@RequestBody Product product){
@@ -104,6 +123,10 @@ public class ProductController {
         return productService.createvariation(variation);
     }
 
+    @PostMapping("/addmodel")
+    public ARModels createVariation(@RequestBody ARModels arModels) {
+        return arModelsService.createARModel(arModels);
+    }
     @GetMapping("/viewvariations/vendor/{id}")
     public ResponseEntity<List<Variation>> getVariationsByvendorId(@PathVariable(value = "id") int product_id) {
         List<Variation> variations = productService.getVariationsByProductId(product_id);
@@ -295,6 +318,51 @@ public class ProductController {
         System.out.println(parentFolderAbsolutePath);
 
         String filePath =parentFolderAbsolutePath +"/src/assets/img/variation"+  File.separator  + fileName;
+
+        try {
+            // Create the directory structure if it doesn't exist
+            File directory = new File(filePath).getParentFile();
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+
+
+
+            File destFile = new File(filePath);
+            imageFile.transferTo(destFile);
+
+            return fileName; // Return the absolute path of the saved image
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    private String handleARModelUpload(MultipartFile imageFile, Integer modelID) {
+
+
+
+
+        if (imageFile == null || imageFile.isEmpty()) {
+            return null; // No image provided
+        }
+
+        String fileName = modelID + ".jpg";
+
+
+        String currentWorkingDirectory = System.getProperty("user.dir");
+
+        // Construct the relative path to the parent folder
+        String parentFolderRelativePath = ".." + File.separator + "Inspire Interiors";
+
+// Combine with the current working directory to get the absolute path
+        String parentFolderAbsolutePath = currentWorkingDirectory + File.separator + parentFolderRelativePath;
+
+        System.out.println(parentFolderAbsolutePath);
+
+        String filePath =parentFolderAbsolutePath +"/src/assets/img/qr_code"+  File.separator  + fileName;
 
         try {
             // Create the directory structure if it doesn't exist
