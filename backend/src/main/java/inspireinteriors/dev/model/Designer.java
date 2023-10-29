@@ -22,26 +22,40 @@ public class Designer {
     @Column(name = "province")
     private String province;
 
+    @Column(name = "bio")
+    private String bio;
+
+    @Column(name = "specialities")
+    private String specialities;
+
+    @Column(name = "averagereview")
+    private double averagereview;
+
 
     public Designer() {
     }
 
-    public Designer(int designer_id, String lane_no, String city, String district,String province) {
+    public Designer(int designer_id, String lane_no, String city, String district, String province, String bio, String specialities, double averagereview) {
         this.designer_id = designer_id;
         this.lane_no = lane_no;
         this.city = city;
         this.district = district;
         this.province = province;
+        this.bio = bio;
+        this.specialities = specialities;
+        this.averagereview = averagereview;
     }
 
-    public Designer(String laneNo, String city, String district, String province) {
-        this.lane_no = laneNo;
+    public Designer(String lane_no, String city, String district, String province, String bio, String specialities, double averagereview) {
+        this.lane_no = lane_no;
         this.city = city;
         this.district = district;
         this.province = province;
+        this.bio = bio;
+        this.specialities = specialities;
+        this.averagereview = averagereview;
     }
-
-    //getters
+//getters
 
     public int getDesigner_id() {
         return designer_id;
@@ -83,5 +97,29 @@ public class Designer {
 
     public void setProvince(String province) {
         this.province = province;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getSpecialities() {
+        return specialities;
+    }
+
+    public void setSpecialities(String specialities) {
+        this.specialities = specialities;
+    }
+
+    public double getAveragereview() {
+        return averagereview;
+    }
+
+    public void setAveragereview(double averagereview) {
+        this.averagereview = averagereview;
     }
 }

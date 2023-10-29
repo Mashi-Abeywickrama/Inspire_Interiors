@@ -1,7 +1,7 @@
 package inspireinteriors.dev.service;
 
 import inspireinteriors.dev.model.VendorOffer;
-import inspireinteriors.dev.repository.DesignerRepository;
+import inspireinteriors.dev.repository.Designer.DesignerRepository;
 import inspireinteriors.dev.repository.VendorOfferRepository;
 import inspireinteriors.dev.repository.VendorRepository;
 import jakarta.persistence.EntityNotFoundException;
