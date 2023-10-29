@@ -94,6 +94,7 @@ import ViewDelivery from "./pages/CustomerSupport/viewDelivery";
 import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
+import Custom from "./pages/Customer/Customization/custom";
 import CategoryView from "./pages/Customer/marketplace/categoryView";
 
 // Designer
@@ -117,6 +118,7 @@ import { Loader } from "semantic-ui-react";
 import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
 import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
 import TypeView from "./pages/Customer/marketplace/typeView";
+
 
 const routes = (
   <>
@@ -185,6 +187,7 @@ const routes = (
       <Route path="checkout/payment" element={<PaymentMethod />} />
       <Route path="checkout/shipping" element={<ShippingMethod />} />
       <Route path="orders/vieworder/:id" element={<OrderView />} />
+      <Route path="customization" element={<Custom />}></Route>
       <Route path="settings" element={<CusSetting />}></Route>
     </Route>
     {/* Admin Routes */}

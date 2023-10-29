@@ -18,4 +18,6 @@ public interface DesignerMyDesignsRepository extends JpaRepository<MyDesigns, Lo
     List<MyDesigns> findMyDesignsByDesign_id(@Param("dId") int designer_id);
 
 
+    @Query(value= "SELECT designer_id, COUNT(designer_id) as TotalCount FROM my_designs Group By designer_id", nativeQuery = true)
+    List getCountsOfDesigns();
 }
