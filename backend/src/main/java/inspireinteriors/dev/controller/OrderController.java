@@ -5,13 +5,14 @@ import inspireinteriors.dev.model.User;
 import inspireinteriors.dev.service.OrderService;
 import inspireinteriors.dev.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
-
 
 @RestController
 public class OrderController {
@@ -94,5 +95,54 @@ public class OrderController {
         return completedOrders;
     }
 
+    @PostMapping("/addorder")
+    public Order addOrder(@RequestBody Order order) {
+        System.out.println(order.getCustomer());
+        int reff_no = generateRandomNumber();
+        LocalDate currentDate = LocalDate.now();
 
+        // Store the full current date in a variable
+        LocalDate myDate = currentDate;
+        order.setDate(String.valueOf(myDate));
+        order.setRef_no(reff_no);  // Set reference number
+        return this.orderService.addOrder(order);
+    }
+
+    public int generateRandomNumber() {
+        Random random = new Random();
+        int min = 10000000; // Smallest 8-digit number
+        int max = 99999999; // Largest 8-digit number
+        return random.nextInt((max - min) + 1) + min;
+    }
+
+    @PutMapping("/update-status/{orderId}")
+    public ResponseEntity<String> updateOrderStatus(
+            @PathVariable Long orderId,
+            @RequestBody OrderStatusUpdateDTO orderStatusUpdateDTO) {
+        try {
+            System.out.println(orderStatusUpdateDTO.getNewStatus());
+            orderService.updateOrderStatus(orderId, orderStatusUpdateDTO.getNewStatus());
+            return ResponseEntity.ok("Order status updated successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update order status.");
+        }
+    }
+
+    public static class OrderStatusUpdateDTO {
+        private String newStatus;
+
+        public OrderStatusUpdateDTO(){}
+
+        public OrderStatusUpdateDTO(String newStatus){
+            this.newStatus = newStatus;
+        }
+
+        public String getNewStatus() {
+            return newStatus;
+        }
+
+        public void setNewStatus(String newStatus) {
+            this.newStatus = newStatus;
+        }
+    }
 }
