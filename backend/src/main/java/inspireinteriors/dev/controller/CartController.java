@@ -47,6 +47,24 @@ public class CartController {
         }
     }
 
+    @PutMapping("/updateCartQuantity/{cartId}")
+    public ResponseEntity<String> updateCartQuantity(@PathVariable("cartId") int cartId, @RequestBody QuantityRequest quantityRequest) throws JSONException {
+        System.out.println(quantityRequest.getQuantity());
+        Cart cart;
+        cart = cartService.getCartById(cartId);
+        cart.setQuantity(quantityRequest.getQuantity());
+        boolean cartSaved = cartService.updateCartQuantity(cart);
+
+        if (cartSaved) {
+            JSONObject jsonResponse = new JSONObject();
+            jsonResponse.put("message", "Cart Item Updated Successfully!");
+
+            return ResponseEntity.ok(jsonResponse.toString());
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cart Not Updated!");
+        }
+    }
+
     @DeleteMapping(value = "/remove_cart/{cart_id}")
     public ResponseEntity<String> deleteCartItem(@PathVariable Integer cart_id) {
         try {
@@ -59,6 +77,21 @@ public class CartController {
             }
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting cart item ");
+        }
+    }
+
+    public static class QuantityRequest{
+        private int quantity;
+
+        public QuantityRequest() {
+        }
+
+        public QuantityRequest(int quantity) {
+            this.quantity = quantity;
+        }
+
+        public int getQuantity() {
+            return quantity;
         }
     }
 }
