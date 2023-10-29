@@ -57,6 +57,7 @@ import Address from "./pages/Customer/checkout/address";
 import PaymentMethod from "./pages/Customer/checkout/payment";
 import ShippingMethod from "./pages/Customer/checkout/shipping";
 import MarketPlace from "./pages/Customer/marketplace/marketPlace";
+import PopularView from "./pages/Customer/marketplace/popular";
 
 //Manager
 import ManagerDashboardLayout from "./layouts/Manager/managerDashboardLayout";
@@ -174,6 +175,10 @@ const routes = (
       <Route
         path="marketplace/category/:Type"
         element={<TypeView />}
+      />
+      <Route
+        path="marketplace/popularItems"
+        element={<PopularView />}
       />
       <Route path="cart" element={<Cart />} />
       <Route path="checkout/address" element={<Address />} />
