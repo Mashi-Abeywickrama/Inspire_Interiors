@@ -111,6 +111,8 @@ const PromotionRequest = () => {
 
     const [isEditing, setIsEditing] = useState(false);
     const [designerData, setDesignerData] = useState([]);
+    const [designer, setDesigner] = useState([]);
+    const [designCount, setDesignCount] = useState(0);
 
     const urlParams = new URLSearchParams(window.location.search);
     const offerID = urlParams.get('id');
@@ -207,6 +209,33 @@ const PromotionRequest = () => {
             });
     }, [offerData.designer]);
 
+    const designerID = designerData.userid;
+    console.log(designerID);
+
+    useEffect(() => {
+        axiosInstance
+        .get(`/designer/${designerID}`)
+        .then((response) => {
+            setDesigner(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log('Error fetching data', error);
+        });
+    }, [designerID]);
+
+    useEffect(() => {
+        axiosInstance
+        .get(`/designer/mydesigns/d/${designerID}`)
+        .then((response) => {
+            setDesignCount(response.data.length);
+            console.log(response.data.length);
+            })
+            .catch((error) => {
+                console.log('Error fetching data', error);
+        });
+    }, [designerID]);
+
     const handleEdit = async (e) => {
         e.preventDefault();
         try{
@@ -232,6 +261,8 @@ const PromotionRequest = () => {
         }
     };
 
+    
+
     const handleDelete = async (e) => {
         e.preventDefault();
         try{
@@ -250,8 +281,7 @@ const PromotionRequest = () => {
     <>
         <div className="request-container">
             <div className="col-12 d-flex flex-column flex-lg-row flex-md-row gap-3">
-                <div className=" col-lg-7 d-flex flex-column gap-4 h-100">
-                    <div className='col-lg-12 bg-white rounded-3 shadow p-4'>
+                    <div className='col-lg-7 bg-white rounded-3 shadow p-4 mb-3'>
                         <div className="d-flex flex-column flex-lg-row flex-md-row justify-content-between">
                             <div className="d-flex gap-4">
                                 <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text ">Promotion</p></Link>
@@ -322,8 +352,7 @@ const PromotionRequest = () => {
                                     </form>
                                 </Modal.Body>
                             </Modal>
-                        </div>
-                                
+                        </div>          
                         <div  className="d-flex flex-column mt-2">
                         <div>
                             <p className="fs-6 fw-bold Cabin-text my-2" style={{ color: "#545563" }}>Offer Overview</p>
@@ -349,26 +378,7 @@ const PromotionRequest = () => {
                                 paging={false}
                                 searching={false} />
                         </div>
-                        <button className="withdraw-btn float-end Cabin-text" onClick={handleDelete}>Withdraw Request</button>
-                    </div>
-                    <div className='col-lg-12 bg-white rounded-3 shadow gap-3 p-4 mb-3'>
-                        <p className="fs-5 fw-bold Cabin-text">Negotiation from Designers</p>
-                        <div className=''>
-                            <MDBDataTableV5 responsive
-                                striped
-                                bordered
-                                small
-                                data={tabledata2}
-                                sortable={false}
-                                exportToCSV={true}
-                                paging={false}
-                                searching={false} />
-                        </div>
-                        <div className="d-flex flex-row gap-4 float-end my-3">
-                            <Link to="/vendor/promotion/mynetwork"><button className="negotiate-btn float-end Cabin-text" style={{ color: "#545563" }}>Negotiate</button></Link>
-                            <Link to="/vendor/promotion/mynetwork"><button className="accept-btn float-end Cabin-text">Accept Offer</button></Link>
-                        </div>
-                    </div>
+                        <button className="withdraw-btn float-end Cabin-text mt-2" onClick={handleDelete}>Withdraw Request</button>
                 </div>
                 <div className="col-lg-5 mb-3">
                     <div className='col-lg-12 h-100 bg-white rounded-3 shadow p-4 '>
@@ -376,46 +386,37 @@ const PromotionRequest = () => {
                         <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
                             <img style={{ backgroundColor: "#FEE4CB", objectFit: "cover" }} className="img-fluid p-2 rounded-4 border" src={Customer} />
                             <div className="d-flex flex-column">
-                                <p className="fs-6 fw-bold Cabin-text">{designerData.name}</p>
-                                <div className="d-flex flex-row gap-4">
+                                <p className="fs-6 fw-bold Cabin-text mt-2">{designerData.name}</p>
+                                <div className="d-flex flex-column gap-2">
                                     <p className="fs-6 fw-semibold Cabin-text">{designerData.type}</p>
-                                    <div className="d-flex flex-column mt-1 gap-2">
-                                        <div className="d-flex flex-row gap-1">{generateStars(4.5)}</div>
-                                        <div className="d-flex flex-row gap-1 float-end">
-                                            <p className="fs-6 fw-bold Cabin-text">4.5/5.0</p>
-                                            <p className="fs-6 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>(556)</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="d-flex flex-row gap-4">
-                                    <Icon.Twitter size={25} color="#575757" />
-                                    <Icon.Linkedin size={25} color="#575757" />
-                                    <Icon.Youtube size={25} color="#575757" />
+                                    <div className="d-flex align-items-center gap-3">
+                                            <div className='d-flex flex-row gap-1'>
+                                                {generateStars(4.6)}
+                                            </div>
+                                            <div className="d-flex flex-row gap-1 float-end">
+                                                <div className="fs-6 fw-bold Cabin-text">4.6/5.0</div>
+                                            </div>
+                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="d-flex flex-row justify-content-evenly mt-4">
                             <div className="d-flex flex-column">
-                                <p className="fs-1 fw-semibold Cabin-text text-center m-0" style={{ color: "#FFC00C" }}>120</p>
+                                <p className="fs-1 fw-semibold Cabin-text text-center m-0" style={{ color: "#FFC00C" }}>{designCount}</p>
                                 <p className="fs-6 fw-bold Cabin-text text-center m-0">Designs</p>
                             </div>
                             <div className="d-flex flex-column">
                                 <p className="fs-1 fw-semibold Cabin-text text-center m-0" style={{ color: "#FFC00C" }}>30</p>
                                 <p className="fs-6 fw-bold Cabin-text text-center m-0">Custom designs sold</p>
                             </div>
-                            <div className="d-flex flex-column">
-                                <p className="fs-1 fw-semibold Cabin-text text-center m-0" style={{ color: "#FFC00C" }}>25</p>
-                                <p className="fs-6 fw-bold Cabin-text text-center m-0">Satisfied customers</p>
-                            </div>
                         </div>
                         <div className="d-flex flex-column my-1">
                             <p className="fs-6 fw-bold Cabin-text mt-1" style={{ color: "#545563" }}>Bio</p>
-                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>For various price ranges you will receive a kind of percentage from our product value.</p>
+                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>{designer.bio}</p>
                         </div>
                         <div className="d-flex flex-column my-1">
                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Specialities</p>
-                            <div className="badge w-25 Cabin-text" style={{ color: "#000000", backgroundColor: "#CCF8FE" }}>Bed Room</div>
+                            <div className="badge w-25 Cabin-text" style={{ color: "#000000", backgroundColor: "#CCF8FE" }}>{designer.specialities}</div>
                         </div>
                         <div className="d-flex flex-row gap-4 my-2">
                             <p className="fs-5 fw-bold Cabin-text">Top Selling Designs</p>
@@ -423,64 +424,6 @@ const PromotionRequest = () => {
                         </div>
                         <div class="row row-cols-1 row-cols-md-3 g-4 mx-4">
                             <div class="col w-50">
-                                <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
-                                    <div class="card-body m-0 p-0 mt-3">
-                                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                            <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
-                                                <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                            </div>
-                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col w-50">
-                                <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
-                                    <div class="card-body m-0 p-0 mt-3">
-                                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                            <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
-                                                <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                            </div>
-                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col w-50">
-                                <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
-                                    <div class="card-body m-0 p-0 mt-3">
-                                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                            <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
-                                                <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                            </div>
-                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col w-50">
-                                <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
-                                    <div class="card-body m-0 p-0 mt-3">
-                                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                            <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
-                                                <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                            </div>
-                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4">
-                        <div class="col w-50">
                                 <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
                                     <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
                                     <div class="card-body m-0 p-0 mt-3">

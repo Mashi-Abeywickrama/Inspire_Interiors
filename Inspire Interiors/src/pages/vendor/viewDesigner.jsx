@@ -64,8 +64,10 @@ const ViewDesigner = () => {
     const userId = sessionItems.sessionData.userid;
 
     const [designer, setDesigner] = useState([]);
+    const [designerData, setDesignerData] = useState([]);
+    const [designCount, setDesignCount] = useState(0);
 
-    const designerId = urlParams.get('id');
+    const Id = urlParams.get('id');
 
     const [offerData, setOfferData] = useState({
         offeroverview: '',
@@ -77,7 +79,7 @@ const ViewDesigner = () => {
         fiftythousandtohundredthousand: '',
         morethanhundredthousand: '',
         offerstatus: 0,
-        designerid: designerId,
+        designerid: Id,
         vendorid: userId
     });
 
@@ -123,7 +125,7 @@ const ViewDesigner = () => {
 
     useEffect(() => {
         axiosInstance
-        .get(`/getuser/${designerId}`)
+        .get(`/getuser/${Id}`)
         .then((response) => {
             setDesigner(response.data);
             console.log(response.data);
@@ -132,6 +134,34 @@ const ViewDesigner = () => {
             console.log('Error fetching data', error);
         });
     }, []);
+
+    const designerID = designer.userid;
+    console.log(designerID);
+
+    useEffect(() => {
+        axiosInstance
+        .get(`/designer/${designerID}`)
+        .then((response) => {
+            setDesignerData(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log('Error fetching data', error);
+        });
+    }, [designerID]);
+
+    useEffect(() => {
+        axiosInstance
+        .get(`/designer/mydesigns/d/${designerID}`)
+        .then((response) => {
+            setDesignCount(response.data.length);
+            console.log(response.data.length);
+            })
+            .catch((error) => {
+            console.log('Error fetching data', error);
+        });
+    }, [designerID]);
+
 
     const [show, setShow] = useState(false);
 
@@ -159,25 +189,17 @@ const ViewDesigner = () => {
                         <div className="col px-4 ">
                             <div className="d-flex flex-column flex-lg-row flex-md-row gap-4">
                                 <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-3 rounded-4 border" src={Customer} />
-                                <div className="d-flex flex-column">
-                                    <p className="fs-3 fw-bold Cabin-text">{designer.name}</p>
-                                    <div className="d-flex flex-row gap-3 mb-2">
-                                        <div className="d-flex fs-6 fw-semibold Cabin-text f-color-grey justify-content-center align-items-center">Interior Designer</div>
-                                        <div className="d-flex align-items-center gap-2">
+                                <div className="d-flex flex-column gap-2">
+                                    <p className="fs-3 fw-bold Cabin-text mt-2">{designer.name}</p>
+                                        <div className="d-flex fs-6 fw-semibold Cabin-text f-color-grey align-items-center">Interior Designer</div>
+                                        <div className="d-flex align-items-center gap-3">
                                             <div className='d-flex flex-row gap-1'>
                                                 {generateStars(4.6)}
                                             </div>
                                             <div className="d-flex flex-row gap-1 float-end">
                                                 <div className="fs-6 fw-bold Cabin-text">4.6/5.0</div>
-                                                <div className="fs-6 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>(556)</div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="d-flex flex-row gap-4">
-                                        <Icon.Twitter size={25} color="#575757" />
-                                        <Icon.Linkedin size={25} color="#575757" />
-                                        <Icon.Youtube size={25} color="#575757" />
-                                    </div>
                                 </div>
                             </div>
 
@@ -185,7 +207,7 @@ const ViewDesigner = () => {
                             <div className="d-flex align-items-center justify-content-evenly py-2 my-4 mx-2">
                                 <div className="d-flex w-25 three-box rounded align-items-center justify-content-center gap-2">
                                     <div className="w-25 fw-bold fs-4 d-flex align-items-center f-color-y p-2">
-                                        50
+                                        {designCount}
                                     </div>
                                     <div className=" fs-5 d-flex align-items-center f-color-f1">
                                         Total Designs
@@ -205,17 +227,16 @@ const ViewDesigner = () => {
                                     Bio
                                 </div>
                                 <p>
-                                    The gently curved lines accentuated by sewn details are kind to your body and pleasant to look at.
-                                    Also, there's a tilt and height-adjusting mechanism that's built to outlast years of ups and downs.
+                                    {designerData.bio}
                                 </p>
                             </div>
-                            <div className='d-flex justify-content-between my-2'>
+                            <div className='d-flex justify-content-between my-3'>
                                 <div>
                                     <div className='fs-6 fw-bold f-color-grey'>
                                         Speciality
                                     </div>
                                     <div className="badge Cabin-text px-3 py-2" style={{ color: "#000000", backgroundColor: "#CCF8FE" }}>
-                                        Bed Room
+                                        {designerData.specialities}
                                     </div>
                                 </div>
                                 <div type='button' onClick={handleShow} className='see-all justify-content-center align-items-center btn btn-link custom-btn fw-bold'>
@@ -278,7 +299,7 @@ const ViewDesigner = () => {
 
                         <div className="col flex-lg-row mx-2">
                             <div className=' fs-5 fw-bold'>
-                                Top Selling Designs <span className="badge fs-6 see-all">See All <Icon.ArrowRight /></span>
+                                Top Selling Designs <Link to={`/vendor/promotion/promoteproduct?d_id=${designerID}`}><span className="badge fs-6 see-all">See All <Icon.ArrowRight /></span></Link>
                             </div>
                             <div className="d-flex mt-3 flex-wrap">
                                 <div className="col-lg-6 col-md-6 col-sm-12 mb-3 px-2">
