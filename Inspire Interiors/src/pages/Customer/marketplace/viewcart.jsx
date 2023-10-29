@@ -1,4 +1,4 @@
-import { Breadcrumb } from "react-bootstrap";
+import { Breadcrumb, Button } from "react-bootstrap";
 import {
     MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow, MDBTypography,
 } from "mdb-react-ui-kit";
@@ -135,6 +135,25 @@ const Cart = () => {
         }
     }
 
+    const handleDeleteClick = (cartId) => {
+        const apiBaseURL = 'http://localhost:8080'; // Replace this with the base URL of your Spring Boot backend
+
+        const axiosInstance = axios.create({
+            baseURL: apiBaseURL,
+            timeout: 5000,
+        });
+
+        axiosInstance
+            .delete(`/remove_cart/${cartId}`)
+            .then((response) => {
+                console.log('Deleted', response.data);
+            })
+            .catch((error) => {
+                console.error('Error deleting cart item:', error);
+            });
+    };
+
+
     return (
         <>
             <div className="background d-flex flex-column justify-content-between w-100 rounded Cabin-text  ">
@@ -193,9 +212,9 @@ const Cart = () => {
                                                             </MDBTypography>
                                                         </MDBCol>
                                                         <MDBCol md="1" lg="1" xl="1" className="text-end">
-                                                            <a href="#!" className="text-danger">
+                                                            <Button className="text-danger bg-light border-0" onClick={() => handleDeleteClick(item.cartId)}>
                                                                 <MDBIcon fas icon="trash text-danger" size="lg" />
-                                                            </a>
+                                                            </Button>
                                                         </MDBCol>
                                                     </MDBRow>
                                                 </MDBCardBody>

@@ -47,4 +47,18 @@ public class CartController {
         }
     }
 
+    @DeleteMapping(value = "/remove_cart/{cart_id}")
+    public ResponseEntity<String> deleteCartItem(@PathVariable Integer cart_id) {
+        try {
+            // Call the service method to delete the Cart item by its ID
+            boolean deleted = cartService.deletecartById(cart_id);
+            if (deleted) {
+                return ResponseEntity.ok("Cart item deleted successfully");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cart item  not found");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting cart item ");
+        }
+    }
 }
