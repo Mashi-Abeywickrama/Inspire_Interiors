@@ -2,6 +2,7 @@ package inspireinteriors.dev.service;
 
 import inspireinteriors.dev.model.Cart;
 import inspireinteriors.dev.model.Product;
+import inspireinteriors.dev.model.ShippingAddress;
 import inspireinteriors.dev.repository.CartRepository;
 import inspireinteriors.dev.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,15 @@ public class CartService {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public boolean deletecartById(Integer cartId) {
+        Cart existingAddress = cartRepository.findBycartId(cartId);
+        if (existingAddress != null) {
+            // If it exists, delete it
+            cartRepository.delete(existingAddress);
+            return true;
+        }
+        return false;
     }
 }

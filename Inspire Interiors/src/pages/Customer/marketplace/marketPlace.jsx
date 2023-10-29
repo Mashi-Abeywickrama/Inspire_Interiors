@@ -58,6 +58,16 @@ const MarketPlace = () => {
                 console.error('Error fetching room type:', error);
             });
     };
+    useEffect(() => {
+        fetchProducrType();
+    }, []);
+
+    // Create a mapping
+    const productTypeImages = {
+        'Sofa': 'https://damro.lk/wp-content/uploads/2019/11/venus.jpg',
+        'Wall Art': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbnR23Ctzf6_1JIy9vkEuWxIiU_uR1DIzYNQ&usqp=CAU',
+        'Lamp': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4biUquepwplWIXrhwFI8pVXtRdF0jT-fotqofReKe0VHeP5wBg5FpJmg9X6Nb1M8Oqt4&usqp=CAU'
+    };
 
     // State variables
     const [roomType, setRoomType] = useState([]);
@@ -69,7 +79,7 @@ const MarketPlace = () => {
         <>
 
             <div className="background-grey p-3 rounded-3">
-                <div className='row'>
+                {/* <div className='row'>
                     <p className='heading h4 mb-3'>Best Deals</p>
                 </div>
                 <div className="row first-design">
@@ -112,7 +122,7 @@ const MarketPlace = () => {
 
                         </Carousel>
                     </div>
-                </div>
+                </div> */}
                 <div>
                 </div>
 
@@ -125,7 +135,7 @@ const MarketPlace = () => {
                 </div>
                 <div className="row">
                     <div className="w-100">
-                        <Link to='categoryview'>
+                        {/* <Link to='categoryview'>
                             <Carousel style={{ width: "100%" }}>
 
                                 <Carousel.Item>
@@ -178,7 +188,28 @@ const MarketPlace = () => {
                                 </Carousel.Item>
 
                             </Carousel>
-                        </Link>
+                        </Link> */}
+                        <div className="row">
+                            <div className="w-100">
+                                <div className="col d-flex flex-column w-100 flex-lg-row flex-md-row gap-4">
+                                    {productType.map((productType, index) => (
+
+                                        <div
+                                            key={index} // Use the index as the key
+                                            style={{ backgroundImage: `url(${productTypeImages[productType] || DefaultImage})`, height: "332px" }}
+                                            className="mb-2 rounded-3 border-0 shadow w-100 w-lg-25 w-md-25 p-3"
+                                        >
+                                            <Link to={`category/${productType}`}>
+                                                <p className='h5'>{productType}</p>
+                                            </Link>
+                                        </div>
+                                    ))}
+
+
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -254,9 +285,10 @@ const MarketPlace = () => {
                             </div>
                         </div>
                     </div>
+
                 </div>
 
-                <div className="row mt-5">
+                {/* <div className="row mt-5">
                     <div className="w-100">
                         <Carousel style={{ width: "100%" }}>
 
@@ -294,7 +326,7 @@ const MarketPlace = () => {
 
                         </Carousel>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='row d-flex flex-column gap-1 mb-3 mt-4 align-items-start align-contents-center'>
                     <p className='heading h4  w-auto m-0 ' >Rooms</p>

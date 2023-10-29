@@ -115,6 +115,7 @@ import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 import { Loader } from "semantic-ui-react";
 import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
 import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
+import TypeView from "./pages/Customer/marketplace/typeView";
 
 const routes = (
   <>
@@ -169,6 +170,10 @@ const routes = (
       <Route
         path="marketplace/categoryview/:roomType"
         element={<CategoryView />}
+      />
+      <Route
+        path="marketplace/category/:Type"
+        element={<TypeView />}
       />
       <Route path="cart" element={<Cart />} />
       <Route path="checkout/address" element={<Address />} />
@@ -247,8 +252,8 @@ const routes = (
         path="complaints/viewcomplaint"
         element={<ViewComplaint />}
       ></Route>
-        <Route path="setting" element={<VendorSetting />}></Route>
-      </Route>
+      <Route path="setting" element={<VendorSetting />}></Route>
+    </Route>
 
 
     {/* Designer Routes */}
