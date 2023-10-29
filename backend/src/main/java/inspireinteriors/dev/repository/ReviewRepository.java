@@ -18,4 +18,18 @@ public interface ReviewRepository extends JpaRepository <Review, Integer> {
 
     @Query("SELECT r FROM Review r INNER JOIN User u ON r.userId = u.userid WHERE r.productId = :productId")
     List<String> findByNameByProductId(Long productId);
+
+    @Query(value = "SELECT product_id, AVG(star_rating) AS avg_rating " +
+            "FROM Review " +
+            "GROUP BY product_id " +
+            "ORDER BY avg_rating DESC " +
+            "LIMIT 4", nativeQuery = true)
+    List<Object[]> getPopularItems();
+
+    @Query(value = "SELECT product_id, AVG(star_rating) AS avg_rating " +
+            "FROM Review " +
+            "GROUP BY product_id " +
+            "ORDER BY avg_rating DESC ",
+            nativeQuery = true)
+    List<Object[]> getAllPopularItems();
 }

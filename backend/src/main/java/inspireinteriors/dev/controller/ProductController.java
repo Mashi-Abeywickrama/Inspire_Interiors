@@ -533,7 +533,20 @@ public class ProductController {
         List<Product> products = (List<Product>) productService.getAllProductsByType(type);
         return ResponseEntity.ok(products);
     }
-    
+
+//    Popular items
+    @GetMapping("/popular-items")
+    public ResponseEntity<List<Product>> getPopularItems() {
+        List<Product> products = (List<Product>) productService.getPopularItems();
+        return ResponseEntity.ok(products);
+    }
+
+    @GetMapping("/all-popular-items")
+    public ResponseEntity<List<Product>> getAllPopularItems() {
+        List<Product> products = (List<Product>) productService.getAllPopularItems();
+        return ResponseEntity.ok(products);
+    }
+
     @GetMapping("/product/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable(value = "id") int id) {
         Product product = productService.getProductById(id);
