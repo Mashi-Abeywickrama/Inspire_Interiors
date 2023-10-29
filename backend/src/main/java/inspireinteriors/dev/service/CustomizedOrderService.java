@@ -1,7 +1,6 @@
 package inspireinteriors.dev.service;
 
 import inspireinteriors.dev.model.CustomizedOrder;
-import inspireinteriors.dev.model.VendorOffer;
 import inspireinteriors.dev.repository.CustomizedOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,4 +24,10 @@ public class CustomizedOrderService {
         return orderList;
     }
 
+    public List<CustomizedOrder> getCustomizedOrderByCustomerid(int customerid) {
+        List<CustomizedOrder> orderList = new ArrayList<>();
+
+        customizedOrderRepository.findByCustomerid(customerid).forEach(CustomizedOrder -> orderList.add(CustomizedOrder));
+        return orderList;
+    }
 }

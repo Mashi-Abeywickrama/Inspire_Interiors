@@ -25,8 +25,11 @@ const Custom = () => {
         productimage: '',
         customerid: '',
         vendorid: '',
-        status: "New"
+        status: "New",
+        productname:''
     });
+
+    const [mycustomizedorderData, setMyCustomizedOrderData] = useState([]);
 
     const sessionItems = useSession();
     const userId = sessionItems.sessionData.userid;
@@ -34,7 +37,7 @@ const Custom = () => {
     const updateOfferData = (field, value) => {
         setCustomizedOrderData((prevDetails) => ({
             ...prevDetails,
-            [field]: value !== undefined ? value : prevDetails[field],
+            [field]: value ,
         }));
     };
 
@@ -51,26 +54,98 @@ const Custom = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+      console.log(customizedorderData.additionalnotes);
 
-        try{
-            const response = await axiosInstance.post("/addcustomizedorder", {
-                productdescription: customizedorderData.description,
-                productspecification: customizedorderData.specification,
+      axiosInstance.post("/addcustomizedorder",  {         
+            productdescription: customizedorderData.productdescription,
+                productspecification: customizedorderData.productspecification,
                 budget: customizedorderData.budget,
-                additionalnotes: customizedorderData.notes,
-                productimage: customizedorderData.images,
+                additionalnotes: customizedorderData.additionalnotes,
+                productimage: customizedorderData.productimage,
                 customerid: userId,
-
+                status: "New",
+                productname: customizedorderData.productname
+            
+            }).then(() => {
+                console.log("Added")
+                }).catch((error) => {
+                console.log(error);
             });
-            if(response.status === 200)
-            {
-              console.log("Response from API:", response.data);
-              setShow(false);
-            }
-        } catch (error) {
-            console.log("Error from API:", error);
-        }
+
     };
+
+    useEffect(() => {
+        // Make an API request to fetch the shipping addresses from the backend
+        axiosInstance.get(`/customizedorder/${userId}`) // Replace this with the actual API URL},
+            .then(response => {
+                setMyCustomizedOrderData(response.data); // Assuming the response is an array of shipping addresses
+                console.log('my orders:', response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching shipping addresses:', error);
+            });
+    }, []); // Fetch the addresses when the component mounts
+
+    const getOrderStatus = (status) => {
+    const statusDetails = {
+      New: {
+        className: 'new d-flex gap-2 align-items-center',
+        text: 'New',
+      },
+      Completed: {
+        className: 'completed d-flex gap-2 align-items-center',
+        text: 'Completed',
+      },
+      Ongoing: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Ongoing',
+      },
+
+      Prepared: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Prepared',
+      },
+
+      Shipped: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Shipped',
+      },
+
+      Delivered: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Delivered',
+      },
+
+       Confirmed: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Confirmed',
+      },
+
+      Delayed: {
+        className: 'delayed d-flex gap-2 align-items-center',
+        text: 'Delayed',
+      },
+      Canceled: {
+        className: 'outstock d-flex gap-2 align-items-center',
+        text: 'Canceled',
+      },
+    };
+    if (statusDetails.hasOwnProperty(status)) {
+      const { className, text } = statusDetails[status];
+      return (
+        <div className={className}>
+          <i className="bi bi-circle-fill tag-icon"></i>
+          <p className="m-0">{text}</p>
+        </div>
+      );
+    }
+    return null;
+  };
+
+  const filteredData = (status) =>
+    mycustomizedorderData.filter((item) => item.status === status);
+
+
     
     
 
@@ -91,13 +166,17 @@ const Custom = () => {
                             <form onSubmit={handleSubmit}>
                                 <input type="hidden" name="customid"  />
                                 <div className="d-flex flex-column mx-4 gap-3">
+                                  <div className='mb-1'>
+                                        <label>Product Name</label>
+                                        <input type='text' name="productname" className='form-control Cabin-text' value={customizedorderData.productname}onChange={(e) =>updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                    </div>
                                     <div className='mb-1'>
                                         <label>Product Description</label>
-                                        <textarea type='text' name="description" autoFocus className='form-control Cabin-text' value={customizedorderData.description}onChange={(e) =>updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></textarea>
+                                        <textarea type='text' name="productdescription" autoFocus className='form-control Cabin-text' value={customizedorderData.productdescription}onChange={(e) =>updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></textarea>
                                     </div>
                                     <div className='mb-1'>
                                         <label>Product Specification</label>
-                                        <textarea type='text' name="specification" className='form-control Cabin-text' value={customizedorderData.specification}onChange={(e) =>updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></textarea>
+                                        <textarea type='text' name="productspecification" className='form-control Cabin-text' value={customizedorderData.productspecification}onChange={(e) =>updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></textarea>
                                     </div>
                                     <div className='mb-1'>
                                         <label>Product Budget</label>
@@ -105,11 +184,11 @@ const Custom = () => {
                                     </div>
                                     <div className='mb-1'>
                                         <label>Additional Notes</label>
-                                        <textarea type='textarea' name="notes" className='form-control Cabin-text' value={customizedorderData.notes}onChange={(e) =>updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></textarea>
+                                        <textarea type='textarea' name="additionalnotes" className='form-control Cabin-text' value={customizedorderData.additionalnotes}onChange={(e) =>updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></textarea>
                                     </div>
                                     <div className='mb-1'>
                                         <label>Product Images</label>
-                                        <input type='file' name="images" className='form-control Cabin-text' value={customizedorderData.images}onChange={(e) =>updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
+                                        <input type='file' name="productimage" className='form-control Cabin-text' value={customizedorderData.productimage}onChange={(e) =>updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
                                     </div>
                                     <div className='d-flex flex-row justify-content-between'>
                                         <button type="button" className='withdraw-btn m-4' onClick={handleClose}><Icon.PlusLg color="white" size={20} />Discard Changes</button>
@@ -123,7 +202,7 @@ const Custom = () => {
             </div>
         </div>
 
-        {/* <div>
+        <div>
           <Tabs
             defaultActiveKey="all"
             id="uncontrolled-tab-example"
@@ -175,11 +254,11 @@ const Custom = () => {
                         width: 100
                       }
                     ],
-                    rows: customizedorderData.map((item) => ({
-                      name: item.customer,
-                      number: item.ref_no,
-                      quantity: item.quantity,
-                      date: item.date,
+                    rows: mycustomizedorderData.map((item) => ({
+                      name: item.customerid,
+                      number: item.customerid,
+                      quantity: item.customerid,
+                      date: item.customerid,
                       action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
                       status: getOrderStatus(item.status)
                     })),
@@ -192,8 +271,8 @@ const Custom = () => {
               </div>
               </Link>
             </Tab>
-            <Tab eventKey="Completed" title="Completed">
-              <Link to="vieworder"><div className=''>
+            <Tab eventKey="New" title="New">
+              <div className=''>
 
                 <MDBDataTableV5 responsive
                   striped
@@ -238,8 +317,8 @@ const Custom = () => {
                         width: 100
                       }
                     ],
-                    rows: customizedorderData.map((item) => ({
-                      name: item.customer,
+                    rows: filteredData("New").map((item) => ({
+                      name: item.name,
                       number: item.ref_no,
                       quantity: item.quantity,
                       date: item.date,
@@ -253,199 +332,10 @@ const Custom = () => {
                   searching={true}
                 />
               </div>
-              </Link>
-            </Tab>
-            <Tab eventKey="Ongoing" title="Ongoing">
-              <Link to="vieworder"><div className=''>
-
-                <MDBDataTableV5 responsive
-                  striped
-                  bordered
-                  small
-                  data={{
-                    columns: [
-                      {
-                        label: 'REFERENCE NO',
-                        field: 'number',
-                        sort: 'asc',
-                        width: 270
-                      },
-                      {
-                        label: 'VENDOR NAME',
-                        field: 'name',
-                        sort: 'asc',
-                        width: 150
-                      },
-                      {
-                        label: 'QUANTITY',
-                        field: 'quantity',
-                        sort: 'asc',
-                        width: 100
-                      },
-                      {
-                        label: 'DELIVERY DATE',
-                        field: 'date',
-                        sort: 'asc',
-                        width: 150
-                      },
-                      {
-                        label: 'STATUS',
-                        field: 'status',
-                        sort: 'asc',
-                        width: 100
-                      },
-                      {
-                        label: ' ',
-                        field: 'action',
-                        sort: 'NONE',
-                        width: 100
-                      }
-                    ],
-                    rows: customizedorderData.map((item) => ({
-                      name: item.customer,
-                      number: item.ref_no,
-                      quantity: item.quantity,
-                      date: item.date,
-                      action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
-                      status: getOrderStatus(item.status)
-                    })),
-                  }}
-                  sortable={true}
-                  exportToCSV={true}
-                  paging={true}
-                  searching={true}
-                />
-              </div>
-              </Link>
-            </Tab>
-            <Tab eventKey="Delayed" title="Delayed">
-              <Link to="vieworder"><div className=''>
-
-                <MDBDataTableV5 responsive
-                  striped
-                  bordered
-                  small
-                  data={{
-                    columns: [
-                      {
-                        label: 'REFERENCE NO',
-                        field: 'number',
-                        sort: 'asc',
-                        width: 270
-                      },
-                      {
-                        label: 'VENDOR NAME',
-                        field: 'name',
-                        sort: 'asc',
-                        width: 150
-                      },
-                      {
-                        label: 'QUANTITY',
-                        field: 'quantity',
-                        sort: 'asc',
-                        width: 100
-                      },
-                      {
-                        label: 'DELIVERY DATE',
-                        field: 'date',
-                        sort: 'asc',
-                        width: 150
-                      },
-                      {
-                        label: 'STATUS',
-                        field: 'status',
-                        sort: 'asc',
-                        width: 100
-                      },
-                      {
-                        label: ' ',
-                        field: 'action',
-                        sort: 'NONE',
-                        width: 100
-                      }
-                    ],
-                    rows: customizedorderData.map((item) => ({
-                      name: item.customer,
-                      number: item.ref_no,
-                      quantity: item.quantity,
-                      date: item.date,
-                      action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
-                      status: getOrderStatus(item.status)
-                    })),
-                  }}
-                  sortable={true}
-                  exportToCSV={true}
-                  paging={true}
-                  searching={true}
-                />
-              </div>
-              </Link>
-            </Tab>
-            <Tab eventKey="Canceled" title="Canceled">
-              <Link to="vieworder"><div className=''>
-
-                <MDBDataTableV5 responsive
-                  striped
-                  bordered
-                  small
-                  data={{
-                    columns: [
-                      {
-                        label: 'REFERENCE NO',
-                        field: 'number',
-                        sort: 'asc',
-                        width: 270
-                      },
-                      {
-                        label: 'VENDOR NAME',
-                        field: 'name',
-                        sort: 'asc',
-                        width: 150
-                      },
-                      {
-                        label: 'QUANTITY',
-                        field: 'quantity',
-                        sort: 'asc',
-                        width: 100
-                      },
-                      {
-                        label: 'DELIVERY DATE',
-                        field: 'date',
-                        sort: 'asc',
-                        width: 150
-                      },
-                      {
-                        label: 'STATUS',
-                        field: 'status',
-                        sort: 'asc',
-                        width: 100
-                      },
-                      {
-                        label: ' ',
-                        field: 'action',
-                        sort: 'NONE',
-                        width: 100
-                      }
-                    ],
-                    rows: customizedorderData.map((item) => ({
-                      name: item.customer,
-                      number: item.ref_no,
-                      quantity: item.quantity,
-                      date: item.date,
-                      action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
-                      status: getOrderStatus(item.status)
-                    })),
-                  }}
-                  sortable={true}
-                  exportToCSV={true}
-                  paging={true}
-                  searching={true}
-                />
-              </div>
-              </Link>
+              
             </Tab>
           </Tabs>
-        </div> */}
+        </div>
       </div>
     </>
 

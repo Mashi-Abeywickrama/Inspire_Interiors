@@ -2,14 +2,10 @@ package inspireinteriors.dev.controller;
 
 import inspireinteriors.dev.model.CustomizedOrder;
 import inspireinteriors.dev.service.CustomizedOrderService;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +16,8 @@ public class CustomizedOrderController {
     private CustomizedOrderService customizedOrderService;
 
     @PostMapping("/addcustomizedorder")
-    public ResponseEntity<CustomizedOrder> createCustomizedOrder(CustomizedOrder customizedOrder, HttpSession session){
+    public ResponseEntity<CustomizedOrder> createCustomizedOrder(@RequestBody CustomizedOrder customizedOrder){
+        System.out.println(customizedOrder.getAdditionalnotes());
         customizedOrderService.createCustomizedOrder(customizedOrder);
         return new ResponseEntity<>(customizedOrder, HttpStatus.OK);
     }
@@ -28,6 +25,12 @@ public class CustomizedOrderController {
     @GetMapping("/customizedorder")
     public ResponseEntity<List<CustomizedOrder>> getCustomizedOrder(){
         List<CustomizedOrder> customizedOrder = customizedOrderService.getCustomizedOrder();
+        return ResponseEntity.ok(customizedOrder);
+    }
+
+    @GetMapping("/customizedorder/{customerid}")
+    public ResponseEntity<List<CustomizedOrder>> getCustomizedOrderById(@PathVariable("customerid") int customerid){
+        List<CustomizedOrder> customizedOrder = customizedOrderService.getCustomizedOrderByCustomerid(customerid);
         return ResponseEntity.ok(customizedOrder);
     }
 }
