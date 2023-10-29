@@ -18,7 +18,7 @@ public class CustomizedOrder {
     private String productspecification;
 
     @Column(name="budget")
-    private int budget;
+    private String budget;
 
     @Column(name="additionalnotes", columnDefinition = "VARCHAR(200)")
     private String additionalnotes;
@@ -35,10 +35,25 @@ public class CustomizedOrder {
     @Column(name="status")
     private String status;
 
+    @Column(name="productname")
+    private String productname;
+
     public CustomizedOrder() {
     }
 
-    public CustomizedOrder(int customizedorderid, String productdescription, String productspecification, int budget, String additionalnotes, String productimage, int customerid, int vendorid, String status) {
+    public CustomizedOrder (int customizedorderid, String productdescription, String productspecification, String budget, String additionalnotes, String productimage, int customerid, int vendorid, String status, String productname) {
+        this.customizedorderid = customizedorderid;
+        this.productdescription = productdescription;
+        this.productspecification = productspecification;
+        this.budget = budget;
+        this.additionalnotes = additionalnotes;
+        this.productimage = productimage;
+        this.customerid = customerid;
+        this.vendorid = vendorid;
+        this.status = status;
+        this.productname = productname;
+    }
+    public CustomizedOrder(int customizedorderid, String productdescription, String productspecification, String budget, String additionalnotes, String productimage, int customerid, int vendorid, String status) {
         this.customizedorderid = customizedorderid;
         this.productdescription = productdescription;
         this.productspecification = productspecification;
@@ -50,7 +65,7 @@ public class CustomizedOrder {
         this.status = status;
     }
 
-    public CustomizedOrder(String productdescription, String productspecification, int budget, String additionalnotes, String productimage, int customerid, int vendorid, String status) {
+    public CustomizedOrder(String productdescription, String productspecification, String budget, String additionalnotes, String productimage, int customerid, int vendorid, String status) {
         this.productdescription = productdescription;
         this.productspecification = productspecification;
         this.budget = budget;
@@ -59,6 +74,68 @@ public class CustomizedOrder {
         this.customerid = customerid;
         this.vendorid = vendorid;
         this.status = status;
+    }
+
+    public CustomizedOrder(String productdescription, String productspecification, String budget, String additionalnotes, String productimage, int customerid, int vendorid) {
+        this.productdescription = productdescription;
+        this.productspecification = productspecification;
+        this.budget = budget;
+        this.additionalnotes = additionalnotes;
+        this.productimage = productimage;
+        this.customerid = customerid;
+        this.vendorid = vendorid;
+    }
+
+    public CustomizedOrder(String productdescription, String productspecification, String budget, String additionalnotes, String productimage, int customerid) {
+        this.productdescription = productdescription;
+        this.productspecification = productspecification;
+        this.budget = budget;
+        this.additionalnotes = additionalnotes;
+        this.productimage = productimage;
+        this.customerid = customerid;
+    }
+
+    public CustomizedOrder(String productdescription, String productspecification, String budget, String additionalnotes, String productimage) {
+        this.productdescription = productdescription;
+        this.productspecification = productspecification;
+        this.budget = budget;
+        this.additionalnotes = additionalnotes;
+        this.productimage = productimage;
+    }
+
+    public CustomizedOrder(String productdescription, String productspecification, String budget, String additionalnotes) {
+        this.productdescription = productdescription;
+        this.productspecification = productspecification;
+        this.budget = budget;
+        this.additionalnotes = additionalnotes;
+    }
+
+    public CustomizedOrder(String productdescription, String productspecification, String budget) {
+        this.productdescription = productdescription;
+        this.productspecification = productspecification;
+        this.budget = budget;
+    }
+
+    public CustomizedOrder(String productdescription, String productspecification) {
+        this.productdescription = productdescription;
+        this.productspecification = productspecification;
+    }
+
+    public CustomizedOrder(String productdescription) {
+        this.productdescription = productdescription;
+    }
+
+    public CustomizedOrder(int customizedorderid) {
+        this.customizedorderid = customizedorderid;
+    }
+
+    public CustomizedOrder(int customerid,String productdescription, String productspecification, String budget, String additionalnotes, String productimage) {
+        this.productdescription = productdescription;
+        this.productspecification = productspecification;
+        this.budget = budget;
+        this.additionalnotes = additionalnotes;
+        this.productimage = productimage;
+        this.customerid = customerid;
     }
 
     public int getCustomizedorderid() {
@@ -85,11 +162,11 @@ public class CustomizedOrder {
         this.productspecification = productspecification;
     }
 
-    public int getBudget() {
+    public String getBudget() {
         return budget;
     }
 
-    public void setBudget(int budget) {
+    public void setBudget(String budget) {
         this.budget = budget;
     }
 
@@ -131,5 +208,13 @@ public class CustomizedOrder {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getProductname() {
+        return productname;
+    }
+
+    public void setProductname(String productname) {
+        this.productname = productname;
     }
 }
