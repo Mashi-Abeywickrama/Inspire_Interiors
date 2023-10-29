@@ -729,7 +729,7 @@ const MyOrder = () => {
                         width: 100
                       }
                     ],
-                    rows: orderData.map((item) => ({
+                    rows: filteredData("Completed").map((item) => ({
                       name: item.customer,
                       number: item.ref_no,
                       quantity: item.quantity,
@@ -792,7 +792,7 @@ const MyOrder = () => {
                         width: 100
                       }
                     ],
-                    rows: orderData.map((item) => ({
+                    rows: filteredData("Ongoing").map((item) => ({
                       name: item.customer,
                       number: item.ref_no,
                       quantity: item.quantity,
@@ -855,7 +855,7 @@ const MyOrder = () => {
                         width: 100
                       }
                     ],
-                    rows: orderData.map((item) => ({
+                    rows: filteredData("Delayed").map((item) => ({
                       name: item.customer,
                       number: item.ref_no,
                       quantity: item.quantity,
@@ -918,7 +918,7 @@ const MyOrder = () => {
                         width: 100
                       }
                     ],
-                    rows: orderData.map((item) => ({
+                    rows: filteredData("Canceled").map((item) => ({
                       name: item.customer,
                       number: item.ref_no,
                       quantity: item.quantity,

@@ -223,6 +223,8 @@ const Delivery = () => {
     return null;
   };
 
+  const filteredData = (status) => 
+  deliveryData.filter((item) => item.status === status);
 
     return (
     <>
@@ -354,7 +356,7 @@ const Delivery = () => {
                           width: 100,
                         },
                       ],
-                      rows: deliveryData.map((item) => ({
+                      rows: filteredData('Ongoing').map((item) => ({
                         customer: item.customer,
                         vendor: item.vendor,
                         reference: item.ref_no,
@@ -421,7 +423,7 @@ const Delivery = () => {
                           width: 100,
                         },
                       ],
-                      rows: deliveryData.map((item) => ({
+                      rows:filteredData('Completed').map((item) => ({
                         customer: item.customer,
                         vendor: item.vendor,
                         reference: item.ref_no,
@@ -488,7 +490,7 @@ const Delivery = () => {
                           width: 100,
                         },
                       ],
-                      rows: deliveryData.map((item) => ({
+                      rows: filteredData('Delayed').map((item) => ({
                         customer: item.customer,
                         vendor: item.vendor,
                         reference: item.ref_no,
@@ -555,7 +557,7 @@ const Delivery = () => {
                           width: 100,
                         },
                       ],
-                      rows: deliveryData.map((item) => ({
+                      rows: filteredData('Dispute').map((item) => ({
                         customer: item.customer,
                         vendor: item.vendor,
                         reference: item.ref_no,

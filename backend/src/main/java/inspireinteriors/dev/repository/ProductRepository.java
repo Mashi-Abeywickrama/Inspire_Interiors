@@ -36,6 +36,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = "SELECT * FROM products WHERE product_id = :pId", nativeQuery = true)
     List<Product>  getProductById(@Param("pId") int product_id);
 
+
+
 //    @Query("SELECT p FROM Product p JOIN FETCH p.variations")
 //    List<Product> findAllWithVariations();
 //

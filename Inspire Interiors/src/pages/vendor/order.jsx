@@ -39,7 +39,7 @@ const radarData = [
             fill: "#36ACF6"
         },
         {
-            name: "Canclled",
+            name: "Cancelled",
             uv: 15,
             fill: "#007F00"
         }
