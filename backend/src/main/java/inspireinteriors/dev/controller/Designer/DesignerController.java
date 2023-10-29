@@ -45,6 +45,11 @@ public class DesignerController {
        return ResponseEntity.ok(myDesigns);
     }
 
+    @GetMapping("designCount")
+    public ResponseEntity<List> getCountsOfDesigns(){
+        List counts = designerMyDesignService.getCountsOfDesigns();
+        return ResponseEntity.ok(counts);
+    }
     
 
     @GetMapping("/{designerId}")

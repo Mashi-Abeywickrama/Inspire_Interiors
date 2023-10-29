@@ -137,4 +137,9 @@ public class DesignerMyDesignService {
    public DesigntoolFiles GetByReqid(int request_id){
         return designerDesigntoolFilesRepository.findByRequest_id(request_id);
    }
+
+    public List getCountsOfDesigns() {
+        List counts = designerMyDesignsRepository.getCountsOfDesigns();
+        return counts;
+    }
 }

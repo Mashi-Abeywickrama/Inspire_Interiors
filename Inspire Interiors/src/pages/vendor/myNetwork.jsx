@@ -23,6 +23,7 @@ const MyNetwork = () => {
   const [offerData, setOfferData] = useState([]);
   const [designerData, setDesignerData] = useState([]);
   const [designer, setDesigner] = useState([]);
+  const [designerTotal, setDesignerTotal] = useState([]);
 
   const apiBaseURL = "http://localhost:8080";
 
@@ -80,24 +81,24 @@ const MyNetwork = () => {
       });
   }, []);
 
-  const getTotalDesignCount = (designerid) => {
-    let lengthDesign = 0;
+  useEffect(() => {
     axiosInstance
-        .get(`/designer/mydesigns/d/${designerid}`)
-        .then((response) => {
-            lengthDesign = response.data.length;
-            return lengthDesign;
-            })
-            .catch((error) => {
-            
-            console.log('Error fetching data', error);
-        });
-        return lengthDesign;
-    };
+      .get(`/designer/designCount`)
+      .then((response) => {
+        console.log(response.data);
+        setDesignerTotal(response.data);
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   
 
-  const mergeData = (offerData, designer,designerdata) => {
+  
+
+  const mergeData = (offerData, designer,designerdata,designerTotal) => {
     const mergedData = offerData.map(
       (offerItem) => {
       const matchingDesigner = designer.find(
@@ -108,14 +109,19 @@ const MyNetwork = () => {
         (designerdataItem) =>  designerdataItem.designer_id === offerItem.designerid
       );
 
+      const matchingDesigner3 = designerTotal.find(
+        (designerTotalItem) =>  designerTotalItem[0] === offerItem.designerid
+      );
+
      
   
-      if (matchingDesigner && matchingDesigner2 ) {
+      if (matchingDesigner && matchingDesigner2  ) {
         // Merge the data from both sources
         return {
           ...offerItem,
           ...matchingDesigner,
           ...matchingDesigner2,
+          ...matchingDesigner3,
         
         };
       } else {
@@ -126,8 +132,31 @@ const MyNetwork = () => {
     return mergedData;
   };
 
-  const mergedOffer_designer = mergeData(offerData, designer,designerData);
+  const mergedOffer_designer = mergeData(offerData, designer,designerData,designerTotal);
   console.log("merged Data", mergedOffer_designer);
+
+  const getOrderStatus = (status) => {
+    const statusDetails = {
+      Pending: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Pending',
+      }, 
+      Accepted: {
+        className: 'completed d-flex gap-2 align-items-center',
+        text: 'Accepted',
+      },
+    };
+      if (statusDetails.hasOwnProperty(status)) {
+        const { className, text } = statusDetails[status];
+        return (
+          <div className={className}>
+            <i className="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">{text}</p>
+          </div>
+        );
+      }
+      return null;
+  };
 
   const findStatus = (status) => {
     if(status == 0){
@@ -161,7 +190,7 @@ const MyNetwork = () => {
         label: 'STATUS',
         field: 'status',
         sort: 'asc',
-        width: 50
+        width: 100
       },
       {
         label: '',
@@ -173,9 +202,9 @@ const MyNetwork = () => {
     rows: mergedOffer_designer.map((offer_designer => {
       return {
         name: offer_designer.name,
-        total: getTotalDesignCount(offer_designer.designerid),
+        total: offer_designer[1] || 0,
         review: offer_designer.averagereview,
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{findStatus(offer_designer.offerstatus)}</p></div>,
+        status: <div>{getOrderStatus(findStatus(offer_designer.offerstatus))}</div>,
         action: <Link to={`/vendor/promotion/viewdesigners?id=${offer_designer.designer}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
       }
     }))
