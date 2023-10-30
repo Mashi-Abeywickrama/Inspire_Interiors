@@ -5,6 +5,8 @@ import Card from "react-bootstrap/Card";
 // import Linechart from "./../../components/admin/linechart";
 import Barchart from "./../../components/admin/barchart";
 import Areachart from "./../../components/admin/areachart";
+import { useState, useEffect } from "react";
+
 // import Piechart from './../../components/admin/piechart';
 import {
   AreaChart,
@@ -222,6 +224,21 @@ const areadata = [
 ];
 
 export default function report() {
+
+  const [userCount, setUserCount] = useState(null);
+
+  useEffect(() => {
+    // Make a GET request to the Spring Boot backend
+    fetch("http://localhost:8080/usercount")
+      .then((response) => response.json())
+      .then((data) => {
+        setUserCount(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching user count:", error);
+      });
+  }, []);
+
   return (
     <div className="d-flex flex-column background-report mb-4">
       <p className="fs-5 fw-bold p-3">Report</p>
@@ -242,8 +259,8 @@ export default function report() {
                     className="m-0 fs-3 fw-normal Cabin-text"
                     style={{ color: "#FFC00C" }}
                   >
-                    236
-                  </p>
+                   {userCount !== null ? userCount : "Loading..."}
+                  </p><tab/>
                   <p className="m-0 fs-3 fw-normal Cabin-text text-white">
                     Users
                   </p>
@@ -259,7 +276,7 @@ export default function report() {
                     style={{ color: "#FFC00C" }}
                   >
                     10
-                  </p>
+                  </p><tab/>
                   <p className="m-0 fs-3 fw-normal Cabin-text text-white">
                     Commission
                   </p>
@@ -275,7 +292,7 @@ export default function report() {
                     style={{ color: "#035C94" }}
                   >
                     100
-                  </p>
+                  </p><tab/>
                   <p className="m-0 fs-3 fw-normal Cabin-text text-white">
                     Orders
                   </p>
