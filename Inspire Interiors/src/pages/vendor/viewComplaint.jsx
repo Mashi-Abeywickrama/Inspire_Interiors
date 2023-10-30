@@ -43,7 +43,7 @@ const ViewComplaint = () => {
                 </div>
                 <div className="col-12 d-flex flex-column">
                     <div className="d-flex flex-row justify-content-between">
-                        <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text mt-2">Complaint Details - #{complaintId}</p>
+                        <p className="text-dark fs-6 fw-bold text-decoration-underline Cabin-text mt-2">Complaint Details - #{complaintData.inquiry_reference}</p>
                         <div className="badge fw-semibold rounded-3 Cabin-text mx-5" style={{ height: "1.5rem", background: "#F6E3AC", color: "#6B4605" }}><Icon.CircleFill size={7} className="mx-1" /></div>
                     </div>
 
@@ -58,13 +58,10 @@ const ViewComplaint = () => {
                             </div>
                             <div className="d-flex flex-column">
                                 <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Complaint</p>
-                                <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>I entered this project with high hopes after seeing your impressive portfolio and hearing positive feedback from others. However, the experience I have had thus far has not lived up to my expectations. I understand that challenges can arise in any project, but I am hopeful that you can address these issues promptly and work towards a solution that meets my expectations. </p>
+                                <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>{complaintData.remarks}</p>
                             </div>
                             <div className="d-flex flex-column">
-                                <div className="d-flex flex-row gap-3">
-                                    <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Additional Notes</p>
-                                    <Icon.PencilFill color="#035C94" />
-                                </div>
+                                
                                 <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>{complaintData.additional_remarks}</p>
                             </div>
                         </div>
