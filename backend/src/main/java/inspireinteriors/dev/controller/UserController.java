@@ -166,6 +166,11 @@ public class UserController {
         return userService.getUserCount();
     }
 
+    @GetMapping("/usercountType")
+    public List getUserCountType() {
+        return userService.getUserCountByUserTypes();
+    }
+
     @GetMapping("/usercountbyusertype/{type}")
     public int getUserCountByUserType(@PathVariable String type) {
         return userService.getUserCountByUserType(type);

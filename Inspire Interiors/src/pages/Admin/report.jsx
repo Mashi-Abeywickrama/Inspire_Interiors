@@ -22,16 +22,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import axios from "axios";
 
-const data = [
-  { name: 'Admin', value: 10 },
-  { name: 'Designer', value: 15 },
-  { name: 'Vendor', value: 8 },
-  { name: 'Customer', value: 20 },
-  { name: 'CustomerSupport', value: 20 },
-  { name: 'Manager', value: 30 },
-  // Add more data as needed
-]
+  
 
 const Linedata1 = [
   {
@@ -227,7 +220,38 @@ const areadata = [
 
 export default function report() {
 
+  const [usertypeCount, setUsertypeCount] = useState([]);
+  // const [userType, setUserType] = useState('designer'); // Set the user type you want to fetch here
+  
+
+  const apiBaseURL = 'http://localhost:8080';
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseURL,
+        timeout: 5000,
+    });
+
+    useEffect(() => {
+    // Make an Axios GET request to your Spring Boot API endpoint
+    axiosInstance.get('/usercountType')
+      .then((response) => {
+        // Handle the successful response here
+        console.log(response.data)
+        setUsertypeCount(response.data);
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error('Error fetching data:', error);
+      });
+  }, []); // The empty dependency array ensures that this effect runs only once when the component mounts
+
   const [userCount, setUserCount] = useState(null);
+
+  const data = usertypeCount.map(item => ({
+    name: item[0],
+    value: item[1],
+  }));
+
 
   useEffect(() => {
     // Make a GET request to the Spring Boot backend

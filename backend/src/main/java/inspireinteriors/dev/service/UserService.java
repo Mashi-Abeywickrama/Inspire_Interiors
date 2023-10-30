@@ -122,4 +122,8 @@ import java.util.List;
         public int getUserCountByUserType(String type) {
             return userRepository.countByType(type);
         }
+
+        public List getUserCountByUserTypes() {
+            return userRepository.countByTypes();
+        }
     }
