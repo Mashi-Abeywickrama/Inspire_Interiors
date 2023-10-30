@@ -67,6 +67,7 @@ import ViewDelivery from "./pages/Manager/viewDelivery";
 import MInquiry from "./pages/Manager/inquiry";
 import MInquiryView from "./pages/Manager/viewInquiry";
 
+
 // Vendor
 
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
