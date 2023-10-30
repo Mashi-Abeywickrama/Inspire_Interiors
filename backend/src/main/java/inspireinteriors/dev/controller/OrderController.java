@@ -90,6 +90,15 @@ public class OrderController {
         return commissionSum;
     }
 
+    @GetMapping("/ordercount")
+    public int getOrderCount() {
+        List<Order> orders = this.orderService.getOrders();
+
+        int orderCount = orders.size();
+
+        return orderCount;
+    }
+
 
 
 }

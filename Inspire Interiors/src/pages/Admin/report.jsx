@@ -239,6 +239,20 @@ export default function report() {
       });
   }, []);
 
+  const [orderCount, setOrderCount] = useState(null);
+
+  useEffect(() => {
+    // Make a GET request to the Spring Boot backend
+    fetch("http://localhost:8080/ordercount")
+      .then((response2) => response2.json())
+      .then((data2) => {
+        setOrderCount(data2);
+      })
+      .catch((error2) => {
+        console.error("Error fetching order count:", error2);
+      });
+  }, []);
+
   const [commissionsum, setcommissionsum] = useState(null);
 
   useEffect(() => {
@@ -305,7 +319,7 @@ export default function report() {
                     className="m-0 fs-3 fw-normal Cabin-text"
                     style={{ color: "#035C94" }}
                   >
-                    100
+                   {orderCount !== null ? orderCount : "Loading..."}
                   </p><tab/>
                   <p className="m-0 fs-3 fw-normal Cabin-text text-white">
                     Orders
