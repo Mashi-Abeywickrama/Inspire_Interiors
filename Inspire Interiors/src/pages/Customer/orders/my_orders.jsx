@@ -783,7 +783,7 @@ const MyOrder = () => {
                         width: 100
                       },
                       {
-                        label: 'DELIVERY DATE',
+                        label: 'INITIALIZED DATE',
                         field: 'date',
                         sort: 'asc',
                         width: 150
@@ -819,69 +819,6 @@ const MyOrder = () => {
               
             </Tab>
             <Tab eventKey="Ongoing" title="Ongoing">
-             <div className=''>
-
-                <MDBDataTableV5 responsive
-                  striped
-                  bordered
-                  small
-                  data={{
-                    columns: [
-                      {
-                        label: 'REFERENCE NO',
-                        field: 'number',
-                        sort: 'asc',
-                        width: 270
-                      },
-                      {
-                        label: 'VENDOR NAME',
-                        field: 'name',
-                        sort: 'asc',
-                        width: 150
-                      },
-                      {
-                        label: 'QUANTITY',
-                        field: 'quantity',
-                        sort: 'asc',
-                        width: 100
-                      },
-                      {
-                        label: 'DELIVERY DATE',
-                        field: 'date',
-                        sort: 'asc',
-                        width: 150
-                      },
-                      {
-                        label: 'STATUS',
-                        field: 'status',
-                        sort: 'asc',
-                        width: 100
-                      },
-                      {
-                        label: ' ',
-                        field: 'action',
-                        sort: 'NONE',
-                        width: 100
-                      }
-                    ],
-                    rows: filteredData("Ongoing").map((item) => ({
-                      name: item.customer,
-                      number: item.ref_no,
-                      quantity: item.quantity,
-                      date: item.date,
-                      action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
-                      status: getOrderStatus(item.status)
-                    })),
-                  }}
-                  sortable={true}
-                  exportToCSV={true}
-                  paging={true}
-                  searching={true}
-                />
-              </div>
-              
-            </Tab>
-            <Tab eventKey="Delayed" title="Delayed">
               <div className=''>
 
                 <MDBDataTableV5 responsive
@@ -909,7 +846,7 @@ const MyOrder = () => {
                         width: 100
                       },
                       {
-                        label: 'DELIVERY DATE',
+                        label: 'INITIALIZED DATE',
                         field: 'date',
                         sort: 'asc',
                         width: 150
@@ -927,8 +864,71 @@ const MyOrder = () => {
                         width: 100
                       }
                     ],
-                    rows: filteredData("Delayed").map((item) => ({
-                      name: item.customer,
+                    rows: filteredData("Prepared"||"Shipped"||"Delivered").map((item) => ({
+                      name: item.name,
+                      number: item.ref_no,
+                      quantity: item.quantity,
+                      date: item.date,
+                      action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
+                      status: getOrderStatus(item.status)
+                    })),
+                  }}
+                  sortable={true}
+                  exportToCSV={true}
+                  paging={true}
+                  searching={true}
+                />
+              </div>
+              Confirmed
+            </Tab>
+            <Tab eventKey="Canceled" title="Canceled">
+              <div className=''>
+
+                <MDBDataTableV5 responsive
+                  striped
+                  bordered
+                  small
+                  data={{
+                    columns: [
+                      {
+                        label: 'REFERENCE NO',
+                        field: 'number',
+                        sort: 'asc',
+                        width: 270
+                      },
+                      {
+                        label: 'VENDOR NAME',
+                        field: 'name',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'QUANTITY',
+                        field: 'quantity',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: 'INITIALIZED DATE',
+                        field: 'date',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'STATUS',
+                        field: 'status',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: ' ',
+                        field: 'action',
+                        sort: 'NONE',
+                        width: 100
+                      }
+                    ],
+                    rows: filteredData("Canceled").map((item) => ({
+                      name: item.name,
                       number: item.ref_no,
                       quantity: item.quantity,
                       date: item.date,
@@ -943,7 +943,7 @@ const MyOrder = () => {
                 />
               </div>
             </Tab>
-            <Tab eventKey="Canceled" title="Canceled">
+            <Tab eventKey="Completed" title="Completed">
              <div className=''>
 
                 <MDBDataTableV5 responsive
@@ -971,7 +971,7 @@ const MyOrder = () => {
                         width: 100
                       },
                       {
-                        label: 'DELIVERY DATE',
+                        label: 'INITIALIZED DATE',
                         field: 'date',
                         sort: 'asc',
                         width: 150
@@ -989,8 +989,8 @@ const MyOrder = () => {
                         width: 100
                       }
                     ],
-                    rows: filteredData("Canceled").map((item) => ({
-                      name: item.customer,
+                    rows: filteredData("Completed").map((item) => ({
+                      name: item.name,
                       number: item.ref_no,
                       quantity: item.quantity,
                       date: item.date,
