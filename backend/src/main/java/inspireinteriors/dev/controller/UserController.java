@@ -166,6 +166,11 @@ public class UserController {
         return userService.getUserCount();
     }
 
+    @GetMapping("/usercountbyusertype/{type}")
+    public int getUserCountByUserType(@PathVariable String type) {
+        return userService.getUserCountByUserType(type);
+    }
+
     @PostMapping("/profile")
     public ResponseEntity<String> getProfile(@RequestBody UserIDRequest userIDRequest,HttpSession session) throws JSONException {
 

@@ -24,10 +24,12 @@ import {
 } from "recharts";
 
 const data = [
-  { name: 'Category 1', value: 10 },
-  { name: 'Category 2', value: 15 },
-  { name: 'Category 3', value: 8 },
-  { name: 'Category 4', value: 20 },
+  { name: 'Admin', value: 10 },
+  { name: 'Designer', value: 15 },
+  { name: 'Vendor', value: 8 },
+  { name: 'Customer', value: 20 },
+  { name: 'CustomerSupport', value: 20 },
+  { name: 'Manager', value: 30 },
   // Add more data as needed
 ]
 
@@ -267,6 +269,8 @@ export default function report() {
       });
   }, []);
 
+  
+
   return (
     <div className="d-flex flex-column background-report mb-4">
       <p className="fs-5 fw-bold p-3">Report</p>
@@ -460,16 +464,16 @@ export default function report() {
         </div>
 
         <div className="col-12 d-flex flex-column flex-lg-row  flex-md-row flex-sm-row gap-3">
-          <div className="col-lg-8 d-flex bg-white rounded-3 p-4 gap-2 ">
-            <div className="col-lg-6">
+          <div className="col-lg-6 d-flex bg-white rounded-3 p-4 gap-2 ">
+            {/* <div className="col-lg-6">
               <div className="d-flex flex-row justify-content-between">
                 <p className="m-0 fs-5 fw-bold Cabin-text">Usermatric</p>
                 {/* <select class="form-select w-25" aria-label="Default select example">
                 <option selected>Yearly</option>
                 <option value="3 Months">Monthly</option>
-              </select> */}
+              </select> 
               </div>
-              <ResponsiveContainer width="90%" height="90%">
+              * <ResponsiveContainer width="90%" height="90%">
                 <LineChart
                   width={500}
                   height={300}
@@ -493,12 +497,12 @@ export default function report() {
                     strokeWidth={2}
                   />
                 </LineChart>
-              </ResponsiveContainer>
-            </div>
+              </ResponsiveContainer> 
+            </div> */}
 
-            <div className="col-lg-6">
+            <div className="col-lg-12">
               <div className="d-flex flex-row justify-content-between">
-                <p className="m-0 fs-5 fw-bold Cabin-text"></p>
+                <p className="m-0 fs-5 fw-bold Cabin-text">Users</p>
                 <select
                   class="form-select w-25"
                   aria-label="Default select example"
@@ -513,19 +517,19 @@ export default function report() {
           width={500}
           height={300}
           data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          margin={{ top: 5, right: 20, left: 60, bottom: 5 }}
         >
           <XAxis type="number" />
           <YAxis dataKey="name" type="category" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="value" fill="#8884d8" />
+          <Bar dataKey="value" fill="#FFC00C" />
         </BarChart>
       </ResponsiveContainer>
             </div>
           </div>
 
-          <div className="col-lg-4 bg-white rounded-3 p-4">
+          <div className="col-lg-6 bg-white rounded-3 p-4">
             <div className="d-flex flex-row justify-content-between">
               <p className="m-0 fs-5 fw-bold Cabin-text">Order</p>
               <select
