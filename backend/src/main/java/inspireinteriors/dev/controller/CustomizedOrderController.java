@@ -33,4 +33,21 @@ public class CustomizedOrderController {
         List<CustomizedOrder> customizedOrder = customizedOrderService.getCustomizedOrderByCustomerid(customerid);
         return ResponseEntity.ok(customizedOrder);
     }
+    @GetMapping("customizedorder/c/{id}")
+    public ResponseEntity<CustomizedOrder> getCustomizeOrderById(@PathVariable("id") int customizedorderid){
+        CustomizedOrder customizedOrder = customizedOrderService.getCustomizedOrderById(customizedorderid);
+        return new ResponseEntity<>(customizedOrder, HttpStatus.OK);
+    }
+
+    //update accepted status
+    @PutMapping("/customizedorder/status/{id}")
+    public ResponseEntity<String> updateStatus(@PathVariable("id") int customizeorderid){
+        CustomizedOrder customizedOrder = customizedOrderService.getCustomizedOrderById(customizeorderid);
+        customizedOrder.setStatus("Accepted");
+        customizedOrderService.createCustomizedOrder(customizedOrder);
+        return new ResponseEntity<>("Status Updated", HttpStatus.OK);
+    }
+
+
+
 }

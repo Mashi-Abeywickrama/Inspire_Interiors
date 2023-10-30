@@ -179,7 +179,7 @@ const ViewDesigner = () => {
                             <div className='d-flex flex-row gap-4 p-3 '>
                                 <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text text-dark">Promotion</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                                <p className="fs-5 fw-bold Cabin-text " style={{ color: "#A2A3B1" }}>{designer.name}</p>
+                                <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{designer.name}</p>
                             </div>
                             </div>
                         </div>
@@ -188,9 +188,9 @@ const ViewDesigner = () => {
                     <div className=" d-flex w-100 justify-content-center m-0 col-md-4 col-lg-2 col-sm-8">
                         <div className="col px-4 ">
                             <div className="d-flex flex-column flex-lg-row flex-md-row gap-4">
-                                <img style={{ backgroundColor: "#FEE4CB" }} className="img-fluid p-3 rounded-4 border" src={Customer} />
+                                <img className="img-fluid p-3 rounded-4 w-25 h-25 " src={`../../../../src/assets/img/profilePic/${designer.profile_pic}.jpg`} />
                                 <div className="d-flex flex-column gap-2">
-                                    <p className="fs-3 fw-bold Cabin-text mt-2">{designer.name}</p>
+                                    <p className="fs-3 fw-bold Cabin-text mt-4">{designer.name}</p>
                                         <div className="d-flex fs-6 fw-semibold Cabin-text f-color-grey align-items-center">Interior Designer</div>
                                         <div className="d-flex align-items-center gap-3">
                                             <div className='d-flex flex-row gap-1'>
