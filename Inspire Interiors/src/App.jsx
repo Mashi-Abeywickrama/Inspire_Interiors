@@ -64,6 +64,8 @@ import ManagerDashboardLayout from "./layouts/Manager/managerDashboardLayout";
 // import CustomerDashboard from "./pages/Customer/customerDashboard";
 import Delivery from "./pages/Manager/delivery";
 import ViewDelivery from "./pages/Manager/viewDelivery";
+import MInquiry from "./pages/Manager/inquiry";
+import MInquiryView from "./pages/Manager/viewInquiry";
 
 // Vendor
 
@@ -303,6 +305,9 @@ const routes = (
       <Route path="delivery" element={<Delivery />} />
       <Route path="delivery/view/:id" element={<ViewDelivery />}></Route>
       <Route path="mydesigns" element={<DesignerMyDesigns />} />
+      <Route path="inquiry" element={<MInquiry />} />
+      <Route path="inquiry/view/:type/:id" element={<MInquiryView />} />
+
     </Route>
   </>
 );
