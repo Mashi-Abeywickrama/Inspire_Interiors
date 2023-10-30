@@ -241,81 +241,87 @@ const ViewOrder = () => {
                             <div className="col-lg-12 bg-white rounded-3 p-4 shadow">
                             <p className="fs-5 fw-bold px-3 py-2 Cabin-text">Order Status</p>
                                 <div className="d-flex flex-column">
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <div className="d-flex flex-row gap-5">
-                                            <p className="fs-6 fw-semibold px-5 Cabin-text">Vender Confirmation:</p>
-                                        </div>
-                                        
-                                        <div className="badge fw-semibold rounded-3 mx-5 Cabin-text">
-                                            {orderData.status === 'New' ? (
-                <select
-                    className={getOrderStatusClass(orderData.status)}
-                    value={orderData.status}
-                    onChange={(e) => updateOrderStatus(e.target.value)}
-                >
-                    <option value="Vendor Confirmation">{getOrderStatus(orderData.status)}</option>
-                    <option value="Confirmed">Confirmed</option>
-                    <option value="Cancelled">Cancelled</option>
-                </select>
-            ) : (
-                <button
-                    className="badge fw-semibold rounded-3 mx-5 Cabin-text"
-                    style={{
-                        height: "1.5rem",
-                        background: orderData.status === 'Cancelled' ? "red" : "green",
-                        color: "white"
-                    }}
-                    disabled
-                >
-                    {orderData.status === 'Cancelled' ? "Cancelled" : "Confirmed"}
-                </button>
-            )}
-                                            </div>
-                                    </div>
+                                <div className="d-flex flex-row justify-content-between">
+                                        <p className="fs-6 fw-semibold px-5 Cabin-text">Vender Confirmation:</p>
+                                    
+                                        <button
+                                            className="badge fw-semibold rounded-3 mx-5 Cabin-text"
+                                            style={{
+                                                height: "1.5rem",
+                                                background: orderData.status === 'Cancelled' ? "red" : "#007F00",
+                                                color: "white"
+                                            }}
+                                            disabled
+                                        >
+                                            <Icon.CircleFill size={7} className="mx-1"
+                                            color={orderData.status === 'Cancelled' ? '#979797' : '#fff'}
+                                        />
+                                            {orderData.status === 'Cancelled' ? "Cancelled" : "Confirmed"}
+                                        </button>
+                                    
+                                </div>
                                     <div className="d-flex flex-row justify-content-between">
                                     <p className="fs-6 fw-semibold px-5 Cabin-text">Package Preparation:</p>
                                     <button
-                                    onClick={() => updateOrderStatus('Prepared')}
                                         className="badge fw-semibold rounded-3 mx-5 Cabin-text"
                                         style={{
                                             height: "1.5rem",
-                                            background: orderData.status === 'New' || orderData.status === 'Cancelled' ? "#E6E6E6" : "#bfe5fd",
-                                            color: orderData.status === 'New' || orderData.status === 'Cancelled' ? "#979797" : "#023047"
+                                            background: (orderData.status === 'Completed') ? "#007F00" :   orderData.status === 'New' || orderData.status === 'Cancelled' ? "#E6E6E6" : "#bfe5fd",
+                                            color: (orderData.status === 'Completed') ? "#fff" : orderData.status === 'New' || orderData.status === 'Cancelled' ? "#979797" : "#023047"
                                         }}
                                         disabled={orderData.status === 'New' || orderData.status === 'Cancelled'}
                                     >
                                         <Icon.CircleFill size={7} className="mx-1"
-                                         color={orderData.status === 'New' || orderData.status === 'Cancelled' ? '#979797' : '#023047'}
-                                          />
-                                         {orderData.status === 'New' || orderData.status === 'Cancelled' ? 'Pending' : 
-                                         orderData.status === 'Confirmed' ? 'Mark as Prepared' : 'Prepared'}
-                                         
-                                         
+                                            color={(orderData.status === 'Completed') ? "#fff" : orderData.status === 'New' || orderData.status === 'Cancelled' ? '#979797' : '#023047'}
+                                        />
+                                        {orderData.status === 'Completed' ? 'Completed' :  orderData.status === 'New' || orderData.status === 'Cancelled' ? 'Pending' :
+                                            orderData.status === 'Confirmed' ? 'Mark as Prepared' : 'Prepared'}
+
+
                                     </button>
                                 </div>
                                 <div className="d-flex flex-row justify-content-between">
                                     <p className="fs-6 fw-semibold px-5 Cabin-text">Shipping:</p>
                                     <button
-                                        onClick={() => updateOrderStatus('Shipped')}
                                         className="badge fw-semibold rounded-3 mx-5 Cabin-text"
                                         style={{
                                             height: "1.5rem",
-                                            background: orderData.status === 'New' || orderData.status === 'Cancelled'|| orderData.status==='Confirmed'  ? "#E6E6E6" : "#bfe5fd",
-                                            color: orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed' ? "#979797" : "#023047"
+                                            background: (orderData.status === 'Completed') ? "#007F00" : (orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Completed') ? "#bfe5fd" : "#E6E6E6",
+                                            color: (orderData.status === 'Completed') ? "#fff" : (orderData.status === 'Shipped' || orderData.status === 'Delivered') ? "#023047" : "#979797"
                                         }}
-                                        disabled={orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed'}
+                                        disabled={orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Completed'}
                                     >
-                                        <Icon.CircleFill size={7} className="mx-1"
-                                         color={orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed' ? '#979797' : '#023047'}
-                                          />
-                                         {orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed'   ? 'Pending' :
-                                          orderData.status === 'Prepared' ? 'Mark as Shipped' : 'Shipped'}
+                                        <Icon.CircleFill
+                                            size={7}
+                                            className="mx-1"
+                                            color={(orderData.status === 'Completed') ? "#fff" : (orderData.status === 'Shipped' || orderData.status === 'Delivered') ? '#023047' : '#979797'}
+                                        />
+                                        {orderData.status === 'Shipped' || orderData.status === 'Delivered' ? 'Shipped' : orderData.status === 'Completed' ? 'Completed' : 'Pending'}
                                     </button>
+
                                 </div>
                                 <div className="d-flex flex-row justify-content-between">
                                     <p className="fs-6 fw-semibold px-5 Cabin-text">Delivery:</p>
                                     <button
-                                        onClick={() => updateOrderStatus('Delivered')}
+                                    
+                                        className="badge fw-semibold rounded-3 mx-5 Cabin-text"
+                                        style={{
+                                            height: "1.5rem",
+                                            background: orderData.status === 'New' || orderData.status === 'Cancelled'|| orderData.status==='Confirmed'|| orderData.status==='Prepared'  ? "#E6E6E6" : "#bfe5fd",
+                                            color: orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed'|| orderData.status==='Prepared' ? "#979797" : "#023047"
+                                        }}
+                                        disabled={orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed' || orderData.status==='Prepared'}
+                                    >
+                                        <Icon.CircleFill size={7} className="mx-1"
+                                         color={orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed' || orderData.status==='Prepared' ? '#979797' : '#023047'}
+                                          />
+                                         {orderData.status === 'Shipped' || orderData.status === 'Delivered' ? 'Delivered' : orderData.status === 'Completed' ? 'Completed' : 'Pending'}
+                                    </button>
+                                </div>
+                                <div className="d-flex flex-row justify-content-between">
+                                    <p className="fs-6 fw-semibold px-5 Cabin-text">Recieved:</p>
+                                    <button
+                                        onClick={() => updateOrderStatus('Recieved')}
                                         className="badge fw-semibold rounded-3 mx-5 Cabin-text"
                                         style={{
                                             height: "1.5rem",
@@ -328,7 +334,7 @@ const ViewOrder = () => {
                                          color={orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed' || orderData.status==='Prepared' ? '#979797' : '#023047'}
                                           />
                                          {orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed'  || orderData.status==='Prepared'  ? 'Pending' : 
-                                         orderData.status === 'Shipped' ? 'Mark as Delivered' : 'Delivered'}
+                                         orderData.status === 'Delivered' ? 'Mark as Recieved' : 'Recieved'}
                                     </button>
                                 </div>
                                 </div>

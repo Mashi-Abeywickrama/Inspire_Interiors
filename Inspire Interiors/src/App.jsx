@@ -62,6 +62,9 @@ import PopularView from "./pages/Customer/marketplace/popular";
 //Manager
 import ManagerDashboardLayout from "./layouts/Manager/managerDashboardLayout";
 // import CustomerDashboard from "./pages/Customer/customerDashboard";
+import Delivery from "./pages/Manager/delivery";
+import ViewDelivery from "./pages/Manager/viewDelivery";
+
 // Vendor
 
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
@@ -88,9 +91,9 @@ import ViewDesigners from "./pages/vendor/viewDesigner";
 // Customer Support
 import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
 import Inquiry from "./pages/CustomerSupport/inquiry";
-import Delivery from "./pages/CustomerSupport/delivery";
+// import Delivery from "./pages/CustomerSupport/delivery";
 import Refund from "./pages/CustomerSupport/refund";
-import ViewDelivery from "./pages/CustomerSupport/viewDelivery";
+// import ViewDelivery from "./pages/CustomerSupport/viewDelivery";
 import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
