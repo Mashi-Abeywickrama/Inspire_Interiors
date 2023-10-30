@@ -43,6 +43,11 @@ public class OrderController {
         return this.orderService.getOrder(orderid);
     }
 
+    @GetMapping("/getorderbyref/{ref}")
+    public Order getOrderbyrefno(@PathVariable ("ref") int ref_no) {
+        return this.orderService.getOrderByRefNo(ref_no);
+    }
+
     @GetMapping("/totalcommission")
     public double getTotalCommission() {
         List<Order> orders = this.orderService.getOrders();

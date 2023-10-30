@@ -339,7 +339,7 @@
                                 </div>
                                 <div className="d-flex flex-row justify-content-between">
                                     <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Discount (%)</p>
-                                    <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{productData.discount}</p>
+                                    <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{productData.discount}%</p>
 
                                 </div>
                                 <div className="d-flex flex-row justify-content-between">
@@ -348,7 +348,7 @@
                                 </div>
                                 <div className="d-flex flex-row justify-content-between">
                                     <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Quantity</p>
-                                    <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{variationData.quantity}</p>
+                                    <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{orderData.quantity}</p>
                                 </div>
                                 <div className="d-flex flex-row justify-content-between">
                                     <p className="fs-6 fw-normal px-3 py-2 Cabin-text">Shipping</p>
@@ -357,7 +357,7 @@
                                 <div className="divider" />
                                 <div className="d-flex flex-row justify-content-between">
                                     <p className="fs-6 fw-normal px-3 py-2 Cabin-text">TOTAL</p>
-                                    <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{(discountedPrice * variationData.quantity) + productData.shipping_fee }</p>
+                                    <p className="fs-6 fw-normal px-3 py-2 Cabin-text">{(discountedPrice * orderData.quantity) + productData.shipping_fee }</p>
                                 </div>
 
                                 <div className="divider" />
