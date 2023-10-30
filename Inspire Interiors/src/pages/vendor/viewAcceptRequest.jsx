@@ -78,8 +78,7 @@ const ViewAcceptRequest = () => {
                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563"}}>Reference Images</p>
                             <div className="d-flex flex-row gap-3">
                                 <img className="img-fluid" src={Hall} alt="hall" />
-                                <img className="img-fluid" src={Hall} alt="hall" />
-                                <img className="img-fluid" src={Hall} alt="hall" />
+                                
                             </div>
                         </div>
                         <div className="d-flex flex-column">
