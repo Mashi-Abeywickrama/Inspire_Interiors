@@ -38,6 +38,14 @@ const ManagerSidebar = () => {
                         <NavLink to="/manager/delivery" activeClassName="active">Delivery</NavLink>
                     </NavText>
                 </NavItem>
+                <NavItem eventKey="inquiry">
+                    <NavIcon>
+                        <NavLink to="/manager/inquiry" activeClassName="active"><i><RiTakeawayFill /></i></NavLink>
+                    </NavIcon>
+                    <NavText>
+                        <NavLink to="/manager/inquiry" activeClassName="active">Inquiry</NavLink>
+                    </NavText>
+                </NavItem>
 
                 <NavItem eventKey="settings">
                     <NavIcon>

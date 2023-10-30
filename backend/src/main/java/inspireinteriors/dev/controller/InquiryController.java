@@ -145,10 +145,12 @@ public class InquiryController {
         }
     }
 
-        @PutMapping("/mark-as-completed/{inquiryId}")
+    @PutMapping("/mark-as-completed/{inquiryId}")
     public ResponseEntity<String> markAsCompleted(@PathVariable int inquiryId, @RequestBody Inquiry inquiry) {
         Inquiry existingInquiry = inquiryService.getInquiryById(inquiryId);
         existingInquiry.setInquiry_status("Completed");
+        existingInquiry.setAdditional_remarks(inquiry.getAdditional_remarks());
+        existingInquiry.setCompletion_date(String.valueOf(LocalDate.now()));
         boolean inquirySaved = inquiryService.saveInquiry(existingInquiry);
         if (inquirySaved) {
             return ResponseEntity.ok("Inquiry Updated!");

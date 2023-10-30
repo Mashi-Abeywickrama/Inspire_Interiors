@@ -11,6 +11,7 @@ import axios from 'axios';
 import SendQuotationBtn from '../../components/customer/popup/sendQuotation';
 import MarkAsCanceledBtn from '../../components/customer/popup/markAsCanceled';
 import RejectRefund from '../../components/customer/popup/rejectRefund';
+import MarkAsCompleted from '../../components/manager/popup/markAsCompleted';
 
 const DetailedView = () => {
 
@@ -19,7 +20,7 @@ const DetailedView = () => {
     const splitURL = currentURL.split("/");
     const inquiry_type = decodeURIComponent(splitURL[6]);
     const id = splitURL[7];
-    console.log("ID: ", id)
+    // console.log("ID: ", id)
 
     const [inquiryData, setInquiryData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -44,8 +45,7 @@ const DetailedView = () => {
             });
     }, [axiosInstance]);
 
-    // console.log(inquiryData)
-    // Captitalize first letter
+console.log(inquiryData)
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -96,7 +96,7 @@ const DetailedView = () => {
                         <div className='row d-flex align-items-center'>
                             <div className='col-md-4 col-sm-12 col-12 fs-5 w-100'>
                                 <Breadcrumb className="fw-bold">
-                                    <Breadcrumb.Item href='/customersupport/inquiry'>
+                                    <Breadcrumb.Item href='/Manager/inquiry'>
                                         Inquiries
                                     </Breadcrumb.Item>
                                     <Breadcrumb.Item className="custom-breadcrumb-divider" active >
@@ -358,11 +358,30 @@ const DetailedView = () => {
                                     </Form.Group>
                                 </Col>
                             </Row>
+                            {inquiryData.inquiry_status === 'Completed' && (
+                            <Row className='g-4'>
+                                <Col md>
+                                    <Form.Group className='mb-3'>
+                                        <Form.Label className='sub-heading Cabin-text'>
+                                            From Manager:
+                                        </Form.Label>
+                                        <Form.Control
+                                            as='textarea'
+                                            rows={3}
+                                            name='additionalRemarks'
+                                            value={inquiryData.additional_remarks}
+                                            style={{ backgroundColor: '#F2FAFF' }}
+                                            readOnly
+                                        />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+                        )}
                         </>
                     )}
 
                 </div>
-                {inquiry_type != 'refund' && inquiryData.inquiry_status != 'Canceled' &&  (
+                {inquiry_type != 'refund' && inquiry_type != 'orderComplaints' && inquiryData.inquiry_status != 'Canceled' &&  (
                     <>
                         <div className="divider " />
                         <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
@@ -373,27 +392,28 @@ const DetailedView = () => {
                         </div>
                     </>
                 )}
-                {inquiry_type === 'refund' && inquiryData.inquiry_status != 'Canceled' &&  (
+                {inquiry_type === 'refund'  && inquiryData.inquiry_status != 'Canceled' &&  (
                     <>
                         <div className="divider " />
                         <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
                         <RejectRefund ID={inquiryData}/>
                             <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-1">
-                            <SendQuotationBtn/>
+                            <MarkAsCompleted/>
                             </div>
                         </div>
                     </>
                 )}
-
-                {/* <div className="divider " />
-                <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
-                    <button className="my-2 mx-5 Cabin-text " style={{ color: "#FF5C60", background: "#FFFFFF", borderRadius: "8px", border: "1px solid #FF5C60" }}>Mark as Canceled</button>
-                    <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-1">
-                        <button className="my-2 mx-5 Cabin-text" style={{ color: "#83859C", background: "#FFFFFF", borderRadius: "8px", border: "1px solid #83859C" }}>Discard Changes</button>
-                        <button className="my-2 mx-5 Cabin-text" style={{ color: "#FFFFFF", background: "#035C94", borderRadius: "8px" }}>Complete Inquiry</button>
-                    </div>
-                </div> */}
-
+                {inquiry_type === 'orderComplaints'  && inquiryData.inquiry_status != 'Canceled' && inquiryData.inquiry_status != 'Completed'&&  (
+                    <>
+                        <div className="divider " />
+                        <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
+                        <div></div>
+                            <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-1">
+                            <MarkAsCompleted/>
+                            </div>
+                        </div>
+                    </>
+                )}
 
             </div>
         </>
