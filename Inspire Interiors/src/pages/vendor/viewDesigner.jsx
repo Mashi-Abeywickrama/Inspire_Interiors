@@ -63,9 +63,11 @@ const ViewDesigner = () => {
     const sessionItems = useSession();
     const userId = sessionItems.sessionData.userid;
 
-    const [designer, setDesigner] = useState([]);
+    const [user, setUser] = useState([]);
     const [designerData, setDesignerData] = useState([]);
     const [designCount, setDesignCount] = useState(0);
+
+    const [allDesigners, setAllDesigners] = useState([]);
 
     const Id = urlParams.get('id');
 
@@ -127,15 +129,15 @@ const ViewDesigner = () => {
         axiosInstance
         .get(`/getuser/${Id}`)
         .then((response) => {
-            setDesigner(response.data);
+            setUser(response.data);
             console.log(response.data);
           })
           .catch((error) => {
             console.log('Error fetching data', error);
         });
-    }, []);
+    }, [Id]);
 
-    const designerID = designer.userid;
+    const designerID = user.userid;
     console.log(designerID);
 
     useEffect(() => {
@@ -162,6 +164,50 @@ const ViewDesigner = () => {
         });
     }, [designerID]);
 
+    useEffect(() => {
+        axiosInstance
+        .get(`/designer/d`)
+        .then((response) => {
+            setAllDesigners(response.data);
+            console.log(response.data);
+            })
+            .catch((error) => {
+            console.log('Error fetching data', error);
+        });
+    }, []);
+
+    const filteredData = (specialities) => allDesigners.filter((item) => item.specialities === specialities);
+    console.log(filteredData(designerData.specialities));
+    
+    // const mergeData = (designerData, user) => {
+    //     const mergedData = user.map(
+    //       (userItem) => {
+    //       const matchingDesigner = designerData.find(
+    //         (designerItem) =>  userItem.userid === designerItem.designer_id
+    //       );
+    
+         
+      
+    //       if (matchingDesigner ) {
+    //         // Merge the data from both sources
+    //         return {
+    //           ...userItem,
+    //           ...matchingDesigner
+            
+    //         };
+    //       } else {
+    //         return {
+    //             ...designerItem
+    //         };
+    //     }});
+      
+    //     return mergedData;
+    // };
+    
+    // const mergedDesigner = mergeData(designerData, user);
+    // console.log("merged Data", mergedDesigner);
+
+
 
     const [show, setShow] = useState(false);
 
@@ -179,7 +225,7 @@ const ViewDesigner = () => {
                             <div className='d-flex flex-row gap-4 p-3 '>
                                 <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text text-dark">Promotion</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                                <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{designer.name}</p>
+                                <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{user.name}</p>
                             </div>
                             </div>
                         </div>
@@ -188,16 +234,16 @@ const ViewDesigner = () => {
                     <div className=" d-flex w-100 justify-content-center m-0 col-md-4 col-lg-2 col-sm-8">
                         <div className="col px-4 ">
                             <div className="d-flex flex-column flex-lg-row flex-md-row gap-4">
-                                <img className="img-fluid p-3 rounded-4 w-25 h-25 " src={`../../../../src/assets/img/profilePic/${designer.profile_pic}.jpg`} />
+                                <img className="img-fluid p-3 rounded-4 w-25 h-25 " src={`../../../../src/assets/img/profilePic/${user.profile_pic}.jpg`} />
                                 <div className="d-flex flex-column gap-2">
-                                    <p className="fs-3 fw-bold Cabin-text mt-4">{designer.name}</p>
+                                    <p className="fs-3 fw-bold Cabin-text mt-4">{user.name}</p>
                                         <div className="d-flex fs-6 fw-semibold Cabin-text f-color-grey align-items-center">Interior Designer</div>
                                         <div className="d-flex align-items-center gap-3">
                                             <div className='d-flex flex-row gap-1'>
-                                                {generateStars(4.6)}
+                                                {generateStars(4.5)}
                                             </div>
                                             <div className="d-flex flex-row gap-1 float-end">
-                                                <div className="fs-6 fw-bold Cabin-text">4.6/5.0</div>
+                                                <div className="fs-6 fw-bold Cabin-text">4.5/5.0</div>
                                             </div>
                                         </div>
                                 </div>
@@ -205,7 +251,7 @@ const ViewDesigner = () => {
 
                             
                             <div className="d-flex align-items-center justify-content-evenly py-2 my-4 mx-2">
-                                <div className="d-flex w-25 three-box rounded align-items-center justify-content-center gap-2">
+                                <div className="d-flex w-25 three-box rounded align-items-center justify-content-center gap-2 p-2">
                                     <div className="w-25 fw-bold fs-4 d-flex align-items-center f-color-y p-2">
                                         {designCount}
                                     </div>
@@ -213,7 +259,7 @@ const ViewDesigner = () => {
                                         Total Designs
                                     </div>
                                 </div>
-                                <div className="d-flex w-25 three-box rounded align-items-center justify-content-center gap-2">
+                                <div className="d-flex w-25 three-box rounded align-items-center justify-content-center gap-2 p-2">
                                     <div className="w-25 fw-bold fs-4 d-flex align-items-center f-color-y p-2">
                                         30
                                     </div>
@@ -330,24 +376,25 @@ const ViewDesigner = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='bg-light justify-content-center image-bar row w-100 flex-row m-0 p-0 '>
-                        {designerCards.map((card, index) => (
-                            <div key={index} className='d-flex col-5 col-md-4 col-lg-2 col-sm-8 mb-3'>
-                                <Link to='/vendor/promotion/viewdesigners'>
-                                    <Card className='h-100 border-0 rounded' style={{ color: '#7C828B' }}>
-                                        <Card.Img
-                                            variant='top'
-                                            src={card.image}
-                                            className='p-2 rounded-3 ' />
-                                        <Card.Body className='flex-row justify-content-center'>
-                                            <Card.Text className='d-flex m-0 lead fs-6 justify-content-center' >
-                                                {card.name}
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                                </Link>
-                            </div>
-                        ))}
+                    <div className="d-flex flex-wrap">
+                        <div class="row row-cols-1 row-cols-md-3 g-4 my-4 mx-4">
+                            {filteredData(designerData.specialities).map((designers) => (
+                                <div class="col">
+                                    <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                        <img className="img-fluid" src={`../../../../src/assets/img/profilePic/${designers.profile_pic}.jpg`} class="card-img-top" alt="blacksofa" />
+                                        <div class="card-body m-0 p-0 mt-3">
+                                            <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                <div className="d-flex flex-column">
+                                                    <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>{designers.username}</p>
+                                                    <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">{designers.type}</p>
+                                                </div>
+                                                <Link to={`/vendor/promotion/viewdesigners?id=${designers.userid}`}><Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} /></Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            ))}  
+                        </div>
                     </div>
                 </div>
             </div>

@@ -162,9 +162,9 @@ const Order = () => {
             className: 'delayed d-flex gap-2 align-items-center',
             text: 'Delayed',
           },
-          Canceled: {
+          Cancelled: {
             className: 'outstock d-flex gap-2 align-items-center',
-            text: 'Canceled',
+            text: 'Cancelled',
           },
         };
         if (statusDetails.hasOwnProperty(status)) {
