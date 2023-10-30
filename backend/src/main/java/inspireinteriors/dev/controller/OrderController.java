@@ -79,6 +79,17 @@ public class OrderController {
         List<Order> completedOrders = orderService.getOrderByStatus("completed");
         return completedOrders;
     }
+    @GetMapping("/commissionsum")
+    public double getCommissionSum() {
+        List<Order> orders = this.orderService.getOrders();
+
+        double commissionSum = orders.stream()
+                .mapToDouble(Order::getCommission)
+                .sum();
+
+        return commissionSum;
+    }
+
 
 
 }
