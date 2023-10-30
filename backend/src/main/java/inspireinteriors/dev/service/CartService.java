@@ -2,7 +2,6 @@ package inspireinteriors.dev.service;
 
 import inspireinteriors.dev.model.Cart;
 import inspireinteriors.dev.model.Product;
-import inspireinteriors.dev.model.ShippingAddress;
 import inspireinteriors.dev.repository.CartRepository;
 import inspireinteriors.dev.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +45,21 @@ public class CartService {
             return true;
         }
         return false;
+    }
+
+    public boolean updateCartQuantity(Cart cart) {
+        try {
+
+            cartRepository.save(cart);
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public Cart getCartById(int cartId) {
+        return this.cartRepository.findBycartId(cartId);
     }
 }

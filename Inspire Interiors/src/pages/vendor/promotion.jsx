@@ -198,7 +198,7 @@ const Promotion = () => {
           .get(`/promotion/vendor/${userId}`)
           .then((response) => {
             setStatusData(response.data);
-            // console.log(response.data);
+            console.log(response.data);
           })
           .catch((error) => {
             console.log('Error fetching data:', error);
@@ -564,7 +564,7 @@ const Promotion = () => {
                         <div className="col-lg-4 border bg-white rounded-3 mb-2 shadow p-3">
                             <div className="d-flex flex-row gap-3 p-3">
                                 <p className="fs-5 fw-bold Cabin-text">My Network</p>
-                                <Link to="/vendor/promotion/mynetwork"><p className="fs-6 fw-semibold mt-1 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1" /></p></Link>
+                                <Link to={`/vendor/promotion/mynetwork?id=${userId}`}><p className="fs-6 fw-semibold mt-1 Cabin-text" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1" /></p></Link>
                             </div>
                             <div className="d-flex flex-column my-2">
                                 <Tabs

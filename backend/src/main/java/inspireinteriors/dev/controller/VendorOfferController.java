@@ -1,5 +1,6 @@
 package inspireinteriors.dev.controller;
 
+import inspireinteriors.dev.model.Designer;
 import inspireinteriors.dev.model.VendorOffer;
 import inspireinteriors.dev.service.DesignerService;
 import inspireinteriors.dev.service.VendorOfferService;
@@ -25,6 +26,11 @@ public class VendorOfferController {
     @Autowired
     private DesignerService designerService;
 
+    @GetMapping("/getAllDesigners")
+    public ResponseEntity<List<Designer>> getAllDesigners(){
+        List<Designer> designers = designerService.getAllDesigners();
+        return ResponseEntity.ok(designers);
+    }
     @PostMapping("/addpromotion")
     public ResponseEntity<VendorOffer> createOffer(@RequestBody VendorOffer vendorOffer, HttpSession session){
         vendorOfferService.createOffer(vendorOffer);

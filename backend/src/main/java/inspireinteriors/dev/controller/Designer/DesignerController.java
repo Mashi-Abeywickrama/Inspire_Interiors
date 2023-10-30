@@ -1,9 +1,10 @@
 package inspireinteriors.dev.controller.Designer;
 
 
+import inspireinteriors.dev.model.Designer;
 import inspireinteriors.dev.model.DesignerModel.*;
-import inspireinteriors.dev.repository.Designer.DesignerDesigntoolFilesRepository;
 import inspireinteriors.dev.service.Designer.DesignerMyDesignService;
+import inspireinteriors.dev.service.DesignerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class DesignerController {
     //inject service
     @Autowired
     private DesignerMyDesignService designerMyDesignService;
+
+    @Autowired
+    private DesignerService designerService;
 
 
 
@@ -40,6 +44,26 @@ public class DesignerController {
         List<MyDesigns> myDesigns = designerMyDesignService.getDesignByDesignerId(designer_id);
        return ResponseEntity.ok(myDesigns);
     }
+
+    @GetMapping("designCount")
+    public ResponseEntity<List> getCountsOfDesigns(){
+        List counts = designerMyDesignService.getCountsOfDesigns();
+        return ResponseEntity.ok(counts);
+    }
+    
+
+    @GetMapping("/{designerId}")
+    public ResponseEntity<Designer> getDesignerById(@PathVariable(value = "designerId") int designer_id){
+        Designer designer = designerService.getDesignerByID(designer_id);
+        return ResponseEntity.ok(designer);
+    }
+
+    @GetMapping("/d")
+    public ResponseEntity<List<Designer>> getAllDesigners(){
+        List<Designer> designers = designerService.getAllDesigners();
+        return ResponseEntity.ok(designers);
+    }
+
 
 
     @PostMapping("/adddesign")

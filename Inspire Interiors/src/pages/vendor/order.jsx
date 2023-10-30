@@ -45,110 +45,6 @@ const radarData = [
         }
 ]
 
-const acceptedData = {
-    columns: [
-        {
-          label: 'ORDER DETAILS',
-          field: 'product',
-          sort: 'asc',
-          width: 150
-        },
-        {
-          field: 'status',
-          sort: 'asc',
-          width: 270
-        },
-    ],
-    rows: [
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
-                </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
-                </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
-                </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
-                </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
-        },
-    ]
-}
-
-const newData = {
-    columns: [
-        {
-          label: 'ORDER DETAILS',
-          field: 'product',
-          sort: 'asc',
-          width: 150
-        },
-        {
-          field: 'status',
-          sort: 'asc',
-          width: 270
-        },
-    ],
-    rows: [
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
-                    </div>
-                </div>,
-            status:<div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        }
-    ]
-}
-
 const style = {
     top: 90,
     left: 270,
@@ -222,6 +118,99 @@ const Order = () => {
           );
         }
         return null;
+    };
+
+    const newData = {
+        columns: [
+            {
+              label: 'PRODUCT DETAILS',
+              field: 'product',
+              sort: 'asc',
+              width: 180
+            },
+            {
+                label: 'CUSTOMER',
+                field: 'customer',
+                sort: 'asc',
+                width: 150
+              }
+        ],
+        rows: [
+            {   
+                product: <div className='d-flex flex-row gap-3'>
+                            <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
+                        </div>,
+                customer: <p className='align-items-center fs-6 fw-normal mt-2'>David Avacado</p>                   
+            },
+            {   
+                product: <div className='d-flex flex-row gap-3'>
+                            <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
+                        </div>,
+                customer: <p className='align-items-center fs-6 fw-normal mt-2'>David Avacado</p>                   
+            },
+            {   
+                product: <div className='d-flex flex-row gap-3'>
+                            <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
+                        </div>,
+                customer: <p className='align-items-center fs-6 fw-normal mt-2'>David Avacado</p>                   
+            },
+            {   
+                product: <div className='d-flex flex-row gap-3'>
+                            <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
+                        </div>,
+                customer: <p className='align-items-center fs-6 fw-normal mt-2'>David Avacado</p>                   
+            },
+        ]
+    };
+
+    const acceptedData = {
+        columns: [
+            {
+              label: 'PRODUCT DETAILS',
+              field: 'product',
+              sort: 'asc',
+              width: 150
+            },
+            {
+              field: 'status',
+              sort: 'asc',
+              width: 270
+            },
+        ],
+        rows: [
+            {   
+                product: <div className='d-flex flex-row gap-3'>
+                            <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
+                        </div>,
+                status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div>
+            },
+            {   
+                product: <div className='d-flex flex-row gap-3'>
+                            <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
+                        </div>,
+                status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div>
+            },
+            {   
+                product: <div className='d-flex flex-row gap-3'>
+                            <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
+                        </div>,
+                status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div>
+            },
+            {   
+                product: <div className='d-flex flex-row gap-3'>
+                            <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
+                        </div>,
+                status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div>
+            },
+        ]
     };
 
     const filteredData = (status) => 
