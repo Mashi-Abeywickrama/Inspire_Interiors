@@ -58,18 +58,6 @@ const MyNetwork = () => {
 
   useEffect(() => {
     axiosInstance
-      .get(`/filtertype/designer`)
-      .then((response) => {
-        console.log(response.data);
-        setDesigner(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    axiosInstance
       .get(`/designer/d`)
       .then((response) => {
         console.log(response.data);
