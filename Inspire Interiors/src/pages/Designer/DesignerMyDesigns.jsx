@@ -8,6 +8,7 @@ import PageNumb from "../../components/customer/pagenum";
 import "./../../styles/customer/designs.css";
 import * as Icon from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
+import { Link } from "react-router-dom";
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -34,20 +35,20 @@ function DesignerMyDesigns() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [designId, setDesignId] = useState("");
-  const [image1, setImage1]=useState();
-  const [nameimage1, setNameImage1]=useState();
-  const[image2, setImage2]=useState();
-  const [nameimage2, setNameImage2]=useState();
-  const [image3, setImage3]=useState();
-  const [nameimage3, setNameImage3]=useState();
+  const [image1, setImage1] = useState();
+  const [nameimage1, setNameImage1] = useState();
+  const [image2, setImage2] = useState();
+  const [nameimage2, setNameImage2] = useState();
+  const [image3, setImage3] = useState();
+  const [nameimage3, setNameImage3] = useState();
 
   const handleimage1 = (e) => {
-    let file1= e.target.files[0];
-    setImage1("image",file1);
-  }
+    let file1 = e.target.files[0];
+    setImage1("image", file1);
+  };
   const handleimage1Name = (e) => {
     setNameImage1(e.target.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -285,12 +286,14 @@ function DesignerMyDesigns() {
         </div> */}
         {data.map((design) => (
           <div class="card" style={{ width: "23%" }}>
-            <img
-              src={"../../src/assets/Designer/" + design.image}
-              className="card-img-top img-fluid rounded-2"
-              alt="design"
-              style={{ height: "60vh", objectFit: "fill" }}
-            ></img>
+            <Link to={"../mydesignview/" + design.design_id}>
+              <img
+                src={"../../src/assets/Designer/" + design.image}
+                className="card-img-top img-fluid rounded-2"
+                alt="design"
+                style={{ height: "60vh", objectFit: "fill" }}
+              ></img>
+            </Link>
             <div className="card-body">
               <h5 className="card-title">{design.name}</h5>
               <p
