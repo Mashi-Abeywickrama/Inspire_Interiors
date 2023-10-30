@@ -39,4 +39,8 @@ public class OrderService {
         order.setStatus(status);
         this.orderRepository.save(order);
     }
+
+    public Order getOrderByRefNo(int refNo) {
+        return this.orderRepository.findByRef_No(refNo);
+    }
 }
