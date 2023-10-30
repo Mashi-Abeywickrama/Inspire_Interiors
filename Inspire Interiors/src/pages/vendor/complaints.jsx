@@ -17,6 +17,8 @@ import {useSession} from '../../constants/SessionContext';
 
 const Complaints = () => {
   const [inquiryData, setInquiryData] = useState([]);
+  const [orderData, setOrderData] = useState([]);
+  const [outputData, setOutputData] = useState([]);
 
   const apiBaseUrl = "http://localhost:8080";
 
@@ -27,6 +29,111 @@ const Complaints = () => {
 
   const sessionItems = useSession();
   const userId = sessionItems.sessionData.userid;
+
+  useEffect(() => {
+        axiosInstance.get(`/getorder/vendor/${userId}`)
+            .then((response) => {
+                console.log(response.data);
+                setOrderData(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [userId]);
+    
+
+    useEffect(() => {
+        axiosInstance.get(`/inquirytype/orderComplaints`)
+            .then((response) => {
+                console.log(response.data);
+                setInquiryData(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
+    const mergeData = (orderData, InquiryData) => {
+    const mergedData = orderData.map(
+      (orderItem) => {
+      const matchingInquiry = InquiryData.find(
+        (inquiryItem) =>  inquiryItem.order_no == orderItem.ref_no
+      );
+
+  
+      if (matchingInquiry ) {
+        // Merge the data from both sources
+        return {
+          ...outputData,
+          ...orderItem,
+          ...matchingInquiry,
+        };
+      } 
+    });
+  
+    return mergedData;
+  };
+
+  const mergedOrderInquiry = mergeData(orderData, inquiryData);
+  console.log("mergeData_fair", mergedOrderInquiry);
+
+
+  const getOrderStatus = (status) => {
+    const statusDetails = {
+      New: {
+        className: 'new d-flex gap-2 align-items-center',
+        text: 'New',
+      },
+      Completed: {
+        className: 'completed d-flex gap-2 align-items-center',
+        text: 'Completed',
+      },
+      Ongoing: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Ongoing',
+      },
+
+      Prepared: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Prepared',
+      },
+
+      Shipped: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Shipped',
+      },
+
+      Delivered: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Delivered',
+      },
+
+       Confirmed: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Confirmed',
+      },
+
+      Delayed: {
+        className: 'delayed d-flex gap-2 align-items-center',
+        text: 'Delayed',
+      },
+      Canceled: {
+        className: 'outstock d-flex gap-2 align-items-center',
+        text: 'Canceled',
+      },
+    };
+    if (statusDetails.hasOwnProperty(status)) {
+      const { className, text } = statusDetails[status];
+      return (
+        <div className={className}>
+          <i className="bi bi-circle-fill tag-icon"></i>
+          <p className="m-0">{text}</p>
+        </div>
+      );
+    }
+    return null;
+  };
+
 
 
   return (
@@ -62,13 +169,25 @@ const Complaints = () => {
                         label: 'REFERENCE NO',
                         field: 'reference',
                         sort: 'asc',
-                        width: 270
+                        width: 70
                       },
                       {
-                        label: 'COMPLAINT TYPE',
+                        label: 'INQUIRY DATE',
                         field: 'type',
                         sort: 'asc',
-                        width: 200
+                        width: 100
+                      },
+                      {
+                        label: 'ORDER NO',
+                        field: 'order_no',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: 'ORDER STATUS',
+                        field: 'order_status',
+                        sort: 'asc',
+                        width: 100
                       },
                       {
                         label: '  ',
@@ -77,12 +196,19 @@ const Complaints = () => {
                         width: 100
                       }
                     ],
-                    rows: inquiryData.map((inquiry) => {
+                    rows: mergedOrderInquiry
+                    .filter(inquiry => inquiry !== undefined)
+                    .map((inquiry,index) => {
+                      
                       return {
-                        customer: inquiry.username,
-                        reference: inquiry.inquiry_reference,
-                        type: inquiry.inquiry_type,
-                        status: <div className='d-flex flex-row gap-4'><button className='response-btn'>Respond</button><Link to={`/vendor/complaints/viewcomplaint?id=${inquiry.inquiry_id}`}><button className='view-btn'>View</button></Link></div>
+
+                        customer: inquiry !== undefined ? inquiry.username: " ",
+                        reference: inquiry !== undefined ? inquiry.inquiry_reference: " ",
+                        type: inquiry !== undefined ? inquiry.inquiry_date : " ",
+                        order_no: inquiry !== undefined ? inquiry.order_no : " ",
+                        order_status: inquiry !== undefined ? getOrderStatus(inquiry.status) : " ",
+                        status: <div className='d-flex flex-row gap-4'><Link to={`/vendor/complaints/viewcomplaint?id=${inquiry.inquiry_id}`}><button className='view-btn'>View</button></Link></div>
+                        
                       }
                     })
                   }}
@@ -92,15 +218,7 @@ const Complaints = () => {
                   searching={true} />
               </div>
             </Tab>
-            <Tab eventKey="New" title="New">
-              New
-            </Tab>
-            <Tab eventKey="Ongoing" title="Ongoing">
-              Ongoing
-            </Tab>
-            <Tab eventKey="Resolved" title="Resolved">
-              Resolved
-            </Tab>
+            
           </Tabs>
         </div>
 

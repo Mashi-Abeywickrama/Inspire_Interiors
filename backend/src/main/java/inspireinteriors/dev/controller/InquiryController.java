@@ -41,6 +41,17 @@ public class InquiryController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+    @GetMapping("/inquirytype/{type}")
+    public ResponseEntity<Iterable<Inquiry>> getInquiryByType(@PathVariable(value = "type") String inquiryType) {
+        Iterable<Inquiry> inquiry = inquiryService.getInquiryByType(inquiryType);
+        if (inquiry != null) {
+            return ResponseEntity.ok(inquiry);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+    }
     @PostMapping("/inquiry")
     public ResponseEntity<String> saveInquiry(@RequestBody Inquiry inquiry) throws JSONException {
         LocalDate currentDate = LocalDate.now();
