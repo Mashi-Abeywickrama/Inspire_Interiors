@@ -247,6 +247,34 @@ const Promotion = () => {
 
     const PendingData = statusData.filter(vendoroffer => vendoroffer.offerstatus == 0);
 
+    const mergeData = (acceptedData, designerData) => {
+        const mergedData = acceptedData.map(
+          (acceptedItem) => {
+          const matchingDesigner = designerData.find(
+            (designerItem) =>  designerItem.userid === acceptedItem.designerid
+          );
+    
+         
+      
+          if (matchingDesigner ) {
+            // Merge the data from both sources
+            return {
+              ...acceptedItem,
+              ...matchingDesigner
+            
+            };
+          } else {
+            return {
+                ...acceptedItem
+            };
+        }});
+      
+        return mergedData;
+    };
+    
+    const mergedDesigner = mergeData(AcceptedData, designerData);
+    console.log("merged Data", mergedDesigner);
+
     const Rows1 = AcceptedData.map(vendoroffer=>({
         overview: <Link to={`/vendor/promotion/Promotionrequest?id=${vendoroffer.offerid}`}><p className='align-items-center text-dark text-uppercase fs-6 fw-semibold mt-3 m-0'>{vendoroffer.offeroverview}</p></Link>,
         status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{findStatus(vendoroffer.offerstatus)}</p></div>
@@ -279,10 +307,10 @@ const Promotion = () => {
                             </div>
                             <div className="d-flex flex-wrap">
                                 <div class="row row-cols-1 row-cols-md-3 g-4 my-4 mx-4">
-                                {designerData.map((designer, index) => (
+                                {mergedDesigner.map((designer, index) => (
                                     <div class="col">
                                         <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                            <img className="img-fluid" src={`../../../../src/assets/img/profilePic/${designer.profile_pic}.jpg`} class="card-img-top" alt="blacksofa" />
+                                            <img className="img-fluid" src={`../../../../src/assets/img/profilePic/${designer.profile_pic}`} class="card-img-top" alt="blacksofa" />
                                             <div class="card-body m-0 p-0 mt-3">
                                                 <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
                                                     <div className="d-flex flex-column">

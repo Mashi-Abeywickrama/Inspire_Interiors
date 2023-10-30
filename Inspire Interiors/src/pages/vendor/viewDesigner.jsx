@@ -68,6 +68,7 @@ const ViewDesigner = () => {
     const [designCount, setDesignCount] = useState(0);
 
     const [allDesigners, setAllDesigners] = useState([]);
+    const [allUsers, setAllUsers] = useState([]);
 
     const Id = urlParams.get('id');
 
@@ -137,6 +138,18 @@ const ViewDesigner = () => {
         });
     }, [Id]);
 
+    useEffect(() => {
+        axiosInstance
+        .get(`/users`)
+        .then((response) => {
+            setAllUsers(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log('Error fetching data', error);
+        });
+    }, [Id]);
+
     const designerID = user.userid;
     console.log(designerID);
 
@@ -176,36 +189,38 @@ const ViewDesigner = () => {
         });
     }, []);
 
-    const filteredData = (specialities) => allDesigners.filter((item) => item.specialities === specialities);
-    console.log(filteredData(designerData.specialities));
     
-    // const mergeData = (designerData, user) => {
-    //     const mergedData = user.map(
-    //       (userItem) => {
-    //       const matchingDesigner = designerData.find(
-    //         (designerItem) =>  userItem.userid === designerItem.designer_id
-    //       );
+    const mergeData = (designerData, userData) => {
+        const mergedData = designerData.map(
+          (designerItem) => {
+          const matchingUser = userData.find(
+            (userItem) =>  userItem.userid === designerItem.designer_id
+          );
     
          
       
-    //       if (matchingDesigner ) {
-    //         // Merge the data from both sources
-    //         return {
-    //           ...userItem,
-    //           ...matchingDesigner
+          if (matchingUser ) {
+            // Merge the data from both sources
+            return {
+              ...designerItem,
+              ...matchingUser
             
-    //         };
-    //       } else {
-    //         return {
-    //             ...designerItem
-    //         };
-    //     }});
+            };
+          } else {
+            return {
+                ...designerItem
+            };
+        }});
       
-    //     return mergedData;
-    // };
+        return mergedData;
+    };
     
-    // const mergedDesigner = mergeData(designerData, user);
-    // console.log("merged Data", mergedDesigner);
+    const mergedDesigner = mergeData(allDesigners, allUsers);
+    console.log("merged Data", mergedDesigner);
+
+    const filteredData = (specialities) => mergedDesigner.filter((item) => item.specialities === specialities && item.userid !== designerData.designer_id);
+    console.log(filteredData(designerData.specialities));
+    
 
 
 
@@ -234,16 +249,16 @@ const ViewDesigner = () => {
                     <div className=" d-flex w-100 justify-content-center m-0 col-md-4 col-lg-2 col-sm-8">
                         <div className="col px-4 ">
                             <div className="d-flex flex-column flex-lg-row flex-md-row gap-4">
-                                <img className="img-fluid p-3 rounded-4 w-25 h-25 " src={`../../../../src/assets/img/profilePic/${user.profile_pic}.jpg`} />
+                                <img className="img-fluid p-3 rounded-4 w-25 h-25 " src={`../../../../src/assets/img/profilePic/${user.profile_pic}`} />
                                 <div className="d-flex flex-column gap-2">
                                     <p className="fs-3 fw-bold Cabin-text mt-4">{user.name}</p>
                                         <div className="d-flex fs-6 fw-semibold Cabin-text f-color-grey align-items-center">Interior Designer</div>
                                         <div className="d-flex align-items-center gap-3">
                                             <div className='d-flex flex-row gap-1'>
-                                                {generateStars(4.5)}
+                                                {generateStars(designerData.averagereview)}
                                             </div>
                                             <div className="d-flex flex-row gap-1 float-end">
-                                                <div className="fs-6 fw-bold Cabin-text">4.5/5.0</div>
+                                                <div className="fs-6 fw-bold Cabin-text">{designerData.averagereview}/5.0</div>
                                             </div>
                                         </div>
                                 </div>
@@ -381,13 +396,18 @@ const ViewDesigner = () => {
                             {filteredData(designerData.specialities).map((designers) => (
                                 <div class="col">
                                     <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                        <img className="img-fluid" src={`../../../../src/assets/img/profilePic/${designers.profile_pic}.jpg`} class="card-img-top" alt="blacksofa" />
+                                        <img className="img-fluid" src={`../../../../src/assets/img/profilePic/${designers.profile_pic}`} class="card-img-top" alt="blacksofa" />
                                         <div class="card-body m-0 p-0 mt-3">
                                             <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
                                                 <div className="d-flex flex-column">
                                                     <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>{designers.username}</p>
-                                                    <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">{designers.type}</p>
+                                                    
+                                                    <div className='d-flex flex-row gap-1'>
+                                                {generateStars(designers.averagereview)}
+                                            </div>
+                                           
                                                 </div>
+                                                
                                                 <Link to={`/vendor/promotion/viewdesigners?id=${designers.userid}`}><Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} /></Link>
                                             </div>
                                         </div>
