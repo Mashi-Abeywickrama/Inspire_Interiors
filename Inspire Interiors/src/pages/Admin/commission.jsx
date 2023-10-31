@@ -317,15 +317,27 @@ const [vendorOrderData, setVendorOrderData] = useState([]); // State variable fo
 
             <div className=" d-flex bg-white flex-column gap-3 p-2 col-4 flex-fill ">
               <span className="heading fs-3">Commission Rate</span>
-              <div className="product d-flex p-2 shadow flex-column h-100 ">
-                <div className="com-earned d-flex fs-4">Product</div>
-                <div className="d-flex flex-row gap-5 justify-content-center">
+              <div className="product d-flex p-2 shadow flex-column h-100 p-3 ">
+                <div className='d-flex flex-row gap-3 justify-content-between'><div className="com-earned d-flex fs-4">Product</div><Icon.PencilFill className="edit-icon fs-5" />
+               </div> <div className="d-flex flex-row gap-5 justify-content-between m-1">
                   <span>Price range</span>
                   <span>Rate</span>
                 </div>
                 <div className="line d-flex "></div>
-                <div className="d-flex flex-row gap-3 justify-content-center">
-                  <span>00 5000</span>
+                <div className="d-flex flex-row gap-3 justify-content-between">
+                <div className='d-flex gap-3 justify-content-between'><span>00  - </span> <span> 5,000</span></div>
+                  {/* <div class="progress">
+                    <div
+                      class="progress-bar bg-success"
+                      role="progressbar"
+                      aria-valuenow="75"
+                      aria-valuemin="0"
+                    ></div>
+                  </div> */}
+                  <span>18%</span>
+                </div>
+                <div className="d-flex flex-row gap-3 justify-content-between">
+                  <div className='d-flex gap-3'><span>5,000  - </span> <span> 10,000</span></div>
                   <div class="progress">
                     <div
                       class="progress-bar bg-success"
@@ -336,20 +348,8 @@ const [vendorOrderData, setVendorOrderData] = useState([]); // State variable fo
                   </div>
                   <span>18%</span>
                 </div>
-                <div className="d-flex flex-row gap-3 justify-content-center ">
-                  <span>5,000 10,000</span>
-                  <div class="progress">
-                    <div
-                      class="progress-bar bg-success"
-                      role="progressbar"
-                      aria-valuenow="75"
-                      aria-valuemin="0"
-                    ></div>
-                  </div>
-                  <span>18%</span>
-                </div>
-                <div className="d-flex flex-row gap-3 justify-content-center">
-                  <span>10,000 20,000</span>
+                <div className="d-flex flex-row gap-3 justify-content-between">
+                <div className='d-flex gap-3'><span>10,000  -</span> <span> 20,000</span></div>
                   <div class="progress">
                     <div
                       class="progress-barbg-success"
@@ -362,15 +362,28 @@ const [vendorOrderData, setVendorOrderData] = useState([]); // State variable fo
                 </div>
               </div>
 
-              <div className="product d-flex p-2 shadow flex-column h-100 ">
-                <div className="com-earned d-flex fs-4">Design</div>
-                <div className="d-flex flex-row gap-5 justify-content-center">
+              <div className="product d-flex p-2 shadow flex-column h-100 p-3 ">
+                <div className='d-flex flex-row gap-3 justify-content-between'><div className="com-earned d-flex fs-4">Design</div><Icon.PencilFill className="edit-icon fs-5" /></div>
+            
+                <div className="d-flex flex-row gap-5 justify-content-between">
                   <span>Price range</span>
                   <span>Rate</span>
                 </div>
                 <div className="line d-flex w-100"></div>
-                <div className="d-flex flex-row gap-3 justify-content-center">
-                  <span>00 5000</span>
+                <div className="d-flex flex-row gap-3 justify-content-between">
+                <div className='d-flex gap-3 justify-content-between'><span>00  - </span> <span> 5,000</span></div>
+                  {/* <div class="progress">
+                    <div
+                      class="progress-bar bg-success"
+                      role="progressbar"
+                      aria-valuenow="75"
+                      aria-valuemin="0"
+                    ></div>
+                  </div> */}
+                  <span>18%</span>
+                </div>
+                <div className="d-flex flex-row gap-3 justify-content-between">
+                  <div className='d-flex gap-3'><span>5,000  - </span> <span> 10,000</span></div>
                   <div class="progress">
                     <div
                       class="progress-bar bg-success"
@@ -381,20 +394,8 @@ const [vendorOrderData, setVendorOrderData] = useState([]); // State variable fo
                   </div>
                   <span>18%</span>
                 </div>
-                <div className="d-flex flex-row gap-3 justify-content-center">
-                  <span>5,000 10,000</span>
-                  <div class="progress">
-                    <div
-                      class="progress-bar bg-success"
-                      role="progressbar"
-                      aria-valuenow="75"
-                      aria-valuemin="0"
-                    ></div>
-                  </div>
-                  <span>18%</span>
-                </div>
-                <div className="d-flex flex-row gap-3 justify-content-center ">
-                  <span className="d-flex ">10,000 20,000</span>
+                <div className="d-flex flex-row gap-3 justify-content-between">
+                <div className='d-flex gap-3'><span>10,000  -</span> <span> 20,000</span></div>
                   <div class="progress">
                     <div
                       class="progress-barbg-success"
@@ -403,7 +404,7 @@ const [vendorOrderData, setVendorOrderData] = useState([]); // State variable fo
                       aria-valuemin="0"
                     ></div>
                   </div>
-                  <span className="d-flex">18%</span>
+                  <span>18%</span>
                 </div>
               </div>
             </div>

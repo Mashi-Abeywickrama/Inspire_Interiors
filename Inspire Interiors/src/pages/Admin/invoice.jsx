@@ -123,11 +123,8 @@ export default function Invoice() {
                 <p className="ms-3">Shipping Address:</p>
               </div>
               <div className="col-md-2">
-                <p className="number fs-4">
-                  3000/B,
-                  philosophy road,
-                  kotlin,
-                  SriLanka
+                <p className="number fs-5">
+                  {orderData.shipping_address}
                 </p>
               </div>
             </div>
