@@ -30,4 +30,8 @@ public class DesignerService {
     public List<Designer> getAllDesigners() {
         return designerRepository.findAll();
     }
+
+    public List<Designer> getTopDesigners() {
+        return designerRepository.findTopDesigners();
+    }
 }

@@ -536,4 +536,10 @@ public class UserController {
 
 
     }
+
+    @GetMapping("/topdesigners")
+    public List<Designer> getTopDesigners() {
+        List<Designer> designers = designerService.getTopDesigners();
+        return designers;
+    }
 }
