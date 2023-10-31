@@ -285,7 +285,7 @@ const Order = () => {
       },
     ],
 
-    rows: filteredData('pending').map((order) => ({
+    rows: filteredData('ongoing').map((order) => ({
       ref_no: order.ref_no,
       date: order.date,
       product:order.product||order.design,
@@ -368,7 +368,7 @@ const Order = () => {
            />
            </div>
               </Tab>
-              <Tab eventKey="Pending" title="Pending" >
+              <Tab eventKey="Ongoing" title="Ongoing" >
               <div className="">
              
              <MDBDataTableV5

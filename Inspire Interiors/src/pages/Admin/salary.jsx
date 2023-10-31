@@ -20,6 +20,7 @@ const Salary = () => {
 
   const [salaryData, setSalaryData]=useState([]);
   const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState([]);
 
   const axiosInstance = axios.create({
     baseURL: apiBaseURL,
@@ -48,6 +49,24 @@ const Salary = () => {
   const filteredData = (type) =>
   salaryData.filter((item) => item.type === type);
   
+  useEffect(() => {
+    // Fetch user data
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(apiBaseURL + '/getuser');
+        const userData = response.data;
+        setUsers(userData);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+    fetchUserData();
+  }, []);
+
+  const getUserNameByUserId = (userId) => {
+    const user = users.find((user) => user.userid === userId);
+    return user ? user.name : 'N/A';
+  };
 
 
   const data = {
@@ -96,7 +115,7 @@ const Salary = () => {
       }
     ],
     rows:salaryData.map((salary) => ({
-     name:salary.userid,
+      name: getUserNameByUserId(salary.userid),
      total_sale:salary.total_sale,
      commission:salary.commission,
      earning:salary.earnings,

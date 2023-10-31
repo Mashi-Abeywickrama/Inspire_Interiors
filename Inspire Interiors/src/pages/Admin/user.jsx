@@ -396,6 +396,62 @@ const User = () => {
       // other fields...
     })),
   };
+  const data6 = {
+    columns: [
+      {
+        label: 'USERNAME',
+        field: 'username',
+        sort: 'asc',
+        width: 150
+      },
+      {
+        label: 'TYPE',
+        field: 'type',
+        sort: 'asc',
+        width: 50
+      },
+      {
+        label: 'EMAIL',
+        field: 'email',
+        sort: 'asc',
+        width: 200
+      },
+      {
+        label: 'DOB',
+        field: 'dob',
+        sort: 'asc',
+        width: 270
+      },
+      {
+        label: 'CONTACT_NO',
+        field: 'contact_no',
+        sort: 'asc',
+        width: 270
+      },
+      
+      {
+        label: '  ',
+        field: 'action',
+        sort: 'NONE',
+        width: 100
+      }
+    ],
+
+    rows: filteredData('manager').map((user) => ({
+      username: user.username,
+      type: user.type,
+      email: user.email,
+      dob: new Date(user.dob).toLocaleDateString(),
+      contact_no: user.contact_no,
+      action: 
+          <Link to={`/admin/user/profile/${user.userid}`} className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">View More</p> <Icon.ArrowRight />
+         </Link>
+      
+      
+      // other fields...
+    })),
+  };
    
   
 
@@ -496,6 +552,19 @@ const User = () => {
                           bordered
                           small
                           data={data5}
+                          sortable={true}
+                          exportToCSV={true}
+                        />
+                      </div>
+                    </Tab>
+                    <Tab eventKey="manager" title="Manager">
+                    <div className="">
+                        <MDBDataTableV5
+                          responsive
+                          striped
+                          bordered
+                          small
+                          data={data6}
                           sortable={true}
                           exportToCSV={true}
                         />
