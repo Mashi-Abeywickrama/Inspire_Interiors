@@ -74,6 +74,7 @@ import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
 import ViewOrder from "./pages/vendor/viewOrder";
 import Inventory from "./pages/vendor/inventory";
 import ViewCustomRequest from "./pages/vendor/viewCustomRequest";
+import ViewAcceptRequest from "./pages/vendor/viewAcceptRequest";
 import PromotedProduct from "./pages/vendor/promotedProduct";
 import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
@@ -248,6 +249,7 @@ const routes = (
       <Route path="order/vieworder" element={<ViewOrder />}></Route>
       <Route path="order/customizeorders" element={<CustomizeOrders />}></Route>
       <Route path="order/customrequest" element={<ViewCustomRequest />}></Route>
+      <Route path="order/acceptrequest" element={<ViewAcceptRequest />}></Route>
       <Route path="promotion" element={<Promotion />}></Route>
       <Route path="promotion/mynetwork" element={<MyNetwork />}></Route>
       <Route

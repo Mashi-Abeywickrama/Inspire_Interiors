@@ -30,4 +30,8 @@ public class CustomizedOrderService {
         customizedOrderRepository.findByCustomerid(customerid).forEach(CustomizedOrder -> orderList.add(CustomizedOrder));
         return orderList;
     }
+    //get customize order by id
+    public CustomizedOrder getCustomizedOrderById(int customizedorderid){
+        return customizedOrderRepository.findById((long) customizedorderid).orElse(null);
+    }
 }

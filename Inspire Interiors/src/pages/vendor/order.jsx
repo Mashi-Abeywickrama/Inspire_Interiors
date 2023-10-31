@@ -55,6 +55,8 @@ const Order = () => {
     const [orderData, setOrderData] = useState([]);
     const [selectedTab, setSelectedTab] = useState('All');
     const [loading, setLoading] = useState(true);
+    const [customizeData, setCustomizedData] = useState([]);
+    const [customer, setCustomer] = useState([]);
 
 
     const sessionItems = useSession();
@@ -85,6 +87,63 @@ const Order = () => {
         });
     }, []);
 
+    useEffect(() => {
+        axiosInstance
+        .get(`/customizedorder`)
+        .then((response) => {
+            setCustomizedData(response.data);
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log("Error fetching customized Data",error);
+        })
+    },[]);
+
+    useEffect(() => {
+        axiosInstance
+        .get(`/filtertype/customer`)
+        .then((response) => {
+            setCustomer(response.data);
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log("Error fetching customer Data",error);
+        })
+    },[]);
+
+    const mergeData = (customizeData, customer) => {
+        const mergedData = customizeData.map(
+          (customizeItem) => {
+          const matchingCustomer = customer.find(
+            (customerItem) =>  customerItem.userid === customizeItem.customerid
+          );
+    
+         
+      
+          if (matchingCustomer ) {
+            // Merge the data from both sources
+            return {
+              ...customizeItem,
+              ...matchingCustomer,
+              status: customizeItem.status
+            
+            };
+          } else {
+            return customizeItem;
+          }
+        });
+      
+        return mergedData;
+      };
+    
+      const mergedCustomizedOrder = mergeData(customizeData, customer);
+      console.log("merged Data", mergedCustomizedOrder);
+
+      const sortedCustomizedData = mergedCustomizedOrder.sort((a, b) => b.customizedorderid - a.customizedorderid);
+
+      // Take the first 4 products (latest products)
+      const latestCustomizedorder = sortedCustomizedData.slice(0, 4);
+
     const getOrderStatus = (status) => {
         const statusDetails = {
           New: {
@@ -103,9 +162,9 @@ const Order = () => {
             className: 'delayed d-flex gap-2 align-items-center',
             text: 'Delayed',
           },
-          Canceled: {
+          Cancelled: {
             className: 'outstock d-flex gap-2 align-items-center',
-            text: 'Canceled',
+            text: 'Cancelled',
           },
         };
         if (statusDetails.hasOwnProperty(status)) {
@@ -119,6 +178,9 @@ const Order = () => {
         }
         return null;
     };
+
+    const filteredData = (status) => 
+    latestCustomizedorder.filter((item) => item.status === status);
 
     const newData = {
         columns: [
@@ -135,37 +197,17 @@ const Order = () => {
                 width: 150
               }
         ],
-        rows: [
-            {   
+        rows: filteredData("New").map((custom) => {
+            return {   
                 product: <div className='d-flex flex-row gap-3'>
-                            <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
+                            <Link to={`/vendor/order/customrequest?id=${custom.customizedorderid}`}><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">{custom.productname}</p>
                         </div>,
-                customer: <p className='align-items-center fs-6 fw-normal mt-2'>David Avacado</p>                   
-            },
-            {   
-                product: <div className='d-flex flex-row gap-3'>
-                            <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
-                        </div>,
-                customer: <p className='align-items-center fs-6 fw-normal mt-2'>David Avacado</p>                   
-            },
-            {   
-                product: <div className='d-flex flex-row gap-3'>
-                            <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
-                        </div>,
-                customer: <p className='align-items-center fs-6 fw-normal mt-2'>David Avacado</p>                   
-            },
-            {   
-                product: <div className='d-flex flex-row gap-3'>
-                            <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
-                        </div>,
-                customer: <p className='align-items-center fs-6 fw-normal mt-2'>David Avacado</p>                   
-            },
-        ]
+                customer: <p className='align-items-center fs-6 fw-normal mt-2'>{custom.username}</p>                   
+            }
+        })
     };
+    console.log(filteredData("New"));
 
     const acceptedData = {
         columns: [
@@ -181,40 +223,18 @@ const Order = () => {
               width: 270
             },
         ],
-        rows: [
-            {   
+        rows: filteredData("Accepted").map((acceptorder) => {
+            return{  
                 product: <div className='d-flex flex-row gap-3'>
-                            <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
+                            <Link to={`/vendor/order/acceptrequest?id=${acceptorder.customizedorderid}`}><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">{acceptorder.productname}</p>
                         </div>,
-                status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div>
-            },
-            {   
-                product: <div className='d-flex flex-row gap-3'>
-                            <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
-                        </div>,
-                status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div>
-            },
-            {   
-                product: <div className='d-flex flex-row gap-3'>
-                            <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
-                        </div>,
-                status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div>
-            },
-            {   
-                product: <div className='d-flex flex-row gap-3'>
-                            <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                            <p className="fs-6 fw-normal mt-2">Merlin Die Sofa</p>
-                        </div>,
-                status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div>
-            },
-        ]
+                status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{acceptorder.status}</p></div>
+            }
+        })
     };
 
-    const filteredData = (status) => 
-        orderData.filter((item) => item.status === status);
+    
 
 
     return (
