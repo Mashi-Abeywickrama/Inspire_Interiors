@@ -20,4 +20,7 @@ public interface DesignerMyDesignsRepository extends JpaRepository<MyDesigns, Lo
 
     @Query(value= "SELECT designer_id, COUNT(designer_id) as TotalCount FROM my_designs Group By designer_id", nativeQuery = true)
     List getCountsOfDesigns();
+
+    @Query(value= "SELECT MAX(designs_id) FROM my_designs", nativeQuery = true)
+    int getMaxDesignID();
 }
