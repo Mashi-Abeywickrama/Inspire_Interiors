@@ -348,11 +348,6 @@ const VendorDashboard = () => {
                         <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
                             <div className='d-flex flex-row justify-content-between'>
                                 <Link to="/vendor/order"><p className='fs-5 fw-semibold' style={{ color: "#035C94" }}>Order Activity</p></Link>
-                                <select class="form-select w-25" aria-label="Default select example">
-                                    <option selected>This Month</option>
-                                    <option value="3 Months">Last Month</option>
-                                    <option value="Last Month">Last 3 Months</option>
-                                </select>
                             </div>
                             <ResponsiveContainer width="100%" height="85%">
                                 <BarChart width={150} height={50} data={barchartdata}>

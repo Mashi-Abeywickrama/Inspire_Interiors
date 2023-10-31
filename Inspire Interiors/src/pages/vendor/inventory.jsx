@@ -19,54 +19,14 @@ import {useSession} from '../../constants/SessionContext';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const doughnutData = {
-    labels: ['Round table', 'Sofa', 'Bed', 'Cupboard', 'Chair', 'painting'],
-    datasets: [
-      {
-        label: '# of selling product',
-        data: [12, 15, 4, 6, 5, 3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(255, 206, 86, 0.5)',
-          'rgba(75, 192, 192, 0.5)',
-          'rgba(153, 102, 255, 0.5)',
-          'rgba(255, 159, 64, 0.5)',
-        ],
-      },
-    ],
-};
+const currentDate = new Date();
+const oneWeekAgo = new Date(currentDate);
+oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
-export const bardata = [
-    {
-      name: 'Mon',
-      uv: 250,
-    },
-    {
-      name: 'Tue',
-      uv: 300,
-    },
-    {
-      name: 'Wed',
-      uv: 180,
-    },
-    {
-      name: 'Thu',
-      uv: 150,
-    },
-    {
-      name: 'Fri',
-      uv: 250,
-    },
-    {
-      name: 'sat',
-      uv: 200,
-    },
-    {
-      name: 'sun',
-      uv: 80,
-    },
-];
+const getDayOfWeek = (date) => {
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  return daysOfWeek[date.getDay()];
+};
 
 const Inventory = () => {
   const sessionItems = useSession();
@@ -77,9 +37,9 @@ const Inventory = () => {
   const [variationData, setvariationData] = useState([]);
   const [lowStockCount, setLowStockCount] = useState(0);
   const [outStockCount, setOutStockCount] = useState(0);
-  const [completeData, setCompleteData] = useState([]);
-  const [InstockData, setInstockData] = useState([]);
-  const [totalInStockPrice, setTotalInStockPrice] = useState(0);
+  const [productTypeData, setProductTypeData] = useState([]);
+  const [bardata, setBardata] = useState([]);
+  const [totalOrderPrice, setTotalOrderPrice] = useState(0);
 
   const urlParams = new URLSearchParams(window.location.search);
   const productID = urlParams.get('id');
@@ -105,9 +65,48 @@ const Inventory = () => {
 
   useEffect(() => {
     axiosInstance
-    .get(`/getorder/vendor/${vendorID}`)
+        .get(`/getorder/vendor/${vendorID}`)
+        .then((response) => {
+            const subtotals = response.data.map(order => order.quantity * order.price);
+
+            const totalOrderPrice = subtotals.reduce((total, subtotal) => total + subtotal, 0);
+            setTotalOrderPrice(totalOrderPrice);
+            console.log(totalOrderPrice);
+
+            setorderData(response.data);
+            console.log(response.data);
+
+            const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+            const BarDataArray = weekdays.map((day) => ({
+                name: day,
+                Total: 0,  
+            }));
+
+            response.data.forEach((order) => {
+                const orderDate = new Date(order.date);
+                if (orderDate >= oneWeekAgo && orderDate <= currentDate) {
+                    const dayOfWeek = getDayOfWeek(orderDate);
+                    const index = weekdays.indexOf(dayOfWeek);
+                    if (index !== -1) {
+                        BarDataArray[index].Total++;
+                    }
+                }
+            });
+
+            setBardata(BarDataArray);
+            console.log(BarDataArray);
+
+        }).catch((error) => {
+            console.log("Fetching error", error);
+    });
+}, []);
+
+  useEffect(() => {
+    axiosInstance
+    .get(`/viewproducttype/vendor/${vendorID}`)
     .then((response) => {
-        setorderData(response.data);
+        setProductTypeData(response.data);
         console.log(response.data);
     })
     .catch((error) => {
@@ -121,13 +120,32 @@ const Inventory = () => {
   // Take the first 4 products (latest products)
   const latestProducts = sortedProductData.slice(0, 4);
 
+  const labelPie = productTypeData.map((item) => item[0]);  
+  const valuePie = productTypeData.map((item) => item[1]); 
+  console.log(labelPie);
+  const doughnutData = {
+    labels:  labelPie,
+    datasets: [
+      {
+        label: ' selling product count',
+        data: valuePie,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(255, 206, 86, 0.5)',
+          'rgba(75, 192, 192, 0.5)',
+          'rgba(153, 102, 255, 0.5)',
+          'rgba(255, 159, 64, 0.5)',
+        ],
+      },
+    ],
+}
+
   useEffect(() => {
     axiosInstance
       .get(`/viewvariations`)
       .then((response) => {
-       
-          
-       
+  
         setvariationData(response.data);
 
         const lowStockItems = response.data.filter(variation => variation.quantity < 5);
@@ -136,36 +154,10 @@ const Inventory = () => {
         const outStockItems = response.data.filter(variation => variation.quantity === 0);
         setOutStockCount(outStockItems.length);
 
-        const inStockItems = response.data.filter(variation => variation.quantity >= 5);
-        console.log(inStockItems);
-        setInstockData(inStockItems);
-
-        // Extract product_ids from inStockItems
-        const productIds = inStockItems.map(item => item.product_id);
-
-        // Fetch product data for the extracted product_ids
-        axiosInstance
-          .get(`/viewproducts?product_ids=${productIds.join(',')}`)
-          .then((response) => {
-              setInstockData(response.data);
-              console.log(response.data);
-
-              // Calculate the total price of in-stock products
-              const totalPrice = response.data.reduce((total, product) => {const entryPrice = product.entry_price;
-                const discount = product.discount;
-                const price = entryPrice - [entryPrice * discount / 100];
-                return total + price;
-              } , 0);
-              setTotalInStockPrice(totalPrice);
-            })
-            .catch((error) => {
-              console.log('Error fetching data:', error);
-          });
-
       })
       .catch((error) => {
-        console.log('Error fetching data:', error);
-    });
+          console.log('Error fetching data:', error);
+      });
   }, []);
 
 
@@ -180,12 +172,63 @@ const Inventory = () => {
   const filteredData = (status) => 
         orderData.filter((item) => item.status === status);
 
-  const completedData = filteredData("Completed");
-  console.log(completedData);
+  const mergeData = (productData, variationData) => {
+    let total_price =0;
+    const mergedData = productData.map(
+      (productItem) => {
+        const ProductVariation = variationData.find(
+          (variationItem) => variationItem.product_id === productItem.product_id
+        );
 
-  const completedProductID = completedData.map((item) => item.product);
-  console.log(completedProductID);
+        if(ProductVariation) {
+          return {
+          ...productItem,
+          ...ProductVariation
+        };
+      } else {
+        return productItem;
+      }
+    });
+    return mergedData;
+  };
 
+  const mergeProductvariation = mergeData(productData, variationData);
+  console.log("merge data:", mergeProductvariation);
+
+  const overallInstockPrice = mergeProductvariation.reduce((acc, item) => {
+    if (item.quantity && item.entry_price) {
+      return acc + item.quantity * item.entry_price;
+    }
+    return acc;
+  }, 0);
+  console.log("Overall Instock Product Price:", overallInstockPrice);
+
+  const barchartdata = bardata.map((data) => ({
+    name: data.name.slice(0, 3), // Take the first three characters for abbreviated day name
+    sellingCount: data.Total , // Sum of Ongoing and Completed
+  }));
+
+  const mergeData2 = (productData, orderData) => {
+    const mergedData = productData.map(
+      (productItem) => {
+        const ProductOrder = orderData.find(
+          (orderItem) => orderItem.product == productItem.product_id
+        );
+
+        if(ProductOrder) {
+          return {
+          ...productItem,
+          ...ProductOrder
+        };
+      } else {
+        return productItem;
+      }
+    });
+    return mergedData;
+  };
+
+  const mergeProductorder = mergeData2(productData, orderData);
+  console.log("merge data:", mergeProductorder);
 
   
 
@@ -237,7 +280,7 @@ const Inventory = () => {
       entry: product.entry_price,
       discount: product.discount,
       price: product.entry_price - (product.entry_price * product.discount / 100),
-      sold: product.sold,
+      sold: mergeProductorder.filter((item) => item.product == product.product_id).reduce((acc, item) => acc + item.quantity, 0),
       // status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{product.product_status}</p></div>
       action: <Link to={`/vendor/inventory/inventoryproduct?id=${product.product_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
     }
@@ -254,13 +297,13 @@ const Inventory = () => {
         <div className='d-flex flex-column gap-2'>
           <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4 justify-content-around'>
             <div className="col-lg-4 bg-white rounded-3 my-2 shadow px-3 py-2">
-              <p className='fs-5 fw-bold Cabin-text' style={{ color: "#023047" }}>Best Sellers</p>
+              <p className='fs-5 fw-bold Cabin-text' style={{ color: "#023047" }}>Selling Products</p>
               <Doughnut data={doughnutData} />
             </div>
             <div className="col-lg-4 bg-white rounded-3 my-2 shadow px-3 py-2">
               <p className='fs-5 fw-bold Cabin-text' style={{ color: "#023047" }}>Sell History</p>
               <ResponsiveContainer width="90%" height="75%">
-                <BarChart width={100} height={70} data={bardata}>
+                <BarChart width={100} height={70} data={barchartdata}>
                   <defs>
                     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="50%" stopColor="#035C94" stopOpacity={1} />
@@ -270,7 +313,7 @@ const Inventory = () => {
 
                   <XAxis dataKey="name" />
                   <YAxis />
-                  <Bar dataKey="uv" fill="url(#colorUv)" radius={[5, 5, 0, 0]} />
+                  <Bar dataKey="sellingCount" fill="url(#colorUv)" radius={[5, 5, 0, 0]} />
                 </BarChart>
 
               </ResponsiveContainer>
@@ -282,7 +325,7 @@ const Inventory = () => {
                     <img className='img-fluid' src={Money} />
                     <div className='d-flex flex-column align-content-center'>
                       <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>In Stock Price</p>
-                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR {totalInStockPrice}.00</p>
+                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR {overallInstockPrice}.00</p>
                     </div>
                   </div>
                 </div>
@@ -291,7 +334,7 @@ const Inventory = () => {
                     <img className='img-fluid' src={Money} />
                     <div className='d-flex flex-column align-content-center'>
                       <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>profit</p>
-                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR 14,751.00</p>
+                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR {totalOrderPrice}.00</p>
                     </div>
                   </div>
                 </div>
