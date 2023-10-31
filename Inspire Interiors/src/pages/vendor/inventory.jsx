@@ -79,6 +79,7 @@ const Inventory = () => {
   const [outStockCount, setOutStockCount] = useState(0);
   const [completeData, setCompleteData] = useState([]);
   const [InstockData, setInstockData] = useState([]);
+  const [totalInStockPrice, setTotalInStockPrice] = useState(0);
 
   const urlParams = new URLSearchParams(window.location.search);
   const productID = urlParams.get('id');
@@ -139,11 +140,23 @@ const Inventory = () => {
         console.log(inStockItems);
         setInstockData(inStockItems);
 
+        // Extract product_ids from inStockItems
+        const productIds = inStockItems.map(item => item.product_id);
+
+        // Fetch product data for the extracted product_ids
         axiosInstance
-            .get(`/viewproducts/${inStockItems.product_id}`)
-            .then((response) => {
+          .get(`/viewproducts?product_ids=${productIds.join(',')}`)
+          .then((response) => {
               setInstockData(response.data);
               console.log(response.data);
+
+              // Calculate the total price of in-stock products
+              const totalPrice = response.data.reduce((total, product) => {const entryPrice = product.entry_price;
+                const discount = product.discount;
+                const price = entryPrice - [entryPrice * discount / 100];
+                return total + price;
+              } , 0);
+              setTotalInStockPrice(totalPrice);
             })
             .catch((error) => {
               console.log('Error fetching data:', error);
@@ -155,18 +168,14 @@ const Inventory = () => {
     });
   }, []);
 
-  console.log(InstockData);
-
-  const id = InstockData.product_id;
-  console.log(id);
 
   
 
-  function outStockBadge(quantity) {
-    if (quantity === 0) {
-      return <span className="badge text-bg-danger Cabin-text">Out of Stock</span>;
-    }
-  }
+  // function outStockBadge(quantity) {
+  //   if (quantity === 0) {
+  //     return <span className="badge text-bg-danger Cabin-text">Out of Stock</span>;
+  //   }
+  // }
 
   const filteredData = (status) => 
         orderData.filter((item) => item.status === status);
@@ -177,49 +186,8 @@ const Inventory = () => {
   const completedProductID = completedData.map((item) => item.product);
   console.log(completedProductID);
 
-  useEffect(() => {
-    axiosInstance
-      .get(`/viewproducts/${completedProductID}`)
-      .then((response) => {
-        setCompleteData(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log('Error fetching data:', error);
-    });
-  }, [completedProductID]);
 
-  const productTypeCount = {};
-
-  // Initialize the productTypeCount with zeros for each product type
-  completeData.forEach((item) => {
-    productTypeCount[item.type] = 0;
-  });
-
-  // Update the count of each product type based on completed orders
-  completedData.forEach((item) => {
-    productTypeCount[item.type]++;
-  });
-
-  console.log("Product Type Count:", productTypeCount);
-
-  const tableCount = productTypeCount["table"];
-  console.log("Count of table:", tableCount);
-
-  const chairCount = productTypeCount["chair"];
-  console.log("Count of chair:", chairCount);
-
-  const SofaCount = productTypeCount["sofa"];
-  console.log("Count of sofa:", SofaCount);
-
-  const BedCount = productTypeCount["bed"];
-  console.log("Count of bed:", BedCount);
-
-  const CupboardCount = productTypeCount["cupboard"];
-  console.log("Count of cupboard:", CupboardCount);
-
-  const productType = completeData.type;
-  // console.log(productType);
+  
 
   const Columns = [
     {
@@ -314,7 +282,7 @@ const Inventory = () => {
                     <img className='img-fluid' src={Money} />
                     <div className='d-flex flex-column align-content-center'>
                       <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>In Stock Price</p>
-                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR 14,751.00</p>
+                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR {totalInStockPrice}.00</p>
                     </div>
                   </div>
                 </div>

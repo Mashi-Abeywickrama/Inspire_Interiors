@@ -12,38 +12,11 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
-import { RadialBarChart, RadialBar, Legend } from "recharts";
+import { RadialBarChart, RadialBar, Legend, PieChart, Tooltip } from "recharts";
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {useSession} from '../../constants/SessionContext';
 
-const radarData = [
-        {
-            name: "Completed",
-            uv: 14,
-            fill: "#EF333F"
-        },
-        {
-            name: "Ongoing",
-            uv: 15,
-            fill: "#F5B640"
-        },
-        {
-            name: "New",
-            uv: 17,
-            fill: "#6929F1"
-        },
-        {
-            name: "Customized",
-            uv: 12,
-            fill: "#36ACF6"
-        },
-        {
-            name: "Cancelled",
-            uv: 15,
-            fill: "#007F00"
-        }
-]
 
 const style = {
     top: 90,
@@ -57,6 +30,11 @@ const Order = () => {
     const [loading, setLoading] = useState(true);
     const [customizeData, setCustomizedData] = useState([]);
     const [customer, setCustomer] = useState([]);
+
+    const [NewOrderCount, setNewOrderCount] = useState(null);
+    const [CompletedOrderCount, setCompletedOrderCount] = useState(null);
+    const [OngoingOrderCount, setOngoingOrderCount] = useState(null);
+    const [CancelledOrderCount, setCancelledOrderCount] = useState(null);
 
 
     const sessionItems = useSession();
@@ -111,6 +89,53 @@ const Order = () => {
         })
     },[]);
 
+    useEffect(() => {
+        axiosInstance
+            .get(`/getorder/vendor/${userId}`)
+            .then((response) => {
+                setOrderData(response.data);
+                console.log(response.data);
+
+                const newOrders = response.data.filter((order) => order.status === "New");
+                setNewOrderCount(newOrders.length);
+
+                const completedOrders = response.data.filter((order) => order.status === "Completed");
+                setCompletedOrderCount(completedOrders.length);
+
+                const OngoingOrders = response.data.filter((order) => order.status !== "Completed" && order.status !== "New" && order.status !== "Canceled" );
+                setOngoingOrderCount(OngoingOrders.length);
+
+                const canceledOrders = response.data.filter((order) => order.status === "Canceled");
+                setCancelledOrderCount(canceledOrders.length);
+
+            }).catch((error) => {
+                console.log("Fetching error", error);
+        });
+    }, []);
+
+    const radarData = [
+        {
+            name: "Canceled",
+            OrderCount: CancelledOrderCount,
+            fill: "#EF333F"
+        },
+        {
+            name: "Ongoing",
+            OrderCount: OngoingOrderCount,
+            fill: "#F5B640"
+        },
+        {
+            name: "New",
+            OrderCount: NewOrderCount,
+            fill: "#36ACF6"
+        },
+        {
+            name: "Completed",
+            OrderCount: CompletedOrderCount,
+            fill: "#007F00"
+        }
+]
+
     const mergeData = (customizeData, customer) => {
         const mergedData = customizeData.map(
           (customizeItem) => {
@@ -158,13 +183,9 @@ const Order = () => {
             className: 'ongoing d-flex gap-2 align-items-center',
             text: 'Ongoing',
           },
-          Delayed: {
-            className: 'delayed d-flex gap-2 align-items-center',
-            text: 'Delayed',
-          },
-          Cancelled: {
+          Canceled: {
             className: 'outstock d-flex gap-2 align-items-center',
-            text: 'Cancelled',
+            text: 'Canceled',
           },
         };
         if (statusDetails.hasOwnProperty(status)) {
@@ -179,8 +200,8 @@ const Order = () => {
         return null;
     };
 
-    const filteredData = (status) => 
-    latestCustomizedorder.filter((item) => item.status === status);
+    const filteredCustomizedData = (status) => 
+        latestCustomizedorder.filter((item) => item.status === status);
 
     const newData = {
         columns: [
@@ -197,7 +218,7 @@ const Order = () => {
                 width: 150
               }
         ],
-        rows: filteredData("New").map((custom) => {
+        rows: filteredCustomizedData("New").map((custom) => {
             return {   
                 product: <div className='d-flex flex-row gap-3'>
                             <Link to={`/vendor/order/customrequest?id=${custom.customizedorderid}`}><img src={Sofa}/></Link>
@@ -207,7 +228,7 @@ const Order = () => {
             }
         })
     };
-    console.log(filteredData("New"));
+    console.log(filteredCustomizedData("New"));
 
     const acceptedData = {
         columns: [
@@ -223,7 +244,7 @@ const Order = () => {
               width: 270
             },
         ],
-        rows: filteredData("Accepted").map((acceptorder) => {
+        rows: filteredCustomizedData("Accepted").map((acceptorder) => {
             return{  
                 product: <div className='d-flex flex-row gap-3'>
                             <Link to={`/vendor/order/acceptrequest?id=${acceptorder.customizedorderid}`}><img src={Sofa}/></Link>
@@ -234,7 +255,8 @@ const Order = () => {
         })
     };
 
-    
+    const filteredData = (status) => 
+        orderData.filter((item) => item.status === status);
 
 
     return (
@@ -519,71 +541,6 @@ const Order = () => {
                                     )}
                                     </div>
                                 </Tab>
-                                <Tab eventKey="Delayed" title="Delayed">
-                                <div className='p-4'>
-                                    {loading ? (
-                                        <p>Loading...</p>
-                                    ) : (
-                                        <MDBDataTableV5 responsive
-                                            striped
-                                            bordered
-                                            small
-                                            data = {{
-                                                columns: [
-                                                    {
-                                                        label: 'CUSTOMER NAME',
-                                                        field: 'name',
-                                                        sort: 'asc',
-                                                        width: 150
-                                                    },
-                                                    {
-                                                        label: 'REFERENCE NO',
-                                                        field: 'number',
-                                                        sort: 'asc',
-                                                        width: 270
-                                                    },
-                                                    {
-                                                        label: 'QUANTITY',
-                                                        field: 'quantity',
-                                                        sort: 'asc',
-                                                        width: 100
-                                                    },
-                                                    {
-                                                        label: 'DELIVERY DATE',
-                                                        field: 'date',
-                                                        sort: 'asc',
-                                                        width: 150
-                                                    },
-                                                    {
-                                                        label: 'STATUS',
-                                                        field: 'status',
-                                                        sort: 'asc',
-                                                        width: 100
-                                                    },
-                                                    {
-                                                        label: ' ',
-                                                        field: 'action',
-                                                        sort: 'NONE',
-                                                        width: 100
-                                                    }
-                                                ],
-                                                rows: filteredData('Delayed').map((item) => ({
-                                                    name: item.customer,
-                                                    number: item.ref_no,
-                                                    quantity: item.quantity,
-                                                    date: item.date,
-                                                    action: <Link to={`/vendor/order/vieworder?id=${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>,
-                                                    status: getOrderStatus(item.status)
-                                                  })),
-                                                }}
-                                                sortable={true}
-                                                exportToCSV={true}
-                                                paging={true}
-                                                searching={true} 
-                                        />
-                                    )}
-                                    </div>
-                                </Tab>
                                 <Tab eventKey="Canceled" title="Canceled">
                                 <div className='p-4'>
                                     {loading ? (
@@ -700,7 +657,6 @@ const Order = () => {
                             <div className='col-lg-12 bg-white rounded shadow p-4'>
                                 <div className='d-flex flex-row justify-content-between align-items-center'>
                                     <p className='fs-5 fw-bold Cabin-text m-0'>Order Summary</p>
-                                    <p className='fs-5 fw-semibold Cabin-text m-0' style={{ color: "#A0AEC0" }}>this month</p>
                                 </div>
                                 <RadialBarChart
                                     width={280}
@@ -714,9 +670,10 @@ const Order = () => {
                                 >
                                     <RadialBar
                                         minAngle={15}
+                                        label={{ fill: '#FFFFFF', position: 'insideStart' }}
                                         background
                                         clockWise
-                                        dataKey="uv" />
+                                        dataKey="OrderCount" />
                                     <Legend
                                         iconSize={10}
                                         width={120}
@@ -724,6 +681,7 @@ const Order = () => {
                                         layout="horizonal"
                                         horizonalAlign="middle"
                                         wrapperStyle={style} />
+                                    <Tooltip />
                                 </RadialBarChart>
                             </div>
                         </div>
