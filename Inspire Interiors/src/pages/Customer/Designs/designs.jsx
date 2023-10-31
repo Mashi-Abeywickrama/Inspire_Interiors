@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Carousel } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../../styles/customer/designs.css';
 import SearchPage from '../../../components/customer/filterNsearch';
 import { Link } from 'react-router-dom';
+import axios from "axios";
+import {useSession} from "../../../constants/SessionContext";
 
 
 const Designs = () => {
@@ -71,6 +73,70 @@ const Designs = () => {
     },
   ];
 
+  const [allUsers, setAllUsers] = useState([]);
+  const [designerData, setDesignerData] = useState([]);
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const Id = urlParams.get('id');
+
+  const apiBaseURL = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+      baseURL: apiBaseURL,
+      timeout: 5000,
+  });
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/topdesigners`)
+      .then((response) => {
+        setDesignerData(response.data);
+        // console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('Error fetching data', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/users`)
+      .then((response) => {
+        setAllUsers(response.data);
+        // console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('Error fetching data', error);
+      });
+  }, [Id]);
+
+  const mergeData = (designerData, userData) => {
+    const mergedData = designerData.map(
+      (designerItem) => {
+        const matchingUser = userData.find(
+          (userItem) => userItem.userid === designerItem.designer_id
+        );
+
+        if (matchingUser) {
+          // Merge the data from both sources
+          return {
+            ...designerItem,
+            ...matchingUser
+
+          };
+        } else {
+          return {
+            ...designerItem
+          };
+        }
+      });
+
+    return mergedData;
+  };
+
+  const mergedDesigner = mergeData(designerData, allUsers);
+  console.log("merged Data Designer", mergedDesigner);
+
   const generateStars = (rate) => {
     const fullStars = Math.floor(rate);
     const halfStar = rate - fullStars >= 0.5;
@@ -120,24 +186,24 @@ const Designs = () => {
           </div>
 
           {/* Designers images */}
-          <div className='bg-light image-bar  justify-content-center row w-100 flex-row m-0 p-0'>
-            {designerCards.map((card, index) => (
+          <div className='bg-light image-bar  row w-100 flex-row m-0 p-0'>
+            {mergedDesigner.map((card, index) => (
               <div key={index} className='  justify-content-center col-5 col-md-4 col-lg-2 col-sm-8 mb-3'>
-                 <Link to='viewdesigner'>
-                <Card className='h-100 w-100 rounded border-0 rounded ' style={{ color: '#7C828B' }}>
-                  <Card.Img variant='top' src={card.image} className='rounded-3 p-3 h-75' />
-                  <Card.Body className='flex-row justify-content-center py-0'>
-                    <Card.Text className='d-flex m-0 lead justify-content-center' >
-                      {card.name}
-                    </Card.Text>
-                    <Card.Text className='d-flex m-0 justify-content-center'>
-                      {generateStars(card.rate)}
-                    </Card.Text>
-                    <Card.Text className='d-flex m-0 justify-content-center '>
-                      {card.votings} Votes
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
+                <Link to={`viewdesigner?id=${card.designer_id}`}>
+                  <Card className='h-100 w-100 rounded border-0 rounded ' style={{ color: '#7C828B' }}>
+                    <Card.Img variant='top' src={`../../../../src/assets/img/profilePic/${card.profile_pic}`} className='rounded-3 p-3 h-75' />
+                    <Card.Body className='flex-row justify-content-center py-0'>
+                      <Card.Text className='d-flex m-0 lead justify-content-center' >
+                        {card.name}
+                      </Card.Text>
+                      <Card.Text className='d-flex m-0 justify-content-center'>
+                        {generateStars(card.averagereview)}
+                      </Card.Text>
+                      <Card.Text className='d-flex m-0 justify-content-center '>
+                        {card.averagereview} / 5.0
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
                 </Link>
               </div>
             ))}
@@ -160,27 +226,27 @@ const Designs = () => {
           <div className='d-flex flex-column fs-4 flex-lg-row flex-md-col flex-sm-col w-100 justify-content-center align-self-center'>
             {cards.map((card, index) => (
               <Col md={3} key={index} className='d-flex'>
-               <Link to='browsedesigns'>
-                <Card className='d-flex h-100 w-100 rounded border-0' >
-                  <Card.Body className='d-flex'>
-                    <Carousel >
-                      {card.content.map((imageUrl, imageIndex) => (
-                            
-                            <Carousel.Item key={imageIndex} className='object-fit h-100'>
-                          {/* {card.title} */}
-                          <img
-                            className='d-flex w-100 rounded-3 img-fluid h-100' 
-                            src={imageUrl}
-                            alt={`Slide ${imageIndex + 1}`}
-                          />
-                          <Carousel.Caption className='d-flex justify-content-start px-2' style={{ position: "absolute", top: 0, left: 0 }}>
-                            <p className='fs-6'>{card.title}</p>
-                          </Carousel.Caption>
-                        </Carousel.Item>
-                      ))}
-                    </Carousel>
-                  </Card.Body>
-                </Card>
+                <Link to='browsedesigns'>
+                  <Card className='d-flex h-100 w-100 rounded border-0' >
+                    <Card.Body className='d-flex'>
+                      <Carousel >
+                        {card.content.map((imageUrl, imageIndex) => (
+
+                          <Carousel.Item key={imageIndex} className='object-fit h-100'>
+                            {/* {card.title} */}
+                            <img
+                              className='d-flex w-100 rounded-3 img-fluid h-100'
+                              src={imageUrl}
+                              alt={`Slide ${imageIndex + 1}`}
+                            />
+                            <Carousel.Caption className='d-flex justify-content-start px-2' style={{ position: "absolute", top: 0, left: 0 }}>
+                              <p className='fs-6'>{card.title}</p>
+                            </Carousel.Caption>
+                          </Carousel.Item>
+                        ))}
+                      </Carousel>
+                    </Card.Body>
+                  </Card>
                 </Link>
               </Col>
             ))}

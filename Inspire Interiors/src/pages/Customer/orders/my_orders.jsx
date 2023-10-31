@@ -121,7 +121,10 @@ const MyOrder = () => {
         className: 'ongoing d-flex gap-2 align-items-center',
         text: 'Shipped',
       },
-
+      Recieved: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Recieved',
+    },
       Delivered: {
         className: 'ongoing d-flex gap-2 align-items-center',
         text: 'Delivered',

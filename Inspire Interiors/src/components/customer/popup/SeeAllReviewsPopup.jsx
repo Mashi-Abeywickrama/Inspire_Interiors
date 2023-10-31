@@ -11,9 +11,11 @@ import { useSession } from '../../../constants/SessionContext';
 
 function SeeAllReviews({productData}) {
     const [showPopup, setReview] = useState(false);
+
     const [userReview, setUserReview] = useState('');
      const [rating, setRating] = useState(0 );
     const [userData, setUserData] = useState([]);
+
 
     // Function to close the modal
     const closeModel = () => {
@@ -45,6 +47,7 @@ function SeeAllReviews({productData}) {
         return stars;
     };
 
+
     useEffect(() => {
         // Make an API request to fetch the shipping addresses from the backend
         axiosInstance.get('/users')
@@ -56,6 +59,7 @@ function SeeAllReviews({productData}) {
                 console.error('Error fetching shipping addresses:', error);
             });
     }, []); // Fetch the addresses when the component mounts
+
 
     const starStyles = {
         filledStar: {
@@ -74,6 +78,7 @@ function SeeAllReviews({productData}) {
         const handleStarClick = (clickedRating) => {
             setRating(clickedRating);
             console.log(clickedRating);
+
         };
 
         const generateInputStars = (totalStars) => {
@@ -118,6 +123,7 @@ function SeeAllReviews({productData}) {
     useEffect(() => {
     fetchAndStoreReviewData(id);
     }, [id]);
+
     const sessionItems = useSession();
     const userId = sessionItems.sessionData.userid;
 
@@ -173,6 +179,7 @@ function SeeAllReviews({productData}) {
     console.log("merged Data", mergedDesigner);
     
 
+
     return (
         <div>
             <div>
@@ -207,22 +214,28 @@ function SeeAllReviews({productData}) {
                             </div>
     ))}
 
+
                     </Modal.Body>
 
                     <Modal.Footer className='d-flex justify-content-center'>
+
                         <Form className='w-100 px-2'onSubmit={handleAddReview}>
+
                             <Row className='w-100'>
                                 <Col md>
                                     <Form.Group className="mb-3">
                                         <div className="d-flex justify-content-between mb-2">
                                             <Form.Label className='sub-heading Cabin-text'>Add your review:</Form.Label>
+
                                             <StarRating initialRating={rating || 0}  />
+
                                         </div>
                                         <div className="d-flex gap-1">
                                             <Form.Control
                                                 type='text'
                                                 placeholder="Type your comment here..."
                                                 style={{ backgroundColor: '#F2FAFF' }}
+
                                                 value={userReview}
                                                 onChange={(e) => setUserReview(e.target.value)}
                                                 required
