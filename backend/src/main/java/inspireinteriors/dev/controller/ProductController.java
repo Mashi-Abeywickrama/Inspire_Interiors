@@ -101,6 +101,12 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
+    @GetMapping("/viewproducttype/vendor/{id}")
+    public ResponseEntity<List<Object>> getProductsTypeByVendor_id(@PathVariable(value = "id") int vendor_id) {
+        List<Object> products = productService.getProductsTypeByVendor_id(vendor_id);
+        return ResponseEntity.ok(products);
+    }
+
     @GetMapping("/viewproducts")
     public List<Product> getAllProducts() {
         return (List<Product>) productService.getAllProducts();
@@ -128,8 +134,8 @@ public class ProductController {
         return arModelsService.createARModel(arModels);
     }
     @GetMapping("/viewvariations/vendor/{id}")
-    public ResponseEntity<List<Variation>> getVariationsByvendorId(@PathVariable(value = "id") int product_id) {
-        List<Variation> variations = productService.getVariationsByProductId(product_id);
+    public ResponseEntity<List<Variation>> getVariationsByvendorId(@PathVariable(value = "id") int vendor_id) {
+        List<Variation> variations = productService.getVariationsByProductId(vendor_id);
         return ResponseEntity.ok(variations);
     }
 
