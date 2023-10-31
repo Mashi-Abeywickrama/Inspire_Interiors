@@ -100,7 +100,7 @@ const ViewAcceptRequest = () => {
                                     <p className="fs-5 fw-bold Cabin-text">About Customer {customer.username}</p>
                                 </div>
                                 <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
-                                    <img style={{ objectFit:"cover" }} className="img-fluid p-3 rounded-4 w-50 h-50" src={`../../../../src/assets/img/profilePic/${customer.profile_pic}.jpg`} />
+                                    <img style={{ objectFit:"cover" }} className="img-fluid p-3 rounded-4 w-50 h-50" src={`../../../../src/assets/img/profilePic/${customer.profile_pic}`} />
                                     <div className="d-flex flex-column">
                                         <p className="fs-6 fw-bold" style={{ color: "#3D3D3D"}}>{customer.username}</p>
                                         <p className="fs-6 fw-bold Cabin-text" style={{ color: "#023047"}}>{customer.type}</p>

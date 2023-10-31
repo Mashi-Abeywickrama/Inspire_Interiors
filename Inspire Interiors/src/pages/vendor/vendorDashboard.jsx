@@ -8,86 +8,40 @@ import {useSession} from '../../constants/SessionContext';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
-import ReactStars from "react-rating-stars-component";
+import { BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
 
-export const bardata = [
-    {
-      name: 'Mon',
-      uv: 250,
-    },
-    {
-      name: 'Tue',
-      uv: 300,
-    },
-    {
-      name: 'Wed',
-      uv: 180,
-    },
-    {
-      name: 'Thu',
-      uv: 150,
-    },
-    {
-      name: 'Fri',
-      uv: 250,
-    },
-    {
-      name: 'sat',
-      uv: 200,
-    },
-    {
-        name: 'sun',
-        uv: 80,
-    },
-];
-
-const radarData = [
-    {
-        name: "Sold",
-        uv: 100,
-        fill: "#035C94"
-    },
-    {
-        name: "In stock",
-        uv: 70,
-        fill: "#FFC00C"
-    },
-    
-];
-
-const linedata = [
-    {
-      name: 'JAN',
-      Ongoing: 70,
-      Earned: 90,
-    },
-    {
-      name: 'FEB',
-      Ongoing: 20,
-      Earned: 40,
-    },
-    {
-      name: 'MAR',
-      Ongoing: 100,
-      Earned: 80,
-    },
-    {
-      name: 'APR',
-      Ongoing: 30,
-      Earned: 50,
-    },
-    {
-      name: 'MAY',
-      Ongoing: 100,
-      Earned: 80,
-    },
-    {
-      name: 'JUN',
-      Ongoing: 20,
-      Earned: 40,
-    }
-];
+// const linedata = [
+//     {
+//       name: 'JAN',
+//       Ongoing: 70,
+//       Completed: 90,
+//     },
+//     {
+//       name: 'FEB',
+//       Ongoing: 20,
+//       Completed: 40,
+//     },
+//     {
+//       name: 'MAR',
+//       Ongoing: 100,
+//       Completed: 80,
+//     },
+//     {
+//       name: 'APR',
+//       Ongoing: 30,
+//       Completed: 50,
+//     },
+//     {
+//       name: 'MAY',
+//       Ongoing: 100,
+//       Completed: 80,
+//     },
+//     {
+//       name: 'JUN',
+//       Ongoing: 20,
+//       Completed: 40,
+//     }
+// ];
 
 const generateStars = (rate) => {
     const fullStars = Math.floor(rate);
@@ -106,12 +60,35 @@ const generateStars = (rate) => {
     return stars;
 };
 
+const currentDate = new Date();
+const oneWeekAgo = new Date(currentDate);
+oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+const getDayOfWeek = (date) => {
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  return daysOfWeek[date.getDay()];
+};
+
+const getTotalPrice = (orders, status) => {
+    return orders
+      .filter((order) => order.status === status)
+      .reduce((total, order) => total + order.price, 0);
+};
+
 const VendorDashboard = () => {
     const [orderData, setOrderData] = useState([]);
+    const [variationData, setVariationData] = useState([]);
+    const [productData, setProductData] = useState([]);
     const [newOrderCount, setNewOrderCount] = useState(null);
     const [CompletedOrderCount, setCompletedOrderCount] = useState(null);
-    const [DelayedOrderCount, setDelayedOrderCount] = useState(null);
+    const [OngoingOrderCount, setOngoingOrderCount] = useState(null);
     const [CancelledOrderCount, setCancelledOrderCount] = useState(null);
+
+    const [linedata, setLinedata] = useState([]);
+    const [bardata, setBardata] = useState([]);
+    const [totalRevenue, setTotalRevenue] = useState(0);
+
+    const [soldproductCount, setSoldproductCount] = useState(0);
 
     const sessionItems = useSession();
     const userId = sessionItems.sessionData.userid;
@@ -130,23 +107,135 @@ const VendorDashboard = () => {
                 setOrderData(response.data);
                 console.log(response.data);
 
+                const quantityArray = response.data.map((order) => order.quantity);
+                const totalproductQuantity = quantityArray.reduce((acc, quantity) => acc + quantity, 0);
+
+                setSoldproductCount(totalproductQuantity);
+
+                const lastWeek = [];
+
+                let totalRevenue = 0;
+
+                for (let i = 0; i < 7; i++) {
+                    const day = new Date(oneWeekAgo);
+                    day.setDate(day.getDate() + i);
+                    const dayName = getDayOfWeek(day).slice(0, 3);
+
+                    const dataForDay = response.data.filter((order) => {
+                        const orderDate = new Date(order.date);
+                        return orderDate.toDateString() === day.toDateString();
+                    });
+
+                    const OngoingTotal = dataForDay.reduce((total, order) => {
+                        return total + (order.status === 'Ongoing' ? order.price : 0);
+                    }, 0);
+
+                    const CompletedTotal = dataForDay.reduce((total, order) => {
+                        return total + (order.status === 'Completed' ? order.price : 0);
+                    }, 0);
+
+                    totalRevenue += OngoingTotal + CompletedTotal;
+
+                    lastWeek.push({
+                        name: dayName,
+                        Ongoing: OngoingTotal,
+                        Completed: CompletedTotal,
+                    });
+                }
+
+                setTotalRevenue(totalRevenue);
+                setLinedata(lastWeek);
+
                 const newOrders = response.data.filter((order) => order.status === "New");
                 setNewOrderCount(newOrders.length);
 
                 const completedOrders = response.data.filter((order) => order.status === "Completed");
                 setCompletedOrderCount(completedOrders.length);
 
-                const delayedOrders = response.data.filter((order) => order.status === "Delayed");
-                setDelayedOrderCount(delayedOrders.length);
+                const OngoingOrders = response.data.filter((order) => order.status !== "Completed" && order.status !== "New" && order.status !== "Canceled" );
+                setOngoingOrderCount(OngoingOrders.length);
 
-                const cancelledOrders = response.data.filter((order) => order.status === "Cancelled");
-                setCancelledOrderCount(cancelledOrders.length);
+                const canceledOrders = response.data.filter((order) => order.status === "Canceled");
+                setCancelledOrderCount(canceledOrders.length);
+
+                const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+                const BarDataArray = weekdays.map((day) => ({
+                    name: day,
+                    Total: 0,  
+                }));
+
+
+                response.data.forEach((order) => {
+                    const orderDate = new Date(order.date);
+                    if (orderDate >= oneWeekAgo && orderDate <= currentDate) {
+                        const dayOfWeek = getDayOfWeek(orderDate);
+                        const index = weekdays.indexOf(dayOfWeek);
+                        if (index !== -1) {
+                            BarDataArray[index].Total++;
+                        }
+                    }
+                });
+
+                setBardata(BarDataArray);
+                console.log(BarDataArray);
 
             }).catch((error) => {
                 console.log("Fetching error", error);
         });
     }, []);
 
+    useEffect(() => {
+        axiosInstance
+            .get(`/viewvariations`)
+            .then((response) => {
+                setVariationData(response.data);
+                console.log(response.data);
+            }).catch((error) => {
+                console.log("Fetching error", error);
+        });
+    }, []);
+
+    useEffect(() => {  
+        axiosInstance
+            .get(`/viewproducts/vendor/${userId}`)
+            .then((response) => {
+                setProductData(response.data);
+                console.log(response.data);
+            }).catch((error) => {
+                console.log("Fetching error", error);
+        });
+    }, []);
+
+    const mergeData = (variationData, productData) => {
+        const mergedData = productData.map(
+            (productItem) => {
+                const matchingVariation = variationData.find(
+                    (variation) => variation.product_id === productItem.product_id);
+
+                if(matchingVariation) {
+                    return {
+                        ...productItem,
+                        ...matchingVariation,
+                    };
+                } else {
+                    return productItem;
+                }
+            });
+            const totalQuantity = mergedData.reduce((acc, item) => acc + item.quantity, 0);   
+            return {mergedData, totalQuantity};
+    };
+
+    const mergedproductVariation = mergeData(variationData, productData);
+    console.log("merged Data", mergedproductVariation);
+
+    const TotalInstockProduct = mergedproductVariation.totalQuantity;
+    console.log("Total Instock Product", TotalInstockProduct);
+    
+    const barchartdata = bardata.map((data) => ({
+        name: data.name.slice(0, 3), // Take the first three characters for abbreviated day name
+        uv: data.Total , // Sum of Ongoing and Completed
+    }));
 
     return (
         <>
@@ -157,28 +246,19 @@ const VendorDashboard = () => {
                             <Link to="/vendor/inventory"> <p className='fs-5 fw-bold Cabin-text '  style={{ color: "#035C94" }}>Revenue Made</p></Link>
                             <div className='d-flex flex-row justify-content-evenly'>
                                 <div className='d-flex flex-row gap-3'>
-                                    <p className='fs-6 fw-semibold' style={{ color: "#035C94" }}>Total Revenue</p>
-                                    <p className='fs-6 fw-semibold' style={{ color: "#023247" }}>LKR 100K</p>
+                                    <p className='fs-6 fw-semibold' style={{ color: "#035C94" }}>Total Revenue from Last Week:</p>
+                                    <p className='fs-6 fw-semibold' style={{ color: "#023247" }}>LKR {totalRevenue}</p>
                                 </div>
-                                <select class="form-select w-25" aria-label="Default select example">
-                                    <option selected>6 Months</option>
-                                    <option value="3 Months">3 Months</option>
-                                    <option value="Last Month">Last Month</option>
-                                    <option value="Last Week">Last Week</option>
-                                </select>
                             </div>
                             <ResponsiveContainer width="80%" height="80%">
-                                <LineChart
-                                    data={linedata}
-                                    className='mt-3'
-                                >
-                                    <XAxis dataKey="name" />
-                                    <YAxis />
-                                    <Tooltip />
-                                    <Legend />
-                                    <Line type="monotone" dataKey="Ongoing" stroke="#FFC00C" strokeWidth={2} />
-                                    <Line type="monotone" dataKey="Earned" stroke="#035C94" strokeWidth={2} />
-                                </LineChart>
+                            <LineChart data={linedata} className='mt-3'>
+                                <XAxis dataKey="name" />
+                                <YAxis />
+                                <Tooltip />
+                                <Legend />
+                                <Line type="monotone" dataKey="Ongoing" stroke="#FFC00C" strokeWidth={2} />
+                                <Line type="monotone" dataKey="Completed" stroke="#035C94" strokeWidth={2} />
+                            </LineChart>
                             </ResponsiveContainer>
 
                         </div>
@@ -228,11 +308,6 @@ const VendorDashboard = () => {
                         <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
                             <div className='d-flex flex-row justify-content-between'>
                                 <Link to="/vendor/inventory"><p className='fs-5 fw-semibold' style={{ color: "#035C94" }}>Product Sold</p></Link>
-                                <select class="form-select w-25" aria-label="Default select example">
-                                    <option selected>This Month</option>
-                                    <option value="3 Months">Last Month</option>
-                                    <option value="Last Month">Last 3 Months</option>
-                                </select>
                             </div>
                             <RadialBarChart
                                 width={400}
@@ -242,19 +317,32 @@ const VendorDashboard = () => {
                                 innerRadius={60}
                                 outerRadius={140}
                                 barSize={20}
-                                data={radarData}
+                                data = {[
+                                    {
+                                      name: "Sold",
+                                      productCount: soldproductCount,
+                                      fill: "#035C94",
+                                    },
+                                    {
+                                      name: "In stock",
+                                      productCount: TotalInstockProduct,
+                                      fill: "#FFC00C",
+                                    },
+                                  ]}
                             >
                                 <RadialBar
                                     minAngle={15}
+                                    label={{ fill: '#FFFFFF', position: 'insideStart' }}
                                     background
                                     clockWise
-                                    dataKey="uv" />
+                                    dataKey="productCount" />
                                 <Legend
                                     iconSize={10}
                                     width={100}
                                     height={40}
                                     layout="horizonal"
                                     horizonalAlign="middle" />
+                                <Tooltip/>
                             </RadialBarChart>
                         </div>
                         <div className='col-lg-4 bg-white rounded-3 shadow p-4'>
@@ -267,7 +355,7 @@ const VendorDashboard = () => {
                                 </select>
                             </div>
                             <ResponsiveContainer width="100%" height="85%">
-                                <BarChart width={150} height={50} data={bardata}>
+                                <BarChart width={150} height={50} data={barchartdata}>
                                     <defs>
                                         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
                                             <stop offset="50%" stopColor="#035C94" stopOpacity={1} />
@@ -300,13 +388,13 @@ const VendorDashboard = () => {
                                 <div className='d-flex flex-row gap-4'>
                                     <div className='background-box rounded-4 p-3'>
                                         <Icon.PersonFillExclamation color='#FFC00C' size={40} />
-                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>{DelayedOrderCount}</p>
-                                        <p className='fw-semibold fs-6 m-0' style={{ color: "#FFFFFF", opacity: "0.5" }}>Delayed Orders</p>
+                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>{OngoingOrderCount}</p>
+                                        <p className='fw-semibold fs-6 m-0' style={{ color: "#FFFFFF", opacity: "0.5" }}>Ongoing Orders</p>
                                     </div>
                                     <div className='background-box rounded-4 p-3'>
                                         <Icon.PersonFillX color='#FFC00C' size={40} />
                                         <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>{CancelledOrderCount}</p>
-                                        <p className='fw-semibold fs-6 m-0' style={{ color: "#FFFFFF", opacity: "0.5" }}>Cancelled Orders</p>
+                                        <p className='fw-semibold fs-6 m-0' style={{ color: "#FFFFFF", opacity: "0.5" }}>Canceled Orders</p>
                                     </div>
                                 </div>
                             </div>
