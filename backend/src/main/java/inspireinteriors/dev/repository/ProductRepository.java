@@ -28,6 +28,16 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("SELECT DISTINCT p.type FROM Product p")
     List<String> findDistinctTypes();
 
+    List<Product> findAll();
+
+    @Query(value = "SELECT * FROM products WHERE vendor_id = :vId", nativeQuery = true)
+    List<Product> findProductsByVendor_id(@Param("vId") int vendor_id);
+
+    @Query(value = "SELECT * FROM products WHERE product_id = :pId", nativeQuery = true)
+    List<Product>  getProductById(@Param("pId") int product_id);
+
+
+
 //    @Query("SELECT p FROM Product p JOIN FETCH p.variations")
 //    List<Product> findAllWithVariations();
 //

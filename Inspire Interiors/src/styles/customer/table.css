@@ -96,6 +96,14 @@ div.mdb-datatable div.mdb-datatable-filter{
     border-radius: 5px;
 }
 
+.new{
+    width: fit-content;
+    padding: 0.3rem;
+    background-color: #C8FFE0;
+    border-radius: 8px;
+    color: #000000  ;
+}
+
 .completed{
     width: fit-content;
     padding: 0.3rem;

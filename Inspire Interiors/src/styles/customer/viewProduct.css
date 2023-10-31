@@ -43,3 +43,29 @@
     }
   }
 
+.custom-stripe-button button{
+  background: unset !important;
+  border: unset !important;
+  box-shadow: unset !important;
+  height: 100% !important;
+  margin: auto;
+}
+
+.custom-stripe-button button span{
+    background-image: unset !important;
+    height: 100% !important;
+        padding: 10px 20px !important;
+
+}
+
+.defaultClass{
+    display: flex;
+    flex-direction: column;
+}
+
+.highlightClass{
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #035C94;
+    border-radius: 15px;
+}

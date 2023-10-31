@@ -37,7 +37,7 @@ public class VendorOffer {
     private int morethanhundredthousand;
 
     @Column(name = "offerstatus")
-    private String offerstatus;
+    private int offerstatus;
 
     @Column(name = "vendorid")
     private int vendorid;
@@ -49,7 +49,7 @@ public class VendorOffer {
 
     }
 
-    public VendorOffer(int offerid, String offeroverview, String offerdescription, int zerotothousand, int thousandtofivethousand, int fivethousandtotenthousand, int tenthousandtofiftythousand, int fiftythousandtohundredthousand, int morethanhundredthousand, String offerstatus, int vendorid, int designerid) {
+    public VendorOffer(int offerid, String offeroverview, String offerdescription, int zerotothousand, int thousandtofivethousand, int fivethousandtotenthousand, int tenthousandtofiftythousand, int fiftythousandtohundredthousand, int morethanhundredthousand, int offerstatus, int vendorid, int designerid) {
         this.offerid = offerid;
         this.offeroverview = offeroverview;
         this.offerdescription = offerdescription;
@@ -140,11 +140,11 @@ public class VendorOffer {
         this.morethanhundredthousand = morethanhundredthousand;
     }
 
-    public String getOfferstatus() {
+    public int getOfferstatus() {
         return offerstatus;
     }
 
-    public void setOfferstatus(String offerstatus) {
+    public void setOfferstatus(int offerstatus) {
         this.offerstatus = offerstatus;
     }
 

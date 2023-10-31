@@ -6,6 +6,7 @@ import Navigationbar from '../../components/navigationbar';
 import VendorSidebar from './sidebar';
 
 import Money from './../../assets/img/vendor/money.svg';
+import LowStock from './../../assets/img/vendor/lowstock.png';
 import Sofa from './../../assets/img/vendor/sofa.png';
 
 import axios from 'axios';
@@ -14,6 +15,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 import {Link} from 'react-router-dom';
+import {useSession} from '../../constants/SessionContext';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -61,15 +63,22 @@ export const bardata = [
       uv: 200,
     },
     {
-        name: 'sun',
-        uv: 80,
+      name: 'sun',
+      uv: 80,
     },
 ];
 
 const Inventory = () => {
-  const [productData, setproductData] = useState([]);
+  const sessionItems = useSession();
+  const vendorID = sessionItems.sessionData.userid;
 
+  const [productData, setproductData] = useState([]);
+  const [orderData, setorderData] = useState([]);
   const [variationData, setvariationData] = useState([]);
+  const [lowStockCount, setLowStockCount] = useState(0);
+  const [outStockCount, setOutStockCount] = useState(0);
+  const [completeData, setCompleteData] = useState([]);
+  const [InstockData, setInstockData] = useState([]);
 
   const urlParams = new URLSearchParams(window.location.search);
   const productID = urlParams.get('id');
@@ -83,7 +92,7 @@ const Inventory = () => {
 
   useEffect(() => {
     axiosInstance
-      .get('/viewproducts')
+      .get(`/viewproducts/vendor/${vendorID}`)
       .then((response) => {
         setproductData(response.data);
         console.log(response.data);
@@ -95,15 +104,122 @@ const Inventory = () => {
 
   useEffect(() => {
     axiosInstance
-      .get('/viewvariations')
-      .then((response) => {
-        setvariationData(response.data);
+    .get(`/getorder/vendor/${vendorID}`)
+    .then((response) => {
+        setorderData(response.data);
         console.log(response.data);
+    })
+    .catch((error) => {
+        console.log("Error fetching data", error);
+    });
+  }, []);
+
+  // Sort productData by product ID in descending order
+  const sortedProductData = productData.sort((a, b) => b.product_id - a.product_id);
+
+  // Take the first 4 products (latest products)
+  const latestProducts = sortedProductData.slice(0, 4);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/viewvariations`)
+      .then((response) => {
+       
+          
+       
+        setvariationData(response.data);
+
+        const lowStockItems = response.data.filter(variation => variation.quantity < 5);
+        setLowStockCount(lowStockItems.length);
+
+        const outStockItems = response.data.filter(variation => variation.quantity === 0);
+        setOutStockCount(outStockItems.length);
+
+        const inStockItems = response.data.filter(variation => variation.quantity >= 5);
+        console.log(inStockItems);
+        setInstockData(inStockItems);
+
+        axiosInstance
+            .get(`/viewproducts/${inStockItems.product_id}`)
+            .then((response) => {
+              setInstockData(response.data);
+              console.log(response.data);
+            })
+            .catch((error) => {
+              console.log('Error fetching data:', error);
+          });
+
       })
       .catch((error) => {
         console.log('Error fetching data:', error);
     });
   }, []);
+
+  console.log(InstockData);
+
+  const id = InstockData.product_id;
+  console.log(id);
+
+  
+
+  function outStockBadge(quantity) {
+    if (quantity === 0) {
+      return <span className="badge text-bg-danger Cabin-text">Out of Stock</span>;
+    }
+  }
+
+  const filteredData = (status) => 
+        orderData.filter((item) => item.status === status);
+
+  const completedData = filteredData("Completed");
+  console.log(completedData);
+
+  const completedProductID = completedData.map((item) => item.product);
+  console.log(completedProductID);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/viewproducts/${completedProductID}`)
+      .then((response) => {
+        setCompleteData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('Error fetching data:', error);
+    });
+  }, [completedProductID]);
+
+  const productTypeCount = {};
+
+  // Initialize the productTypeCount with zeros for each product type
+  completeData.forEach((item) => {
+    productTypeCount[item.type] = 0;
+  });
+
+  // Update the count of each product type based on completed orders
+  completedData.forEach((item) => {
+    productTypeCount[item.type]++;
+  });
+
+  console.log("Product Type Count:", productTypeCount);
+
+  const tableCount = productTypeCount["table"];
+  console.log("Count of table:", tableCount);
+
+  const chairCount = productTypeCount["chair"];
+  console.log("Count of chair:", chairCount);
+
+  const SofaCount = productTypeCount["sofa"];
+  console.log("Count of sofa:", SofaCount);
+
+  const BedCount = productTypeCount["bed"];
+  console.log("Count of bed:", BedCount);
+
+  const CupboardCount = productTypeCount["cupboard"];
+  console.log("Count of cupboard:", CupboardCount);
+
+  const productType = completeData.type;
+  // console.log(productType);
 
   const Columns = [
     {
@@ -111,12 +227,6 @@ const Inventory = () => {
       field: 'product',
       sort: 'asc',
       width: 150
-    },
-    {
-      label: 'QUANTITY',
-      field: 'quantity',
-      sort: 'asc',
-      width: 270
     },
     {
       label: 'ENTRY PRICE',
@@ -143,13 +253,6 @@ const Inventory = () => {
       width: 100
     },
     {
-      label: 'STATUS',
-      field: 'status',
-      sort: 'asc',
-      width: 100
-    }
-    ,
-    {
       label: '  ',
       field: 'action',
       sort: 'NONE',
@@ -157,19 +260,17 @@ const Inventory = () => {
     }
   ];
 
-  const Rows = productData.map((product) => {
+  const Rows = latestProducts.map((product) => {
     return {
       product: <div className='d-flex flex-row gap-4 align-items-center'>
         <img src={product.image}/>
         <p className='align-items-center mt-3'>{product.product_name}</p>
       </div>,
-      quantity: 5,
       entry: product.entry_price,
       discount: product.discount,
       price: product.entry_price - (product.entry_price * product.discount / 100),
       sold: product.sold,
-      status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{product.product_status}</p></div>
-      ,
+      // status: <div className='instock d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{product.product_status}</p></div>
       action: <Link to={`/vendor/inventory/inventoryproduct?id=${product.product_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
     }
   });
@@ -226,21 +327,21 @@ const Inventory = () => {
                     </div>
                   </div>
                 </div>
-                <div className='col-lg-12 bg-white rounded-3 my-2 shadow p-4'>
+                <div className='col-lg-12 low-box rounded-3 my-2 shadow p-4'>
                   <div className='d-flex flex-row gap-5'>
-                    <img className='img-fluid' src={Money} />
+                    <img className='img-fluid mt-2' style={{height:"35px", width:"35px"}} src={LowStock} />
                     <div className='d-flex flex-column align-content-center'>
-                      <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>Expenses</p>
-                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>LKR 14,751.00</p>
+                      <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>Low Stock Items</p>
+                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>{lowStockCount}</p>
                     </div>
                   </div>
                 </div>
-                <div className='col-lg-12 rounded-3 my-2 shadow low-box p-4'>
+                <div className='col-lg-12 rounded-3 my-2 shadow out-box p-4'>
                   <div className='d-flex flex-row gap-5'>
-                    <img className='img-fluid' src={Money} />
+                    <img className='img-fluid mt-2' style={{height:"35px", width:"35px"}} src={LowStock} />
                     <div className='d-flex flex-column align-content-center'>
-                      <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>Low Stock Items</p>
-                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>2</p>
+                      <p className='m-0 fs-6 fw-normal Cabin-text' style={{ color: "#4F6068" }}>Out of Stock Items</p>
+                      <p className='m-0 fs-5 fw-semibold Cabin-text' style={{ color: "#023047" }}>{outStockCount}</p>
                     </div>
                   </div>
                 </div>

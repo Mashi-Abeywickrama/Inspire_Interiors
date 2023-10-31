@@ -4,18 +4,23 @@ import "./../../styles/vendor/addStock.css";
 import * as Icon from "react-bootstrap-icons";
 import {Link} from 'react-router-dom';
 import axios from "axios";
+import {useSession} from '../../constants/SessionContext';
 
 const AddStock = () => {
+
+  const sessionItems = useSession();
+  const userId = sessionItems.sessionData.userid;
 
   const [productDetails, setProductDetails] = useState({
     product_name: "",
     product_description: "",
     discount: "",
-    type: "chair",
-    room_type: "living room",
+    type: "",
+    roomType: "",
     shipping_fee: 0,
     entry_price: 0,
     image: null,
+    vendor_id: userId,
   });
 
   const handleProductDetailsChange = (field, value) => {
@@ -39,6 +44,8 @@ const AddStock = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // console.log("Submitting form:", productDetails )
 
     // try {
     //   const formData = new FormData();
@@ -74,22 +81,47 @@ const AddStock = () => {
           product_description: productDetails.product_description,
           discount: productDetails.discount,
           type: productDetails.type,
-          room_type: productDetails.room_type,
+          roomType: productDetails.roomType,
           entry_price: productDetails.entry_price,
           shipping_fee: productDetails.shipping_fee,
           image: productDetails.image,
+          vendor_id: productDetails.vendor_id,
       });
       if(response.status === 200)
       {
-        console.log("Response from API:", response.data);
+        console.log("Response from API:", response.data.product_id);
         console.log("Creation Succesfully");
-        window.location.href='/vendor/inventory/viewstock';
+       
+
+        try {
+          console.log("Submitting form:", productDetails )
+          const formData = new FormData();
+
+          formData.append("productDetails", response.data.product_id);
+          formData.append("imageFile", productDetails.image); // Append the image to the formData
+
+          const response2 = await axiosInstance.put("/addproductimage",
+            formData,
+            { headers: { 'Content-Type': 'multipart/form-data' } }
+          );
+          if(response2.status === 200)
+          {
+            console.log("Response from API:", "Omaiwa mou shindeiru");
+             window.location.href='/vendor/inventory/viewstock';
+
+            
+          } 
+        }
+        catch (error) {
+          console.error("Error submitting form:", error);
+        }
       }
 
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
+
     return (
         <>
             <div className="stock-container p-4 bg-white rounded-3 mb-4 me-3">
@@ -160,6 +192,7 @@ const AddStock = () => {
                     <div className='mb-3 w-25'>
                       <label for="type">Select Type:</label>
                       <select class="form-control" id="type" name="type" value={productDetails.type} onChange={(e) => handleProductDetailsChange(e.target.name, e.target.value)} >
+                          <option value="">Select Type</option>
                           <option value="chair">Chair</option>
                           <option value="table">Table</option>
                           <option value="cupboard">Cupboard</option>
@@ -168,8 +201,9 @@ const AddStock = () => {
                       </select>
                     </div>
                     <div className='mb-3 w-25'>
-                      <label for="room_type">Select Room Type:</label>
-                      <select class="form-control" id="room_type" name="room_type" value={productDetails.room_type} onChange={(e) => handleProductDetailsChange(e.target.name, e.target.value)} >
+                      <label for="roomType">Select Room Type:</label>
+                      <select class="form-control" id="roomType" name="roomType" value={productDetails.roomType} onChange={(e) => handleProductDetailsChange(e.target.name, e.target.value)} >
+                          <option value="">Select Room Type</option>
                           <option value="living room">Living Room</option>
                           <option value="dining room">Dining Room</option>
                           <option value="bed room">Bed Room</option>

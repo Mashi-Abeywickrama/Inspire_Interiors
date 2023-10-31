@@ -1,6 +1,6 @@
 package inspireinteriors.dev.controller;
 
-import inspireinteriors.dev.model.Vendor;
+import inspireinteriors.dev.model.Designer;
 import inspireinteriors.dev.model.VendorOffer;
 import inspireinteriors.dev.service.DesignerService;
 import inspireinteriors.dev.service.VendorOfferService;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins="http://localhost:5174")
+@CrossOrigin(origins="http://localhost:5173")
 @RestController
 public class VendorOfferController {
 
@@ -26,18 +26,22 @@ public class VendorOfferController {
     @Autowired
     private DesignerService designerService;
 
+    @GetMapping("/getAllDesigners")
+    public ResponseEntity<List<Designer>> getAllDesigners(){
+        List<Designer> designers = designerService.getAllDesigners();
+        return ResponseEntity.ok(designers);
+    }
     @PostMapping("/addpromotion")
     public ResponseEntity<VendorOffer> createOffer(@RequestBody VendorOffer vendorOffer, HttpSession session){
-
-//        Integer vendorId = (Integer) session.getAttribute("vendorid");
-//
-//        Vendor vendor = new Vendor();
-//        vendor.setVendor_id(vendorId);
-//        vendorOffer.setVendor(vendor);
-
         vendorOfferService.createOffer(vendorOffer);
         return new ResponseEntity<>(vendorOffer, HttpStatus.OK);
 
+    }
+
+    @GetMapping("/promotion/vendor/{vendorid}")
+    public ResponseEntity<List<VendorOffer>> getOfferByVendorId(@PathVariable("vendorid") int vendorid){
+        List<VendorOffer> vendorOffer = vendorOfferService.getOfferByVendorId(vendorid);
+        return ResponseEntity.ok(vendorOffer);
     }
 
     @GetMapping("/promotion")
@@ -95,7 +99,7 @@ public class VendorOfferController {
             vendorOffer.setMorethanhundredthousand(updatedOffer.getMorethanhundredthousand());
         }
 
-        if(updatedOffer.getOfferstatus() != null){
+        if(updatedOffer.getOfferstatus() != 0){
             vendorOffer.setOfferstatus(updatedOffer.getOfferstatus());
         }
 

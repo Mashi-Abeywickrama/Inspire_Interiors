@@ -26,7 +26,7 @@ const Salary = () => {
     timeout:5000,
   });
 
-  const fetchSalaryData = async ()=>{
+  const fetchSalaryData = async (type)=>{
     try{
     const response = await axios.get(apiBaseURL + '/getsalary');
     const salaryData = response.data;
@@ -34,12 +34,20 @@ const Salary = () => {
     setLoading(false);
     }
    catch (error) {
-    console.error('Error fetching salary data:', error);
+    console.error(`Error fetching salary data: ${type}`, error);
   }
   }
   useEffect(() => {
-    fetchSalaryData();
+    fetchSalaryData('all');
   }, []);
+
+  const handleTabSelect = (type) => {
+    fetchSalaryData(type); // Fetch orders based on the selected tab status
+  };
+
+  const filteredData = (type) =>
+  salaryData.filter((item) => item.type === type);
+  
 
 
   const data = {
@@ -104,6 +112,130 @@ const Salary = () => {
     })),
   };
 
+  const data1 = {
+    columns: [
+      {
+        label: 'USERNAME',
+        field: 'name',
+        sort: 'asc',
+        width: 150
+      },
+      {
+        label: 'TOTALSALES',
+        field: 'total_sale',
+        sort: 'asc',
+        width: 270
+      },
+      {
+        label: 'COMMISSION',
+        field: 'commission',
+        sort: 'asc',
+        width: 200
+      },
+      {
+        label: 'EARNING',
+        field: 'earning',
+        sort: 'asc',
+        width: 100
+      },
+      {
+        label: 'Status',
+        field: 'status',
+        sort: 'asc',
+        width: 100
+      },
+      {
+        label: 'DATE',
+        field: 'date',
+        sort: 'asc',
+        width: 100
+      },
+      {
+        label: '  ',
+        field: 'action',
+        sort: 'NONE',
+        width: 100
+      }
+    ],
+    rows:filteredData('designer').map((salary) => ({
+     name:salary.userid,
+     total_sale:salary.total_sale,
+     commission:salary.commission,
+     earning:salary.earnings,
+      status: salary.status,
+      date:salary.year+'-'+salary.month,
+        action:"send invoice->" ,
+      //      <Link to="/admin/orders/invoice"><div className="d-flex gap-2 align-items-center text-dark">
+      //        <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
+      //      </div></Link>
+      
+      
+      // other fields...
+    })),
+  };
+
+  const data2 = {
+    columns: [
+      {
+        label: 'USERNAME',
+        field: 'name',
+        sort: 'asc',
+        width: 150
+      },
+      {
+        label: 'TOTALSALES',
+        field: 'total_sale',
+        sort: 'asc',
+        width: 270
+      },
+      {
+        label: 'COMMISSION',
+        field: 'commission',
+        sort: 'asc',
+        width: 200
+      },
+      {
+        label: 'EARNING',
+        field: 'earning',
+        sort: 'asc',
+        width: 100
+      },
+      {
+        label: 'Status',
+        field: 'status',
+        sort: 'asc',
+        width: 100
+      },
+      {
+        label: 'DATE',
+        field: 'date',
+        sort: 'asc',
+        width: 100
+      },
+      {
+        label: '  ',
+        field: 'action',
+        sort: 'NONE',
+        width: 100
+      }
+    ],
+    rows:filteredData('vendor').map((salary) => ({
+     name:salary.userid,
+     total_sale:salary.total_sale,
+     commission:salary.commission,
+     earning:salary.earnings,
+      status: salary.status,
+      date:salary.year+'-'+salary.month,
+        action:"send invoice->" ,
+      //      <Link to="/admin/orders/invoice"><div className="d-flex gap-2 align-items-center text-dark">
+      //        <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
+      //      </div></Link>
+      
+      
+      // other fields...
+    })),
+  };
+
   return (
     <>  
     {/* <div className="d-flex  flex-column gap-3 full">
@@ -114,9 +246,9 @@ const Salary = () => {
         <div className="background-total p-3 rounded-3 ">
           <div className='d-flex flex-row align-items-center justify-content-between'>
             <div className='d-flex gap-2 align-items-center'>
-          <div className="fs-5">User</div> 
-          <div className='text-secondary '> <Icon.ChevronRight size={18} /> </div>
-          <div className="text-secondary fs-5">Salary</div>
+          <div className="fs-5">Earnings</div> 
+          {/* <div className='text-secondary '> <Icon.ChevronRight size={18} /> </div>
+          <div className="text-secondary fs-5">Salary</div> */}
           </div>
            {/* <button class='py-1 px-2 fs-6' style={{backgroundColor:"#023047"}}>+ Add New</button> */}
           
@@ -129,6 +261,7 @@ const Salary = () => {
               defaultActiveKey="all"
               id="uncontrolled-tab-example"
               className="mb-3 bg-white tab"
+              onSelect={handleTabSelect}
             >
               <Tab eventKey="all" title="All">
                 <div className=''>
@@ -144,20 +277,34 @@ const Salary = () => {
                 />
                 </div>
               </Tab>
-              <Tab eventKey="Customer" title="Customer">
-              Customer
-              </Tab>
+            
               <Tab eventKey="Designer" title="Designer">
-              Designer
+              <div className=''>
+             
+                  <MDBDataTableV5 responsive
+                  striped
+                  bordered
+                  small
+                  data={data1}
+                  sortable={true}
+                  exportToCSV={true}
+                  
+                />
+                </div>
               </Tab>
               <Tab eventKey="Vendor" title="Vendor">
-              Vendor
-              </Tab>
-              <Tab eventKey="Admin" title="Admin">
-                Admin
-              </Tab>
-              <Tab eventKey="Customer-Support" title="Customer-Support">
-              Customer-Support
+              <div className="">
+             
+             <MDBDataTableV5 responsive
+             striped
+             bordered
+             small
+             data={data2}
+             sortable={true}
+             exportToCSV={true}
+             
+           />
+           </div>
               </Tab>
             </Tabs>
           </div>

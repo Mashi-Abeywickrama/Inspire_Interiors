@@ -1,7 +1,7 @@
 package inspireinteriors.dev.service;
 
 import inspireinteriors.dev.model.VendorOffer;
-import inspireinteriors.dev.repository.DesignerRepository;
+import inspireinteriors.dev.repository.Designer.DesignerRepository;
 import inspireinteriors.dev.repository.VendorOfferRepository;
 import inspireinteriors.dev.repository.VendorRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -32,7 +32,6 @@ public class VendorOfferService {
 //    }
 
     public VendorOffer createOffer(VendorOffer vendorOffer){
-        vendorOffer.setOfferstatus("Waiting for Response");
         return vendorOfferRepository.save(vendorOffer);
     }
 
@@ -68,5 +67,9 @@ public class VendorOfferService {
 
     public VendorOffer findById(int offerId) {
         return vendorOfferRepository.findById((long) offerId).orElseThrow(() -> new EntityNotFoundException("Offer not found: " + offerId));
+    }
+
+    public List<VendorOffer> getOfferByVendorId(int vendorid) {
+        return vendorOfferRepository.findPromotionByVendor_id(vendorid);
     }
 }

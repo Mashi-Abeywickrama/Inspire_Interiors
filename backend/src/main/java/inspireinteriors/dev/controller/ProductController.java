@@ -9,8 +9,8 @@ import inspireinteriors.dev.model.Variation;
 import inspireinteriors.dev.service.ARModelsService;
 import inspireinteriors.dev.service.ProductService;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,49 +36,69 @@ public class ProductController {
     private ObjectMapper objectMapper;
 
 
-    @PostMapping("/products")
+    @PutMapping("/addproductimage")
     public ResponseEntity<String> createProduct(
-            @RequestParam("productDetails") String productDetailsJson,
+            @RequestParam("productDetails") Integer productID,
             @RequestParam("imageFile") MultipartFile imageFile
     ) throws JsonProcessingException, IOException, JSONException {
-        ProductDetails productDetails = objectMapper.readValue(productDetailsJson, ProductDetails.class);
+        System.out.println("Product ID: " + productID);
 
         // Handle image upload
-        String uploadedFileName = handleImageUpload(imageFile);
+        String uploadedFileName = handleImageUpload(imageFile, productID);
 
-        Product product = new Product();
-        product.setProduct_name(productDetails.getProductName());
-        product.setProduct_description(productDetails.getProductDescription());
-        product.setDiscount(productDetails.getProductDiscount());
-        product.setType(productDetails.getProductType());
-        product.setEntry_price(productDetails.getEntryPrice());
-        product.setProductImg(uploadedFileName);// Save the image file path
 
-        // Save the product to the database
-        productService.saveProduct(product);
-        // Process productDetails and imageFileName here
-        // ... your logic to save the product and image details ...
-
-        JSONObject jsonResponse = new JSONObject();
-        jsonResponse.put("name", product.getProduct_name());
-        jsonResponse.put("description", product.getProduct_description());
-        jsonResponse.put("discount", product.getDiscount());
-        jsonResponse.put("type", product.getType());
-        jsonResponse.put("entryPrice", product.getEntry_price());
-        jsonResponse.put("productImg", product.getProductImg());
-
+//
+        Product product = productService.getProductById(productID);
+        product.setProductImg(productID+".jpg");
+        productService.updateProfilePic(product);
+//
         return ResponseEntity.ok(uploadedFileName);
     }
 
-    @PostMapping("/addproducts")
-    public ResponseEntity<Product> createdproduct(@RequestBody Product product){
-        productService.createProduct(product);
-        return ResponseEntity.ok(product);
+    @PutMapping("/setVariationPic")
+    public ResponseEntity<String> updateVariationPic(
+            @RequestParam("variationId") Integer variationId,
+            @RequestParam("file") MultipartFile imageFile
+    ) throws JsonProcessingException, IOException, JSONException {
+
+//         Handle image upload
+        String uploadedFileName = handleVariationImageUpload(imageFile, variationId);
+//        System.out.println("Variation ID: " + imageFile.getOriginalFilename());
+
+
+//
+        Variation variation = productService.getVariationById(variationId);
+        variation.setVariationImg(variationId+".jpg");
+        productService.updateVariationImage(variation);
+//
+        return ResponseEntity.ok(variationId+".jpg");
     }
 
-    @PostMapping("/addvariation")
-    public Variation createVariation(@RequestBody Variation variation) {
-        return productService.createvariation(variation);
+    @PutMapping("/setARModel")
+    public ResponseEntity<String> updateARModelPic(
+            @RequestParam("modelId") Integer modelId,
+            @RequestParam("file") MultipartFile imageFile
+    ) throws JsonProcessingException, IOException, JSONException {
+
+//         Handle image upload
+        String uploadedFileName = handleARModelUpload(imageFile, modelId);
+//        System.out.println("Variation ID: " + imageFile.getOriginalFilename());
+
+
+//
+        ARModels arModels = arModelsService.getARModelById(modelId);
+        arModels.setModelFile(modelId+".jpg");
+        arModelsService.updateModelImage(arModels);
+//
+        return ResponseEntity.ok(modelId+".jpg");
+    }
+
+
+    @PostMapping("/addproducts")
+    public ResponseEntity<Product> createdproduct(@RequestBody Product product){
+
+        productService.createProduct(product);
+        return ResponseEntity.ok(product);
     }
 
     @GetMapping("/viewproducts")
@@ -91,7 +111,29 @@ public class ProductController {
         return productService.getProductById(id);
     }
 
-    @GetMapping("/viewvariations/{id}")
+    //get product by vendor id
+    @GetMapping("/viewproducts/vendor/{vendorid}")
+    public ResponseEntity<List<Product>> getProductsByVendorId(@PathVariable(value = "vendorid") int vendor_id) {
+        List<Product> products = productService.getProductsByVendorId(vendor_id);
+        return ResponseEntity.ok(products);
+    }
+
+    @PostMapping("/addvariation")
+    public Variation createVariation(@RequestBody Variation variation) {
+        return productService.createvariation(variation);
+    }
+
+    @PostMapping("/addmodel")
+    public ARModels createVariation(@RequestBody ARModels arModels) {
+        return arModelsService.createARModel(arModels);
+    }
+    @GetMapping("/viewvariations/vendor/{id}")
+    public ResponseEntity<List<Variation>> getVariationsByvendorId(@PathVariable(value = "id") int product_id) {
+        List<Variation> variations = productService.getVariationsByProductId(product_id);
+        return ResponseEntity.ok(variations);
+    }
+
+    @GetMapping("/viewvariations/product/{id}")
     public ResponseEntity<List<Variation>> getVariationByProductId(@PathVariable(value = "id") int product_id) {
         List<Variation> variations = productService.getByProductId(product_id);
         return ResponseEntity.ok(variations);
@@ -102,36 +144,71 @@ public class ProductController {
         return productService.getAllVariations();
     }
 
+    @GetMapping("/viewvariations/{id}")
+    public Variation getVariationById(@PathVariable Integer id) {
+        return productService.getVariationById(id);
+    }
+
     //update product variations with product id
     @PutMapping("/updatevariations/{id}")
-    public ResponseEntity<Variation> updateVariation(
+    public ResponseEntity<String> updateVariation(
             @PathVariable("id") Integer variation_id,
-            @RequestBody Variation updatedVariation
-    ) {
-        Variation variation = productService.updateVariation(updatedVariation);
+            @RequestBody VariationDetails updatedVariation) {
+        String material = updatedVariation.getMaterial();
+        String color = updatedVariation.getColor();
+        int quantity = updatedVariation.getQuantity();
 
-        if (variation == null) {
+        boolean variationUpdated = productService.updateVariation(
+                variation_id,
+                material,
+                color,
+                quantity
+        );
+
+        if(variationUpdated){
+            return ResponseEntity.ok("Variation updated successfully");
+        }else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Variation update failed");
+        }
+    }
+
+    @PutMapping("/updateproduct/vendor/{id}")
+    public ResponseEntity<Product> updatedProduct(
+            @PathVariable("id") Integer vendor_id,
+            @RequestBody Product updatedProduct
+    ) {
+        Product product = productService.getProductById(vendor_id);
+
+        if (product == null) {
             return ResponseEntity.notFound().build();
         }
 
-        if (updatedVariation.getColor() != null) {
-            variation.setColor(updatedVariation.getColor());
+        if (updatedProduct.getProduct_name() != null) {
+            product.setProduct_name(updatedProduct.getProduct_name());
         }
 
-        if (updatedVariation.getMaterial() != null) {
-            variation.setMaterial(updatedVariation.getMaterial());
+        if (updatedProduct.getProduct_description() != null) {
+            product.setProduct_description(updatedProduct.getProduct_description());
         }
 
-        if (updatedVariation.getQuantity() != 0) {
-            variation.setQuantity(updatedVariation.getQuantity());
+        if (updatedProduct.getDiscount() != 0) {
+            product.setDiscount(updatedProduct.getDiscount());
         }
 
-        if (updatedVariation.getVariationImg() != null) {
-            variation.setVariationImg(updatedVariation.getVariationImg());
+        if (updatedProduct.getType() != null) {
+            product.setType(updatedProduct.getType());
         }
 
-        productService.updateVariation(variation);
-        return ResponseEntity.ok(variation);
+        if (updatedProduct.getEntry_price() != null) {
+            product.setEntry_price(updatedProduct.getEntry_price());
+        }
+
+        if (updatedProduct.getProductImg() != null) {
+            product.setProductImg(updatedProduct.getProductImg());
+        }
+
+        productService.saveProduct(product);
+        return ResponseEntity.ok(product);
     }
 
     @PutMapping("/updateproducts/{id}")
@@ -173,13 +250,30 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
-    private String handleImageUpload(MultipartFile imageFile) {
+
+    private String handleImageUpload(MultipartFile imageFile, Integer productID) {
+
+
+
+
         if (imageFile == null || imageFile.isEmpty()) {
             return null; // No image provided
         }
 
-        String fileName = imageFile.getOriginalFilename();
-        String filePath = "C:\\Users\\shint\\Documents\\GitHub\\Inspire_Interiors_new\\Inspire Interiors\\src\\assets\\img\\product\\" + fileName;
+        String fileName = productID + ".jpg";
+
+
+        String currentWorkingDirectory = System.getProperty("user.dir");
+
+        // Construct the relative path to the parent folder
+        String parentFolderRelativePath = ".." + File.separator + "Inspire Interiors";
+
+// Combine with the current working directory to get the absolute path
+        String parentFolderAbsolutePath = currentWorkingDirectory + File.separator + parentFolderRelativePath;
+
+        System.out.println(parentFolderAbsolutePath);
+
+        String filePath =parentFolderAbsolutePath +"/src/assets/img/product"+  File.separator  + fileName;
 
         try {
             // Create the directory structure if it doesn't exist
@@ -188,6 +282,9 @@ public class ProductController {
                 directory.mkdirs();
             }
 
+
+
+
             File destFile = new File(filePath);
             imageFile.transferTo(destFile);
 
@@ -195,6 +292,138 @@ public class ProductController {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    private String handleVariationImageUpload(MultipartFile imageFile, Integer variationID) {
+
+
+
+
+        if (imageFile == null || imageFile.isEmpty()) {
+            return null; // No image provided
+        }
+
+        String fileName = variationID + ".jpg";
+
+
+        String currentWorkingDirectory = System.getProperty("user.dir");
+
+        // Construct the relative path to the parent folder
+        String parentFolderRelativePath = ".." + File.separator + "Inspire Interiors";
+
+// Combine with the current working directory to get the absolute path
+        String parentFolderAbsolutePath = currentWorkingDirectory + File.separator + parentFolderRelativePath;
+
+        System.out.println(parentFolderAbsolutePath);
+
+        String filePath =parentFolderAbsolutePath +"/src/assets/img/variation"+  File.separator  + fileName;
+
+        try {
+            // Create the directory structure if it doesn't exist
+            File directory = new File(filePath).getParentFile();
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+
+
+
+            File destFile = new File(filePath);
+            imageFile.transferTo(destFile);
+
+            return fileName; // Return the absolute path of the saved image
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    private String handleARModelUpload(MultipartFile imageFile, Integer modelID) {
+
+
+
+
+        if (imageFile == null || imageFile.isEmpty()) {
+            return null; // No image provided
+        }
+
+        String fileName = modelID + ".jpg";
+
+
+        String currentWorkingDirectory = System.getProperty("user.dir");
+
+        // Construct the relative path to the parent folder
+        String parentFolderRelativePath = ".." + File.separator + "Inspire Interiors";
+
+// Combine with the current working directory to get the absolute path
+        String parentFolderAbsolutePath = currentWorkingDirectory + File.separator + parentFolderRelativePath;
+
+        System.out.println(parentFolderAbsolutePath);
+
+        String filePath =parentFolderAbsolutePath +"/src/assets/img/qr_code"+  File.separator  + fileName;
+
+        try {
+            // Create the directory structure if it doesn't exist
+            File directory = new File(filePath).getParentFile();
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+
+
+
+            File destFile = new File(filePath);
+            imageFile.transferTo(destFile);
+
+            return fileName; // Return the absolute path of the saved image
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    public static class VariationDetails{
+        @JsonProperty("material")
+        private String material;
+        @JsonProperty("color")
+        private String color;
+        @JsonProperty("quantity")
+        private int quantity;
+
+        public VariationDetails() {
+        }
+
+        public VariationDetails(String material, String color, int quantity) {
+            this.material = material;
+            this.color = color;
+            this.quantity = quantity;
+        }
+
+        public String getMaterial() {
+            return material;
+        }
+
+        public void setMaterial(String material) {
+            this.material = material;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
         }
     }
 
@@ -302,6 +531,19 @@ public class ProductController {
     @GetMapping("category-by-type/{type}")
     public ResponseEntity<List<Product>> getAllProductsByType(@PathVariable String type) {
         List<Product> products = (List<Product>) productService.getAllProductsByType(type);
+        return ResponseEntity.ok(products);
+    }
+
+//    Popular items
+    @GetMapping("/popular-items")
+    public ResponseEntity<List<Product>> getPopularItems() {
+        List<Product> products = (List<Product>) productService.getPopularItems();
+        return ResponseEntity.ok(products);
+    }
+
+    @GetMapping("/all-popular-items")
+    public ResponseEntity<List<Product>> getAllPopularItems() {
+        List<Product> products = (List<Product>) productService.getAllPopularItems();
         return ResponseEntity.ok(products);
     }
 

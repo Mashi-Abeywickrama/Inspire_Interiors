@@ -15,4 +15,16 @@ public class ARModelsService {
     public ARModels getARModelByProductId(String productId) {
         return arModelsRepository.findByProductId(productId);
     }
+
+    public ARModels createARModel(ARModels arModels) {
+        return arModelsRepository.save(arModels);
+    }
+
+    public ARModels getARModelById(Integer modelId) {
+        return arModelsRepository.findById(modelId).orElse(null);
+    }
+
+    public void updateModelImage(ARModels arModels) {
+        arModelsRepository.save(arModels);
+    }
 }
