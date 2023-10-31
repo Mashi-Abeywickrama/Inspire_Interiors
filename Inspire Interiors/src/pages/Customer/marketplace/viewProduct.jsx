@@ -16,6 +16,7 @@ import Cotton from "./../../../assets/img/vendor/material/cotton.png";
 import Glass from "./../../../assets/img/vendor/material/glass.jpg";
 import QRPopup from '../../../components/customer/popup/ARPopup';
 import { useSession } from '../../../constants/SessionContext';
+import SeeAllReviews from '../../../components/customer/popup/SeeAllReviewsPopup';
 
 const stardata = {
     data:"4.5"
@@ -240,7 +241,7 @@ const ViewProduct = () => {
                                 </span>
                             )}
                         </p>
-                        <div className='d-flex flex-row w-50 justify-content-between my-2'>
+                        <div className='d-flex flex-row w-75 justify-content-between my-2'>
                             <div className='fs-4 fw-normal Cabin-text'>${productData.entry_price}</div>
                             <div className="d-flex flex-row gap-3">
                             <div className='d-flex align-items-center'>{generateStars(averageRating.toFixed(1))}</div>
@@ -248,7 +249,12 @@ const ViewProduct = () => {
                                     <div className="fs-6 fw-bold Cabin-text">{averageRating.toFixed(1)}/5.0</div>
                                     <div className="fs-6 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>({reviewData.totalVotes})</div>
                                 </div>
+
+                                <div className="d-flex flex-row gap-1 float-end align-items-center">
+                                    <SeeAllReviews productData = {productData}/>
+                                </div>
                             </div>
+                            
                         </div>
                         <p className='fs-6 fw-normal Cabin-text w-50 mt-2'>{productData.product_description}</p>
                         <div className="d-flex flex-wrap gap-1">
