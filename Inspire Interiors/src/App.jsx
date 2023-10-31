@@ -124,6 +124,8 @@ import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 import { Loader } from "semantic-ui-react";
 import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
 import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
+import DesignerMyDesignView from "./pages/Designer/DesignerMyDesignView";
+
 import TypeView from "./pages/Customer/marketplace/typeView";
 
 
@@ -296,6 +298,7 @@ const routes = (
       <Route path="test" element={<Test />} />
       <Route path="requests" element={<DesignerCustomerRequest />} />
       <Route path="crequestview/:id" element={<DesignerCRequestview />} />
+      <Route path="mydesignview/:id" element={<DesignerMyDesignView/>} />
     </Route>
 
     {/* Manager Routes */}
