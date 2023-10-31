@@ -33,8 +33,8 @@ public class MyDesigns {
     @Column(name = "Image2")
     private String image2;
 
-    @Column(name = "Image3")
-    private String image3;
+    @Column(name = "roomtype")
+    private String roomtype;
 
 
 
