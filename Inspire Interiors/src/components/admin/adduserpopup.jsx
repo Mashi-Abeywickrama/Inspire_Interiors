@@ -77,6 +77,7 @@ function AddNewUser({ addressData }) {
                       onChange={(e) => handleInputChange(e, 'name')}
                       value={userData.name}
                       style={{ backgroundColor: '#F2FAFF' }}
+                      required 
                     />
                   </Form.Group>
                 </Col>
@@ -92,6 +93,7 @@ function AddNewUser({ addressData }) {
                       onChange={(e) => handleInputChange(e, 'type')}
                       value={userData.type}
                       style={{ backgroundColor: '#F2FAFF' }}
+                      required 
                     />
                   </Form.Group>
                 </Col>
@@ -110,6 +112,7 @@ function AddNewUser({ addressData }) {
                       onChange={(e) => handleInputChange(e, 'username')}
                       value={userData.username}
                       style={{ backgroundColor: '#F2FAFF' }}
+                      required 
                     />
                   </Form.Group>
                 </Col>
@@ -125,6 +128,8 @@ function AddNewUser({ addressData }) {
                       onChange={(e) => handleInputChange(e, 'email')}
                       value={userData.email}
                       style={{ backgroundColor: '#F2FAFF' }}
+                      required 
+                      pattern="[a-zA-Z0-9._%+-]+@gmail\.com"
                     />
                   </Form.Group>
                 </Col>
@@ -142,6 +147,7 @@ function AddNewUser({ addressData }) {
                       onChange={(e) => handleInputChange(e, 'dob')}
                       value={userData.dob}
                       style={{ backgroundColor: '#F2FAFF' }}
+                      required 
                     />
                   </Form.Group>
                 </Col>
@@ -157,6 +163,8 @@ function AddNewUser({ addressData }) {
                       onChange={(e) => handleInputChange(e, 'contact_no')}
                       value={userData.contact_no}
                       style={{ backgroundColor: '#F2FAFF' }}
+                      required 
+                      pattern="^\d{10}$"
                     />
                   </Form.Group>
                 </Col>

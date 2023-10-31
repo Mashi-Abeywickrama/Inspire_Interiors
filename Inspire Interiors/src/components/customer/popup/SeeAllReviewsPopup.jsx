@@ -12,6 +12,11 @@ import { useSession } from '../../../constants/SessionContext';
 function SeeAllReviews({productData}) {
     const [showPopup, setReview] = useState(false);
 
+    const [userReview, setUserReview] = useState('');
+     const [rating, setRating] = useState(0 );
+    const [userData, setUserData] = useState([]);
+
+
     // Function to close the modal
     const closeModel = () => {
         setReview(false);
@@ -42,6 +47,20 @@ function SeeAllReviews({productData}) {
         return stars;
     };
 
+
+    useEffect(() => {
+        // Make an API request to fetch the shipping addresses from the backend
+        axiosInstance.get('/users')
+            .then(response => {
+                setUserData(response.data); // Assuming the response is an array of shipping addresses
+               
+            })
+            .catch(error => {
+                console.error('Error fetching shipping addresses:', error);
+            });
+    }, []); // Fetch the addresses when the component mounts
+
+
     const starStyles = {
         filledStar: {
             color: '#f39c12',
@@ -54,10 +73,12 @@ function SeeAllReviews({productData}) {
     };
 
     function StarRating({ initialRating }) {
-        const [rating, setRating] = useState(initialRating);
+       
 
         const handleStarClick = (clickedRating) => {
             setRating(clickedRating);
+            console.log(clickedRating);
+
         };
 
         const generateInputStars = (totalStars) => {
@@ -103,6 +124,62 @@ function SeeAllReviews({productData}) {
     fetchAndStoreReviewData(id);
     }, [id]);
 
+    const sessionItems = useSession();
+    const userId = sessionItems.sessionData.userid;
+
+    const handleAddReview = async () => {
+        console.log('Adding review:', userReview);
+        try {
+            // Make an API request to add the user's review
+            const response = await axiosInstance.post(`/rating`, {
+                designId:0,
+                productId: id,
+                reviewDate: new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()    ,
+                starRating:rating,
+                review: userReview, 
+                userId:userId
+            });
+
+            // Handle the response or update the UI as needed
+            console.log(response);
+
+            // Close the review modal
+            closeModel();
+        } catch (error) {
+            console.error('Error adding review:', error);
+        }
+    };
+
+    const mergeData = (reviewData, userData) => {
+        const mergedData = reviewData.map(
+          (reviewItem) => {
+          const matchingUser = userData.find(
+            (userItem) =>  userItem.userid === reviewItem.userId
+          );
+    
+         
+      
+          if (matchingUser ) {
+            // Merge the data from both sources
+            return {
+              ...reviewItem,
+              ...matchingUser
+            
+            };
+          } else {
+            return {
+                ...reviewItem
+            };
+        }});
+      
+        return mergedData;
+    };
+    
+    const mergedDesigner = mergeData(reviewData, userData);
+    console.log("merged Data", mergedDesigner);
+    
+
+
     return (
         <div>
             <div>
@@ -120,53 +197,50 @@ function SeeAllReviews({productData}) {
 
 
                     <Modal.Body className='py-2 px-3'>
-                        {/* Form for the popup */}
-                        <Row className='g-4'>
-                            <Col md>
-                                <Form.Group>
-                                    <Form.Label className='sub-heading Cabin-text'>Username****</Form.Label>
-                                </Form.Group>
-                            </Col>
-                            <Col md>
-                                <Form.Group >
-                                    <Form.Label className='sub-heading Cabin-text'>{generateStars(4)}</Form.Label>
-                                </Form.Group>
-                            </Col>
-                        </Row>
+                  
+                        {mergedDesigner.map((review, index) => (
+                            <div key={index} className='d-flex flex-column gap-2'>
+                                <div className='d-flex justify-content-between'>
+                                    <span className='sub-heading Cabin-text'>{review.username}</span>
+                                    <span className='sub-heading Cabin-text'>{review.review_date}</span>
+                                </div>
+                                <div className='d-flex justify-content-between'>
+                                    <span className='sub-heading Cabin-text'>{generateStars(review.starRating)}</span>
+                                    
+                                </div>
+                                <div className='d-flex justify-content-between'>
+                                    <span className='sub-heading Cabin-text'>{review.review}</span>
+                                </div>
+                            </div>
+    ))}
 
-                        <Row className='g-4'>
-                            <Col md>
-                                <Form.Group className='mb-3'>
-                                    <Form.Control
-                                        type='text'
-                                        name='review'
-                                        value={"Aaaailaaviooooo!! Aaailavio This Much(❁´◡`❁)"}
-                                        style={{ backgroundColor: '#F2FAFF' }}
-                                        className='border-0'
-                                    />
-                                </Form.Group>
-                            </Col>
-
-                        </Row>
 
                     </Modal.Body>
 
                     <Modal.Footer className='d-flex justify-content-center'>
-                        <Form className='w-100 px-2'>
+
+                        <Form className='w-100 px-2'onSubmit={handleAddReview}>
+
                             <Row className='w-100'>
                                 <Col md>
                                     <Form.Group className="mb-3">
                                         <div className="d-flex justify-content-between mb-2">
                                             <Form.Label className='sub-heading Cabin-text'>Add your review:</Form.Label>
-                                            <StarRating initialRating={0} />
+
+                                            <StarRating initialRating={rating || 0}  />
+
                                         </div>
                                         <div className="d-flex gap-1">
                                             <Form.Control
                                                 type='text'
                                                 placeholder="Type your comment here..."
                                                 style={{ backgroundColor: '#F2FAFF' }}
+
+                                                value={userReview}
+                                                onChange={(e) => setUserReview(e.target.value)}
+                                                required
                                             />
-                                            <Button variant="primary" type="button">Send</Button>
+                                            <Button variant="primary" type="submit">Send</Button>
                                         </div>
                                     </Form.Group>
                                 </Col>

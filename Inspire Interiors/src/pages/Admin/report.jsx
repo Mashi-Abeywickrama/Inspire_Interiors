@@ -5,6 +5,8 @@ import Card from "react-bootstrap/Card";
 // import Linechart from "./../../components/admin/linechart";
 import Barchart from "./../../components/admin/barchart";
 import Areachart from "./../../components/admin/areachart";
+import { useState, useEffect } from "react";
+
 // import Piechart from './../../components/admin/piechart';
 import {
   AreaChart,
@@ -20,14 +22,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import axios from "axios";
 
-const data = [
-  { name: 'Category 1', value: 10 },
-  { name: 'Category 2', value: 15 },
-  { name: 'Category 3', value: 8 },
-  { name: 'Category 4', value: 20 },
-  // Add more data as needed
-]
+  
 
 const Linedata1 = [
   {
@@ -222,6 +219,82 @@ const areadata = [
 ];
 
 export default function report() {
+
+  const [usertypeCount, setUsertypeCount] = useState([]);
+  // const [userType, setUserType] = useState('designer'); // Set the user type you want to fetch here
+  
+
+  const apiBaseURL = 'http://localhost:8080';
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseURL,
+        timeout: 5000,
+    });
+
+    useEffect(() => {
+    // Make an Axios GET request to your Spring Boot API endpoint
+    axiosInstance.get('/usercountType')
+      .then((response) => {
+        // Handle the successful response here
+        console.log(response.data)
+        setUsertypeCount(response.data);
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error('Error fetching data:', error);
+      });
+  }, []); // The empty dependency array ensures that this effect runs only once when the component mounts
+
+  const [userCount, setUserCount] = useState(null);
+
+  const data = usertypeCount.map(item => ({
+    name: item[0],
+    value: item[1],
+  }));
+
+
+  useEffect(() => {
+    // Make a GET request to the Spring Boot backend
+    fetch("http://localhost:8080/usercount")
+      .then((response) => response.json())
+      .then((data) => {
+        setUserCount(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching user count:", error);
+      });
+  }, []);
+
+  const [orderCount, setOrderCount] = useState(null);
+
+  useEffect(() => {
+    // Make a GET request to the Spring Boot backend
+    fetch("http://localhost:8080/ordercount")
+      .then((response2) => response2.json())
+      .then((data2) => {
+        setOrderCount(data2);
+      })
+      .catch((error2) => {
+        console.error("Error fetching order count:", error2);
+      });
+  }, []);
+
+  const [commissionsum, setcommissionsum] = useState(null);
+
+  useEffect(() => {
+    // Make a GET request to the Spring Boot backend
+    fetch("http://localhost:8080/commissionsum")
+      .then((response1) => response1.json())
+      .then((data1) => {
+        setcommissionsum(data1);
+      })
+      .catch((error1) => {
+        console.error("Error fetching com count:", error1);
+      });
+  }, []);
+
+  
+
   return (
     <div className="d-flex flex-column background-report mb-4">
       <p className="fs-5 fw-bold p-3">Report</p>
@@ -242,8 +315,8 @@ export default function report() {
                     className="m-0 fs-3 fw-normal Cabin-text"
                     style={{ color: "#FFC00C" }}
                   >
-                    236
-                  </p>
+                   {userCount !== null ? userCount : "Loading..."}
+                  </p><tab/>
                   <p className="m-0 fs-3 fw-normal Cabin-text text-white">
                     Users
                   </p>
@@ -258,8 +331,8 @@ export default function report() {
                     className="m-0 fs-3 fw-normal Cabin-text"
                     style={{ color: "#FFC00C" }}
                   >
-                    10
-                  </p>
+                    {commissionsum !== null ? commissionsum : "Loading..."}
+                  </p><tab/>
                   <p className="m-0 fs-3 fw-normal Cabin-text text-white">
                     Commission
                   </p>
@@ -274,8 +347,8 @@ export default function report() {
                     className="m-0 fs-3 fw-normal Cabin-text"
                     style={{ color: "#035C94" }}
                   >
-                    100
-                  </p>
+                   {orderCount !== null ? orderCount : "Loading..."}
+                  </p><tab/>
                   <p className="m-0 fs-3 fw-normal Cabin-text text-white">
                     Orders
                   </p>
@@ -415,16 +488,16 @@ export default function report() {
         </div>
 
         <div className="col-12 d-flex flex-column flex-lg-row  flex-md-row flex-sm-row gap-3">
-          <div className="col-lg-8 d-flex bg-white rounded-3 p-4 gap-2 ">
-            <div className="col-lg-6">
+          <div className="col-lg-6 d-flex bg-white rounded-3 p-4 gap-2 ">
+            {/* <div className="col-lg-6">
               <div className="d-flex flex-row justify-content-between">
                 <p className="m-0 fs-5 fw-bold Cabin-text">Usermatric</p>
                 {/* <select class="form-select w-25" aria-label="Default select example">
                 <option selected>Yearly</option>
                 <option value="3 Months">Monthly</option>
-              </select> */}
+              </select> 
               </div>
-              <ResponsiveContainer width="90%" height="90%">
+              * <ResponsiveContainer width="90%" height="90%">
                 <LineChart
                   width={500}
                   height={300}
@@ -448,12 +521,12 @@ export default function report() {
                     strokeWidth={2}
                   />
                 </LineChart>
-              </ResponsiveContainer>
-            </div>
+              </ResponsiveContainer> 
+            </div> */}
 
-            <div className="col-lg-6">
+            <div className="col-lg-12">
               <div className="d-flex flex-row justify-content-between">
-                <p className="m-0 fs-5 fw-bold Cabin-text"></p>
+                <p className="m-0 fs-5 fw-bold Cabin-text">Users</p>
                 <select
                   class="form-select w-25"
                   aria-label="Default select example"
@@ -468,19 +541,19 @@ export default function report() {
           width={500}
           height={300}
           data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          margin={{ top: 5, right: 20, left: 60, bottom: 5 }}
         >
           <XAxis type="number" />
           <YAxis dataKey="name" type="category" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="value" fill="#8884d8" />
+          <Bar dataKey="value" fill="#FFC00C" />
         </BarChart>
       </ResponsiveContainer>
             </div>
           </div>
 
-          <div className="col-lg-4 bg-white rounded-3 p-4">
+          <div className="col-lg-6 bg-white rounded-3 p-4">
             <div className="d-flex flex-row justify-content-between">
               <p className="m-0 fs-5 fw-bold Cabin-text">Order</p>
               <select

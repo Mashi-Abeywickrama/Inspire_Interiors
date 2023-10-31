@@ -19,4 +19,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByType(String type);
 
 
+    int countByType(String type);
+
+    @Query("SELECT u.type, COUNT(u) FROM User u GROUP BY u.type")
+    List countByTypes();
 }
