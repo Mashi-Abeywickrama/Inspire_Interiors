@@ -57,16 +57,24 @@ import Address from "./pages/Customer/checkout/address";
 import PaymentMethod from "./pages/Customer/checkout/payment";
 import ShippingMethod from "./pages/Customer/checkout/shipping";
 import MarketPlace from "./pages/Customer/marketplace/marketPlace";
+import PopularView from "./pages/Customer/marketplace/popular";
 
 //Manager
 import ManagerDashboardLayout from "./layouts/Manager/managerDashboardLayout";
 // import CustomerDashboard from "./pages/Customer/customerDashboard";
+import Delivery from "./pages/Manager/delivery";
+import ViewDelivery from "./pages/Manager/viewDelivery";
+import MInquiry from "./pages/Manager/inquiry";
+import MInquiryView from "./pages/Manager/viewInquiry";
+
+
 // Vendor
 
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
 import ViewOrder from "./pages/vendor/viewOrder";
 import Inventory from "./pages/vendor/inventory";
 import ViewCustomRequest from "./pages/vendor/viewCustomRequest";
+import ViewAcceptRequest from "./pages/vendor/viewAcceptRequest";
 import PromotedProduct from "./pages/vendor/promotedProduct";
 import ViewStocks from "./pages/vendor/viewStocks";
 import InventoryProduct from "./pages/vendor/inventoryProduct";
@@ -87,12 +95,13 @@ import ViewDesigners from "./pages/vendor/viewDesigner";
 // Customer Support
 import CSDashboardlayout from "./layouts/CustomerSupport/customersupportDashboardlayout";
 import Inquiry from "./pages/CustomerSupport/inquiry";
-import Delivery from "./pages/CustomerSupport/delivery";
+// import Delivery from "./pages/CustomerSupport/delivery";
 import Refund from "./pages/CustomerSupport/refund";
-import ViewDelivery from "./pages/CustomerSupport/viewDelivery";
+// import ViewDelivery from "./pages/CustomerSupport/viewDelivery";
 import ViewInquiry from "./pages/CustomerSupport/viewInquiry";
 import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
+import Custom from "./pages/Customer/Customization/custom";
 import CategoryView from "./pages/Customer/marketplace/categoryView";
 
 // Designer
@@ -115,6 +124,8 @@ import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 import { Loader } from "semantic-ui-react";
 import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
 import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
+import TypeView from "./pages/Customer/marketplace/typeView";
+
 
 const routes = (
   <>
@@ -170,11 +181,20 @@ const routes = (
         path="marketplace/categoryview/:roomType"
         element={<CategoryView />}
       />
+      <Route
+        path="marketplace/category/:Type"
+        element={<TypeView />}
+      />
+      <Route
+        path="marketplace/popularItems"
+        element={<PopularView />}
+      />
       <Route path="cart" element={<Cart />} />
       <Route path="checkout/address" element={<Address />} />
       <Route path="checkout/payment" element={<PaymentMethod />} />
       <Route path="checkout/shipping" element={<ShippingMethod />} />
-      <Route path="orders/vieworder" element={<OrderView />} />
+      <Route path="orders/vieworder/:id" element={<OrderView />} />
+      <Route path="customization" element={<Custom />}></Route>
       <Route path="settings" element={<CusSetting />}></Route>
     </Route>
     {/* Admin Routes */}
@@ -229,6 +249,7 @@ const routes = (
       <Route path="order/vieworder" element={<ViewOrder />}></Route>
       <Route path="order/customizeorders" element={<CustomizeOrders />}></Route>
       <Route path="order/customrequest" element={<ViewCustomRequest />}></Route>
+      <Route path="order/acceptrequest" element={<ViewAcceptRequest />}></Route>
       <Route path="promotion" element={<Promotion />}></Route>
       <Route path="promotion/mynetwork" element={<MyNetwork />}></Route>
       <Route
@@ -247,8 +268,8 @@ const routes = (
         path="complaints/viewcomplaint"
         element={<ViewComplaint />}
       ></Route>
-        <Route path="setting" element={<VendorSetting />}></Route>
-      </Route>
+      <Route path="setting" element={<VendorSetting />}></Route>
+    </Route>
 
 
     {/* Designer Routes */}
@@ -287,6 +308,9 @@ const routes = (
       <Route path="delivery" element={<Delivery />} />
       <Route path="delivery/view/:id" element={<ViewDelivery />}></Route>
       <Route path="mydesigns" element={<DesignerMyDesigns />} />
+      <Route path="inquiry" element={<MInquiry />} />
+      <Route path="inquiry/view/:type/:id" element={<MInquiryView />} />
+
     </Route>
   </>
 );

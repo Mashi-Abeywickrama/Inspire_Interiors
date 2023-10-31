@@ -1,5 +1,6 @@
 package inspireinteriors.dev.repository.Designer;
 
+
 import inspireinteriors.dev.model.DesignerModel.MyDesigns;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,4 +17,7 @@ public interface DesignerMyDesignsRepository extends JpaRepository<MyDesigns, Lo
     @Query(value= "SELECT * FROM my_designs WHERE designer_id= :dId", nativeQuery = true)
     List<MyDesigns> findMyDesignsByDesign_id(@Param("dId") int designer_id);
 
+
+    @Query(value= "SELECT designer_id, COUNT(designer_id) as TotalCount FROM my_designs Group By designer_id", nativeQuery = true)
+    List getCountsOfDesigns();
 }

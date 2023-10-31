@@ -22,8 +22,11 @@ const CusNavBar = () => {
              
                
                     <Nav className="ms-auto">
-                        
-                          
+                            <a href="/customer/cart">
+                          <div className='' >
+                            <Icon.BagFill className="align-items-center text-white" size={35} style={{  padding: '8px', borderRadius: '5px' }} />
+                            </div>
+                            </a>
                           <div className='mx-4 my-2'><Icon.BellFill size={20} color='white'/></div>
                           <img className='img-fluid bg-white rounded-2' src={navbarImg} />
                           <p className='text-white mx-4 my-auto d-none d-sm-block d-md-block d-lg-block'>{username}</p>

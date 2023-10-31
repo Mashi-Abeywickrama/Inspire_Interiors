@@ -1,9 +1,12 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import '../../styles/vendor/vendorDashboard.css';
 import * as Icon from 'react-bootstrap-icons';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import {useSession} from '../../constants/SessionContext';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
 import ReactStars from "react-rating-stars-component";
@@ -104,6 +107,47 @@ const generateStars = (rate) => {
 };
 
 const VendorDashboard = () => {
+    const [orderData, setOrderData] = useState([]);
+    const [newOrderCount, setNewOrderCount] = useState(null);
+    const [CompletedOrderCount, setCompletedOrderCount] = useState(null);
+    const [DelayedOrderCount, setDelayedOrderCount] = useState(null);
+    const [CancelledOrderCount, setCancelledOrderCount] = useState(null);
+
+    const sessionItems = useSession();
+    const userId = sessionItems.sessionData.userid;
+
+    const apiBaseURL = "http://localhost:8080";
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseURL,
+        timeout: 5000,
+    });
+
+    useEffect(() => {
+        axiosInstance
+            .get(`/getorder/vendor/${userId}`)
+            .then((response) => {
+                setOrderData(response.data);
+                console.log(response.data);
+
+                const newOrders = response.data.filter((order) => order.status === "New");
+                setNewOrderCount(newOrders.length);
+
+                const completedOrders = response.data.filter((order) => order.status === "Completed");
+                setCompletedOrderCount(completedOrders.length);
+
+                const delayedOrders = response.data.filter((order) => order.status === "Delayed");
+                setDelayedOrderCount(delayedOrders.length);
+
+                const cancelledOrders = response.data.filter((order) => order.status === "Cancelled");
+                setCancelledOrderCount(cancelledOrders.length);
+
+            }).catch((error) => {
+                console.log("Fetching error", error);
+        });
+    }, []);
+
+
     return (
         <>
             <div className='dashboard-container vendor-dashboard mb-4 me-5'>
@@ -244,24 +288,24 @@ const VendorDashboard = () => {
                                 <div className='d-flex flex-row gap-4'>
                                     <div className='background-box rounded-4 p-3'>
                                         <Icon.PersonFillAdd color='#FFC00C' size={40} />
-                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>200</p>
+                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>{newOrderCount}</p>
                                         <p className='fw-semibold fs-6 m-0' style={{ color: "#FFFFFF", opacity: "0.5" }}>New Orders</p>
                                     </div>
                                     <div className='background-box rounded-4 p-3'>
                                         <Icon.PersonFillCheck color='#FFC00C' size={40} />
-                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>100</p>
+                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>{CompletedOrderCount}</p>
                                         <p className='fw-semibold fs-6 m-0' style={{ color: "#FFFFFF", opacity: "0.5" }}>Completed Orders</p>
                                     </div>
                                 </div>
                                 <div className='d-flex flex-row gap-4'>
                                     <div className='background-box rounded-4 p-3'>
                                         <Icon.PersonFillExclamation color='#FFC00C' size={40} />
-                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>10</p>
+                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>{DelayedOrderCount}</p>
                                         <p className='fw-semibold fs-6 m-0' style={{ color: "#FFFFFF", opacity: "0.5" }}>Delayed Orders</p>
                                     </div>
                                     <div className='background-box rounded-4 p-3'>
                                         <Icon.PersonFillX color='#FFC00C' size={40} />
-                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>100</p>
+                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>{CancelledOrderCount}</p>
                                         <p className='fw-semibold fs-6 m-0' style={{ color: "#FFFFFF", opacity: "0.5" }}>Cancelled Orders</p>
                                     </div>
                                 </div>

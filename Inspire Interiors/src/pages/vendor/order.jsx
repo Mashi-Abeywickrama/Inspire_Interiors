@@ -39,115 +39,11 @@ const radarData = [
             fill: "#36ACF6"
         },
         {
-            name: "Canclled",
+            name: "Cancelled",
             uv: 15,
             fill: "#007F00"
         }
 ]
-
-const acceptedData = {
-    columns: [
-        {
-          label: 'ORDER DETAILS',
-          field: 'product',
-          sort: 'asc',
-          width: 150
-        },
-        {
-          field: 'status',
-          sort: 'asc',
-          width: 270
-        },
-    ],
-    rows: [
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
-                </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
-                </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
-                </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/vieworder"><img src={Sofa}/></Link>
-                    <p className='align-items-center fs-6 fw-semibold mt-3'>Sofa</p>
-                </div>,
-            status: <div className="d-flex flex-column"><div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Accepted</p></div><p className="float-end">23 min ago</p></div>
-        },
-    ]
-}
-
-const newData = {
-    columns: [
-        {
-          label: 'ORDER DETAILS',
-          field: 'product',
-          sort: 'asc',
-          width: 150
-        },
-        {
-          field: 'status',
-          sort: 'asc',
-          width: 270
-        },
-    ],
-    rows: [
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
-                    </div>
-                </div>,
-            status:<div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/order/customrequest"><img src={Sofa}/></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Merlin Die Sofa</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        }
-    ]
-}
 
 const style = {
     top: 90,
@@ -159,6 +55,8 @@ const Order = () => {
     const [orderData, setOrderData] = useState([]);
     const [selectedTab, setSelectedTab] = useState('All');
     const [loading, setLoading] = useState(true);
+    const [customizeData, setCustomizedData] = useState([]);
+    const [customer, setCustomer] = useState([]);
 
 
     const sessionItems = useSession();
@@ -189,6 +87,63 @@ const Order = () => {
         });
     }, []);
 
+    useEffect(() => {
+        axiosInstance
+        .get(`/customizedorder`)
+        .then((response) => {
+            setCustomizedData(response.data);
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log("Error fetching customized Data",error);
+        })
+    },[]);
+
+    useEffect(() => {
+        axiosInstance
+        .get(`/filtertype/customer`)
+        .then((response) => {
+            setCustomer(response.data);
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log("Error fetching customer Data",error);
+        })
+    },[]);
+
+    const mergeData = (customizeData, customer) => {
+        const mergedData = customizeData.map(
+          (customizeItem) => {
+          const matchingCustomer = customer.find(
+            (customerItem) =>  customerItem.userid === customizeItem.customerid
+          );
+    
+         
+      
+          if (matchingCustomer ) {
+            // Merge the data from both sources
+            return {
+              ...customizeItem,
+              ...matchingCustomer,
+              status: customizeItem.status
+            
+            };
+          } else {
+            return customizeItem;
+          }
+        });
+      
+        return mergedData;
+      };
+    
+      const mergedCustomizedOrder = mergeData(customizeData, customer);
+      console.log("merged Data", mergedCustomizedOrder);
+
+      const sortedCustomizedData = mergedCustomizedOrder.sort((a, b) => b.customizedorderid - a.customizedorderid);
+
+      // Take the first 4 products (latest products)
+      const latestCustomizedorder = sortedCustomizedData.slice(0, 4);
+
     const getOrderStatus = (status) => {
         const statusDetails = {
           New: {
@@ -207,9 +162,9 @@ const Order = () => {
             className: 'delayed d-flex gap-2 align-items-center',
             text: 'Delayed',
           },
-          Canceled: {
+          Cancelled: {
             className: 'outstock d-flex gap-2 align-items-center',
-            text: 'Canceled',
+            text: 'Cancelled',
           },
         };
         if (statusDetails.hasOwnProperty(status)) {
@@ -225,7 +180,61 @@ const Order = () => {
     };
 
     const filteredData = (status) => 
-        orderData.filter((item) => item.status === status);
+    latestCustomizedorder.filter((item) => item.status === status);
+
+    const newData = {
+        columns: [
+            {
+              label: 'PRODUCT DETAILS',
+              field: 'product',
+              sort: 'asc',
+              width: 180
+            },
+            {
+                label: 'CUSTOMER',
+                field: 'customer',
+                sort: 'asc',
+                width: 150
+              }
+        ],
+        rows: filteredData("New").map((custom) => {
+            return {   
+                product: <div className='d-flex flex-row gap-3'>
+                            <Link to={`/vendor/order/customrequest?id=${custom.customizedorderid}`}><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">{custom.productname}</p>
+                        </div>,
+                customer: <p className='align-items-center fs-6 fw-normal mt-2'>{custom.username}</p>                   
+            }
+        })
+    };
+    console.log(filteredData("New"));
+
+    const acceptedData = {
+        columns: [
+            {
+              label: 'PRODUCT DETAILS',
+              field: 'product',
+              sort: 'asc',
+              width: 150
+            },
+            {
+              field: 'status',
+              sort: 'asc',
+              width: 270
+            },
+        ],
+        rows: filteredData("Accepted").map((acceptorder) => {
+            return{  
+                product: <div className='d-flex flex-row gap-3'>
+                            <Link to={`/vendor/order/acceptrequest?id=${acceptorder.customizedorderid}`}><img src={Sofa}/></Link>
+                            <p className="fs-6 fw-normal mt-2">{acceptorder.productname}</p>
+                        </div>,
+                status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{acceptorder.status}</p></div>
+            }
+        })
+    };
+
+    
 
 
     return (

@@ -61,6 +61,11 @@ const InventoryProduct = () => {
     product_id: productID,
   });
 
+  const [modelDetails, setModelDetails] = useState({
+    productId: productID,
+    modelFile:null,
+  });
+
   const apiBaseURL = "http://localhost:8080";
 
   const axiosInstance = axios.create({
@@ -91,6 +96,47 @@ const InventoryProduct = () => {
           formData.append("file", variationDetails.variation_img); // Append the image to the formData
           
           const response2 = await axiosInstance.put("/setVariationPic",
+            formData,
+            { headers: { 'Content-Type': 'multipart/form-data' } }
+          );
+          if(response2.status === 200)
+          {
+            console.log("Response from API:", "Omaiwa mou shindeiru");
+            window.location.reload(); 
+          } 
+        }
+        catch (error) {
+          console.error("Error submitting form:", error);
+        }
+        console.log("variation Added Succesfully");
+        
+      }
+    } catch (error) {
+      console.error("Addition Fail");
+    }
+  };
+
+  const handleModelAddition = async (e) => {
+    
+    e.preventDefault();
+    console.log(variationDetails.product_id);
+    console.log(modelDetails.modelFile);
+    try {
+      const response = await axiosInstance.post("/addmodel", {
+        productId: variationDetails.product_id,
+        modelFile:variationDetails.product_id,
+      });
+      if (response.status === 200) {
+        setShow1(false);
+        
+
+        try {
+          const formData = new FormData();
+
+          formData.append("modelId", response.data.modelId);
+          formData.append("file", modelDetails.modelFile); // Append the image to the formData
+          
+          const response2 = await axiosInstance.put("/setARModel",
             formData,
             { headers: { 'Content-Type': 'multipart/form-data' } }
           );
@@ -156,6 +202,13 @@ const InventoryProduct = () => {
     }));
   };
 
+  const handleModelDetailsChange = (field, value) => {
+    setModelDetails((prevDetails) => ({
+      ...prevDetails,
+      [field]: value,
+    }));
+  };
+
   const updateProductData = (field, value) => {
     setProductData((prevDetails) => ({
       ...prevDetails,
@@ -186,6 +239,11 @@ const InventoryProduct = () => {
   const handleImageChange = (e) => {
     const imageFile = e.target.files[0]; // Get the selected image file
     handleVariationDetailsChange("variation_img", imageFile); // Update productDetails state with the selected image
+  };
+
+   const handleModelChange = (e) => {
+    const imageFile = e.target.files[0]; // Get the selected image file
+    handleModelDetailsChange("modelFile", imageFile); // Update productDetails state with the selected image
   };
 
   const [show1, setShow1] = useState(false);
@@ -689,7 +747,7 @@ const InventoryProduct = () => {
                       <Modal.Title>Add New QR Image</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      <form >
+                      <form onSubmit={handleModelAddition} >
                         <div className="d-flex flex-column mx-4 gap-3">
                           <div className="mb-3">
                             <label className="form-label fs-6 Cabin-text">
@@ -699,7 +757,7 @@ const InventoryProduct = () => {
                               type="file"
                               name="image"
                               className="form-control Cabin-text"
-                              onChange={handleImageChange}
+                              onChange={handleModelChange}
                               accept="image/*" // Only allow image files
                             />
                           </div>
@@ -735,7 +793,7 @@ const InventoryProduct = () => {
               </div>
               <div className="align-content-center">
 
-                <img className="img-fluid" src={(`../../../../src/assets/img/product/${productData.product_id}.jpg`)} />
+                <img className="img-fluid" src={(`../../../../src/assets/img/qr_code/${armodel.modelId}.jpg`)} />
 
               </div>
               </div>

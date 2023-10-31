@@ -19,7 +19,7 @@ const DetailedView = () => {
     const splitURL = currentURL.split("/");
     const inquiry_type = decodeURIComponent(splitURL[6]);
     const id = splitURL[7];
-    // console.log("ID: ", id)
+    console.log("ID: ", id)
 
     const [inquiryData, setInquiryData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -351,7 +351,7 @@ const DetailedView = () => {
                                             as='textarea'
                                             rows={3}
                                             name='remarks'
-                                            value={inquiryData.remark}
+                                            value={inquiryData.remarks}
                                             style={{ backgroundColor: '#F2FAFF' }}
                                             readOnly
                                         />

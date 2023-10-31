@@ -41,6 +41,17 @@ public class InquiryController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+    @GetMapping("/inquirytype/{type}")
+    public ResponseEntity<Iterable<Inquiry>> getInquiryByType(@PathVariable(value = "type") String inquiryType) {
+        Iterable<Inquiry> inquiry = inquiryService.getInquiryByType(inquiryType);
+        if (inquiry != null) {
+            return ResponseEntity.ok(inquiry);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+    }
     @PostMapping("/inquiry")
     public ResponseEntity<String> saveInquiry(@RequestBody Inquiry inquiry) throws JSONException {
         LocalDate currentDate = LocalDate.now();
@@ -145,10 +156,12 @@ public class InquiryController {
         }
     }
 
-        @PutMapping("/mark-as-completed/{inquiryId}")
+    @PutMapping("/mark-as-completed/{inquiryId}")
     public ResponseEntity<String> markAsCompleted(@PathVariable int inquiryId, @RequestBody Inquiry inquiry) {
         Inquiry existingInquiry = inquiryService.getInquiryById(inquiryId);
         existingInquiry.setInquiry_status("Completed");
+        existingInquiry.setAdditional_remarks(inquiry.getAdditional_remarks());
+        existingInquiry.setCompletion_date(String.valueOf(LocalDate.now()));
         boolean inquirySaved = inquiryService.saveInquiry(existingInquiry);
         if (inquirySaved) {
             return ResponseEntity.ok("Inquiry Updated!");

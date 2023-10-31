@@ -175,4 +175,8 @@ public class InquiryService {
 
         return resultList;
     }
+
+    public Iterable<Inquiry> getInquiryByType(String inquiryType) {
+        return inquiryRepository.findAllByInquiryType(inquiryType);
+    }
 }

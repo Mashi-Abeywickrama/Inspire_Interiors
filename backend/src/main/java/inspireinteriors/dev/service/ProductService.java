@@ -4,6 +4,7 @@ import inspireinteriors.dev.model.Product;
 import inspireinteriors.dev.model.Variation;
 import inspireinteriors.dev.repository.ProductImgRepository;
 import inspireinteriors.dev.repository.ProductRepository;
+import inspireinteriors.dev.repository.ReviewRepository;
 import inspireinteriors.dev.repository.VariationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ public class ProductService {
     @Autowired
     private VariationRepository variationRepository;
 
+    @Autowired
+    private ReviewRepository reviewRepository;
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
@@ -111,5 +114,14 @@ public class ProductService {
 
     public void updateVariationImage(Variation variation) {
         variationRepository.save(variation);
+    }
+
+
+    public Object getPopularItems() {
+        return reviewRepository.getPopularItems();
+    }
+
+    public Object getAllPopularItems() {
+        return reviewRepository.getAllPopularItems();
     }
 }

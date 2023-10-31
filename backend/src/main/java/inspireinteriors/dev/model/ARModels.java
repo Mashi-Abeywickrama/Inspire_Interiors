@@ -17,14 +17,46 @@ public class ARModels {
     @Column(name = "model_file")
     private String modelFile;
 
-    ARModels() {
-    }
 
     public ARModels(int modelId, String productId, String modelFile) {
         this.modelId = modelId;
         this.productId = productId;
         this.modelFile = modelFile;
     }
+
+    public ARModels(String productId, String modelFile) {
+        this.productId = productId;
+        this.modelFile = modelFile;
+    }
+
+    public ARModels(String productId) {
+        this.productId = productId;
+    }
+
+    public ARModels(int modelId) {
+        this.modelId = modelId;
+    }
+
+    public ARModels(String productId, int modelId) {
+        this.productId = productId;
+        this.modelId = modelId;
+    }
+
+    public ARModels(int modelId, String modelFile) {
+        this.modelId = modelId;
+        this.modelFile = modelFile;
+    }
+
+    public ARModels(String productId, int modelId, String modelFile) {
+        this.productId = productId;
+        this.modelId = modelId;
+        this.modelFile = modelFile;
+    }
+
+    public ARModels() {
+
+    }
+
 
     public int getModelId() {
         return modelId;

@@ -17,8 +17,11 @@ function DesignerCRequestview() {
   //SetStaus
   const [newStatus, setNewStatus] = useState("");
   const [isUpdated, setIsUpdated] = useState(false);
+  const [designId, setDesignId] = useState(null);
 
   const { id } = useParams();
+
+  const designUrl = `http://localhost:8000?id=${designId}`;
 
   //Fetch...
   useEffect(() => {
@@ -34,6 +37,17 @@ function DesignerCRequestview() {
         console.error("Error fetching data:", error);
         setLoading(false); // Update loading state to false in case of an error
       });
+  }, []);
+  useEffect(() => {
+    const con = {
+      method: `get`,
+      url: `http://localhost:8080/designer/designtool/getdesigns/req/${id}`,
+    };
+
+    axios(con).then((response) => {
+      console.log("Response is ", response);
+      setDesignId(response.data.id);
+    });
   }, []);
   console.log(data);
   const w = data.width;
@@ -71,23 +85,56 @@ function DesignerCRequestview() {
   };
 
   const accepted = () => {
+    const config1 = {
+      method: `put`,
+      url: `http://localhost:8080/designer/customerrequests/u/${id}/setstatus?newStatus=1`,
+    };
+    const config2 = {
+      method: `get`,
+      url: `http://localhost:8080/designer/designtool/req/${did}/${id}`,
+    };
+    const config3 = {
+      method: `get`,
+      url: `http://localhost:8080/designer/designtool/getdesigns/req/${id}`,
+    };
+
+    return axios(config1)
+      .then((response) => {
+        console.log("Response 1 is ", response);
+        return axios(config2);
+      })
+      .then((response) => {
+        console.log("Response 2 is ", response);
+        return axios(config3);
+      })
+      .then((response) => {
+        console.log("Response 3 is ", response.data.id);
+        const dId = response.data.id;
+        setDesignId(dId);
+        setIsUpdated(true);
+      });
+  };
+  useEffect(() => {
+    console.log("Design Id is ", designId);
+  }, [designId]);
+
+  const rejected = () => {
     axios
       .put(
-        `http://localhost:8080/designer/customerrequests/u/${id}/setstatus?newStatus=1`
+        `http://localhost:8080/designer/customerrequests/u/${id}/setstatus?newStatus=2`
       )
       .then((response) => {
         console.log(response);
         setIsUpdated(true);
       })
       .catch((error) => {
-        console.log(" error to accept", error);
+        console.log(" error to reject", error);
       });
   };
-
-  const rejected = () => {
+  const finished = () => {
     axios
       .put(
-        `http://localhost:8080/designer/customerrequests/u/${id}/setstatus?newStatus=2`
+        `http://localhost:8080/designer/customerrequests/u/${id}/setstatus?newStatus=3`
       )
       .then((response) => {
         console.log(response);
@@ -237,14 +284,36 @@ function DesignerCRequestview() {
                   <button
                     className="acpt-btn Cabin-text"
                     style={{ background: "#007F00" }}
+                    onClick={finished}
                   >
-                    Accepted
+                    Finish Now
                   </button>
+
+                  {isUpdated && <p>Processing...</p>}
+                  {isUpdated && handleReload()}
+
+                  <Link to={designUrl}>
+                    <button
+                      className="acpt-btn Cabin-text"
+                      style={{ background: "#035C94" }}
+                    >
+                      Design Now
+                    </button>
+                  </Link>
                 </div>
               )}
 
               {data.status === 2 && (
                 <button className="dlt-btn Cabin-text">Rejected</button>
+              )}
+
+              {data.status === 3 && (
+                <button
+                  className="acpt-btn Cabin-text"
+                  style={{ background: "#007F00" }}
+                >
+                  Finished
+                </button>
               )}
 
               {/* <div className="d-flex flex-row gap-3 justify-content-end">
