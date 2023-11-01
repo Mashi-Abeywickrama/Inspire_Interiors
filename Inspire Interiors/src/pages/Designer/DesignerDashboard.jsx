@@ -19,88 +19,88 @@ import {
 const data = [
   {
     name: "Jan",
-    Designs: 4000,
-    Earnings: 2400,
-    Partnership: 2400,
+    Designs: 4,
+    Requests: 24,
+    Partnership: 20,
   },
   {
     name: "Feb",
-    Designs: 3000,
-    Earnings: 1398,
-    Partnership: 2210,
+    Designs: 3,
+    Requests: 13,
+    Partnership: 22,
   },
   {
     name: "Mar",
-    Designs: 2000,
-    Earnings: 9800,
-    Partnership: 2290,
+    Designs: 20,
+    Requests: 8,
+    Partnership: 22,
   },
   {
     name: "April",
-    Designs: 2780,
-    Earnings: 3908,
-    Partnership: 2000,
+    Designs: 27,
+    Requests: 39,
+    Partnership: 2,
   },
   {
     name: "May",
-    Designs: 1890,
-    Earnings: 4800,
-    Partnership: 2181,
+    Designs: 18,
+    Requests: 48,
+    Partnership: 21,
   },
   {
     name: "Jun",
-    Designs: 2390,
-    Earnings: 3800,
-    Partnership: 2500,
+    Designs: 23,
+    Requests: 38,
+    Partnership: 25,
   },
   {
     name: "July",
-    Designs: 3490,
-    Earnings: 4300,
-    Partnership: 2100,
+    Designs: 34,
+    Requests: 43,
+    Partnership: 21,
   },
 ];
 const data2 = [
   {
-    name: "Page A",
-    Designs: 4000,
-    Earnings: 2400,
+    name: "Jan",
+
+    Requests: 2400,
     Partnership: 2400,
   },
   {
-    name: "Page B",
-    Designs: 3000,
-    Earnings: 1398,
+    name: "Feb",
+
+    Requests: 1398,
     Partnership: 2210,
   },
   {
-    name: "Page C",
-    Designs: 2000,
-    Earnings: 9800,
+    name: "Mar",
+
+    Requests: 9800,
     Partnership: 2290,
   },
   {
-    name: "Page D",
-    Designs: 2780,
-    Earnings: 3908,
+    name: "April",
+
+    Requests: 3908,
     Partnership: 2000,
   },
   {
-    name: "Page E",
-    Designs: 1890,
-    Earnings: 4800,
+    name: "May",
+
+    Requests: 4800,
     Partnership: 2181,
   },
   {
-    name: "Page F",
-    Designs: 2390,
-    Earnings: 3800,
+    name: "June",
+
+    Requests: 3800,
     Partnership: 2500,
   },
   {
-    name: "Page G",
-    Designs: 3490,
-    Earnings: 4300,
+    name: "July",
+
+    Requests: 4300,
     Partnership: 2100,
   },
 ];
@@ -109,12 +109,12 @@ function DesignerDashboard() {
     <div className="overview-container container rounded-3 mb-4 me-5 ">
       <div className="d-flex col-12 flex-column gap-3 flex-lg-row">
         {/* first */}
-        <div className="p-3 bg-light rounded shadow col-lg-6">
+        <div className="p-3 bg-light rounded shadow col-lg-7">
           <p className="primary fs-5 text-primary">
             <b>Project Engagement</b>
           </p>
           <BarChart
-            width={600}
+            width={650}
             height={400}
             data={data}
             margin={{
@@ -126,10 +126,10 @@ function DesignerDashboard() {
           >
             {" "}
             <XAxis dataKey="name" />
-            <YAxis />
+            <YAxis type="number" domain={[0, 100]} />
             {/* <Tooltip /> */}
             <Legend
-              width={300}
+              width={350}
               wrapperStyle={{
                 bottom: -5,
                 right: 150,
@@ -139,13 +139,13 @@ function DesignerDashboard() {
                 lineHeight: "40px",
               }}
             />
-            <Bar dataKey="Earnings" fill="#F5B640" />
+            <Bar dataKey="Requests" fill="#F5B640" />
             <Bar dataKey="Designs" fill="#035C94" />
             <Bar dataKey="Partnership" fill="#096c86" />
           </BarChart>
         </div>
         {/* Second */}
-        <div className="p-4 bg-light rounded-3 shadow px-5 col-lg-3">
+        <div className="p-4 bg-light rounded-3 shadow px-5 col-lg-4">
           <p className="primary fs-5 text-primary">
             <b>Summery View</b>
           </p>
@@ -168,12 +168,12 @@ function DesignerDashboard() {
             className="fs-4 text-center p-3 rounded-2 px-5"
             style={{ background: "#FFC00C", color: "#ffff" }}
           >
-            <b>1000</b> Earned
+            <b>1000</b> Requests
           </div>
           <br></br>
         </div>
         {/* Third */}
-        <div className="p-4 bg-light rounded-3 shadow px-5 col-lg-3">
+        {/* <div className="p-4 bg-light rounded-3 shadow px-5 col-lg-3">
           <p className="primary fs-5 text-primary">
             <b>Average Rating</b>
           </p>
@@ -252,25 +252,25 @@ function DesignerDashboard() {
               style={{ height: "8px", borderRadius: "5px" }}
             />
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="d-flex flex-column flex-lg-row gap-3 m-3 col-12">
-        <div className="p-2 bg-light rounded-3 shadow col-lg-8">
+        <div className="p-2 bg-light rounded-3 shadow col-lg-11">
           <p className="primary fs-6 text-primary">
             <b>Total Revenue</b>
           </p>
           <p className="primary fs-5 text-primary">
-            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LKR 10.5 M</b>
+            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LKR 10.5 K</b>
           </p>
           <LineChart
-            width={700}
+            width={950}
             height={300}
             data={data2}
             margin={{
               top: 5,
               right: 30,
-              left: 20,
+              left: 60,
               bottom: 5,
             }}
           >
@@ -281,29 +281,29 @@ function DesignerDashboard() {
             <Legend />
             <Line
               type="monotone"
-              dataKey="Earnings"
-              stroke="#035C94"
+              dataKey="Partnership"
+              stroke="#096c86"
               activeDot={{ r: 8 }}
               strokeWidth={2}
               dot={false}
             />
             <Line
               type="monotone"
-              dataKey="Designs"
+              dataKey="Requests"
               stroke="#FFC00C"
               strokeWidth={2}
               dot={false}
             />
           </LineChart>
         </div>
-        <div className="p-3 bg-light rounded-3 shadow">
+        {/* <div className="p-3 bg-light rounded-3 shadow">
           <p className="primary fs-6 text-primary col-lg-4">
             <b>Trend Analysis</b>
           </p>
           <div className="d-flex">
             <Needlepie />
           </div>
-        </div>
+        </div> */}
       </div>
       {/* <Flex className="w-100" gap="2" h="calc(40vh)" wrap="wrap">
         <Box className="w-100"bg="white"  borderRadius="lg" boxShadow="base">

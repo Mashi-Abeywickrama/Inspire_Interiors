@@ -165,5 +165,9 @@ public class DesignerMyDesignService {
         customerRequests.setAmount(String.valueOf(amount));
         return designerCustomerRequestsRepository.save(customerRequests);
     }
+
+    public List<CustomerRequests> getByDesigner_id(int designer_id) {
+        return designerCustomerRequestsRepository.getCustomerRequestsByDesigner_id(designer_id);
+    }
 }
 

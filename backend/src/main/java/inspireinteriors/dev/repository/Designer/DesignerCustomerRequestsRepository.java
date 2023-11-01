@@ -25,5 +25,8 @@ public interface DesignerCustomerRequestsRepository extends JpaRepository<Custom
     @Query(value="update customer_requests set amount= :amt where request_id = :id", nativeQuery = true)
     void SetAmt(@Param("amt") int amount, @Param("id") int request_id);
 
+    @Query (value = "select * from customer_requests where designer_id = :did", nativeQuery = true)
+    List<CustomerRequests> getCustomerRequestsByDesigner_id(@Param("did") int designer_id);
+
 
 }

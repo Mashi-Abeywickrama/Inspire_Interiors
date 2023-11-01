@@ -155,6 +155,7 @@ function DesignerDesigntool() {
   const [dradata, setDradata] = useState([]);
   const [data, setData] = useState([]);
   const [requestDesign, setRequestDesign] = useState([]);
+  const [acceptedData, setAcceptedData] = useState([]);
   const [fildata, setFildata] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -175,6 +176,7 @@ function DesignerDesigntool() {
   //fetch...
   useEffect(() => {
     const receivedRequest = `http://localhost:8080/designer/CRequest/did/${id}/st/0`;
+    const acceptedRequest = `http://localhost:8080/designer/CRequest/did/${id}/st/1`;
     const draftUrl =
       "http://localhost:8080/designer/designtool/getdesign/dra/" + id;
 
@@ -192,6 +194,10 @@ function DesignerDesigntool() {
         console.error("Error fetching data:", error);
         setLoading(false); // Update loading state to false in case of an error
       });
+    axios.get(acceptedRequest).then((response) => {
+      setAcceptedData(response.data);
+      console.log(acceptedData);
+    });
 
     axios
       .get(draftUrl)
@@ -266,7 +272,41 @@ function DesignerDesigntool() {
       </div>
     ),
   }));
+
+  const accepted = acceptedData.map((item) => ({
+    product: (
+      <div className="d-flex flex-row gap-4 align-items-center">
+        <a href={`crequestview/${item.request_id}`}>
+          <img src={Customer} alt={`Product ${item.request_id}`} />
+        </a>
+        <div className="d-flex flex-column">
+          <p className="align-items-center fs-6 fw-semibold mt-3 m-0">
+            REQUEST NO: {item.request_id}
+          </p>
+          <p className="fs-6 fw-normal">Living Room</p>
+        </div>
+      </div>
+    ),
+    status: (
+      <div className="d-flex flex-column">
+        <div className="d-flex gap-2 align-items-center">
+          <a href={`crequestview/${item.request_id}`}>
+            <p className="text-primary fs-6 ">
+              View More &nbsp;
+              <i class="bi bi-arrow-right fs-6"></i>
+            </p>
+          </a>
+
+          {/* <i className="bi bi-circle-fill tag-icon"></i>
+          <p className="m-0">Accepted</p> */}
+        </div>
+        {/* <p className="float-end">23 min ago</p> */}
+      </div>
+    ),
+  }));
+
   console.log(data);
+  console.log(acceptedData);
 
   return (
     <div className="d-flex design-container background-design flex-column gap-3 me-5">
@@ -712,7 +752,9 @@ function DesignerDesigntool() {
                     striped
                     bordered
                     small
-                    data={receivedData}
+                    columns={columns}
+                    rows={accepted}
+                    // data={receivedData}
                     sortable={false}
                     exportToCSV={true}
                     paging={false}

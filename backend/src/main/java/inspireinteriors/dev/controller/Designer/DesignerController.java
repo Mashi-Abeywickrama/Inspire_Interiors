@@ -213,5 +213,11 @@ public class DesignerController {
         return "Amount updated Successfully";
     }
 
+    @GetMapping ("/CRequest/did/{did}")
+    public ResponseEntity<List<CustomerRequests>> GetAllByDesignerid(@PathVariable("did") int designer_id) {
+        List<CustomerRequests> customerRequests = (List<CustomerRequests>) designerMyDesignService.getByDesigner_id(designer_id);
+        return ResponseEntity.ok(customerRequests);
+    }
+
 
 }
