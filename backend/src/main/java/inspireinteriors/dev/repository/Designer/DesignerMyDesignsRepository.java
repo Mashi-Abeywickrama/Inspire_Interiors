@@ -23,4 +23,9 @@ public interface DesignerMyDesignsRepository extends JpaRepository<MyDesigns, Lo
 
     @Query(value= "SELECT MAX(designs_id) FROM my_designs", nativeQuery = true)
     int getMaxDesignID();
+
+    List<MyDesigns> findMyDesignsByRoomtype(String roomType);
+
+    @Query(value= "SELECT DISTINCT roomtype FROM my_designs", nativeQuery = true)
+    List<String> getDistinctRoomTypes();
 }

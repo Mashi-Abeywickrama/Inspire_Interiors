@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as Icon from 'react-bootstrap-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Breadcrumb } from "react-bootstrap";
@@ -8,12 +8,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import PageNumb from "../../../components/customer/pagenum";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { GLTFModel, AmbientLight, DirectionLight } from "react-3d-viewer";
+import "./../../../styles/Designer/3dmodel.css";
 
 const CustomBullet = () => (
     <span style={{ color: "orange", fontSize: "1.5em", marginRight: "0.5em" }}>
         •
     </span>
 );
+
+// Get the current URL
+   
+
 
 const data = [
     {
@@ -69,7 +76,78 @@ const data = [
 ];
 
 
+ const apiBaseURL = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+      baseURL: apiBaseURL,
+      timeout: 5000,
+  });
+
 const BrowseDesigns = () => {
+
+     const currentURL = window.location.href;
+    // Split the URL by "/"
+    const splitURL = currentURL.split("/");
+    // Extract the roomType from the URL
+    const roomType = decodeURIComponent(splitURL[6]);
+    console.log("room type: ", roomType)
+
+
+    const [allDesigns, setAllDesigns] = useState([]);
+    const [users,setUsers] = useState([])
+
+    useEffect(() => {
+    axiosInstance
+      .get(`/designer/d/${roomType}`)  
+      .then((response) => {
+        setAllDesigns(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('Error fetching data', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/users`)  
+      .then((response) => {
+        setUsers(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('Error fetching data', error);
+      });
+  }, []);
+
+  const mergeData = (allDesigns, users) => {
+        const mergedData = allDesigns.map(
+          (designerItem) => {
+          const matchingUser = users.find(
+            (userItem) =>  userItem.userid === designerItem.designer_id
+          );
+    
+         
+      
+          if (matchingUser ) {
+            // Merge the data from both sources
+            return {
+              
+              ...matchingUser,
+              ...designerItem,
+            
+            };
+          } else {
+            return {
+                ...designerItem
+            };
+        }});
+      
+        return mergedData;
+    };
+    
+    const mergedDesigner = mergeData(allDesigns, users);
+    console.log("merged Data", mergedDesigner);
 
     const generateStars = (rate) => {
         const fullStars = Math.floor(rate);
@@ -109,14 +187,14 @@ const BrowseDesigns = () => {
                                     </Breadcrumb.Item>
                                     <Breadcrumb.Item className="custom-breadcrumb-divider" active>
                                         <FontAwesomeIcon icon={faAngleRight} className="me-2" />
-                                        Top Paid
+                                        {roomType}
                                     </Breadcrumb.Item>
                                 </Breadcrumb>
                             </div>
                             <div className='col-md-4 col-sm-6 col-6 text-center'>
                             </div>
                             <div className='col-md-4 col-sm-6 col-6 text-end'>
-                                <SearchPage />
+                                {/* <SearchPage /> */}
 
                             </div>
                         </div>
@@ -128,13 +206,23 @@ const BrowseDesigns = () => {
                 <div className="py-1">
                     <div className='container'>
                         <div className='row flex-md-row flex-column'>
-                            {data.map((item, index) => (
+                            {mergedDesigner.map((item, index) => (
                                 <div key={index} className="col-md-6 col-sm-6 col-12">
                                     <div className="mb-3 bg-white p-3 rounded shadow">
 
                                         <div className="d-flex gap-2 flex-md-row flex-column" style={{ color: "#0A033C" }}>
                                             <div className="w-25 align-self-center">
-                                                <img src={item.image} alt="Your Image" className="img-fluid rounded" />
+                                                <div className="customemodel">
+                                                <GLTFModel src={`./../../../src/assets/img/gltf/${data.image||'153.gltf'}`}
+                                                    className="ModelViewDesign">
+                                                <AmbientLight color={0xffffff} />
+                                                <DirectionLight
+                                                color={0xffffff}
+                                                position={{ x: 100, y: 200, z: 100 }}
+                                                />
+                                                
+                                            </GLTFModel>
+                                                </div>
                                             </div>
 
                                             <div className="w-75">
@@ -142,7 +230,7 @@ const BrowseDesigns = () => {
                                                 <div className="row">
                                                     <div className="col-md-6 col-sm-6 col-6">
                                                         <div className=" px-2 ">
-                                                            Row 1, Column 1
+                                                            {item.name}
                                                         </div>
                                                     </div>
 
@@ -150,7 +238,7 @@ const BrowseDesigns = () => {
                                                         <div className="d-flex justify-content-end align-items-center">
                                                             <li style={{ color: "#0B7077", listStyleType: "none" }}>
                                                                 <CustomBullet />
-                                                                Bedroom
+                                                                {item.roomtype}
                                                             </li>
                                                         </div>
                                                     </div>
@@ -171,9 +259,7 @@ const BrowseDesigns = () => {
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-sm-6 col-6">
-                                                        <div className="d-flex justify-content-end px-2">
-                                                            ({item.sold} Sold)
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
 
@@ -188,7 +274,7 @@ const BrowseDesigns = () => {
                                                 <div className="row">
                                                     <div className="col-md-6 col-sm-6 col-6">
                                                         <div style={{ color: '#696984' }} className=" px-2">
-                                                            Price : <span className="fs-5" style={{ color: "#0B7077" }}> ${item.price}</span>
+                                                            Designed By : <span className="fs-5" style={{ color: "#0B7077" }}> {item.username}</span>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-sm-6 col-6">

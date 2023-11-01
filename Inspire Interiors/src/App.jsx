@@ -171,7 +171,7 @@ const routes = (
       <Route path="dashboard" element={<CustomerDashboard />} />
       <Route path="orders" element={<MyOrder />} />
       <Route path="designs" element={<Designs />} />
-      <Route path="designs/browsedesigns" element={<BrowseDesigns />} />
+      <Route path="designs/browsedesigns/:roomtype" element={<BrowseDesigns />} />
       <Route
         path="marketplace/viewproduct/:id"
         element={<ViewProduct />}

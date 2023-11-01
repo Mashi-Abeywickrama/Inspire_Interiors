@@ -152,4 +152,12 @@ public class DesignerMyDesignService {
     public DesigntoolFiles getDesignFileByID(int id) {
         return designerDesigntoolFilesRepository.findDesigntoolFilesByid(id);
     }
+
+    public List<MyDesigns> getDesignByRoomType(String roomType) {
+        return designerMyDesignsRepository.findMyDesignsByRoomtype(roomType);
+    }
+
+    public List<String> getDistinctRoomTypes() {
+        return designerMyDesignsRepository.getDistinctRoomTypes();
+    }
 }
