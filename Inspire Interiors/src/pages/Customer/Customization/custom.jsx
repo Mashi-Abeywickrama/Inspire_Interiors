@@ -313,7 +313,7 @@ const Custom = () => {
                       number: item.productname,
                       quantity: item.productspecification,
                       date: item.customerid,
-                      action: <Link to={`/customer/viewRequestItem/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
+                      action: <Link to={`/customer/viewcustomrequest/${item.customizedorderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
                       status: getOrderStatus(item.status)
                     })),
                   }}
@@ -371,7 +371,7 @@ const Custom = () => {
                       number: item.productname,
                       quantity: item.productspecification,
                       date: item.customerid,
-                      action: <Link to={`/customer/viewRequestItem/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
+                      action: <Link to={`/customer/viewcustomrequest/${item.request_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
                       status: getOrderStatus(item.status)
                     })),
                   }}
@@ -429,7 +429,7 @@ const Custom = () => {
                       number: item.productname,
                       quantity: item.productspecification,
                       date: item.customerid,
-                      action: <Link to={`/customer/viewRequestItem/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
+                      action: <Link to={`/customer/viewcustomrequest/${item.request_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
                       status: getOrderStatus(item.status)
                     })),
                   }}
@@ -503,7 +503,7 @@ const Custom = () => {
                       number: item.username,
                       quantity: item.dimensions,
                       date: item.budget,
-                      action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
+                      action: <Link to={`/customer/viewcustomrequest/${item.request_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
                       status: getOrderStatus(item.status == 0 ? "New" : "Accepted" )
                     })),
                   }}
