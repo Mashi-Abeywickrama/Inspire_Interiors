@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/customer/customerDashboard.css';
 import * as Icon from 'react-bootstrap-icons';
 import { ProgressBar } from 'react-bootstrap';
@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Profile1 from '../../assets/img/customer/profile1.png';
 import Chair from '../../assets/img/customer/chair1.png';
 import { PieChart, Pie, Sector, Cell, BarChart, Bar, XAxis, YAxis, LineChart, Line, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import axios from "axios";
 
 // import "react-modern-calendar-datepicker/lib/DatePicker.css";
 // import { Calendar } from "react-modern-calendar-datepicker";
@@ -55,7 +56,89 @@ const linedata = [
 
 
 const CustomerDashboard = () => {
-  
+
+    const [allUsers, setAllUsers] = useState([]);
+    const [designerData, setDesignerData] = useState([]);
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const Id = urlParams.get('id');
+
+    const apiBaseURL = "http://localhost:8080";
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseURL,
+        timeout: 5000,
+    });
+
+    useEffect(() => {
+        axiosInstance
+            .get(`/topdesigners`)
+            .then((response) => {
+                setDesignerData(response.data);
+                // console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('Error fetching data', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        axiosInstance
+            .get(`/users`)
+            .then((response) => {
+                setAllUsers(response.data);
+                // console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('Error fetching data', error);
+            });
+    }, [Id]);
+
+    const mergeData = (designerData, userData) => {
+        const mergedData = designerData.map(
+            (designerItem) => {
+                const matchingUser = userData.find(
+                    (userItem) => userItem.userid === designerItem.designer_id
+                );
+
+                if (matchingUser) {
+                    // Merge the data from both sources
+                    return {
+                        ...designerItem,
+                        ...matchingUser
+
+                    };
+                } else {
+                    return {
+                        ...designerItem
+                    };
+                }
+            });
+
+        return mergedData;
+    };
+
+    const mergedDesigner = mergeData(designerData, allUsers);
+    console.log("merged Data Top Designer", mergedDesigner);
+
+    const generateStars = (rate) => {
+        const fullStars = Math.floor(rate);
+        const halfStar = rate - fullStars >= 0.5;
+
+        const stars = [];
+        for (let i = 1; i <= 5; i++) {
+            if (i <= fullStars) {
+                stars.push(<Icon.StarFill key={i} color='#f39c12' />);
+            } else if (i === fullStars + 1 && halfStar) {
+                stars.push(<Icon.StarHalf key={i} color='#f39c12' />);
+            } else {
+                stars.push(<Icon.Star key={i} color='#f39c12' />);
+            }
+        }
+
+        return stars;
+    };
+
     const [date, setDate] = useState(new Date());
     return (
         <>
@@ -67,9 +150,9 @@ const CustomerDashboard = () => {
                                 <p className="fs-3 fw-bold Cabin-text">Best Rated Designers</p>
                                 <p className="fs-5 fw-semibold Cabin-text mt-2" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="" /></p>
                             </div>
-                            <p className='fs-6 Cabin-text'>Apr 2023</p>
-                            <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4 image-div'>
-                                <div className='d-flex flex-column gap-3'>
+                            {/* <p className='fs-6 Cabin-text'>Apr 2023</p> */}
+                            
+                                {/* <div className='d-flex flex-column gap-3'>
                                     <Link to='/customer/designs/viewdesigner'>
                                         <img style={{ backgroundColor: "#FEE4CB" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
                                     </Link>
@@ -104,7 +187,17 @@ const CustomerDashboard = () => {
                                         <img style={{ backgroundColor: "#DBF6FD" }} className='ig-fluid p-3 rounded-4' src={Profile1} />
                                     </Link>
                                     <p className='fs-6 Cabin-text text-center'>Darrell S.</p>
-                                </div>
+                                </div> */}
+                                <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4'>
+                                {mergedDesigner.map((card, index) => (
+                                    <div key={index} className='d-flex flex-column gap-3'>
+                                    <Link to={`/customer/designs/viewdesigner?id=${card.designer_id}`}>
+                                        <img style={{ backgroundColor: "#DBF6FD" }} src={`../../../../src/assets/img/profilePic/${card.profile_pic}`} className='img-fluid rounded-4 rounded-3 '/>
+                                    </Link>
+                                    <p className='fs-6 Cabin-text fw-bold text-center'>{generateStars(card.averagereview)}<br></br>{card.name}</p>
+                                    </div>
+                                ))}
+                                
                             </div>
                         </div>
                         <div className='col-lg-3 bg-white rounded-3 p-4'>
@@ -220,11 +313,12 @@ const CustomerDashboard = () => {
                         </div>
                         <div className='col-lg-3 bg-white rounded-3 p-4 mb-3'>
                             <p className="fs-3 fw-bold Cabin-text">Updates</p>
-                            <div className='dashboard-calender'><Calendar  onChange={setDate} value={date} formatMonthYear={(locale, date) => {
-                                    // Get the month's abbreviated name and full year
-                                    const options = { month: 'short', year: 'numeric' };
-                                    return new Intl.DateTimeFormat(locale, options).format(date);}
-                                }/>
+                            <div className='dashboard-calender'><Calendar onChange={setDate} value={date} formatMonthYear={(locale, date) => {
+                                // Get the month's abbreviated name and full year
+                                const options = { month: 'short', year: 'numeric' };
+                                return new Intl.DateTimeFormat(locale, options).format(date);
+                            }
+                            } />
                             </div>
                             <p className='fs-6 Cabin-text mt-4 m-0'>08 am</p>
                             <div className='col-lg-11 border justify-content-end rounded-3 p-3 my-2' style={{ backgroundColor: "#035C94" }}>

@@ -189,18 +189,19 @@ const Designs = () => {
                 <h4>Top designers </h4>
               </div>
               <div className='d-flex col w-auto h-100 justify-content-start align-self-center see-all'>
-                <h6>See All
+              <Link to={`/customer/designs/alldesigners`}><h6 style={{ color: '#035C94' }} >See All 
+                  
                   <Icon.ArrowRight
 
                     size={15}
                     className="align-center"
                   />
-                </h6>
+                </h6></Link>
               </div>
-              <div className='col  col-md-4 col-sm-12 col-12 fs-4 d-flex justify-content-end'>
+              {/* <div className='col  col-md-4 col-sm-12 col-12 fs-4 d-flex justify-content-end'>
                 <SearchPage />
 
-              </div>
+              </div> */}
 
             </div>
 

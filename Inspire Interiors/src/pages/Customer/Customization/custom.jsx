@@ -336,6 +336,142 @@ const Custom = () => {
             </Tab>
           </Tabs>
         </div>
+{/* Designs */}
+        <div>
+          <Tabs
+            defaultActiveKey="all"
+            id="uncontrolled-tab-example"
+            className="mb-3 bg-white tab"
+          >
+            <Tab eventKey="all" title="All">
+              <Link to="vieworder"><div className=''>
+
+                <MDBDataTableV5 responsive
+                  striped
+                  bordered
+                  small
+                  data={{
+                    columns: [
+                      {
+                        label: 'REFERENCE NO',
+                        field: 'number',
+                        sort: 'asc',
+                        width: 270
+                      },
+                      {
+                        label: 'VENDOR NAME',
+                        field: 'name',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'QUANTITY',
+                        field: 'quantity',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: 'DELIVERY DATE',
+                        field: 'date',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'STATUS',
+                        field: 'status',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: ' ',
+                        field: 'action',
+                        sort: 'NONE',
+                        width: 100
+                      }
+                    ],
+                    rows: mycustomizedorderData.map((item) => ({
+                      name: item.customerid,
+                      number: item.customerid,
+                      quantity: item.customerid,
+                      date: item.customerid,
+                      action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
+                      status: getOrderStatus(item.status)
+                    })),
+                  }}
+                  sortable={true}
+                  exportToCSV={true}
+                  paging={true}
+                  searching={true}
+                />
+              </div>
+              </Link>
+            </Tab>
+            <Tab eventKey="New" title="New">
+              <div className=''>
+
+                <MDBDataTableV5 responsive
+                  striped
+                  bordered
+                  small
+                  data={{
+                    columns: [
+                      {
+                        label: 'REFERENCE NO',
+                        field: 'number',
+                        sort: 'asc',
+                        width: 270
+                      },
+                      {
+                        label: 'VENDOR NAME',
+                        field: 'name',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'QUANTITY',
+                        field: 'quantity',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: 'DELIVERY DATE',
+                        field: 'date',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'STATUS',
+                        field: 'status',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: ' ',
+                        field: 'action',
+                        sort: 'NONE',
+                        width: 100
+                      }
+                    ],
+                    rows: filteredData("New").map((item) => ({
+                      name: item.name,
+                      number: item.ref_no,
+                      quantity: item.quantity,
+                      date: item.date,
+                      action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
+                      status: getOrderStatus(item.status)
+                    })),
+                  }}
+                  sortable={true}
+                  exportToCSV={true}
+                  paging={true}
+                  searching={true}
+                />
+              </div>
+              
+            </Tab>
+          </Tabs>
+        </div>
+
       </div>
     </>
 

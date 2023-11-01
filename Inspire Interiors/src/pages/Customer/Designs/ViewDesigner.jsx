@@ -400,7 +400,7 @@ const ViewDesigner = () => {
                     <div className='bg-light image-bar row w-100 flex-row m-0 p-0 mt-2 '>
                         {filteredData(designerData.specialities).map((designers, index) => (
                             <div key={index} className='d-flex col-5 col-md-4 col-lg-2 col-sm-8 mb-3'>
-                                <Link to='/customer/designs/viewdesigner'>
+                                 <Link to={`/customer/designs/viewdesigner?id=${designers.designer_id}`}>
                                     <Card className='h-100 border-0 rounded' style={{ color: '#7C828B' }}>
                                         <Card.Img
                                             variant='top'
