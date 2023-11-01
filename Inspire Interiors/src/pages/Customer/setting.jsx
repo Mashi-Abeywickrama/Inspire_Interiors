@@ -468,7 +468,7 @@ const CusSetting = () => {
                             </div>
                         </Tab>
 
-                        <Tab eventKey="payment" title={<div className='d-flex gap-2 p-1'>
+                        {/* <Tab eventKey="payment" title={<div className='d-flex gap-2 p-1'>
                             <div className='icon-cover d-flex align-items-center '>
                                 <Icon.CardText size={24} />
                             </div>
@@ -534,7 +534,7 @@ const CusSetting = () => {
 
 
                             </div>
-                        </Tab>
+                        </Tab> */}
 
 
                         <Tab eventKey="security" title={<div className='d-flex gap-2 p-1'>

@@ -12,8 +12,7 @@ import jakarta.persistence.Table;
 public class CustomerRequests {
     //Attributes
     @Id
-    @GeneratedValue
-
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private int request_id;
     private int customer_id;
     private int designer_id;

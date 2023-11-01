@@ -34,4 +34,9 @@ public interface ReviewRepository extends JpaRepository <Review, Integer> {
             nativeQuery = true)
     List<Object[]> getAllPopularItems();
 
+
+    List<Review> findByDesignId(Long designId);
+
+    long countByDesignId(Long designId);
+
 }

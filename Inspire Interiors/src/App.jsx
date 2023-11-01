@@ -132,7 +132,10 @@ import ViewVendor from "./pages/Designer/viewVendor";
 import ViewAcceptedPromotion from "./pages/Designer/ViewAcceptPromotion";
 import ViewReceivedPromotion from "./pages/Designer/ViewReceivedPromotion";
 import ViewAllDesigners from "./pages/Customer/Designs/seeAllDesigners";
+
 import ViewProductDesigner from "./pages/Designer/ViewProductDesigner";
+
+import ViewDesignC from "./pages/Customer/Designs/viewDesign";
 
 
 
@@ -189,6 +192,10 @@ const routes = (
         path="designs/alldesigners"
         element={<ViewAllDesigners />}
       />
+      <Route
+      path="designs/viewdesign/:id"
+      element={<ViewDesignC />}
+    />
       <Route path="marketplace" element={<MarketPlace />} />
       {/* <Route path="marketplace/categoryview" element={<CategoryView />} /> */}
       <Route
