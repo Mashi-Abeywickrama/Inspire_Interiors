@@ -1,5 +1,6 @@
 package inspireinteriors.dev.repository;
 
+import inspireinteriors.dev.model.Product;
 import inspireinteriors.dev.model.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -33,7 +34,9 @@ public interface ReviewRepository extends JpaRepository <Review, Integer> {
             nativeQuery = true)
     List<Object[]> getAllPopularItems();
 
+
     List<Review> findByDesignId(Long designId);
 
     long countByDesignId(Long designId);
+
 }

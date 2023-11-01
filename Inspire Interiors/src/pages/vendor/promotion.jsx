@@ -234,9 +234,9 @@ const Promotion = () => {
                 <div className="col-12 d-flex flex-column">
                     <div className="col-12 d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between p-3">
                         <div className='d-flex flex-row gap-4'>
-                            <p className="text-dark fs-5 fw-bold Cabin-text ">Promotion</p>
+                            <p className="fs-5 fw-bold Cabin-text text-dark">Promotion</p>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                            <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Overview</p>
+                            <p className="fs-5 fw-bold Cabin-text text-dark">Overview</p>
                         </div>
                         <Link to='/vendor/promotion/browsedesigner'><p className="fs-5 text-dark Cabin-text fw-bold">Browse Designers<Icon.ArrowRight className='mx-2' color='black' size={20}/></p></Link>
                     </div>

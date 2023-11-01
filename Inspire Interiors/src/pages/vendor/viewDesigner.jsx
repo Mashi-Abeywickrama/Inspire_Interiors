@@ -69,6 +69,7 @@ const ViewDesigner = () => {
 
     const [allDesigners, setAllDesigners] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
+    const [designdata, setDesigndata] = useState([]);
 
     const Id = urlParams.get('id');
 
@@ -189,6 +190,18 @@ const ViewDesigner = () => {
         });
     }, []);
 
+    useEffect(() => {
+        axiosInstance
+        .get(`/designer/mydesigns/d/${designerID}`)
+        .then((response) => {
+            setDesigndata(response.data);
+            console.log(response.data);
+            })
+            .catch((error) => {
+            console.log('Error fetching data', error);
+        });
+    }, [designerID]);
+
     
     const mergeData = (designerData, userData) => {
         const mergedData = designerData.map(
@@ -233,14 +246,16 @@ const ViewDesigner = () => {
         <>
             <div className="background d-flex flex-column justify-content-between w-100 rounded Cabin-text gap-3 ">
                 {/* Topic */}
-                <div className='top-div bg-light shadow rounded py-3'>
+                <div className='top-div bg-white shadow rounded py-3 mb-3'>
                     <div className='row container'>
                         <div className='row d-flex align-items-center justify-content-start'>
                             <div className='col-md-4 col-sm-12 col-12 fs-5'>
                             <div className='d-flex flex-row gap-4 p-3 '>
-                                <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text text-dark">{user.type}</p></Link>
+                                <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Promotion</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                                <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{user.name}</p>
+                                <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text " style={{ color: "#A2A3B1" }}>{user.type}</p></Link>
+                                <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                                <p className="fs-5 fw-bold Cabin-text text-dark">{user.name}</p>
                             </div>
                             </div>
                         </div>
@@ -383,7 +398,7 @@ const ViewDesigner = () => {
                     </div>
                 </div>
 
-                <div className='top-div bg-light shadow rounded mb-3 p-2'>
+                <div className='top-div bg-white shadow rounded mb-3 p-2'>
                     <div className='row container'>
                         <div className='row d-flex align-items-center justify-content-start'>
                             <div className='col-md-4 col-sm-12 col-12 fs-5 fw-bold'>

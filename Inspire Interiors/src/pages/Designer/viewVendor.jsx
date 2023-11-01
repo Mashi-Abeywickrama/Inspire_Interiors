@@ -41,6 +41,8 @@ const ViewVendor = () => {
 
     const [allVendors, setAllVendors] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
+    const [designData, setDesignData] = useState([]);
+    const [productData, setProductData] = useState([]);
 
     const Id = urlParams.get('id');
 
@@ -131,6 +133,58 @@ const ViewVendor = () => {
     
     const mergedVendor = mergeData(allVendors, allUsers);
     console.log("merged Data", mergedVendor);
+
+    useEffect (() => {
+        axiosInstance
+            .get(`/all-popular-items`)
+            .then((response) => {
+                setDesignData(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('Error fetching data', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        axiosInstance
+            .get(`/viewproducts/vendor/${vendorID}`)
+            .then((response) => {
+                setProductData(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('Error fetching data', error);
+            });
+    }, [vendorID]);
+
+    const mergeData2 = (designData, productData) => {
+        const mergedData = productData.map(
+          (productItem) => {
+          const matchingProduct = designData.find(
+            (designeItem) =>  designeItem.product_id == productItem[0]
+          );
+    
+         
+      
+          if (matchingProduct ) {
+            // Merge the data from both sources
+            return {
+              ...productItem,
+              ...matchingProduct
+            
+            };
+          } else {
+            return {
+                ...productItem
+            };
+        }});
+      
+        return mergedData;
+    };
+    
+    const mergedProduct = mergeData2(designData, productData);
+    console.log("merged Data", mergedProduct);
     
     const [show, setShow] = useState(false);
 
@@ -141,12 +195,12 @@ const ViewVendor = () => {
         <>
             <div className="background d-flex flex-column justify-content-between w-100 rounded Cabin-text gap-3 ">
                 {/* Topic */}
-                <div className='top-div bg-light shadow rounded py-3'>
+                <div className='top-div bg-light shadow rounded py-3 mb-3'>
                     <div className='row container'>
                         <div className='row d-flex align-items-center justify-content-start'>
                             <div className='col-md-4 col-sm-12 col-12 fs-5'>
                             <div className='d-flex flex-row gap-4 p-3 '>
-                                <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text text-dark">Promotion</p></Link>
+                                <Link to="/designer/promotion"><p className="text-dark fs-5 fw-bold Cabin-text text-dark">Promotion</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                                 <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{user.type}</p>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
@@ -181,23 +235,26 @@ const ViewVendor = () => {
                             <div className=' fs-5 fw-bold'>
                                 Top Selling Products <span className="badge fs-6 see-all">See All <Icon.ArrowRight /></span>
                             </div>
-                            <div className="d-flex mt-3 flex-wrap">
-                                <div className="col-lg-6 col-md-6 col-sm-12 mb-3 px-2">
-                                    <img src={LivingRoom} alt="Design 1" className="img-fluid h-100 rounded" />
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12 mb-3 px-2">
-                                    <img src={LivingRoom} alt="Design 2" className="img-fluid h-100 rounded" />
-                                </div>
-                                <div className="col-lg-4 col-md-4 col-sm-12 mb-3 px-2">
-                                    <img src={LivingRoom} alt="Design 3" className="img-fluid rounded h-100" />
-                                </div>
-                                <div className="col-lg-4 col-md-4 col-sm-12 mb-3 px-2">
-                                    <img src={LivingRoom} alt="Design 4" className="img-fluid rounded h-100" />
-                                </div>
-                                <div className="col-lg-4 col-md-4 col-sm-12 mb-3 px-2">
-                                    <img src={LivingRoom} alt="Design 5" className="img-fluid rounded h-100" />
-                                </div>
+                            <div className="d-flex flex-wrap">
+                            <div class="row row-cols-1 row-cols-md-3 g-4 my-4 mx-4">
+                                {mergedProduct.map((product, index) => (
+                                    <div class="col">
+                                        <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                            <img className="img-fluid" src={(`../../../../src/assets/img/product/${product.product_id}.jpg`)} class="card-img-top" alt="blacksofa" />
+                                            <div class="card-body m-0 p-0 mt-3">
+                                                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                    <div className="d-flex flex-column">
+                                                        <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>{product.product_name}</p>
+                                                        <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">{product.type}</p>
+                                                    </div>
+                                                    <Link to={`/designer/promotion/product/${product.product_id}`}><Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} /></Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                ))}  
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>

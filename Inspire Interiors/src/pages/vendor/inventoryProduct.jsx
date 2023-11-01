@@ -358,7 +358,7 @@ const InventoryProduct = () => {
               <div className="d-flex flex-column flex-lg-row flex-md-row justify-content-between p-4">
                 <div className="d-flex gap-4">
                   <Link to="/vendor/inventory">
-                    <p className="text-dark fs-5 fw-bold Cabin-text ">
+                    <p className="fs-5 fw-bold Cabin-text " style={{ color: "#A2A3B1" }}>
                       Inventory
                     </p>
                   </Link>
@@ -368,7 +368,7 @@ const InventoryProduct = () => {
                     className="mt-2"
                   />
                   <Link to="/vendor/inventory/viewstock">
-                    <p className="fs-5 fw-bold Cabin-text text-dark">Stock</p>
+                    <p className="fs-5 fw-bold Cabin-text " style={{ color: "#A2A3B1" }}>Stock</p>
                   </Link>
                   <Icon.ChevronRight
                     color="#A2A3B1"
@@ -376,8 +376,7 @@ const InventoryProduct = () => {
                     className="mt-2"
                   />
                   <p
-                    className="fs-5 fw-bold Cabin-text"
-                    style={{ color: "#A2A3B1" }}
+                    className="fs-5 fw-bold Cabin-text text-dark"
                   >
                     {productData.product_name}
                   </p>

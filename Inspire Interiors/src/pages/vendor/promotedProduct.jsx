@@ -16,6 +16,7 @@ const PromotedProduct = () => {
     const designerID = urlparams.get('d_id');
 
     const [designer, setDesigner] = useState({});
+    const [designerdata, setDesignerData] = useState([]);
 
     const apiBaseURL = "http://localhost:8080";
 
@@ -36,6 +37,18 @@ const PromotedProduct = () => {
             });
     }, [designerID]);
 
+    useEffect(() => {
+        axiosInstance
+            .get(`/designer/${designerID}`)
+            .then((response) => {
+                setDesignerData(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [designerID]);
+
     console.log(designerID);
 
     return (
@@ -44,13 +57,13 @@ const PromotedProduct = () => {
                 <div className='col-lg-12 bg-white rounded-3 shadow py-3 px-4'>
                     <div className="d-flex flex-column flex-lg-row flex-md-row gap-4 justify-content-between">
                         <div className='d-flex flex-row gap-3'>
-                            <Link to="/vendor/promotion/mynetwork"><p className="text-dark fs-5 fw-bold Cabin-text text-dark">Promotion</p></Link>
+                            <Link to="/vendor/promotion/mynetwork"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Promotion</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                            <Link to="/vendor/promotion/mynetwork"><p className="fs-5 fw-bold Cabin-text text-dark">My network</p></Link>
+                            <Link to="/vendor/promotion/mynetwork"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>My network</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                            <Link to="/vendor/promotion/promotionrequest"><p className="fs-5 fw-bold Cabin-text text-dark">{designer.name}</p></Link>
+                            <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{designer.name}</p>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                            <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Projects</p>
+                            <p className="fs-5 fw-bold Cabin-text text-dark">Promoted Products</p>
                         </div>
                         <div className='form-group '>
                             <input type="text" className="form-control search-form" id="search" placeholder="Search"></input>

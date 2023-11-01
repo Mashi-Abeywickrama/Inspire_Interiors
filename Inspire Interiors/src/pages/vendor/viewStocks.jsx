@@ -83,9 +83,9 @@ const ViewStocks = () => {
       <div className="stock-container background-total accordion bg-white rounded-3 mb-4 me-3">
           <div className="col-12 d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between">
             <div className='d-flex flex-row gap-4 p-3 '>
-              <Link to="/vendor/inventory"><p className="text-dark fs-5 fw-bold Cabin-text ">Inventory</p></Link>
+              <Link to="/vendor/inventory"><p className="fs-5 fw-bold Cabin-text " style={{ color: "#A2A3B1" }}>Inventory</p></Link>
               <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-              <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Stock</p>
+              <p className="fs-5 fw-bold Cabin-text text-dark">Stock</p>
             </div>
             <div>
               <Link to="/vendor/inventory/addstock"><button className='add-btn m-4'><Icon.PlusLg color="white" size={20}/>Add New</button></Link>

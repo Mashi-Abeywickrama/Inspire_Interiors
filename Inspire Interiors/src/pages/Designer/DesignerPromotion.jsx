@@ -258,7 +258,7 @@ console.log("merged Data", mergedVendor);
               </p>
             </div>
             <div className="d-flex flex-wrap">
-                <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4">
+                <div class="row row-cols-1 row-cols-md-3 g-4 my-1 mx-4 mb-3">
                 {mergedVendor.map((vendor, index) => (
                   <div class="col">
                     <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
