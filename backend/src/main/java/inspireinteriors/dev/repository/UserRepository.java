@@ -2,6 +2,7 @@ package inspireinteriors.dev.repository;
 
 import inspireinteriors.dev.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,4 +19,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByType(String type);
 
 
+    int countByType(String type);
+
+    @Query("SELECT u.type, COUNT(u) FROM User u GROUP BY u.type")
+    List countByTypes();
 }

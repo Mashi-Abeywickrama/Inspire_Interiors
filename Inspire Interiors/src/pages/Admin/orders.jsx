@@ -27,20 +27,29 @@ const Order = () => {
     timeout: 5000,
   });
 
-  const fetchOrderData = async () => {
+  const fetchOrderData = async (status) => {
     try {
-      const response = await axios.get(apiBaseURL + '/getorder');
+      const response = await axios.get(apiBaseURL + `/getorder`);
       const orderData = response.data;
       setOrderData(orderData); 
       setLoading(false);
     } catch (error) {
-      console.error('Error fetching order data:', error);
+      console.error(`Error fetching order data with status ${status}:`, error);
     }
   };
+  
 
   useEffect(() => {
-    fetchOrderData();
+    fetchOrderData('all'); // Fetch all orders initially
   }, []);
+  
+  const handleTabSelect = (status) => {
+    fetchOrderData(status); // Fetch orders based on the selected tab status
+  };
+
+  const filteredData = (status) =>
+  orderData.filter((item) => item.status === status);
+  
 
   const data = {
     columns: [
@@ -127,6 +136,190 @@ const Order = () => {
    
   };
 
+  const data2 = {
+    columns: [
+      {
+        label: "REF_NO",
+        field: "ref_no",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "ORDERED_DATE",
+        field: "date",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "PRODUCT/DESIGN",
+        field: "product",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "CUSTOMER",
+        field: "customer",
+        sort: "asc",
+        width: 270,
+      },
+      {
+        label: "VENDOR/DESIGNER",
+        field: "designer",
+        sort: "asc",
+        width: 270,
+      },
+      {
+        label: "QTY",
+        field: "qty",
+        sort: "asc",
+        width: 200,
+      },
+      {
+        label: "PRICE",
+        field: "price",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "COMMISSION",
+        field: "commission",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "STATUS",
+        field: "status",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "  ",
+        field: "action",
+        sort: "NONE",
+        width: 100,
+      },
+    ],
+
+    rows: filteredData('completed').map((order) => ({
+      ref_no: order.ref_no,
+      date: order.date,
+      product:order.product||order.design,
+      customer: order.customer,
+      designer: order.designer||order.vendor,
+      qty:order.quantity,
+      price:order.price,
+      commission:order.commission,
+      status:order.status,
+      action: 
+          <Link to={`/admin/orders/invoice/${order.orderid}`}><div className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
+          </div></Link>
+      
+      
+      // other fields...
+    })),
+   
+  };
+
+  const data3 = {
+    columns: [
+      {
+        label: "REF_NO",
+        field: "ref_no",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "ORDERED_DATE",
+        field: "date",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "PRODUCT/DESIGN",
+        field: "product",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "CUSTOMER",
+        field: "customer",
+        sort: "asc",
+        width: 270,
+      },
+      {
+        label: "VENDOR/DESIGNER",
+        field: "designer",
+        sort: "asc",
+        width: 270,
+      },
+      {
+        label: "QTY",
+        field: "qty",
+        sort: "asc",
+        width: 200,
+      },
+      {
+        label: "PRICE",
+        field: "price",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "COMMISSION",
+        field: "commission",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "STATUS",
+        field: "status",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "  ",
+        field: "action",
+        sort: "NONE",
+        width: 100,
+      },
+    ],
+
+    rows: filteredData('pending').map((order) => ({
+      ref_no: order.ref_no,
+      date: order.date,
+      product:order.product||order.design,
+      customer: order.customer,
+      designer: order.designer||order.vendor,
+      qty:order.quantity,
+      price:order.price,
+      commission:order.commission,
+      status:order.status,
+      action: 
+          <Link to={`/admin/orders/invoice/${order.orderid}`}><div className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
+          </div></Link>
+      
+      
+      // other fields...
+    })),
+   
+  };
+
+  
+
+//  const filterOrdersByStatus = async () => {
+//   try {
+//     const response = await axios.get(apiBaseURL + `/filtercompleted`);
+//     const orderCompleted = response.data;
+//     setOrderData(orderCompleted);
+//     setLoading(false);
+//   } catch (error) {
+//     console.error(`Error fetching completed orders:`, error);
+//   }
+// };
+
+
   return (
     <>  
     {/* <div className="d-flex  flex-column gap-3 full">
@@ -144,11 +337,13 @@ const Order = () => {
               defaultActiveKey="all"
               id="uncontrolled-tab-example"
               className="mb-3 bg-white tab"
+              onSelect={handleTabSelect}
             >
               <Tab eventKey="all" title="All">
-                <div className=''>
+                <div className="">
              
-                  <MDBDataTableV5 responsive
+                  <MDBDataTableV5
+                   responsive
                   striped
                   bordered
                   small
@@ -159,18 +354,36 @@ const Order = () => {
                 />
                 </div>
               </Tab>
-              <Tab eventKey="Completed" title="Completed">
-                Completed
+              <Tab eventKey="Completed" title="Completed" >
+              <div className=''>
+             
+             <MDBDataTableV5 responsive
+             striped
+             bordered
+             small
+             data={data2}
+             sortable={true}
+             exportToCSV={true}
+             
+           />
+           </div>
               </Tab>
-              <Tab eventKey="Ongoing" title="Ongoing">
-                Ongoing
+              <Tab eventKey="Pending" title="Pending" >
+              <div className="">
+             
+             <MDBDataTableV5
+              responsive
+             striped
+             bordered
+             small
+             data={data3}
+             sortable={true}
+             exportToCSV={true}
+             
+           />
+           </div>
               </Tab>
-              <Tab eventKey="Delayed" title="Delayed">
-                Delayed
-              </Tab>
-              <Tab eventKey="Canceled" title="Canceled">
-                Canceled
-              </Tab>
+             
             </Tabs>
           </div>
         </div>

@@ -47,28 +47,18 @@ const User = () => {
     }
   };
 
-  const fetchUserType = async (type) => {
-    try {
-      let response;
-      if (type === null) {
-        response = await axios.get(apiBaseURL + '/getuser'); // Fetch all users
-      } else {
-        response = await axios.get(apiBaseURL + `/filtertype/${type}`); // Fetch users of the selected type
-      }
-      const userTypeData = response.data; // Assuming this response contains user data
-      setUserType(userTypeData);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
-  };
 
   useEffect(() => {
-    fetchUserData();
-    fetchUserType(null);
+    fetchUserData('all');
   }, []);
 
-  
+  const handleTabSelect = (type) => {
+    fetchUserData(type); // Fetch orders based on the selected tab status
+  };
+
+  const filteredData = (type) =>
+  userData.filter((item) => item.type === type);
+
 
   const data = {
     columns: [
@@ -111,7 +101,287 @@ const User = () => {
       }
     ],
 
-    rows:(userType || []).map((user) => ({
+    rows: userData.map((user) => ({
+      username: user.username,
+      type: user.type,
+      email: user.email,
+      dob: new Date(user.dob).toLocaleDateString(),
+      contact_no: user.contact_no,
+      action: 
+          <Link to={`/admin/user/profile/${user.userid}`} className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">View More</p> <Icon.ArrowRight />
+         </Link>
+      
+      
+      // other fields...
+    })),
+  };
+  const data1 = {
+    columns: [
+      {
+        label: 'USERNAME',
+        field: 'username',
+        sort: 'asc',
+        width: 150
+      },
+      {
+        label: 'TYPE',
+        field: 'type',
+        sort: 'asc',
+        width: 50
+      },
+      {
+        label: 'EMAIL',
+        field: 'email',
+        sort: 'asc',
+        width: 200
+      },
+      {
+        label: 'DOB',
+        field: 'dob',
+        sort: 'asc',
+        width: 270
+      },
+      {
+        label: 'CONTACT_NO',
+        field: 'contact_no',
+        sort: 'asc',
+        width: 270
+      },
+      
+      {
+        label: '  ',
+        field: 'action',
+        sort: 'NONE',
+        width: 100
+      }
+    ],
+
+    rows: filteredData('designer').map((user) => ({
+      username: user.username,
+      type: user.type,
+      email: user.email,
+      dob: new Date(user.dob).toLocaleDateString(),
+      contact_no: user.contact_no,
+      action: 
+          <Link to={`/admin/user/profile/${user.userid}`} className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">View More</p> <Icon.ArrowRight />
+         </Link>
+      
+      
+      // other fields...
+    })),
+  };
+  const data2 = {
+    columns: [
+      {
+        label: 'USERNAME',
+        field: 'username',
+        sort: 'asc',
+        width: 150
+      },
+      {
+        label: 'TYPE',
+        field: 'type',
+        sort: 'asc',
+        width: 50
+      },
+      {
+        label: 'EMAIL',
+        field: 'email',
+        sort: 'asc',
+        width: 200
+      },
+      {
+        label: 'DOB',
+        field: 'dob',
+        sort: 'asc',
+        width: 270
+      },
+      {
+        label: 'CONTACT_NO',
+        field: 'contact_no',
+        sort: 'asc',
+        width: 270
+      },
+      
+      {
+        label: '  ',
+        field: 'action',
+        sort: 'NONE',
+        width: 100
+      }
+    ],
+
+    rows: filteredData('vendor').map((user) => ({
+      username: user.username,
+      type: user.type,
+      email: user.email,
+      dob: new Date(user.dob).toLocaleDateString(),
+      contact_no: user.contact_no,
+      action: 
+          <Link to={`/admin/user/profile/${user.userid}`} className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">View More</p> <Icon.ArrowRight />
+         </Link>
+      
+      
+      // other fields...
+    })),
+  };
+  const data3 = {
+    columns: [
+      {
+        label: 'USERNAME',
+        field: 'username',
+        sort: 'asc',
+        width: 150
+      },
+      {
+        label: 'TYPE',
+        field: 'type',
+        sort: 'asc',
+        width: 50
+      },
+      {
+        label: 'EMAIL',
+        field: 'email',
+        sort: 'asc',
+        width: 200
+      },
+      {
+        label: 'DOB',
+        field: 'dob',
+        sort: 'asc',
+        width: 270
+      },
+      {
+        label: 'CONTACT_NO',
+        field: 'contact_no',
+        sort: 'asc',
+        width: 270
+      },
+      
+      {
+        label: '  ',
+        field: 'action',
+        sort: 'NONE',
+        width: 100
+      }
+    ],
+
+    rows: filteredData('customer').map((user) => ({
+      username: user.username,
+      type: user.type,
+      email: user.email,
+      dob: new Date(user.dob).toLocaleDateString(),
+      contact_no: user.contact_no,
+      action: 
+          <Link to={`/admin/user/profile/${user.userid}`} className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">View More</p> <Icon.ArrowRight />
+         </Link>
+      
+      
+      // other fields...
+    })),
+  };
+  const data4 = {
+    columns: [
+      {
+        label: 'USERNAME',
+        field: 'username',
+        sort: 'asc',
+        width: 150
+      },
+      {
+        label: 'TYPE',
+        field: 'type',
+        sort: 'asc',
+        width: 50
+      },
+      {
+        label: 'EMAIL',
+        field: 'email',
+        sort: 'asc',
+        width: 200
+      },
+      {
+        label: 'DOB',
+        field: 'dob',
+        sort: 'asc',
+        width: 270
+      },
+      {
+        label: 'CONTACT_NO',
+        field: 'contact_no',
+        sort: 'asc',
+        width: 270
+      },
+      
+      {
+        label: '  ',
+        field: 'action',
+        sort: 'NONE',
+        width: 100
+      }
+    ],
+
+    rows: filteredData('admin').map((user) => ({
+      username: user.username,
+      type: user.type,
+      email: user.email,
+      dob: new Date(user.dob).toLocaleDateString(),
+      contact_no: user.contact_no,
+      action: 
+          <Link to={`/admin/user/profile/${user.userid}`} className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">View More</p> <Icon.ArrowRight />
+         </Link>
+      
+      
+      // other fields...
+    })),
+  };
+  const data5 = {
+    columns: [
+      {
+        label: 'USERNAME',
+        field: 'username',
+        sort: 'asc',
+        width: 150
+      },
+      {
+        label: 'TYPE',
+        field: 'type',
+        sort: 'asc',
+        width: 50
+      },
+      {
+        label: 'EMAIL',
+        field: 'email',
+        sort: 'asc',
+        width: 200
+      },
+      {
+        label: 'DOB',
+        field: 'dob',
+        sort: 'asc',
+        width: 270
+      },
+      {
+        label: 'CONTACT_NO',
+        field: 'contact_no',
+        sort: 'asc',
+        width: 270
+      },
+      
+      {
+        label: '  ',
+        field: 'action',
+        sort: 'NONE',
+        width: 100
+      }
+    ],
+
+    rows: filteredData('CustomerSupport').map((user) => ({
       username: user.username,
       type: user.type,
       email: user.email,
@@ -151,8 +421,9 @@ const User = () => {
                     defaultActiveKey="all"
                     id="uncontrolled-tab-example"
                     className="mb-3 bg-white tab"
+                    onSelect={handleTabSelect}
                   >
-                    <Tab eventKey="all" title="All"   onClick={() => fetchUserType(null)} >
+                    <Tab eventKey="all" title="All">
                       <div className="">
                         <MDBDataTableV5
                           responsive
@@ -165,7 +436,6 @@ const User = () => {
                         />
                       </div>
                     </Tab>
-
                     <Tab eventKey="designer" title="Designers"  >
                     <div className="">
                         <MDBDataTableV5
@@ -173,7 +443,7 @@ const User = () => {
                           striped
                           bordered
                           small
-                          data={data}
+                          data={data1}
                           sortable={true}
                           exportToCSV={true}
                         />
@@ -186,7 +456,7 @@ const User = () => {
                           striped
                           bordered
                           small
-                          data={data}
+                          data={data2}
                           sortable={true}
                           exportToCSV={true}
                         />
@@ -199,7 +469,7 @@ const User = () => {
                           striped
                           bordered
                           small
-                          data={data}
+                          data={data3}
                           sortable={true}
                           exportToCSV={true}
                         />
@@ -212,7 +482,7 @@ const User = () => {
                           striped
                           bordered
                           small
-                          data={data}
+                          data={data4}
                           sortable={true}
                           exportToCSV={true}
                         />
@@ -225,7 +495,7 @@ const User = () => {
                           striped
                           bordered
                           small
-                          data={data}
+                          data={data5}
                           sortable={true}
                           exportToCSV={true}
                         />

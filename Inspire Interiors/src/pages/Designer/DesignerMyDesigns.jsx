@@ -10,6 +10,7 @@ import * as Icon from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 
+
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -78,7 +79,9 @@ function DesignerMyDesigns() {
       ...prevDetails,
       [field]: value,
     }));
+
   };
+
 
   //Fetch...
   useEffect(() => {
@@ -100,6 +103,7 @@ function DesignerMyDesigns() {
     <div className="overview-container rounded-3 mb-4">
       <p className="text-primary d-flex justify-content-between">
         <p className="fs-2 fw-medium">My Designs</p>
+
         <button type="button" onClick={handleShow} className="add-btn m-2">
           <Icon.PlusLg color="white" size={16} />
           Add Design
@@ -220,6 +224,71 @@ function DesignerMyDesigns() {
             </form>
           </Modal.Body>
         </Modal>
+
+        <button type="button" onClick={handleShow} className="add-btn m-2"><Icon.PlusLg color="white" size={16} />Add Design</button>
+
+        <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>New Design</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <form method="POST">
+                                        <div className="d-flex flex-column mx-4 gap-3">
+                                            <div className='mb-1'>
+                                                <label>Design Name</label>
+                                                <input type='text' name="name" autoFocus className='form-control Cabin-text' placeholder='Enter design name' style={{backgroundColor: "#F2FAFF"}}></input>
+                                            </div>
+                                            <div className='mb-1'>
+                                                <label>Design Description</label>
+                                                <input type='text' name="description" rows={3} className='form-control Cabin-text' placeholder='Enter design description' style={{backgroundColor: "#F2FAFF"}}></input>
+                                            </div>
+                                            <div className="d-flex flex-row gap-5">
+                                            <div className="mb-3">
+                                                    <label className="form-label fs-6 Cabin-text">Image 1:</label>
+                                                    <input
+                                                    type="file"
+                                                    name="image1"
+                                                    className="form-control Cabin-text"
+                                                            accept="image/*" // Only allow image files
+                                                    />
+                                                </div>
+                                                <div className="mb-3">
+                                                    <label className="form-label fs-6 Cabin-text">Image 2:</label>
+                                                    <input
+                                                    type="file"
+                                                    name="image2"
+                                                    className="form-control Cabin-text"
+                                                            accept="image/*" // Only allow image files
+                                                    />
+                                                </div>
+                                                <div className="mb-3">
+                                                    <label className="form-label fs-6 Cabin-text">Image 3:</label>
+                                                    <input
+                                                    type="file"
+                                                    name="image3"
+                                                    className="form-control Cabin-text"
+                                                            accept="image/*" // Only allow image files
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="mb-3">
+                                                    <label className="form-label fs-6 Cabin-text">File:</label>
+                                                    <input
+                                                    type="file"
+                                                    name="file"
+                                                    className="form-control Cabin-text"
+                                                            accept="image/*" // Only allow image files
+                                                    />
+                                                </div>                                         
+                                        </div>
+                                        <div className='d-flex flex-row justify-content-between'>
+                                            <button type="button" className='withdraw-btn m-4' onClick={handleClose}>Cancel</button>
+                                            <button type="submit" className='accept-btn m-4'>Add Design</button>
+                                        </div>
+                                    </form>
+                                </Modal.Body>
+                            </Modal>
+
       </p>
 
       <div className="d-flex flex-row flex-wrap gap-3">

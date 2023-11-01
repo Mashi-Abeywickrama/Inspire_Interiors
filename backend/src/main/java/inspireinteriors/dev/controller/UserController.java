@@ -35,7 +35,7 @@ public class UserController {
     @Autowired
     private DesignerService designerService;
 
-    @GetMapping("/users")
+        @GetMapping("/users")
     @ResponseBody
     public Iterable<User> fetchUsers() {
         return userService.getAllUsers();
@@ -114,8 +114,11 @@ public class UserController {
             String city = registrationRequest.getCity();
             String district = registrationRequest.getDistrict();
             String province = registrationRequest.getProvince();
+            String bio = registrationRequest.getBio();
+            String specialities = registrationRequest.getSpecialities();
+            double averageoverview = registrationRequest.getAveragereview();
 
-            Designer newDesigner = designerService.createDesigner(userId, laneNo, city, district, province);
+            Designer newDesigner = designerService.createDesigner(userId, laneNo, city, district, province, bio, specialities, averageoverview);
 
         }
 
@@ -159,6 +162,21 @@ public class UserController {
     public List<User> getUsersByUserType(@PathVariable String type) {
         List<User> users = userService.getUsersByUserType(type);
         return users;
+    }
+
+    @GetMapping("/usercount")
+    public int getUserCount() {
+        return userService.getUserCount();
+    }
+
+    @GetMapping("/usercountType")
+    public List getUserCountType() {
+        return userService.getUserCountByUserTypes();
+    }
+
+    @GetMapping("/usercountbyusertype/{type}")
+    public int getUserCountByUserType(@PathVariable String type) {
+        return userService.getUserCountByUserType(type);
     }
 
     @PostMapping("/profile")
@@ -298,6 +316,9 @@ public class UserController {
         private String district;
 
         private String province;
+        private String bio;
+        private String specialities;
+        private double averagereview;
 
         public String getName() {
             return name;
@@ -369,6 +390,30 @@ public class UserController {
 
         public void setProvince(String province) {
             this.province = province;
+        }
+
+        public String getBio() {
+            return bio;
+        }
+
+        public String getSpecialities() {
+            return specialities;
+        }
+
+        public double getAveragereview() {
+            return averagereview;
+        }
+
+        public void setBio(String bio) {
+            this.bio = bio;
+        }
+
+        public void setSpecialities(String specialities) {
+            this.specialities = specialities;
+        }
+
+        public void setAveragereview(double averagereview) {
+            this.averagereview = averagereview;
         }
     }
 
@@ -506,4 +551,6 @@ public class UserController {
 
 
     }
+
+
 }

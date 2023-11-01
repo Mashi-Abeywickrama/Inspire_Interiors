@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import Sofa from './../../assets/img/vendor/sofa.png';
 
 import '../../styles/vendor/viewStocks.css';
@@ -12,8 +12,149 @@ import Tabs from 'react-bootstrap/Tabs';
 
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import {useSession} from "../../constants/SessionContext";
 
-const tabledata = {
+
+
+const MyNetwork = () => {
+  const urlparams = new URLSearchParams(window.location.search);
+  const userID = urlparams.get('id');
+  const [offerData, setOfferData] = useState([]);
+  const [designerData, setDesignerData] = useState([]);
+  const [designer, setDesigner] = useState([]);
+  const [designerTotal, setDesignerTotal] = useState([]);
+
+  const apiBaseURL = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseURL,
+    timeout: 5000,
+  });
+
+  useEffect(() => {
+    axiosInstance
+      .get(`promotion/vendor/${userID}`)
+      .then((response) => {
+        console.log(response.data);
+        setOfferData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/filtertype/designer`)
+      .then((response) => {
+        console.log(response.data);
+        setDesigner(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/designer/d`)
+      .then((response) => {
+        console.log(response.data);
+        setDesignerData(response.data);
+        console.log("designer data", designerData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/designer/designCount`)
+      .then((response) => {
+        console.log(response.data);
+        setDesignerTotal(response.data);
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  
+
+  
+
+  const mergeData = (offerData, designer,designerdata,designerTotal) => {
+    const mergedData = offerData.map(
+      (offerItem) => {
+      const matchingDesigner = designer.find(
+        (designerItem) =>  designerItem.userid === offerItem.designerid
+      );
+
+      const matchingDesigner2 = designerdata.find(
+        (designerdataItem) =>  designerdataItem.designer_id === offerItem.designerid
+      );
+
+      const matchingDesigner3 = designerTotal.find(
+        (designerTotalItem) =>  designerTotalItem[0] === offerItem.designerid
+      );
+
+     
+  
+      if (matchingDesigner && matchingDesigner2  ) {
+        // Merge the data from both sources
+        return {
+          ...offerItem,
+          ...matchingDesigner,
+          ...matchingDesigner2,
+          ...matchingDesigner3,
+        
+        };
+      } else {
+        return offerItem;
+      }
+    });
+  
+    return mergedData;
+  };
+
+  const mergedOffer_designer = mergeData(offerData, designer,designerData,designerTotal);
+  console.log("merged Data", mergedOffer_designer);
+
+  const getOrderStatus = (status) => {
+    const statusDetails = {
+      Pending: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Pending',
+      }, 
+      Accepted: {
+        className: 'completed d-flex gap-2 align-items-center',
+        text: 'Accepted',
+      },
+    };
+      if (statusDetails.hasOwnProperty(status)) {
+        const { className, text } = statusDetails[status];
+        return (
+          <div className={className}>
+            <i className="bi bi-circle-fill tag-icon"></i>
+            <p className="m-0">{text}</p>
+          </div>
+        );
+      }
+      return null;
+  };
+
+  const findStatus = (status) => {
+    if(status == 0){
+        return "Pending";
+    } else if(status == 1){
+        return "Accepted";
+    }
+};
+
+  const tabledata = {
     columns: [
       {
         label: 'DESIGNER NAME',
@@ -34,172 +175,32 @@ const tabledata = {
         width: 200
       },
       {
-        label: 'PROMOTION INITIALISED DATE',
-        field: 'date',
-        sort: 'asc',
-        width: 100
-      },
-      {
-        label: 'PRODUCT SOLD',
-        field: 'product',
-        sort: 'asc',
-        width: 150
-      },
-      {
-        label: 'EARNINGS',
-        field: 'earnings',
-        sort: 'asc',
-        width: 100
-      },
-      {
         label: 'STATUS',
         field: 'status',
         sort: 'asc',
         width: 100
-      }
-      ,
+      },
       {
-        label: '  ',
+        label: '',
         field: 'action',
-        sort: 'NONE',
+        sort: 'asc',
         width: 100
-      }
+      },
     ],
-    rows: [
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Completed</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-      {
-        name: 'Victor Avacado',
-        total: '100',
-        review: '4.5',
-        date: '2023/07/20',
-        product: '60',
-        earnings: '4000Rs',
-        status: <div className='withdraw d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Withdraw</p></div>,
-        action: <Link to="/vendor/promotion/mynetwork"><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
-      },
-    ]
+    rows: mergedOffer_designer.map((offer_designer => {
+      return {
+        name: offer_designer.name,
+        total: offer_designer[1] || 0,
+        review: offer_designer.averagereview,
+        status: <div>{getOrderStatus(findStatus(offer_designer.offerstatus))}</div>,
+        action: <Link to={`/vendor/promotion/viewdesigners?id=${offer_designer.designer}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94"}}><p className='m-0'>View More</p> <Icon.ArrowRight/></div></Link>
+      }
+    }))
 };
 
-const MyNetwork = () => (
+
+
+  return(
     <>
 
         <div className="network-container background-total accordion bg-white rounded-3 mb-4 me-3">
@@ -226,6 +227,7 @@ const MyNetwork = () => (
 
 
     </>
-)
+  );
+}
 
 export default MyNetwork;

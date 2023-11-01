@@ -113,4 +113,17 @@ import java.util.List;
         public User getUserByUserName(String username) {
             return userRepository.findByUsername(username);
         }
+
+        public int getUserCount() {
+            return (int) userRepository.count();
+        }
+
+
+        public int getUserCountByUserType(String type) {
+            return userRepository.countByType(type);
+        }
+
+        public List getUserCountByUserTypes() {
+            return userRepository.countByTypes();
+        }
     }

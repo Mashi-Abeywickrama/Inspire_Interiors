@@ -1,6 +1,7 @@
 package inspireinteriors.dev.service.Designer;
 
 
+import inspireinteriors.dev.model.Designer;
 import inspireinteriors.dev.model.DesignerModel.*;
 import inspireinteriors.dev.repository.Designer.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,9 @@ public class DesignerMyDesignService {
     //Design tool files repository
     private DesignerDesigntoolFilesRepository designerDesigntoolFilesRepository;
 
+    @Autowired
+    private DesignerRepository designerRepository;
+
 
 //MyDesign Services
     public List<MyDesigns> getAllDesigns() {
@@ -45,7 +49,6 @@ public class DesignerMyDesignService {
 
 
    }
-
 
     public DesignerMyDesignService(DesignerMyDesignsRepository designerMyDesignsRepository) {
         this.designerMyDesignsRepository = designerMyDesignsRepository;
@@ -138,8 +141,5 @@ public class DesignerMyDesignService {
    }
    public DesigntoolFiles GetByReqid(int request_id){
         return designerDesigntoolFilesRepository.findByRequest_id(request_id);
-   }
-   public List<DesigntoolFiles> GetAllDesigntoolFiles(){
-      return designerDesigntoolFilesRepository.getAllReq();
    }
 }

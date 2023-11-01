@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Img1 from './../../assets/img/admin/profile.png';
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 import './../../styles/admin/profile.css';
+import Setpwd from './../../components/admin/setpwd.jsx';
 
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -99,8 +100,9 @@ const updateData=(data) =>{
                   <input className="form-control" type="text" defaultValue={type} onChange={(e) =>onInputChange(e)} />
                 </div>
                 <div className='d-flex flex-column'>
-                  <label className="fs-5">Reset Password</label>
-                  <button className="btn-profile btn-primary">Reset Password</button>
+                  {/* <label className="fs-5">Reset Password</label>
+                  <button className="btn-profile btn-primary">Reset Password</button> */}
+                  <Setpwd/>
                 </div>
               </div>   
             </div>
