@@ -127,7 +127,11 @@ import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
 import DesignerMyDesignView from "./pages/Designer/DesignerMyDesignView";
 
 import TypeView from "./pages/Customer/marketplace/typeView";
+import ViewVendor from "./pages/Designer/viewVendor";
+import ViewAcceptedPromotion from "./pages/Designer/ViewAcceptPromotion";
+import ViewReceivedPromotion from "./pages/Designer/ViewReceivedPromotion";
 import ViewAllDesigners from "./pages/Customer/Designs/seeAllDesigners";
+
 
 
 const routes = (
@@ -296,6 +300,18 @@ const routes = (
       <Route
         path="promotion/earnings"
         element={<DesignerPromotionEarnings />}
+      />
+      <Route
+        path="promotion/viewvendor"
+        element={<ViewVendor />}
+      />
+      <Route
+        path="promotion/viewacceptpromotion"
+        element={<ViewAcceptedPromotion />}
+      />
+      <Route
+        path="promotion/viewreceivedpromotion"
+        element={<ViewReceivedPromotion />}
       />
       <Route path="designtool" element={<DesignerDesigntool />} />
 

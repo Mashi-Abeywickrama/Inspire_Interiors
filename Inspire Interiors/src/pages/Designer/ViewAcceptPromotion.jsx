@@ -95,7 +95,7 @@ const generateStars = (rate) => {
 };
 
 
-const PromotionRequest = () => {
+const ViewAcceptedPromotion = () => {
     const [offerData, setOfferData] = useState({
         offeroverview: '',
         offerdescription: '',
@@ -110,9 +110,8 @@ const PromotionRequest = () => {
     });
 
     const [isEditing, setIsEditing] = useState(false);
-    const [designerData, setDesignerData] = useState([]);
-    const [designer, setDesigner] = useState([]);
-    const [designCount, setDesignCount] = useState(0);
+    const [vendorData, setVendorData] = useState([]);
+    const [vendor, setVendor] = useState([]);
 
     const urlParams = new URLSearchParams(window.location.search);
     const offerID = urlParams.get('id');
@@ -176,13 +175,6 @@ const PromotionRequest = () => {
         timeout: 5000,
     });
 
-    const updateOfferData = (field, value) => {
-        setOfferData((prevDetails) => ({
-            ...prevDetails,
-            [field]: value !== undefined ? value : prevDetails[field],
-        }));
-        setIsEditing(true);
-    };
 
     useEffect(() => {
         // Fetch data from your backend API
@@ -199,83 +191,32 @@ const PromotionRequest = () => {
 
     useEffect(() => {
         axiosInstance
-            .get(`/getuser/${offerData.designer}`)
+            .get(`/getuser/${offerData.vendorid}`)
             .then((response) => {
-                setDesignerData(response.data);
+                setVendorData(response.data);
                 console.log(response.data);
             })
             .catch((error) => {
                 console.log('Error fetching data', error);
             });
-    }, [offerData.designer]);
+    }, [offerData.vendorid]);
 
-    const designerID = designerData.userid;
-    console.log(designerID);
+    const vendorID = vendorData.userid;
+    console.log(vendorID);
 
     useEffect(() => {
         axiosInstance
-        .get(`/designer/${designerID}`)
+        .get(`/vendor/${vendorID}`)
         .then((response) => {
-            setDesigner(response.data);
+            setVendor(response.data);
             console.log(response.data);
           })
           .catch((error) => {
             console.log('Error fetching data', error);
         });
-    }, [designerID]);
-
-    useEffect(() => {
-        axiosInstance
-        .get(`/designer/mydesigns/d/${designerID}`)
-        .then((response) => {
-            setDesignCount(response.data.length);
-            console.log(response.data.length);
-            })
-            .catch((error) => {
-                console.log('Error fetching data', error);
-        });
-    }, [designerID]);
-
-    const handleEdit = async (e) => {
-        e.preventDefault();
-        try{
-            const response = await axiosInstance.put(`/updatepromotion/${offerID}`, {
-                offeroverview: offerData.offeroverview,
-                offerdescription: offerData.offerdescription,
-                zerotothousand: offerData.zerotothousand,
-                thousandtofivethousand: offerData.thousandtofivethousand,
-                fivethousandtotenthousand: offerData.fivethousandtotenthousand,
-                tenthousandtofiftythousand: offerData.tenthousandtofiftythousand,
-                fiftythousandtohundredthousand: offerData.fiftythousandtohundredthousand,
-                morethanhundredthousand: offerData.morethanhundredthousand,
-                designer: offerData.designer
-            });
-            if(response.status === 200){
-                setShow(false);
-                // console.log("Offer Edit Succesfully");
-                window.location.reload();
-            }
-        } catch (error) {
-            console.error('Edit Fail');
-            setAlert('Something Happenned Wrong', 'error');
-        }
-    };
+    }, [vendorID]);
 
     
-
-    const handleDelete = async (e) => {
-        e.preventDefault();
-        try{
-            const response = await axiosInstance.delete(`/deletepromotion/${offerID}`);
-            if(response.status === 200){
-                // console.log("Offer delete Succesfully");
-                window.location.href='/vendor/promotion';      
-            }
-        } catch (error) {
-            console.error('Delete Fail');
-            setAlert('Something Happenned Wrong', 'error');
-        }
-    };
     
     return(
     <>
@@ -288,70 +229,11 @@ const PromotionRequest = () => {
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                                 <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text text-dark">My Network</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                                <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text text-dark">Sent</p></Link>
+                                <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text text-dark">Accepted</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                                 <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{offerData.offeroverview}</p>
                             </div>
-                            <button type="button" className='add-btn' onClick={handleShow}><Icon.PencilFill className="mx-2" color="white" size={16} />Edit</button>
-
-                            <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>Edit Promotion Offer</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <form onSubmit={handleEdit}>
-                                        <input type="hidden" name="promotionid" value={offerID} />
-                                        <div className="d-flex flex-column mx-4 gap-3">
-                                            <div className='mb-1'>
-                                                <label>Offer Overview</label>
-                                                <input type='text' name="offeroverview" autoFocus className='form-control Cabin-text' value={offerData.offeroverview} onChange={(e) => updateOfferData(e.target.name, e.target.value)}  style={{backgroundColor: "#F2FAFF"}}></input>
-                                            </div>
-                                            <div className='mb-1'>
-                                                <label>Offer Description</label>
-                                                <input type='text' name="offerdescription" className='form-control Cabin-text' value={offerData.offerdescription} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
-                                            </div>
-                                            <div className="d-flex flex-row gap-5">
-                                                <div className='my-2'>
-                                                    <label>Commission Percentage (Price Range 0 - 1000)</label>
-                                                    <input type='number' name="zerotothousand" className='form-control Cabin-text h-50' value={offerData.zerotothousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
-                                                </div>
-                                                <div className='my-2'>
-                                                    <label>Commission Percentage (Price Range 1K - 5K)</label>
-                                                    <input type='number' name="thousandtofivethousand" className='form-control Cabin-text h-50' value={offerData.thousandtofivethousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
-                                                </div>
-                                                <div className='my-2'>
-                                                    <label>Commission Percentage (Price Range 5K - 10K)</label>
-                                                    <input type='number' name="fivethousandtotenthousand" className='form-control Cabin-text h-50' value={offerData.fivethousandtotenthousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
-                                                </div>
-                                            </div>
-                                            <div className="d-flex flex-row gap-5">
-                                                <div className='my-2'>
-                                                    <label>Commission Percentage (Price Range 10K - 50K)</label>
-                                                    <input type='number' name="tenthousandtofiftythousand" className='form-control Cabin-text h-50' value={offerData.tenthousandtofiftythousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
-                                                </div>
-                                                <div className='my-2'>
-                                                    <label>Commission Percentage (Price Range 50K - 100K)</label>
-                                                    <input type='number' name="fiftythousandtohundredthousand" className='form-control Cabin-text h-50' value={offerData.fiftythousandtohundredthousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
-                                                </div>
-                                                <div className='my-2'>
-                                                    <label>Commission Percentage (Price Range more than 100K)</label>
-                                                    <input type='number' name="morethanhundredthousand" className='form-control Cabin-text h-50' value={offerData.morethanhundredthousand} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
-                                                </div>
-                                            </div>
-                                            <div className="d-flex flex-row gap-5">
-                                                <div className='my-2'>
-                                                    <label>Designer</label>
-                                                    <input type='number' name="designer" className='form-control Cabin-text h-50' value={offerData.designer} onChange={(e) => updateOfferData(e.target.name, e.target.value)} style={{backgroundColor: "#F2FAFF"}}></input>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className='d-flex flex-row justify-content-between'>
-                                            <button type="button" className='withdraw-btn m-4' onClick={handleClose}><Icon.PlusLg color="white" size={20} />Discard Changes</button>
-                                            <button type="submit" className='accept-btn m-4'><Icon.PlusLg color="white" size={20} />Save Changes</button>
-                                        </div>
-                                    </form>
-                                </Modal.Body>
-                            </Modal>
+                            
                         </div>          
                         <div  className="d-flex flex-column mt-2">
                         <div>
@@ -378,17 +260,16 @@ const PromotionRequest = () => {
                                 paging={false}
                                 searching={false} />
                         </div>
-                        <button className="withdraw-btn float-end Cabin-text mt-2" onClick={handleDelete}>Withdraw Request</button>
                 </div>
                 <div className="col-lg-5 mb-3">
                     <div className='col-lg-12 h-100 bg-white rounded-3 shadow p-4 '>
-                        <p className="fs-5 fw-bold Cabin-text">About Designer {designerData.name}</p>
+                        <p className="fs-5 fw-bold Cabin-text">About Vendor {vendorData.name}</p>
                         <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
-                            <img style={{ objectFit: "cover" }} className="img-fluid p-2 rounded-4 w-25 h-25" src={`../../../../src/assets/img/profilePic/${designerData.profile_pic}`} />
+                            <img style={{ objectFit: "cover" }} className="img-fluid p-2 rounded-4 w-50 h-50" src={`../../../../src/assets/img/profilePic/${vendorData.profile_pic}`} />
                             <div className="d-flex flex-column">
-                                <p className="fs-6 fw-bold Cabin-text mt-2">{designerData.name}</p>
+                                <p className="fs-6 fw-bold Cabin-text mt-4">{vendorData.name}</p>
                                 <div className="d-flex flex-column gap-2">
-                                    <p className="fs-6 fw-semibold Cabin-text">{designerData.type}</p>
+                                    <p className="fs-6 fw-semibold Cabin-text">{vendorData.type}</p>
                                     <div className="d-flex align-items-center gap-3">
                                             <div className='d-flex flex-row gap-1'>
                                                 {generateStars(4.6)}
@@ -400,26 +281,8 @@ const PromotionRequest = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="d-flex flex-row justify-content-evenly mt-4">
-                            <div className="d-flex flex-column">
-                                <p className="fs-1 fw-semibold Cabin-text text-center m-0" style={{ color: "#FFC00C" }}>{designCount}</p>
-                                <p className="fs-6 fw-bold Cabin-text text-center m-0">Designs</p>
-                            </div>
-                            <div className="d-flex flex-column">
-                                <p className="fs-1 fw-semibold Cabin-text text-center m-0" style={{ color: "#FFC00C" }}>30</p>
-                                <p className="fs-6 fw-bold Cabin-text text-center m-0">Custom designs sold</p>
-                            </div>
-                        </div>
-                        <div className="d-flex flex-column my-1">
-                            <p className="fs-6 fw-bold Cabin-text mt-1" style={{ color: "#545563" }}>Bio</p>
-                            <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B" }}>{designer.bio}</p>
-                        </div>
-                        <div className="d-flex flex-column my-1">
-                            <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563" }}>Specialities</p>
-                            <div className="badge w-25 Cabin-text" style={{ color: "#000000", backgroundColor: "#CCF8FE" }}>{designer.specialities}</div>
-                        </div>
                         <div className="d-flex flex-row gap-4 my-2">
-                            <p className="fs-5 fw-bold Cabin-text">Top Selling Designs</p>
+                            <p className="fs-5 fw-bold Cabin-text">Top Selling Products</p>
                             <Link to={`/vendor/promotion/promoteproduct?d_id=${offerData.designer}`}><p className="fs-6 fw-semibold Cabin-text mt-1" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1" /></p></Link>
                         </div>
                         <div class="row row-cols-1 row-cols-md-3 g-4 mx-4">
@@ -488,4 +351,4 @@ const PromotionRequest = () => {
     )
 }
 
-export default PromotionRequest;
+export default ViewAcceptedPromotion;

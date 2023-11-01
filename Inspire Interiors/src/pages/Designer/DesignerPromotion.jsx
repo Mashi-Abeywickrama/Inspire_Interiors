@@ -192,27 +192,29 @@ const DesignerPromotion = () => {
     }
   };
 
-  const AcceptedData = statusData.filter(vendoroffer => vendoroffer.status == 1);
+  const AcceptedData = statusData.filter(vendoroffer => vendoroffer.offerstatus == 1);
   console.log(AcceptedData);
 
-const PendingData = statusData.filter(vendoroffer => vendoroffer.status == 0);
+  const PendingData = statusData.filter(vendoroffer => vendoroffer.offerstatus == 0);
 
 const Rows1 = AcceptedData.map(vendoroffer=>({
-  overview: <Link to={`/designer/promotion/Promotionrequest?id=${vendoroffer.promotionRequestID}`}><p className='align-items-center text-dark text-uppercase fs-6 fw-semibold mt-3 m-0'>{vendoroffer.overview}</p></Link>,
-  status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{findStatus(vendoroffer.status)}</p></div>
+  overview: <Link to={`/designer/promotion/viewacceptpromotion?id=${vendoroffer.offerid}`}><p className='align-items-center text-dark text-uppercase fs-6 fw-semibold mt-3 m-0'>{vendoroffer.offeroverview}</p></Link>,
+  status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{findStatus(vendoroffer.offerstatus)}</p></div>
 }));
+
 
 const Rows = PendingData.map(vendoroffer=>({
-  overview: <Link to={`/designer/promotion/Promotionrequest?id=${vendoroffer.promotionRequestID}`}><p className='align-items-center text-dark text-uppercase fs-6 fw-semibold mt-3 m-0'>{vendoroffer.overview}</p></Link>,
-  status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{findStatus(vendoroffer.status)}</p></div>
+  overview: <Link to={`/designer/promotion/viewreceivedpromotion?id=${vendoroffer.offerid}`}><p className='align-items-center text-dark text-uppercase fs-6 fw-semibold mt-3 m-0'>{vendoroffer.offeroverview}</p></Link>,
+  status: <div className='ongoing d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{findStatus(vendoroffer.offerstatus)}</p></div>
 
 }));
+console.log(PendingData)
 
   const mergeData = (acceptedData, vendorData) => {
     const mergedData = acceptedData.map(
       (acceptedItem) => {
       const matchingVendor = vendorData.find(
-        (vendorItem) =>  vendorItem.userid === acceptedItem.vendorID
+        (vendorItem) =>  vendorItem.userid === acceptedItem.vendorid
       );
 
      
@@ -279,7 +281,7 @@ console.log("merged Data", mergedVendor);
                               {vendor.type}
                             </p>
                           </div>
-                          <Link to={`/vendor/promotion/viewdesigners?id=${vendor.userid}`}><Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} /></Link>
+                          <Link to={`/designer/promotion/viewvendor?id=${vendor.userid}`}><Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} /></Link>
                         </div>
                       </div>
                     </div>
