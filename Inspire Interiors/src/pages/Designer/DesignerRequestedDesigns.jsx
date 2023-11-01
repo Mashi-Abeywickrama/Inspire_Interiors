@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Sketch from "../../assets/Designer/Sketch.jpeg";
+import Shake from "../../assets/Designer/Shake.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useSession } from "../../constants/SessionContext";
 
-function DesignerDraftedDesigns() {
+function DesignerRequestedDesigns() {
   //get designer id from session
   const session = useSession();
   // console.log("User id is " + session.sessionData.userid);
@@ -14,7 +14,7 @@ function DesignerDraftedDesigns() {
 
   const [data, setData] = useState([]);
   const draftUrl =
-    "http://localhost:8080/designer/designtool/getdesign/dra/" + id;
+    "http://localhost:8080/designer/designtool/getdesign/req/" + id;
 
   function arrange(arr) {
     let arr1 = arr.sort(
@@ -35,12 +35,12 @@ function DesignerDraftedDesigns() {
     <div className="col-lg-12 d-flex lex-wrap  bg-white rounded-3 p-4">
       <div className="d-flex  flex-row flex-lg-row flex-md-row flex-sm-column  flex-wrap gap-3">
         {arr.map((res) => (
-          <div class="w-25">
+          <div class="w-30">
             <Link to={"http://localhost:8000?id=" + res.id}>
               <div class="card p-2 h-100 mb-2 rounded-3 border-0 shadow">
                 <img
                   className="img-fluid"
-                  src={Sketch}
+                  src={Shake}
                   class="card-img-top"
                   alt="blacksofa"
                 />
@@ -79,4 +79,4 @@ function DesignerDraftedDesigns() {
   );
 }
 
-export default DesignerDraftedDesigns;
+export default DesignerRequestedDesigns;

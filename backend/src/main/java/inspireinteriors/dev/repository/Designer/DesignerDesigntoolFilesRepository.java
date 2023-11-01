@@ -14,8 +14,11 @@ public interface DesignerDesigntoolFilesRepository extends JpaRepository<Designt
 @Query(value = "SELECT * FROM designtool_files WHERE request_id = :rId", nativeQuery = true)
     DesigntoolFiles findByRequest_id(@Param("rId") int request_id);
 
-    @Query(value = "select * from designtool_files where request_id = 0", nativeQuery = true)
-    List<DesigntoolFiles> getAllReq();
+    @Query(value = "select * from designtool_files where request_id = 0  and designer_id =:dId", nativeQuery = true)
+    List<DesigntoolFiles> getAllDra(@Param("dId") int designer_id);
+
+    @Query(value = "select * from designtool_files where request_id != 0 and designer_id = :dId", nativeQuery = true)
+    List<DesigntoolFiles> getAllReq(@Param("dId") int designer_id);
 }
 
 

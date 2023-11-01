@@ -138,14 +138,17 @@ var mainControls = function (blueprint3d) {
     var formData = new FormData();
     formData.append("designFile", blob, "design.blueprint3d");
 
-    var uploadUrl = "http://localhost:8080/designer/designtool/savedesign";
-
     //get id from url
     const url = window.location.search;
     console.log("url is = localhost:8000/", url);
     const urlParams = new URLSearchParams(url);
     let id = urlParams.get("id");
     console.log("loaded id is =", id);
+    let did = urlParams.get("did");
+    console.log("loaded did is =", did);
+
+    var uploadUrl =
+      "http://localhost:8080/designer/designtool/savedesign/did/" + did;
 
     var uploadUrl1 = `http://localhost:8080/designer/designtool/savedesign/${id}`;
 
@@ -932,6 +935,8 @@ $(document).ready(function () {
   const urlParams = new URLSearchParams(url);
   let id = urlParams.get("id");
   console.log("id is =", id);
+  let did = urlParams.get("did");
+  console.log("loaded did is =", did);
 
   var loadUrl = "http://localhost:8080/designer/designtool/getdesign/" + id;
 

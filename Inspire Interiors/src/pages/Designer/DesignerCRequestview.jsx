@@ -13,6 +13,7 @@ import * as Icon from "react-bootstrap-icons";
 function DesignerCRequestview() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [amount, setAmount] = useState(0);
 
   //SetStaus
   const [newStatus, setNewStatus] = useState("");
@@ -132,17 +133,24 @@ function DesignerCRequestview() {
       });
   };
   const finished = () => {
-    axios
-      .put(
-        `http://localhost:8080/designer/customerrequests/u/${id}/setstatus?newStatus=3`
-      )
-      .then((response) => {
-        console.log(response);
-        setIsUpdated(true);
-      })
-      .catch((error) => {
-        console.log(" error to reject", error);
-      });
+    if (amount > 0) {
+      axios.put(
+        `http://localhost:8080/designer/CRequest/req/${id}/amount/${amount}`
+      );
+      axios
+        .put(
+          `http://localhost:8080/designer/customerrequests/u/${id}/setstatus?newStatus=3`
+        )
+        .then((response) => {
+          console.log(response);
+          setIsUpdated(true);
+        })
+        .catch((error) => {
+          console.log(" error to reject", error);
+        });
+    } else {
+      alert("Please Enter Amount");
+    }
   };
   const handleReload = () => {
     setTimeout(() => {
@@ -176,6 +184,18 @@ function DesignerCRequestview() {
               </div>
               <div className="d-flex flex-column">
                 <p
+                  className="fs-5 fw-bold Cabin-text text-uppercase text-primary"
+                  style={{ color: "#545563" }}
+                >
+                  Request No: {data.request_id}
+                </p>
+                <p
+                  className="fs-5 fw-bold Cabin-text text-dark text-uppercase"
+                  style={{ color: "#545563" }}
+                >
+                  {data.roomType}
+                </p>
+                <p
                   className="fs-6 fw-bold Cabin-text"
                   style={{ color: "#545563" }}
                 >
@@ -193,7 +213,7 @@ function DesignerCRequestview() {
                   className="fs-6 fw-bold Cabin-text"
                   style={{ color: "#545563" }}
                 >
-                  Design Dimesions
+                  Design Specification
                 </p>
                 <p
                   className="fs-6 fw-normal Cabin-text"
@@ -265,6 +285,12 @@ function DesignerCRequestview() {
                 >
                   {data.note}
                 </p>
+                <p
+                  className="fs-6 fw-bold Cabin-text"
+                  style={{ color: "#545563" }}
+                >
+                  Requested On: {data.requestedOn}
+                </p>
               </div>
               {data.status === 0 && (
                 <div className="d-flex flex-row gap-3 justify-content-end">
@@ -281,12 +307,25 @@ function DesignerCRequestview() {
 
               {data.status === 1 && (
                 <div className="d-flex flex-row gap-3 justify-content-end">
+                  <p
+                    className="fs-6 fw-bold Cabin-text"
+                    style={{ color: "#545563" }}
+                  >
+                    {" "}
+                    Enter Amount :
+                  </p>
+                  <input
+                    type="number"
+                    className="bg-light text-dark"
+                    style={{ borderColor: "#a9a9a959" }}
+                    onChange={(e) => setAmount(e.target.value)}
+                  />
                   <button
                     className="acpt-btn Cabin-text"
                     style={{ background: "#007F00" }}
                     onClick={finished}
                   >
-                    Finish Now
+                    Complete Now
                   </button>
 
                   {isUpdated && <p>Processing...</p>}
@@ -308,12 +347,21 @@ function DesignerCRequestview() {
               )}
 
               {data.status === 3 && (
-                <button
-                  className="acpt-btn Cabin-text"
-                  style={{ background: "#007F00" }}
-                >
-                  Finished
-                </button>
+                <dic>
+                  <p
+                    className="fs-6 fw-bold Cabin-text"
+                    style={{ color: "#545563" }}
+                  >
+                    {" "}
+                    Amount Is : {data.amount}
+                  </p>
+                  <button
+                    className="acpt-btn Cabin-text"
+                    style={{ background: "#023047" }}
+                  >
+                    Waiting For Payment
+                  </button>
+                </dic>
               )}
 
               {/* <div className="d-flex flex-row gap-3 justify-content-end">

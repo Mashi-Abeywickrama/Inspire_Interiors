@@ -67,7 +67,6 @@ import ViewDelivery from "./pages/Manager/viewDelivery";
 import MInquiry from "./pages/Manager/inquiry";
 import MInquiryView from "./pages/Manager/viewInquiry";
 
-
 // Vendor
 
 import VDashboardlayout from "./layouts/Vendor/vendorDashboardlayout";
@@ -126,9 +125,9 @@ import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
 import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
 import DesignerMyDesignView from "./pages/Designer/DesignerMyDesignView";
 import DesignerDraftedDesigns from "./pages/Designer/DesignerDraftedDesigns";
+import DesignerRequestedDesigns from "./pages/Designer/DesignerRequestedDesigns";
 
 import TypeView from "./pages/Customer/marketplace/typeView";
-
 
 const routes = (
   <>
@@ -184,14 +183,8 @@ const routes = (
         path="marketplace/categoryview/:roomType"
         element={<CategoryView />}
       />
-      <Route
-        path="marketplace/category/:Type"
-        element={<TypeView />}
-      />
-      <Route
-        path="marketplace/popularItems"
-        element={<PopularView />}
-      />
+      <Route path="marketplace/category/:Type" element={<TypeView />} />
+      <Route path="marketplace/popularItems" element={<PopularView />} />
       <Route path="cart" element={<Cart />} />
       <Route path="checkout/address" element={<Address />} />
       <Route path="checkout/payment" element={<PaymentMethod />} />
@@ -264,7 +257,10 @@ const routes = (
         element={<PromotionRequest />}
       ></Route>
       <Route path="promotion/expenses" element={<PromotionExpenses />}></Route>
-      <Route path="promotion/browsedesigner" element={<BrowseDesigner />}></Route>
+      <Route
+        path="promotion/browsedesigner"
+        element={<BrowseDesigner />}
+      ></Route>
       <Route path="promotion/viewdesigners" element={<ViewDesigners />}></Route>
       <Route path="complaints" element={<Complaints />}></Route>
       <Route
@@ -273,7 +269,6 @@ const routes = (
       ></Route>
       <Route path="setting" element={<VendorSetting />}></Route>
     </Route>
-
 
     {/* Designer Routes */}
     <Route
@@ -301,6 +296,7 @@ const routes = (
       <Route path="crequestview/:id" element={<DesignerCRequestview />} />
       <Route path="mydesignview/:id" element={<DesignerMyDesignView />} />
       <Route path="drafteddesigns" element={<DesignerDraftedDesigns />} />
+      <Route path="requesteddesigns" element={<DesignerRequestedDesigns />} />
     </Route>
 
     {/* Manager Routes */}
@@ -315,7 +311,6 @@ const routes = (
       <Route path="mydesigns" element={<DesignerMyDesigns />} />
       <Route path="inquiry" element={<MInquiry />} />
       <Route path="inquiry/view/:type/:id" element={<MInquiryView />} />
-
     </Route>
   </>
 );
