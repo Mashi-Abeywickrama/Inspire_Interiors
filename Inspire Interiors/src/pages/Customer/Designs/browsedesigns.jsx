@@ -257,7 +257,7 @@ const BrowseDesigns = () => {
                                                 <div className="row fw-semibold" style={{ color: '#696984' }}>
                                                     <div className="col-md-6 col-sm-6 col-6">
                                                         <div className=" px-2">
-                                                            {generateStars(item.stars)} ({item.votes} Votes)
+                                                            {item.description}
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-sm-6 col-6">
@@ -280,9 +280,11 @@ const BrowseDesigns = () => {
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-sm-6 col-6">
-                                                        <div className="d-flex justify-content-end ">
-                                                            {item.column2}
+                                                        <Link to={`/customer/designs/viewdesign/${item.design_id}`}>
+                                                        <div className="d-flex justify-content-end text-black ">
+                                                            View Design 
                                                         </div>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>

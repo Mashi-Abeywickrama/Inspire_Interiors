@@ -55,6 +55,15 @@ const ViewDesign = () => {
             .get(fetchUrl)
             .then((response) => {
                 setData(response.data);
+                axiosInstance
+                    .get(`/promotion/designer/${response.data.designer_id}`)
+                    .then((response2) => {
+                        setOfferData(response2.data);
+                        console.log(response2.data);
+                    })
+                    .catch((error) => {
+                        console.log('Error fetching data', error);
+                    });
                 console.log(response.data.designer_id);
               
                     axiosInstance
@@ -105,18 +114,7 @@ const ViewDesign = () => {
             });
     }, []);
 
-    useEffect(() => {
-        axiosInstance
-                    .get(`/promotion/designer/${data.designer_id}`)
-                    .then((response2) => {
-                        setOfferData(response2.data);
-                        console.log(response2.data);
-                    })
-                    .catch((error) => {
-                        console.log('Error fetching data', error);
-                    });
-       
-    }, [data.designer_id]);
+    
      useEffect(() => {
         axiosInstance
                     .get(`/room-type/${data.roomtype}`)
@@ -147,6 +145,7 @@ const ViewDesign = () => {
           };
         } 
       });
+
 
     return mergedData;
   };
@@ -226,7 +225,7 @@ const ViewDesign = () => {
 
                             <a className="text-black fw-bold "
                                 href={"http://localhost:8001/?id=" + data.image2}>
-                                Click here to view and edit the design
+                                Click here to view  the design
                             </a>
                         </div>
 
@@ -245,16 +244,20 @@ const ViewDesign = () => {
                         )}
                     </div>
                 </div>
-
+                
                 {/* Similar Designs */}
                 <div className='top-div bg-light shadow rounded mb-3'>
-                    <div className='row container'>
+                    
+                        {mergedOfferData.product_id != undefined && (
+                            <div className='row container'>
                         <div className='row d-flex align-items-center justify-content-start mt-1'>
                             <div className='col-md-4 col-sm-12 col-12 fs-5 fw-bold'>
                                 Recommended products
                             </div>
                         </div>
-                    </div>
+                        </div>
+                        )}
+                    
                     <div className='bg-light image-bar d-flex row w-100 flex-row m-0 p-0 mt-2 '>
                         {mergedOfferData.map((item) => (
                             <Link to={`/customer/marketplace/recommended/${item.product_id}/${item.designerid}`} className='w-25' >
