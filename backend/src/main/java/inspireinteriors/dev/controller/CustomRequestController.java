@@ -24,6 +24,11 @@ public class CustomRequestController {
         return customRequestService.getAllRequests();
     }
 
+    @GetMapping("/customrequest/{customerid}")
+    public List<CustomerRequests> getCustomRequestByCustomerId(@PathVariable int customerid){
+        return customRequestService.getCustomRequestByCustomerId(customerid);
+    }
+
     @PostMapping("/customrequest")
     public CustomerRequests addCustomRequest(@RequestBody CustomerRequests customerRequests){
         return customRequestService.addRequest(customerRequests);

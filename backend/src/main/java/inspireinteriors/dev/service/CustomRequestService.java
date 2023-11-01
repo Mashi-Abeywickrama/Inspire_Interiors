@@ -29,4 +29,8 @@ public class CustomRequestService {
     public void updateRequestImage(CustomerRequests customerRequests) {
         designerCustomerRequestsRepository.save(customerRequests);
     }
+
+    public List<CustomerRequests> getCustomRequestByCustomerId(int customerid) {
+        return designerCustomerRequestsRepository.findDetailsCustomer_id(customerid);
+    }
 }
