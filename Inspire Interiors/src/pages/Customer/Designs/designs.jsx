@@ -279,7 +279,7 @@ const Designs = () => {
                   <Card className='d-flex h-100 w-100 rounded border-0' >
                     <Card.Body className='d-flex'>
                       <Carousel >
-                        {mergedCards[index].content.map((imageUrl, imageIndex) => (
+                        {mergedCards[index].content !== undefined && mergedCards[index].content.map((imageUrl, imageIndex) => (
 
                           <Carousel.Item key={imageIndex} className='object-fit h-100'>
                             {/* {card.title} */}
@@ -292,7 +292,7 @@ const Designs = () => {
                               <p className='fs-6'>{mergedCards[index].title}</p>
                             </Carousel.Caption>
                           </Carousel.Item>
-                        ))}
+                        ))}   
 
                       </Carousel>
                     </Card.Body>

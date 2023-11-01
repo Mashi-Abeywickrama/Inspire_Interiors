@@ -55,4 +55,36 @@ public class ReviewService {
     public Review addReview(Review review) {
         return reviewRepository.save(review);
     }
+
+    public double getAverageDRating(Long designId) {
+        List<Review> reviews = reviewRepository.findByDesignId(designId);
+
+        double totalRating = 0.0;
+        int count = 0;
+
+        for (Review review : reviews) {
+            Integer rating = review.getStarRating();
+            try {
+                totalRating += rating;
+                count++;
+            } catch (NumberFormatException e) {
+                // Handle parsing error if necessary
+            }
+        }
+
+        // Calculate the average rating
+        if (count > 0) {
+            return totalRating / count;
+        } else {
+            return 0.0; // No valid ratings found, return 0.0
+        }
+    }
+
+    public long getTotalVotesD(Long designId) {
+        return reviewRepository.countByDesignId(designId);
+    }
+
+    public List<Review> getReviewsByDesignId(Long designId) {
+        return reviewRepository.findByDesignId(designId);
+    }
 }
