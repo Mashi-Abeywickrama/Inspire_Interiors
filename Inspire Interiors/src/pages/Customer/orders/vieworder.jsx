@@ -112,6 +112,10 @@ const ViewOrder = () => {
                 className: 'ongoing d-flex gap-2 align-items-center',
                 text: 'Ongoing',
             },
+            Recieved: {
+                className: 'ongoing d-flex gap-2 align-items-center',
+                text: 'Recieved',
+            },
             Delayed: {
                 className: 'delayed d-flex gap-2 align-items-center',
                 text: 'Delayed',
@@ -146,6 +150,8 @@ const ViewOrder = () => {
             Prepared: 'ongoing d-flex gap-2 align-items-center',
                 
             Shipped: 'ongoing d-flex gap-2 align-items-center',
+
+            Recieved: 'ongoing d-flex gap-2 align-items-center',
             
             Delayed: 'delayed d-flex gap-2 align-items-center',
                 
@@ -188,11 +194,11 @@ const ViewOrder = () => {
             <>
                 <div className="order-container w-100 rounded-3 mb-4 me-5 p-3">
                     <div className="d-flex flex-row gap-4">
-                        <Link to="/vendor/order"><p className="text-dark fs-5 fw-bold Cabin-text">Orders</p></Link>
+                        <Link to="/customer/orders"><p className="text-dark fs-5 fw-bold Cabin-text">Orders</p></Link>
                         <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                         <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{orderData.status}</p>
                         <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                        <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{orderData.orderid}</p>
+                        <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{productData.product_name}</p>
                     </div>
                     <div className="col-12 d-flex flex-column">
                         <div className="d-flex flex-row justify-content-between">
@@ -206,7 +212,7 @@ const ViewOrder = () => {
                             <div className="col-lg-12 bg-white rounded-3 p-4 shadow">
                             <p className="fs-5 fw-bold px-3 py-2 Cabin-text" style={{ color: "#023047" }}>Product Details</p>
                                 <div className="d-flex flex-column flex-lg-row justify-content-evenly">
-                                    <img className="img-fluid w-30 h-20" src={(`../../../../src/assets/img/variation/${variationData.variationImg}`)} alt={productData.product_name} />
+                                    <img className="img-fluid w-30 h-20" src={(`../../../../src/assets/img/variation/${productData.variationImg}`)} alt={productData.product_name} />
                                     <div className="d-flex flex-column px-4 mt-4">
                                         <p className="fs-5 fw-semibold Cabin-text text-dark">{productData.product_name} - {variationData.color} {variationData.material}</p>
                                         <div className="d-flex flex-row">
@@ -233,7 +239,7 @@ const ViewOrder = () => {
                                         </div>
                                         <div className="d-flex flex-row">
                                             <p className="fs-6 fw-semibold Cabin-text" style={{ color: "#A2A3B1" }}>Quantity:</p>
-                                            <p className="px-3 fs-6 fw-semibold Cabin-text">{variationData.quantity}</p>
+                                            <p className="px-3 fs-6 fw-semibold Cabin-text">{orderData.quantity}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -286,17 +292,17 @@ const ViewOrder = () => {
                                         className="badge fw-semibold rounded-3 mx-5 Cabin-text"
                                         style={{
                                             height: "1.5rem",
-                                            background: (orderData.status === 'Completed') ? "#007F00" : (orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Completed') ? "#bfe5fd" : "#E6E6E6",
-                                            color: (orderData.status === 'Completed') ? "#fff" : (orderData.status === 'Shipped' || orderData.status === 'Delivered') ? "#023047" : "#979797"
+                                            background: (orderData.status === 'Completed') ? "#007F00" : (orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Recieved') ? "#bfe5fd" : "#E6E6E6",
+                                            color: (orderData.status === 'Completed') ? "#fff" : (orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Recieved') ? "#023047" : "#979797"
                                         }}
                                         disabled={orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Completed'}
                                     >
                                         <Icon.CircleFill
                                             size={7}
                                             className="mx-1"
-                                            color={(orderData.status === 'Completed') ? "#fff" : (orderData.status === 'Shipped' || orderData.status === 'Delivered') ? '#023047' : '#979797'}
+                                            color={(orderData.status === 'Completed') ? "#fff" : (orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Recieved') ? '#023047' : '#979797'}
                                         />
-                                        {orderData.status === 'Shipped' || orderData.status === 'Delivered' ? 'Shipped' : orderData.status === 'Completed' ? 'Completed' : 'Pending'}
+                                        {orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Recieved' ? 'Shipped' : orderData.status === 'Completed' ? 'Completed' : 'Pending'}
                                     </button>
 
                                 </div>

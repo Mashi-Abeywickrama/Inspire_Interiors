@@ -384,7 +384,7 @@ const PromotionRequest = () => {
                     <div className='col-lg-12 h-100 bg-white rounded-3 shadow p-4 '>
                         <p className="fs-5 fw-bold Cabin-text">About Designer {designerData.name}</p>
                         <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
-                            <img style={{ backgroundColor: "#FEE4CB", objectFit: "cover" }} className="img-fluid p-2 rounded-4 border" src={Customer} />
+                            <img style={{ objectFit: "cover" }} className="img-fluid p-2 rounded-4 w-25 h-25" src={`../../../../src/assets/img/profilePic/${designerData.profile_pic}`} />
                             <div className="d-flex flex-column">
                                 <p className="fs-6 fw-bold Cabin-text mt-2">{designerData.name}</p>
                                 <div className="d-flex flex-column gap-2">

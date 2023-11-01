@@ -124,7 +124,14 @@ import DesignerDesigntool from "./pages/Designer/DesignerDesigntool";
 import { Loader } from "semantic-ui-react";
 import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
 import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
+import DesignerMyDesignView from "./pages/Designer/DesignerMyDesignView";
+
 import TypeView from "./pages/Customer/marketplace/typeView";
+import ViewVendor from "./pages/Designer/viewVendor";
+import ViewAcceptedPromotion from "./pages/Designer/ViewAcceptPromotion";
+import ViewReceivedPromotion from "./pages/Designer/ViewReceivedPromotion";
+import ViewAllDesigners from "./pages/Customer/Designs/seeAllDesigners";
+
 
 
 const routes = (
@@ -169,12 +176,16 @@ const routes = (
       <Route path="dashboard" element={<CustomerDashboard />} />
       <Route path="orders" element={<MyOrder />} />
       <Route path="designs" element={<Designs />} />
-      <Route path="designs/browsedesigns" element={<BrowseDesigns />} />
+      <Route path="designs/browsedesigns/:roomtype" element={<BrowseDesigns />} />
       <Route
         path="marketplace/viewproduct/:id"
         element={<ViewProduct />}
       ></Route>
       <Route path="designs/viewdesigner" element={<ViewDesigner />} />
+      <Route
+        path="designs/alldesigners"
+        element={<ViewAllDesigners />}
+      />
       <Route path="marketplace" element={<MarketPlace />} />
       {/* <Route path="marketplace/categoryview" element={<CategoryView />} /> */}
       <Route
@@ -290,12 +301,25 @@ const routes = (
         path="promotion/earnings"
         element={<DesignerPromotionEarnings />}
       />
+      <Route
+        path="promotion/viewvendor"
+        element={<ViewVendor />}
+      />
+      <Route
+        path="promotion/viewacceptpromotion"
+        element={<ViewAcceptedPromotion />}
+      />
+      <Route
+        path="promotion/viewreceivedpromotion"
+        element={<ViewReceivedPromotion />}
+      />
       <Route path="designtool" element={<DesignerDesigntool />} />
 
       <Route path="setting" element={<DesignerSetting />} />
       <Route path="test" element={<Test />} />
       <Route path="requests" element={<DesignerCustomerRequest />} />
       <Route path="crequestview/:id" element={<DesignerCRequestview />} />
+      <Route path="mydesignview/:id" element={<DesignerMyDesignView/>} />
     </Route>
 
     {/* Manager Routes */}

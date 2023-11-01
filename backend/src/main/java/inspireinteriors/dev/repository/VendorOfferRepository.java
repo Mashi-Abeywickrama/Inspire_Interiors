@@ -14,6 +14,9 @@ public interface VendorOfferRepository extends JpaRepository<VendorOffer, Long> 
 
     VendorOffer findByOfferid(int offerid);
 
+    @Query(value = "SELECT * FROM vendor_offer WHERE designerid = :dId", nativeQuery = true)
+    List<VendorOffer> findPromotionByDesigner_id(@Param("dId") int designerid);
+
     @Query(value = "SELECT * FROM vendor_offer WHERE vendorid = :vId", nativeQuery = true)
     List<VendorOffer> findPromotionByVendor_id(@Param("vId") int vendorid);
 }

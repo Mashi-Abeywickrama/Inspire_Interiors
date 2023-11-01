@@ -1,3 +1,5 @@
+
+
 var aGlobal = null;
 var anItem = null;
 var aWall = null;
@@ -20,6 +22,8 @@ var myhome1 =
  */
 
 var ViewerFloorplanner = function (blueprint3d) {
+
+  
   var canvasWrapper = "#floorplanner";
   // buttons
   var move = "#move";
@@ -148,6 +152,7 @@ var mainControls = function (blueprint3d) {
     console.log("loaded id is =", id);
 
     var uploadUrl1 = `http://localhost:8080/designer/designtool/savedesign/${id}`;
+    var uploadUrlget = `http://localhost:8080/designer/lastdesignid`;
 
     if (id != null) {
       fetch(uploadUrl1, {
@@ -170,6 +175,28 @@ var mainControls = function (blueprint3d) {
           console.error("Error is  ", error);
         });
     } else {
+      fetch(uploadUrlget, {
+  method: "GET",
+})
+  .then(function (response) {
+    if (response.ok) {
+      // If the response status is OK (e.g., 200), parse the response JSON or text
+      return response.json(); // Use response.text() if the response is plain text
+    } else {
+      // Handle upload errors here
+      console.error("Upload failed");
+      throw new Error("Upload failed");
+    }
+  })
+  .then(function (data) {
+    // Handle the successful response data here
+    console.log(data);
+    alert("Created and Saved Successfully. ID is = " + data++);
+  })
+  .catch(function (error) {
+    // Handle network errors or exceptions here
+    console.error("Error is ", error);
+  });
       fetch(uploadUrl, {
         method: "POST",
         body: data,
@@ -177,8 +204,7 @@ var mainControls = function (blueprint3d) {
         .then(function (response) {
           if (response.ok) {
             // Handle a successful upload here
-            console.log("Upload successful");
-            alert("Created Successfully....");
+            console.log(response);
           } else {
             // Handle upload errors here
             console.error("Upload failed");

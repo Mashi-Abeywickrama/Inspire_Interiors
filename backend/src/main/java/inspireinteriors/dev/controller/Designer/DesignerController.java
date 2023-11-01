@@ -1,14 +1,22 @@
 package inspireinteriors.dev.controller.Designer;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import inspireinteriors.dev.model.Designer;
 import inspireinteriors.dev.model.DesignerModel.*;
+import inspireinteriors.dev.model.VendorOffer;
 import inspireinteriors.dev.service.Designer.DesignerMyDesignService;
 import inspireinteriors.dev.service.DesignerService;
+import inspireinteriors.dev.service.VendorOfferService;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @CrossOrigin(origins = {"http://localhost:5173", "http://localhost:8000",})
@@ -22,6 +30,9 @@ public class DesignerController {
 
     @Autowired
     private DesignerService designerService;
+
+    @Autowired
+    private VendorOfferService vendorOfferService;
 
 
 
@@ -102,15 +113,15 @@ public class DesignerController {
     //promotion requests endpoints
 
     @GetMapping("/promotionrequests/{id}")
-    public ResponseEntity<PromotionRequests> getPromotionRequestsbyId(@PathVariable(value = "id") int designer_id){
-        PromotionRequests promotionRequests = designerMyDesignService.getPromotionRequestsById(designer_id);
-        return ResponseEntity.ok().body(promotionRequests);
+    public ResponseEntity<VendorOffer> getPromotionRequestsbyId(@PathVariable(value = "id") int designer_id){
+        VendorOffer vendorOffer = designerMyDesignService.getPromotionRequestsById(designer_id);
+        return ResponseEntity.ok().body(vendorOffer);
     }
     //By Designer ID
     @GetMapping("/promotionrequests/d/{id}")
-    public ResponseEntity<List<PromotionRequests>> getPromotionRequestsByDesignerId(@PathVariable(value = "id") int designer_id) {
-        List<PromotionRequests> promotionRequests = designerMyDesignService.getPromotionRequestsByDesignerId(designer_id);
-        return ResponseEntity.ok(promotionRequests);
+    public ResponseEntity<List<VendorOffer>> getPromotionRequestsByDesignerId(@PathVariable(value = "id") int designerid) {
+        List<VendorOffer> vendorOffers = designerMyDesignService.getPromotionRequestsByDesignerId(designerid);
+        return ResponseEntity.ok(vendorOffers);
     }
 
     //design earnings endpoints
@@ -138,6 +149,11 @@ public class DesignerController {
     public ResponseEntity<List<PromotionEarnings>> getPromotionEarningsByDesignerId(@PathVariable(value = "id") int designer_id) {
         List<PromotionEarnings> promotionEarnings = designerMyDesignService.getPromotionEarningsByDesignerId(designer_id);
         return ResponseEntity.ok(promotionEarnings);
+    }
+
+    @GetMapping("/lastdesignid")
+    public int getMaxDesignID(){
+        return designerMyDesignService.getMaxDesignID();
     }
 
 
@@ -169,6 +185,12 @@ public class DesignerController {
 
     }
 
+    @GetMapping("/designtool/de/{id}")
+    public DesigntoolFiles getFilesByDesignerID(@PathVariable("id") int id){
+        DesigntoolFiles designtoolFiles =  designerMyDesignService.getDesignFileByID(id);
+        return designtoolFiles;
+    }
+
     @GetMapping("/designtool/getdesigns/req/{id}")
     public ResponseEntity<DesigntoolFiles> getFilesByRequestID(@PathVariable("id") int request_id){
         DesigntoolFiles designtoolFiles =  designerMyDesignService.GetByReqid(request_id);
@@ -179,6 +201,79 @@ public class DesignerController {
     public ResponseEntity<DesigntoolFiles> getFilesByID(@PathVariable("id") int id){
     DesigntoolFiles designtoolFiles =  designerMyDesignService.Getdetails(id);
       return ResponseEntity.ok(designtoolFiles);
+    }
+
+    @PutMapping("/updatedesignfile")
+    public ResponseEntity<String> updatedesignfile(
+            @RequestParam("designid") Integer designid,
+            @RequestParam("file") MultipartFile file
+    ) throws JsonProcessingException, IOException, JSONException {
+        System.out.println("designid: " + designid);
+
+        // Handle image upload
+        String uploadedFileName = handleImageUpload(file, designid);
+
+        MyDesigns myDesigns = designerMyDesignService.getDesignById(designid);
+        myDesigns.setImage(designid+".gltf");
+        designerMyDesignService.updateImage(myDesigns);
+//
+        return ResponseEntity.ok(uploadedFileName);
+    }
+
+    private String handleImageUpload(MultipartFile imageFile, Integer productID) {
+
+
+
+
+        if (imageFile == null || imageFile.isEmpty()) {
+            return null; // No image provided
+        }
+
+        String fileName = productID + ".gltf";
+
+
+        String currentWorkingDirectory = System.getProperty("user.dir");
+
+        // Construct the relative path to the parent folder
+        String parentFolderRelativePath = ".." + File.separator + "Inspire Interiors";
+
+// Combine with the current working directory to get the absolute path
+        String parentFolderAbsolutePath = currentWorkingDirectory + File.separator + parentFolderRelativePath;
+
+        System.out.println(parentFolderAbsolutePath);
+
+        String filePath =parentFolderAbsolutePath +"/src/assets/img/gltf"+  File.separator  + fileName;
+
+        try {
+            // Create the directory structure if it doesn't exist
+            File directory = new File(filePath).getParentFile();
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+
+
+
+            File destFile = new File(filePath);
+            imageFile.transferTo(destFile);
+
+            return fileName; // Return the absolute path of the saved image
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @GetMapping("/d/{roomType}")
+    public ResponseEntity<List<MyDesigns>> getDesignByRoomType(@PathVariable(value = "roomType") String roomType) {
+        List<MyDesigns> myDesigns = designerMyDesignService.getDesignByRoomType(roomType);
+        return ResponseEntity.ok(myDesigns);
+    }
+
+    @GetMapping("/d/distinctRoomTypes")
+    public ResponseEntity<List<String>> getDistinctRoomTypes() {
+        List<String> roomTypes = designerMyDesignService.getDistinctRoomTypes();
+        return ResponseEntity.ok(roomTypes);
     }
 
 

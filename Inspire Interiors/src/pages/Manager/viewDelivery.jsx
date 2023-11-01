@@ -287,17 +287,17 @@ const ViewOrder = () => {
                                         className="badge fw-semibold rounded-3 mx-5 Cabin-text"
                                         style={{
                                             height: "1.5rem",
-                                            background: (orderData.status === 'Completed') ? "#007F00" : (orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Completed') ? "#bfe5fd" : "#E6E6E6",
-                                            color: (orderData.status === 'Completed') ? "#fff" : (orderData.status === 'Shipped' || orderData.status === 'Delivered') ? "#023047" : "#979797"
+                                            background: (orderData.status === 'Completed') ? "#007F00" : (orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Completed' || orderData.status === 'Recieved') ? "#bfe5fd" : "#E6E6E6",
+                                            color: (orderData.status === 'Completed') ? "#fff" : (orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Recieved') ? "#023047" : "#979797"
                                         }}
                                         disabled={orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Completed'}
                                     >
                                         <Icon.CircleFill
                                             size={7}
                                             className="mx-1"
-                                            color={(orderData.status === 'Completed') ? "#fff" : (orderData.status === 'Shipped' || orderData.status === 'Delivered') ? '#023047' : '#979797'}
+                                            color={(orderData.status === 'Completed') ? "#fff" : (orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Recieved') ? '#023047' : '#979797'}
                                         />
-                                        {orderData.status === 'Shipped' || orderData.status === 'Delivered' ? 'Shipped' : orderData.status === 'Completed' ? 'Completed' : 'Pending'}
+                                        {orderData.status === 'Shipped' || orderData.status === 'Delivered' || orderData.status === 'Recieved' ? 'Shipped' : orderData.status === 'Completed' ? 'Completed' : 'Pending'}
                                     </button>
 
                                 </div>

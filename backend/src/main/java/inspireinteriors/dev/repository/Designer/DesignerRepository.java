@@ -14,4 +14,7 @@ public interface DesignerRepository extends JpaRepository<Designer, Long> {
 
     @Query(value="SELECT * FROM designers d WHERE designer_id = :dId", nativeQuery = true)
     Designer findDesignerByDesigner_id(@Param("dId") int designer_id);
+
+    @Query(value="SELECT * FROM designers d ORDER BY averagereview DESC LIMIT 6", nativeQuery = true)
+    List<Designer> findTopDesigners();
 }

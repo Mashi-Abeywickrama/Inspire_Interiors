@@ -20,65 +20,6 @@ import {Link} from 'react-router-dom';
 import {useSession} from "../../constants/SessionContext";
  
 
-
-const receivedData = {
-    columns: [
-        {
-          label: '',
-          field: 'product',
-          sort: 'asc',
-          width: 250
-        },
-        {
-          field: 'status',
-          sort: 'asc',
-          width: 270
-        },
-    ],
-    rows: [
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/promotion/promotionrequest"><img style={{ backgroundColor: "#FEE4CB", objectFit: "cover", width:"80px" }} className="img-fluid p-0 rounded-4 border" src={Customer} /></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Interior Designer</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/promotion/Promotionrequest"><img style={{ backgroundColor: "#FEE4CB", objectFit: "cover", width:"80px" }} className="img-fluid p-0 rounded-4 border" src={Customer} /></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Interior Designer</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/promotion/Promotionrequest"><img style={{ backgroundColor: "#FEE4CB", objectFit: "cover", width:"80px" }} className="img-fluid p-0 rounded-4 border" src={Customer} /></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Interior Designer</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/promotion/Promotionrequest"><img style={{ backgroundColor: "#FEE4CB", objectFit: "cover", width:"80px" }} className="img-fluid p-0 rounded-4 border" src={Customer} /></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Interior Designer</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-    ]
-}
-
 const largeTableData = {
     columns: [
         {

@@ -51,4 +51,8 @@ public class ReviewService {
     public List<String> getReviewsWithName(Long productId) {
         return reviewRepository.findByNameByProductId(productId);
     }
+
+    public Review addReview(Review review) {
+        return reviewRepository.save(review);
+    }
 }
