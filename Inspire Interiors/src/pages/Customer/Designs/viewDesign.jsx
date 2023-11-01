@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as Icon from 'react-bootstrap-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Breadcrumb,Row,Col,Form } from "react-bootstrap";
+import { Breadcrumb,Row,Col,Form, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import './../../../styles/customer/designs.css';
@@ -12,6 +12,8 @@ import { GLTFModel, AmbientLight, DirectionLight } from "react-3d-viewer";
 const generateStars = (rate) => {
     const fullStars = Math.floor(rate);
     const halfStar = rate - fullStars >= 0.5;
+
+   
 
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -28,12 +30,23 @@ const generateStars = (rate) => {
 };
 
 const ViewDesign = () => {
+
+     const apiBaseURL = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseURL,
+    timeout: 5000,
+  });
+
     const urlParams = new URLSearchParams(window.location.search);
 
     const { id } = useParams();
     const [data, setData] = useState([]);
     const [tool, setTool] = useState([]);
+    const [userData, setUserData] = useState([]);
     const [itemNames, setItemNames] = useState([]);
+    const [offerData, setOfferData] = useState([]);
+    const [productData, setProductData] = useState([]);
 
     useEffect(() => {
         const fetchUrl = `http://localhost:8080/designer/mydesigns/${id}`;
@@ -42,6 +55,18 @@ const ViewDesign = () => {
             .get(fetchUrl)
             .then((response) => {
                 setData(response.data);
+                console.log(response.data.designer_id);
+              
+                    axiosInstance
+                    .get(`/getuser/${response.data.designer_id}`)
+                    .then((response2) => {
+                        setUserData(response2.data);
+                        console.log(response2.data);
+                    })
+                    .catch((error) => {
+                        console.log('Error fetching data', error);
+                    });
+              
             })
             .catch((error) => {
                 console.log(error);
@@ -80,6 +105,55 @@ const ViewDesign = () => {
             });
     }, []);
 
+    useEffect(() => {
+        axiosInstance
+                    .get(`/promotion/designer/${data.designer_id}`)
+                    .then((response2) => {
+                        setOfferData(response2.data);
+                        console.log(response2.data);
+                    })
+                    .catch((error) => {
+                        console.log('Error fetching data', error);
+                    });
+       
+    }, [data.designer_id]);
+     useEffect(() => {
+        axiosInstance
+                    .get(`/room-type/${data.roomtype}`)
+                    .then((response2) => {
+                        setProductData(response2.data);
+                        console.log(response2.data);
+                    })
+                    .catch((error) => {
+                        console.log('Error fetching data', error);
+                    });
+       
+    }, [data.roomtype]);
+
+
+    const mergeData = (offerData, productData) => {
+    const mergedData = productData.map(
+      (productItem) => {
+        const matchingOffer = offerData.find(
+          (offerItem) => offerItem.vendor === productItem.vendor_id
+        );
+
+        if (matchingOffer) {
+          // Merge the data from both sources
+          return {
+            ...productItem,
+            ...matchingOffer
+
+          };
+        } 
+      });
+
+    return mergedData;
+  };
+
+  const mergedOfferData = mergeData(offerData, productData);
+  console.log("merged Data Designer", mergedOfferData);
+    
     return (
         <>
             <div className="background d-flex flex-column justify-content-between w-100 rounded Cabin-text gap-3 ">
@@ -112,7 +186,7 @@ const ViewDesign = () => {
                             <p className="fs-5 fw-bold Cabin-text" >
                                 By:
                                 <div className="fw-bold Cabin-text m-2">
-                                    Mashi Baba
+                                    {userData.name}
                                 </div></p>
 
                             <Row className='g-4'>
@@ -181,28 +255,32 @@ const ViewDesign = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className='bg-light image-bar row w-100 flex-row m-0 p-0 mt-2 '>
-                        {filteredData(designerData.specialities).map((designers, index) => (
-                            <div key={index} className='d-flex col-5 col-md-4 col-lg-2 col-sm-8 mb-3'>
-                                <Link to={`/customer/designs/viewdesigner?id=${designers.designer_id}`}>
-                                    <Card className='h-100 border-0 rounded' style={{ color: '#7C828B' }}>
-                                        <Card.Img
-                                            variant='top'
-                                            src={`../../../../src/assets/img/profilePic/${designers.profile_pic}`}
-                                            className='p-2 rounded-3 ' />
-                                        <Card.Body className='flex-row justify-content-center'>
-                                            <Card.Text className='d-flex m-0 lead fs-6 justify-content-center' >
-                                                {designers.name}
-                                            </Card.Text>
-                                            <Card.Text className='d-flex flex-row justify-content-center gap-1'>
-                                                {generateStars(designers.averagereview)}
-                                            </Card.Text >
-                                        </Card.Body>
-                                    </Card>
-                                </Link>
+                    <div className='bg-light image-bar d-flex row w-100 flex-row m-0 p-0 mt-2 '>
+                        {mergedOfferData.map((item) => (
+                            <Link to={`/customer/marketplace/recommended/${item.product_id}/${item.designerid}`} className='w-25' >
+                            <div className='col-md-3 col-sm-6 w-100 p-0 m-0'>
+                                <Card className='m-2 shadow-sm'>
+                                    <Card.Img
+                                        variant='top'
+                                        src={`./../../../src/assets/img/product/${item.productImg}`}
+                                        className='p-3'
+                                    />
+                                    <Card.Body>
+                                        
+                                        <Card.Text className='fs-6 fw-bold text-center'>
+                                             {item.product_name} ({item.type})
+                                        </Card.Text>
+                                        <Card.Text className='fs-6 fw-bold text-center'>
+                                             {item.product_description}
+                                        </Card.Text>
+                                        
+                                    </Card.Body>
+                                </Card>
                             </div>
+                            </Link>
                         ))}
-                    </div> */}
+                        
+                    </div>
                 </div>
             </div>
         </>
