@@ -238,7 +238,7 @@ const ViewDesigner = () => {
                         <div className='row d-flex align-items-center justify-content-start'>
                             <div className='col-md-4 col-sm-12 col-12 fs-5'>
                             <div className='d-flex flex-row gap-4 p-3 '>
-                                <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text text-dark">Promotion</p></Link>
+                                <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text text-dark">{user.type}</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                                 <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{user.name}</p>
                             </div>
@@ -316,7 +316,7 @@ const ViewDesigner = () => {
                                             </div>
                                             <div className='mb-1'>
                                                 <label>Offer Description</label>
-                                                <input type='text' name="offerdescription" rows={3} className='form-control Cabin-text' placeholder='Enter offer description' value={offerData.offerdescription} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></input>
+                                                <textarea type='text' name="offerdescription" rows={3} className='form-control Cabin-text' placeholder='Enter offer description' value={offerData.offerdescription} onChange={(e) => {inputOfferData(e.target.name, e.target.value)}} style={{backgroundColor: "#F2FAFF"}}></textarea>
                                             </div>
                                             <div className="d-flex flex-row gap-5">
                                                 <div className='my-2'>

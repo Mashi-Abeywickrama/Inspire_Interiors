@@ -56,6 +56,16 @@ public class VendorOfferController {
         return new ResponseEntity<>(vendorOffer, HttpStatus.OK);
     }
 
+    @PutMapping("promotion/accept/{offerid}")
+    public ResponseEntity<String> updateStatus(@PathVariable("offerid") int offerid){
+        VendorOffer vendorOffer = vendorOfferService.getOffer(offerid);
+        vendorOffer.setOfferstatus(1);
+        vendorOfferService.createOffer(vendorOffer);
+        return new ResponseEntity<>("Status Updated", HttpStatus.OK);
+    }
+
+
+
     @PutMapping("/updatepromotion/{offerid}")
     public ResponseEntity<VendorOffer> updateOffer(
             @PathVariable ("offerid") int offerid,

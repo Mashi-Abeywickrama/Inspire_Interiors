@@ -3,9 +3,12 @@ package inspireinteriors.dev.controller.Designer;
 
 import inspireinteriors.dev.model.Designer;
 import inspireinteriors.dev.model.DesignerModel.*;
+import inspireinteriors.dev.model.VendorOffer;
 import inspireinteriors.dev.service.Designer.DesignerMyDesignService;
 import inspireinteriors.dev.service.DesignerService;
+import inspireinteriors.dev.service.VendorOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +25,9 @@ public class DesignerController {
 
     @Autowired
     private DesignerService designerService;
+
+    @Autowired
+    private VendorOfferService vendorOfferService;
 
 
 
@@ -102,15 +108,15 @@ public class DesignerController {
     //promotion requests endpoints
 
     @GetMapping("/promotionrequests/{id}")
-    public ResponseEntity<PromotionRequests> getPromotionRequestsbyId(@PathVariable(value = "id") int designer_id){
-        PromotionRequests promotionRequests = designerMyDesignService.getPromotionRequestsById(designer_id);
-        return ResponseEntity.ok().body(promotionRequests);
+    public ResponseEntity<VendorOffer> getPromotionRequestsbyId(@PathVariable(value = "id") int designer_id){
+        VendorOffer vendorOffer = designerMyDesignService.getPromotionRequestsById(designer_id);
+        return ResponseEntity.ok().body(vendorOffer);
     }
     //By Designer ID
     @GetMapping("/promotionrequests/d/{id}")
-    public ResponseEntity<List<PromotionRequests>> getPromotionRequestsByDesignerId(@PathVariable(value = "id") int designer_id) {
-        List<PromotionRequests> promotionRequests = designerMyDesignService.getPromotionRequestsByDesignerId(designer_id);
-        return ResponseEntity.ok(promotionRequests);
+    public ResponseEntity<List<VendorOffer>> getPromotionRequestsByDesignerId(@PathVariable(value = "id") int designerid) {
+        List<VendorOffer> vendorOffers = designerMyDesignService.getPromotionRequestsByDesignerId(designerid);
+        return ResponseEntity.ok(vendorOffers);
     }
 
     //design earnings endpoints

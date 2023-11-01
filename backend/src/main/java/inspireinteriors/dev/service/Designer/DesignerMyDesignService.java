@@ -3,6 +3,7 @@ package inspireinteriors.dev.service.Designer;
 
 import inspireinteriors.dev.model.Designer;
 import inspireinteriors.dev.model.DesignerModel.*;
+import inspireinteriors.dev.model.VendorOffer;
 import inspireinteriors.dev.repository.Designer.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,11 +86,11 @@ public class DesignerMyDesignService {
 
     //Promotion Requests Services
 
-    public PromotionRequests getPromotionRequestsById(int designer_id) {
+    public VendorOffer getPromotionRequestsById(int designer_id) {
         return designerPromotionRequestsRepository.findById((long) designer_id).orElse(null);
     }
-    public List<PromotionRequests> getPromotionRequestsByDesignerId(int designer_id) {
-        return designerPromotionRequestsRepository.findPromotionRequestsByDesignerID(designer_id);
+    public List<VendorOffer> getPromotionRequestsByDesignerId(int designerid) {
+        return designerPromotionRequestsRepository.findPromotionRequestsByDesignerID(designerid);
     }
 
     //Design Earnings Services
