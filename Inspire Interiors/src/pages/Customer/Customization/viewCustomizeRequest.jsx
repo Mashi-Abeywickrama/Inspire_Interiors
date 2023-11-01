@@ -7,8 +7,12 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 const ViewCustomizeRequest = () => {
-    const urlparams = new URLSearchParams(window.location.search);
-    const customizeID = urlparams.get('id');
+   
+
+    const currentURL = window.location.href;
+    const splitURL = currentURL.split("/");
+    const customizeID = decodeURIComponent(splitURL[5]);
+    console.log("designer: ", customizeID)
 
     const [customizeData, setCustomizedData] = useState([]);
     const [customer, setCustomer] = useState([]);
@@ -30,7 +34,7 @@ const ViewCustomizeRequest = () => {
             .catch((error) => console.log(error));
     }, []);
 
-    const customerID = customizeData.customerid;
+    const customerID = customizeData.vendorid;
     console.log(customerID);
 
     useEffect(() => {
@@ -101,7 +105,9 @@ const ViewCustomizeRequest = () => {
                             <p className="fs-6 fw-normal Cabin-text" style={{ color: "#17183B"}}>{customizeData.additionalnotes}</p>
                         </div>
                         <div className="d-flex flex-row gap-3 my-4 justify-content-end">
-                            <button className="acpt-btn Cabin-text" onClick={handleEdit}>Accept Order</button>
+                            {/* <button className="acpt-btn Cabin-text" onClick={handleEdit}>Accept Order</button> */}4
+                            <br />
+                            <br />
                         </div>
                     </div>
                     <div className="col-lg-4">
@@ -120,7 +126,7 @@ const ViewCustomizeRequest = () => {
                                             <p className="fs-6 fw-normal Cabin-text" style={{ color: "#023047"}}>{customer.contact_no}</p>
                                         </div>
                                         <p className="fs-6 fw-normal Cabin-text" style={{ color: "#023047", fontSize: "16px", fontWeight: "400" }}>{customer.email}</p>
-                                        <button className="contact-btn float-end Cabin-text">Contact Customer</button>
+                                        <button className="contact-btn float-end Cabin-text">Contact Vendor</button>
                                     </div>
                                 </div>
                             </div>
