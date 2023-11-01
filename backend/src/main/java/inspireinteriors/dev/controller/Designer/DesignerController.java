@@ -258,5 +258,17 @@ public class DesignerController {
         }
     }
 
+    @GetMapping("/d/{roomType}")
+    public ResponseEntity<List<MyDesigns>> getDesignByRoomType(@PathVariable(value = "roomType") String roomType) {
+        List<MyDesigns> myDesigns = designerMyDesignService.getDesignByRoomType(roomType);
+        return ResponseEntity.ok(myDesigns);
+    }
+
+    @GetMapping("/d/distinctRoomTypes")
+    public ResponseEntity<List<String>> getDistinctRoomTypes() {
+        List<String> roomTypes = designerMyDesignService.getDistinctRoomTypes();
+        return ResponseEntity.ok(roomTypes);
+    }
+
 
 }
