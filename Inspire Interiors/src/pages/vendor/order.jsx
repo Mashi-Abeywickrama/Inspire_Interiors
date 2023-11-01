@@ -169,12 +169,12 @@ const Order = () => {
       // Take the first 4 products (latest products)
       const latestCustomizedorder = sortedCustomizedData.slice(0, 4);
 
-    const getOrderStatus = (status) => {
+      const getOrderStatus = (status) => {
         const statusDetails = {
           New: {
             className: 'new d-flex gap-2 align-items-center',
             text: 'New',
-          }, 
+          },
           Completed: {
             className: 'completed d-flex gap-2 align-items-center',
             text: 'Completed',
@@ -182,6 +182,34 @@ const Order = () => {
           Ongoing: {
             className: 'ongoing d-flex gap-2 align-items-center',
             text: 'Ongoing',
+          },
+    
+          Prepared: {
+            className: 'ongoing d-flex gap-2 align-items-center',
+            text: 'Prepared',
+          },
+    
+          Shipped: {
+            className: 'ongoing d-flex gap-2 align-items-center',
+            text: 'Shipped',
+          },
+          Recieved: {
+            className: 'ongoing d-flex gap-2 align-items-center',
+            text: 'Recieved',
+        },
+          Delivered: {
+            className: 'ongoing d-flex gap-2 align-items-center',
+            text: 'Delivered',
+          },
+    
+           Confirmed: {
+            className: 'ongoing d-flex gap-2 align-items-center',
+            text: 'Confirmed',
+          },
+    
+          Delayed: {
+            className: 'delayed d-flex gap-2 align-items-center',
+            text: 'Delayed',
           },
           Canceled: {
             className: 'outstock d-flex gap-2 align-items-center',
@@ -265,10 +293,9 @@ const Order = () => {
                 <div className='w-100 d-flex flex-column flex-lg-row gap-4'>
                     <div className='col-lg-8 bg-white rounded-3 shadow p-4'>
                         <div className='d-flex flex-row gap-2'>
-                            <p className='fs-5 fw-bold Cabin-text'>Orders</p>
+                            <p className='fs-5 fw-bold Cabin-text text-dark'>Orders</p>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-
-                            <p className='fs-5 fw-bold Cabin-text' style={{ color: "#A2A3B1" }}>{selectedTab}</p>
+                            <p className='fs-5 fw-bold Cabin-text text-dark'>{selectedTab}</p>
 
                         </div>
                         <div>

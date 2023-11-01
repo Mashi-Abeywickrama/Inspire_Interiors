@@ -284,13 +284,13 @@ const PromotionRequest = () => {
                     <div className='col-lg-7 bg-white rounded-3 shadow p-4 mb-3'>
                         <div className="d-flex flex-column flex-lg-row flex-md-row justify-content-between">
                             <div className="d-flex gap-4">
-                                <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text ">Promotion</p></Link>
+                                <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text " style={{ color: "#A2A3B1" }}>Promotion</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                                <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text text-dark">My Network</p></Link>
+                                <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>My Network</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                                <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text text-dark">Sent</p></Link>
+                                <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Sent</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                                <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{offerData.offeroverview}</p>
+                                <p className="fs-5 fw-bold Cabin-text text-dark">{offerData.offeroverview}</p>
                             </div>
                             <button type="button" className='add-btn' onClick={handleShow}><Icon.PencilFill className="mx-2" color="white" size={16} />Edit</button>
 
@@ -391,10 +391,10 @@ const PromotionRequest = () => {
                                     <p className="fs-6 fw-semibold Cabin-text">{designerData.type}</p>
                                     <div className="d-flex align-items-center gap-3">
                                             <div className='d-flex flex-row gap-1'>
-                                                {generateStars(4.6)}
+                                                {generateStars(designer.averagereview)}
                                             </div>
                                             <div className="d-flex flex-row gap-1 float-end">
-                                                <div className="fs-6 fw-bold Cabin-text">4.6/5.0</div>
+                                                <div className="fs-6 fw-bold Cabin-text">{designer.averagereview}/5.0</div>
                                             </div>
                                      </div>
                                 </div>

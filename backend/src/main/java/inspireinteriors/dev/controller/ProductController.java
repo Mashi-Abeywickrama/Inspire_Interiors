@@ -553,6 +553,7 @@ public class ProductController {
         return ResponseEntity.ok(products);
     }
 
+
     @GetMapping("/product/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable(value = "id") int id) {
         Product product = productService.getProductById(id);

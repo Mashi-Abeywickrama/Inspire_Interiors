@@ -96,22 +96,13 @@ const generateStars = (rate) => {
 
 
 const ViewReceivedPromotion = () => {
-    const [offerData, setOfferData] = useState({
-        offeroverview: '',
-        offerdescription: '',
-        zerotothousand: '',
-        thousandtofivethousand: '',
-        fivethousandtotenthousand: '',
-        tenthousandtofiftythousand: '',
-        fiftythousandtohundredthousand: '',
-        morethanhundredthousand: '',
-        offerstatus: '',
-        designer: ''
-    });
+    const [offerData, setOfferData] = useState([]);
 
     const [isEditing, setIsEditing] = useState(false);
     const [vendorData, setVendorData] = useState([]);
     const [vendor, setVendor] = useState([]);
+    const [designData, setDesignData] = useState([{}]);
+    const [productData, setProductData] = useState([{}]);
 
     const urlParams = new URLSearchParams(window.location.search);
     const offerID = urlParams.get('id');
@@ -216,7 +207,57 @@ const ViewReceivedPromotion = () => {
         });
     }, [vendorID]);
 
+    useEffect (() => {
+        axiosInstance
+            .get(`/all-popular-items`)
+            .then((response) => {
+                setDesignData(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('Error fetching data', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        axiosInstance
+            .get(`/viewproducts/vendor/${vendorID}`)
+            .then((response) => {
+                setProductData(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('Error fetching data', error);
+            });
+    }, [vendorID]);
+
+    const mergeData = (designData, productData) => {
+        const mergedData = productData.map(
+          (productItem) => {
+          const matchingProduct = designData.find(
+            (designeItem) =>  designeItem.product_id == productItem[0]
+          );
     
+         
+      
+          if (matchingProduct ) {
+            // Merge the data from both sources
+            return {
+              ...productItem,
+              ...matchingProduct
+            
+            };
+          } else {
+            return {
+                ...productItem
+            };
+        }});
+      
+        return mergedData;
+    };
+    
+    const mergedProduct = mergeData(designData, productData);
+    console.log("merged Data", mergedProduct);
 
     const handleEdit = async (e) => {
         e.preventDefault();
@@ -230,7 +271,7 @@ const ViewReceivedPromotion = () => {
           console.error("Edit Fail", error);
         }
     };
-
+    
     
     return(
     <>
@@ -239,11 +280,11 @@ const ViewReceivedPromotion = () => {
                     <div className='col-lg-7 bg-white rounded-3 shadow p-4 mb-3'>
                         <div className="d-flex flex-column flex-lg-row flex-md-row justify-content-between">
                             <div className="d-flex gap-4">
-                                <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text ">Promotion</p></Link>
+                                <Link to="/designer/promotion"><p className="text-dark fs-5 fw-bold Cabin-text ">Promotion</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                                <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text text-dark">My Network</p></Link>
+                                <Link to="/designer/promotion"><p className="fs-5 fw-bold Cabin-text text-dark">My Network</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                                <Link to="/vendor/promotion"><p className="fs-5 fw-bold Cabin-text text-dark">Received</p></Link>
+                                <Link to="/designer/promotion"><p className="fs-5 fw-bold Cabin-text text-dark">Received</p></Link>
                                 <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                                 <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{offerData.offeroverview}</p>
                             </div>
@@ -285,14 +326,6 @@ const ViewReceivedPromotion = () => {
                                 <p className="fs-6 fw-bold Cabin-text mt-4">{vendorData.name}</p>
                                 <div className="d-flex flex-column gap-2">
                                     <p className="fs-6 fw-semibold Cabin-text">{vendorData.type}</p>
-                                    <div className="d-flex align-items-center gap-3">
-                                            <div className='d-flex flex-row gap-1'>
-                                                {generateStars(4.6)}
-                                            </div>
-                                            <div className="d-flex flex-row gap-1 float-end">
-                                                <div className="fs-6 fw-bold Cabin-text">4.6/5.0</div>
-                                            </div>
-                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -300,66 +333,28 @@ const ViewReceivedPromotion = () => {
                             <p className="fs-5 fw-bold Cabin-text">Top Selling Products</p>
                             <Link to={`/vendor/promotion/promoteproduct?d_id=${offerData.designer}`}><p className="fs-6 fw-semibold Cabin-text mt-1" style={{ color: "#035C94" }}>See all<Icon.ArrowRight color="#035C94" className="mx-1" /></p></Link>
                         </div>
-                        <div class="row row-cols-1 row-cols-md-3 g-4 mx-4">
-                            <div class="col w-50">
-                                <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
-                                    <div class="card-body m-0 p-0 mt-3">
-                                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                            <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
-                                                <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
+                        <div className="d-flex flex-wrap">
+                            <div class="row row-cols-1 row-cols-md-3 g-4 my-4 mx-4">
+                                {mergedProduct.map((product, index) => (
+                                    <div class="col">
+                                        <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                                            <img className="img-fluid" src={(`../../../../src/assets/img/product/${product.product_id}.jpg`)} class="card-img-top" alt="blacksofa" />
+                                            <div class="card-body m-0 p-0 mt-3">
+                                                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                                                    <div className="d-flex flex-column">
+                                                        <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>{product.product_name}</p>
+                                                        <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">{product.type}</p>
+                                                    </div>
+                                                    <Link to={`/designer/promotion/product/${product.product_id}`}><Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} /></Link>
+                                                </div>
                                             </div>
-                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col w-50">
-                                <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
-                                    <div class="card-body m-0 p-0 mt-3">
-                                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                            <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
-                                                <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                            </div>
-                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col w-50">
-                                <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
-                                    <div class="card-body m-0 p-0 mt-3">
-                                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                            <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
-                                                <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                            </div>
-                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col w-50">
-                                <div class="card card-wid p-2 h-100 mb-2 rounded-3 border-0 shadow">
-                                    <img className="img-fluid" src={BlackSofa} class="card-img-top" alt="blacksofa" />
-                                    <div class="card-body m-0 p-0 mt-3">
-                                        <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                                            <div className="d-flex flex-column">
-                                                <p className="card-text m-0 fs-6 fw-bold Cabin-text" style={{ color: "#969696" }}>WELCOME ROOM</p>
-                                                <p class="card-title fw-semibold m-0 fs-6 fw-semibold Cabin-text">Landskrona</p>
-                                            </div>
-                                            <Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} />
-                                        </div>
-                                    </div>
-                                </div>
+                                    </div> 
+                                ))}  
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>   
             </div>
         </div>
     </>

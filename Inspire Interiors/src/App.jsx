@@ -103,6 +103,7 @@ import ViewRefund from "./pages/CustomerSupport/viewRefund";
 import CustomerSupportDashboard from "./pages/CustomerSupport/customerSupportdashboard";
 import Custom from "./pages/Customer/Customization/custom";
 import CategoryView from "./pages/Customer/marketplace/categoryView";
+import ViewCustomizeRequest from "./pages/Customer/Customization/viewCustomizeRequest";
 
 // Designer
 import DesignerLayout from "./layouts/Designer/DesignerLayout";
@@ -131,6 +132,8 @@ import ViewVendor from "./pages/Designer/viewVendor";
 import ViewAcceptedPromotion from "./pages/Designer/ViewAcceptPromotion";
 import ViewReceivedPromotion from "./pages/Designer/ViewReceivedPromotion";
 import ViewAllDesigners from "./pages/Customer/Designs/seeAllDesigners";
+import ViewProductDesigner from "./pages/Designer/ViewProductDesigner";
+
 
 
 
@@ -206,6 +209,7 @@ const routes = (
       <Route path="checkout/shipping" element={<ShippingMethod />} />
       <Route path="orders/vieworder/:id" element={<OrderView />} />
       <Route path="customization" element={<Custom />}></Route>
+      <Route path="viewcustomrequest/:id" element={<ViewCustomizeRequest />} />
       <Route path="settings" element={<CusSetting />}></Route>
     </Route>
     {/* Admin Routes */}
@@ -313,6 +317,7 @@ const routes = (
         path="promotion/viewreceivedpromotion"
         element={<ViewReceivedPromotion />}
       />
+      <Route path="promotion/product/:id" element={<ViewProductDesigner />} />
       <Route path="designtool" element={<DesignerDesigntool />} />
 
       <Route path="setting" element={<DesignerSetting />} />

@@ -1,16 +1,12 @@
 import React,{useEffect,useState} from "react";
-import '../../styles/vendor/viewCustomRequest.css';
+import '../../../styles/vendor/viewCustomRequest.css';
 import * as Icon from 'react-bootstrap-icons';
-import Navigationbar from '../../components/navigationbar';
-import VendorSidebar from './sidebar';
+import Navigationbar from '../../../components/navigationbar';
 
-import Hall from '../../assets/img/vendor/visiting room.png';
-import Chair from './../../assets/img/vendor/chair.png';
-import Customer from '../../assets/img/vendor/customer.png';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-const ViewCustomRequest = () => {
+const ViewCustomizeRequest = () => {
     const urlparams = new URLSearchParams(window.location.search);
     const customizeID = urlparams.get('id');
 
@@ -71,13 +67,13 @@ const ViewCustomRequest = () => {
                 <div className="col-12 d-flex flex-column flex-md-row flex-lg-row gap-4">
                     <div className="col-lg-8 bg-white rounded-3 shadow p-4">
                         <div className="d-flex flex-row gap-4">
-                            <Link to="/vendor/order"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Orders</p></Link>
+                            <Link to="/vendor/order"><p className="text-dark fs-5 fw-bold Cabin-text">Orders</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                            <Link to="/vendor/order/customizeorders"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Customize Order</p></Link>
+                            <Link to="/vendor/order/customizeorders"><p className="text-dark fs-5 fw-bold Cabin-text">Customize Order</p></Link>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                            <Link to="/vendor/order/customizeorders"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>New Requests</p></Link>
+                            <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>New Requests</p>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                            <p className="fs-5 fw-bold Cabin-text text-dark">{customer.username}</p>
+                            <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{customer.username}</p>
                         </div>
                         <div className="d-flex flex-column mt-3">
                             <p className="fs-6 fw-bold Cabin-text" style={{ color: "#545563"}}>Product Description</p>
@@ -148,4 +144,4 @@ const ViewCustomRequest = () => {
     );
 };
 
-export default ViewCustomRequest;
+export default ViewCustomizeRequest;
