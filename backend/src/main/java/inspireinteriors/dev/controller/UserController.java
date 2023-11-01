@@ -35,7 +35,7 @@ public class UserController {
     @Autowired
     private DesignerService designerService;
 
-        @GetMapping("/users")
+    @GetMapping("/users")
     @ResponseBody
     public Iterable<User> fetchUsers() {
         return userService.getAllUsers();
