@@ -19,7 +19,7 @@ const Designs = () => {
       ]
     },
     {
-      title: 'Bedroom', content: ['https://media.architecturaldigest.com/photos/633f30fc2b9fc0b5557ab24d/4:3/w_4479,h_3359,c_limit/CH_ASH_Staging_West%20Village%20Townhouse_NYC2.jpg',
+      title: 'Bed Room', content: ['https://media.architecturaldigest.com/photos/633f30fc2b9fc0b5557ab24d/4:3/w_4479,h_3359,c_limit/CH_ASH_Staging_West%20Village%20Townhouse_NYC2.jpg',
         'https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg'
       ]
     },
@@ -29,7 +29,7 @@ const Designs = () => {
       ]
     },
     {
-      title: 'Office', content: ['https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg'
+      title: 'Study Room', content: ['https://hips.hearstapps.com/hmg-prod/images/interior-design-ideas-idea-9-dwell-1-1644331792.jpg'
       ]
     },
   ];
@@ -76,7 +76,7 @@ const Designs = () => {
 
   const roomTypeImages = {
     'Living Room': 'https://damro.lk/wp-content/uploads/2019/11/venus.jpg',
-    'Bedroom': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJWzKyYDGZem8-78vIlg9h7qxyF1dcahCb5w&usqp=CAU',
+    'Bed Room': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJWzKyYDGZem8-78vIlg9h7qxyF1dcahCb5w&usqp=CAU',
     'Dining Room': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXJlcN0_avnxR_cWNX-DfNVz4Bx-gUdYNo2w&usqp=CAU'
   };
 

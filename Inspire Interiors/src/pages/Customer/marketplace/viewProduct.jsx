@@ -4,6 +4,7 @@ import './../../../styles/customer/viewProduct.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ReactStars from "react-rating-stars-component";
 import { Carousel }  from 'react-responsive-carousel';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Stripe from "react-stripe-checkout";
@@ -222,11 +223,11 @@ const ViewProduct = () => {
             <div className="product-container view-product p-4 bg-white rounded-3 mb-4 me-3">
                 <div className="d-flex flex-row gap-4 justify-content-between me-5">
                     <div className='d-flex flex-row gap-4'>
-                    <p className="fs-3 fw-bold Cabin-text">Marketplace</p>
-                    <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text">{productData.type}</p>
-                    <Icon.ChevronRight color="#A2A3B1" size={25} className="mt-2" />
-                    <p className="fs-3 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{productData.product_name}
+                    <Link to={`/customer/marketplace`}><p className="fs-5 fw-bold text-dark Cabin-text">Marketplace</p></Link>
+                    <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                    <Link to={`/customer/marketplace/category/${productData.type}`}><p className="fs-5 fw-bold text-dark Cabin-text">{productData.type}</p></Link>
+                    <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
+                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{productData.product_name}
                     
                     </p>
                     </div>
@@ -241,7 +242,7 @@ const ViewProduct = () => {
                                 </span>
                             )}
                         </p>
-                        <div className='d-flex flex-row w-75 justify-content-between my-2'>
+                        <div className='d-flex flex-row justify-content-between'>
                             <div className='fs-4 fw-normal Cabin-text'>${productData.entry_price}</div>
                             <div className="d-flex flex-row gap-3">
                             <div className='d-flex align-items-center'>{generateStars(averageRating.toFixed(1))}</div>
@@ -256,7 +257,7 @@ const ViewProduct = () => {
                             </div>
                             
                         </div>
-                        <p className='fs-6 fw-normal Cabin-text w-50 mt-2'>{productData.product_description}</p>
+                        <p className='fs-6 fw-normal Cabin-text mt-2'>{productData.product_description}</p>
                         <div className="d-flex flex-wrap gap-1">
                             {variationData.map((data, index) => (
                             <div   key={index} 
