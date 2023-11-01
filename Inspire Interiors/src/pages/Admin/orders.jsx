@@ -136,6 +136,91 @@ const Order = () => {
    
   };
 
+  const data1 = {
+    columns: [
+      {
+        label: "REF_NO",
+        field: "ref_no",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "ORDERED_DATE",
+        field: "date",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "PRODUCT/DESIGN",
+        field: "product",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "CUSTOMER",
+        field: "customer",
+        sort: "asc",
+        width: 270,
+      },
+      {
+        label: "VENDOR/DESIGNER",
+        field: "designer",
+        sort: "asc",
+        width: 270,
+      },
+      {
+        label: "QTY",
+        field: "qty",
+        sort: "asc",
+        width: 200,
+      },
+      {
+        label: "PRICE",
+        field: "price",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "COMMISSION",
+        field: "commission",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "STATUS",
+        field: "status",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "  ",
+        field: "action",
+        sort: "NONE",
+        width: 100,
+      },
+    ],
+
+    rows: filteredData('New').map((order) => ({
+      ref_no: order.ref_no,
+      date: order.date,
+      product:order.product||order.design,
+      customer: order.customer,
+      designer: order.designer||order.vendor,
+      qty:order.quantity,
+      price:order.price,
+      commission:order.commission,
+      status:order.status,
+      action: 
+          <Link to={`/admin/orders/invoice/${order.orderid}`}><div className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
+          </div></Link>
+      
+      
+      // other fields...
+    })),
+   
+  };
+
   const data2 = {
     columns: [
       {
@@ -285,6 +370,91 @@ const Order = () => {
       },
     ],
 
+    rows: filteredData('cancel').map((order) => ({
+      ref_no: order.ref_no,
+      date: order.date,
+      product:order.product||order.design,
+      customer: order.customer,
+      designer: order.designer||order.vendor,
+      qty:order.quantity,
+      price:order.price,
+      commission:order.commission,
+      status:order.status,
+      action: 
+          <Link to={`/admin/orders/invoice/${order.orderid}`}><div className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
+          </div></Link>
+      
+      
+      // other fields...
+    })),
+   
+  };
+
+  const data4 = {
+    columns: [
+      {
+        label: "REF_NO",
+        field: "ref_no",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "ORDERED_DATE",
+        field: "date",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "PRODUCT/DESIGN",
+        field: "product",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "CUSTOMER",
+        field: "customer",
+        sort: "asc",
+        width: 270,
+      },
+      {
+        label: "VENDOR/DESIGNER",
+        field: "designer",
+        sort: "asc",
+        width: 270,
+      },
+      {
+        label: "QTY",
+        field: "qty",
+        sort: "asc",
+        width: 200,
+      },
+      {
+        label: "PRICE",
+        field: "price",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "COMMISSION",
+        field: "commission",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "STATUS",
+        field: "status",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "  ",
+        field: "action",
+        sort: "NONE",
+        width: 100,
+      },
+    ],
+
     rows: filteredData('ongoing').map((order) => ({
       ref_no: order.ref_no,
       date: order.date,
@@ -354,6 +524,21 @@ const Order = () => {
                 />
                 </div>
               </Tab>
+              <Tab eventKey="new" title="New">
+                <div className="">
+             
+                  <MDBDataTableV5
+                   responsive
+                  striped
+                  bordered
+                  small
+                  data={data1}
+                  sortable={true}
+                  exportToCSV={true}
+                  
+                />
+                </div>
+              </Tab>
               <Tab eventKey="Completed" title="Completed" >
               <div className=''>
              
@@ -368,6 +553,21 @@ const Order = () => {
            />
            </div>
               </Tab>
+              <Tab eventKey="cancel" title="Cancel">
+                <div className="">
+             
+                  <MDBDataTableV5
+                   responsive
+                  striped
+                  bordered
+                  small
+                  data={data3}
+                  sortable={true}
+                  exportToCSV={true}
+                  
+                />
+                </div>
+              </Tab>
               <Tab eventKey="Ongoing" title="Ongoing" >
               <div className="">
              
@@ -376,7 +576,7 @@ const Order = () => {
              striped
              bordered
              small
-             data={data3}
+             data={data4}
              sortable={true}
              exportToCSV={true}
              

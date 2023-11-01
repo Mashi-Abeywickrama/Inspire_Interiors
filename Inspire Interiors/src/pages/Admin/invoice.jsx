@@ -47,6 +47,30 @@ export default function Invoice() {
       console.log('Sending email...');
     }
   };
+  const sendEmail = () => {
+    const emailDetails = {
+      // Define the email details here, e.g., recipient email, subject, content, etc.
+    };
+
+    axios
+      .post("http://localhost:8080/sendMail", emailDetails)
+      .then((response) => {
+        alert("Invoice sent successfully!");
+        console.log("Email sent:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+      });
+  };
+
+  // const handleSendClick = () => {
+  //   const confirmSend = window.confirm(`Email this invoice to ${orderData.vendor || orderData.designer}?`);
+
+  //   if (confirmSend) {
+  //     sendEmail(); // Call the sendEmail function to send the email
+  //   }
+  // }
+
 
   return (
     <div className="container-fluid ">
@@ -123,7 +147,7 @@ export default function Invoice() {
                 <p className="ms-3">Shipping Address:</p>
               </div>
               <div className="col-md-2">
-                <p className="number fs-5">
+                <p className="number fs-">
                   {orderData.shipping_address}
                 </p>
               </div>

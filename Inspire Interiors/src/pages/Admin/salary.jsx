@@ -7,6 +7,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import { MDBDataTableV5, MDBTable } from 'mdbreact';
 
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import './../../styles/customer/myOrders.css';
@@ -121,10 +122,9 @@ const Salary = () => {
      earning:salary.earnings,
       status: salary.status,
       date:salary.year+'-'+salary.month,
-        action:"send invoice->" ,
-      //      <Link to="/admin/orders/invoice"><div className="d-flex gap-2 align-items-center text-dark">
-      //        <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
-      //      </div></Link>
+        action:<Link to={`/admin/salary/invoice/${salary.salary_id}`}><div className="d-flex gap-2 align-items-center text-dark">
+        <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
+      </div></Link>
       
       
       // other fields...
