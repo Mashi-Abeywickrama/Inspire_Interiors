@@ -239,28 +239,28 @@
                                         
                                         <div className="badge fw-semibold rounded-3 mx-5 Cabin-text">
                                             {orderData.status === 'New' ? (
-                <select
-                    className={getOrderStatusClass(orderData.status)}
-                    value={orderData.status}
-                    onChange={(e) => updateOrderStatus(e.target.value)}
-                >
-                    <option value="Vendor Confirmation">{getOrderStatus(orderData.status)}</option>
-                    <option value="Confirmed">Confirmed</option>
-                    <option value="Cancelled">Cancelled</option>
-                </select>
-            ) : (
-                <button
-                    className="badge fw-semibold rounded-3 mx-5 Cabin-text"
-                    style={{
-                        height: "1.5rem",
-                        background: orderData.status === 'Cancelled' ? "red" : "green",
-                        color: "white"
-                    }}
-                    disabled
-                >
-                    {orderData.status === 'Cancelled' ? "Cancelled" : "Confirmed"}
-                </button>
-            )}
+                                                <select
+                                                    className={getOrderStatusClass(orderData.status)}
+                                                    value={orderData.status}
+                                                    onChange={(e) => updateOrderStatus(e.target.value)}
+                                                >
+                                                    <option value="Vendor Confirmation">{getOrderStatus(orderData.status)}</option>
+                                                    <option value="Confirmed">Confirmed</option>
+                                                    <option value="Cancelled">Cancelled</option>
+                                                </select>
+                                            ) : (
+                                                <button
+                                                    className="badge fw-semibold rounded-3 mx-5 Cabin-text"
+                                                    style={{
+                                                        height: "1.5rem",
+                                                        background: orderData.status === 'Cancelled' ? "red" : "green",
+                                                        color: "white"
+                                                    }}
+                                                    disabled
+                                                >
+                                                    {orderData.status === 'Cancelled' ? "Cancelled" : "Confirmed"}
+                                                </button>
+                                            )}
                                             </div>
                                     </div>
                                     <div className="d-flex flex-row justify-content-between">

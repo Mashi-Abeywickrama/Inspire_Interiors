@@ -400,15 +400,15 @@ const PromotionRequest = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="d-flex flex-row justify-content-evenly mt-4">
+                        <div className="d-flex flex-row justify-content-center mt-4">
                             <div className="d-flex flex-column">
                                 <p className="fs-1 fw-semibold Cabin-text text-center m-0" style={{ color: "#FFC00C" }}>{designCount}</p>
-                                <p className="fs-6 fw-bold Cabin-text text-center m-0">Designs</p>
+                                <p className="fs-6 fw-bold Cabin-text text-center m-0">Total Designs</p>
                             </div>
-                            <div className="d-flex flex-column">
+                            {/* <div className="d-flex flex-column">
                                 <p className="fs-1 fw-semibold Cabin-text text-center m-0" style={{ color: "#FFC00C" }}>30</p>
                                 <p className="fs-6 fw-bold Cabin-text text-center m-0">Custom designs sold</p>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="d-flex flex-column my-1">
                             <p className="fs-6 fw-bold Cabin-text mt-1" style={{ color: "#545563" }}>Bio</p>
