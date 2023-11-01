@@ -213,7 +213,8 @@ const BrowseDesigns = () => {
                                         <div className="d-flex gap-2 flex-md-row flex-column" style={{ color: "#0A033C" }}>
                                             <div className="w-25 align-self-center">
                                                 <div className="customemodel">
-                                                <GLTFModel src={`./../../../src/assets/img/gltf/${data.image||'153.gltf'}`}
+                                                {item.image && (
+                                                <GLTFModel src={`./../../../src/assets/img/gltf/${item.image}`}
                                                     className="ModelViewDesign">
                                                 <AmbientLight color={0xffffff} />
                                                 <DirectionLight
@@ -222,6 +223,7 @@ const BrowseDesigns = () => {
                                                 />
                                                 
                                             </GLTFModel>
+                                                )}
                                                 </div>
                                             </div>
 

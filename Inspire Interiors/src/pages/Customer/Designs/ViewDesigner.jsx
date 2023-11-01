@@ -362,7 +362,7 @@ const ViewDesigner = () => {
 
                         <div className="col flex-lg-row mx-2">
                             <div className=' fs-5 fw-bold'>
-                                Top Selling Designs <Link to={`/vendor/promotion/promoteproduct?d_id=${designerID}`}><span className="badge fs-6 see-all">See All <Icon.ArrowRight /></span></Link>
+                                Top Selling Designs<Link to={`/vendor/promotion/promoteproduct?d_id=${designerID}`}><span className="badge fs-6 see-all">See All <Icon.ArrowRight /></span></Link>
                             </div>
                             <div className="d-flex mt-3 flex-wrap">
                                 <div className="col-lg-6 col-md-6 col-sm-12 mb-3 px-2">

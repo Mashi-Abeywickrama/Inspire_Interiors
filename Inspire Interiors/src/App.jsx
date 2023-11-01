@@ -128,6 +128,7 @@ import DesignerMyDesignView from "./pages/Designer/DesignerMyDesignView";
 
 import TypeView from "./pages/Customer/marketplace/typeView";
 import ViewAllDesigners from "./pages/Customer/Designs/seeAllDesigners";
+import ViewDesignC from "./pages/Customer/Designs/viewDesign";
 
 
 const routes = (
@@ -182,6 +183,10 @@ const routes = (
         path="designs/alldesigners"
         element={<ViewAllDesigners />}
       />
+      <Route
+      path="designs/viewdesign/:id"
+      element={<ViewDesignC />}
+    />
       <Route path="marketplace" element={<MarketPlace />} />
       {/* <Route path="marketplace/categoryview" element={<CategoryView />} /> */}
       <Route
