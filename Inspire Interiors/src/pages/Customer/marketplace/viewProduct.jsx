@@ -232,7 +232,7 @@ const ViewProduct = () => {
                     </div>
                     <QRPopup />
                 </div>
-                <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row'>
+                <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-evenly'>
                     <div className='d-flex flex-column side-div'>
                         <p className='fs-4 fw-semibold Cabin-text mt-3'>{productData.product_name}
                         {selectedVariationColor && selectedVariationMaterial && (
@@ -298,18 +298,18 @@ const ViewProduct = () => {
                             <p className='fs-6 fw-normal Cabin-text'>Delivered within a week</p>
                         </div>
                         <div className="d-flex flex-row justify-content-between mt-4">
-                            <p className="fs-2 fw-normal Cabin-text">
+                            <p className="fs-3 fw-normal Cabin-text">
                                 Total Price:
                             </p>
-                            <p className="fs-2 fw-normal Cabin-text">
+                            <p className="fs-3 fw-normal Cabin-text">
                                 ${calculateTotalPrice() + productData.shipping_fee}+
                             </p>
                         </div>
-                        <div className="d-flex flex-column w-50 mt-5">
-                            <label htmlFor="shippingAddress">Select Shipping Address:</label>
+                        <div className="d-flex flex-column w-50 mt-3">
+                            <label htmlFor="shippingAddress ">Select Shipping Address:</label>
                             <select
                                 id="shippingAddress"
-                                className="form-select"
+                                className="form-select mt-2"
                                 onChange={handleAddressSelect}
                                 value={selectedAddressId} // Set the selected value based on state
                             >

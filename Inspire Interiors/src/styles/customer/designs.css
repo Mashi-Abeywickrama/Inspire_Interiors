@@ -52,3 +52,17 @@
 .text-decoration-line-throug {
     text-decoration: line-through;
 }
+
+.customcanvas div canvas:first-child {
+    display: none;
+}
+
+.customcanvas div canvas:last-child {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.customcanvas div{
+    width:100% !important;
+    height: 100% !important;
+}

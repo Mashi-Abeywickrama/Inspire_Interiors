@@ -1,14 +1,12 @@
 package inspireinteriors.dev.service.Designer;
 
 
-import inspireinteriors.dev.model.Designer;
 import inspireinteriors.dev.model.DesignerModel.*;
 import inspireinteriors.dev.model.VendorOffer;
 import inspireinteriors.dev.repository.Designer.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -142,5 +140,25 @@ public class DesignerMyDesignService {
     public List getCountsOfDesigns() {
         List counts = designerMyDesignsRepository.getCountsOfDesigns();
         return counts;
+    }
+
+    public int getMaxDesignID() {
+        return designerDesigntoolFilesRepository.getMaxDesignID();
+    }
+
+    public void updateImage(MyDesigns myDesigns) {
+        designerMyDesignsRepository.save(myDesigns);
+    }
+
+    public DesigntoolFiles getDesignFileByID(int id) {
+        return designerDesigntoolFilesRepository.findDesigntoolFilesByid(id);
+    }
+
+    public List<MyDesigns> getDesignByRoomType(String roomType) {
+        return designerMyDesignsRepository.findMyDesignsByRoomtype(roomType);
+    }
+
+    public List<String> getDistinctRoomTypes() {
+        return designerMyDesignsRepository.getDistinctRoomTypes();
     }
 }

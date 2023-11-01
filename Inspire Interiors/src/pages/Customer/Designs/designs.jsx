@@ -7,6 +7,7 @@ import SearchPage from '../../../components/customer/filterNsearch';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import {useSession} from "../../../constants/SessionContext";
+import DefaultImage from './../../../assets/img/customer/livinroom.jpg';
 
 
 const Designs = () => {
@@ -73,9 +74,17 @@ const Designs = () => {
     },
   ];
 
+  const roomTypeImages = {
+        'Living Room': 'https://damro.lk/wp-content/uploads/2019/11/venus.jpg',
+        'Bedroom': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJWzKyYDGZem8-78vIlg9h7qxyF1dcahCb5w&usqp=CAU',
+        'Dining Room': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXJlcN0_avnxR_cWNX-DfNVz4Bx-gUdYNo2w&usqp=CAU'
+    };
+
   const [allUsers, setAllUsers] = useState([]);
   const [designerData, setDesignerData] = useState([]);
+  const [allDesignTypes, setAllDesignTypes] = useState([]);``
   const urlParams = new URLSearchParams(window.location.search);
+
 
   const Id = urlParams.get('id');
 
@@ -109,6 +118,18 @@ const Designs = () => {
         console.log('Error fetching data', error);
       });
   }, [Id]);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/designer/d/distinctRoomTypes`)  
+      .then((response) => {
+        setAllDesignTypes(response.data);
+        // console.log(response.data);
+      })
+      .catch((error) => {
+        console.log('Error fetching data', error);
+      });
+  }, []);
 
   const mergeData = (designerData, userData) => {
     const mergedData = designerData.map(
@@ -168,18 +189,19 @@ const Designs = () => {
                 <h4>Top designers </h4>
               </div>
               <div className='d-flex col w-auto h-100 justify-content-start align-self-center see-all'>
-                <h6>See All
+              <Link to={`/customer/designs/alldesigners`}><h6 style={{ color: '#035C94' }} >See All 
+                  
                   <Icon.ArrowRight
 
                     size={15}
                     className="align-center"
                   />
-                </h6>
+                </h6></Link>
               </div>
-              <div className='col  col-md-4 col-sm-12 col-12 fs-4 d-flex justify-content-end'>
+              {/* <div className='col  col-md-4 col-sm-12 col-12 fs-4 d-flex justify-content-end'>
                 <SearchPage />
 
-              </div>
+              </div> */}
 
             </div>
 
@@ -224,26 +246,24 @@ const Designs = () => {
           </div>
           {/* Images */}
           <div className='d-flex flex-column fs-4 flex-lg-row flex-md-col flex-sm-col w-100 justify-content-center align-self-center'>
-            {cards.map((card, index) => (
+            {allDesignTypes.map((roomType, index) => (
               <Col md={3} key={index} className='d-flex'>
-                <Link to='browsedesigns'>
+                <Link  to={`browsedesigns/${roomType}`}>
                   <Card className='d-flex h-100 w-100 rounded border-0' >
                     <Card.Body className='d-flex'>
                       <Carousel >
-                        {card.content.map((imageUrl, imageIndex) => (
+                        
 
-                          <Carousel.Item key={imageIndex} className='object-fit h-100'>
-                            {/* {card.title} */}
-                            <img
-                              className='d-flex w-100 rounded-3 img-fluid h-100'
-                              src={imageUrl}
-                              alt={`Slide ${imageIndex + 1}`}
-                            />
-                            <Carousel.Caption className='d-flex justify-content-start px-2' style={{ position: "absolute", top: 0, left: 0 }}>
-                              <p className='fs-6'>{card.title}</p>
-                            </Carousel.Caption>
-                          </Carousel.Item>
-                        ))}
+                                <div
+                                    key={index} // Use the index as the key
+                                    style={{ backgroundImage: `url(${roomTypeImages[roomType] || DefaultImage})`, height: "332px" }}
+                                    className="mb-2 rounded-3 border-0 shadow w-100 w-lg-25 w-md-25 p-3"
+                                >
+                                    <Link to={`browsedesigns/${roomType}`} >
+                                        <p className='h5'>{roomType}</p>
+                                    </Link>
+                                </div>
+                         
                       </Carousel>
                     </Card.Body>
                   </Card>
