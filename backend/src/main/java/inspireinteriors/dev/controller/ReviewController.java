@@ -47,7 +47,22 @@ public class ReviewController {
 
         return response;
     }
+    @GetMapping("/drating/{designId}")
+    public Map<String, Object> getDesignReviewsWithName(@PathVariable Long designId) {
+        List<Review> reviews = reviewService.getReviewsByDesignId(designId);
+//        System.out.println(reviews);
+        double averageRating = reviewService.getAverageDRating(designId);
+        long totalVotes = reviewService.getTotalVotesD(designId);
 
+        // Create a response object to return reviews, average rating, and total votes
+        Map<String, Object> response = Map.of(
+                "reviews", reviews,
+                "averageRating", averageRating,
+                "totalVotes", totalVotes
+        );
+
+        return response;
+    }
     @PostMapping("/rating")
     public Review addReview(@RequestBody Review review) {
         System.out.println(review);
