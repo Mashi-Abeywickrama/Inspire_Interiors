@@ -191,7 +191,7 @@ var mainControls = function (blueprint3d) {
   .then(function (data) {
     // Handle the successful response data here
     console.log(data);
-    alert("Created and Saved Successfully. ID is = " + data+1);
+    alert("Created and Saved Successfully. ID is = " + data++);
   })
   .catch(function (error) {
     // Handle network errors or exceptions here
