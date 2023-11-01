@@ -6,7 +6,9 @@ import inspireinteriors.dev.repository.Designer.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -124,7 +126,10 @@ public class DesignerMyDesignService {
 
     public DesigntoolFiles saveRequest_id(int request_id, int designer_id){
         DesigntoolFiles designtoolFiles = new DesigntoolFiles();
-        designtoolFiles.setRequestDesigner_id(request_id, designer_id);
+        designtoolFiles.setRequest_id(request_id);
+        designtoolFiles.setDesigner_id(designer_id);
+        LocalDate date = LocalDate.now();
+        designtoolFiles.setCreatedOn(date);
         return designerDesigntoolFilesRepository.save(designtoolFiles);
     }
 
@@ -133,5 +138,8 @@ public class DesignerMyDesignService {
    }
    public DesigntoolFiles GetByReqid(int request_id){
         return designerDesigntoolFilesRepository.findByRequest_id(request_id);
+   }
+   public List<DesigntoolFiles> GetAllDesigntoolFiles(){
+      return designerDesigntoolFilesRepository.getAllReq();
    }
 }

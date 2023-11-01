@@ -9,6 +9,7 @@ import * as Icon from "react-bootstrap-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faHeart } from "@fortawesome/free-solid-svg-icons";
 import Sofa from "../../assets/img/vendor/sofa.png";
+import Sketch from "../../assets/Designer/Sketch.jpeg";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/customer/myOrders.css";
@@ -23,6 +24,8 @@ import CreateNewDesignPopup from "../../components/designer/Popup/CreateNewDesig
 import { NavLink } from "react-router-dom";
 import { id } from "date-fns/locale";
 import { useSession } from "../../constants/SessionContext";
+import { Link } from "react-router-dom";
+import { set } from "date-fns";
 
 const receivedData = {
   columns: [
@@ -147,7 +150,9 @@ const receivedData = {
 };
 
 function DesignerDesigntool() {
+  const [dradata, setDradata] = useState([]);
   const [data, setData] = useState([]);
+  const [fildata, setFildata] = useState([]);
   const [loading, setLoading] = useState(true);
 
   //get designer id from session
@@ -155,9 +160,19 @@ function DesignerDesigntool() {
   // console.log(session.sessionData.userid);
   const id = session.sessionData.userid.toString();
 
+  function arrange(arr) {
+    let arr1 = arr.sort(
+      (a, b) => new Date(a.createdOn) - new Date(b.createdOn)
+    );
+    arr1 = arr1.slice(-4);
+
+    return arr1;
+  }
+
   //fetch...
   useEffect(() => {
     const apiUrl = "http://localhost:8080/designer/customerrequests/d/" + id;
+    const draftUrl = "http://localhost:8080/designer/designtool/getdesign/";
     // Fetch data from the API
     axios
       .get(apiUrl)
@@ -169,7 +184,18 @@ function DesignerDesigntool() {
         console.error("Error fetching data:", error);
         setLoading(false); // Update loading state to false in case of an error
       });
+
+    axios
+      .get(draftUrl)
+      .then((response) => {
+        setDradata(response.data);
+        console.log(dradata);
+      })
+      .catch((err) => console.log(err));
   }, []);
+  let arr = arrange(dradata);
+  console.log(arr);
+
   const x = data.length;
   console.log(
     data.map((item) => "Data is " + item.request_id),
@@ -229,7 +255,7 @@ function DesignerDesigntool() {
             className="fs-5 fw-semibold mt-2 Cabin-text"
             style={{ color: "#035C94" }}
           >
-            <NavLink to="../mydesigns">
+            <NavLink to="../drafteddesigns">
               <div className="text-primary">
                 See all
                 <Icon.ArrowRight color="#035C94" />
@@ -238,43 +264,48 @@ function DesignerDesigntool() {
           </p>
         </div>
         <div className="d-flex flex-column flex-lg-row flex-md-row  gap-3">
-          <div class="col">
-            <div class="card p-2 h-100 mb-2 rounded-3 border-0 shadow">
-              <img
-                className="img-fluid"
-                src={BlackSofa}
-                class="card-img-top"
-                alt="blacksofa"
-              />
-              <div class="card-body m-0 p-0 mt-3">
-                <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
-                  <div className="d-flex flex-column">
-                    <p
-                      className="card-text m-0 fs-6 fw-semibold Cabin-text"
-                      style={{ color: "#969696" }}
-                    >
-                      HI THE GREY
-                    </p>
-                    <p class="card-title fw-bold fs-6 m-0 Cabin-text">
-                      Living Room
-                    </p>
-                  </div>
-                  <FontAwesomeIcon
-                    icon={faEdit}
-                    className="align-items-center justify-content-center"
-                    size="" // Adjust the size as needed
-                    style={{
-                      color: "white",
-                      backgroundColor: "#035C94",
-                      padding: "8px",
-                      borderRadius: "5px",
-                    }}
+          {arr.map((res) => (
+            <Link to={"http://localhost:8000?id=" + res.id}>
+              <div class="col">
+                <div class="card p-2 h-100 mb-2 rounded-3 border-0 shadow">
+                  <img
+                    className="img-fluid"
+                    src={Sketch}
+                    class="card-img-top"
+                    alt="blacksofa"
                   />
+                  <div class="card-body m-0 p-0 mt-3">
+                    <div className="d-flex flex-row justify-content-evenly align-items-center gap-3">
+                      <div className="d-flex flex-column">
+                        <p
+                          className="card-text m-0 fs-6 fw-semibold Cabin-text"
+                          style={{ color: "#969696" }}
+                        >
+                          Design No {res.id}
+                        </p>
+                        <p class="card-title fw-bold fs-6 m-0 Cabin-text">
+                          Created On: {res.createdOn}
+                        </p>
+                      </div>
+                      <FontAwesomeIcon
+                        icon={faEdit}
+                        className="align-items-center justify-content-center"
+                        size="" // Adjust the size as needed
+                        style={{
+                          color: "white",
+                          backgroundColor: "#035C94",
+                          padding: "8px",
+                          borderRadius: "5px",
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="col">
+            </Link>
+          ))}
+
+          {/* <div class="col">
             <div class="card p-2 h-100 mb-2 rounded-3 border-0 shadow">
               <img
                 className="img-fluid"
@@ -381,7 +412,7 @@ function DesignerDesigntool() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -389,7 +420,7 @@ function DesignerDesigntool() {
         {/*Recent Designs */}
         <div className="col-lg-6 bg-white rounded-3 p-4 gap-3">
           <div className="d-flex flex-row gap-3">
-            <p className="fs-3 fw-bold Cabin-text">Recent Designs</p>
+            <p className="fs-3 fw-bold Cabin-text">Requested Designs</p>
             <p
               className="fs-5 fw-semibold mt-2 Cabin-text"
               style={{ color: "#035C94" }}
@@ -420,13 +451,13 @@ function DesignerDesigntool() {
                             className="card-text m-0 fs-6 fw-semibold Cabin-text"
                             style={{ color: "#969696" }}
                           >
-                            HI THE GREY
+                            Design No 15
                           </p>
                           <p class="card-title fw-bold fs-6 m-0 Cabin-text">
-                            Living Room
+                            Created On: Date
                           </p>
                           <p className="card-text m-0 fs-6 fw-bolder Cabin-text">
-                            $499
+                            Request Id: 20
                           </p>
                         </div>
                         <FontAwesomeIcon

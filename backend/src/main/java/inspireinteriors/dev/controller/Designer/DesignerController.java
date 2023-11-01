@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = {"http://localhost:5173", "http://localhost:8000",})
@@ -123,7 +125,9 @@ public class DesignerController {
     @PostMapping("/designtool/savedesign")
    public String saveData(@RequestBody String data) {
        DesigntoolFiles file = new DesigntoolFiles();
+       LocalDate date =  LocalDate.now();
        file.setData(data);
+       file.setCreatedOn(date);
       designerMyDesignService.saveFiles(file);
       return "Successfully Saved";
 
@@ -155,6 +159,11 @@ public class DesignerController {
     public ResponseEntity<DesigntoolFiles> getFilesByID(@PathVariable("id") int id){
     DesigntoolFiles designtoolFiles =  designerMyDesignService.Getdetails(id);
       return ResponseEntity.ok(designtoolFiles);
+    }
+
+    @GetMapping("/designtool/getdesign/")
+    public List<DesigntoolFiles> getFiles(){
+      return designerMyDesignService.GetAllDesigntoolFiles();
     }
 
 

@@ -114,6 +114,7 @@ import { Loader } from "semantic-ui-react";
 import DesignerCustomerRequest from "./pages/Designer/DesignerCustomerRequest";
 import DesignerCRequestview from "./pages/Designer/DesignerCRequestview";
 import DesignerMyDesignView from "./pages/Designer/DesignerMyDesignView";
+import DesignerDraftedDesigns from "./pages/Designer/DesignerDraftedDesigns";
 
 const routes = (
   <>
@@ -271,7 +272,8 @@ const routes = (
       <Route path="test" element={<Test />} />
       <Route path="requests" element={<DesignerCustomerRequest />} />
       <Route path="crequestview/:id" element={<DesignerCRequestview />} />
-      <Route path="mydesignview/:id" element={<DesignerMyDesignView/>} />
+      <Route path="mydesignview/:id" element={<DesignerMyDesignView />} />
+      <Route path="drafteddesigns" element={<DesignerDraftedDesigns />} />
     </Route>
 
     {/* Manager Routes */}
