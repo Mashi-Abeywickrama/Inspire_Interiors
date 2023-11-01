@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
 import LivingRoom from '../../../assets/img/customer/livinroom.jpg'
+import { useSession } from '../../../constants/SessionContext';
 
 const generateStars = (rate) => {
     const fullStars = Math.floor(rate);
@@ -65,6 +66,10 @@ const ViewDesigner = () => {
 
     const [allDesigners, setAllDesigners] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
+     const [selectedFile, setSelectedFile] = useState(null);
+
+    const sessionItems = useSession();
+    const userId = sessionItems.sessionData.userid;
 
     const Id = urlParams.get('id');
     console.log(Id)
@@ -75,6 +80,12 @@ const ViewDesigner = () => {
         baseURL: apiBaseURL,
         timeout: 5000,
     });
+
+    const handleFileChange = (e) => {
+    // Get the selected file from the input
+    const file = e.target.files[0];
+    setSelectedFile(file);
+  };
 
     useEffect(() => {
         axiosInstance
@@ -179,7 +190,9 @@ const ViewDesigner = () => {
         customerid: '',
         designerID: '',
         status: "New",
-        roomtype: ''
+        roomtype: '',
+        width: '',
+        length: '',
     });
 
 
@@ -187,6 +200,50 @@ const ViewDesigner = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const updateOfferData = (field, value) => {
+        setCustomizedOrderData((prevDetails) => ({
+            ...prevDetails,
+            [field]: value,
+        }));
+    };
+
+    const handleNewRequest = async (e) => {
+       
+        e.preventDefault();
+         console.log(customizedorderData);
+        try{
+            const response = await axiosInstance.post(`/customrequest`, {
+                customer_id:userId ,
+                designer_id: designerData.designer_id,
+                budget: customizedorderData.budget,
+                status: 0,
+                description: customizedorderData.designdescription,
+                dimensions: customizedorderData.designspecification,
+                width: customizedorderData.width,
+                length: customizedorderData.length,
+                note: customizedorderData.additionalnotes,
+            });
+            if(response.status === 200){
+                const formData = new FormData();
+                formData.append("requestid", response.data.request_id);
+                formData.append("file", selectedFile);
+
+                axiosInstance
+                .put(`/setcustomrequestimg`, formData)
+                .then((response) => {
+                console.log(response)
+                 setShow(false);
+                window.location.reload();
+                })
+                .catch((error) => console.log(error));
+
+            }
+        } catch (error) {
+            console.error('Edit Fail');
+            setAlert('Something Happenned Wrong', 'error');
+        }
+    };
 
     return (
         <>
@@ -284,7 +341,7 @@ const ViewDesigner = () => {
                                         <Modal.Title>New Design Request</Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                        <form method="POST">
+                                        <form method="POST" onSubmit={handleNewRequest}>
                                             <div className="d-flex flex-column mx-4 gap-3">
                                                 <div className='mb-1'>
                                                     <label>Room type</label>
@@ -326,6 +383,38 @@ const ViewDesigner = () => {
                                                         style={{ backgroundColor: "#F2FAFF" }}>
                                                     </input>
                                                 </div>
+                                                <div className='mb-1 d-flex gap-3'>
+                                                    <div className='d-flex flex-column w-50'>
+                                                    <label>Width</label>
+                                                    <input type='text'
+                                                        name="width"
+                                                        className='form-control Cabin-text'
+                                                        value={customizedorderData.width}
+                                                        onChange={(e) => updateOfferData(e.target.name, e.target.value)}
+                                                        style={{ backgroundColor: "#F2FAFF" }}>
+                                                    </input>
+                                                    </div>
+                                                    <div className='d-flex flex-column w-50'>
+                                                    <label>length</label>
+                                                    <input type='text'
+                                                        name="length"
+                                                        className='form-control Cabin-text'
+                                                        value={customizedorderData.length}
+                                                        onChange={(e) => updateOfferData(e.target.name, e.target.value)}
+                                                        style={{ backgroundColor: "#F2FAFF" }}>
+                                                    </input>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div className='mb-1'>
+                                                    <label>dimension Image</label>
+                                                    <input type='file'
+                                                        name="dimentionimage"
+                                                        className='form-control Cabin-text'
+                                                        onChange={handleFileChange}
+                                                        style={{ backgroundColor: "#F2FAFF" }}>
+                                                    </input>
+                                                </div>
                                                 <div className='mb-1'>
                                                     <label>Additional Notes</label>
                                                     <textarea type='textarea'
@@ -335,16 +424,6 @@ const ViewDesigner = () => {
                                                         onChange={(e) => updateOfferData(e.target.name, e.target.value)}
                                                         style={{ backgroundColor: "#F2FAFF" }}>
                                                     </textarea>
-                                                </div>
-                                                <div className='mb-1'>
-                                                    <label>dimension Images</label>
-                                                    <input type='file'
-                                                        name="dimentionimage"
-                                                        className='form-control Cabin-text'
-                                                        value={customizedorderData.dimentionimage}
-                                                        onChange={(e) => updateOfferData(e.target.name, e.target.value)}
-                                                        style={{ backgroundColor: "#F2FAFF" }}>
-                                                    </input>
                                                 </div>
                                             </div>
                                             <div className='d-flex flex-row justify-content-between'>
