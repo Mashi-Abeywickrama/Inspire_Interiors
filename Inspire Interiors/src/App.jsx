@@ -136,6 +136,7 @@ import ViewAllDesigners from "./pages/Customer/Designs/seeAllDesigners";
 import ViewProductDesigner from "./pages/Designer/ViewProductDesigner";
 
 import ViewDesignC from "./pages/Customer/Designs/viewDesign";
+import RProductView from "./pages/Customer/marketplace/recommandedProduct";
 
 
 
@@ -186,6 +187,10 @@ const routes = (
       <Route
         path="marketplace/viewproduct/:id"
         element={<ViewProduct />}
+      ></Route>
+      <Route
+        path="marketplace/recommended/:productid/:designerid"
+        element={<RProductView />}
       ></Route>
       <Route path="designs/viewdesigner" element={<ViewDesigner />} />
       <Route

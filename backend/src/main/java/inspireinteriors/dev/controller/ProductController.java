@@ -112,6 +112,7 @@ public class ProductController {
         return (List<Product>) productService.getAllProducts();
     }
 
+
     @GetMapping("/viewproducts/{id}")
     public Product getProductById(@PathVariable Integer id) {
         return productService.getProductById(id);

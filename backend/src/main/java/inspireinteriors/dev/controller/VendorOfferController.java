@@ -132,4 +132,16 @@ public class VendorOfferController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/promotion/designer/{designerid}")
+    public ResponseEntity<List<VendorOffer>> getOfferByDesignerId(@PathVariable("designerid") int designerid){
+        List<VendorOffer> vendorOffer = vendorOfferService.getOfferByDesignerIdAccepted(designerid);
+        return ResponseEntity.ok(vendorOffer);
+    }
+
+    @GetMapping("/promotion/{vendorid}/{designerid}")
+    public ResponseEntity<List<VendorOffer>> getOfferByVendorIdAndDesignerId(@PathVariable("vendorid") int vendorid, @PathVariable("designerid") int designerid){
+        List<VendorOffer> vendorOffer = vendorOfferService.getOfferByVendorIdAndDesignerId(vendorid, designerid);
+        return ResponseEntity.ok(vendorOffer);
+    }
+
 }

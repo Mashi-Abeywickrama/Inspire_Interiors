@@ -22,7 +22,7 @@ const stardata = {
     data:"4.5"
 }
 
-const ViewProduct = () => {
+const RProductView = () => {
 
     const apiBaseURL = 'http://localhost:8080';
 
@@ -36,6 +36,7 @@ const ViewProduct = () => {
     const [selectedVariationMaterial, setSelectedVariationMaterial] = useState('');
      const [shippingAddresses, setShippingAddresses] = useState([]);
      const [selectedAddressId, setSelectedAddressId] = useState(''); // State variable to store the selected address ID
+        const [offerData, setOfferData] = useState([]);
 
 
     const handleAddressSelect = (event) => {
@@ -57,6 +58,8 @@ const ViewProduct = () => {
     const currentURL = window.location.href;
     const splitURL = currentURL.split("/");
     const id = decodeURIComponent(splitURL[6]);
+    const designer = decodeURIComponent(splitURL[7]);
+    console.log("designer: ", designer)
 
 
     // Function to fetch and store the product data
@@ -69,6 +72,9 @@ const ViewProduct = () => {
             console.error('Error fetching products by Type:', error);
         }
     }
+    useEffect(() => {
+    fetchAndStoreReviewData(id);
+    }, [id]);
     
     // Call the function to fetch and store the product data
     useEffect(() => {
@@ -89,9 +95,7 @@ const ViewProduct = () => {
         }
     }
 
-    useEffect(() => {
-    fetchAndStoreReviewData(id);
-    }, [id]);
+    
 
     const materialImage = (material) => {
         if(material === 'wood'){
@@ -120,6 +124,18 @@ const ViewProduct = () => {
           console.log("Error fetching data", error);
         });
     }, []);
+
+    useEffect(() => {
+        axiosInstance
+        .get(`/promotion/${productData.vendor_id}/${designer}`)
+        .then((response) => {
+          setOfferData(response.data);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log("Error fetching data", error);
+        });
+    }, [productData.vendor_id]);
 
     const sessionItems = useSession();
     const userId = sessionItems.sessionData.userid;
@@ -166,6 +182,7 @@ const ViewProduct = () => {
             amount: productData.entry_price,
             },}).then(() => {
             handleNewOrder(id)
+            handleNewSale()
             }).catch((error) => {
             console.log(error);
         });
@@ -208,6 +225,59 @@ const ViewProduct = () => {
                 variation_id: selectedVariation,
                 status: "New",
                 vendor: productData.vendor_id,
+           
+           }).then(() => {
+            console.log("Added")
+            }).catch((error) => {
+            console.log(error);
+        });
+
+    }
+    
+
+    const handleNewSale = async () =>{
+        let commission =0;
+        let totalPrice = calculateTotalPrice();
+        if (totalPrice < 1000) {
+            commission = totalPrice * offerData[0].zerotothousand * 0.01;
+        }
+        else if (totalPrice < 5000) {
+            commission = totalPrice * offerData[0].thousandtofivethousand * 0.01;
+        }
+        else if (totalPrice < 10000) {
+            commission = totalPrice * offerData[0].fivethousandtotenthousand *0.01;
+        }
+        else if (totalPrice < 50000) {
+            commission = totalPrice * offerData[0].tenthousandtofiftythousand * 0.01;
+        }
+        else if (totalPrice < 100000)  {
+            commission = totalPrice * offerData[0].fiftythousandtohundredthousand * 0.01;
+        }
+        else {
+            commission = totalPrice * offerData[0].morethanhundredthousand * 0.01;
+        }
+     
+        let datetoday = new Date();
+
+// Get the day, month, and year
+const day = datetoday.getDate();
+const month = datetoday.getMonth() + 1;
+const year = datetoday.getFullYear();
+
+// Format the date as "YYYY-MM-DD"
+const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+
+        
+        await axiosInstance.post("/addoffersale",  {         
+           designerid: designer,
+              vendorid: productData.vendor_id,
+                quantity: quantity,
+                totalprice: calculateTotalPrice(),
+                commission: commission,
+                productid: id,
+                date: formattedDate,
+                profit: totalPrice - commission,
+               
            
            }).then(() => {
             console.log("Added")
@@ -340,4 +410,4 @@ const ViewProduct = () => {
     );
 }
 
-export default ViewProduct;
+export default RProductView;
