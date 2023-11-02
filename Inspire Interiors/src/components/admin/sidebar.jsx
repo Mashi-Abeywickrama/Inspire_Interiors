@@ -70,7 +70,7 @@ const SidebarDashboard = () => {
             <NavLink to="/admin/salary" activeClassName="active"> <i><RiCashFill /></i></NavLink>
             </NavIcon>
             <NavText>
-            <NavLink to="/admin/salary" activeClassName="active">Salary</NavLink>
+            <NavLink to="/admin/salary" activeClassName="active">Earning</NavLink>
             </NavText>
         </NavItem>
 
