@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -169,5 +171,29 @@ public class OrderController {
         public void setNewStatus(String newStatus) {
             this.newStatus = newStatus;
         }
+    }
+
+    @GetMapping("/getordercounttypes/{userid}")
+    public List<Object> getOrderCountTypes(@PathVariable ("userid") String userid) {
+        List<Object> orderCount = this.orderService.getOrdersCountByCustomerID(userid);
+        return orderCount;
+
+    }
+
+    @GetMapping("/ordercountseven")
+    public List<Map<String, Object>> getCountOfInquiriesByDateForLast7Days() {
+        List<Object[]> data = orderService.getCountOfOrdersByDateForLast7Days();
+
+        // Create a list of maps to store the data as key-value pairs
+        List<Map<String, Object>> responseData = data.stream()
+                .map(row -> {
+                    Map<String, Object> entry = new HashMap<>();
+                    entry.put("dayName", row[0]);
+                    entry.put("OrderCount", row[1]);
+                    return entry;
+                })
+                .collect(Collectors.toList());
+
+        return responseData;
     }
 }
