@@ -114,7 +114,7 @@ const ViewCustomizeRequest = () => {
                         <div className="d-flex flex-column gap-2">
                             <div className="col-lg-12 bg-white rounded-3 shadow p-4">
                                 <div className="d-flex flex-column">
-                                    <p className="fs-5 fw-bold Cabin-text">About Customer {customer.username}</p>
+                                    <p className="fs-5 fw-bold Cabin-text">About Vendor {customer.username}</p>
                                 </div>
                                 <div className="d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4">
                                     <img style={{objectFit:"cover" }} className="img-fluid p-3 rounded-4 w-50 h-50" src={`../../../../src/assets/img/profilePic/${customer.profile_pic}`} />

@@ -280,21 +280,13 @@ const ViewDesigner = () => {
                             </div>
 
                             
-                            <div className="d-flex align-items-center justify-content-evenly py-2 my-4 mx-2">
+                            <div className="d-flex align-items-center justify-content-center py-2 my-4 mx-2">
                                 <div className="d-flex w-25 three-box rounded align-items-center justify-content-center gap-2 p-2">
                                     <div className="w-25 fw-bold fs-4 d-flex align-items-center f-color-y p-2">
                                         {designCount}
                                     </div>
                                     <div className=" fs-5 d-flex align-items-center f-color-f1">
                                         Total Designs
-                                    </div>
-                                </div>
-                                <div className="d-flex w-25 three-box rounded align-items-center justify-content-center gap-2 p-2">
-                                    <div className="w-25 fw-bold fs-4 d-flex align-items-center f-color-y p-2">
-                                        30
-                                    </div>
-                                    <div className=" fs-5 d-flex align-items-center f-color-f1">
-                                        Sold Designs
                                     </div>
                                 </div>
                             </div>
@@ -423,7 +415,6 @@ const ViewDesigner = () => {
                                            
                                                 </div>
                                                 
-                                                <Link to={`/vendor/promotion/viewdesigners?id=${designers.userid}`}><Icon.EyeFill className="align-items-center" size={35} style={{ color: "white", backgroundColor: "#035C94", padding: '8px', borderRadius: '5px' }} /></Link>
                                             </div>
                                         </div>
                                     </div>

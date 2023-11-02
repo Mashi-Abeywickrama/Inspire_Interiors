@@ -135,7 +135,7 @@ const ViewCustomRequest = () => {
                                     </p>
                                 </div>
                                 <div className="align-content-center">
-                                <img className="img-fluid" src={(`../../../../src/assets/img/customize/${customizeData.customizedorderid}.jpg`)} />
+                                <img className="img-fluid" src={(`../../../../src/assets/img/customize/${customizeData.productimage}`)} />
                                 </div>
                             </div>
                         </div>
