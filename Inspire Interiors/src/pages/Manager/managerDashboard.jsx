@@ -36,7 +36,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 };
 
 
-const CustomerSupportDashboard = () =>{
+const ManagerDashboard = () =>{
 
     const [quotationData, setQuotationData] = useState([]);
     const [refundData, setRefundData] = useState([]);
@@ -199,7 +199,6 @@ const CustomerSupportDashboard = () =>{
             
         });
         return mergedData;
-        console.log(mergedData);
     };
 
     const mergedData = barChartData(quotationData, refundData, complaintData);
@@ -301,4 +300,4 @@ return (
     </>
 )};
 
-export default CustomerSupportDashboard;
+export default ManagerDashboard;
