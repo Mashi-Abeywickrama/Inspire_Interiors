@@ -7,13 +7,8 @@ import inspireinteriors.dev.repository.Designer.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.Date;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class DesignerMyDesignService {
@@ -57,7 +52,7 @@ public class DesignerMyDesignService {
         this.designerMyDesignsRepository = designerMyDesignsRepository;
     }
 
-    public MyDesigns addDesign(MyDesigns design) {
+    public MyDesigns addDesign(MyDesigns design){
         return designerMyDesignsRepository.save(design);
 
     }
@@ -93,14 +88,8 @@ public class DesignerMyDesignService {
     public VendorOffer getPromotionRequestsById(int designer_id) {
         return designerPromotionRequestsRepository.findById((long) designer_id).orElse(null);
     }
-
-
-    public List<PromotionRequests> getPromotionRequestsByDesignerId(int designer_id) {
-        return designerPromotionRequestsRepository.findPromotionRequestsByDesignerID(designer_id);
-
     public List<VendorOffer> getPromotionRequestsByDesignerId(int designerid) {
         return designerPromotionRequestsRepository.findPromotionRequestsByDesignerID(designerid);
-
     }
 
     //Design Earnings Services
@@ -126,11 +115,10 @@ public class DesignerMyDesignService {
 
     //Save design tool files
 
-    public DesigntoolFiles saveFiles(DesigntoolFiles designtoolFiles) {
+    public DesigntoolFiles saveFiles(DesigntoolFiles designtoolFiles){
         return designerDesigntoolFilesRepository.save(designtoolFiles);
     }
-
-    public DesigntoolFiles updateFiles(int id, String data) {
+    public DesigntoolFiles updateFiles(int id, String data){
         DesigntoolFiles designtoolFiles = designerDesigntoolFilesRepository.findById((long) id).orElse(null);
         designtoolFiles.setData(data);
         return designerDesigntoolFilesRepository.save(designtoolFiles);
@@ -144,37 +132,18 @@ public class DesignerMyDesignService {
         LocalDate date = LocalDate.now();
         designtoolFiles.setCreatedOn(date);
         return designerDesigntoolFilesRepository.save(designtoolFiles);
-    }
+}
 
-    public DesigntoolFiles Getdetails(int id) {
+    public DesigntoolFiles Getdetails(int id){
         return designerDesigntoolFilesRepository.findById((long) id).orElse(null);
     }
-
-    public DesigntoolFiles GetByReqid(int request_id) {
+    public DesigntoolFiles GetByReqid(int request_id){
         return designerDesigntoolFilesRepository.findByRequest_id(request_id);
     }
 
-    public List<DesigntoolFiles> GetAllDra(int designer_id) {
-        return designerDesigntoolFilesRepository.getAllDra(designer_id);
-    }
-
-    public List<DesigntoolFiles> GetAllReq(int designer_id) {
-        return designerDesigntoolFilesRepository.getAllReq(designer_id);
-    }
-
-    //Customer request filter...
-    public List<CustomerRequests> ReqFill(int designer_id, int status) {
-        return designerCustomerRequestsRepository.ReqFill(designer_id, status);
-
-    }
-    public CustomerRequests setAmt(int request_id, int amount) {
-        CustomerRequests customerRequests = designerCustomerRequestsRepository.findById(Long.valueOf(request_id)).orElse(null);
-        customerRequests.setAmount(String.valueOf(amount));
-        return designerCustomerRequestsRepository.save(customerRequests);
-    }
-
-    public List<CustomerRequests> getByDesigner_id(int designer_id) {
-        return designerCustomerRequestsRepository.getCustomerRequestsByDesigner_id(designer_id);
+    public List getCountsOfDesigns() {
+        List counts = designerMyDesignsRepository.getCountsOfDesigns();
+        return counts;
     }
 
     public int getMaxDesignID() {
@@ -196,5 +165,27 @@ public class DesignerMyDesignService {
     public List<String> getDistinctRoomTypes() {
         return designerMyDesignsRepository.getDistinctRoomTypes();
     }
-}
 
+    public List<CustomerRequests> getByDesigner_id(int designer_id) {
+        return designerCustomerRequestsRepository.getCustomerRequestsByDesigner_id(designer_id);
+    }
+
+    public CustomerRequests setAmt(int request_id, int amount) {
+        CustomerRequests customerRequests = designerCustomerRequestsRepository.findById(Long.valueOf(request_id)).orElse(null);
+        customerRequests.setAmount(String.valueOf(amount));
+        return designerCustomerRequestsRepository.save(customerRequests);
+    }
+
+    public List<CustomerRequests> ReqFill(int designer_id, int status) {
+        return designerCustomerRequestsRepository.ReqFill(designer_id,status);
+
+    }
+
+    public List<DesigntoolFiles> GetAllDra(int designer_id) {
+        return designerDesigntoolFilesRepository.getAllDra(designer_id);
+    }
+
+    public List<DesigntoolFiles> GetAllReq(int designer_id) {
+        return designerDesigntoolFilesRepository.getAllReq(designer_id);
+    }
+}

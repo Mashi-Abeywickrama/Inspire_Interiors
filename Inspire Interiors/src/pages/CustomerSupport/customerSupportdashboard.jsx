@@ -143,6 +143,7 @@ const CustomerSupportDashboard = () =>{
             
         });
         return mergedData;
+        console.log(mergedData);
     };
 
     const mergedData = barChartData(quotationData, refundData, complaintData);
