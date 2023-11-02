@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import '../../styles/customerSupport/customerSupportdashboard.css';
 
 
+
 import Money from './../../assets/img/vendor/money.svg';
 
 import * as Icon from 'react-bootstrap-icons';
@@ -25,7 +26,7 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const RADIAN = Math.PI / 180;
 
 
-const CustomerSupportDashboard = () =>{
+const ManagerDashboard = () =>{
 
     const [quotationData, setQuotationData] = useState([]);
     const [refundData, setRefundData] = useState([]);
@@ -289,4 +290,4 @@ return (
     </>
 )};
 
-export default CustomerSupportDashboard;
+export default ManagerDashboard;
