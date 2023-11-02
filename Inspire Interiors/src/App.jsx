@@ -66,6 +66,7 @@ import Delivery from "./pages/Manager/delivery";
 import ViewDelivery from "./pages/Manager/viewDelivery";
 import MInquiry from "./pages/Manager/inquiry";
 import MInquiryView from "./pages/Manager/viewInquiry";
+import ManagerDashboard from "./pages/Manager/managerDashboard";
 
 // Vendor
 
@@ -138,6 +139,7 @@ import ViewProductDesigner from "./pages/Designer/ViewProductDesigner";
 
 import ViewDesignC from "./pages/Customer/Designs/viewDesign";
 import RProductView from "./pages/Customer/marketplace/recommandedProduct";
+
 
 
 
@@ -343,7 +345,8 @@ const routes = (
       element={<ManagerDashboardLayout />}
       errorElement={<Error />}
     >
-      <Route index element={<DesignerDashboard />} />
+      <Route index element={<ManagerDashboard />} />
+      <Route path="dashboard" element={<ManagerDashboard />} />
       <Route path="delivery" element={<Delivery />} />
       <Route path="delivery/view/:id" element={<ViewDelivery />}></Route>
       <Route path="mydesigns" element={<DesignerMyDesigns />} />

@@ -36,7 +36,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 };
 
 
-const CustomerSupportDashboard = () =>{
+const ManagerDashboard = () =>{
 
     const [quotationData, setQuotationData] = useState([]);
     const [refundData, setRefundData] = useState([]);
@@ -300,4 +300,4 @@ return (
     </>
 )};
 
-export default CustomerSupportDashboard;
+export default ManagerDashboard;
