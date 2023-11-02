@@ -66,6 +66,7 @@ import Delivery from "./pages/Manager/delivery";
 import ViewDelivery from "./pages/Manager/viewDelivery";
 import MInquiry from "./pages/Manager/inquiry";
 import MInquiryView from "./pages/Manager/viewInquiry";
+import ManagerDashboard from "./pages/Manager/managerDashboard";
 
 // Vendor
 
@@ -139,6 +140,7 @@ import ViewProductDesigner from "./pages/Designer/ViewProductDesigner";
 import ViewDesignC from "./pages/Customer/Designs/viewDesign";
 import RProductView from "./pages/Customer/marketplace/recommandedProduct";
 import ManagerDashboard from "./pages/Manager/managerDashboard";
+
 
 
 
