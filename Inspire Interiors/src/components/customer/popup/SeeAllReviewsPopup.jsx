@@ -206,7 +206,7 @@ function SeeAllReviews({ productData }) {
                                     <span className='sub-heading Cabin-text'>{review.reviewDate}</span>
                                 </div>
                                 <div className='d-flex justify-content-between'>
-                                    <span className='sub-heading Cabin-text'>{review.review}</span>
+                                    <span className='sub-heading Cabin-text w-75'>{review.review}</span>
                                     <span className='sub-heading Cabin-text'>{generateStars(review.starRating)}</span>
 
                                 </div>

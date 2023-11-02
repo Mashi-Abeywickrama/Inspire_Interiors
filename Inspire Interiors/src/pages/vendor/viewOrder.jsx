@@ -179,11 +179,11 @@
             <>
                 <div className="order-container w-100 rounded-3 mb-4 me-5 p-3">
                     <div className="d-flex flex-row gap-4">
-                        <Link to="/vendor/order"><p className="text-dark fs-5 fw-bold Cabin-text">Orders</p></Link>
+                        <Link to="/vendor/order"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Orders</p></Link>
                         <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                         <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{orderData.status}</p>
                         <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                        <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{orderData.orderid}</p>
+                        <p className="fs-5 fw-bold Cabin-text text-dark">{orderData.orderid}</p>
                     </div>
                     <div className="col-12 d-flex flex-column">
                         <div className="d-flex flex-row justify-content-between">

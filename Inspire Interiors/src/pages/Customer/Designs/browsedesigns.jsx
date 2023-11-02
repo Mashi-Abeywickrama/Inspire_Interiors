@@ -213,7 +213,8 @@ const BrowseDesigns = () => {
                                         <div className="d-flex gap-2 flex-md-row flex-column" style={{ color: "#0A033C" }}>
                                             <div className="w-25 align-self-center">
                                                 <div className="customemodel">
-                                                <GLTFModel src={`./../../../src/assets/img/gltf/${data.image||'153.gltf'}`}
+                                                {item.image && (
+                                                <GLTFModel src={`./../../../src/assets/img/gltf/${item.image}`}
                                                     className="ModelViewDesign">
                                                 <AmbientLight color={0xffffff} />
                                                 <DirectionLight
@@ -222,6 +223,7 @@ const BrowseDesigns = () => {
                                                 />
                                                 
                                             </GLTFModel>
+                                                )}
                                                 </div>
                                             </div>
 
@@ -255,7 +257,7 @@ const BrowseDesigns = () => {
                                                 <div className="row fw-semibold" style={{ color: '#696984' }}>
                                                     <div className="col-md-6 col-sm-6 col-6">
                                                         <div className=" px-2">
-                                                            {generateStars(item.stars)} ({item.votes} Votes)
+                                                            {item.description}
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-sm-6 col-6">
@@ -278,9 +280,11 @@ const BrowseDesigns = () => {
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-sm-6 col-6">
-                                                        <div className="d-flex justify-content-end ">
-                                                            {item.column2}
+                                                        <Link to={`/customer/designs/viewdesign/${item.design_id}`}>
+                                                        <div className="d-flex justify-content-end text-black ">
+                                                            View Design 
                                                         </div>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>

@@ -243,7 +243,7 @@ const VendorDashboard = () => {
                 <div className='col-12 d-flex flex-column gap-3 '>
                     <div className='col-12 d-flex flex-column flex-lg-row flex-md-row gap-3'>
                         <div className='col-lg-8 bg-white rounded-3 shadow p-4'>
-                            <Link to="/vendor/inventory"> <p className='fs-5 fw-bold Cabin-text '  style={{ color: "#035C94" }}>Revenue Made</p></Link>
+                            <Link to="/vendor/inventory"> <p className='fs-5 fw-bold Cabin-text ' style={{ color: "#035C94" }}>Revenue Made</p></Link>
                             <div className='d-flex flex-row justify-content-evenly'>
                                 <div className='d-flex flex-row gap-3'>
                                     <p className='fs-6 fw-semibold' style={{ color: "#035C94" }}>Total Revenue from Last Week:</p>

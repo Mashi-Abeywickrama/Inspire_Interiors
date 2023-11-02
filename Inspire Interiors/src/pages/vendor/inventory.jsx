@@ -290,9 +290,9 @@ const Inventory = () => {
     <>
       <div className='overview-container background-inventory rounded-3 mb-4 me-3'>
         <div className="d-flex flex-row gap-2 px-4">
-          <p className="text-dark fs-5 fw-bold Cabin-text">Inventory</p>
+          <p className="text-dark fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Inventory</p>
           <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-          <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Overview</p>
+          <p className="fs-5 fw-bold Cabin-text text-dark">Overview</p>
         </div>
         <div className='d-flex flex-column gap-2'>
           <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-4 justify-content-around'>

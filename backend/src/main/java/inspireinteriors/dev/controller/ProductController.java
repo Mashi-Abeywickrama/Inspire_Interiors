@@ -112,6 +112,7 @@ public class ProductController {
         return (List<Product>) productService.getAllProducts();
     }
 
+
     @GetMapping("/viewproducts/{id}")
     public Product getProductById(@PathVariable Integer id) {
         return productService.getProductById(id);
@@ -552,6 +553,7 @@ public class ProductController {
         List<Product> products = (List<Product>) productService.getAllPopularItems();
         return ResponseEntity.ok(products);
     }
+
 
     @GetMapping("/product/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable(value = "id") int id) {

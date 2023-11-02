@@ -18,4 +18,6 @@ public interface DesignerCustomerRequestsRepository extends JpaRepository<Custom
     @Query(value = "SELECT * FROM customer_requests WHERE designer_id = :dId", nativeQuery = true)
     List<CustomerRequests> findCustomerRequestsByDesigner_id(@Param("dId") int designer_id);
 
+    @Query(value = "SELECT * FROM customer_requests WHERE customer_id = :cId", nativeQuery = true)
+    List<CustomerRequests> findDetailsCustomer_id(@Param("cId") int customer_id);
 }

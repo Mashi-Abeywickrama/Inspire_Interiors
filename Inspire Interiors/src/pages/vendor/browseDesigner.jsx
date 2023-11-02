@@ -37,9 +37,9 @@ const BrowseDesigner = () => {
     <>
       <div className="designer-container background-total accordion bg-white rounded-3 mb-4 me-3">
           <div className='d-flex flex-row gap-4 p-3 '>
-              <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text text-dark">Promotion</p></Link>
+              <Link to="/vendor/promotion"><p className="text-dark fs-5 fw-bold Cabin-text text-dark" style={{ color: "#A2A3B1" }}>Promotion</p></Link>
               <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-              <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Browse Designers</p>
+              <p className="fs-5 fw-bold Cabin-text text-dark">Browse Designers</p>
           </div>
           <div>
               <div className='p-4 Cabin-text'>
