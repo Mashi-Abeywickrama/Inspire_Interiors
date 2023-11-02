@@ -152,10 +152,10 @@ const VendorDashboard = () => {
                 const completedOrders = response.data.filter((order) => order.status === "Completed");
                 setCompletedOrderCount(completedOrders.length);
 
-                const OngoingOrders = response.data.filter((order) => order.status !== "Completed" && order.status !== "New" && order.status !== "Canceled" );
+                const OngoingOrders = response.data.filter((order) => order.status !== "Completed" && order.status !== "New" && order.status !== "Cancelled" );
                 setOngoingOrderCount(OngoingOrders.length);
 
-                const canceledOrders = response.data.filter((order) => order.status === "Canceled");
+                const canceledOrders = response.data.filter((order) => order.status === "Cancelled");
                 setCancelledOrderCount(canceledOrders.length);
 
                 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

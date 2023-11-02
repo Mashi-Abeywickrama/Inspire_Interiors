@@ -89,10 +89,10 @@ const CustomizeOrders = () => {
                 width: 200
             },
             {
-                label: 'PRODUCT DETAILS',
+                label: 'PRODUCT NAME',
                 field: 'product',
                 sort: 'asc',
-                width: 270
+                width: 150
             },
             
             {
@@ -113,8 +113,7 @@ const CustomizeOrders = () => {
             return {
                 customer: neworder.username,
                 product: <div className='d-flex flex-row gap-3'>
-                    <img src={Sofa}/>
-                    <p className='align-items-center fs-6 fw-semibold m-2'>{neworder.productname}</p>
+                    <p className='align-items-center fs-6 fw-normal mt-3' style={{marginLeft:"6rem"}}>{neworder.productname}</p>
                 </div>,
                 specification: neworder.productspecification,
                 status: <div className='d-flex flex-row gap-4'><button className='accept-btn'>Accept</button><Link to={`/vendor/order/customrequest?id=${neworder.customizedorderid}`}><button className='view-btn'>View</button></Link></div>
@@ -131,7 +130,7 @@ const CustomizeOrders = () => {
                 width: 200
             },
             {
-                label: 'PRODUCT DETAILS',
+                label: 'PRODUCT NAME',
                 field: 'product',
                 sort: 'asc',
                 width: 270
@@ -154,9 +153,8 @@ const CustomizeOrders = () => {
             return {
                 customer: acceptorder.username,
                 product: <div className='d-flex flex-row gap-4 align-items-center'>
-                <img src={Sofa}/>
                 <div className="d-flex flex-column">
-                    <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>{acceptorder.productname}</p>
+                    <p className='align-items-center fs-6 fw-normal mt-3 mt-3' style={{marginLeft:"6rem"}}>{acceptorder.productname}</p>
                     <p className="fs-6 fw-normal">{}</p>
                     </div>
                 </div>,

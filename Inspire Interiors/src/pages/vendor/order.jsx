@@ -234,7 +234,7 @@ const Order = () => {
     const newData = {
         columns: [
             {
-              label: 'PRODUCT DETAILS',
+              label: 'PRODUCT NAME',
               field: 'product',
               sort: 'asc',
               width: 180
@@ -248,10 +248,9 @@ const Order = () => {
         ],
         rows: filteredCustomizedData("New").map((custom) => {
             return {   
-                product: <div className='d-flex flex-row gap-3'>
-                            <Link to={`/vendor/order/customrequest?id=${custom.customizedorderid}`}><img src={Sofa}/></Link>
-                            <p className="fs-6 fw-normal mt-2">{custom.productname}</p>
-                        </div>,
+                product: <Link to={`/vendor/order/customrequest?id=${custom.customizedorderid}`}><div className='d-flex flex-row gap-3'>  
+                            <p className="fs-6 fw-semibold text-dark justify-content-center mx-5 mt-2">{custom.productname}</p>
+                        </div> </Link>,
                 customer: <p className='align-items-center fs-6 fw-normal mt-2'>{custom.username}</p>                   
             }
         })
@@ -274,10 +273,9 @@ const Order = () => {
         ],
         rows: filteredCustomizedData("Accepted").map((acceptorder) => {
             return{  
-                product: <div className='d-flex flex-row gap-3'>
-                            <Link to={`/vendor/order/acceptrequest?id=${acceptorder.customizedorderid}`}><img src={Sofa}/></Link>
-                            <p className="fs-6 fw-normal mt-2">{acceptorder.productname}</p>
-                        </div>,
+                product: <Link to={`/vendor/order/acceptrequest?id=${acceptorder.customizedorderid}`}><div className='d-flex flex-row gap-3'>  
+                <p className="fs-6 fw-semibold text-dark justify-content-center mx-5 mt-2">{acceptorder.productname}</p>
+            </div> </Link>,
                 status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>{acceptorder.status}</p></div>
             }
         })

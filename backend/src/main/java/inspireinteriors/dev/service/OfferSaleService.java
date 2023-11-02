@@ -19,4 +19,8 @@ public class OfferSaleService {
     public OfferSale addOfferSale(OfferSale offerSale) {
         return this.offerSaleRepository.save(offerSale);
     }
+
+    public List<OfferSale> findByVendorId(int vendorid) {
+        return this.offerSaleRepository.findByVendorId(vendorid);
+    }
 }
