@@ -10,6 +10,8 @@ import Profile1 from '../../assets/img/customer/profile1.png';
 import Chair from '../../assets/img/customer/chair1.png';
 import { PieChart, Pie, Sector, Cell, BarChart, Bar, XAxis, YAxis, LineChart, Line, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import axios from "axios";
+import { useSession } from '../../constants/SessionContext';
+import { set } from 'date-fns';
 
 // import "react-modern-calendar-datepicker/lib/DatePicker.css";
 // import { Calendar } from "react-modern-calendar-datepicker";
@@ -24,32 +26,32 @@ const data = [
 const linedata = [
     {
         name: 'JAN',
-        Ongoing: 60,
+        orderCount: 60,
         Earned: 90,
     },
     {
         name: 'FEB',
-        Ongoing: 15,
+        orderCount: 15,
         Earned: 40,
     },
     {
         name: 'MAR',
-        Ongoing: 100,
+        orderCount: 100,
         Earned: 80,
     },
     {
         name: 'APR',
-        Ongoing: 30,
+        orderCount: 30,
         Earned: 50,
     },
     {
         name: 'MAY',
-        Ongoing: 110,
+        orderCount: 110,
         Earned: 80,
     },
     {
         name: 'JUN',
-        Ongoing: 50,
+        orderCount: 50,
         Earned: 40,
     }
 ];
@@ -59,9 +61,21 @@ const CustomerDashboard = () => {
 
     const [allUsers, setAllUsers] = useState([]);
     const [designerData, setDesignerData] = useState([]);
+    const [allCountsNumber, setAllCountsNumber] = useState([]);
+    const [newData, setNewData] = useState('');
+    const [confirmedData, setConfirmedData] = useState('');
+    const [preparedData, setPreparedData] = useState('');
+    const [shippedData, setShippedData] = useState('');
+    const [deliveredData, setDeliveredData] = useState('');
+    const [completedData, setCompletedData] = useState('');
+    const [canceledData, setCanceledData] = useState('');
+    const [graphData, setGraphData] = useState([]);
     const urlParams = new URLSearchParams(window.location.search);
 
     const Id = urlParams.get('id');
+
+    const sessionItems = useSession();
+    const userId = sessionItems.sessionData.userid;
 
     const apiBaseURL = "http://localhost:8080";
 
@@ -93,6 +107,47 @@ const CustomerDashboard = () => {
                 console.log('Error fetching data', error);
             });
     }, [Id]);
+
+     useEffect(() => {
+        axiosInstance
+            .get(`/ordercountseven`)
+            .then((response) => {
+                setGraphData(response.data);
+                // console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('Error fetching data', error);
+            });
+    }, [Id]);
+
+    useEffect(() => {
+        axiosInstance
+            .get(`/getordercounttypes/${userId}`)
+            .then((response) => {
+                setAllCountsNumber(response.data);
+                const newDataHere = response.data.filter((item) => item[0] === "New");
+                setNewData(newDataHere[0][1])
+
+                const confirmedDataHere = response.data.filter((item) => item[0] === "Confirmed");
+                const preparedDataHere = response.data.filter((item) => item[0] === "Prepared");
+                const shippedDataHere = response.data.filter((item) => item[0] === "Shipped");
+                const deliveredDataHere = response.data.filter((item) => item[0] === "Delivered");
+                const completedDataHere = response.data.filter((item) => item[0] === "Completed");
+                const canceledDataHere = response.data.filter((item) => item[0] === "Canceled");
+
+                setConfirmedData(confirmedDataHere[0][1]);
+                setPreparedData(preparedDataHere[0][1]);
+                setShippedData(shippedDataHere[0][1]);
+                setDeliveredData(deliveredDataHere[0][1]);
+                setCompletedData(completedDataHere[0][1]);
+                setCanceledData(canceledDataHere[0][1]);
+
+                console.log(newData);
+            })
+            .catch((error) => {
+                console.log('Error fetching data', error);
+            });
+    }, [userId]);
 
     const mergeData = (designerData, userData) => {
         const mergedData = designerData.map(
@@ -205,136 +260,93 @@ const CustomerDashboard = () => {
                             <div className='d-flex flex-column gap-3'>
                                 <div className='d-flex flex-column gap-1 bar-1'>
                                     <div className='d-flex flex-row justify-content-between'>
-                                        <p className='fs-6 Cabin-text'>Bedroom Interiors</p>
-                                        <p className='fs-6 Cabin-text'>60%</p>
+                                        <p className='fs-6 Cabin-text'>No. of New Orders</p>
+                                        <p className='fs-6 Cabin-text'>{newData || 0}</p>
                                     </div>
-                                    <ProgressBar now={60} />
+                                  
                                 </div>
                                 <div className='d-flex flex-column gap-1 bar-2'>
                                     <div className='d-flex flex-row justify-content-between'>
-                                        <p className='fs-6 Cabin-text'>4 Element Wall Art</p>
-                                        <p className='fs-6 Cabin-text'>50%</p>
+                                        <p className='fs-6 Cabin-text'>No. of Confirmed Orders</p>
+                                        <p className='fs-6 Cabin-text'>{confirmedData || 0}</p>
                                     </div>
-                                    <ProgressBar now={50} />
+                                    
                                 </div>
                                 <div className='d-flex flex-column gap-1 bar-3'>
                                     <div className='d-flex flex-row justify-content-between'>
-                                        <p className='fs-6 Cabin-text'>Ball Chair - Blue Cushion</p>
-                                        <p className='fs-6 Cabin-text'>35%</p>
+                                        <p className='fs-6 Cabin-text'>No. of Prepared Orders</p>
+                                        <p className='fs-6 Cabin-text'>{preparedData || 0}</p>
                                     </div>
-                                    <ProgressBar now={35} />
+                                    
+                                </div>
+                                <div className='d-flex flex-column gap-1 bar-1'>
+                                    <div className='d-flex flex-row justify-content-between'>
+                                        <p className='fs-6 Cabin-text'>No. of Shipped Orders</p>
+                                        <p className='fs-6 Cabin-text'>{shippedData || 0}</p>
+                                    </div>
+                                  
+                                </div>
+                                <div className='d-flex flex-column gap-1 bar-2'>
+                                    <div className='d-flex flex-row justify-content-between'>
+                                        <p className='fs-6 Cabin-text'>No. of Delivered Orders</p>
+                                        <p className='fs-6 Cabin-text'>{deliveredData || 0}</p>
+                                    </div>
+                                    
+                                </div>
+                                <div className='d-flex flex-column gap-1 bar-3'>
+                                    <div className='d-flex flex-row justify-content-between'>
+                                        <p className='fs-6 Cabin-text'>No. of Completed Orders</p>
+                                        <p className='fs-6 Cabin-text'>{completedData || 0}</p>
+                                    </div>
+                                    
+                                </div>
+                                <div className='d-flex flex-column gap-1 bar-3'>
+                                    <div className='d-flex flex-row justify-content-between'>
+                                        <p className='fs-6 Cabin-text'>No. of Canceled Orders</p>
+                                        <p className='fs-6 Cabin-text'>{canceledData || 0}</p>
+                                    </div>
+                                    
                                 </div>
                             </div>
 
                         </div>
                     </div>
                     <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row gap-3'>
-                        <div className='d-flex col-lg-9 flex-column gap-3'>
-                            <div className='d-flex col-lg-11 flex-column flex-lg-row flex-md-row flex-sm-row gap-2'>
-                                <div className='col-lg-9 bg-white rounded-3 p-4'>
-                                    <p className="fs-3 fw-bold Cabin-text">Wish List</p>
-                                    <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row'>
-                                        <div className='d-flex flex-row mt-3 justify-content-between' style={{ height: "110px", width: "100%" }}>
-                                            <div className='d-flex'>
-                                                <img src={Chair} className='img-fluid' style={{ width: "80%", height: "80%" }} />
-                                                <div className='d-flex flex-column'>
-                                                    <p className='fs-6 fw-semibold Cabin-text'>Customize Chair</p>
-                                                    <div className='d-flex flex-row gap-3'>
-                                                        <p className='fs-6 Cabin-text m-0'>Arpico</p>
-                                                        <Icon.CircleFill size={5} className='mt-2' />
-                                                        <p className='fs-6 Cabin-text m-0'>furniture</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p className='fs-6 Cabin-text'>3000 LKR</p>
-                                        </div>
-                                    </div>
-                                    <div className='d-flex flex-column flex-lg-row flex-md-row flex-sm-row'>
-                                        <div className='d-flex flex-row mt-3 justify-content-between' style={{ height: "110px", width: "100%" }}>
-                                            <div className='d-flex'>
-                                                <img src={Chair} className='img-fluid' style={{ width: "80%", height: "80%" }} />
-                                                <div className='d-flex flex-column'>
-                                                    <p className='fs-6 fw-semibold Cabin-text'>Customize Chair</p>
-                                                    <div className='d-flex flex-row gap-3'>
-                                                        <p className='fs-6 Cabin-text m-0'>Arpico</p>
-                                                        <Icon.CircleFill size={5} className='mt-2' />
-                                                        <p className='fs-6 Cabin-text m-0'>furniture</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p className='fs-6 Cabin-text'>3000 LKR</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-lg-4 bg-white rounded-3 p-4'>
-                                    <p className="fs-3 fw-bold Cabin-text">Delivery Status</p>
-                                    <PieChart width={220} height={250}>
-                                        <Pie
-                                            data={data}
-                                            cx={120}
-                                            cy={110}
-                                            innerRadius={60}
-                                            outerRadius={80}
-                                            fill="#8884d8"
-                                            paddingAngle={5}
-                                            dataKey="value"
-                                        >
-                                            {data.map((entry, index) => (
-                                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                            ))}
-                                        </Pie>
-                                    </PieChart>
-                                </div>
-                            </div>
+                        <div className='d-flex col-lg-12 flex-column gap-3'>
+                            
                             <div className='col-lg-12 bg-white rounded-3 p-4 mb-3'>
                                 <div className='d-flex flex-row justify-content-between'>
-                                    <p className="fs-3 fw-bold Cabin-text">Purchase</p>
-                                    <select class="form-select w-25" aria-label="Default select example">
-                                        <option selected>Monthly</option>
-                                        <option value="Last Month">Weekly</option>
-                                    </select>
+                                    <p className="fs-3 fw-bold Cabin-text">Purchase History (Last Week)</p>
+                                   
                                 </div>
-                                <p className='fs-6 Cabin-text'>Apr 2023</p>
-                                <ResponsiveContainer width="80%" height="75%">
-                                    <LineChart
-                                        data={linedata}
-                                    >
-                                        <XAxis dataKey="name" />
-                                        <YAxis />
-                                        <Tooltip />
-                                        <Legend />
-                                        <Line type="monotone" dataKey="Ongoing" stroke="#FFC00C" />
-                                        <Line type="monotone" dataKey="Earned" stroke="#035C94" />
-                                    </LineChart>
+                         
+                                <ResponsiveContainer width="95%" height="85%">
+                                    <BarChart
+                                width = {910}
+                                height={300}
+                                data={graphData}
+                                margin={{
+                                    top: 5,
+                                    right: 30,
+                                    left: 5,
+                                    bottom: 5,
+                                }}
+                                barSize={20}
+                            >
+                                <XAxis dataKey="dayName" scale="point" padding={{ left: 30, right: 30 }} />
+                                <YAxis scale="linear" tickCount={3} />
+                                <Tooltip />
+                                <Legend  />
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <Bar dataKey="OrderCount" fill="orange" radius={[3, 3, 0, 0]} background={{ fill: '#fff' }} />
+                                
+                            </BarChart>
                                 </ResponsiveContainer>
 
 
                             </div>
                         </div>
-                        <div className='col-lg-3 bg-white rounded-3 p-4 mb-3'>
-                            <p className="fs-3 fw-bold Cabin-text">Updates</p>
-                            <div className='dashboard-calender'><Calendar onChange={setDate} value={date} formatMonthYear={(locale, date) => {
-                                // Get the month's abbreviated name and full year
-                                const options = { month: 'short', year: 'numeric' };
-                                return new Intl.DateTimeFormat(locale, options).format(date);
-                            }
-                            } />
-                            </div>
-                            <p className='fs-6 Cabin-text mt-4 m-0'>08 am</p>
-                            <div className='col-lg-11 border justify-content-end rounded-3 p-3 my-2' style={{ backgroundColor: "#035C94" }}>
-                                <div className='d-flex flex-column'>
-                                    <p className='fs-5 fw-semibold Cabin-text text-white'>Bedroom Interiors</p>
-                                    <p className='fs-6 Cabin-text text-white m-0'>Half way done in your customized bedroom design.</p>
-                                </div>
-                            </div>
-                            <p className='fs-6 Cabin-text mt-4 m-0'>10 am</p>
-                            <div className='col-lg-11 border justify-content-end rounded-3 p-3 my-2' style={{ backgroundColor: "#096C86" }}>
-                                <div className='d-flex flex-column'>
-                                    <p className='fs-5 fw-semibold Cabin-text text-white'>4 Element Wall Art</p>
-                                    <p className='fs-6 Cabin-text text-white m-0'>Your package is now ready for shipping. </p>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
 
 

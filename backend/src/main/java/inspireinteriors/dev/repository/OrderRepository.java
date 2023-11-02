@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -22,5 +23,15 @@ import java.util.List;
 
     @Query(value = "SELECT * FROM orders WHERE ref_no = :refNo", nativeQuery = true)
     Order findByRef_No(@Param("refNo") int refNo);
+
+    @Query(value = "SELECT status, COUNT(status) FROM orders WHERE customer = :userid GROUP BY status", nativeQuery = true)
+    List<Object> findOrdersCountByCustomerID(@Param("userid") String userid);
+
+    @Query("SELECT i.date  , COUNT(i) " +
+            "FROM Order i " +
+            "WHERE CAST(i.date AS date) >= :sevenDaysAgo " +
+            "GROUP BY i.date " +
+            "ORDER BY i.date")
+    List<Object[]> getCountOfOrdersByDateForLast7Days(@Param("sevenDaysAgo") Date sevenDaysAgo);
 }
 
