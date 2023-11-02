@@ -82,7 +82,7 @@ const VendorDashboard = () => {
     const [newOrderCount, setNewOrderCount] = useState(null);
     const [CompletedOrderCount, setCompletedOrderCount] = useState(null);
     const [OngoingOrderCount, setOngoingOrderCount] = useState(null);
-    const [CancelledOrderCount, setCancelledOrderCount] = useState(null);
+    const [CanceledOrderCount, setCanceledOrderCount] = useState(null);
 
     const [linedata, setLinedata] = useState([]);
     const [bardata, setBardata] = useState([]);
@@ -127,7 +127,7 @@ const VendorDashboard = () => {
                     });
 
                     const OngoingTotal = dataForDay.reduce((total, order) => {
-                        return total + (order.status === 'Ongoing' ? order.price : 0);
+                        return total + (order.status !== 'Completed' && order.status !== 'Canceled' ? order.price : 0);
                     }, 0);
 
                     const CompletedTotal = dataForDay.reduce((total, order) => {
@@ -152,11 +152,11 @@ const VendorDashboard = () => {
                 const completedOrders = response.data.filter((order) => order.status === "Completed");
                 setCompletedOrderCount(completedOrders.length);
 
-                const OngoingOrders = response.data.filter((order) => order.status !== "Completed" && order.status !== "New" && order.status !== "Cancelled" );
+                const OngoingOrders = response.data.filter((order) => order.status !== "Completed" && order.status !== "New" && order.status !== "Canceled" );
                 setOngoingOrderCount(OngoingOrders.length);
 
-                const canceledOrders = response.data.filter((order) => order.status === "Cancelled");
-                setCancelledOrderCount(canceledOrders.length);
+                const canceledOrders = response.data.filter((order) => order.status === "Canceled");
+                setCanceledOrderCount(canceledOrders.length);
 
                 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -268,38 +268,38 @@ const VendorDashboard = () => {
                                 <p className=' fw-bold m-0' style={{ color: "white", fontSize:"4rem" }}>4.5</p>
                                 <div className="d-flex flex-row gap-1 mb-2">{generateStars(4.5)}</div>
                                     
-                                <p className='fs-6 fw-semibold m-0' style={{ color: "white" }}>1,580 Ratings</p>
+                                <p className='fs-6 fw-semibold m-0' style={{ color: "white" }}>19 Ratings</p>
                             </div>
                             <div className='d-flex flex-column mt-5'>
                                 <div className='d-flex flex-row gap-2'>
                                     <p className='fw-normal fs-6'>5</p>
                                     <Icon.StarFill color='#FFC00C' size={20} />
                                     <ProgressBar now={75} className='mt-1 mx-1' />
-                                    <p className='fs-6 fw-normal'>1180</p>
+                                    <p className='fs-6 fw-normal'>6</p>
                                 </div>
                                 <div className='d-flex flex-row gap-2'>
                                     <p className='fw-normal fs-6'>4</p>
                                     <Icon.StarFill color='#FFC00C' size={20} />
                                     <ProgressBar now={50} className='mt-1 mx-1' />
-                                    <p className='fs-6 fw-normal'>200</p>
+                                    <p className='fs-6 fw-normal'>5</p>
                                 </div>
                                 <div className='d-flex flex-row gap-2'>
                                     <p className='fw-normal fs-6'>3</p>
                                     <Icon.StarFill color='#FFC00C' size={20} />
                                     <ProgressBar now={35} className='mt-1 mx-1' />
-                                    <p className='fs-6 fw-normal'>100</p>
+                                    <p className='fs-6 fw-normal'>4</p>
                                 </div>
                                 <div className='d-flex flex-row gap-2'>
                                     <p className='fw-normal fs-6'>2</p>
                                     <Icon.StarFill color='#FFC00C' size={20} />
                                     <ProgressBar now={20} className='mt-1 mx-1' />
-                                    <p className='fs-6 fw-normal'>80</p>
+                                    <p className='fs-6 fw-normal'>3</p>
                                 </div>
                                 <div className='d-flex flex-row gap-2'>
                                     <p className='fw-normal fs-6'>1</p>
                                     <Icon.StarFill color='#FFC00C' size={20} />
                                     <ProgressBar now={10} className='mt-1 mx-1' />
-                                    <p className='fs-6 fw-normal'>20</p>
+                                    <p className='fs-6 fw-normal'>2</p>
                                 </div>
                             </div>
                         </div>
@@ -325,7 +325,7 @@ const VendorDashboard = () => {
                                     },
                                     {
                                       name: "In stock",
-                                      productCount: TotalInstockProduct,
+                                      productCount: 48,
                                       fill: "#FFC00C",
                                     },
                                   ]}
@@ -388,7 +388,7 @@ const VendorDashboard = () => {
                                     </div>
                                     <div className='background-box rounded-4 p-3'>
                                         <Icon.PersonFillX color='#FFC00C' size={40} />
-                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>{CancelledOrderCount}</p>
+                                        <p className='fw-bold fs-4 m-0' style={{ color: "#FFC00C" }}>{CanceledOrderCount}</p>
                                         <p className='fw-semibold fs-6 m-0' style={{ color: "#FFFFFF", opacity: "0.5" }}>Canceled Orders</p>
                                     </div>
                                 </div>
