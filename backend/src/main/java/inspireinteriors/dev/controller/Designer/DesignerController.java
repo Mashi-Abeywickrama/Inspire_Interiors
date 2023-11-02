@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -56,11 +57,11 @@ public class DesignerController {
        return ResponseEntity.ok(myDesigns);
     }
 
-    @GetMapping("designCount")
-    public ResponseEntity<List> getCountsOfDesigns(){
-        List counts = designerMyDesignService.getCountsOfDesigns();
-        return ResponseEntity.ok(counts);
-    }
+//    @GetMapping("designCount")
+//    public ResponseEntity<List> getCountsOfDesigns(){
+//        List counts = designerMyDesignService.getCountsOfDesigns();
+//        return ResponseEntity.ok(counts);
+//    }
     
 
     @GetMapping("/{designerId}")
@@ -160,10 +161,13 @@ public class DesignerController {
     //Designtool Endpoints
 
     //Save Designs
-    @PostMapping("/designtool/savedesign")
-   public String saveData(@RequestBody String data) {
+    @PostMapping("/designtool/savedesign/did/{dId}")
+   public String saveData(@RequestBody String data, @PathVariable("dId") int dId) {
        DesigntoolFiles file = new DesigntoolFiles();
+       LocalDate date =  LocalDate.now();
        file.setData(data);
+       file.setCreatedOn(date);
+       file.setDesigner_id(dId);
       designerMyDesignService.saveFiles(file);
       return "Successfully Saved";
 
@@ -202,6 +206,40 @@ public class DesignerController {
     DesigntoolFiles designtoolFiles =  designerMyDesignService.Getdetails(id);
       return ResponseEntity.ok(designtoolFiles);
     }
+
+
+    @GetMapping("/designtool/getdesign/dra/{dId}")
+    public ResponseEntity<List<DesigntoolFiles>> getDraFiles(@PathVariable("dId") int dId){
+     List<DesigntoolFiles> designtoolFiles = designerMyDesignService.GetAllDra(dId);
+     return ResponseEntity.ok(designtoolFiles);
+    }
+
+    @GetMapping("/designtool/getdesign/req/{dId}")
+    public ResponseEntity<List<DesigntoolFiles>> getAllReq(@PathVariable("dId") int designer_id){
+        List<DesigntoolFiles> designtoolFiles = designerMyDesignService.GetAllReq(designer_id);
+        return ResponseEntity.ok(designtoolFiles);
+    }
+
+
+    // Customer Requests
+    @GetMapping ("/CRequest/did/{did}/st/{st}")
+    public ResponseEntity<List<CustomerRequests>> ReqFill(@PathVariable("did") int designer_id, @PathVariable("st") int status) {
+        List<CustomerRequests> customerRequests = designerMyDesignService.ReqFill(designer_id, status);
+                return ResponseEntity.ok(customerRequests);
+
+
+    }
+    //Set Amount
+    @PutMapping("/CRequest/req/{req}/amount/{amt}")
+    public String SetAmt(@PathVariable("req") int request_id, @PathVariable("amt") int amount) {
+       designerMyDesignService.setAmt( request_id, amount);
+        return "Amount updated Successfully";
+    }
+
+    @GetMapping ("/CRequest/did/{did}")
+    public ResponseEntity<List<CustomerRequests>> GetAllByDesignerid(@PathVariable("did") int designer_id) {
+        List<CustomerRequests> customerRequests = (List<CustomerRequests>) designerMyDesignService.getByDesigner_id(designer_id);
+        return ResponseEntity.ok(customerRequests);
 
     @PutMapping("/updatedesignfile")
     public ResponseEntity<String> updatedesignfile(
@@ -274,6 +312,7 @@ public class DesignerController {
     public ResponseEntity<List<String>> getDistinctRoomTypes() {
         List<String> roomTypes = designerMyDesignService.getDistinctRoomTypes();
         return ResponseEntity.ok(roomTypes);
+
     }
 
 

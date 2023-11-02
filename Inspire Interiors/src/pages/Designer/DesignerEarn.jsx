@@ -24,17 +24,17 @@ function DesignerEarn() {
   // console.log(session.sessionData.userid);
   const designerId = session.sessionData.userid;
   console.log("Designer id is " + designerId);
-  
+
   const data = {
     columns: [
       {
-        label: "PRODUCT",
-        field: "product",
+        label: "REQUEST/PARTNERSHIP",
+        field: "name",
         sort: "asc",
         width: 150,
       },
       {
-        label: "Customer",
+        label: "Customer/Vendor",
         field: "customer",
         sort: "asc",
         width: 270,
@@ -55,73 +55,118 @@ function DesignerEarn() {
     ],
     rows: [
       {
-        product: "Bedroom Low Budget Design",
+        name: "Bedroom Low Budget Design",
         customer: "John Wick",
         date: "13.06.2023",
         earnings: "400 Rs",
       },
       {
-        product: "Bedroom Low Budget Design",
+        name: "Bedroom Low Budget Design",
         customer: "John Wick",
         date: "13.06.2023",
         earnings: "400 Rs",
       },
       {
-        product: "Bedroom Low Budget Design",
+        name: "Bedroom Low Budget Design",
         customer: "John Wick",
         date: "13.06.2023",
         earnings: "400 Rs",
       },
       {
-        product: "Bedroom Low Budget Design",
+        name: "Bedroom Low Budget Design",
         customer: "John Wick",
         date: "13.06.2023",
         earnings: "400 Rs",
       },
     ],
   };
+  // const data2 = [
+  //   {
+  //     name: "Page A",
+  //     uv: 4000,
+  //     pv: 2400,
+  //     amt: 2400,
+  //   },
+  //   {
+  //     name: "Page B",
+  //     uv: 3000,
+  //     pv: 1398,
+  //     amt: 2210,
+  //   },
+  //   {
+  //     name: "Page C",
+  //     uv: 2000,
+  //     pv: 9800,
+  //     amt: 2290,
+  //   },
+  //   {
+  //     name: "Page D",
+  //     uv: 2780,
+  //     pv: 3908,
+  //     amt: 2000,
+  //   },
+  //   {
+  //     name: "Page E",
+  //     uv: 1890,
+  //     pv: 4800,
+  //     amt: 2181,
+  //   },
+  //   {
+  //     name: "Page F",
+  //     uv: 2390,
+  //     pv: 3800,
+  //     amt: 2500,
+  //   },
+  //   {
+  //     name: "Page G",
+  //     uv: 3490,
+  //     pv: 4300,
+  //     amt: 2100,
+  //   },
+  // ];
+
   const data2 = [
     {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
+      name: "Jan",
+
+      Requests: 2400,
+      Partnership: 2400,
     },
     {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
+      name: "Feb",
+
+      Requests: 1398,
+      Partnership: 2210,
     },
     {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
+      name: "Mar",
+
+      Requests: 9800,
+      Partnership: 2290,
     },
     {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
+      name: "April",
+
+      Requests: 3908,
+      Partnership: 2000,
     },
     {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
+      name: "May",
+
+      Requests: 4800,
+      Partnership: 2181,
     },
     {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
+      name: "June",
+
+      Requests: 3800,
+      Partnership: 2500,
     },
     {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
+      name: "July",
+
+      Requests: 4300,
+      Partnership: 2100,
     },
   ];
   return (
@@ -170,14 +215,20 @@ function DesignerEarn() {
             className="fs-4 text-center p-3 rounded-2 px-5"
             style={{ background: "#FFC00C", color: "#ffff" }}
           >
-            <b>1000</b> Earned
+            <b>1000</b> Requests
           </div>
           <br></br>
         </div>
       </div>
       <div className="p-4 rounded-3 shadow bg-light col-lg-11">
+        <p className="primary fs-6 text-primary">
+          <b>Total Revenue</b>
+        </p>
+        <p className="primary fs-5 text-primary">
+          <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LKR 10.5 K</b>
+        </p>
         <LineChart
-          width={1300}
+          width={1000}
           height={400}
           data={data2}
           margin={{
@@ -194,7 +245,7 @@ function DesignerEarn() {
           <Legend />
           <Line
             type="monotone"
-            dataKey="pv"
+            dataKey="Requests"
             stroke="#FFC00C"
             activeDot={{ r: 8 }}
             strokeWidth={2}
@@ -202,7 +253,7 @@ function DesignerEarn() {
           />
           <Line
             type="monotone"
-            dataKey="uv"
+            dataKey="Partnership"
             stroke="#096C86"
             strokeWidth={2}
             dot={false}
