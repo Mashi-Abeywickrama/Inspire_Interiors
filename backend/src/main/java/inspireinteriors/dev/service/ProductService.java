@@ -124,4 +124,10 @@ public class ProductService {
     public Object getAllPopularItems() {
         return reviewRepository.getAllPopularItems();
     }
+
+    //get product type and count
+    public List<Object> getProductsTypeByVendor_id(int vendor_id) {
+        return productRepository.findProductsTypeByVendor_id(vendor_id);
+    }
+
 }

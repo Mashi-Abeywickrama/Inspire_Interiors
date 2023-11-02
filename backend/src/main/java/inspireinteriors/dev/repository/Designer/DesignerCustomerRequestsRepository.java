@@ -19,6 +19,7 @@ public interface DesignerCustomerRequestsRepository extends JpaRepository<Custom
     List<CustomerRequests> findCustomerRequestsByDesigner_id(@Param("dId") int designer_id);
 
 
+
     @Query(value = "SELECT * from customer_requests where designer_id = :dId and status = :st", nativeQuery = true)
     List<CustomerRequests> ReqFill(@Param("dId") int designer_id, @Param("st") int status);
 
@@ -28,5 +29,9 @@ public interface DesignerCustomerRequestsRepository extends JpaRepository<Custom
     @Query (value = "select * from customer_requests where designer_id = :did", nativeQuery = true)
     List<CustomerRequests> getCustomerRequestsByDesigner_id(@Param("did") int designer_id);
 
+
+
+    @Query(value = "SELECT * FROM customer_requests WHERE customer_id = :cId", nativeQuery = true)
+    List<CustomerRequests> findDetailsCustomer_id(@Param("cId") int customer_id);
 
 }

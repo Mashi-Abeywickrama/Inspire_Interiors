@@ -17,6 +17,7 @@ import { useSession } from '../../../constants/SessionContext';
 
 const MyOrder = () => {
   const [orderData, setOrderData] = useState([]);
+  const [productData, setProductData] = useState([]);
   const [userDate, setUserDate] = useState([]);
   const [selectedTab, setSelectedTab] = useState('All');
   const [loading, setLoading] = useState(true);
@@ -41,7 +42,7 @@ const MyOrder = () => {
         setOrderData(response.data);
         setLoading(false);
 
-        console.log(response.data);
+        console.log("or",response.data);
       })
       .catch((error) => {
         console.log("Error fetching data", error);
@@ -49,6 +50,24 @@ const MyOrder = () => {
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/viewproducts`)
+      .then((response) => {
+
+        setProductData(response.data);
+        setLoading(false);
+
+        console.log("pd",response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data", error);
+
+        setLoading(false);
+      });
+  }, []);
+
 
   useEffect(() => {
     axiosInstance
@@ -67,20 +86,25 @@ const MyOrder = () => {
       });
   }, []);
 
-  const mergedOrderUser = (orderData, userDate) => {
+  const mergedOrderUser = (orderData, userDate ,productData) => {
     const mergedOutput = orderData.map(
       (orderItem) => {
       const matchingUser = userDate.find(
         (userItem) =>  userItem.userid == orderItem.vendor
+        
+      );
+      const matchingProduct = productData.find(
+        (productItem) => productItem.product_id == orderItem.product
       );
 
   
-      if (matchingUser) {
+      if (matchingUser && matchingProduct) {
         // Merge the data from both sources
         return {
           
           ...matchingUser,
           ...orderItem,
+          ...matchingProduct,
          
         };
       } else {
@@ -91,7 +115,7 @@ const MyOrder = () => {
     return mergedOutput;
   };
 
-  const mergedUserVendor = mergedOrderUser(orderData, userDate);
+  const mergedUserVendor = mergedOrderUser(orderData, userDate,productData);
   console.log("mergeData_fair", mergedUserVendor);
 
 
@@ -121,7 +145,10 @@ const MyOrder = () => {
         className: 'ongoing d-flex gap-2 align-items-center',
         text: 'Shipped',
       },
-
+      Recieved: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Recieved',
+    },
       Delivered: {
         className: 'ongoing d-flex gap-2 align-items-center',
         text: 'Delivered',
@@ -154,7 +181,7 @@ const MyOrder = () => {
   };
 
   const filteredData = (status) =>
-    mergedUserVendor.filter((item) => item.status === status);
+    mergedUserVendor.filter((item) => item.status == status);
 
 
     
@@ -708,6 +735,11 @@ const MyOrder = () => {
                         width: 270
                       },
                       {
+                        label: 'PRODUCT NAME',
+                        field: 'pname',
+                        sort: 'asc',
+                        width: 150
+                      },{
                         label: 'VENDOR NAME',
                         field: 'name',
                         sort: 'asc',
@@ -740,6 +772,7 @@ const MyOrder = () => {
                     ],
                     rows: mergedUserVendor.map((item) => ({
                       name: item.name,
+                      pname: item.product_name,
                       number: item.ref_no,
                       quantity: item.quantity,
                       date: item.date ,
@@ -771,6 +804,11 @@ const MyOrder = () => {
                         width: 270
                       },
                       {
+                        label: 'PRODUCT NAME',
+                        field: 'name',
+                        sort: 'asc',
+                        width: 150
+                      },{
                         label: 'VENDOR NAME',
                         field: 'name',
                         sort: 'asc',
@@ -803,6 +841,7 @@ const MyOrder = () => {
                     ],
                     rows: filteredData("New").map((item) => ({
                       name: item.name,
+                      pname: item.product_name,
                       number: item.ref_no,
                       quantity: item.quantity,
                       date: item.date,
@@ -834,6 +873,11 @@ const MyOrder = () => {
                         width: 270
                       },
                       {
+                        label: 'PRODUCT NAME',
+                        field: 'name',
+                        sort: 'asc',
+                        width: 150
+                      },{
                         label: 'VENDOR NAME',
                         field: 'name',
                         sort: 'asc',
@@ -864,14 +908,16 @@ const MyOrder = () => {
                         width: 100
                       }
                     ],
-                    rows: filteredData("Prepared"||"Shipped"||"Delivered").map((item) => ({
+                    rows: filteredData("Prepared"||"Shipped"||"Delivered"||"Recieved").map((item) => ({
                       name: item.name,
+                      pname: item.product_name,
                       number: item.ref_no,
                       quantity: item.quantity,
                       date: item.date,
                       action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
                       status: getOrderStatus(item.status)
                     })),
+                    
                   }}
                   sortable={true}
                   exportToCSV={true}
@@ -897,6 +943,11 @@ const MyOrder = () => {
                         width: 270
                       },
                       {
+                        label: 'PRODUCT NAME',
+                        field: 'name',
+                        sort: 'asc',
+                        width: 150
+                      },{
                         label: 'VENDOR NAME',
                         field: 'name',
                         sort: 'asc',
@@ -929,6 +980,7 @@ const MyOrder = () => {
                     ],
                     rows: filteredData("Canceled").map((item) => ({
                       name: item.name,
+                      pname: item.product_name,
                       number: item.ref_no,
                       quantity: item.quantity,
                       date: item.date,
@@ -959,6 +1011,11 @@ const MyOrder = () => {
                         width: 270
                       },
                       {
+                        label: 'PRODUCT NAME',
+                        field: 'name',
+                        sort: 'asc',
+                        width: 150
+                      },{
                         label: 'VENDOR NAME',
                         field: 'name',
                         sort: 'asc',
@@ -991,6 +1048,7 @@ const MyOrder = () => {
                     ],
                     rows: filteredData("Completed").map((item) => ({
                       name: item.name,
+                      pname: item.product_name,
                       number: item.ref_no,
                       quantity: item.quantity,
                       date: item.date,

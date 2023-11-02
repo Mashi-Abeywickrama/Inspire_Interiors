@@ -9,11 +9,13 @@ import { Form, Row, Col } from 'react-bootstrap';
 import useAlert from '../../../components/useAlert';
 import { useSession } from '../../../constants/SessionContext';
 
-function SeeAllReviews({productData}) {
+function SeeAllReviews({ productData }) {
     const [showPopup, setReview] = useState(false);
+
     const [userReview, setUserReview] = useState('');
-     const [rating, setRating] = useState(0 );
+    const [rating, setRating] = useState(0);
     const [userData, setUserData] = useState([]);
+
 
     // Function to close the modal
     const closeModel = () => {
@@ -45,17 +47,19 @@ function SeeAllReviews({productData}) {
         return stars;
     };
 
+
     useEffect(() => {
         // Make an API request to fetch the shipping addresses from the backend
         axiosInstance.get('/users')
             .then(response => {
                 setUserData(response.data); // Assuming the response is an array of shipping addresses
-               
+
             })
             .catch(error => {
                 console.error('Error fetching shipping addresses:', error);
             });
     }, []); // Fetch the addresses when the component mounts
+
 
     const starStyles = {
         filledStar: {
@@ -69,11 +73,12 @@ function SeeAllReviews({productData}) {
     };
 
     function StarRating({ initialRating }) {
-       
+
 
         const handleStarClick = (clickedRating) => {
             setRating(clickedRating);
             console.log(clickedRating);
+
         };
 
         const generateInputStars = (totalStars) => {
@@ -104,20 +109,21 @@ function SeeAllReviews({productData}) {
 
     async function fetchAndStoreReviewData(id) {
         try {
-          const response = await axiosInstance.get(`/rating/${id}`);
-          setReviewData(response.data.reviews);
-          console.log(reviewData)
-          
-          // Set the average rating from the response to the state
-          setAverageRating(response.data.averageRating);
+            const response = await axiosInstance.get(`/rating/${id}`);
+            setReviewData(response.data.reviews);
+            console.log(reviewData)
+
+            // Set the average rating from the response to the state
+            setAverageRating(response.data.averageRating);
         } catch (error) {
-          console.error('Error fetching review data:', error);
+            console.error('Error fetching review data:', error);
         }
     }
 
     useEffect(() => {
-    fetchAndStoreReviewData(id);
+        fetchAndStoreReviewData(id);
     }, [id]);
+
     const sessionItems = useSession();
     const userId = sessionItems.sessionData.userid;
 
@@ -126,12 +132,12 @@ function SeeAllReviews({productData}) {
         try {
             // Make an API request to add the user's review
             const response = await axiosInstance.post(`/rating`, {
-                designId:0,
+                designId: 0,
                 productId: id,
-                reviewDate: new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()    ,
-                starRating:rating,
-                review: userReview, 
-                userId:userId
+                reviewDate: new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear(),
+                starRating: rating,
+                review: userReview,
+                userId: userId
             });
 
             // Handle the response or update the UI as needed
@@ -146,32 +152,34 @@ function SeeAllReviews({productData}) {
 
     const mergeData = (reviewData, userData) => {
         const mergedData = reviewData.map(
-          (reviewItem) => {
-          const matchingUser = userData.find(
-            (userItem) =>  userItem.userid === reviewItem.userId
-          );
-    
-         
-      
-          if (matchingUser ) {
-            // Merge the data from both sources
-            return {
-              ...reviewItem,
-              ...matchingUser
-            
-            };
-          } else {
-            return {
-                ...reviewItem
-            };
-        }});
-      
+            (reviewItem) => {
+                const matchingUser = userData.find(
+                    (userItem) => userItem.userid === reviewItem.userId
+                );
+
+
+
+                if (matchingUser) {
+                    // Merge the data from both sources
+                    return {
+                        ...reviewItem,
+                        ...matchingUser
+
+                    };
+                } else {
+                    return {
+                        ...reviewItem
+                    };
+                }
+            });
+
         return mergedData;
     };
-    
+
     const mergedDesigner = mergeData(reviewData, userData);
     console.log("merged Data", mergedDesigner);
-    
+
+
 
     return (
         <div>
@@ -189,40 +197,58 @@ function SeeAllReviews({productData}) {
 
 
 
-                    <Modal.Body className='py-2 px-3'>
-                  
+                    <Modal.Body className='py-2 px-3' style={{ maxHeight: '350px', overflowY: 'auto' }}>
+
                         {mergedDesigner.map((review, index) => (
                             <div key={index} className='d-flex flex-column gap-2'>
                                 <div className='d-flex justify-content-between'>
-                                    <span className='sub-heading Cabin-text'>{review.username}</span>
-                                    <span className='sub-heading Cabin-text'>{review.review_date}</span>
+                                    <span className='sub-heading fw-bold Cabin-text'>{review.username}</span>
+                                    <span className='sub-heading Cabin-text'>{review.reviewDate}</span>
                                 </div>
                                 <div className='d-flex justify-content-between'>
+                                    <span className='sub-heading Cabin-text w-75'>{review.review}</span>
                                     <span className='sub-heading Cabin-text'>{generateStars(review.starRating)}</span>
-                                    
-                                </div>
-                                <div className='d-flex justify-content-between'>
-                                    <span className='sub-heading Cabin-text'>{review.review}</span>
-                                </div>
-                            </div>
-    ))}
 
+                                </div>
+
+                                <hr />
+                            </div>
+
+                        ))}
+
+                        <style>{`
+                            /* WebKit Scrollbar Styles */
+                            ::-webkit-scrollbar {
+                              width: 7px;
+                            
+                            }
+                            ::-webkit-scrollbar-thumb {
+                              border-radius: 5px;
+                              background: #f39c12;
+                            }
+                        `}</style>
+                        
                     </Modal.Body>
 
                     <Modal.Footer className='d-flex justify-content-center'>
-                        <Form className='w-100 px-2'onSubmit={handleAddReview}>
+
+                        <Form className='w-100 px-2' onSubmit={handleAddReview}>
+
                             <Row className='w-100'>
                                 <Col md>
                                     <Form.Group className="mb-3">
                                         <div className="d-flex justify-content-between mb-2">
                                             <Form.Label className='sub-heading Cabin-text'>Add your review:</Form.Label>
-                                            <StarRating initialRating={rating || 0}  />
+
+                                            <StarRating initialRating={rating || 0} />
+
                                         </div>
                                         <div className="d-flex gap-1">
                                             <Form.Control
                                                 type='text'
                                                 placeholder="Type your comment here..."
                                                 style={{ backgroundColor: '#F2FAFF' }}
+
                                                 value={userReview}
                                                 onChange={(e) => setUserReview(e.target.value)}
                                                 required

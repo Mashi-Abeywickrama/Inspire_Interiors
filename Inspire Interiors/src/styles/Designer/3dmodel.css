@@ -1,0 +1,26 @@
+.customemodel div canvas:first-child {
+    display: none;
+}
+
+.customemodel div canvas:last-child {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.customemodel div{
+    width:100% !important;
+    height: 100% !important;
+}
+
+.fullfull {
+    height: 85vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Cabin' !important;
+}
+
+.bg-whitess{
+    height: 83vh !important;
+}
+

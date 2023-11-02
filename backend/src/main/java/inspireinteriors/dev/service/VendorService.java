@@ -5,19 +5,27 @@ import inspireinteriors.dev.repository.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class VendorService{
 
     @Autowired
-    private static VendorRepository vendorRepository;
+    private VendorRepository vendorRepository;
 
-    public static Vendor getVendor(Object vendorId) {
-        return vendorRepository.findById((long) vendorId).orElse(null);
+    public Optional<Vendor> getVendor(int vendor_id) {
+        return vendorRepository.findById(vendor_id);
     }
 
     public Vendor createVendor(int vendor_id, String lane_no , String city , String district, String province) {
         Vendor vendor = new Vendor(vendor_id,lane_no ,city ,district,province);
         return vendorRepository.save(vendor);
+    }
+
+    //get all vendors
+    public List<Vendor> getAllVendors(){
+        return vendorRepository.findAll();
     }
 }

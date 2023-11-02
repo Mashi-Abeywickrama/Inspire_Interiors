@@ -127,11 +127,11 @@ const AddStock = () => {
             <div className="stock-container p-4 bg-white rounded-3 mb-4 me-3">
                 <form onSubmit={handleSubmit}>
                 <div className="d-flex flex-row gap-4">
-                    <Link to="/vendor/inventory"><p className="fs-5 fw-bold Cabin-text text-dark">Inventory</p></Link>
+                    <Link to="/vendor/inventory"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Inventory</p></Link>
                     <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                    <Link to="/vendor/inventory/viewstock"><p className="fs-5 fw-bold Cabin-text text-dark">Stock</p></Link>
+                    <Link to="/vendor/inventory/viewstock"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Stock</p></Link>
                     <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                    <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Add Stock</p>
+                    <p className="fs-5 fw-bold Cabin-text text-dark">Add Stock</p>
                 </div>
                 <div className=" d-flex flex-column">
                     <div className="d-flex flex-row justify-content-between">

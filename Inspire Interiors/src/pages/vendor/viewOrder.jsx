@@ -107,7 +107,7 @@
                 className: 'delayed d-flex gap-2 align-items-center',
                 text: 'Delayed',
             },
-            Cancelled: {
+            Canceled: {
                 className: 'outstock d-flex gap-2 align-items-center',
                 text: 'Canceled',
             },
@@ -140,7 +140,7 @@
             
             Delayed: 'delayed d-flex gap-2 align-items-center',
                 
-            Cancelled:  'outstock d-flex gap-2 align-items-center',
+            Canceled:  'outstock d-flex gap-2 align-items-center',
                 
             };
 
@@ -179,11 +179,11 @@
             <>
                 <div className="order-container w-100 rounded-3 mb-4 me-5 p-3">
                     <div className="d-flex flex-row gap-4">
-                        <Link to="/vendor/order"><p className="text-dark fs-5 fw-bold Cabin-text">Orders</p></Link>
+                        <Link to="/vendor/order"><p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Orders</p></Link>
                         <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
                         <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{orderData.status}</p>
                         <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                        <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>{orderData.orderid}</p>
+                        <p className="fs-5 fw-bold Cabin-text text-dark">{orderData.orderid}</p>
                     </div>
                     <div className="col-12 d-flex flex-column">
                         <div className="d-flex flex-row justify-content-between">
@@ -239,28 +239,28 @@
                                         
                                         <div className="badge fw-semibold rounded-3 mx-5 Cabin-text">
                                             {orderData.status === 'New' ? (
-                <select
-                    className={getOrderStatusClass(orderData.status)}
-                    value={orderData.status}
-                    onChange={(e) => updateOrderStatus(e.target.value)}
-                >
-                    <option value="Vendor Confirmation">{getOrderStatus(orderData.status)}</option>
-                    <option value="Confirmed">Confirmed</option>
-                    <option value="Cancelled">Cancelled</option>
-                </select>
-            ) : (
-                <button
-                    className="badge fw-semibold rounded-3 mx-5 Cabin-text"
-                    style={{
-                        height: "1.5rem",
-                        background: orderData.status === 'Cancelled' ? "red" : "green",
-                        color: "white"
-                    }}
-                    disabled
-                >
-                    {orderData.status === 'Cancelled' ? "Cancelled" : "Confirmed"}
-                </button>
-            )}
+                                                <select
+                                                    className={getOrderStatusClass(orderData.status)}
+                                                    value={orderData.status}
+                                                    onChange={(e) => updateOrderStatus(e.target.value)}
+                                                >
+                                                    <option value="Vendor Confirmation">{getOrderStatus(orderData.status)}</option>
+                                                    <option value="Confirmed">Confirmed</option>
+                                                    <option value="Canceled">Canceled</option>
+                                                </select>
+                                            ) : (
+                                                <button
+                                                    className="badge fw-semibold rounded-3 mx-5 Cabin-text"
+                                                    style={{
+                                                        height: "1.5rem",
+                                                        background: orderData.status === 'Canceled' ? "red" : "green",
+                                                        color: "white"
+                                                    }}
+                                                    disabled
+                                                >
+                                                    {orderData.status === 'Canceled' ? "Canceled" : "Confirmed"}
+                                                </button>
+                                            )}
                                             </div>
                                     </div>
                                     <div className="d-flex flex-row justify-content-between">
@@ -270,15 +270,15 @@
                                         className="badge fw-semibold rounded-3 mx-5 Cabin-text"
                                         style={{
                                             height: "1.5rem",
-                                            background: orderData.status === 'New' || orderData.status === 'Cancelled' ? "#E6E6E6" : "#bfe5fd",
-                                            color: orderData.status === 'New' || orderData.status === 'Cancelled' ? "#979797" : "#023047"
+                                            background: orderData.status === 'New' || orderData.status === 'Canceled' ? "#E6E6E6" : "#bfe5fd",
+                                            color: orderData.status === 'New' || orderData.status === 'Canceled' ? "#979797" : "#023047"
                                         }}
-                                        disabled={orderData.status === 'New' || orderData.status === 'Cancelled'}
+                                        disabled={orderData.status === 'New' || orderData.status === 'Canceled'}
                                     >
                                         <Icon.CircleFill size={7} className="mx-1"
-                                         color={orderData.status === 'New' || orderData.status === 'Cancelled' ? '#979797' : '#023047'}
+                                         color={orderData.status === 'New' || orderData.status === 'Canceled' ? '#979797' : '#023047'}
                                           />
-                                         {orderData.status === 'New' || orderData.status === 'Cancelled' ? 'Pending' : 
+                                         {orderData.status === 'New' || orderData.status === 'Canceled' ? 'Pending' : 
                                          orderData.status === 'Confirmed' ? 'Mark as Prepared' : 'Prepared'}
                                          
                                          
@@ -291,15 +291,15 @@
                                         className="badge fw-semibold rounded-3 mx-5 Cabin-text"
                                         style={{
                                             height: "1.5rem",
-                                            background: orderData.status === 'New' || orderData.status === 'Cancelled'|| orderData.status==='Confirmed'  ? "#E6E6E6" : "#bfe5fd",
-                                            color: orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed' ? "#979797" : "#023047"
+                                            background: orderData.status === 'New' || orderData.status === 'Canceled'|| orderData.status==='Confirmed'  ? "#E6E6E6" : "#bfe5fd",
+                                            color: orderData.status === 'New' || orderData.status === 'Canceled' || orderData.status==='Confirmed' ? "#979797" : "#023047"
                                         }}
-                                        disabled={orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed'}
+                                        disabled={orderData.status === 'New' || orderData.status === 'Canceled' || orderData.status==='Confirmed'}
                                     >
                                         <Icon.CircleFill size={7} className="mx-1"
-                                         color={orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed' ? '#979797' : '#023047'}
+                                         color={orderData.status === 'New' || orderData.status === 'Canceled' || orderData.status==='Confirmed' ? '#979797' : '#023047'}
                                           />
-                                         {orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed'   ? 'Pending' :
+                                         {orderData.status === 'New' || orderData.status === 'Canceled' || orderData.status==='Confirmed'   ? 'Pending' :
                                           orderData.status === 'Prepared' ? 'Mark as Shipped' : 'Shipped'}
                                     </button>
                                 </div>
@@ -310,15 +310,15 @@
                                         className="badge fw-semibold rounded-3 mx-5 Cabin-text"
                                         style={{
                                             height: "1.5rem",
-                                            background: orderData.status === 'New' || orderData.status === 'Cancelled'|| orderData.status==='Confirmed'|| orderData.status==='Prepared'  ? "#E6E6E6" : "#bfe5fd",
-                                            color: orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed'|| orderData.status==='Prepared' ? "#979797" : "#023047"
+                                            background: orderData.status === 'New' || orderData.status === 'Canceled'|| orderData.status==='Confirmed'|| orderData.status==='Prepared'  ? "#E6E6E6" : "#bfe5fd",
+                                            color: orderData.status === 'New' || orderData.status === 'Canceled' || orderData.status==='Confirmed'|| orderData.status==='Prepared' ? "#979797" : "#023047"
                                         }}
-                                        disabled={orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed' || orderData.status==='Prepared'}
+                                        disabled={orderData.status === 'New' || orderData.status === 'Canceled' || orderData.status==='Confirmed' || orderData.status==='Prepared'}
                                     >
                                         <Icon.CircleFill size={7} className="mx-1"
-                                         color={orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed' || orderData.status==='Prepared' ? '#979797' : '#023047'}
+                                         color={orderData.status === 'New' || orderData.status === 'Canceled' || orderData.status==='Confirmed' || orderData.status==='Prepared' ? '#979797' : '#023047'}
                                           />
-                                         {orderData.status === 'New' || orderData.status === 'Cancelled' || orderData.status==='Confirmed'  || orderData.status==='Prepared'  ? 'Pending' : 
+                                         {orderData.status === 'New' || orderData.status === 'Canceled' || orderData.status==='Confirmed'  || orderData.status==='Prepared'  ? 'Pending' : 
                                          orderData.status === 'Shipped' ? 'Mark as Delivered' : 'Delivered'}
                                     </button>
                                 </div>

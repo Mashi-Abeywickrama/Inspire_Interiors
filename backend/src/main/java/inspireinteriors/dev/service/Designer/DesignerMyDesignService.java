@@ -1,15 +1,17 @@
 package inspireinteriors.dev.service.Designer;
 
 
-import inspireinteriors.dev.model.Designer;
 import inspireinteriors.dev.model.DesignerModel.*;
+import inspireinteriors.dev.model.VendorOffer;
 import inspireinteriors.dev.repository.Designer.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -88,12 +90,17 @@ public class DesignerMyDesignService {
 
     //Promotion Requests Services
 
-    public PromotionRequests getPromotionRequestsById(int designer_id) {
+    public VendorOffer getPromotionRequestsById(int designer_id) {
         return designerPromotionRequestsRepository.findById((long) designer_id).orElse(null);
     }
 
+
     public List<PromotionRequests> getPromotionRequestsByDesignerId(int designer_id) {
         return designerPromotionRequestsRepository.findPromotionRequestsByDesignerID(designer_id);
+
+    public List<VendorOffer> getPromotionRequestsByDesignerId(int designerid) {
+        return designerPromotionRequestsRepository.findPromotionRequestsByDesignerID(designerid);
+
     }
 
     //Design Earnings Services
@@ -168,6 +175,26 @@ public class DesignerMyDesignService {
 
     public List<CustomerRequests> getByDesigner_id(int designer_id) {
         return designerCustomerRequestsRepository.getCustomerRequestsByDesigner_id(designer_id);
+    }
+
+    public int getMaxDesignID() {
+        return designerDesigntoolFilesRepository.getMaxDesignID();
+    }
+
+    public void updateImage(MyDesigns myDesigns) {
+        designerMyDesignsRepository.save(myDesigns);
+    }
+
+    public DesigntoolFiles getDesignFileByID(int id) {
+        return designerDesigntoolFilesRepository.findDesigntoolFilesByid(id);
+    }
+
+    public List<MyDesigns> getDesignByRoomType(String roomType) {
+        return designerMyDesignsRepository.findMyDesignsByRoomtype(roomType);
+    }
+
+    public List<String> getDistinctRoomTypes() {
+        return designerMyDesignsRepository.getDistinctRoomTypes();
     }
 }
 

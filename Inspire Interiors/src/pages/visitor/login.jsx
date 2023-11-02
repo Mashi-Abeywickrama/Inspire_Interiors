@@ -138,18 +138,18 @@ const Login = () => {
           </div>
 
           <div className='col-md-6 align-self-start justify-content-center content-login'>
-            <div className="d-flex row justify-content-center w-100 login-form">
+            <div className="d-flex row justify-content-center w-100 mt-5 login-form">
               
               <h2 className='heading-txt mt-5 fw-400'>
                   Welcome to
               </h2>
                
-              <h2 className='heading-txt mb-4 fw-600'>
+              <h2 className='heading-txt mb-5 fw-600'>
                   Inspire Interiors
               </h2>
               {/* login form */}
               <Form className='d-flex row w-92 gap-2 ' onSubmit={handleLogin}>
-                <Button
+                {/* <Button
                   className="mb-4 w-100 btnstyle bg-transparent border-0 shadow-xs btn-lg"
                 >
                   <img src={googleIcon} alt="Google" className="me-2 google-icon" />
@@ -167,12 +167,12 @@ const Login = () => {
                   <hr className="flex-grow-1" />
                   <h6 className="text-center mx-2">OR</h6>
                   <hr className="flex-grow-1" />
-                </div>
+                </div> */}
 
                 <Form.Group controlId="formName" >
                   <Form.Control
                   type="text"
-                  placeholder="Name"
+                  placeholder="Username"
                   size='lg'
                   className='mb-3 bg-transparent'
                   value={username}

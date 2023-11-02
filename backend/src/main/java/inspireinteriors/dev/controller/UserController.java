@@ -35,7 +35,7 @@ public class UserController {
     @Autowired
     private DesignerService designerService;
 
-        @GetMapping("/users")
+    @GetMapping("/users")
     @ResponseBody
     public Iterable<User> fetchUsers() {
         return userService.getAllUsers();
@@ -552,5 +552,11 @@ public class UserController {
 
     }
 
+
+    @GetMapping("/topdesigners")
+    public List<Designer> getTopDesigners() {
+        List<Designer> designers = designerService.getTopDesigners();
+        return designers;
+    }
 
 }

@@ -20,162 +20,6 @@ import {Link} from 'react-router-dom';
 import {useSession} from "../../constants/SessionContext";
  
 
-
-const receivedData = {
-    columns: [
-        {
-          label: '',
-          field: 'product',
-          sort: 'asc',
-          width: 250
-        },
-        {
-          field: 'status',
-          sort: 'asc',
-          width: 270
-        },
-    ],
-    rows: [
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/promotion/promotionrequest"><img style={{ backgroundColor: "#FEE4CB", objectFit: "cover", width:"80px" }} className="img-fluid p-0 rounded-4 border" src={Customer} /></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Interior Designer</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/promotion/Promotionrequest"><img style={{ backgroundColor: "#FEE4CB", objectFit: "cover", width:"80px" }} className="img-fluid p-0 rounded-4 border" src={Customer} /></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Interior Designer</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/promotion/Promotionrequest"><img style={{ backgroundColor: "#FEE4CB", objectFit: "cover", width:"80px" }} className="img-fluid p-0 rounded-4 border" src={Customer} /></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Interior Designer</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-        {   
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                    <Link to="/vendor/promotion/Promotionrequest"><img style={{ backgroundColor: "#FEE4CB", objectFit: "cover", width:"80px" }} className="img-fluid p-0 rounded-4 border" src={Customer} /></Link>
-                    <div className="d-flex flex-column">
-                        <p className='align-items-center fs-6 fw-semibold mt-3 m-0'>David Avacado</p>
-                        <p className="fs-6 fw-normal">Interior Designer</p>
-                    </div>
-                </div>,
-            status: <div className="d-flex flex-column"><div className="d-flex flex-row gap-3"><button className="fs-6 fw-semibold Cabin-text ignore-btn">Ignore</button><button className="fs-6 fw-semibold Cabin-text accepted-btn">Accept</button></div><p className="float-end">23 min ago</p></div>
-        },
-    ]
-}
-
-const largeTableData = {
-    columns: [
-        {
-          label: 'PRODUCT',
-          field: 'product',
-          sort: 'asc',
-          width: 150
-        },
-        {
-          label: 'DESIGNER',
-          field: 'designer',
-          sort: 'asc',
-          width: 270
-        },
-        {
-          label: 'DATE',
-          field: 'date',
-          sort: 'asc',
-          width: 200
-        },
-        {
-          label: 'PRODUCT PRICE',
-          field: 'price',
-          sort: 'asc',
-          width: 150
-        },
-        {
-           label: 'COMMISION RATE',
-           field: 'rate',
-           sort: 'asc',
-           width: 100
-        },
-        {
-          label: 'SOLD',
-          field: 'sold',
-          sort: 'asc',
-          width: 100
-        },
-        {
-          label: 'PAYMENT STATUS',
-          field: 'status',
-          sort: 'asc',
-          width: 100
-        }
-    ],
-    rows: [
-        {
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                <img src={Sofa}/>
-                <p className='align-items-center mt-3 fw-bold'>Sofa</p>
-            </div>,
-            designer: 'Arpico',
-            date: '25.07.2023',
-            price: '4000Rs',
-            rate: '15%',
-            sold:'15',
-            status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>
-        },
-        {
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                <img src={Sofa}/>
-                <p className='align-items-center mt-3 fw-bold'>Sofa</p>
-            </div>,
-            designer: 'Arpico',
-            date: '25.07.2023',
-            price: '4000Rs',
-            rate: '15%',
-            sold:'15',
-            status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>
-        },
-        {
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                <img src={Sofa}/>
-                <p className='align-items-center mt-3 fw-bold'>Sofa</p>
-            </div>,
-            designer: 'Arpico',
-            date: '25.07.2023',
-            price: '4000Rs',
-            rate: '15%',
-            sold:'15',
-            status: <div className='delayed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Overdue</p></div>
-        },
-        {
-            product: <div className='d-flex flex-row gap-4 align-items-center'>
-                <img src={Sofa}/>
-                <p className='align-items-center mt-3 fw-bold'>Sofa</p>
-            </div>,
-            designer: 'Arpico',
-            date: '25.07.2023',
-            price: '4000Rs',
-            rate: '15%',
-            sold:'15',
-            status: <div className='completed d-flex gap-2 align-items-center'><i class="bi bi-circle-fill tag-icon"></i><p className='m-0'>Ongoing</p></div>
-        },
-    ]
-}
-
 const Promotion = () => {
     const urlParams = new URLSearchParams(window.location.search);
 
@@ -184,6 +28,8 @@ const Promotion = () => {
 
     const[statusData, setStatusData] = useState([]);
     const [designerData, setDesignerData] = useState([]);
+    const [saleData, setSaleData] = useState([]);
+    const [productData, setproductData] = useState([]);
     console.log(statusData)
 
     const apiBaseURL = "http://localhost:8080";
@@ -206,6 +52,20 @@ const Promotion = () => {
         });
     }, []);
 
+    
+
+    useEffect(() => {
+    axiosInstance
+        .get(`/viewproducts/vendor/${userId}`)
+        .then((response) => {
+        setproductData(response.data);
+        console.log(response.data);
+        })
+        .catch((error) => {
+        console.log('Error fetching data:', error);
+    });
+    }, [userId]);
+
     useEffect(() => {
         axiosInstance
           .get(`/filtertype/designer`)
@@ -217,6 +77,47 @@ const Promotion = () => {
             console.log('Error fetching data:', error);
         });
     }, []);
+
+    useState(() => {
+        axiosInstance
+            .get(`/getoffersale/vendor/${userId}`)
+            .then((response) => {
+                setSaleData(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('Error fetching data:', error);
+            });
+    }, []);
+
+    const mergeData2 = (saleData, productData, allDesigners) => {
+        const mergedData = saleData.map(
+            (saleItem) => {
+                const matchingProduct = productData.find(
+                    (productItem) =>  productItem.product_id === saleItem.productid
+                );
+                const matchingDesigner = designerData.find(
+                    (designerItem) =>  designerItem.userid === saleItem.designerid
+                );
+                if (matchingProduct && matchingDesigner) {
+                    // Merge the data from both sources
+                    return {
+                        ...saleItem,
+                        ...matchingProduct,
+                        ...matchingDesigner
+                    };
+                } else {
+                    return {
+                        ...saleItem
+                    };
+                }
+            });
+        return mergedData;
+    };
+
+    const mergedData = mergeData2(saleData, productData, designerData);
+    console.log("merged Data 2", mergedData);
+
 
     const Columns = [
         {
@@ -286,6 +187,64 @@ const Promotion = () => {
 
     }));
 
+    const TableData = {
+        columns: [
+            {
+              label: 'PRODUCT NAME',
+              field: 'product',
+              sort: 'asc',
+              width: 150
+            },
+            {
+                label: 'QUANTITY',
+                field: 'quantity',
+                sort: 'asc',
+                width: 100
+              },
+            {
+              label: 'DESIGNER',
+              field: 'designer',
+              sort: 'asc',
+              width: 270
+            },
+            {
+              label: 'DATE',
+              field: 'date',
+              sort: 'asc',
+              width: 200
+            },
+            {
+              label: 'TOTAL PRICE',
+              field: 'price',
+              sort: 'asc',
+              width: 150
+            },
+            {
+               label: 'COMMISION AMOUNT',
+               field: 'commission',
+               sort: 'asc',
+               width: 100
+            },
+            {
+              label: 'PROFIT',
+              field: 'profit',
+              sort: 'asc',
+              width: 100
+            }
+        ],
+        rows: mergedData.map((sales) => {
+            return{
+                product: sales.product_name,
+                quantity: sales.quantity,
+                designer: sales.name,
+                date: sales.date,
+                price: sales.totalprice,
+                commission: sales.commission,
+                profit: sales.profit,
+            }
+        })
+    };
+
     return (
         <>
 
@@ -293,9 +252,9 @@ const Promotion = () => {
                 <div className="col-12 d-flex flex-column">
                     <div className="col-12 d-flex flex-column flex-lg-row flex-md-row flex-sm-row justify-content-between p-3">
                         <div className='d-flex flex-row gap-4'>
-                            <p className="text-dark fs-5 fw-bold Cabin-text ">Promotion</p>
+                            <p className="fs-5 fw-bold Cabin-text text-dark">Promotion</p>
                             <Icon.ChevronRight color="#A2A3B1" size={20} className="mt-2" />
-                            <p className="fs-5 fw-bold Cabin-text" style={{ color: "#A2A3B1" }}>Overview</p>
+                            <p className="fs-5 fw-bold Cabin-text text-dark">Overview</p>
                         </div>
                         <Link to='/vendor/promotion/browsedesigner'><p className="fs-5 text-dark Cabin-text fw-bold">Browse Designers<Icon.ArrowRight className='mx-2' color='black' size={20}/></p></Link>
                     </div>
@@ -386,7 +345,7 @@ const Promotion = () => {
                                 striped
                                 bordered
                                 small
-                                data={largeTableData}
+                                data={TableData}
                                 sortable={false}
                                 exportToCSV={true}
                                 paging={false}

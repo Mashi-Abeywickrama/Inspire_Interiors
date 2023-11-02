@@ -56,6 +56,16 @@ public class VendorOfferController {
         return new ResponseEntity<>(vendorOffer, HttpStatus.OK);
     }
 
+    @PutMapping("promotion/accept/{offerid}")
+    public ResponseEntity<String> updateStatus(@PathVariable("offerid") int offerid){
+        VendorOffer vendorOffer = vendorOfferService.getOffer(offerid);
+        vendorOffer.setOfferstatus(1);
+        vendorOfferService.createOffer(vendorOffer);
+        return new ResponseEntity<>("Status Updated", HttpStatus.OK);
+    }
+
+
+
     @PutMapping("/updatepromotion/{offerid}")
     public ResponseEntity<VendorOffer> updateOffer(
             @PathVariable ("offerid") int offerid,
@@ -120,6 +130,18 @@ public class VendorOfferController {
     public ResponseEntity<VendorOffer> deleteOffer(@PathVariable("id") int offerid){
         vendorOfferService.deleteOffer(offerid);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/promotion/designer/{designerid}")
+    public ResponseEntity<List<VendorOffer>> getOfferByDesignerId(@PathVariable("designerid") int designerid){
+        List<VendorOffer> vendorOffer = vendorOfferService.getOfferByDesignerIdAccepted(designerid);
+        return ResponseEntity.ok(vendorOffer);
+    }
+
+    @GetMapping("/promotion/{vendorid}/{designerid}")
+    public ResponseEntity<List<VendorOffer>> getOfferByVendorIdAndDesignerId(@PathVariable("vendorid") int vendorid, @PathVariable("designerid") int designerid){
+        List<VendorOffer> vendorOffer = vendorOfferService.getOfferByVendorIdAndDesignerId(vendorid, designerid);
+        return ResponseEntity.ok(vendorOffer);
     }
 
 }

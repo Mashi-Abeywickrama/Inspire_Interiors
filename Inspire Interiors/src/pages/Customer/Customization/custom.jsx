@@ -30,6 +30,8 @@ const Custom = () => {
     });
 
     const [mycustomizedorderData, setMyCustomizedOrderData] = useState([]);
+    const [mycustomizeddesignData, setMyCustomizedDesignData] = useState([]);
+    const [userData, setUserData] = useState([]);
 
     const sessionItems = useSession();
     const userId = sessionItems.sessionData.userid;
@@ -86,6 +88,58 @@ const Custom = () => {
             });
     }, []); // Fetch the addresses when the component mounts
 
+     useEffect(() => {
+        // Make an API request to fetch the shipping addresses from the backend
+        axiosInstance.get(`/customrequest/${userId}`) // Replace this with the actual API URL},
+            .then(response => {
+                setMyCustomizedDesignData(response.data); // Assuming the response is an array of shipping addresses
+                console.log('my orders:', response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching shipping addresses:', error);
+            });
+    }, []); // Fetch the addresses when the component mounts
+
+    useEffect(() => {
+        // Make an API request to fetch the shipping addresses from the backend
+        axiosInstance.get(`/users`) // Replace this with the actual API URL},
+            .then(response => {
+                setUserData(response.data); // Assuming the response is an array of shipping addresses
+                console.log('my users:', response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching shipping addresses:', error);
+            });
+    }, []); // Fetch the addresses when the component mounts
+
+    const mergeData = (mycustomizeddesignData, userData) => {
+        const mergedData = mycustomizeddesignData.map(
+            (designerItem) => {
+                const matchingUser = userData.find(
+                    (userItem) => userItem.userid === designerItem.designer_id
+                );
+
+                if (matchingUser) {
+                    // Merge the data from both sources
+                    return {
+                        
+                        ...matchingUser,
+                        ...designerItem,
+
+                    };
+                } else {
+                    return {
+                        ...designerItem
+                    };
+                }
+            });
+
+        return mergedData;
+    };
+
+    const mergedDesigner = mergeData(mycustomizeddesignData, userData);
+    console.log("merged Data", mergedDesigner);
+
     const getOrderStatus = (status) => {
     const statusDetails = {
       New: {
@@ -99,6 +153,11 @@ const Custom = () => {
       Ongoing: {
         className: 'ongoing d-flex gap-2 align-items-center',
         text: 'Ongoing',
+      },
+
+      Accepted: {
+        className: 'ongoing d-flex gap-2 align-items-center',
+        text: 'Accepted',
       },
 
       Prepared: {
@@ -154,7 +213,7 @@ const Custom = () => {
       <div className="background-total p-3 rounded-3">
         <div className='row'>
             <div className='d-flex flex-row justify-content-between'>
-                <p className='heading'>My Customized Orders</p>
+                <p className='heading'>My Customized Product Orders</p>
                 <div>
                     <button className='add-btn' onClick={handleShow}><Icon.PlusLg color="white" size={20}/>Add New</button>
 
@@ -218,25 +277,210 @@ const Custom = () => {
                   data={{
                     columns: [
                       {
-                        label: 'REFERENCE NO',
+                        label: 'PRODUCT NAME',
                         field: 'number',
                         sort: 'asc',
                         width: 270
                       },
                       {
-                        label: 'VENDOR NAME',
+                        label: 'DESCRIPTION',
                         field: 'name',
                         sort: 'asc',
                         width: 150
                       },
                       {
-                        label: 'QUANTITY',
+                        label: 'SPECIFICATION',
+                        field: 'quantity',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      
+                      {
+                        label: 'STATUS',
+                        field: 'status',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: ' ',
+                        field: 'action',
+                        sort: 'NONE',
+                        width: 100
+                      }
+                    ],
+                    rows: mycustomizedorderData.map((item) => ({
+                      name: item.productdescription,
+                      number: item.productname,
+                      quantity: item.productspecification,
+                      date: item.customerid,
+                      action: <Link to={`/customer/viewcustomrequest/${item.customizedorderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
+                      status: getOrderStatus(item.status)
+                    })),
+                  }}
+                  sortable={true}
+                  exportToCSV={true}
+                  paging={true}
+                  searching={true}
+                />
+              </div>
+              </Link>
+            </Tab>
+            <Tab eventKey="New" title="New">
+              <div className=''>
+
+                <MDBDataTableV5 responsive
+                  striped
+                  bordered
+                  small
+                  data={{
+                    columns: [
+                      {
+                        label: 'PRODUCT NAME',
+                        field: 'number',
+                        sort: 'asc',
+                        width: 270
+                      },
+                      {
+                        label: 'DESCRIPTION',
+                        field: 'name',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'SPECIFICATION',
+                        field: 'quantity',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      
+                      {
+                        label: 'STATUS',
+                        field: 'status',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: ' ',
+                        field: 'action',
+                        sort: 'NONE',
+                        width: 100
+                      }
+                    ],
+                    rows: filteredData("New").map((item) => ({
+                      name: item.productdescription,
+                      number: item.productname,
+                      quantity: item.productspecification,
+                      date: item.customerid,
+                      action: <Link to={`/customer/viewcustomrequest/${item.request_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
+                      status: getOrderStatus(item.status)
+                    })),
+                  }}
+                  sortable={true}
+                  exportToCSV={true}
+                  paging={true}
+                  searching={true}
+                />
+              </div>
+              
+            </Tab>
+            <Tab eventKey="Accepted" title="Accepted">
+              <div className=''>
+
+                <MDBDataTableV5 responsive
+                  striped
+                  bordered
+                  small
+                  data={{
+                    columns: [
+                      {
+                        label: 'PRODUCT NAME',
+                        field: 'number',
+                        sort: 'asc',
+                        width: 270
+                      },
+                      {
+                        label: 'DESCRIPTION',
+                        field: 'name',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'SPECIFICATION',
+                        field: 'quantity',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      
+                      {
+                        label: 'STATUS',
+                        field: 'status',
+                        sort: 'asc',
+                        width: 100
+                      },
+                      {
+                        label: ' ',
+                        field: 'action',
+                        sort: 'NONE',
+                        width: 100
+                      }
+                    ],
+                    rows: filteredData("Accepted").map((item) => ({
+                      name: item.productdescription,
+                      number: item.productname,
+                      quantity: item.productspecification,
+                      date: item.customerid,
+                      action: <Link to={`/customer/viewcustomrequest/${item.request_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
+                      status: getOrderStatus(item.status)
+                    })),
+                  }}
+                  sortable={true}
+                  exportToCSV={true}
+                  paging={true}
+                  searching={true}
+                />
+              </div>
+              
+            </Tab>
+          </Tabs>
+        </div>
+{/* Designs */}
+<p className='heading'>My Customized Design Orders</p>
+
+        <div>
+          <Tabs
+            defaultActiveKey="all"
+            id="uncontrolled-tab-example"
+            className="mb-3 bg-white tab"
+          >
+            <Tab eventKey="all" title="All">
+              <Link to="vieworder"><div className=''>
+
+                <MDBDataTableV5 responsive
+                  striped
+                  bordered
+                  small
+                  data={{
+                    columns: [
+                      {
+                        label: 'DESIGNER',
+                        field: 'number',
+                        sort: 'asc',
+                        width: 270
+                      },
+                      {
+                        label: 'DESCRIPTION',
+                        field: 'name',
+                        sort: 'asc',
+                        width: 150
+                      },
+                      {
+                        label: 'SPECIFICATION',
                         field: 'quantity',
                         sort: 'asc',
                         width: 100
                       },
                       {
-                        label: 'DELIVERY DATE',
+                        label: 'BUDGET',
                         field: 'date',
                         sort: 'asc',
                         width: 150
@@ -254,13 +498,13 @@ const Custom = () => {
                         width: 100
                       }
                     ],
-                    rows: mycustomizedorderData.map((item) => ({
-                      name: item.customerid,
-                      number: item.customerid,
-                      quantity: item.customerid,
-                      date: item.customerid,
-                      action: <Link to={`/customer/orders/vieworder/${item.orderid}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
-                      status: getOrderStatus(item.status)
+                    rows: mergedDesigner.map((item) => ({
+                      name: item.description,
+                      number: item.username,
+                      quantity: item.dimensions,
+                      date: item.budget,
+                      action: <Link to={`/customer/viewcustomrequest/${item.request_id}`}><div className='d-flex gap-2 align-items-center' style={{ color: "#035C94" }}><p className='m-0'>View More</p> <Icon.ArrowRight /></div></Link>,
+                      status: getOrderStatus(item.status == 0 ? "New" : "Accepted" )
                     })),
                   }}
                   sortable={true}
@@ -336,6 +580,7 @@ const Custom = () => {
             </Tab>
           </Tabs>
         </div>
+
       </div>
     </>
 
