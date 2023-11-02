@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @CrossOrigin(origins = {"http://localhost:5173", "http://localhost:8000",})
@@ -171,6 +172,8 @@ public class DesignerController {
     public String saveRequest_id(@PathVariable("did") int designer_id) {
         DesigntoolFiles designtoolFiles = new DesigntoolFiles();
         designtoolFiles.setDesigner_id(designer_id);
+        LocalDate date = LocalDate.now();
+        designtoolFiles.setCreatedOn(date);
         designerMyDesignService.saveFiles(designtoolFiles);
         return "Successfully Saved";
 

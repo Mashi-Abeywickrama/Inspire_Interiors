@@ -212,7 +212,7 @@ const ViewOrder = () => {
                             <div className="col-lg-12 bg-white rounded-3 p-4 shadow">
                             <p className="fs-5 fw-bold px-3 py-2 Cabin-text" style={{ color: "#023047" }}>Product Details</p>
                                 <div className="d-flex flex-column flex-lg-row justify-content-evenly">
-                                    <img className="img-fluid w-30 h-20" src={(`../../../../src/assets/img/variation/${productData.variationImg}`)} alt={productData.product_name} />
+                                    <img className="img-fluid w-30 h-20" src={(`../../../../src/assets/img/variation/${variationData.variationImg}`)} alt={productData.product_name} />
                                     <div className="d-flex flex-column px-4 mt-4">
                                         <p className="fs-5 fw-semibold Cabin-text text-dark">{productData.product_name} - {variationData.color} {variationData.material}</p>
                                         <div className="d-flex flex-row">

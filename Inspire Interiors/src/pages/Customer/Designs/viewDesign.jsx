@@ -120,7 +120,7 @@ const ViewDesign = () => {
                     .get(`/room-type/${data.roomtype}`)
                     .then((response2) => {
                         setProductData(response2.data);
-                        console.log(response2.data);
+                        console.log("product"+response2.data);
                     })
                     .catch((error) => {
                         console.log('Error fetching data', error);
@@ -143,7 +143,10 @@ const ViewDesign = () => {
             ...matchingOffer
 
           };
-        } 
+
+        } else{
+            return 0;
+        }
       });
 
 
@@ -248,19 +251,16 @@ const ViewDesign = () => {
                 {/* Similar Designs */}
                 <div className='top-div bg-light shadow rounded mb-3'>
                     
-                        {mergedOfferData.product_id != undefined && (
-                            <div className='row container'>
-                        <div className='row d-flex align-items-center justify-content-start mt-1'>
-                            <div className='col-md-4 col-sm-12 col-12 fs-5 fw-bold'>
-                                Recommended products
-                            </div>
-                        </div>
-                        </div>
-                        )}
+
                     
                     <div className='bg-light image-bar d-flex row w-100 flex-row m-0 p-0 mt-2 '>
-                        {mergedOfferData.map((item) => (
+                        {mergedOfferData.map((item) => item != 0 && (
                             <Link to={`/customer/marketplace/recommended/${item.product_id}/${item.designerid}`} className='w-25' >
+                                <div className='row d-flex align-items-center justify-content-start mt-1'>
+                            <div className='col-md-4 col-sm-12 col-12 fs-6 fw-bold text-black'>
+                                Recommended
+                            </div>
+                        </div>
                             <div className='col-md-3 col-sm-6 w-100 p-0 m-0'>
                                 <Card className='m-2 shadow-sm'>
                                     <Card.Img

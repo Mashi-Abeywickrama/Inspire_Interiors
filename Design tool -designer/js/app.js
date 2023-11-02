@@ -158,8 +158,8 @@ var mainControls = function (blueprint3d) {
     var uploadUrlget = `http://localhost:8080/designer/lastdesignid`;
 
     if (id != null) {
-      fetch(uploadUrl, {
-        method: "Post",
+      fetch(uploadUrl1, {
+        method: "Put",
         body: data,
       })
         .then(function (response) {

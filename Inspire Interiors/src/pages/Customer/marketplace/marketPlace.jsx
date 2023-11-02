@@ -13,6 +13,7 @@ import './../../../styles/customer/marketplace.css';
 
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useSession } from '../../../constants/SessionContext';
 
 const MarketPlace = () => {
     const apiBaseURL = 'http://localhost:8080'; // Replace this with the base URL of your Spring Boot backend
@@ -76,6 +77,11 @@ const MarketPlace = () => {
     const [allProducts, setAllProducts] = useState([]);
     const [popularProducts, setPopularProducts] = useState([]);
 
+    const [cartAdd, setCartAdd] = useState([]);
+
+    const sessionItems = useSession();
+    const userId = sessionItems.sessionData.userid;
+
     const fetchAlPopularProducts = () => {
 
         axiosInstance.get('/popular-items')
@@ -134,6 +140,7 @@ const MarketPlace = () => {
     console.log("mergeData shits", mergedPopularProducts);
 
     const generateStars = (rate) => {
+
         const fullStars = Math.floor(rate);
         const halfStar = rate - fullStars >= 0.5;
 
@@ -152,6 +159,45 @@ const MarketPlace = () => {
     };
 
     const imageURL = roomTypeImages[roomType] || DefaultImage;
+
+    const handleCartAddition = async (product_id) =>{
+
+        try{
+        const response = await axiosInstance.get("/getproductdata/"+product_id);
+        if(response.status === 200)
+        {
+            console.log("Response from API:", response.data);
+
+            setCartAdd(response.data);
+            console.log("cart add", localStorage);
+            try{
+            const response2 = await axiosInstance.post("/addtocart", {
+                productId: cartAdd[0].product_id,
+                userId: userId,
+                quantity: 1,
+                totalPrice: cartAdd[0].entry_price,
+
+            });
+            if(response2.status === 200)
+            {
+                console.log("Response from API:", response2.data);
+                alert("Product added to cart successfully");
+            }
+            else
+            {
+                console.log("Error from API");
+            }
+            }
+            catch(error){
+                console.log("Error from API:", error);
+            }
+
+        }
+
+        } catch (error) {
+        console.error("Error submitting form:", error);
+        }
+        }
 
     return (
         <>

@@ -78,7 +78,7 @@ public class VendorOfferService {
     }
 
     public List<VendorOffer> getOfferByDesignerIdAccepted(int designerid) {
-        return vendorOfferRepository.findPromotionByDesigner_idAccepted(designerid);
+        return vendorOfferRepository.findPromotionByDesigner_idAccepted(designerid,"1");
     }
 
     public List<VendorOffer> getOfferByVendorIdAndDesignerId(int vendorid, int designerid) {

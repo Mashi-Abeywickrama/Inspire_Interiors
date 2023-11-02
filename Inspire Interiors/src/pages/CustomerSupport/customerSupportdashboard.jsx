@@ -45,7 +45,7 @@ const CustomerSupportDashboard = () =>{
 
     useEffect(() => {
         // Make an Axios GET request to your Spring Boot API endpoint
-        axiosInstance.get('/inquirytype/quotation')
+        axiosInstance.get('/inquirytype/quotations')
             .then((response) => {
                 // Handle the successful response here
                 setQuotationCount(response.data.length);
@@ -73,7 +73,7 @@ const CustomerSupportDashboard = () =>{
 
     useEffect(() => {
         // Make an Axios GET request to your Spring Boot API endpoint
-        axiosInstance.get('/inquirytype/complaint')
+        axiosInstance.get('/inquirytype/orderComplaints')
             .then((response) => {
                 // Handle the successful response here
                 setComplaintCount(response.data.length);
@@ -192,6 +192,7 @@ const CustomerSupportDashboard = () =>{
     };
 
     const mergedData = barChartData(quotationData, refundData, complaintData);
+    console.log(mergedData)
     
 
 return (

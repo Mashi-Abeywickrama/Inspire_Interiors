@@ -139,7 +139,7 @@ import ViewProductDesigner from "./pages/Designer/ViewProductDesigner";
 
 import ViewDesignC from "./pages/Customer/Designs/viewDesign";
 import RProductView from "./pages/Customer/marketplace/recommandedProduct";
-import ManagerDashboard from "./pages/Manager/managerDashboard";
+
 
 
 

@@ -193,21 +193,21 @@ const AddStock = () => {
                       <label for="type">Select Type:</label>
                       <select class="form-control" id="type" name="type" value={productDetails.type} onChange={(e) => handleProductDetailsChange(e.target.name, e.target.value)} >
                           <option value="">Select Type</option>
-                          <option value="chair">Chair</option>
-                          <option value="table">Table</option>
-                          <option value="cupboard">Cupboard</option>
-                          <option value="sofa">Sofa</option>
-                          <option value="bed">Bed</option>
+                          <option value="Chair">Chair</option>
+                          <option value="Table">Table</option>
+                          <option value="Wall Art">Wall Art</option>
+                          <option value="Sofa">Sofa</option>
+                          <option value="Lamp">Lamp</option>
                       </select>
                     </div>
                     <div className='mb-3 w-25'>
                       <label for="roomType">Select Room Type:</label>
                       <select class="form-control" id="roomType" name="roomType" value={productDetails.roomType} onChange={(e) => handleProductDetailsChange(e.target.name, e.target.value)} >
                           <option value="">Select Room Type</option>
-                          <option value="living room">Living Room</option>
-                          <option value="dining room">Dining Room</option>
-                          <option value="bed room">Bed Room</option>
-                          <option value="study room">Study Room</option>
+                          <option value="Living Room">Living Room</option>
+                          <option value="Dining Room">Dining Room</option>
+                          <option value="Bed Room">Bed Room</option>
+                          <option value="Study Room">Study Room</option>
                       </select>
                     </div>
                       <div class="mb-3">

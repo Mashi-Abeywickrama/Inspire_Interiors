@@ -24,7 +24,7 @@ const Navigationbar = () => {
                     <Nav className="ms-auto">
                         <Nav.Link className='form-group mx-4 main-div d-flex flex-row'>
                           
-                          <div className='mx-4 my-2'><Icon.BellFill size={20} color='white'/></div>
+
                           <img className='img-fluid bg-white rounded-2' src={navbarImg} />
                           <p className='text-white mx-4 my-auto d-none d-sm-block d-md-block d-lg-block'>{username}</p>
                         </Nav.Link>
