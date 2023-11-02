@@ -167,6 +167,14 @@ public class DesignerController {
         return "Successfully Saved";
 
     }
+    @PostMapping ("/designtool/savedesign/did/{did}")
+    public String saveRequest_id(@PathVariable("did") int designer_id) {
+        DesigntoolFiles designtoolFiles = new DesigntoolFiles();
+        designtoolFiles.setDesigner_id(designer_id);
+        designerMyDesignService.saveFiles(designtoolFiles);
+        return "Successfully Saved";
+
+    }
 
     @PutMapping("/designtool/savedesign/{id}")
     public String updateData(@PathVariable("id") int id, @RequestBody String data) {
