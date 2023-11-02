@@ -65,7 +65,7 @@ public class OrderController {
         List<Order> orders = this.orderService.getOrders();
 
         double totalpenCommission = orders.stream()
-                .filter(order -> "pending".equals(order.getStatus())) // Filter completed orders
+                .filter(order -> "ongoing".equals(order.getStatus())) // Filter completed orders
                 .mapToDouble(Order::getCommission)
                 .sum();
 

@@ -544,7 +544,7 @@ const User = () => {
                         />
                       </div>
                     </Tab>
-                    <Tab eventKey="customerSupport" title="CustomerSupport">
+                    <Tab eventKey="customersupport" title="CustomerSupport">
                     <div className="">
                         <MDBDataTableV5
                           responsive

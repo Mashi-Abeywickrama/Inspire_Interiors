@@ -22,32 +22,48 @@ const AdminDashboard = () => {
     
       <div  className="background-grey p-3 rounded-3 d-flex flex-column gap-4">
          <div className="d-flex flex-col fs-3">Dashboard</div>
-<div className="d-flex col-lg-11 gap-4">
+<div className="d-flex col-lg-12 h-auto gap-3">
 <div className="col-md-4 mb-4 text-center p-3" style={{ backgroundColor: '#096C86', borderRadius: '20px' }}>
-      <Link to={`/admin/user`} style={{ textDecoration: 'none' }}>    <h5 className=" fw-bold pt-3" style={{ fontSize: "2rem", color:"#DFE3E8" }}>User</h5>
-  <i className="display-4 mb-3"><RiUserFill style={{ fontSize: "4rem", color:"#DFE3E8" }} /></i></Link>
+      <Link to={`/admin/user`} style={{ textDecoration: 'none' }}>    <h5 className=" fw-bold pt-3" style={{ fontSize: "2rem", color:"#FFBA42" }}>User</h5>
+  <i className="display-4 mb-3"><RiUserFill style={{ fontSize: "4rem", color:"#DFE3E8" }} /></i></Link><br /><br />
+ <div className="d-flex flex-row gap-3 justify-content-between">
+  <span className="d-flex " style={{ fontSize: "1rem", color:"#FFBA42" }}>3  Customer </span>
+  <span className="d-flex " style={{ fontSize: "1rem", color:"#FFBA42" }}>2  Vendor</span>
+  <span className="d-flex " style={{ fontSize: "1rem", color:"#FFBA42" }}>4  Designer</span>
+  </div> 
     </div>
     <div className="col-md-4 mb-4 text-center p-3" style={{backgroundColor: '#096C86',borderRadius: '20px'}}>
-    <Link to={`/admin/orders`}>  <h5 className="fw-bold pt-3" style={{ fontSize: "2rem", color:"#DFE3E8" }}>Orders</h5>
+    <Link to={`/admin/orders`}>  <h5 className="fw-bold pt-3" style={{ fontSize: "2rem", color:"#FFBA42" }}>Orders</h5>
       <i className="display-4 mb-3"><RiShoppingBagFill style={{ fontSize: "4rem", color:"#DFE3E8" }} /></i>
-    </Link></div>
+    </Link><br /><br />
+    <div className="d-flex flex-row gap-3 justify-content-center">
+  <span className="d-flex " style={{ fontSize: "1rem", color:"#FFBA42" }}>1   New </span><tab/>
+  <span className="d-flex " style={{ fontSize: "1rem", color:"#FFBA42" }}>1   Ongoing</span>
+  {/* <span className="d-flex " style={{ fontSize: "1rem", color:"#DFE3E8" }}>4  Designer</span> */}
+  </div></div>
     <div className="col-md-4 mb-4  text-center p-3" style={{backgroundColor:'#096C86',borderRadius: '20px'}}>
-    <Link to={`/admin/salary`}> <h5 className=" fw-bold pt-3" style={{ fontSize: "2rem", color:"#DFE3E8" }}>Earnings</h5>
+    <Link to={`/admin/salary`}> <h5 className=" fw-bold pt-3" style={{ fontSize: "2rem", color:"#FFBA42" }}>Earnings</h5>
       <i className="display-4 mb-3"><RiCashFill style={{ fontSize: "4rem", color:"#DFE3E8" }} /></i>
     </Link></div>
 
 </div>
-<div className="d-flex col-lg-11 gap-4">
+<div className="d-flex col-lg-12 h-auto gap-3">
 <div className="col-md-4 mb-4 text-center p-3" style={{backgroundColor:'#096C86',borderRadius: '20px'}}>
-     <Link to={`/admin/commission`}> <h5 className="fw-bold pt-3" style={{ fontSize: "2rem", color:"#DFE3E8" }}>Commission</h5>
+     <Link to={`/admin/commission`}> <h5 className="fw-bold pt-3" style={{ fontSize: "2rem", color:"#FFBA42" }}>Commission</h5>
       <i className="display-4 mb-3"><RiHandCoinFill style={{ fontSize: "4rem", color:"#DFE3E8" }} /></i>
-    </Link></div>
+    </Link><br /><br />
+    <div className="d-flex flex-row gap-3 justify-content-center">
+    <span className="d-flex " style={{ fontSize: "1rem", color:"#FFBA42" }}>13000Rs  com earned </span><tab/>
+  <span className="d-flex " style={{ fontSize: "1rem", color:"#FFBA42" }}>2100Rs  com pending</span>
+ 
+    </div>
+    </div>
     <div className="col-md-4 mb-4 text-center p-3" style={{backgroundColor:'#096C86',borderRadius: '20px'}}>
-    <Link to={`/admin/report`} > <h5 className="fw-bold pt-3" style={{ fontSize: "2rem", color:"#DFE3E8" }}>Report</h5>
+    <Link to={`/admin/report`} > <h5 className="fw-bold pt-3" style={{ fontSize: "2rem", color:"#FFBA42" }}>Report</h5>
       <i className="display-4 mb-3"><RiFileChartFill style={{ fontSize: "4rem", color:"#DFE3E8" }} /></i>
     </Link> </div>
     <div className="col-md-4 mb-4 text-center p-3" style={{backgroundColor:'#096C86',borderRadius: '20px'}}>
-     <Link to={`/admin/settings`}> <h5 className=" fw-bold pt-3" style={{ fontSize: "2rem", color:"#DFE3E8" }}>Settings</h5>
+     <Link to={`/admin/settings`}> <h5 className=" fw-bold pt-3" style={{ fontSize: "2rem", color:"#FFBA42" }}>Settings</h5>
       <i className="display-4 mb-3"><RiSettings5Fill style={{ fontSize: "4rem", color:"#DFE3E8" }} /></i>
     </Link></div>
 

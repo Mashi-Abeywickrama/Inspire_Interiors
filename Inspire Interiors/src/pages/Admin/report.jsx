@@ -68,68 +68,68 @@ const Linedata1 = [
 const Linedata2 = [
   {
     name: "JAN",
-    subscription: 1000,
-    commission: 2400,
+    product: 1000,
+    design: 2400,
     amt: 2400,
   },
   {
     name: "FEB",
-    subscription: 3000,
-    commission: 1398,
+    product: 3000,
+    design: 1398,
     amt: 2210,
   },
   {
     name: "MAR",
-    subscription: 5000,
-    commission: 9800,
+    product: 5000,
+    design: 9800,
     amt: 2290,
   },
   {
     name: "APR",
-    subscription: 2780,
-    commission: 3908,
+    product: 2780,
+    design: 3908,
     amt: 2000,
   },
   {
     name: "JUN",
-    subscription: 1890,
-    commission: 1000,
+    product: 1890,
+    design: 1000,
     amt: 2181,
   },
   {
     name: "JUL",
-    subscription: 2390,
-    commission: 6500,
+    product: 2390,
+    design: 6500,
     amt: 2500,
   },
   {
     name: "AUG",
-    subscription: 4000,
-    commission: 2400,
+   product: 4000,
+    design: 2400,
     amt: 2400,
   },
   {
     name: "SEP",
-    subscription: 3000,
-    commission: 1398,
+    product: 3000,
+    design: 1398,
     amt: 2210,
   },
   {
     name: "OCT",
-    subscription: 2000,
-    commission: 9800,
+    product: 2000,
+    design: 9800,
     amt: 2290,
   },
   {
     name: "NOV",
-    subscription: 2780,
-    commission: 3908,
+    product: 2780,
+    design: 3908,
     amt: 2000,
   },
   {
     name: "DEC",
-    subscription: 1890,
-    commission: 4800,
+    product: 1890,
+    design: 4800,
     amt: 2181,
   },
 ];
@@ -629,13 +629,13 @@ export default function report() {
                 <Legend />
                 <Line
                   type="monotone"
-                  dataKey="commission"
+                  dataKey="design"
                   stroke="#FFC00C"
                   strokeWidth={2}
                 />
                 <Line
                   type="monotone"
-                  dataKey="subscription"
+                  dataKey="product"
                   stroke="#096C86"
                   strokeWidth={2}
                 />

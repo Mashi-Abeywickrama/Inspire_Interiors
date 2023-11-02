@@ -125,10 +125,17 @@ const Order = () => {
       price:order.price,
       commission:order.commission,
       status:order.status,
-      action: 
-          <Link to={`/admin/orders/invoice/${order.orderid}`}><div className="d-flex gap-2 align-items-center text-dark">
-            <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
-          </div></Link>
+      action: order.status === 'completed' ? (
+        <Link to={`/admin/orders/invoice/${order.orderid}`}>
+          <div className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0">send invoice</p> <Icon.ArrowRight />
+          </div>
+        </Link>
+      ): (
+        <div className="d-flex gap-2 align-items-center text-dark">
+        <p className="m-0"  style={{color:"gray"}}>send invoice</p> <Icon.ArrowRight />
+      </div> // Display the status text if not completed
+    ),
       
       
       // other fields...
@@ -211,9 +218,11 @@ const Order = () => {
       commission:order.commission,
       status:order.status,
       action: 
-          <Link to={`/admin/orders/invoice/${order.orderid}`}><div className="d-flex gap-2 align-items-center text-dark">
-            <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
-          </div></Link>
+        //  <Link to={`/admin/orders/invoice/${order.orderid}`}>
+            <div className="d-flex gap-2 align-items-center text-dark">
+             <p className="m-0 "  style={{color:"gray"}}>send invoice</p> <Icon.ArrowRight  style={{color:"gray"}} />
+           </div>
+         // </Link> 
       
       
       // other fields...
@@ -296,9 +305,11 @@ const Order = () => {
       commission:order.commission,
       status:order.status,
       action: 
-          <Link to={`/admin/orders/invoice/${order.orderid}`}><div className="d-flex gap-2 align-items-center text-dark">
+          <Link to={`/admin/orders/invoice/${order.orderid}`}>
+            <div className="d-flex gap-2 align-items-center text-dark">
             <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
-          </div></Link>
+          </div>
+        </Link> 
       
       
       // other fields...
@@ -380,10 +391,12 @@ const Order = () => {
       price:order.price,
       commission:order.commission,
       status:order.status,
-      action: 
-          <Link to={`/admin/orders/invoice/${order.orderid}`}><div className="d-flex gap-2 align-items-center text-dark">
-            <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
-          </div></Link>
+      action:
+          // <Link to={`/admin/orders/invoice/${order.orderid}`}>
+          <div className="d-flex gap-2 align-items-center text-dark">
+             <p className="m-0 "  style={{color:"gray"}}>send invoice</p> <Icon.ArrowRight  style={{color:"gray"}} />
+          </div>
+          // </Link>
       
       
       // other fields...
@@ -466,9 +479,11 @@ const Order = () => {
       commission:order.commission,
       status:order.status,
       action: 
-          <Link to={`/admin/orders/invoice/${order.orderid}`}><div className="d-flex gap-2 align-items-center text-dark">
-            <p className="m-0 ">send invoice</p> <Icon.ArrowRight />
-          </div></Link>
+          // <Link to={`/admin/orders/invoice/${order.orderid}`}>
+            <div className="d-flex gap-2 align-items-center text-dark">
+            <p className="m-0 " style={{color:"gray"}}>send invoice</p> <Icon.ArrowRight style={{color:"gray"}} />
+          </div>
+          // {/* </Link> */}
       
       
       // other fields...
