@@ -8,7 +8,7 @@ The goal of the Inspire Interiors project is to create a user-friendly and featu
 2. Node.js
     You can download it from the [official website](https://nodejs.org/) if it's not already installed.
 3. SpringBoot
-    You can set up a Spring Boot project using [Spring Initializer] (https://start.spring.io/)
+    You can set up a Spring Boot project using [Spring Initializer](https://start.spring.io/)
 4. Java Development Kit (JDK)
 5. Python3
 6. Web Browser
@@ -22,11 +22,11 @@ The goal of the Inspire Interiors project is to create a user-friendly and featu
 Before running the web app, ensure that you have a stable internet connection.
 
 #### Steps to Run the React Bootstrap + Spring Boot App:
-Using Https
-    [Inspire Interiors - Https](https://github.com/Mashi-Abeywickrama/Inspire_Interiors.git)
-Using SSH
-    [Inspire Interiors - SSH](git@github.com:Mashi-Abeywickrama/Inspire_Interiors.git)
-Clone the web application from the github using the link provided above.
+Clone the web application from the github.
+1. Using Https
+   [Inspire Interiors - Https](https://github.com/Mashi-Abeywickrama/Inspire_Interiors.git)
+2. Using SSH
+   [Inspire Interiors - SSH](git@github.com:Mashi-Abeywickrama/Inspire_Interiors.git)
 
 #### Setup the Backend (Spring Boot)
 Open your Spring Boot project in your preferred IDE.
